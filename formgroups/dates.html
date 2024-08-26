@@ -1,0 +1,48 @@
+<div class="card mb-2">
+  <div class="card-header"><b>
+      <?php echo $translations['dates']; ?>
+    </b></div>
+  <div class="card-body">
+    <div class="row">
+      <!-- Eingabefeld Date created -->
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-1">
+        <div class="input-group has-validation">
+          <div class="form-floating">
+            <input type="date" class="form-control input-with-help input-right-no-round-corners" id="inputDateCreated"
+              name="dateCreated" />
+            <label for="inputDateCreated">
+              <?php echo $translations['dateCreated']; ?>
+            </label>
+            <div class="invalid-feedback">
+              <?php echo $translations['dateCreated_invalid']; ?>
+            </div>
+          </div>
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                data-help-section-id="date-created"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Eingabefeld Embargo -->
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-1">
+        <div class="input-group has-validation">
+          <div class="form-floating">
+            <input type="date" class="form-control input-with-help input-right-no-round-corners" id="inputDateEmbargo"
+              name="dateEmbargo" />
+            <label for="inputDateEmbargo">
+              <?php echo $translations['embargoUntil']; ?>
+            </label>
+            <div class="invalid-feedback">
+              <?php echo $translations['embargo_invalid']; ?>
+            </div>
+          </div>
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                data-help-section-id="date-embargo"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

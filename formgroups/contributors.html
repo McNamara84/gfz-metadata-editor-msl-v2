@@ -1,0 +1,168 @@
+<div class="card mb-2">
+  <div class="card-header">
+    <b>
+      <?php echo $translations['contributors']; ?>
+    </b>
+  </div>
+  <div class="card-body">
+    <div id="contributorsGroup">
+      <!-- Erstellen der Zeile für Person -->
+      <div class="row" contributor-person-row>
+        <!-- Zeilenbeschriftung für Person -->
+        <label class="row-label">
+          <?php echo $translations['contributorsPersonZeile']; ?>
+        </label>
+
+        <!--Eingabefeld Contributor Lastname-->
+        <div class="col-6 col-sm-6 col-md-4 col-lg-2 p-1">
+          <div class="input-group has-validation">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="inputContributorLastname" pattern="^[a-zA-ZäöüÄÖÜß \-]*$"
+                name="cbPersonLastname[]" />
+              <label for="inputContributorLastname">
+                <?php echo $translations['lastname']; ?>
+              </label>
+              <div class="invalid-feedback">
+                <?php echo $translations['contributors_lastname_invalid']; ?>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!--Eingabefeld Contributor Firstname -->
+        <div class="col-6 col-sm-6 col-md-4 col-lg-2 p-1">
+          <div class="input-group has-validation">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="inputContributorFirstname" pattern="^[a-zA-ZäöüÄÖÜß \-]*$"
+                name="cbPersonFirstname[]" />
+              <label for="inputContributorFirstname">
+                <?php echo $translations['firstname']; ?>
+              </label>
+              <div class="invalid-feedback">
+                <?php echo $translations['contributors_firstname_invalid']; ?>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Eingabefeld Contributor Person Role(s)-->
+        <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
+          <div class="form-floating">
+            <select data-placeholder="<?php echo $translations['role_label']; ?>" class="form-select chosen-select"
+              id="inputContributorsPerRole" name="cbPersonRoles[]" multiple="multiple" required>
+            </select>
+            <div class="invalid-feedback">
+              <?php echo $translations['PleaseChoose_invalid']; ?>
+            </div>
+          </div>
+
+        </div>
+
+        <!--Eingabefeld Contributor ORCID-->
+        <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
+          <div class="input-group has-validation">
+            <div class="form-floating">
+              <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                id="inputContributorORCID" name="cbORCID[]" pattern="^[0-9]{4}-[0-9]{4}-[0-9]{4}-([0-9]{4}|[0-9]{3}X)$"
+                required />
+              <label for="inputContributorORCID">
+                <?php echo $translations['contributors_ORCID']; ?>
+              </label>
+              <div class="invalid-feedback">
+                <?php echo $translations['contributors_ORCID_invalid']; ?>
+              </div>
+            </div>
+            <div class="input-group-append">
+              <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                  data-help-section-id="CPer_orcid"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!--Eingabefeld Contributor Affiliation-->
+        <div class="col-10 col-sm-10 col-md-7 col-lg-3 p-1">
+          <div class="input-group has-validation">
+            <input type="text" class="form-control input-with-help input-right-no-round-corners"
+              id="inputContributorAffiliation" name="cbAffiliation[]"
+              placeholder="<?php echo $translations['affiliation']; ?>" />
+            <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                data-help-section-id="CPer_affiliation"></i></span>
+            <input type="hidden" id="hiddenContributorRorId" name="cbpRorIds[]"/>
+          </div>
+        </div>
+
+        <!--Button "add Contact Contributor"-->
+        <div class="col-2 col-sm-2 col-md-1 col-lg-1 d-flex justify-content-center align-items-center">
+          <button type="button" class="btn btn-primary addContributorPerson" id="addContributorPerson"
+            style="width: 36px">
+            <?php echo $translations['add']; ?>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--Das div definiert den Abstand zwischen den beiden Zeilen.-->
+    <div style="height: 10px;"></div>
+
+    <!-- Erstellen der Zeile für Institution -->
+    <div id="contributorOrganisationGroup">
+      <div class="row" contributors-row>
+
+        <!-- Zeilenbeschriftung für Institution -->
+        <label class="row-label">
+          <?php echo $translations['contributorsInstitutionZeile']; ?>
+        </label>
+
+        <!-- Eingabefeld Organisation name-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 p-1">
+          <div class="input-group has-validation">
+            <div class="form-floating">
+              <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                id="inputOrganisationName" name="cbOrganisationName[]" />
+              <label for="inputOrganisationName">
+                <?php echo $translations['Organisation']; ?>
+              </label>
+            </div>
+            <div class="input-group-append">
+              <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                  data-help-section-id="organisation_name"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Eingabefeld Organisation Role(s)-->
+        <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
+          <div class="form-floating">
+            <select data-placeholder="<?php echo $translations['role_label']; ?>" class="form-select chosen-select"
+              class="form-control input-with-help input-right-no-round-corners" id="inputContributorOrgaRole"
+              name="cbOrganisationRoles[]" multiple="multiple">
+            </select>
+            <div class="invalid-feedback">
+              <?php echo $translations['PleaseChoose_invalid']; ?>
+            </div>
+          </div>
+        </div>
+
+        <!--Eingabefeld Organisation Affiliation-->
+        <div class="col 10 col-sm-10 col-md-7 col-lg-5 p-1">
+          <div class="input-group has-validation">
+            <input type="text" class="form-control input-with-help input-right-no-round-corners"
+              id="inputOrganisationAffiliation" name="OrganisationAffiliation[]"
+              placeholder="<?php echo $translations['affiliation']; ?>" />
+            <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                data-help-section-id="cOrg_affiliation"></i></span>
+            <input type="hidden" id="hiddenOrganisationRorId" name="hiddenOrganisationRorId[]"/>
+          </div>
+        </div>
+
+        <!-- Button "add Contributor"-->
+        <div class="col-2 col-sm-2 col-md-1 col-lg-1 d-flex justify-content-center align-items-center">
+          <button type="button" class="btn btn-primary addContributor" id="addContributor" style="width: 36px">
+            <?php echo $translations['add']; ?>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

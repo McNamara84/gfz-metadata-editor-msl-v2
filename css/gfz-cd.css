@@ -1,0 +1,36 @@
+.jstree-container-ul>li>a>i.jstree-checkbox {
+    display: none;
+}
+
+.invalid {
+    background-color: #fdd8dd;
+}
+
+.bg-primary {
+    background-color: #00589C !important;
+}
+
+.btn-primary {
+    background-color: #00589C !important;
+    border-color: #00589C !important;
+}
+
+/* Farbanpassung der aktiven Dropdown Items */
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: #00589C;
+}
+
+.alert-info {
+    color: #00589C;
+    background-color: #cfe2ff;
+    border-color: #b6d4fe;
+    font-size: 1.1rem;
+}
+
+.footer-notes {
+    font-size: 0.8rem;
+    background-color: #b6d4fe;
+    /* Transparenz des Hintergrunds */
+    opacity: 0.6;
+}

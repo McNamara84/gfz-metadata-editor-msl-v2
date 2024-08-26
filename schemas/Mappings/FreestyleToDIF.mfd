@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Edited with Altova MapForce 2024 -->
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="41">
+	<resources/>
+	<component name="defaultmap" uid="1">
+		<properties SelectedLanguage="xslt"/>
+		<structure>
+			<children>
+				<component name="constant" library="core" uid="7" kind="2">
+					<targets>
+						<datapoint pos="0" key="7"/>
+					</targets>
+					<view ltx="572" lty="71" rbx="689" rby="88"/>
+					<data>
+						<constant value="http://doi.org/" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="11" kind="2">
+					<targets>
+						<datapoint pos="0" key="8"/>
+					</targets>
+					<view ltx="1611" lty="2" rbx="1748" rby="19"/>
+					<data>
+						<constant value="Potsdam, Germany" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="13" kind="2">
+					<targets>
+						<datapoint pos="0" key="9"/>
+					</targets>
+					<view ltx="1616" lty="18" rbx="1748" rby="35"/>
+					<data>
+						<constant value="GFZ Data Services" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="15" kind="2">
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="1579" lty="50" rbx="1748" rby="67"/>
+					<data>
+						<constant value="Deutsches GeoForschungsZentrum GFZ" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="17" kind="2">
+					<targets>
+						<datapoint pos="0" key="11"/>
+					</targets>
+					<view ltx="1582" lty="66" rbx="1748" rby="83"/>
+					<data>
+						<constant value="DATA CENTER CONTACT" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="19" kind="2">
+					<targets>
+						<datapoint pos="0" key="12"/>
+					</targets>
+					<view ltx="1689" lty="82" rbx="1748" rby="99"/>
+					<data>
+						<constant value="DIF" datatype="string"/>
+					</data>
+				</component>
+				<component name="substring-after" library="core" uid="9" kind="5">
+					<sources>
+						<datapoint pos="0" key="25"/>
+						<datapoint pos="1" key="26"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="27"/>
+					</targets>
+					<view ltx="689" lty="34" rbx="793" rby="88"/>
+				</component>
+				<component name="constant" library="core" uid="22" kind="2">
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="498" lty="124" rbx="591" rby="141"/>
+					<data>
+						<constant value="Main Title" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="26" kind="2">
+					<targets>
+						<datapoint pos="0" key="38"/>
+					</targets>
+					<view ltx="843" lty="73" rbx="891" rby="90"/>
+					<data>
+						<constant value=", " datatype="string"/>
+					</data>
+				</component>
+				<component name="comment" library="core" uid="10" kind="35">
+					<view ltx="672" lty="16" rbx="793" rby="35"/>
+					<data>
+						<comment>
+							<text>Resource Information</text>
+						</comment>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="25" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="42"/>
+						<datapoint pos="1" key="43"/>
+						<datapoint pos="2" key="44"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="45"/>
+					</targets>
+					<view ltx="891" lty="34" rbx="983" rby="107"/>
+				</component>
+				<component name="contains" library="core" uid="21" kind="5">
+					<sources>
+						<datapoint pos="0" key="28"/>
+						<datapoint pos="1" key="29"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="30"/>
+					</targets>
+					<view ltx="591" lty="87" rbx="689" rby="141"/>
+				</component>
+				<component name="if-else" library="core" uid="23" kind="4">
+					<sources>
+						<datapoint pos="0" key="31"/>
+						<datapoint pos="1" key="32"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="33"/>
+					</targets>
+					<view ltx="689" lty="87" rbx="793" rby="160"/>
+				</component>
+				<component name="comment" library="core" uid="31" kind="35">
+					<view ltx="1075" lty="16" rbx="1149" rby="35"/>
+					<data>
+						<comment>
+							<text>Descriptions</text>
+						</comment>
+					</data>
+				</component>
+				<component name="contains" library="core" uid="28" kind="5">
+					<sources>
+						<datapoint pos="0" key="47"/>
+						<datapoint pos="1" key="46"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="48"/>
+					</targets>
+					<view ltx="1075" lty="34" rbx="1173" rby="88"/>
+				</component>
+				<component name="constant" library="core" uid="29" kind="2">
+					<targets>
+						<datapoint pos="0" key="49"/>
+					</targets>
+					<view ltx="991" lty="71" rbx="1075" rby="88"/>
+					<data>
+						<constant value="Abstract" datatype="string"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="30" kind="4">
+					<sources>
+						<datapoint pos="0" key="52"/>
+						<datapoint pos="1" key="51"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="50"/>
+					</targets>
+					<view ltx="1173" lty="34" rbx="1277" rby="107"/>
+				</component>
+				<component name="comment" library="core" uid="12" kind="35">
+					<view ltx="1687" lty="-16" rbx="1748" rby="3"/>
+					<data>
+						<comment>
+							<text>Commons</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="36" kind="2">
+					<targets>
+						<datapoint pos="0" key="70"/>
+					</targets>
+					<view ltx="403" lty="518" rbx="572" rby="535"/>
+					<data>
+						<constant value="NASA/GCMD Earth Science Keywords" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="37" kind="2">
+					<targets>
+						<datapoint pos="0" key="56"/>
+					</targets>
+					<view ltx="712" lty="518" rbx="832" rby="535"/>
+					<data>
+						<constant value="SPACE SCIENCE" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="43" kind="2">
+					<targets>
+						<datapoint pos="0" key="58"/>
+					</targets>
+					<view ltx="1001" lty="395" rbx="1150" rby="412"/>
+					<data>
+						<constant value="SPACE SCIENCE &amp;gt; " datatype="string"/>
+					</data>
+				</component>
+				<component name="substring-before" library="core" uid="45" kind="5">
+					<sources>
+						<datapoint pos="0" key="64"/>
+						<datapoint pos="1" key="68"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="81"/>
+					</targets>
+					<view ltx="1384" lty="368" rbx="1498" rby="422"/>
+				</component>
+				<component name="substring-after" library="core" uid="42" kind="5">
+					<sources>
+						<datapoint pos="0" key="61"/>
+						<datapoint pos="1" key="59"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="62"/>
+					</targets>
+					<view ltx="1186" lty="358" rbx="1290" rby="412"/>
+				</component>
+				<component name="constant" library="core" uid="46" kind="2">
+					<targets>
+						<datapoint pos="0" key="60"/>
+					</targets>
+					<view ltx="1219" lty="411" rbx="1290" rby="428"/>
+					<data>
+						<constant value=" &amp;gt; " datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="48" kind="2">
+					<targets>
+						<datapoint pos="0" key="69"/>
+					</targets>
+					<view ltx="1219" lty="497" rbx="1287" rby="514"/>
+					<data>
+						<constant value="&amp;gt; " datatype="string"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="38" kind="4">
+					<sources>
+						<datapoint pos="0" key="82"/>
+						<datapoint pos="1" key="83"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="63"/>
+					</targets>
+					<view ltx="843" lty="379" rbx="947" rby="452"/>
+				</component>
+				<component name="comment" library="core" uid="27" kind="35">
+					<view ltx="891" lty="16" rbx="942" rby="35"/>
+					<data>
+						<comment>
+							<text>Authors</text>
+						</comment>
+					</data>
+				</component>
+				<component name="contains" library="core" uid="35" kind="5">
+					<sources>
+						<datapoint pos="0" key="76"/>
+						<datapoint pos="1" key="77"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="78"/>
+					</targets>
+					<view ltx="572" lty="481" rbx="670" rby="535"/>
+				</component>
+				<component name="comment" library="core" uid="50" kind="35">
+					<view ltx="449" lty="651" rbx="616" rby="670"/>
+					<data>
+						<comment>
+							<text>TODO: Free Keywords mappen</text>
+						</comment>
+					</data>
+				</component>
+				<component name="not-exists" library="core" uid="53" kind="5">
+					<sources>
+						<datapoint pos="0" key="84"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="88"/>
+					</targets>
+					<view ltx="659" lty="592" rbx="736" rby="630"/>
+				</component>
+				<component name="not-exists" library="core" uid="54" kind="5">
+					<sources>
+						<datapoint pos="0" key="86"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="90"/>
+					</targets>
+					<view ltx="659" lty="629" rbx="736" rby="667"/>
+				</component>
+				<component name="if-else" library="core" uid="51" kind="4">
+					<sources>
+						<datapoint pos="0" key="87"/>
+						<datapoint pos="1" key="91"/>
+						<datapoint pos="2" key="92"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="93"/>
+					</targets>
+					<view ltx="915" lty="581" rbx="1019" rby="654"/>
+				</component>
+				<component name="if-else" library="core" uid="57" kind="4">
+					<sources>
+						<datapoint pos="0" key="89"/>
+						<datapoint pos="1" key="94"/>
+						<datapoint pos="2" key="95"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="96"/>
+					</targets>
+					<view ltx="915" lty="653" rbx="1019" rby="726"/>
+				</component>
+				<component name="substring-after" library="core" uid="47" kind="5">
+					<sources>
+						<datapoint pos="0" key="65"/>
+						<datapoint pos="1" key="66"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="67"/>
+					</targets>
+					<view ltx="1313" lty="460" rbx="1417" rby="514"/>
+				</component>
+				<component name="if-else" library="core" uid="33" kind="4">
+					<sources>
+						<datapoint pos="0" key="74"/>
+						<datapoint pos="1" key="57"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="75"/>
+					</targets>
+					<view ltx="843" lty="481" rbx="947" rby="554"/>
+				</component>
+				<component name="constant" library="core" uid="18" kind="2">
+					<targets>
+						<datapoint pos="0" key="4"/>
+					</targets>
+					<view ltx="1682" lty="98" rbx="1748" rby="115"/>
+					<data>
+						<constant value="9.9.3" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="16" kind="2">
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="1686" lty="34" rbx="1748" rby="51"/>
+					<data>
+						<constant value="GFZ" datatype="string"/>
+					</data>
+				</component>
+				<component name="DIF" library="xml" uid="4" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="1801" lty="131" rbx="2002" rby="631"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<file role="outputinstance" name="..\GCMD\DIF.xml"/>
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="DIF" expanded="1">
+										<entry name="Entry_ID" inpkey="13"/>
+										<entry name="Entry_Title" inpkey="14"/>
+										<entry name="Data_Set_Citation">
+											<entry name="Dataset_Creator" inpkey="41"/>
+											<entry name="Dataset_Title" inpkey="15"/>
+											<entry name="Dataset_Release_Date" inpkey="16"/>
+											<entry name="Dataset_Release_Place" inpkey="17"/>
+											<entry name="Dataset_Publisher" inpkey="18"/>
+											<entry name="Online_Resource" inpkey="19"/>
+										</entry>
+										<entry name="Parameters" inpkey="111">
+											<entry name="Category" inpkey="71"/>
+											<entry name="Topic" inpkey="72"/>
+											<entry name="Term" inpkey="73"/>
+										</entry>
+										<entry name="Keyword" inpkey="112"/>
+										<entry name="Spatial_Coverage" inpkey="106">
+											<entry name="Southernmost_Latitude" inpkey="107"/>
+											<entry name="Northernmost_Latitude" inpkey="108"/>
+											<entry name="Westernmost_Longitude" inpkey="109"/>
+											<entry name="Easternmost_Longitude" inpkey="110"/>
+										</entry>
+										<entry name="Data_Center">
+											<entry name="Data_Center_Name">
+												<entry name="Short_Name" inpkey="2"/>
+												<entry name="Long_Name" inpkey="21"/>
+											</entry>
+											<entry name="Personnel">
+												<entry name="Role" inpkey="22"/>
+												<entry name="Last_Name" inpkey="23"/>
+											</entry>
+										</entry>
+										<entry name="Summary">
+											<entry name="Abstract" inpkey="55"/>
+										</entry>
+										<entry name="Metadata_Name" inpkey="24"/>
+										<entry name="Metadata_Version" inpkey="5"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\GCMD\DIF.xsd" instanceroot="{http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/}DIF"/>
+					</data>
+				</component>
+				<component name="FreestyleSchemaDB" library="xml" uid="3" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="200" lty="139" rbx="400" rby="461"/>
+					<data>
+						<root scrollposition="87">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<file role="inputinstance" name="..\..\xml\resource_1.xml"/>
+								<file role="outputinstance" name="..\..\xml\resource_1.xml"/>
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Resource" expanded="1">
+										<entry name="doi" outkey="34"/>
+										<entry name="year" outkey="35"/>
+										<entry name="Titles">
+											<entry name="Title">
+												<entry name="text" outkey="36"/>
+												<entry name="type" outkey="37"/>
+											</entry>
+										</entry>
+										<entry name="Authors">
+											<entry name="Author">
+												<entry name="familyname" outkey="39"/>
+												<entry name="givenname" outkey="40"/>
+											</entry>
+										</entry>
+										<entry name="Descriptions">
+											<entry name="Description">
+												<entry name="type" outkey="53"/>
+												<entry name="description" outkey="54"/>
+											</entry>
+										</entry>
+										<entry name="SpatialTemporalCoverages">
+											<entry name="SpatialTemporalCoverage" outkey="97">
+												<entry name="latitudeMin" outkey="98"/>
+												<entry name="latitudeMax" outkey="85"/>
+												<entry name="longitudeMin" outkey="99"/>
+												<entry name="longitudeMax" outkey="100"/>
+											</entry>
+										</entry>
+										<entry name="ThesaurusKeywords">
+											<entry name="Keyword">
+												<entry name="keyword" outkey="79"/>
+												<entry name="scheme" outkey="80"/>
+											</entry>
+										</entry>
+										<entry name="FreeKeywords" expanded="1">
+											<entry name="Keyword" expanded="1">
+												<entry name="free_keyword" outkey="113"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource"/>
+					</data>
+				</component>
+			</children>
+		</structure>
+		<connections>
+			<edge from="3" to="2"/>
+			<edge from="4" to="5"/>
+			<edge from="27" to="13"/>
+			<edge from="33" to="14"/>
+			<edge from="33" to="15"/>
+			<edge from="35" to="16"/>
+			<edge from="8" to="17"/>
+			<edge from="9" to="18"/>
+			<edge from="34" to="19"/>
+			<edge from="1" to="21"/>
+			<edge from="11" to="22"/>
+			<edge from="1" to="23"/>
+			<edge from="12" to="24"/>
+			<edge from="34" to="25"/>
+			<edge from="7" to="26"/>
+			<edge from="37" to="28"/>
+			<edge from="6" to="29"/>
+			<edge from="30" to="31"/>
+			<edge from="36" to="32"/>
+			<edge from="45" to="41"/>
+			<edge from="39" to="42"/>
+			<edge from="38" to="43"/>
+			<edge from="40" to="44"/>
+			<edge from="49" to="46"/>
+			<edge from="53" to="47"/>
+			<edge from="54" to="51"/>
+			<edge from="48" to="52"/>
+			<edge from="50" to="55"/>
+			<edge from="56" to="57"/>
+			<edge from="58" to="59"/>
+			<edge from="63" to="61"/>
+			<edge from="62" to="64"/>
+			<edge from="63" to="65"/>
+			<edge from="69" to="66"/>
+			<edge from="60" to="68"/>
+			<edge from="75" to="71"/>
+			<edge from="81" to="72"/>
+			<edge from="67" to="73"/>
+			<edge from="78" to="74"/>
+			<edge from="80" to="76"/>
+			<edge from="70" to="77"/>
+			<edge from="78" to="82"/>
+			<edge from="79" to="83"/>
+			<edge from="85" to="84"/>
+			<edge from="100" to="86"/>
+			<edge from="88" to="87"/>
+			<edge from="90" to="89"/>
+			<edge from="98" to="91"/>
+			<edge from="85" to="92"/>
+			<edge from="99" to="94"/>
+			<edge from="100" to="95"/>
+			<edge from="97" to="106"/>
+			<edge from="98" to="107"/>
+			<edge from="93" to="108"/>
+			<edge from="99" to="109"/>
+			<edge from="96" to="110"/>
+			<edge from="75" to="111"/>
+			<edge from="113" to="112"/>
+		</connections>
+	</component>
+</mapping>

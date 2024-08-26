@@ -1,0 +1,167 @@
+<main class="container-fluid my-3 pb-5">
+  <div class="alert alert-info text-center">
+    Please fill out the form in english.
+  </div>
+  <form id="metaForm" method="post" action="index.php" class="needs-validation" novalidate>
+    <div class="card mb-2">
+      <div class="card-header"><b>
+          <?php echo $translations['resourceInformation']; ?>
+        </b></div>
+      <div class="card-body">
+        <!--Zeile 1-->
+        <div class="row">
+          <!-- In diesem Abschnitt wird ein Eingabefeld für die DOI erstellt. -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-2 p-1">
+            <div class="input-group has-validation">
+              <div class="form-floating">
+                <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputDOI"
+                  name="doi" pattern="^10\.\d{4,9}\/[._;\/\(\)\-:A-Za-z0-9]+$" />
+                <label for="inputDOI">
+                  <?php echo $translations['doi']; ?>
+                </label>
+                <div class="invalid-feedback">
+                  <?php echo $translations['doi_invalid']; ?>
+                </div>
+              </div>
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="bi bi-question-circle-fill" data-help-section-id="doi"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- In diesem Abschnitt wird ein Eingabefeld für "Year" erstellt. -->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-2 p-1">
+            <div class="input-group has-validation">
+              <div class="form-floating">
+                <input type="text" inputmode="numeric" class="form-control" name="year" pattern="^[1-2]{1}[0-9]{3}$"
+                  required id="inputPublicationYear" />
+                <label for="inputPublicationYear">
+                  <?php echo $translations['publicationYear']; ?>
+                </label>
+                <div class="invalid-feedback">
+                  <?php echo $translations['publicationYear_invalid']; ?>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- In diesem Abschnitt wird ein drowpdowen-Menü für "Resource Type" erstellt. -->
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 p-1">
+            <div class="input-group has-validation">
+              <div class="form-floating">
+                <select class="form-select input-with-help input-right-no-round-corners" id="inputResourceType"
+                  name="resourcetype" required>
+                  <option disabled selected hidden value="">
+                    <?php echo $translations['choose']; ?>
+                  </option>
+                  <?php echo $optionresourcentype; ?>
+                </select>
+                <label for="inputResourceType">
+                  <?php echo $translations['resourceType']; ?>
+                </label>
+                <div class="invalid-feedback">
+                  <?php echo $translations['PleaseChoose_invalid']; ?>
+                </div>
+              </div>
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="bi bi-question-circle-fill" data-help-section-id="resource-type"></i>
+                </span>
+              </div>
+
+
+            </div>
+          </div>
+
+          <!--Eingabefeld Version-->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-2 p-1">
+            <div class="input-group has-validation">
+              <div class="form-floating">
+                <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputVersion"
+                  name="version" pattern="[0-9\.]{0,5}" />
+                <label for="inputVersion">
+                  <?php echo $translations['version']; ?>
+                </label>
+                <div class="invalid-feedback">
+                  <?php echo $translations['version_invalid']; ?>
+                </div>
+              </div>
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                    data-help-section-id="version"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <!--Eingabefeld Language-->
+          <div class="col-12 col-sm-6 col-md-6 col-lg-2 p-1">
+            <div class="input-group has-validation">
+              <div class="form-floating">
+                <select class="form-select" id="inputLanguageDataset" name="language" required>
+                  <?php echo $optionlanguage; ?>
+                </select>
+                <label for="inputLanguageDataset">
+                  <?php echo $translations['languageofdataset']; ?>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Abstand zwischen Zeilen-->
+        <div style="height: 10px;"></div>
+
+        <!--Zeile 2-->
+        <div class="row">
+          <!--Eingabefeld Titel-->
+          <div class="col-12 col-sm-12 col-md-8 col-lg-8 p-1">
+            <div class="input-group has-validation">
+              <div class="form-floating">
+                <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputTitle"
+                  name="title[]" pattern="^[a-zA-ZäöüÄÖÜß 0-9]+$" required />
+                <label for="inputTitle">
+                  <?php echo $translations['title']; ?>
+                </label>
+                <div class="invalid-feedback">
+                  <?php echo $translations['title_invalid']; ?>
+                </div>
+              </div>
+              <div class="input-group-append"><span class="input-group-text"><i class="bi bi-question-circle-fill"
+                    data-help-section-id="title"></i></span></div>
+            </div>
+          </div>
+
+          <!--Eingabefeld Title Type-->
+          <div class="col-10 col-sm-11 col-md-3 col-lg-3 p-1">
+            <div class="input-group has-validation">
+              <div class="form-floating">
+                <select class="form-select input-with-help input-right-no-round-corners" id="inputTitleType"
+                  name="titleType[]" required>
+                  <?php echo $optiontitle_type; ?>
+                </select>
+                <label for="inputTitle">
+                  <?php echo $translations['titleType']; ?>
+                </label>
+                <div class="invalid-feedback">
+                  <?php echo $translations['PleaseChoose_invalid']; ?>
+                </div>
+              </div>
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                    data-help-section-id="title-type"></i></span>
+              </div>
+            </div>
+          </div>
+          <!--Button zum Hinzufügen von Titeln-->
+          <div class="col-2 col-sm-1 col-md-1 col-lg-1 p-1 d-flex justify-content-center align-items-center">
+            <div class="align-items-center">
+              <button type="button" class="btn btn-primary addTitle" id="addTitle" style="width: 36px">
+                <?php echo $translations['add']; ?>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,60 @@
+body {
+    position: relative;
+}
+
+ul.nav-pills {
+    position: fixed;
+    top: 100px;
+    /* Höhe des Headers */
+}
+
+.container {
+    padding-top: 100px;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 60px;
+    /* Höhe des Headers */
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    /* Schatten nach unten */
+}
+
+/* Inhalt der Navbar */
+.navbar .container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+}
+
+/* Einstellungen für die Sidebar */
+.nav-pills .nav-link {
+    color: #000000;
+    /* Textfarbe */
+    background-color: #ffffff;
+    /* Hintergrundfarbe */
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: #000000;
+    /* Aktive Textfarbe */
+    background-color: #f0f0f0;
+    /* Aktive Hintergrundfarbe */
+    font-weight: bold;
+    /* Fett */
+}
+
+/* Sidebar verschwindet bei kleineren Bildschirmen */
+@media (max-width: 767.98px) {
+    .col-xs-12.col-md-3 {
+        display: none;
+    }
+}

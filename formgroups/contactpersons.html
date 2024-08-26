@@ -1,0 +1,118 @@
+<div class="card mb-2">
+  <div class="card-header"><b>
+      <?php echo $translations['contactpersons']; ?>
+    </b></div>
+  <div class="card-body">
+    <div id="contactpersonsGroup">
+      <div class="row" contact-person-row>
+        <!--Eingabefeld Contributors Lastname-->
+        <div class="col-6 col-sm-6 col-md-4 col-lg-2 p-1">
+          <div class="input-group has-validation">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="inputCpLastname" pattern="^[a-zA-ZäöüÄÖÜß \-]*$"
+                name="cpLastname[]" />
+              <label for="inputCpLastname">
+                <?php echo $translations['lastname']; ?>
+              </label>
+              <div class="invalid-feedback">
+                <?php echo $translations['CP_lastname_invalid']; ?>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Eingabefeld Contributors Firstname-->
+        <div class="col-6 col-sm-6 col-md-4 col-lg-2 p-1">
+          <div class="input-group has-validation">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="inputCpFirstname" pattern="^[a-zA-ZäöüÄÖÜß \-]*$"
+                name="cpFirstname[]" />
+              <label for="inputCpFirstname">
+                <?php echo $translations['firstname']; ?>
+              </label>
+              <div class="invalid-feedback">
+                <?php echo $translations['CP_firstname_invalid']; ?>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Eingabefeld Contact Persons Position-->
+        <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
+          <div class="input-group has-validation">
+            <div class="form-floating">
+              <input type="text" class="form-control input-with-help input-right-no-round-corners" id="cpPosition"
+                name="cpPosition[]" pattern="^[A-Za-z\/,\-\s&()ÄäÖöÜüß]{1,99}$" />
+              <label for="cpPosition">
+                <?php echo $translations['position']; ?>
+              </label>
+              <div class="invalid-feedback">
+                <?php echo $translations['position_invalid']; ?>
+              </div>
+            </div>
+            <div class="input-group-append">
+              <span class="input-group-text"><i class="bi bi-question-circle-fill" data-help-section-id="position"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Eingabefeld Email Address/E-Mail-Adresse-->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-3 p-1">
+          <div class="input-group has-validation">
+            <div class="form-floating">
+              <input type="email" class="form-control" name="cpEmail[]"
+                pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                id="inputEmail" />
+              <label for="inputEmail">
+                <?php echo $translations['email']; ?>
+              </label>
+              <div class="invalid-feedback">
+                <?php echo $translations['email_invalid']; ?>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Eingabefeld Webseite-->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-3 p-1">
+          <div class="input-group has-validation">
+            <div class="form-floating">
+              <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputWebsite"
+                name="cpOnlineResource[]"
+                pattern="^(http(s)?:\/\/)?(www\.)?[a-zA-Z0-9\-\.]+(\.[a-zA-Z]{2,})+(\/[^\s]*)?$" />
+              <label for="inputWebsite">
+                <?php echo $translations['website']; ?>
+              </label>
+              <div class="invalid-feedback">
+                <?php echo $translations['website_invalid']; ?>
+              </div>
+            </div>
+            <div class="input-group-append">
+              <span class="input-group-text"><i class="bi bi-question-circle-fill" data-help-section-id="website"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!--Eingabefeld Affiliation-->
+        <div class="col-10 col-sm-10 col-md-11 p-1">
+          <div class="input-group has-validation">
+            <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputCPAffiliation"
+              name="cpAffiliation[]" placeholder="<?php echo $translations['affiliation']; ?>" />
+            <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                data-help-section-id="CP_affiliation"></i></span>
+            <input type="hidden" id="hiddenCPRorId" name="hiddenCPRorId[]" />
+          </div>
+        </div>
+
+        <!--Button "add Contact Person"-->
+        <div class="col-2 col-sm-10 col-md-1 p-1 d-flex justify-content-center align-items-center">
+          <button type="button" class="btn btn-primary addCP" id="addCP" style="width: 36px">
+            <?php echo $translations['add']; ?>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

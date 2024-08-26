@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Erforderliche Metadaten -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- jQuery UI CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/themes/base/jquery-ui.min.css"
+    integrity="sha512-8PjjnSP8Bw/WNPxF6wkklW6qlQJdWJc/3w/ZQPvZ/1bjVDkrrSqLe9mfPYrMxtnzsXFPc434+u4FHLnLjXTSsg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!--einbindung die Bibliothek mit dem Formular-->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+    integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Anpassungen an das Corporate Design GFZ Potsdam -->
+  <link rel="stylesheet" href="css/gfz-cd.css">
+  <!--Einbindung von Tagify CSS-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.27.0/tagify.css"
+    integrity="sha512-fg4mbaXioGkhZsVQlBUD7MmEA5zQY4I3aiawILa2nHXUk0e5gBZjlwGoJCeRIAVHqYOdaddDQA7HUXwqx3vVAA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!--Einbindung jsTree CSS-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.16/themes/default/style.min.css"
+    integrity="sha512-A5OJVuNqxRragmJeYTW19bnw9M2WyxoshScX/rGTgZYj5hRXuqwZ+1AVn2d6wYTZPzPXxDeAGlae0XwTQdXjQA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>
+    <?php echo $translations['logotitle']; ?>
+  </title>
+  <link rel="stylesheet" href="./css/bs5-chosen.css">
+  <link rel="stylesheet" href="./css/darkmode.css">
+</head>
+
+<body>
+  <!-- Fixed Header -->
+  <header class="navbar navbar-primary sticky-top bg-primary flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 text-white" href="#">
+      <?php echo $translations['logotitle']; ?>
+    </a>
+    <!-- Dropdown-Menü für Hilfe -->
+    <div class="dropdown ms-auto me-3 p-1">
+      <button class="btn btn-primary dropdown-toggle" id="bd-help" type="button" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        <i class="bi bi-question-square-fill" id="bd-help-icon"></i>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-help">
+        <li><a href="doc/help.html" class="dropdown-item" target="_blank" id="buttonHelp"><i class="bi bi-book"></i>
+            Guide</a></li>
+        <li><a class="dropdown-item" data-bs-theme-value="help-on" id="buttonHelpOn"><i
+              class="bi bi-question-circle-fill"></i>
+            <?php echo $translations['helpButtonon']; ?>
+          </a></li>
+        <li><a class="dropdown-item" data-bs-theme-value="help-off" id="buttonHelpOff"><i
+              class="bi bi-question-circle"></i>
+            <?php echo $translations['helpButtonoff']; ?>
+          </a></li>
+      </ul>
+    </div>
+    <div class="dropdown me-3 p-1">
+      <!-- Erstellung des Dropdown-Menüs für den Dark Mode -->
+      <button class="btn btn-primary dropdown-toggle" id="bd-theme" type="button" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        <i class="bi bi-circle-half"></i>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme">
+        <li><a class="dropdown-item active" data-bs-theme-value="auto"><i class="bi bi-circle-half"></i> Auto</a></li>
+        <li><a class="dropdown-item" data-bs-theme-value="light"><i class="bi bi-sun-fill"></i> Light</a></li>
+        <li><a class="dropdown-item" data-bs-theme-value="dark"><i class="bi bi-moon-stars-fill"></i> Dark</a></li>
+      </ul>
+    </div>
+    <div class="dropdown me-3 p-1">
+      <!-- Erstellung des Sprachen Dropdown-Menüs -->
+      <button class="btn btn-primary dropdown-toggle" id="bd-lang" type="button" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        <i class="bi bi-translate"></i>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-lang">
+        <li><a
+            class="dropdown-item <?php echo (!isset($_GET['lang']) && isset($_GET['auto']) && $userLanguage == substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2)) ? 'active' : ''; ?>"
+            href="?auto=true" data-bs-language-value="auto"><i class="bi bi-gear-fill"></i> Auto</a></li>
+        <li><a class="dropdown-item <?php echo ($userLanguage == 'en') ? 'active' : ''; ?>" href="?lang=en"
+            data-bs-language-value="en"><i class="bi bi-globe"></i> EN</a></li>
+        <li><a class="dropdown-item <?php echo ($userLanguage == 'de') ? 'active' : ''; ?>" href="?lang=de"
+            data-bs-language-value="de"><i class="bi bi-globe"></i> DE</a></li>
+        <li><a class="dropdown-item <?php echo ($userLanguage == 'fr') ? 'active' : ''; ?>" href="?lang=fr"
+            data-bs-language-value="fr"><i class="bi bi-globe"></i> FR</a></li>
+      </ul>
+    </div>
+  </header>

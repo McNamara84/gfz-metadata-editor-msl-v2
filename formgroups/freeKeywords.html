@@ -1,0 +1,21 @@
+<div class="card mb-2">
+  <div class="card-header">
+    <b>
+      <?php echo $translations['freekeywords']; ?>
+    </b>
+  </div>
+  <div class="card-body">
+    <div id="freekeywordsGroup" class="form-floating col p-1">
+      <div class="row align-items-center" data-creator-row>
+        <!-- Eingabefeld Free Keywords -->
+        <div class="input-group">
+          <input name="freekeywords[]" type="text" class="tagify form-control customLook"
+            placeholder="<?php echo $translations['freekeywords_input']; ?>" id="inputfreekeywords" required>
+          <span class="input-group-text"><i class="bi bi-question-circle-fill"
+              data-help-section-id="freeKeywords"></i></span>
+        </div>
+        <div id="tags-container"></div>
+      </div>
+    </div>
+  </div>
+</div>

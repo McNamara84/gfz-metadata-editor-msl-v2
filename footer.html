@@ -1,0 +1,97 @@
+</form>
+</main>
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="helpModalLabel">Help Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Hier wird der Inhalt des Guides dynamisch eingefügt -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fixed Footer für die Buttons -->
+<footer class="footer mt-auto py-0 fixed-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col d-flex align-items-center justify-content-center">
+        <div class="col-auto d-flex align-items-center justify-content-end">
+          <button type="button" class="btn btn-danger m-1" data-bs-toggle="tooltip"
+            data-bs-title="<?php echo $translations['clear_tooltip']; ?>" id="resetButton"  disabled>
+            <?php echo $translations['clear']; ?>
+          </button>
+          <button class="btn btn-primary" type="button" disabled>
+            <?php echo $translations['load']; ?>
+          </button>
+          <!-- Workarround TODO: Button fixes -->
+          <button type="submit" class="btn btn-warning m-1" form="metaForm" id="saveButton">
+            Save
+          </button>
+          <button class="btn btn-success m-1" id="submitButton" disabled>
+            <?php echo $translations['submit']; ?>
+          </button>
+          <!-- Alis God Mode - Only for debugging! -->
+          <button type="submit" class="btn btn-dark m-1" form="metaForm" id="cheatValidation">
+            Test
+          </button>
+          <!-- Alis God Mode - Ende -->
+        </div>
+      </div>
+    </div>
+    <div class="text-center fw-lighter footer-notes">This Metadata Editor was developed in 2024 by students of the University of Applied Sciences Potsdam in cooperation with the German Research Centre for Geosciences and is released under the MIT licence.</div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- jQuery UI -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"
+  integrity="sha512-Ww1y9OuQ2kehgVWSD/3nhgfrb424O3802QYP/A5gPXoM4+rRjiKrjHdGxQKrMGQykmsJ/86oGdHszfcVgUr4hA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"
+  integrity="sha512-rMGGF4wg1R73ehtnxXBt5mbUfN9JUJwbk21KMlnLZDJh7BkPmeovBuddZCENJddHYYMkCh9hPFnPmS9sspki8g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- JavaScript-Dateien -->
+<!--<script src="./keywords/jstree.js"></script>-->
+<!-- Funktionen der Buttons -->
+<script src="js/buttons.js"></script>
+<!-- Thesauri laden -->
+<script src="js/thesauri.js"></script>
+<!-- Validierungen laden -->
+<script src="js/validation.js"></script>
+<!-- autocomplete laden -->
+<script src="js/autocomplete.js"></script>
+<!-- JS-Datei für die Tags einbinden -->
+<script src="js/freekeywordTags.js"></script>
+<!-- affiliations laden -->
+<script src="js/affiliations.js"></script>
+<!-- Darkmode-Funktionen eingebunden -->
+<script src="js/darkmode.js"></script>
+<!-- JS-Datei für Hilfe-PopUps einbinden -->
+<script src="js/help.js"></script>
+<!-- XML-JS eingebunden -->
+<script src="js/saveXml.js"></script>
+<!-- JS-Karten-Funktionen einbinden -->
+<script src="js/map.js"></script>
+<!-- Bootstrap 5 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="js/select.js"></script>
+<!--Tagify-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.27.0/tagify.min.js"
+  integrity="sha512-RZnh1b5EBFnw6IaiqEhT0dQy+dCbeC6ZybZY/CkMlk2OW8Eyj20/t8Js3Ka1Ot/sQIVL20N81p7FRQvloTZgtw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--jsTree-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.16/jstree.min.js"
+  integrity="sha512-ekwRoEshEqHU64D4luhOv/WNmhml94P8X5LnZd9FNOiOfSKgkY12cDFz3ZC6Ws+7wjMPQ4bPf94d+zZ3cOjlig=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+  var maxTitles = "<?php echo $maxTitles; ?>";
+</script>
+</body>
+
+</html>
