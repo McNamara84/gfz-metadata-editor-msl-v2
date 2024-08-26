@@ -8,7 +8,7 @@ Das Projekt GFZ Metadateneditor wurde im Rahmen eines studentischen Projekts am 
 
 ## Danksagungen
 
-Wir möchten allen danken, die zu diesem Projekt beigetragen haben. Ihre Unterstützung und ihr Engagement haben wesentlich zum Erfolg des Projekts beigetragen.
+Wir möchten allen danken, die zu diesem Projekt beigetragen haben. Eure Unterstützung und euer Engagement haben wesentlich zum Erfolg des Projekts beigetragen.
 
 ## Liste der Contributor
 
