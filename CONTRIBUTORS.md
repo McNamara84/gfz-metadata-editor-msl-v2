@@ -14,13 +14,13 @@ Wir möchten allen danken, die zu diesem Projekt beigetragen haben. Eure Unterst
 
 ### Kernteam
 
-- **Prof. Dr. Rolf Däßler** (FH Potsdam) - Professor für Informationstechnologie und Projektverantwortlicher
-- **Holger Ehrmann** (GFZ Potsdam und FH Potsdam) - Projektorganisation
-- **Ali Mohammed** (GFZ Potsdam und FH Potsdam) - Backend
-- **Jana Franz** (FH Potsdam) - Frontend
-- **David Fehrmann** (FH Potsdam) - Design
-- **Ben Aaron Sielaff** (FH Potsdam) - Design
-- **Katja Ebermann** (FH Potsdam) - Kommunikation
+- **Prof. Dr. Rolf Däßler** (FH Potsdam)
+- **Holger Ehrmann** (GFZ Potsdam und FH Potsdam)
+- **Ali Mohammed** (GFZ Potsdam und FH Potsdam)
+- **Jana Franz** (FH Potsdam)
+- **David Fehrmann** (FH Potsdam)
+- **Ben Aaron Sielaff** (FH Potsdam)
+- **Katja Ebermann** (FH Potsdam)
 
 ## Lizenz
 
