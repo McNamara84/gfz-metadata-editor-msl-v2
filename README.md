@@ -1,7 +1,9 @@
 # Projektbeschreibung
+
 Dieser Metadaten-Editor entstand im Rahmen eines studentischen Kooperationsprojekt zwischen Fachhochschule Potsdam und dem GeoForschungsZentrum Potsdam. Der Editor speichert Metadaten zu Forschungsdatensätzen in validen XML-Dateien nach dem DataCite, dem ISO- und dem DIF-Schema.
 
 ## Installation
+
 1. Sicherstellen einer Entwicklungsumgebung mit PHP >8.2 sowie eines MySQL-Servers.
 2. XSL- und ZIP-Extension für PHP muss vorhanden und aktiviert sein.
 3. Apache und MySQL starten nicht vergessen.
@@ -16,6 +18,7 @@ Dieser Metadaten-Editor entstand im Rahmen eines studentischen Kooperationsproje
 Bei Problemen mit der Installation, hinterlasse gerne einen Eintrag im Issue Board dieses Repositories!
 
 ## Abhängigkeiten
+
 In der header.html und footer.html werden folgende Abhängikeiten von Drittanbietern eingebunden:
 
 - Bootstrap 5.3.3<br>
@@ -28,7 +31,7 @@ In der header.html und footer.html werden folgende Abhängikeiten von Drittanbie
   Erweitert jQuery um die Autocomplete-Funktion, die wir aktuell für die Affiliation-Felder nutzen.
 - Chosen 1.8.7<br>
   Da Bootstrap 5.3 keine einfach bedienbaren Multi-Select-Felder anbietet, wird diese Funktion mit Chosen implementiert. Design-Anpassungen waren notwendendig und werden in der Datei bs5-chosen.css umgesetzt.
-- Tagify 4.27.0<br>
+- Tagify 4.31.3<br>
   Wird für das Feld Thesaurus Keywords, die eingabe von mehreren Affiliations und Free Keywords genutzt.
 - jsTree 3.3.16<br>
   Wird zur Darstellung der GCMD Science Keywords als hierarchische Baumstruktur verwendet.
@@ -574,13 +577,13 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
 
 ### Free Keywords
 
-* In dieses Feld kommen freie Schlagwörter, diese sind nicht an einen Thesaurus gebunden.
-  * Datentyp: Freitext
-  * Vorkommen: 0-n
-* Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: free_keywords
-  * Restriktionen: keine Duplikate
-  * Schema Version:
-* Beispielwerte: carbon dioxide emission, CO2 emission, methane emission, CH4 emission, peatland, wetland, eddy covariance, rewetting, emission factor, mitigation, Test
+- In dieses Feld kommen freie Schlagwörter, diese sind nicht an einen Thesaurus gebunden.
+  - Datentyp: Freitext
+  - Vorkommen: 0-n
+- Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: free_keywords
+  - Restriktionen: keine Duplikate
+  - Schema Version:
+- Beispielwerte: carbon dioxide emission, CO2 emission, methane emission, CH4 emission, peatland, wetland, eddy covariance, rewetting, emission factor, mitigation, Test
 
 ### Dates
 
@@ -710,35 +713,36 @@ Räumliche und zeitliche Einordnung des Datensatzes. Zur einfacheren Erfassung d
   - Beispielwerte: `ARK` `arXiv` `EAN13`
 
   ### Funding Reference
+
 * Funder
   In diesem Feld kommt der Name des Finanzierungsanbieters.
-  * Datentyp: Zeichenkette
-  * Vorkommen: 1
-  * Restriktionen: Um Vorschläge über der Api zu erhalten, ist es erforderlich, mindestens die ersten zwei Buchstaben der Funder einzugeben. Zudem besteht die Möglichkeit, die Funder manuell einzutragen.
-  * Schemata: DataCite
-  * Beispielwerte: `Gordon and Betty Moore Foundation` `Ford Foundation`
+  - Datentyp: Zeichenkette
+  - Vorkommen: 1
+  - Restriktionen: Um Vorschläge über der Api zu erhalten, ist es erforderlich, mindestens die ersten zwei Buchstaben der Funder einzugeben. Zudem besteht die Möglichkeit, die Funder manuell einzutragen.
+  - Schemata: DataCite
+  - Beispielwerte: `Gordon and Betty Moore Foundation` `Ford Foundation`
 * Grant Number
   In diesem Feld kommt der Code, der dem Geldgeber einer geförderten Zuwendung (Grant) zugewiesen wird.
-  * Datentyp: Zeichenkette
-  * Vorkommen: 0-1
-  * Restriktionen: Es ist optional.
-  * Schemata: DataCite
-  * Beispielwerte: `GBMF3859.01` `GBMF3859.22`
+  - Datentyp: Zeichenkette
+  - Vorkommen: 0-1
+  - Restriktionen: Es ist optional.
+  - Schemata: DataCite
+  - Beispielwerte: `GBMF3859.01` `GBMF3859.22`
 * Grant Name
   In diesem Feld kommt der lesbare Titel oder Name der Auszeichnung (grant).
-  * Datentyp: Text
-  * Vorkommen: 0-1
-  * Restriktionen: Es ist optional.
-  * Schemata: DataCite
-  * Beispielwerte: `Socioenvironmental Monitoring of the Amazon Basin and Xingu` `Grantmaking at a glance`
+  - Datentyp: Text
+  - Vorkommen: 0-1
+  - Restriktionen: Es ist optional.
+  - Schemata: DataCite
+  - Beispielwerte: `Socioenvironmental Monitoring of the Amazon Basin and Xingu` `Grantmaking at a glance`
 
 ## Datenvalidierung
 
-* Folgende Felder müssen zwingend ausgefüllt werden: **Publication Year**, **Title**, **Author Lastname**, **Author Firstname**, **Author Role**, **Author ORCID**, **Contributor ORCID**, **Contributor Role**, **Description Abstract** **Relation** und **Identifier**.❗
-* Die restlichen Felder **DOI**, **Resource Type**, **Version**, **Language of Dataset**, **Title Type**, **Rights**, **Contact Person Position**, **Contact Person Email**, **Contact Person Website**, **Author Affiliation**, **Contact Person Affiliation**, **Contributor Lastname**, **Contributor Firstname**, **Contributor Affiliation**, **Contributor Organisation Name**, **Description Methods**,  **Description TechnicalInfo**, **Description Other**, **Thesaurus Keywords** **Identifier Typ** können optional leer bleiben.✅
-
+- Folgende Felder müssen zwingend ausgefüllt werden: **Publication Year**, **Title**, **Author Lastname**, **Author Firstname**, **Author Role**, **Author ORCID**, **Contributor ORCID**, **Contributor Role**, **Description Abstract** **Relation** und **Identifier**.❗
+- Die restlichen Felder **DOI**, **Resource Type**, **Version**, **Language of Dataset**, **Title Type**, **Rights**, **Contact Person Position**, **Contact Person Email**, **Contact Person Website**, **Author Affiliation**, **Contact Person Affiliation**, **Contributor Lastname**, **Contributor Firstname**, **Contributor Affiliation**, **Contributor Organisation Name**, **Description Methods**, **Description TechnicalInfo**, **Description Other**, **Thesaurus Keywords** **Identifier Typ** können optional leer bleiben.✅
 
 ## Datenbankstruktur
 
 ## Lizenz
+
 Dieses Projekt wurde 2024 von Studenten der Fachhochschule Potsdam in Zusammenarbeit mit dem Deutschen GeoForschungsZentrum entwickelt und wird unter der MIT-Lizenz veröffentlicht.
