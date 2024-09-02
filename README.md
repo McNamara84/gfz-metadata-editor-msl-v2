@@ -24,7 +24,7 @@ In der header.html und footer.html werden folgende Abhängikeiten von Drittanbie
   Für die Icons in der oberen rechten Ecke des Editors (Dark Mode Switch, Language Switch)
 - jQuery 3.7.1<br>
   Für die Event Handler in JavaScript und zum Vereinfachen des JavaScript-Codes allgemein.
-- jQuery UI 1.13.3<br>
+- jQuery UI 1.14.0<br>
   Erweitert jQuery um die Autocomplete-Funktion, die wir aktuell für die Affiliation-Felder nutzen.
 - Chosen 1.8.7<br>
   Da Bootstrap 5.3 keine einfach bedienbaren Multi-Select-Felder anbietet, wird diese Funktion mit Chosen implementiert. Design-Anpassungen waren notwendendig und werden in der Datei bs5-chosen.css umgesetzt.
