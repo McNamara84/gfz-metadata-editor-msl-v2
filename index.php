@@ -53,6 +53,7 @@ include ("formgroups/resourceInformation.html");
 include ("formgroups/rights.html");
 include ("formgroups/authors.html");
 include ("formgroups/contactpersons.html");
+include ("formgroups/originatingLaboratory.html");
 include ("formgroups/contributors.html");
 include ("formgroups/descriptions.html");
 include ("formgroups/thesaurusKeywords.html");

@@ -1,0 +1,49 @@
+<div class="card mb-2">
+    <div class="card-header">
+        <b>
+            Originating Laboratory
+        </b>
+    </div>
+    <div class="card-body">
+        <div id="laboratoryGroup">
+            <div class="row" data-creator-row>
+                <!--Eingabefeld Laboratory Name-->
+                <div class="col-7">
+                    <div class="input-group has-validation">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="inputLaboratoryName" name="laboratoryName[]"
+                                pattern="^[a-zA-ZäöüÄÖÜß \-]*$" required />
+                            <label for="inputLaboratoryName">
+                                Name
+                            </label>
+                            <div class="invalid-feedback">
+                                Fehlerhafter Name
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Eingabefeld Laboratory Affiliation-->
+                <div class="col-4">
+                    <div class="input-group has-validation">
+                        <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                            id="inputLaboratoryAffiliation" name="laboratoryAffiliation[]"
+                            placeholder="Affiliation of Laboratory" style="height: 58px;" /> <!-- Hotfix: Style-Atrribut fällt vermutlich weg, sobald Taggify initialiisert wird -->
+                        <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                data-help-section-id="LaboratoryAffiliation"></i></span>
+                        <input type="hidden" id="hiddenLaboratoryRorId" name="laboratoryRorIds[]" />
+                    </div>
+                </div>
+                <!--Button "add Laboratory"-->
+                <div class="col-auto">
+                    <div class="align-items-center">
+                        <button type="button" class="btn btn-primary addLaboratory" id="addLaboratory"
+                            style="width: 36px">
+                            +
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
