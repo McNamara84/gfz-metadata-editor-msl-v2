@@ -3,6 +3,48 @@ require 'vendor/autoload.php';
 use EasyRdf\Graph;
 use EasyRdf\RdfNamespace;
 
+// MSL labs und zugehörige Affiliationen von
+$url = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/labs/labnames.json';
+// abrufen und verarbeiten
+function fetchAndProcessMslLabs()
+{
+    global $url;
+
+    // Daten von der URL abrufen mit User-Agent
+    $opts = [
+        'http' => [
+            'method' => 'GET',
+            'header' => 'User-Agent: PHP Script'
+        ]
+    ];
+    $context = stream_context_create($opts);
+    $jsonData = file_get_contents($url, false, $context);
+
+    if ($jsonData === false) {
+        throw new Exception('Fehler beim Abrufen der Daten von GitHub: ' . error_get_last()['message']);
+    }
+
+    // Zeichenkodierung korrigieren
+    $jsonData = mb_convert_encoding($jsonData, 'UTF-8', mb_detect_encoding($jsonData, 'UTF-8, ISO-8859-1', true));
+
+    // JSON-Daten decodieren
+    $labs = json_decode($jsonData, true);
+
+    if ($labs === null) {
+        throw new Exception('Fehler beim Decodieren der JSON-Daten: ' . json_last_error_msg());
+    }
+
+    // Daten verarbeiten und nur benötigte Felder behalten
+    $processedLabs = array_map(function ($lab) {
+        return [
+            'name' => $lab['lab_editor_name'],
+            'affiliation' => $lab['affiliation']
+        ];
+    }, $labs);
+
+    return $processedLabs;
+}
+
 function transformAndSaveOrDownloadXml($id, $format, $download = false)
 {
     $formatInfo = [

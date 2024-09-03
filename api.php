@@ -7,6 +7,37 @@ use EasyRdf\RdfNamespace;
 include 'settings.php';
 include 'api_functions.php';
 
+// API-Hook für den Abruf aller MSL Labs und Speicherung als msl-labs.json
+// Beispielaufruf: api.php?action=getMslLabs
+if (isset($_GET['action']) && $_GET['action'] == 'getMslLabs') {
+    try {
+        $mslLabs = fetchAndProcessMslLabs();
+        $jsonString = json_encode($mslLabs, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+        if ($jsonString === false) {
+            throw new Exception('Fehler beim Encodieren der Daten zu JSON: ' . json_last_error_msg());
+        }
+
+        $result = file_put_contents('json/msl-labs.json', $jsonString);
+
+        if ($result === false) {
+            throw new Exception('Fehler beim Speichern der JSON-Datei: ' . error_get_last()['message']);
+        }
+
+        echo 'MSL Labs erfolgreich aktualisiert';
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo 'Fehler: ' . $e->getMessage();
+
+        // Zusätzliche Debug-Informationen
+        echo '<br><br>Debug-Informationen:<br>';
+        echo 'PHP-Version: ' . phpversion() . '<br>';
+        echo 'JSON-Daten:<br><pre>' . htmlspecialchars(file_get_contents($url)) . '</pre>';
+    }
+    exit();
+}
+
+
 // API-Hook für den Abruf aller drei XML-Dateien (DataCie, ISO, DIF), Schachtelung der XML-Sturkutur in ein Element <envelope> sowie Download dieser gebündelten XML-Datei
 // Beispielaufruf: api.php?action=getResourcesAsOneFile&id=1
 if ($_GET['action'] == 'getResourcesAsOneFile') {

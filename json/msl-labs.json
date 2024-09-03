@@ -1,0 +1,474 @@
+[
+    {
+        "name": "FASTmodel- Laboratoire de modÃ©lisation analogique Fluides Automatique et SystÃ¨mes Thermiques (CNRS-Paris Sud Orsay University, France)",
+        "affiliation": "CNRS-Paris Sud Orsay University, Paris, France"
+    },
+    {
+        "name": "Fragmentation Lab (Ludwig-Maximilians-University Munich, Germany)",
+        "affiliation": "Ludwig-Maximilians-University Munich, Munich, Germany"
+    },
+    {
+        "name": "TecMOD - GRmodel (CNRS-Rennes 1 University, France)",
+        "affiliation": "CNRS-Rennes 1 University, Rennes, France"
+    },
+    {
+        "name": "Gmmodel - Laboratoire de modÃ©lisation analogique GÃ©osciences Montpellier (CNRS-Montpellier University, France)",
+        "affiliation": "CNRS-Montpellier University, Montpellier, France"
+    },
+    {
+        "name": "GeoÏlab - Laboratoire de modÃ©lisation analogique GÃ©osciences Le Mans (CNRS-Maine University, France)",
+        "affiliation": "CNRS-Maine University, Le Mans, France"
+    },
+    {
+        "name": "TecMOD - GECmodel (CNRS-Cergy-Pontoise University, France)",
+        "affiliation": "CNRS-Cergy-Pontoise University, Cergy-Pontoise, France "
+    },
+    {
+        "name": "GEOAZURmodel - Laboratoire de modÃ©lisation analogique GÃ©oazur (CNRS-Nice Sophia Antipolis University, France)",
+        "affiliation": "CNRS-Nice Sophia Antipolis University, Nice, France"
+    },
+    {
+        "name": "GEOMODELS Analogue Modelling Laboratory (Universitat de Barcelona, Spain)",
+        "affiliation": "Universitat de Barcelona, Barcelona, Spain"
+    },
+    {
+        "name": "GETmodel - Laboratoire de modÃ©lisation analogique GÃ©osciences Environnement (CNRS-Toulouse University, France)",
+        "affiliation": "CNRS-Toulouse University, Toulouse, France"
+    },
+    {
+        "name": "HelTec - Helmholtz Laboratory for Tectonic Modelling (GFZ Potsdam, Germany)",
+        "affiliation": "GFZ German Research Centre for Geosciences, Potsdam, Germany"
+    },
+    {
+        "name": "Laboratorio de ModelizaciÃ³n AnalÃ³gica de Estructuras GeolÃ³gicas (Universidad de Granada, Spain)",
+        "affiliation": "Universidad de Granada, Granada, Spain"
+    },
+    {
+        "name": "Laboratorio de ModelizaciÃ³n AnalÃ³gica (Universidad de Zaragoza-IGME, Spain)",
+        "affiliation": "Universidad de Zaragoza-IGME, Zaragoza, Spain"
+    },
+    {
+        "name": "Laboratori de DeformaciÃ³ Experimental (Universitat AutÃ²noma de Barcelona, Spain)",
+        "affiliation": "Universitat AutÃ²noma de Barcelona, Barcelona, Spain"
+    },
+    {
+        "name": "Laboratory of Experimental Tectonics (UniversitÃ¡ degli studi \"Roma TRE\", Italy)",
+        "affiliation": "UniversitÃ¡ degli studi \"Roma TRE\", Rome, Italy"
+    },
+    {
+        "name": "LMVmodel - Laboratoire de modÃ©lisation analogique Magmas et Volcans (CNRS-Clermont-Ferrand University, France)",
+        "affiliation": "CNRS-Clermont-Ferrand University, Clermont-Ferrand, France"
+    },
+    {
+        "name": "LOGmodel - Laboratoire de modÃ©lisation analogique dâOcÃ©anologie et de GÃ©osciences (CNRS-Lille 1 University, France)",
+        "affiliation": "CNRS-Lille 1 University, Lille, France"
+    },
+    {
+        "name": "Magma Chamber Analogue Modelling Laboratory (CSIC-ICTJA, Spain)",
+        "affiliation": "CSIC-ICTJA, Barcelona, Spain"
+    },
+    {
+        "name": "TecLab - Tectonic Modelling Laboratory (Utrecht University, The Netherlands)",
+        "affiliation": "Utrecht University, Utrecht, The Netherlands"
+    },
+    {
+        "name": "Tectonics Modelling Laboratory - Firenze (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR, Florence, Italy"
+    },
+    {
+        "name": "ANDALCHRON (CSIC-IACT, Spain)",
+        "affiliation": "CSIC-IACT,  Spain"
+    },
+    {
+        "name": "Ar-Ar Geochronology laboratory (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR,  Italy"
+    },
+    {
+        "name": "Archeometry and microstratigraphic coring laboratory (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR,  Italy"
+    },
+    {
+        "name": "C.A.I. of Geochronology and Isotope Geochemistry (Universidad Complutense de Madrid (UCM), Spain)",
+        "affiliation": "Universidad Complutense de Madrid (UCM),  Spain"
+    },
+    {
+        "name": "Cristallography and crystal chemistry laboratory (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR,  Italy"
+    },
+    {
+        "name": "Electron Microscopy Facilities (Utrecht University, The Netherlands)",
+        "affiliation": "Utrecht University,  The Netherlands"
+    },
+    {
+        "name": "Electron Microprobe (LNEG-UCTM, Portugal)",
+        "affiliation": "LNEG-UCTM,  Portugal"
+    },
+    {
+        "name": "Electron Microprobe, XRD, FTIR and XRF (FCUL, Portugal)",
+        "affiliation": "FCUL,  Portugal"
+    },
+    {
+        "name": "Fission Track Laboratory (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR,  Italy"
+    },
+    {
+        "name": "Fluid geochemistry laboratory (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR,  Italy"
+    },
+    {
+        "name": "Geochronology and Isotope Geochemistry Facility-SGIker (Universidad del Pais Vasco, Spain)",
+        "affiliation": "Universidad del Pais Vasco,  Spain"
+    },
+    {
+        "name": "HP-HT Laboratory of Experimental Volcanology and Geophysics (INGV, Italy)",
+        "affiliation": "INGV,  Italy"
+    },
+    {
+        "name": "IBERSIMS-SHRIMP Laboratory (Centro de InstrumentaciÃ³n CientÃ­fica, Universidad de Granada, Spain)",
+        "affiliation": "Universidad de Granada,  Spain"
+    },
+    {
+        "name": "Laboratory of X-ray Diffraction (CSIC-ICTJA, Spain)",
+        "affiliation": "CSIC-ICTJA,  Spain"
+    },
+    {
+        "name": "Laboratory of Geochemistry labGEOTOP (CSIC-ICTJA, Spain)",
+        "affiliation": "CSIC-ICTJA,  Spain"
+    },
+    {
+        "name": "Laboratori analisi con microsonda eletrronica (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR,  Italy"
+    },
+    {
+        "name": "Analytical Laboratories IGME ",
+        "affiliation": "IGME-Universidad de Zaragoza,  Spain"
+    },
+    {
+        "name": "Laboratorio de GeocronologÃ­a (Universidad de CÃ¡diz, Spain)",
+        "affiliation": "Universidad de CÃ¡diz,  Spain"
+    },
+    {
+        "name": "Laboratorios AnalÃ­ticos de GeoquÃ­mica (Universidad de Oviedo, Spain)",
+        "affiliation": "Universidad de Oviedo,  Spain"
+    },
+    {
+        "name": "MAiMA IsÃ²tops estables i Mineralogia (Universitat de Barcelona, Spain)",
+        "affiliation": "Universitat de Barcelona,  Spain"
+    },
+    {
+        "name": "Laboratory of Stable Isotopes and Noble Gas NUCLEUS (Universidad de Salamanca, Spain)",
+        "affiliation": "Universidad de Salamanca,  Spain"
+    },
+    {
+        "name": "LCGM Laboratory for Characterization of Geological Materials (FCUP, Portugal)",
+        "affiliation": "FCUP,  Portugal"
+    },
+    {
+        "name": "Mass spectrometry la-icp laboratory (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR,  Italy"
+    },
+    {
+        "name": "Rare gases mass spectrometry laboratory (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR,  Italy"
+    },
+    {
+        "name": "Secondary-ion-mass-spectrometry-sims-ion-microporbe laboratory (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR,  Italy"
+    },
+    {
+        "name": "Stable Isotopes laboratory (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR,  Italy"
+    },
+    {
+        "name": "TIMS laboratories (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR,  Italy"
+    },
+    {
+        "name": "Archeomagnetism Laboratory (CENIEH Burgos, Spain)",
+        "affiliation": "CENIEH Burgos, Burgos, Spain"
+    },
+    {
+        "name": "Group of Magnetic Applications (Universitat AutÃ²noma de Barcelona (UAB), Spain)",
+        "affiliation": "Universitat AutÃ²noma de Barcelona (UAB), Barcelona, Spain"
+    },
+    {
+        "name": "Laboratory of AMS (Paleomagnetism) and Geophysical Prospection (IGME-Universidad de Zaragoza, Spain)",
+        "affiliation": "IGME-Universidad de Zaragoza, Zaragoza, Spain"
+    },
+    {
+        "name": "Laboratory of Paleomagnetism (CSIC-ICTJA and Universitat de Barcelona, Spain)",
+        "affiliation": "CSIC-ICTJA and Universitat de Barcelona, Barcelona, Spain"
+    },
+    {
+        "name": "Laboratory of Paleomagnetism (CSIC-IPNA, Spain)",
+        "affiliation": "CSIC-IPNA, Santa Cruz de Tenerife - Islas Canarias, Spain"
+    },
+    {
+        "name": "Laboratory of Paleomagnetism (Universidad Complutense de Madrid (UCM) and CSIC-IGEO, Spain)",
+        "affiliation": "Universidad Complutense de Madrid (UCM) and CSIC-IGEO, Madrid, Spain"
+    },
+    {
+        "name": "Laboratory of Paleomagnetism (Universidad de Vigo, Spain)",
+        "affiliation": "Universidad de Vigo, Vigo, Spain"
+    },
+    {
+        "name": "Paleomagnetic Laboratory Fort Hoofddijk (Utrecht University, The Netherlands)",
+        "affiliation": "Utrecht University, Utrecht, The Netherlands"
+    },
+    {
+        "name": "Paleomagnetic Laboratory (INGV, Italy)",
+        "affiliation": "INGV, Rome, Italy"
+    },
+    {
+        "name": "Paleomagnetic Laboratory (UniversitÃ  di Roma TRE, Italy)",
+        "affiliation": "UniversitÃ¡ degli studi \"Roma TRE\", Rome, Italy"
+    },
+    {
+        "name": "Paleomagnetic and Rock Magnetic Laboratory (Universidad de Burgos, Spain)",
+        "affiliation": "Universidad de Burgos, Burgos, Spain"
+    },
+    {
+        "name": "PalÃ©omagnÃ©tisme IPG Paris (CNRS-Sorbonne Paris CitÃ© University, France)",
+        "affiliation": "CNRS-Sorbonne Paris CitÃ© University, Paris, France"
+    },
+    {
+        "name": "PalÃ©omagnÃ©tisme LSCE Gif sur Yvette (CNRS-Versailles St Quentin University, France)",
+        "affiliation": "CNRS-Versailles St Quentin University, Versailles, France"
+    },
+    {
+        "name": "PalÃ©omagnÃ©tisme GÃ©osciences Rennes (CNRS-Rennes 1 University, France)",
+        "affiliation": "CNRS-Rennes 1 University, Rennes, France"
+    },
+    {
+        "name": "PalÃ©omagnÃ©tisme GÃ©osciences Environnement (CNRS-Toulouse University, France)",
+        "affiliation": "CNRS-Toulouse University, Toulouse, France"
+    },
+    {
+        "name": "PalÃ©omagnÃ©tisme GÃ©osciences Montpellier (CNRS-Montpellier University, France)",
+        "affiliation": "CNRS-Montpellier University, Montpellier, France"
+    },
+    {
+        "name": "PalÃ©omagnÃ©tisme CEREGE Aix en Provence (CNRS-Aix Marseille University, France)",
+        "affiliation": "CNRS-Aix Marseille University, Aix en Provence, France"
+    },
+    {
+        "name": "Experimental Geoscience Facility (The University of Edinburgh, UK)",
+        "affiliation": "The University of Edinburgh, Edinburgh, UK"
+    },
+    {
+        "name": "Experimental rock deformation\/HPT-Lab (Utrecht University, The Netherlands)",
+        "affiliation": "Utrecht University, Utrecht, The Netherlands"
+    },
+    {
+        "name": "Geomechanics Laboratory, GEOLAB-CERENA (Instituto Superior TÃ©cnico, Portugal)",
+        "affiliation": "Instituto Superior TÃ©cnico, Lisbon, Portugal"
+    },
+    {
+        "name": "GeoRessources (CNRS-UniversitÃ© de Lorraine, France)",
+        "affiliation": "CNRS-UniversitÃ© de Lorraine, Nancy, France"
+    },
+    {
+        "name": "Geosciences Montpellier (CNRS-UniversitÃ© de Montpellier, France)",
+        "affiliation": "CNRS-UniversitÃ© de Montpellier, Montpellier, France"
+    },
+    {
+        "name": "ISTERRE (CNRS-UniversitÃ© de Grenoble Alpes, France)",
+        "affiliation": "CNRS-UniversitÃ© de Grenoble Alpes, Grenoble, France"
+    },
+    {
+        "name": "HP-HT Laboratory of Experimental Volcanolgy and Geophysics (INGV, Italy)",
+        "affiliation": "INGV, Rome, Italy"
+    },
+    {
+        "name": "Laboratoire de GÃ©ologie (CNRS-Ecole Normale SupÃ©rieure, Paris, France)",
+        "affiliation": "CNRS-Ecole Normale SupÃ©rieure, Paris, Paris, France"
+    },
+    {
+        "name": "Laboratoire de mÃ©caniques des solides (Ecole Polytechnique, France)",
+        "affiliation": "Ecole Polytechnique, Paris, France"
+    },
+    {
+        "name": "Laboratoire de dÃ©formation (CNRS-EOST\/UniversitÃ© de Strasbourg, France)",
+        "affiliation": "CNRS-EOST\/UniversitÃ© of Strasbourg, Strasbourg, France"
+    },
+    {
+        "name": "Laboratoire 3S-R (CNRS-UniversitÃ© de Grenoble, France)",
+        "affiliation": "CNRS-UniversitÃ© de Grenoble, Grenoble, France"
+    },
+    {
+        "name": "Laboratoire des fluides complexes et leur rÃ©servoirs (CNRS-UniversitÃ© de Pau, France)",
+        "affiliation": "CNRS-UniversitÃ© de Pau, Pau, France"
+    },
+    {
+        "name": "Melt and magma thermal analysis lab\/High temperature melt lab (Ludwig-Maximilians-University Munich, Germany)",
+        "affiliation": "Ludwig-Maximilians-University Munich, Munich, Germany"
+    },
+    {
+        "name": "Microseismology and Rock Physics Laboratory (ISEL - Physics Department, Portugal)",
+        "affiliation": "ISEL - Physics Department, Lisbon, Portugal"
+    },
+    {
+        "name": "RMPL - The Rock Mechanics and Physics Laboratory (BGS British Geological Survey, UK)",
+        "affiliation": "BGS British Geological Survey, Keyworth, UK"
+    },
+    {
+        "name": "Rock & Ice Physics Laboratory (UCL University College London, UK)",
+        "affiliation": "UCL University College London, London, UK"
+    },
+    {
+        "name": "Rock Physics and Mechanics Laboratory (ETHZ, Switzerland)",
+        "affiliation": "ETHZ, Zurich, Switzerland"
+    },
+    {
+        "name": "Laboratories for Geothermal Rock and Fluid Physics",
+        "affiliation": "GFZ German Research Centre for Geosciences, Potsdam, Germany"
+    },
+    {
+        "name": "Rock Mechanics Laboratory (University of Portsmouth, UK)",
+        "affiliation": "University of Portsmouth, Portsmouth, UK"
+    },
+    {
+        "name": "Rock Mechanics Laboratory (Durham University, UK)",
+        "affiliation": "Durham University, Durham, UK"
+    },
+    {
+        "name": "Laboratory of Geochemistry and Stable Isotopes",
+        "affiliation": "IGG-CNR"
+    },
+    {
+        "name": "Laboratory of Geochronology and Radiogenic Isotope Geochemistry - Pisa2 (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR"
+    },
+    {
+        "name": "Laboratory of Geochronology and Radiogenic Isotope Geochemistry - Firenze (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR"
+    },
+    {
+        "name": "Laboratory of Geochronology and Radiogenic Isotope Geochemistry - Pisa1 (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR"
+    },
+    {
+        "name": "Laboratory of Geochemical Microanalysis - Padova (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR"
+    },
+    {
+        "name": "Laboratory of Geochemical Microanalysis - Pavia (IGG-CNR, Italy)",
+        "affiliation": "IGG-CNR"
+    },
+    {
+        "name": "Core Logging LAB (OGS-National Institute of Oceanography and Applied Geophysics and University of Trieste, Italy)",
+        "affiliation": "OGS-National Institute of Oceanography and Applied Geophysics, and University of Trieste"
+    },
+    {
+        "name": "Laboratory for Environmental Magnetism (KMI, Belgium)",
+        "affiliation": "KMI"
+    },
+    {
+        "name": "Paleomagnetic Laboratory (NIGGG - BAS, Bulgaria)",
+        "affiliation": "NIGGG - BAS"
+    },
+    {
+        "name": "Rock Deformation Laboratory (GFZ Potsdam, Germany)",
+        "affiliation": "GFZ German Research Centre for Geosciences, Potsdam, Germany"
+    },
+    {
+        "name": "Rock Physics Laboratories (University of TromsÃ¸, Norway)",
+        "affiliation": "University of TromsÃ¸, Norway"
+    },
+    {
+        "name": "Tectonic Modelling Laboratory at the Institute for Geological Sciences (TecLab Bern, Switzerland)",
+        "affiliation": "Bern University, Switzerland"
+    },
+    {
+        "name": "Electron Microscopy Laboratory (University of Liverpool, UK)",
+        "affiliation": "University of Liverpool, UK"
+    },
+    {
+        "name": "Potsdam Imaging and Spectral Analysis (PISA) Facility (GFZ, Germany)",
+        "affiliation": "GFZ Potsdam, Germany"
+    },
+    {
+        "name": "Micro-CT laboratory (INGV, Italy)",
+        "affiliation": "INGV, Italy"
+    },
+    {
+        "name": "Eurotank Flume Laboratory (Utrecht University, The Netherlands)",
+        "affiliation": "Utrecht University, The Netherlands"
+    },
+    {
+        "name": "Geomagnetism Laboratory (University of Liverpool, UK)",
+        "affiliation": "University of Liverpool, UK"
+    },
+    {
+        "name": "Laboratory of Geoscience and Engineering (TU Delft, The Netherlands)",
+        "affiliation": "TU Delft, The Netherlands"
+    },
+    {
+        "name": "Laboratory of the Institute of Geophysics (Czech Academy of Science, Czech Republic)",
+        "affiliation": "Institute of Geophysics of the Czech Academy of Sciences, Prague, Czech Republic"
+    },
+    {
+        "name": "Laboratory for Paleo- and Rock Magnetism (Potsdam, Germany)",
+        "affiliation": "GFZ German Research Centre for Geosciences, Potsdam, Germany"
+    },
+    {
+        "name": "Analogue Modelling Laboratory at Tectonics and Geodynamics (Aachen, Germany)",
+        "affiliation": "RWTH Aachen University, Germany"
+    },
+    {
+        "name": "UHH-Tec - Experimental tectonics laboratory (University of Hamburg, Germany)",
+        "affiliation": "University of Hamburg, Germany"
+    },
+    {
+        "name": "Kuenen-Escher Geodynamics Laboratory (KEG Lab) (Vrije Universiteit Amsterdam, The Netherlands)",
+        "affiliation": "Vrije Universiteit Amsterdam, The Netherlands"
+    },
+    {
+        "name": "Laboratorios Analítícos de Geología (University of Barcelona - CCiT, Spain)",
+        "affiliation": "University of Barcelona - CCiT, Spain"
+    },
+    {
+        "name": "The Netherlands Geochemistry Laboratory (NiGeL) (Vrije Universiteit Amsterdam, The Netherlands)",
+        "affiliation": "Vrije Universiteit Amsterdam, The Netherlands"
+    },
+    {
+        "name": "Argon Geochronology Laboratory (Vrije Universiteit Amsterdam, The Netherlands)",
+        "affiliation": "Vrije Universiteit Amsterdam, The Netherlands"
+    },
+    {
+        "name": "Geobiology Laboratory (Vrije Universiteit Amsterdam, The Netherlands)",
+        "affiliation": "Vrije Universiteit Amsterdam, The Netherlands"
+    },
+    {
+        "name": "Mineral Separation Laboratory (Vrije Universiteit Amsterdam, The Netherlands)",
+        "affiliation": "Vrije Universiteit Amsterdam, The Netherlands"
+    },
+    {
+        "name": "Earth Sciences Stable Isotope Laboratory (Vrije Universiteit Amsterdam, The Netherlands)",
+        "affiliation": "Vrije Universiteit Amsterdam, The Netherlands"
+    },
+    {
+        "name": "Scientific Center for Optical and Electron Microscopy (ScopeM) (ETH: Swiss Federal Institute of Technology in Zürich, Switzerland)",
+        "affiliation": "ETH: Swiss Federal Institute of Technology in Zürich, Switzerland"
+    },
+    {
+        "name": "Laboratory for Paleomagnetism and Environmental Studies (Institute of Geophysics, Polish Academy of Sciences, Poland)",
+        "affiliation": "Institute of Geophysics, Polish Academy of Sciences, Poland"
+    },
+    {
+        "name": "Institute Dom Luiz (IDL) (University of Lisbon, Portugal)",
+        "affiliation": "University of Lisbon, Portugal"
+    },
+    {
+        "name": "Lunar planetary lab (Vrije Universiteit Amsterdam, The Netherlands)",
+        "affiliation": "Vrije Universiteit Amsterdam, The Netherlands"
+    },
+    {
+        "name": "Applied Geoscience Laboratory (University of Edinburgh, United Kingdom)",
+        "affiliation": "University of Edinburgh, United Kingdom"
+    },
+    {
+        "name": "Geodynamics Lab (ISTO: Earth Sciences Institute of Orléans, France)",
+        "affiliation": "ISTO: Earth Sciences Institute of Orléans, France"
+    }
+]
