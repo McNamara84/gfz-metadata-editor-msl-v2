@@ -56,36 +56,6 @@ Damit der Thesaurus für die NASA Science Keywords aktuell bleibt, ist die regel
 Empfohlender Ausführungsintervall: Wöchentlich
 Auszuführende URL: api.php?action=getNasaScienceKeywords
 
-#### getNasaInstrumentsKeywords
-
-Zur Erstellung des Thesaurus für die NASA Instruments Keywords bzw. zur regelmäßigen Aktualisierung ist dieser API-Endpunkt gedacht.
-Empfohlender Ausführungsintervall: Wöchentlich
-Auszuführende URL: api.php?action=getNasaInstrumentsKeywords
-
-#### getNasaPlatformsKeywords
-
-Um auch die NASA GCMD Platforms Keywords als JSON-Datei für den entsprechenden Thesaurus zu aktualisieren wird eine regelmäßige Ausführung von getNasaPlatformsKeywords empfohlen.
-Empfohlender Ausführungsintervall: Wöchentlich
-Auszuführende URL: api.php?action=getNasaPlatformsKeywords
-
-#### getChronostratKeywords
-
-Die Chronostrat Keywords werden von der International Chronostratigraphic Chart International Commission on Stratigraphy veröffentlicht. Eine regelmäßige Aktualisierung wird empfohlen, jedoch werden diese Keywords eher selten aktualisiert.
-Empfohlender Ausführungsintervall: Monatlich
-Auszuführende URL: api.php?action=getChronostratKeywords
-
-#### getCGIKeywords
-
-Die CGI Simple Lithology Keywords werden von der Commission for the Management and Application of Geoscience Information (CGI) entwickelt. Eine regelmäßige Aktualisierung wird empfohlen, jedoch werden diese Keywords eher selten aktualisiert.
-Empfohlender Ausführungsintervall: Monatlich
-Auszuführende URL: api.php?action=getCGIKeywords
-
-#### getGemetConcepts
-
-Die englischsprachigen Konzepte des GEneral Multilingual Environmental Thesaurus (Gemet) werden mit diesem API-Endpunkt beschafft. Eine regelmäßige Aktualisierung wird empfohlen, jedoch werden diese Konzepte und Terme nur "every few years" aktualisiert. Auch Korrekturen erfolgen nur alle paar Monate (siehe: [Gemet changes](https://www.eionet.europa.eu/gemet/en/changes/) )
-Empfohlender Ausführungsintervall: Monatlich
-Auszuführende URL: api.php?action=getGemetConcepts
-
 #### getRorAffiliations
 
 Zur regelmäßigen Aktualisierung der Daten in den Auswahlfeldern für die Affiliations von Personen sollte dieser API-Endpunkt regelmäßig ausgeführt werden.
