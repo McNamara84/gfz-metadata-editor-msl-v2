@@ -717,7 +717,7 @@ Räumliche und zeitliche Einordnung des Datensatzes. Zur einfacheren Erfassung d
 
 Das folgende ER-Diagramm zeigt die Beziehungen und Strukturen der Tabellen in der Datenbank.
 
-![ER-Diagramm](doc/er-modell.jpg)
+[![ER-Diagramm](doc/ER-Modell.jpg)](https://raw.githubusercontent.com/McNamara84/gfz-metadata-editor-msl-v2/feature/msl-frontend/doc/ER-Modell.jpg)
 
 ## Lizenz
 
