@@ -713,6 +713,13 @@ Räumliche und zeitliche Einordnung des Datensatzes. Zur einfacheren Erfassung d
 
 ## Datenbankstruktur
 
+#### ER-Diagramm
+
+Das folgende ER-Diagramm zeigt die Beziehungen und Strukturen der Tabellen in der Datenbank.
+
+![ER-Diagramm](doc/er-modell.jpg)
+
 ## Lizenz
 
 Dieses Projekt wurde 2024 von Studenten der Fachhochschule Potsdam in Zusammenarbeit mit dem Deutschen GeoForschungsZentrum entwickelt und wird unter der MIT-Lizenz veröffentlicht.
+
