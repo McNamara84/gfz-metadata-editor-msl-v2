@@ -4,212 +4,32 @@
       <?php echo $translations['thesaurusKeywords']; ?>
     </b>
   </div>
-
-  <div id="thesaurusKeywordsGroup">
-    <div class="accordion p-2" id="accordionThesauri">
-      <!------------------------------- NASA GCMD SCIENCE KEYWORDS ------------------------------------------------------------>
-      <div class="accordion-item">
-        <!--Accordion Header NASA GCMD Science Keywords-->
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseScienceKeywords" aria-expanded="false" aria-controls="collapseScienceKeywords">
-            <?php echo $translations['scienceKeywords'];?>
-          </button>
-        </h2>
-        <!--Eingabefeld NASA GCMD Science Keywords-->
-        <div id="collapseScienceKeywords" class="accordion-collapse collapse" data-bs-parent="#accordionThesauri">
-          <div class="accordion-body">
-            <div class="input-group has-validation">
-              <div class="form-floating">
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control input-with-help input-right-no-round-corners"
-                    id="inputScienceKeywords" name="thesaurusKeywords" />
-                  <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                      data-help-section-id="thesKeywords"></i></span>
-                </div>
-              </div>
-              <!--Button Thesaurus-->
-              <div class="col-auto p-2">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scienceModal"
-                  id="openScienceKeywordsThesaurus">
-                  <?php echo $translations['thesaurus']; ?>
-                </button>
-              </div>
-            </div>
-          </div>
+  <div class="card-body">
+    <!------------------------------- NASA GCMD SCIENCE KEYWORDS ------------------------------------------------------------>
+    <!--Eingabefeld NASA GCMD Science Keywords-->
+    <div class="input-group has-validation">
+      <div class="form-floating">
+        <div class="input-group has-validation">
+          <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputScienceKeywords"
+            name="thesaurusKeywords" />
+          <span class="input-group-text"><i class="bi bi-question-circle-fill"
+              data-help-section-id="thesKeywords"></i></span>
         </div>
       </div>
-
-      <!------------------------------- NASA GCMD INSTRUMENTS ---------------------------------------------------------------->
-      <div class="accordion-item">
-        <!--Accordion Header Instruments-->
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseInstruments" aria-expanded="false" aria-controls="collapseInstruments">
-            <?php echo $translations['instruments'];?>
-          </button>
-        </h2>
-        <!--Eingabefeld NASA GCMD  Instruments-->
-        <div id="collapseInstruments" class="accordion-collapse collapse" data-bs-parent="#accordionThesauri">
-          <div class="accordion-body">
-            <div class="input-group has-validation">
-              <div class="form-floating">
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control input-with-help input-right-no-round-corners"
-                    id="inputInstruments" name="instruments" />
-                  <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                      data-help-section-id="thesKeywords"></i></span>
-                </div>
-              </div>
-              <!--Button-->
-              <div class="col-auto p-2">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#instrumentsModal"
-                  id="openInstrumentsThesaurus">
-                  <?php echo $translations['thesaurus']; ?>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!--Button Thesaurus-->
+      <div class="col-auto p-2">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scienceModal"
+          id="openScienceKeywordsThesaurus">
+          <?php echo $translations['thesaurus']; ?>
+        </button>
       </div>
-
-      <!------------------------------- NASA GCMD PLATFORMS ---------------------------------------------------------------->
-      <div class="accordion-item">
-        <!--Accordion Header NASA GCMD Platforms-->
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapsePlatforms" aria-expanded="false" aria-controls="collapsePlatforms">
-            <?php echo $translations['platforms'];?>
-          </button>
-        </h2>
-        <!--Eingabefeld NASA GCMD Platforms-->
-        <div id="collapsePlatforms" class="accordion-collapse collapse " data-bs-parent="#accordionThesauri">
-          <div class="accordion-body">
-            <div class="input-group has-validation">
-              <div class="form-floating">
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control input-with-help input-right-no-round-corners"
-                    id="inputPlatforms" name="platforms" />
-                  <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                      data-help-section-id="thesKeywords"></i></span>
-                </div>
-              </div>
-              <!--Button-->
-              <div class="col-auto p-2">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#platformsModal"
-                  id="platformKeywordsThesaurus">
-                  <?php echo $translations['thesaurus']; ?>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!------------------------------- INTERNATIONAL CHRONOSTRATIGRAPHIC CHART (2014) ------------------------------------------------------------>
-
-      <div class="accordion-item">
-        <!--Accordion Header International Chronostratigraphic Chart (2014)-->
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseChrono" aria-expanded="false" aria-controls="collapseChrono">
-            <?php echo $translations['chrono'];?>
-          </button>
-        </h2>
-        <!--Eingabefeld International Chronostratigraphic Chart (2014)-->
-        <div id="collapseChrono" class="accordion-collapse collapse" data-bs-parent="#accordionThesauri">
-          <div class="accordion-body">
-            <div class="input-group has-validation">
-              <div class="form-floating">
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputChrono"
-                    name="chrono" />
-                  <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                      data-help-section-id="thesKeywords"></i></span>
-                </div>
-              </div>
-              <!--Button-->
-              <div class="col-auto p-2">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chronoModal"
-                  id="chronoThesaurus">
-                  <?php echo $translations['thesaurus']; ?>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!------------------------------- CGI SIMPLE LITHOLOGY THESAURUS ------------------------------------------------------>
-      <div class="accordion-item">
-        <!--Accordion Header CGI Simple Lithology-->
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseCgi" aria-expanded="false" aria-controls="collapseCgi">
-            <?php echo $translations['cgi'];?>
-          </button>
-        </h2>
-        <!--Eingabefeld CGI Simple Lithology-->
-        <div id="collapseCgi" class="accordion-collapse collapse" data-bs-parent="#accordionThesauri">
-          <div class="accordion-body">
-            <div class="input-group has-validation">
-              <div class="form-floating">
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputCgi"
-                    name="cgi" />
-                  <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                      data-help-section-id="thesKeywords"></i></span>
-                </div>
-              </div>
-              <!--Button-->
-              <div class="col-auto p-2">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cgiModal"
-                  id="cgiKeywordsThesaurus">
-                  <?php echo $translations['thesaurus']; ?>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!------------------------------- GEMET THESAURUS ------------------------------------------------------------>
-      <div class="accordion-item">
-        <!--Accordion Header GEMET Thesaurus-->
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseGemet" aria-expanded="false" aria-controls="collapseGemet">
-            <?php echo $translations['Gemet'];?>
-          </button>
-        </h2>
-        <!--Eingabefeld GEMET Thesaurus-->
-        <div id="collapseGemet" class="accordion-collapse collapse" data-bs-parent="#accordionThesauri">
-          <div class="accordion-body">
-            <div class="input-group has-validation">
-              <div class="form-floating">
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputGemet"
-                    name="gemet" />
-                  <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                      data-help-section-id="thesKeywords"></i></span>
-                </div>
-              </div>
-              <!--Button-->
-              <div class="col-auto p-2">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gemetModal"
-                  id="gemetKeywordsThesaurus">
-                  <?php echo $translations['thesaurus']; ?>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </div>
-
+</div>
+</div>
+</div>
+</div>
 <!------------------------------------- MODALS ---------------------------------------------------------------------->
 <!-- Modal für Science Keywords -->
 <div class="modal fade <?php if 
@@ -228,114 +48,6 @@
         <div id="thesaurus">
           <input type="text" class="form-control mb-3" id="searchInputScience" placeholder="Search for Keyword">
           <div id="jstreeScience"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal für Instruments -->
-<div
-  class="modal fade <?php if (isset($_SESSION['instrumentsModal']) && $_SESSION['instrumentsModal'] == 'true') { echo 'show'; } ?>"
-  id="instrumentsModal" tabindex="-1" aria-labelledby="instrumentsModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="instrumentsModalLabel">GCMD Instruments</h5>
-        <span class="input-group-text"><i class="bi bi-question-circle-fill"
-            data-help-section-id="modalHelp"></i></span>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div id="instrumentsThesaurus">
-          <input type="text" class="form-control mb-3" id="searchInputInstruments" placeholder="Search for Keyword">
-          <div id="jstreeInstruments"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal für Platforms -->
-<div
-  class="modal fade <?php if (isset($_SESSION['platformsModal']) && $_SESSION['platformsModal'] == 'true') { echo 'show'; } ?>"
-  id="platformsModal" tabindex="-1" aria-labelledby="platformsModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="platformsModalLabel">GCMD Platforms</h5>
-        <span class="input-group-text"><i class="bi bi-question-circle-fill"
-            data-help-section-id="modalHelp"></i></span>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div id="platformsThesaurus">
-          <input type="text" class="form-control mb-3" id="searchInputPlatforms" placeholder="Search for Keyword">
-          <div id="jstreePlatforms"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal für International Chronostratigraphic Chart (2014) -->
-<div
-  class="modal fade <?php if (isset($_SESSION['chronoModal']) && $_SESSION['chronoModal'] == 'true') { echo 'show'; } ?>"
-  id="chronoModal" tabindex="-1" aria-labelledby="chronoModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="chronoModalLabel">International Chronostratigraphic Chart</h5>
-        <span class="input-group-text"><i class="bi bi-question-circle-fill"
-            data-help-section-id="modalHelp"></i></span>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div id="chronoThesaurus">
-          <input type="text" class="form-control mb-3" id="searchInputChrono" placeholder="Search for Keyword">
-          <div id="jstreeChrono"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal für CGI Simple Lithology -->
-<div class="modal fade <?php if (isset($_SESSION['cgiModal']) && $_SESSION['cgiModal'] == 'true') { echo 'show'; } ?>"
-  id="cgiModal" tabindex="-1" aria-labelledby="cgiModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="cgiModalLabel">CGI Simple Lithology Thesaurus</h5>
-        <span class="input-group-text"><i class="bi bi-question-circle-fill"
-            data-help-section-id="modalHelp"></i></span>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div id="cgiThesaurus">
-          <input type="text" class="form-control mb-3" id="searchInputCgi" placeholder="Search for Keyword">
-          <div id="jstreeCgi"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal für Gemet Thesaurus -->
-<div
-  class="modal fade <?php if (isset($_SESSION['gemetModal']) && $_SESSION['gemetModal'] == 'true') { echo 'show'; } ?>"
-  id="gemetModal" tabindex="-1" aria-labelledby="gemetModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="gemetModalLabel">GEMET Thesaurus</h5>
-        <span class="input-group-text"><i class="bi bi-question-circle-fill"
-            data-help-section-id="modalHelp"></i></span>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div id="gemetThesaurus">
-          <input type="text" class="form-control mb-3" id="searchInputGemet" placeholder="Search for Keyword">
-          <div id="jstreeGemet"></div>
         </div>
       </div>
     </div>
