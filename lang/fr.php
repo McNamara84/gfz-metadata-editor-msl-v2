@@ -78,6 +78,13 @@ $translations = [
     'd_technical_infos' => 'Technical Infos',
     'd_other' => 'Other',
 
+    // Form Group General
+    'grl' => 'General',
+    'grl_Material' => 'Material',
+    'grl_geo_age' => 'Geological age',
+    'grl_Pore_fluid' => 'Pore fluid',
+    'grl_geo_setting' => 'Geological setting',
+
 
     // Form Group Dates
     'dates' => 'Date',

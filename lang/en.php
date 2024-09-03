@@ -72,6 +72,13 @@ $translations = [
     'd_other' => 'Other',
     'd_other_tooltip' => 'Please enter other information..',
 
+    // Form Group General
+    'grl' => 'General',
+    'grl_Material' => 'Material',
+    'grl_geo_age' => 'Geological age',
+    'grl_Pore_fluid' => 'Pore fluid',
+    'grl_geo_setting' => 'Geological setting',
+
     //Formgroup thesaurusKeywords
     // TODO: Translation
     'thesaurusKeywords' => 'Thesaurus Keywords',

@@ -56,6 +56,7 @@ include ("formgroups/contactpersons.html");
 include ("formgroups/originatingLaboratory.html");
 include ("formgroups/contributors.html");
 include ("formgroups/descriptions.html");
+include ("formgroups/general.html");
 include ("formgroups/thesaurusKeywords.html");
 include ("formgroups/freeKeywords.html");
 include ("formgroups/dates.html");

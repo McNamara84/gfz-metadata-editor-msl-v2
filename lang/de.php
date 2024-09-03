@@ -72,6 +72,13 @@ $translations = [
     'd_other' => 'Zusätzliches',
     'd_other_tooltip' => 'Bitte zusätzliche Informationen eingeben...',
 
+    // Form Group General
+    'grl' => 'Allgemein',
+    'grl_Material' => 'Material',
+    'grl_geo_age' => 'Geologisches Alter',
+    'grl_Pore_fluid' => 'Porenflüssigkeit',
+    'grl_geo_setting' => 'Geologisches Umfeld',
+
     // Form Group Dates
     'dates' => 'Datumsangaben',
     'dateCreated' => 'Entstehungsdatum',
