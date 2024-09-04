@@ -1,0 +1,1504 @@
+[
+    {
+        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/present-day",
+        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+        "value": "present-day",
+        "label": "present-day",
+        "synonyms": [
+            {
+                "value": "presentday"
+            },
+            {
+                "value": "present-day"
+            },
+            {
+                "value": "antropogenic setting"
+            }
+        ],
+        "children": []
+    },
+    {
+        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic",
+        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+        "value": "Phanerozoic",
+        "label": "Phanerozoic",
+        "synonyms": [],
+        "children": [
+            {
+                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic",
+                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                "value": "Cenozoic",
+                "label": "Cenozoic",
+                "synonyms": [
+                    {
+                        "value": "cenozoic times"
+                    }
+                ],
+                "children": [
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-neogene",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Neogene",
+                        "label": "Neogene",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-neogene-miocene",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Miocene",
+                                "label": "Miocene",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-neogene-miocene-aquitanian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Aquitanian",
+                                        "label": "Aquitanian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-neogene-miocene-burdigalian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Burdigalian",
+                                        "label": "Burdigalian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-neogene-miocene-langhian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Langhian",
+                                        "label": "Langhian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-neogene-miocene-messinian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Messinian",
+                                        "label": "Messinian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-neogene-miocene-serravallian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Serravallian",
+                                        "label": "Serravallian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-neogene-miocene-tortonian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Tortonian",
+                                        "label": "Tortonian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-neogene-pliocene",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Pliocene",
+                                "label": "Pliocene",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-neogene-pliocene-piacenzian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Piacenzian",
+                                        "label": "Piacenzian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-neogene-pliocene-zanclean",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Zanclean",
+                                        "label": "Zanclean",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-paleogene",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Paleogene",
+                        "label": "Paleogene",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-paleogene-eocene",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Eocene",
+                                "label": "Eocene",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-paleogene-eocene-bartonian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Bartonian",
+                                        "label": "Bartonian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-paleogene-eocene-lutetian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Lutetian",
+                                        "label": "Lutetian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-paleogene-eocene-priabonian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Priabonian",
+                                        "label": "Priabonian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-paleogene-eocene-ypresian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Ypresian",
+                                        "label": "Ypresian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-paleogene-oligocene",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Oligocene",
+                                "label": "Oligocene",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-paleogene-oligocene-chattian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Chattian",
+                                        "label": "Chattian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-paleogene-oligocene-rupelian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Rupelian",
+                                        "label": "Rupelian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-paleogene-paleocene",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Paleocene",
+                                "label": "Paleocene",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-paleogene-paleocene-danian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Danian",
+                                        "label": "Danian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-paleogene-paleocene-selandian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Selandian",
+                                        "label": "Selandian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-paleogene-paleocene-thanetian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Thanetian",
+                                        "label": "Thanetian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-quaternary",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Quaternary",
+                        "label": "Quaternary",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-quaternary-holocene",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Holocene",
+                                "label": "Holocene",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-quaternary-pleistocene",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Pleistocene",
+                                "label": "Pleistocene",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-quaternary-pleistocene-calabrian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Calabrian",
+                                        "label": "Calabrian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-quaternary-pleistocene-gelasian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Gelasian",
+                                        "label": "Gelasian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-quaternary-pleistocene-middlepleistocene",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "MiddlePleistocene",
+                                        "label": "MiddlePleistocene",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-cenozoic-quaternary-pleistocene-upperlatepleistocene",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Upper\/LatePleistocene",
+                                        "label": "Upper\/LatePleistocene",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic",
+                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                "value": "Mesozoic",
+                "label": "Mesozoic",
+                "synonyms": [],
+                "children": [
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-cretaceous",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Cretaceous",
+                        "label": "Cretaceous",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-cretaceous-lowerearlycretaceous",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Lower\/EarlyCretaceous",
+                                "label": "Lower\/EarlyCretaceous",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-cretaceous-lowerearlycretaceous-albian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Albian",
+                                        "label": "Albian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-cretaceous-lowerearlycretaceous-aptian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Aptian",
+                                        "label": "Aptian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-cretaceous-lowerearlycretaceous-barremian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Barremian",
+                                        "label": "Barremian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-cretaceous-lowerearlycretaceous-berriasian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Berriasian",
+                                        "label": "Berriasian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-cretaceous-lowerearlycretaceous-hauterivian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Hauterivian",
+                                        "label": "Hauterivian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-cretaceous-lowerearlycretaceous-valanginian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Valanginian",
+                                        "label": "Valanginian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-cretaceous-upperlatecretaceous",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Upper\/LateCretaceous",
+                                "label": "Upper\/LateCretaceous",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-cretaceous-upperlatecretaceous-campanian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Campanian",
+                                        "label": "Campanian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-cretaceous-upperlatecretaceous-cenomanian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Cenomanian",
+                                        "label": "Cenomanian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-cretaceous-upperlatecretaceous-coniacian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Coniacian",
+                                        "label": "Coniacian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-cretaceous-upperlatecretaceous-maastrichtian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Maastrichtian",
+                                        "label": "Maastrichtian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-cretaceous-upperlatecretaceous-santonian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Santonian",
+                                        "label": "Santonian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-cretaceous-upperlatecretaceous-turonian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Turonian",
+                                        "label": "Turonian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-jurassic",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Jurassic",
+                        "label": "Jurassic",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-jurassic-lowerearlyjurassic",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Lower\/EarlyJurassic",
+                                "label": "Lower\/EarlyJurassic",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-jurassic-lowerearlyjurassic-hettangian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Hettangian",
+                                        "label": "Hettangian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-jurassic-lowerearlyjurassic-pliensbachian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Pliensbachian",
+                                        "label": "Pliensbachian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-jurassic-lowerearlyjurassic-sinemurian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Sinemurian",
+                                        "label": "Sinemurian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-jurassic-lowerearlyjurassic-toarcian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Toarcian",
+                                        "label": "Toarcian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-jurassic-middlejurassic",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "MiddleJurassic",
+                                "label": "MiddleJurassic",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-jurassic-middlejurassic-aalenian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Aalenian",
+                                        "label": "Aalenian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-jurassic-middlejurassic-bajocian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Bajocian",
+                                        "label": "Bajocian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-jurassic-middlejurassic-bathonian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Bathonian",
+                                        "label": "Bathonian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-jurassic-middlejurassic-callovian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Callovian",
+                                        "label": "Callovian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-jurassic-upperlatejurassic",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Upper\/LateJurassic",
+                                "label": "Upper\/LateJurassic",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-jurassic-upperlatejurassic-kimmeridgian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Kimmeridgian",
+                                        "label": "Kimmeridgian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-jurassic-upperlatejurassic-oxfordian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Oxfordian",
+                                        "label": "Oxfordian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-jurassic-upperlatejurassic-tithonian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Tithonian",
+                                        "label": "Tithonian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-triassic",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Triassic",
+                        "label": "Triassic",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-triassic-lowerearlytriassic",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Lower\/EarlyTriassic",
+                                "label": "Lower\/EarlyTriassic",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-triassic-lowerearlytriassic-induan",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Induan",
+                                        "label": "Induan",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-triassic-lowerearlytriassic-olenekian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Olenekian",
+                                        "label": "Olenekian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-triassic-middletriassic",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "MiddleTriassic",
+                                "label": "MiddleTriassic",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-triassic-middletriassic-anisian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Anisian",
+                                        "label": "Anisian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-triassic-middletriassic-ladinian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Ladinian",
+                                        "label": "Ladinian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-triassic-upperlatetriassic",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Upper\/LateTriassic",
+                                "label": "Upper\/LateTriassic",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-triassic-upperlatetriassic-carnian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Carnian",
+                                        "label": "Carnian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-triassic-upperlatetriassic-norian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Norian",
+                                        "label": "Norian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-mesozoic-triassic-upperlatetriassic-rhaetian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Rhaetian",
+                                        "label": "Rhaetian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic",
+                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                "value": "Paleozoic",
+                "label": "Paleozoic",
+                "synonyms": [],
+                "children": [
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-cambrian",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Cambrian",
+                        "label": "Cambrian",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-cambrian-cambrianseries2",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "CambrianSeries2",
+                                "label": "CambrianSeries2",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-cambrian-cambrianseries2-cambrianstage3",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "CambrianStage3",
+                                        "label": "CambrianStage3",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-cambrian-cambrianseries2-cambrianstage4",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "CambrianStage4",
+                                        "label": "CambrianStage4",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-cambrian-cambrianseries3",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "CambrianSeries3",
+                                "label": "CambrianSeries3",
+                                "synonyms": [
+                                    {
+                                        "value": "miaolingian"
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-cambrian-cambrianseries3-cambrianstage5",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "CambrianStage5",
+                                        "label": "CambrianStage5",
+                                        "synonyms": [
+                                            {
+                                                "value": "wuliuan"
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-cambrian-cambrianseries3-drumian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Drumian",
+                                        "label": "Drumian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-cambrian-cambrianseries3-guzhangian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Guzhangian",
+                                        "label": "Guzhangian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-cambrian-furongian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Furongian",
+                                "label": "Furongian",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-cambrian-furongian-cambrianstage10",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "CambrianStage10",
+                                        "label": "CambrianStage10",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-cambrian-furongian-jiangshanian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Jiangshanian",
+                                        "label": "Jiangshanian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-cambrian-furongian-paibian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Paibian",
+                                        "label": "Paibian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-cambrian-terreneuvian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Terreneuvian",
+                                "label": "Terreneuvian",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-cambrian-terreneuvian-cambrianstage2",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "CambrianStage2",
+                                        "label": "CambrianStage2",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-cambrian-terreneuvian-fortunian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Fortunian",
+                                        "label": "Fortunian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Carboniferous",
+                        "label": "Carboniferous",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous-mississippian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Mississippian",
+                                "label": "Mississippian",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous-mississippian-lowerearlymississippian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Lower\/EarlyMississippian",
+                                        "label": "Lower\/EarlyMississippian",
+                                        "synonyms": [],
+                                        "children": [
+                                            {
+                                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous-mississippian-lowerearlymississippian-tournaisian",
+                                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                                "value": "Tournaisian",
+                                                "label": "Tournaisian",
+                                                "synonyms": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous-mississippian-middlemississippian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "MiddleMississippian",
+                                        "label": "MiddleMississippian",
+                                        "synonyms": [],
+                                        "children": [
+                                            {
+                                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous-mississippian-middlemississippian-visean",
+                                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                                "value": "Visean",
+                                                "label": "Visean",
+                                                "synonyms": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous-mississippian-upperlatemississippian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Upper\/LateMississippian",
+                                        "label": "Upper\/LateMississippian",
+                                        "synonyms": [],
+                                        "children": [
+                                            {
+                                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous-mississippian-upperlatemississippian-serpukhovian",
+                                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                                "value": "Serpukhovian",
+                                                "label": "Serpukhovian",
+                                                "synonyms": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous-pennsylvanian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Pennsylvanian",
+                                "label": "Pennsylvanian",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous-pennsylvanian-lowerearlypennsylvanian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Lower\/EarlyPennsylvanian",
+                                        "label": "Lower\/EarlyPennsylvanian",
+                                        "synonyms": [],
+                                        "children": [
+                                            {
+                                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous-pennsylvanian-lowerearlypennsylvanian-bashkirian",
+                                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                                "value": "Bashkirian",
+                                                "label": "Bashkirian",
+                                                "synonyms": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous-pennsylvanian-middlepennsylvanian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "MiddlePennsylvanian",
+                                        "label": "MiddlePennsylvanian",
+                                        "synonyms": [],
+                                        "children": [
+                                            {
+                                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous-pennsylvanian-middlepennsylvanian-moscovian",
+                                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                                "value": "Moscovian",
+                                                "label": "Moscovian",
+                                                "synonyms": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous-pennsylvanian-upperlatepennsylvanian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Upper\/LatePennsylvanian",
+                                        "label": "Upper\/LatePennsylvanian",
+                                        "synonyms": [],
+                                        "children": [
+                                            {
+                                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous-pennsylvanian-upperlatepennsylvanian-gzhelian",
+                                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                                "value": "Gzhelian",
+                                                "label": "Gzhelian",
+                                                "synonyms": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-carboniferous-pennsylvanian-upperlatepennsylvanian-kasimovian",
+                                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                                "value": "Kasimovian",
+                                                "label": "Kasimovian",
+                                                "synonyms": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-devonian",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Devonian",
+                        "label": "Devonian",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-devonian-lowerearlydevonian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Lower\/EarlyDevonian",
+                                "label": "Lower\/EarlyDevonian",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-devonian-lowerearlydevonian-emsian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Emsian",
+                                        "label": "Emsian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-devonian-lowerearlydevonian-lochkovian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Lochkovian",
+                                        "label": "Lochkovian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-devonian-lowerearlydevonian-pragian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Pragian",
+                                        "label": "Pragian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-devonian-middledevonian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "MiddleDevonian",
+                                "label": "MiddleDevonian",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-devonian-middledevonian-eifelian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Eifelian",
+                                        "label": "Eifelian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-devonian-middledevonian-givetian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Givetian",
+                                        "label": "Givetian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-devonian-upperlatedevonian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Upper\/LateDevonian",
+                                "label": "Upper\/LateDevonian",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-devonian-upperlatedevonian-famennian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Famennian",
+                                        "label": "Famennian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-devonian-upperlatedevonian-frasnian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Frasnian",
+                                        "label": "Frasnian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-ordovician",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Ordovician",
+                        "label": "Ordovician",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-ordovician-lowerearlyordovician",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Lower\/EarlyOrdovician",
+                                "label": "Lower\/EarlyOrdovician",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-ordovician-lowerearlyordovician-floian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Floian",
+                                        "label": "Floian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-ordovician-lowerearlyordovician-tremadocian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Tremadocian",
+                                        "label": "Tremadocian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-ordovician-middleordovician",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "MiddleOrdovician",
+                                "label": "MiddleOrdovician",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-ordovician-middleordovician-dapingian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Dapingian",
+                                        "label": "Dapingian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-ordovician-middleordovician-darriwilian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Darriwilian",
+                                        "label": "Darriwilian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-ordovician-upperlateordovician",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Upper\/LateOrdovician",
+                                "label": "Upper\/LateOrdovician",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-ordovician-upperlateordovician-hirnantian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Hirnantian",
+                                        "label": "Hirnantian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-ordovician-upperlateordovician-katian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Katian",
+                                        "label": "Katian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-ordovician-upperlateordovician-sandbian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Sandbian",
+                                        "label": "Sandbian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-permian",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Permian",
+                        "label": "Permian",
+                        "synonyms": [
+                            {
+                                "value": "perm"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-permian-cisuralian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Cisuralian",
+                                "label": "Cisuralian",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-permian-cisuralian-artinskian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Artinskian",
+                                        "label": "Artinskian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-permian-cisuralian-asselian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Asselian",
+                                        "label": "Asselian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-permian-cisuralian-kungurian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Kungurian",
+                                        "label": "Kungurian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-permian-cisuralian-sakmarian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Sakmarian",
+                                        "label": "Sakmarian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-permian-guadalupian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Guadalupian",
+                                "label": "Guadalupian",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-permian-guadalupian-capitanian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Capitanian",
+                                        "label": "Capitanian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-permian-guadalupian-roadian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Roadian",
+                                        "label": "Roadian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-permian-guadalupian-wordian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Wordian",
+                                        "label": "Wordian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-permian-lopingian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Lopingian",
+                                "label": "Lopingian",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-permian-lopingian-changhsingian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Changhsingian",
+                                        "label": "Changhsingian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-permian-lopingian-wuchiapingian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Wuchiapingian",
+                                        "label": "Wuchiapingian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-silurian",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Silurian",
+                        "label": "Silurian",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-silurian-llandovery",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Llandovery",
+                                "label": "Llandovery",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-silurian-llandovery-aeronian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Aeronian",
+                                        "label": "Aeronian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-silurian-llandovery-rhuddanian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Rhuddanian",
+                                        "label": "Rhuddanian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-silurian-llandovery-telychian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Telychian",
+                                        "label": "Telychian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-silurian-ludlow",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Ludlow",
+                                "label": "Ludlow",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-silurian-ludlow-gorstian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Gorstian",
+                                        "label": "Gorstian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-silurian-ludlow-ludfordian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Ludfordian",
+                                        "label": "Ludfordian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-silurian-pridoli",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Pridoli",
+                                "label": "Pridoli",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-silurian-wenlock",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Wenlock",
+                                "label": "Wenlock",
+                                "synonyms": [],
+                                "children": [
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-silurian-wenlock-homerian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Homerian",
+                                        "label": "Homerian",
+                                        "synonyms": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/phanerozoic-paleozoic-silurian-wenlock-sheinwoodian",
+                                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                        "value": "Sheinwoodian",
+                                        "label": "Sheinwoodian",
+                                        "synonyms": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian",
+        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+        "value": "Precambrian",
+        "label": "Precambrian",
+        "synonyms": [],
+        "children": [
+            {
+                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-archean",
+                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                "value": "Archean",
+                "label": "Archean",
+                "synonyms": [],
+                "children": [
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-archean-eoarchean",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Eoarchean",
+                        "label": "Eoarchean",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-archean-mesoarchean",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Mesoarchean",
+                        "label": "Mesoarchean",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-archean-neoarchean",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Neoarchean",
+                        "label": "Neoarchean",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-archean-paleoarchean",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Paleoarchean",
+                        "label": "Paleoarchean",
+                        "synonyms": [],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-hadean",
+                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                "value": "Hadean",
+                "label": "Hadean",
+                "synonyms": [],
+                "children": []
+            },
+            {
+                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-proterozoic",
+                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                "value": "Proterozoic",
+                "label": "Proterozoic",
+                "synonyms": [],
+                "children": [
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-proterozoic-mesoproterozoic",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Mesoproterozoic",
+                        "label": "Mesoproterozoic",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-proterozoic-mesoproterozoic-calymmian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Calymmian",
+                                "label": "Calymmian",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-proterozoic-mesoproterozoic-ectasian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Ectasian",
+                                "label": "Ectasian",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-proterozoic-mesoproterozoic-stenian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Stenian",
+                                "label": "Stenian",
+                                "synonyms": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-proterozoic-neoproterozoic",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Neoproterozoic",
+                        "label": "Neoproterozoic",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-proterozoic-neoproterozoic-cryogenian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Cryogenian",
+                                "label": "Cryogenian",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-proterozoic-neoproterozoic-ediacaran",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Ediacaran",
+                                "label": "Ediacaran",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-proterozoic-neoproterozoic-tonian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Tonian",
+                                "label": "Tonian",
+                                "synonyms": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-proterozoic-paleoproterozoic",
+                        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                        "value": "Paleoproterozoic",
+                        "label": "Paleoproterozoic",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-proterozoic-paleoproterozoic-orosirian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Orosirian",
+                                "label": "Orosirian",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-proterozoic-paleoproterozoic-rhyacian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Rhyacian",
+                                "label": "Rhyacian",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-proterozoic-paleoproterozoic-siderian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Siderian",
+                                "label": "Siderian",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/precambrian-proterozoic-paleoproterozoic-statherian",
+                                "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+                                "value": "Statherian",
+                                "label": "Statherian",
+                                "synonyms": [],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/formationofearth",
+        "vocab_uri": "https:\/\/epos-msl.uu.nl\/voc\/geologicalage\/1.3\/",
+        "value": "FormationOfEarth",
+        "label": "FormationOfEarth",
+        "synonyms": [],
+        "children": []
+    }
+]

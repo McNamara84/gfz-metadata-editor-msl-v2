@@ -15,6 +15,64 @@ if (isset($_GET['action']) && $_GET['action'] == 'getMslVocab') {
     $types = ['materials', 'geologicalage', 'porefluids', 'geologicalsetting'];
     $jsonDir = __DIR__ . '/json/';
 
+    if (!file_exists($jsonDir)) {
+        mkdir($jsonDir, 0755, true);
+    }
+
+    function getLatestVersion($baseUrl, $type)
+    {
+        $versions = [];
+        for ($i = 1; $i <= 10; $i++) {
+            $url = "{$baseUrl}{$type}/1.{$i}/{$type}_1-{$i}.json";
+            $headers = @get_headers($url);
+            if ($headers && strpos($headers[0], '200') !== false) {
+                $versions[] = "1.{$i}";
+            } else {
+                break;
+            }
+        }
+        return end($versions);
+    }
+
+    function downloadAndSave($url, $savePath)
+    {
+        $json = @file_get_contents($url);
+        if ($json === false) {
+            return false;
+        }
+        return file_put_contents($savePath, $json) !== false;
+    }
+
+    $results = [];
+
+    if ($type == 'all') {
+        foreach ($types as $t) {
+            $latestVersion = getLatestVersion($baseUrl, $t);
+            if ($latestVersion) {
+                $url = "{$baseUrl}{$t}/{$latestVersion}/{$t}_" . str_replace('.', '-', $latestVersion) . ".json";
+                $savePath = $jsonDir . "{$t}.json";
+                $success = downloadAndSave($url, $savePath);
+                $results[$t] = $success ? "Updated to version {$latestVersion}" : "Failed to update";
+            } else {
+                $results[$t] = "No version found";
+            }
+        }
+    } elseif (in_array($type, $types)) {
+        $latestVersion = getLatestVersion($baseUrl, $type);
+        if ($latestVersion) {
+            $url = "{$baseUrl}{$type}/{$latestVersion}/{$type}_" . str_replace('.', '-', $latestVersion) . ".json";
+            $savePath = $jsonDir . "{$type}.json";
+            $success = downloadAndSave($url, $savePath);
+            $results[$type] = $success ? "Updated to version {$latestVersion}" : "Failed to update";
+        } else {
+            $results[$type] = "No version found";
+        }
+    } else {
+        $results['error'] = "Invalid type specified";
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode($results);
     exit();
 }
 
