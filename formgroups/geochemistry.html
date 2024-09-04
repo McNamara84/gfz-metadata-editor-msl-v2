@@ -1,0 +1,72 @@
+<div class="card mb-2">
+    <div class="card-header">
+        <b>
+            <?php echo $translations['Geochemistry']; ?>
+        </b>
+    </div>
+
+    <div id="geochemistryGroup">
+        <div class="accordion p-2" id="accordionGeochemistry">
+
+            <div class="accordion-item">
+                <!--Accordion Header Analysis technique-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseAnalysisTechnique" aria-expanded="false"
+                        aria-controls="collapseAnalysisTechnique">
+                        <?php echo $translations['Geochemistry_A_T'];?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Analysis technique-->
+                <div id="collapseAnalysisTechnique" class="accordion-collapse collapse "
+                    data-bs-parent="#accordionGeochemistry">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputAnalysisTechnique" name="AnalysisTechnique" />
+                                    <!--<span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="thesKeywords"></i></span>-->
+                                </div>
+                            </div>
+                            <!--Button-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="accordion-item">
+                <!--Accordion Header Measured property-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseMeasuredProperty" aria-expanded="false"
+                        aria-controls="collapseMeasuredProperty">
+                        <?php echo $translations['Geochemistry_M_P'];?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Measured property-->
+                <div id="collapseMeasuredProperty" class="accordion-collapse collapse "
+                    data-bs-parent="#accordionGeochemistry">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputMeasuredProperty" name="MeasuredProperty" />
+
+                                    <!--<span class="input-group-text"><i class="bi bi-question-circle-fill"
+                          data-help-section-id="thesKeywords"></i></span>-->
+                                </div>
+                            </div>
+                            <!--Button-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

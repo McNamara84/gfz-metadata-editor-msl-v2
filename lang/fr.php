@@ -85,6 +85,20 @@ $translations = [
     'grl_Pore_fluid' => 'Pore fluid',
     'grl_geo_setting' => 'Geological setting',
 
+    // Form Group Analogue modelling of geological processes
+    'AMOGP' => 'Analogue modelling of geological processes',
+    'AMOGP_M_S' => 'Modeled structure',
+    'AMOGP_M_G_F' => 'Modeled geomorphological feature',
+    'AMOGP_Apparatus' => 'Apparatus',
+    'AMOGP_A_E' => 'Ancillary Equipment',
+    'AMOGP_M_P' => 'measured property',
+    'AMOGP_Software' => 'Software',
+
+    // Form Group Geochemistry
+    'Geochemistry' => 'Geochemistry',
+    'Geochemistry_A_T' => 'Analysis technique',
+    'Geochemistry_M_P' => 'Measured property',
+
 
     // Form Group Dates
     'dates' => 'Date',
