@@ -309,6 +309,38 @@ setUpAutocompleteFunder(newFundingReferenceRow.find(".inputFunder"));
 setUpAutocompleteFunder();
   });
 
+  $("#addLaboratory").click(function () {
+    var laboratoryGroup = $("#laboratoryGroup");
+    // Erste Zeile, die später als Vorlage dient
+    var firstOriginatingLaboratoryLine = laboratoryGroup.children().first();
+
+    // Klonen der Vorlage
+    var newOriginatingLaboratoryRow = firstOriginatingLaboratoryLine.clone();
+
+    // Einträge in den input-Fields löschen und valid/invalid feedback entfernen:
+    newOriginatingLaboratoryRow.find("input").val("").removeClass("is-invalid is-valid");
+    newOriginatingLaboratoryRow.find(".invalid-feedback, .valid-feedback").hide();
+
+    // altes TagifyElement in der neuen Zeile entfernen (wird weiter unten in autocompleteAffiliation wieder intitialisiert)
+    // newOriginatingLaboratoryRow.find(".tagify").remove();
+
+    // Plus Button mit Minus Button ersetzen
+    newOriginatingLaboratoryRow.find(".addLaboratory").replaceWith(removeButton);
+
+    // Neue LaboratoryLine zum DOM hinzufügen
+    laboratoryGroup.append(newOriginatingLaboratoryRow);
+
+    // Tagify auf neues LaboratoryAffiliations Feld anwenden
+    //autocompleteAffiliations("inputLaboratoryAffiliation" + uniqueSuffix, "hiddenLaboratoryRorId" + uniqueSuffix);
+    
+    // Event-Handler für RemoveButton
+    newOriginatingLaboratoryRow.on("click", ".removeButton", function () {
+    $(this).closest(".row").remove();
+        
+  });
+
+});
+
   /////////////////////////////// HELP BUTTONS /////////////////////////////////////////////////////////////////
   
   function deleteHelpButtonFromClonedRows(row, roundCornersClass = "input-right-with-round-corners") {
