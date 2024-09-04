@@ -7,6 +7,17 @@ use EasyRdf\RdfNamespace;
 include 'settings.php';
 include 'api_functions.php';
 
+// API-Hook für den Abruf aller kontrollierten Vocabulare von GitHub und Speicherung in getrennten JSON-Dateien
+// Beispielaufruf: api.php?action=getMslVocab&type=all oder api.php?action=getMslVocab&type=geologicalage
+if (isset($_GET['action']) && $_GET['action'] == 'getMslVocab') {
+    $type = $_GET['type'] ?? 'all';
+    $baseUrl = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/';
+    $types = ['materials', 'geologicalage', 'porefluids', 'geologicalsetting'];
+    $jsonDir = __DIR__ . '/json/';
+
+    exit();
+}
+
 // API-Hook für den Abruf aller MSL Labs und Speicherung als msl-labs.json
 // Beispielaufruf: api.php?action=getMslLabs
 if (isset($_GET['action']) && $_GET['action'] == 'getMslLabs') {
