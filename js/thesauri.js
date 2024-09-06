@@ -37,6 +37,33 @@ $(document).ready(function () {
             searchInputId: '#searchInputGemet'
         }
     ];
+   //TODO: Die Variable nochmal bearbeiten und die funktion schreiben
+    var keywordConfigurations = [
+        {
+            inputId: '#inputGENMaterial',
+            jsonFile: 'json/gcmdScienceKeywords.json',
+            jsTreeId: '#jstreeScience',
+            searchInputId: '#searchInputScience'
+        },
+        {
+            inputId: '#inputGENGeologicalSetting',
+            jsonFile: 'json/gcmdInstrumentsKeywords.json',
+            jsTreeId: '#jstreeInstruments',
+            searchInputId: '#searchInputInstruments'
+        },
+        {
+            inputId: '#inputGENPoreFluid',
+            jsonFile: 'json/gcmdPlatformsKeywords.json',
+            jsTreeId: '#jstreePlatforms',
+            searchInputId: '#searchInputPlatforms'
+        },
+        {
+            inputId: '#inputGENGeologicalAge',
+            jsonFile: 'json/ChronostratKeywords.json',
+            jsTreeId: '#jstreeChrono',
+            searchInputId: '#searchInputChrono'
+        },
+    ];
 
     function initializeKeywordInput(config) {
         var input = $(config.inputId)[0];

@@ -1,122 +1,145 @@
 <div class="card mb-2">
-    <div class="card-header">
-      <b>
-        <?php echo $translations['grl']; ?>
-      </b>
-    </div>
-  
-    <div id="generalGroup">
-      <div class="accordion p-2" id="accordionGeneral">
+  <div class="card-header">
+    <b>
+      <?php echo $translations['grl']; ?>
+    </b>
+  </div>
 
-        <div class="accordion-item">
-          <!--Accordion Header Material-->
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseGENMaterial" aria-expanded="false" aria-controls="collapseGENMaterial">
-              <?php echo $translations['grl_Material'];?>
-            </button>
-          </h2>
-          <!--Eingabefeld Material-->
-          <div id="collapseGENMaterial" class="accordion-collapse collapse show" data-bs-parent="#accordionGeneral">
-            <div class="accordion-body">
-              <div class="input-group has-validation">
-                <div class="form-floating">
-                  <div class="input-group has-validation">
-                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
-                      id="inputGENMaterial" name="GENMaterial" />
-                    <!--<span class="input-group-text"><i class="bi bi-question-circle-fill"
-                        data-help-section-id="thesKeywords"></i></span>-->
-                  </div>
+  <div id="generalGroup">
+    <div class="accordion p-2" id="accordionGeneral">
+
+      <div class="accordion-item">
+        <!--Accordion Header Material-->
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseGENMaterial" aria-expanded="false" aria-controls="collapseGENMaterial">
+            <?php echo $translations['grl_Material'];?>
+          </button>
+        </h2>
+        <!--Eingabefeld Material-->
+        <div id="collapseGENMaterial" class="accordion-collapse collapse show" data-bs-parent="#accordionGeneral">
+          <div class="accordion-body">
+            <div class="input-group has-validation">
+              <div class="form-floating">
+                <div class="input-group has-validation">
+                  <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                    id="inputGENMaterial" name="GENMaterial" />
+                  <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                      data-help-section-id="GENMaterial"></i></span>
                 </div>
-                <!--Button-->
+              </div>
+              <!--Button-->
+              <div class="col-auto p-2">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#GENMateriaModal"
+                  id="GENMaterialThesaurus">
+                  <?php echo $translations['thesaurus']; ?>
+                </button>
               </div>
             </div>
           </div>
         </div>
-  
-  
-        <div class="accordion-item">
-            <!--Accordion Header Geological age-->
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseGENGeologicalAge" aria-expanded="false" aria-controls="collapseGENGeologicalAge">
-                <?php echo $translations['grl_geo_age'];?>
-              </button>
-            </h2>
-            <!--Eingabefeld Geological age-->
-            <div id="collapseGENGeologicalAge" class="accordion-collapse collapse " data-bs-parent="#accordionGeneral">
-              <div class="accordion-body">
-                <div class="input-group has-validation">
-                  <div class="form-floating">
-                    <div class="input-group has-validation">
-                      <input type="text" class="form-control input-with-help input-right-no-round-corners"
-                        id="inputGENGeologicalAge" name="GENGeologicalAge" />
-  
-                      <!--<span class="input-group-text"><i class="bi bi-question-circle-fill"
-                          data-help-section-id="thesKeywords"></i></span>-->
-                    </div>
-                  </div>
-                  <!--Button-->
-                </div>
-              </div>
-            </div>
-          </div>
-  
-        <div class="accordion-item">
-            <!--Accordion Header Pore fluid-->
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseGENPoreFluid" aria-expanded="false" aria-controls="collapseGENPoreFluid">
-                <?php echo $translations['grl_Pore_fluid'];?>
-              </button>
-            </h2>
-            <!--Eingabefeld Pore fluid-->
-            <div id="collapseGENPoreFluid" class="accordion-collapse collapse " data-bs-parent="#accordionGeneral">
-              <div class="accordion-body">
-                <div class="input-group has-validation">
-                  <div class="form-floating">
-                    <div class="input-group has-validation">
-                      <input type="text" class="form-control input-with-help input-right-no-round-corners"
-                        id="inputGENPoreFluid" name="GENPoreFluid" />
-  
-                      <!--<span class="input-group-text"><i class="bi bi-question-circle-fill"
-                          data-help-section-id="thesKeywords"></i></span>-->
-                    </div>
-                  </div>
-                  <!--Button-->
-                </div>
-              </div>
-            </div>
-          </div>
-  
-        <div class="accordion-item">
-            <!--Accordion Header Geological setting-->
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseGENGeologicalSetting" aria-expanded="false" aria-controls="collapseGENGeologicalSetting">
-                <?php echo $translations['grl_geo_setting'];?>
-              </button>
-            </h2>
-            <!--Eingabefeld Geological setting-->
-            <div id="collapseGENGeologicalSetting" class="accordion-collapse collapse " data-bs-parent="#accordionGeneral">
-              <div class="accordion-body">
-                <div class="input-group has-validation">
-                  <div class="form-floating">
-                    <div class="input-group has-validation">
-                      <input type="text" class="form-control input-with-help input-right-no-round-corners"
-                        id="inputGENGeologicalSetting" name="GENGeologicalSetting" />
-  
-                      <!--<span class="input-group-text"><i class="bi bi-question-circle-fill"
-                          data-help-section-id="thesKeywords"></i></span>-->
-                    </div>
-                  </div>
-                  <!--Button-->
-                </div>
-              </div>
-            </div>
-          </div>
-  
       </div>
+
+
+      <div class="accordion-item">
+        <!--Accordion Header Geological age-->
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseGENGeologicalAge" aria-expanded="false" aria-controls="collapseGENGeologicalAge">
+            <?php echo $translations['grl_geo_age'];?>
+          </button>
+        </h2>
+        <!--Eingabefeld Geological age-->
+        <div id="collapseGENGeologicalAge" class="accordion-collapse collapse " data-bs-parent="#accordionGeneral">
+          <div class="accordion-body">
+            <div class="input-group has-validation">
+              <div class="form-floating">
+                <div class="input-group has-validation">
+                  <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                    id="inputGENGeologicalAge" name="GENGeologicalAge" />
+
+                  <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                      data-help-section-id="GENGeologicalAge"></i></span>
+                </div>
+              </div>
+              <!--Button-->
+              <div class="col-auto p-2">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                  data-bs-target="#GENGeologicalAgeeModal" id="GENGeologicalAgeThesaurus">
+                  <?php echo $translations['thesaurus']; ?>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <!--Accordion Header Pore fluid-->
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseGENPoreFluid" aria-expanded="false" aria-controls="collapseGENPoreFluid">
+            <?php echo $translations['grl_Pore_fluid'];?>
+          </button>
+        </h2>
+        <!--Eingabefeld Pore fluid-->
+        <div id="collapseGENPoreFluid" class="accordion-collapse collapse " data-bs-parent="#accordionGeneral">
+          <div class="accordion-body">
+            <div class="input-group has-validation">
+              <div class="form-floating">
+                <div class="input-group has-validation">
+                  <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                    id="inputGENPoreFluid" name="GENPoreFluid" />
+
+                  <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                      data-help-section-id="GENPoreFluid"></i></span>
+                </div>
+              </div>
+              <!--Button-->
+              <div class="col-auto p-2">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                  data-bs-target="#GENGeologicalAgeModal" id="GENGeologicalAgeThesaurus">
+                  <?php echo $translations['thesaurus']; ?>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <!--Accordion Header Geological setting-->
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseGENGeologicalSetting" aria-expanded="false"
+            aria-controls="collapseGENGeologicalSetting">
+            <?php echo $translations['grl_geo_setting'];?>
+          </button>
+        </h2>
+        <!--Eingabefeld Geological setting-->
+        <div id="collapseGENGeologicalSetting" class="accordion-collapse collapse " data-bs-parent="#accordionGeneral">
+          <div class="accordion-body">
+            <div class="input-group has-validation">
+              <div class="form-floating">
+                <div class="input-group has-validation">
+                  <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                    id="inputGENGeologicalSetting" name="GENGeologicalSetting" />
+                  <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                      data-help-section-id="GENGeologicalSetting"></i></span>
+                </div>
+              </div>
+              <!--Button-->
+              <div class="col-auto p-2">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                  data-bs-target="#GENGeologicalSettingModal" id="GENGeologicalSettingThesaurus">
+                  <?php echo $translations['thesaurus']; ?>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-  
+</div>
