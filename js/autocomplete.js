@@ -48,8 +48,17 @@ $(document).ready(function () {
   });
   // Autocomplete mit Tagify für Labs
   $.getJSON("json/msl-labs.json", function (data) {
-    var input = document.querySelector('input[name="laboratoryName[]"]');
-    var tagify = new Tagify(input, {
+    var inputName = document.querySelector('input[name="laboratoryName[]"]');
+    var inputAffiliation = document.querySelector('input[name="laboratoryAffiliation[]"]');
+    var hiddenRorId = document.querySelector('input[name="laboratoryRorIds[]"]');
+
+    // Funktion zum Finden des Labors anhand des Namens
+    function findLabByName(name) {
+      return data.find((lab) => lab.name === name);
+    }
+
+    // Tagify für Laboratory Name
+    var tagifyName = new Tagify(inputName, {
       whitelist: data.map((item) => item.name),
       dropdown: {
         enabled: 1,
@@ -66,22 +75,67 @@ $(document).ready(function () {
       editTags: false,
     });
 
-    // Event-Listener für das Hinzufügen eines Tags
-    tagify.on("add", function (e) {
-      // Entfernt alle anderen Tags, wenn ein neuer hinzugefügt wird
-      if (tagify.value.length > 1) {
-        tagify.removeAllTags();
-        tagify.addTags(e.detail.data);
+    // Tagify für Laboratory Affiliation
+    var tagifyAffiliation = new Tagify(inputAffiliation, {
+      whitelist: data.map((item) => item.affiliation),
+      dropdown: {
+        enabled: 1,
+        maxItems: 5,
+        position: "text",
+        closeOnSelect: true,
+        highlightFirst: true,
+      },
+      enforceWhitelist: false,
+      maxTags: 1,
+      keepInvalidTags: false,
+      backspace: "edit",
+      placeholder: "Affiliation will be auto-filled",
+      editTags: false,
+    });
+
+    // Event-Listener für Laboratory Name
+    tagifyName.on("add", function (e) {
+      var labName = e.detail.data.value;
+      var lab = findLabByName(labName);
+      if (lab) {
+        tagifyAffiliation.removeAllTags();
+        tagifyAffiliation.addTags([lab.affiliation]);
+        hiddenRorId.value = lab.ror_id || ""; // TODO: Wenn möglich passende ROR ID hinzufügen aus json/affiliations.json
+        tagifyAffiliation.settings.readonly = true;
+      } else {
+        tagifyAffiliation.removeAllTags();
+        hiddenRorId.value = "";
+        tagifyAffiliation.settings.readonly = false;
       }
     });
 
-    // Event-Listener für Benutzereingaben
-    tagify.on("input", function (e) {
+    tagifyName.on("remove", function () {
+      tagifyAffiliation.removeAllTags();
+      hiddenRorId.value = "";
+      tagifyAffiliation.settings.readonly = false;
+    });
+
+    // Event-Listener für manuelle Eingabe im Laboratory Name Feld
+    tagifyName.on("input", function (e) {
       var value = e.detail.value;
-      if (value && tagify.value.length > 0) {
-        // Wenn bereits ein Tag existiert, ersetze ihn
-        tagify.removeAllTags();
-        tagify.addTags(value);
+      if (value && tagifyName.value.length > 0) {
+        tagifyName.removeAllTags();
+        tagifyName.addTags(value);
+        var lab = findLabByName(value);
+        if (!lab) {
+          tagifyAffiliation.removeAllTags();
+          hiddenRorId.value = "";
+          tagifyAffiliation.settings.readonly = false;
+        }
+      }
+    });
+
+    // Event-Listener für Laboratory Affiliation
+    tagifyAffiliation.on("input", function (e) {
+      var value = e.detail.value;
+      if (value && tagifyAffiliation.value.length > 0) {
+        tagifyAffiliation.removeAllTags();
+        tagifyAffiliation.addTags(value);
       }
     });
   });
