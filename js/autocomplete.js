@@ -52,90 +52,77 @@ $(document).ready(function () {
     var inputAffiliation = document.querySelector('input[name="laboratoryAffiliation[]"]');
     var hiddenRorId = document.querySelector('input[name="laboratoryRorIds[]"]');
 
-    // Funktion zum Finden des Labors anhand des Namens
     function findLabByName(name) {
       return data.find((lab) => lab.name === name);
     }
 
-    // Tagify für Laboratory Name
     var tagifyName = new Tagify(inputName, {
       whitelist: data.map((item) => item.name),
+      enforceWhitelist: false,
+      maxTags: 1,
       dropdown: {
-        enabled: 1,
+        enabled: 1, // Aktiviert das Dropdown
         maxItems: 5,
         position: "text",
         closeOnSelect: true,
         highlightFirst: true,
       },
-      enforceWhitelist: false,
-      maxTags: 1,
-      keepInvalidTags: false,
-      backspace: "edit",
-      placeholder: "Select or enter a laboratory name",
-      editTags: false,
+      delimiters: null,
+      mode: "select",
     });
 
-    // Tagify für Laboratory Affiliation
     var tagifyAffiliation = new Tagify(inputAffiliation, {
       whitelist: data.map((item) => item.affiliation),
+      enforceWhitelist: false,
+      maxTags: 1,
       dropdown: {
-        enabled: 1,
+        enabled: 1, // Aktiviert das Dropdown
         maxItems: 5,
         position: "text",
         closeOnSelect: true,
         highlightFirst: true,
       },
-      enforceWhitelist: false,
-      maxTags: 1,
-      keepInvalidTags: false,
-      backspace: "edit",
-      placeholder: "Affiliation will be auto-filled",
-      editTags: false,
+      delimiters: null,
+      mode: "select",
     });
 
-    // Event-Listener für Laboratory Name
     tagifyName.on("add", function (e) {
       var labName = e.detail.data.value;
       var lab = findLabByName(labName);
       if (lab) {
         tagifyAffiliation.removeAllTags();
         tagifyAffiliation.addTags([lab.affiliation]);
-        hiddenRorId.value = lab.ror_id || ""; // TODO: Wenn möglich passende ROR ID hinzufügen aus json/affiliations.json
-        tagifyAffiliation.settings.readonly = true;
+        hiddenRorId.value = lab.ror_id || "";
+        tagifyAffiliation.setReadOnly(true);
       } else {
         tagifyAffiliation.removeAllTags();
         hiddenRorId.value = "";
-        tagifyAffiliation.settings.readonly = false;
+        tagifyAffiliation.setReadOnly(false);
       }
     });
 
     tagifyName.on("remove", function () {
       tagifyAffiliation.removeAllTags();
       hiddenRorId.value = "";
-      tagifyAffiliation.settings.readonly = false;
+      tagifyAffiliation.setReadOnly(false);
     });
 
-    // Event-Listener für manuelle Eingabe im Laboratory Name Feld
     tagifyName.on("input", function (e) {
       var value = e.detail.value;
-      if (value && tagifyName.value.length > 0) {
-        tagifyName.removeAllTags();
-        tagifyName.addTags(value);
+      if (value) {
         var lab = findLabByName(value);
         if (!lab) {
           tagifyAffiliation.removeAllTags();
           hiddenRorId.value = "";
-          tagifyAffiliation.settings.readonly = false;
+          tagifyAffiliation.setReadOnly(false);
         }
       }
     });
 
-    // Event-Listener für Laboratory Affiliation
     tagifyAffiliation.on("input", function (e) {
       var value = e.detail.value;
-      if (value && tagifyAffiliation.value.length > 0) {
-        tagifyAffiliation.removeAllTags();
-        tagifyAffiliation.addTags(value);
+      if (value && !tagifyAffiliation.state.readonly) {
+        tagifyAffiliation.addTags([value]);
       }
     });
   });
