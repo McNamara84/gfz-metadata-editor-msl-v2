@@ -44,6 +44,12 @@ In der Datei `settings.php` können, neben den Zugangsdaten für die Datenbank, 
 
 ### API-Endpunkte
 
+#### getGcmdScienceKeywords
+
+Andere Anwednungen der GFZ Data Services können dieses Endpunkt aufrufen um selbst ebenfalls das kontrollierte Vokabular der GCMD Science Keywords nutzen zu können.
+Aufzurufene URL: api.php?action=getGcmdScienceKeywords
+Antwort: JSON-String mit `id`, `text`, `language`, `scheme`, `schemeURI`, `description` und `children` als Schlüssel.
+
 #### getTimezones
 
 Der regelmäßige Aufruf zur Aktualisierung der Zeitzonen im Feld `Timezones` der Gruppe `Spatial and temporal coverage` per Cronjob wird empfohlen.
