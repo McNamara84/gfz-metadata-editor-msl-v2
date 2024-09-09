@@ -35,33 +35,32 @@ $(document).ready(function () {
             jsonFile: 'json/gemet.json',
             jsTreeId: '#jstreeGemet',
             searchInputId: '#searchInputGemet'
-        }
-    ];
-   //TODO: Die Variable nochmal bearbeiten und die funktion schreiben
-    var keywordConfigurations = [
+        },
+        // General
         {
             inputId: '#inputGENMaterial',
-            jsonFile: 'json/gcmdScienceKeywords.json',
-            jsTreeId: '#jstreeScience',
-            searchInputId: '#searchInputScience'
-        },
-        {
-            inputId: '#inputGENGeologicalSetting',
-            jsonFile: 'json/gcmdInstrumentsKeywords.json',
-            jsTreeId: '#jstreeInstruments',
-            searchInputId: '#searchInputInstruments'
-        },
-        {
-            inputId: '#inputGENPoreFluid',
-            jsonFile: 'json/gcmdPlatformsKeywords.json',
-            jsTreeId: '#jstreePlatforms',
-            searchInputId: '#searchInputPlatforms'
+            jsonFile: 'json/materials.json',
+            jsTreeId: '#jstreeGENMaterial',
+            searchInputId: '#searchInputGENMaterial'
         },
         {
             inputId: '#inputGENGeologicalAge',
-            jsonFile: 'json/ChronostratKeywords.json',
-            jsTreeId: '#jstreeChrono',
-            searchInputId: '#searchInputChrono'
+            jsonFile: 'json/geologicalage.json',
+            jsTreeId: '#jstreeGENGeologicalAge',
+            searchInputId: '#searchInputGENGeologicalAge'
+        },
+        {
+            inputId: '#inputGENPoreFluid',
+            jsonFile: 'json/porefluids.json',
+            jsTreeId: '#jstreeGENPoreFluide',
+            searchInputId: '#searchInputGENPoreFluide'
+
+        },
+        {
+            inputId: '#inputGENGeologicalSetting',
+            jsonFile: 'json/geologicalsetting.json',
+            jsTreeId: '#jstreeGENGeologicalSetting',
+            searchInputId: '#searchInputGENGeologicalSetting'
         },
     ];
 

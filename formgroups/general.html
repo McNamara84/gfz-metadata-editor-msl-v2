@@ -30,7 +30,7 @@
               </div>
               <!--Button-->
               <div class="col-auto p-2">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#GENMateriaModal"
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#GENMaterialModal"
                   id="GENMaterialThesaurus">
                   <?php echo $translations['thesaurus']; ?>
                 </button>
@@ -65,7 +65,7 @@
               <!--Button-->
               <div class="col-auto p-2">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                  data-bs-target="#GENGeologicalAgeeModal" id="GENGeologicalAgeThesaurus">
+                  data-bs-target="#GENGeologicalAgeModal" id="GENGeologicalAgeThesaurus">
                   <?php echo $translations['thesaurus']; ?>
                 </button>
               </div>
@@ -98,7 +98,7 @@
               <!--Button-->
               <div class="col-auto p-2">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                  data-bs-target="#GENGeologicalAgeModal" id="GENGeologicalAgeThesaurus">
+                  data-bs-target="#GENPoreFluideModal" id="GENPoreFluidThesaurus">
                   <?php echo $translations['thesaurus']; ?>
                 </button>
               </div>
@@ -140,6 +140,102 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</div>
+
+
+<!------------------------------------- MODALS ---------------------------------------------------------------------->
+
+<!-- Modal für Platforms -->
+<div
+  class="modal fade <?php if (isset($_SESSION['GENMaterialModal']) && $_SESSION['GENMaterialModal'] == 'true') { echo 'show'; } ?>"
+  id="GENMaterialModal" tabindex="-1" aria-labelledby="GENMaterialModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="GENMaterialModalLabel">Material thesaurus</h5>
+        <span class="input-group-text"><i class="bi bi-question-circle-fill"
+            data-help-section-id="modalHelp"></i></span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="GENMaterialModalThesaurus">
+          <input type="text" class="form-control mb-3" id="searchInputGENMaterial" placeholder="Search for Keyword">
+          <div id="jstreeGENMaterial"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal für CGI Simple Lithology -->
+
+<div class="modal fade <?php if (isset($_SESSION['GENGeologicalAgeModal']) && $_SESSION['GENGeologicalAgeModal'] == 'true') { echo 'show'; } ?>"
+  id="GENGeologicalAgeModal" tabindex="-1" aria-labelledby="GENGeologicalAgeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="GENGeologicalAgeModalLabel">Geological age Thesaurus</h5>
+        <span class="input-group-text"><i class="bi bi-question-circle-fill"
+            data-help-section-id="modalHelp"></i></span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="GENGeologicalAgeModalThesaurus">
+          <input type="text" class="form-control mb-3" id="searchInputGENGeologicalAge" placeholder="Search for Keyword">
+          <div id="jstreeGENGeologicalAge"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal für International Chronostratigraphic Chart (2014) -->
+<div
+  class="modal fade <?php if (isset($_SESSION['GENPoreFluideModal']) && $_SESSION['GENPoreFluideModal'] == 'true') { echo 'show'; } ?>"
+  id="GENPoreFluideModal" tabindex="-1" aria-labelledby="GENPoreFluideModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="GENPoreFluideModalLabel">Pore Fluide</h5>
+        <span class="input-group-text"><i class="bi bi-question-circle-fill"
+            data-help-section-id="modalHelp"></i></span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="GENPoreFluideModalThesaurus">
+          <input type="text" class="form-control mb-3" id="searchInputGENPoreFluide" placeholder="Search for Keyword">
+          <div id="jstreeGENPoreFluide"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal für Gemet Thesaurus -->
+<div
+  class="modal fade <?php if (isset($_SESSION['GENGeologicalSettingModal']) && $_SESSION['GENGeologicalSettingModal'] == 'true') { echo 'show'; } ?>"
+  id="GENGeologicalSettingModal" tabindex="-1" aria-labelledby="GENGeologicalSettingModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="GENGeologicalSettingModalLabel">Geological setting Thesaurus</h5>
+        <span class="input-group-text"><i class="bi bi-question-circle-fill"
+            data-help-section-id="modalHelp"></i></span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="GENGeologicalSettingModalThesaurus">
+          <input type="text" class="form-control mb-3" id="searchInputGENGeologicalSetting" placeholder="Search for Keyword">
+          <div id="jstreeGENGeologicalSetting"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
