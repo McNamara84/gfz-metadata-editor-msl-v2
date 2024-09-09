@@ -3,6 +3,30 @@ require 'vendor/autoload.php';
 use EasyRdf\Graph;
 use EasyRdf\RdfNamespace;
 
+function getLatestVersion($baseUrl, $type)
+{
+    $versions = [];
+    for ($i = 1; $i <= 10; $i++) {
+        $url = "{$baseUrl}{$type}/1.{$i}/{$type}_1-{$i}.json";
+        $headers = @get_headers($url);
+        if ($headers && strpos($headers[0], '200') !== false) {
+            $versions[] = "1.{$i}";
+        } else {
+            break;
+        }
+    }
+    return end($versions);
+}
+
+function downloadAndSave($url, $savePath)
+{
+    $json = @file_get_contents($url);
+    if ($json === false) {
+        return false;
+    }
+    return file_put_contents($savePath, $json) !== false;
+}
+
 // MSL labs und zugehörige Affiliationen von
 $url = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/labs/labnames.json';
 // abrufen und verarbeiten

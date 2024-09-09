@@ -19,30 +19,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'getMslVocab') {
         mkdir($jsonDir, 0755, true);
     }
 
-    function getLatestVersion($baseUrl, $type)
-    {
-        $versions = [];
-        for ($i = 1; $i <= 10; $i++) {
-            $url = "{$baseUrl}{$type}/1.{$i}/{$type}_1-{$i}.json";
-            $headers = @get_headers($url);
-            if ($headers && strpos($headers[0], '200') !== false) {
-                $versions[] = "1.{$i}";
-            } else {
-                break;
-            }
-        }
-        return end($versions);
-    }
-
-    function downloadAndSave($url, $savePath)
-    {
-        $json = @file_get_contents($url);
-        if ($json === false) {
-            return false;
-        }
-        return file_put_contents($savePath, $json) !== false;
-    }
-
     $results = [];
 
     if ($type == 'all') {
