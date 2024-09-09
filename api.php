@@ -7,6 +7,17 @@ use EasyRdf\RdfNamespace;
 include 'settings.php';
 include 'api_functions.php';
 
+// API-Hook für den Abruf des kontrollierten Vokabulars GCMD Science Keywords von der NASA als JSON-String für externe Anwendungen
+// Beispielaufruf: api.php?action=getGcmdScienceKeywords
+if ($_GET['action'] == 'getGcmdScienceKeywords') {
+    // json/gcmdScienceKeywords.json einlesen
+    $json = file_get_contents('json/gcmdScienceKeywords.json');
+    // JSON-String zurückgeben
+    echo $json;
+    // Skriptausführung beenden
+    exit();
+}
+
 // API-Hook für den Abruf aller kontrollierten Vocabulare von GitHub und Speicherung in getrennten JSON-Dateien
 // Beispielaufruf: api.php?action=getMslVocab&type=all oder api.php?action=getMslVocab&type=geologicalage
 if (isset($_GET['action']) && $_GET['action'] == 'getMslVocab') {
