@@ -8,7 +8,7 @@
 
 $translations = [
     // Allgemeines
-    'logotitle' => 'Metadata Editor 1.4',
+    'logotitle' => 'Metadata Editor 1.5',
     'choose' => 'Sélectionnez...',
     'valid' => 'valide',
     'PleaseChoose_invalid' => 'Veuillez sélectionner une option.',
