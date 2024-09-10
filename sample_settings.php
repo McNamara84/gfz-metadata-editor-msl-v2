@@ -25,7 +25,6 @@ if (basename(__FILE__) == basename($_SERVER['PHP_SELF'])) {
     }
 }
 
-// TODO: Umbenennen von $connection in $connection, aber aktuell zu großer Eingriff in Testumgebungen
 $connection = connectDb();
 
 // API Key für https://timezonedb.com/
