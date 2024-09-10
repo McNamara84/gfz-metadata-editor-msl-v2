@@ -24,7 +24,7 @@ if ($_GET['action'] == 'getGcmdScienceKeywords') {
 if (isset($_GET['action']) && $_GET['action'] == 'getMslVocab') {
     $type = $_GET['type'] ?? 'all';
     $baseUrl = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/';
-    $types = ['materials', 'geologicalage', 'porefluids', 'geologicalsetting'];
+    $types = ['analogue', 'geochemistry', 'geologicalage', 'geologicalsetting', 'materials', 'microscopy', 'paleomagnetism', 'porefluids', 'rockphysics'];
     $jsonDir = __DIR__ . '/json/';
 
     if (!file_exists($jsonDir)) {
