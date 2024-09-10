@@ -32,3 +32,5 @@ $connection = connectDb();
 $apiKeyTimezone = 'xxxxxxxxxxxx';
 // maximale Anzahl der eingebbaren Titel
 $maxTitles = 2;
+// Anzeige des Feedback-Links (true für Anzeige, false für keine Anzeige)
+$showFeedbackLink = true;
