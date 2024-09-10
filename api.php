@@ -1,6 +1,7 @@
 <?php
 ini_set("max_execution_time", 300);
 require 'vendor/autoload.php';
+
 use EasyRdf\Graph;
 use EasyRdf\RdfNamespace;
 
@@ -374,7 +375,6 @@ if ($_GET['action'] == 'getGemetConcepts') {
 
         // Success message
         echo "JSON data successfully saved to {$json_file}";
-
     } catch (Exception $e) {
         // Handle exceptions and clean up
         if (file_exists($rdf_file)) {

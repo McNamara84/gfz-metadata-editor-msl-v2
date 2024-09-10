@@ -1,5 +1,6 @@
 <?php
 require 'vendor/autoload.php';
+
 use EasyRdf\Graph;
 use EasyRdf\RdfNamespace;
 
@@ -24,6 +25,12 @@ function downloadAndSave($url, $savePath)
     if ($json === false) {
         return false;
     }
+    // Schlüssel "uri" in JSON-Datei umbenennen in "id"
+    $json = str_replace('"uri":', '"id":', $json);
+    // Schlüssel "vocab_uri" in JSON-Datei umbenennen in "schemeURI"
+    $json = str_replace('"vocab_uri":', '"schemeURI":', $json);
+    // Schlüssel "label" in JSON-Datei umbenennen in "text"
+    $json = str_replace('"label":', '"text":', $json);
     return file_put_contents($savePath, $json) !== false;
 }
 
