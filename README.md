@@ -42,42 +42,287 @@ In der Datei `settings.php` können, neben den Zugangsdaten für die Datenbank, 
 
 - `maxTitles:` Legt die max. Anzahl an Titeln fest, die Nutzende im Editor eingeben können, fest.
 
-### API-Endpunkte
+# API-Dokumentation
 
-#### getGcmdScienceKeywords
+Diese Dokumentation beschreibt die verfügbaren API-Endpunkte für die GFZ Data Services Webanwendung. Sie richtet sich an Administratoren und Techniker, die diese Anwendung auf einem eigenen Webserver installieren und verwalten möchten.
 
-Andere Anwednungen der GFZ Data Services können dieses Endpunkt aufrufen um selbst ebenfalls das kontrollierte Vokabular der GCMD Science Keywords nutzen zu können.
-Aufzurufene URL: api.php?action=getGcmdScienceKeywords
-Antwort: JSON-String mit `id`, `text`, `language`, `scheme`, `schemeURI`, `description` und `children` als Schlüssel.
+## Allgemeine Informationen
 
-#### getTimezones
+- Basis-URL: `https://your-domain.com/api.php`
+- Alle Anfragen sollten via HTTPS erfolgen
+- Antworten werden im JSON-Format zurückgegeben, sofern nicht anders angegeben
 
-Der regelmäßige Aufruf zur Aktualisierung der Zeitzonen im Feld `Timezones` der Gruppe `Spatial and temporal coverage` per Cronjob wird empfohlen.
-Empfohlener Ausführungsintervall: Monatlich
-Aufzurufender URL: api.php?action=getTimezones
+## Endpunkte
 
-#### getNasaScienceKeywords
+### 1. GCMD Science Keywords
 
-Damit der Thesaurus für die NASA Science Keywords aktuell bleibt, ist die regelmäßige Aktualisierung über diesen API-Endpunkt angedacht.
-Empfohlender Ausführungsintervall: Wöchentlich
-Auszuführende URL: api.php?action=getNasaScienceKeywords
+GET ?action=getGcmdScienceKeywords
 
-#### getRorAffiliations
+Liefert das kontrollierte Vokabular der GCMD Science Keywords.
 
-Zur regelmäßigen Aktualisierung der Daten in den Auswahlfeldern für die Affiliations von Personen sollte dieser API-Endpunkt regelmäßig ausgeführt werden.
-Empfohlender Ausführungsintervall: Wöchentlich
-Auszuführende URL: api.php?action=getRorAffiliations
+**Antwort:**
+JSON-Array mit Objekten, die folgende Schlüssel enthalten:
 
-#### getCrossRefFunders
+- `id`: Eindeutige Kennung
+- `text`: Bezeichnung des Keywords
+- `language`: Sprachcode
+- `scheme`: Name des Schemas
+- `schemeURI`: URI des Schemas
+- `description`: Beschreibung
+- `children`: Array von Unterkategorien mit der gleichen Struktur
 
-Zur regelmäßigen Aktualisierung der Auswwahloptionen im Funders-Dropdown-Feld wird die regelmäßige Ausführung von getCrossRefFunders nahegelegt.
-Empfohlender Ausführungsintervall: Wöchentlich
-Auszuführende URL: api.php?action=getCrossRefFunders
+### 2. Zeitzonen aktualisieren
 
-#### getResourceAsDataciteXml
+GET ?action=getTimezones
 
-Der API-Endpunkt „getResourceAsDataciteXml” nimmt eine ID entgegen und exportiert den Datensatz mit dieser ID aus der Datenbank und transformiert ihn in eine valide XML-Datei gemäß dem [DataCite-Schema in der aktuellen Version 4.5 vom 22.01.2024](https://datacite-metadata-schema.readthedocs.io/en/4.5/). Der Endpunkt wird in erster Linie vom Metadateneditor selbst beötigt, kann aber zukünftig auch anderen Anwendungen eine valide DataCite-Datei liefern.
-Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
+Aktualisiert die Liste der Zeitzonen für das Feld `Timezones` in der Gruppe `Spatial and temporal coverage`.
+
+**Empfohlener Ausführungsintervall:** Monatlich
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 3. NASA Science Keywords
+
+GET ?action=getNasaScienceKeywords
+
+Aktualisiert den Thesaurus für die NASA Science Keywords.
+
+**Empfohlener Ausführungsintervall:** Wöchentlich
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 4. ROR Affiliations
+
+GET ?action=getRorAffiliations
+
+Aktualisiert die Daten für die Auswahlfelder der Affiliations von Personen.
+
+**Empfohlener Ausführungsintervall:** Wöchentlich
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 5. CrossRef Funders
+
+GET ?action=getCrossRefFunders
+
+Aktualisiert die Auswahloptionen im Funders-Dropdown-Feld.
+
+**Empfohlener Ausführungsintervall:** Wöchentlich
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 6. Resource als DataCite XML
+
+GET ?action=getResourceAsDataciteXml&id={resource_id}&download={true|false}
+
+Exportiert einen Datensatz als XML-Datei gemäß dem DataCite-Schema (Version 4.5).
+
+**Parameter:**
+
+- `id`: ID des Datensatzes (erforderlich)
+- `download`: Bei `true` wird die XML-Datei zum Download angeboten, bei `false` wird der XML-Inhalt zurückgegeben (optional, Standard: `false`)
+
+**Antwort:**
+XML-Datei oder XML-Inhalt
+
+### 7. Resource als ISO XML
+
+GET ?action=getResourceAsIsoXml&id={resource_id}&download={true|false}
+
+Exportiert einen Datensatz als XML-Datei gemäß dem ISO-Standard.
+
+**Parameter:**
+
+- `id`: ID des Datensatzes (erforderlich)
+- `download`: Bei `true` wird die XML-Datei zum Download angeboten, bei `false` wird der XML-Inhalt zurückgegeben (optional, Standard: `false`)
+
+**Antwort:**
+XML-Datei oder XML-Inhalt
+
+### 8. Resource als DIF XML
+
+GET ?action=getResourceAsDifXml&id={resource_id}&download={true|false}
+
+Exportiert einen Datensatz als XML-Datei gemäß dem DIF-Format.
+
+**Parameter:**
+
+- `id`: ID des Datensatzes (erforderlich)
+- `download`: Bei `true` wird die XML-Datei zum Download angeboten, bei `false` wird der XML-Inhalt zurückgegeben (optional, Standard: `false`)
+
+**Antwort:**
+XML-Datei oder XML-Inhalt
+
+### 9. Alle Ressourcen als eine XML-Datei
+
+GET ?action=getResourcesAsOneFile&id={resource_id}
+
+Exportiert einen Datensatz in allen drei XML-Formaten (DataCite, ISO, DIF) in einer einzigen XML-Datei.
+
+**Parameter:**
+
+- `id`: ID des Datensatzes (erforderlich)
+
+**Antwort:**
+XML-Datei zum Download
+
+### 10. MSL Vokabulare aktualisieren
+
+GET ?action=getMslVocab&type={vocab_type}
+
+Aktualisiert die kontrollierten Vokabulare des Materials Science Laboratory (MSL).
+
+**Parameter:**
+
+- `type`: Typ des Vokabulars (erforderlich)
+  - Mögliche Werte: `all`, `analogue`, `geochemistry`, `geologicalage`, `geologicalsetting`, `materials`, `microscopy`, `paleomagnetism`, `porefluids`, `rockphysics`
+
+**Antwort:**
+JSON-Objekt mit Aktualisierungsstatus für jedes Vokabular
+
+### 11. MSL Labs aktualisieren
+
+GET ?action=getMslLabs
+
+Aktualisiert die Liste der MSL Labs.
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 12. CGI Keywords aktualisieren
+
+GET ?action=getCGIKeywords
+
+Aktualisiert die CGI Simple Lithology Keywords.
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 13. Chronostrat Keywords aktualisieren
+
+GET ?action=getChronostratKeywords
+
+Aktualisiert die Keywords aus der International Chronostratigraphic Chart.
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 14. GEMET Concepts aktualisieren
+
+GET ?action=getGemetConcepts
+
+Aktualisiert die Konzepte des GEMET Thesaurus.
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 15. Rollen abrufen
+
+GET ?action=getRoles&type={role_type}
+
+Ruft Rollen aus der Datenbank ab.
+
+**Parameter:**
+
+- `type`: Typ der Rollen (erforderlich)
+  - Mögliche Werte: `all`, `person`, `institution`, `both`
+
+**Antwort:**
+JSON-Array mit Rollen-Objekten
+
+### 16. NASA Instruments Keywords aktualisieren
+
+GET ?action=getNasaInstrumentsKeywords
+
+Aktualisiert die NASA/GCMD Instruments Keywords.
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 17. NASA Platforms Keywords aktualisieren
+
+GET ?action=getNasaPlatformsKeywords
+
+Aktualisiert die NASA/GCMD Earth Platforms Keywords.
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 18. Lizenzen abrufen
+
+GET ?action=getLicenses&resourcetype={license_type}
+
+Ruft Lizenzen aus der Datenbank ab.
+
+**Parameter:**
+
+- `resourcetype`: Typ der Lizenzen (erforderlich)
+  - Mögliche Werte: `all`, `software`
+
+**Antwort:**
+JSON-Array mit Lizenz-Objekten
+
+### 19. Keywords abrufen
+
+GET ?action=getKeywords&curationType={curation_type}
+
+Ruft Keywords aus der Datenbank ab.
+
+**Parameter:**
+
+- `curationType`: Typ der Kuration (optional)
+  - Mögliche Werte: `all`, `isCurated`
+
+**Antwort:**
+JSON-Array mit Keyword-Objekten
+
+### 20. Relationen abrufen
+
+GET ?action=getRelations
+
+Ruft alle Relationen aus der Datenbank ab.
+
+**Antwort:**
+JSON-Array mit Relation-Objekten
+
+### 21. Identifier-Typ ermitteln
+
+GET ?action=getIdentifierType&identifier={identifier_string}
+
+Ermittelt den Typ eines gegebenen Identifiers.
+
+**Parameter:**
+
+- `identifier`: Der zu prüfende Identifier-String (erforderlich)
+
+**Antwort:**
+JSON-Objekt mit dem ermittelten Identifier-Typ oder einer Fehlermeldung
+
+### 22. Identifier-Pattern abrufen
+
+GET ?action=getPattern&type={identifier_type}
+
+Ruft das Regex-Pattern für einen bestimmten Identifier-Typ ab.
+
+**Parameter:**
+
+- `type`: Der Identifier-Typ (erforderlich)
+
+**Antwort:**
+JSON-Objekt mit dem Regex-Pattern oder einer Fehlermeldung
+
+### 23. Alle Identifier-Typen abrufen
+
+GET ?action=getIdentifierTypes
+
+Ruft alle verfügbaren Identifier-Typen aus der Datenbank ab.
+
+**Antwort:**
+JSON-Array mit Identifier-Typ-Objekten
 
 ## Formularfelder
 
@@ -729,3 +974,6 @@ Das folgende ER-Diagramm zeigt die Beziehungen und Strukturen der Tabellen in de
 
 Dieses Projekt wurde 2024 von Studenten der Fachhochschule Potsdam in Zusammenarbeit mit dem Deutschen GeoForschungsZentrum entwickelt und wird unter der MIT-Lizenz veröffentlicht.
 
+```
+
+```
