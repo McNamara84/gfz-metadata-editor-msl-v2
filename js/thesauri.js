@@ -1,10 +1,11 @@
 $(document).ready(function () {
+    // Konfigurationen für die verschiedenen Keyword-Eingabefelder
     var keywordConfigurations = [
         {
-            inputId: '#inputScienceKeywords',
-            jsonFile: 'json/gcmdScienceKeywords.json',
-            jsTreeId: '#jstreeScience',
-            searchInputId: '#searchInputScience'
+            inputId: '#inputScienceKeywords',  // ID des Eingabefelds
+            jsonFile: 'json/gcmdScienceKeywords.json',  // Pfad zur JSON-Datei mit den Daten
+            jsTreeId: '#jstreeScience',   // ID des jsTrees
+            searchInputId: '#searchInputScience'  // ID des Suchfeldes für diesen Baum
         },
         {
             inputId: '#inputInstruments',
@@ -61,21 +62,6 @@ $(document).ready(function () {
             jsTreeId: '#jstreeGENGeologicalSetting',
             searchInputId: '#searchInputGENGeologicalSetting'
         },
-        // Geochemistry - Wurzelelemente erforderlich
-        {
-            inputId: '#inputGEOCHAnalysisTechnique',
-            jsonFile: 'json/geochemistry.json',
-            jsTreeId: '#jstreeGEOCHAnalysisTechnique',
-            searchInputId: '#searchInputGEOCHAnalysisTechnique',
-            rootNodeId: 'https://epos-msl.uu.nl/voc/geochemistry/1.3/analysis'
-        },
-        {
-            inputId: '#inputGEOCHMeasuredProperty',
-            jsonFile: 'json/geochemistry.json',
-            jsTreeId: '#jstreeGEOCHMeasuredProperty',
-            searchInputId: '#searchInputGEOCHMeasuredProperty',
-            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/geochemistry\/1.3\/measured_property'
-        },
         // Analogue Modelling Of Geological Processes
         {
             inputId: '#inputAMOGPModeledStructure',
@@ -118,13 +104,30 @@ $(document).ready(function () {
             jsTreeId: '#jstreeAMOGPSoftware',
             searchInputId: '#searchInputAMOGPSoftware',
 
-        }
+        },
+        // Geochemistry
+        {
+            inputId: '#inputGEOCHAnalysisTechnique',
+            jsonFile: 'json/geochemistry.json',
+            jsTreeId: '#jstreeGEOCHAnalysisTechnique',
+            searchInputId: '#searchInputGEOCHAnalysisTechnique',
+            rootNodeId: 'https://epos-msl.uu.nl/voc/geochemistry/1.3/analysis'
+        },
+        {
+            inputId: '#inputGEOCHMeasuredProperty',
+            jsonFile: 'json/geochemistry.json',
+            jsTreeId: '#jstreeGEOCHMeasuredProperty',
+            searchInputId: '#searchInputGEOCHMeasuredProperty',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/geochemistry\/1.3\/measured_property'
+        },
     ];
 
+    // Funktion zum Initialisieren der Keyword-Eingabefelder
     function initializeKeywordInput(config) {
         var input = $(config.inputId)[0];
         var suggestedKeywords = [];
 
+        // Funktion zum Laden und Verarbeiten der Keywords aus der JSON-Datei
         function loadKeywords(data) {
             var filteredData = data;
 
@@ -173,7 +176,7 @@ $(document).ready(function () {
             }
 
             var processedData = processNodes(filteredData);
-
+            // Funktion zum Erstellen der Whitelist (Vorschläge) für Tagify
             function buildWhitelist(data, parentPath = []) {
                 data.forEach(function (item) {
                     var textToAdd = parentPath.concat(item.text).join(' > ');

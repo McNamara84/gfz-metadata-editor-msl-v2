@@ -147,7 +147,7 @@
 
 <!------------------------------------- MODALS ---------------------------------------------------------------------->
 
-<!-- Modal für Platforms -->
+<!-- Modal für Material -->
 <div
   class="modal fade <?php if (isset($_SESSION['GENMaterialModal']) && $_SESSION['GENMaterialModal'] == 'true') { echo 'show'; } ?>"
   id="GENMaterialModal" tabindex="-1" aria-labelledby="GENMaterialModalLabel" aria-hidden="true">
@@ -170,21 +170,23 @@
 </div>
 
 
-<!-- Modal für CGI Simple Lithology -->
+<!-- Modal für Geological age -->
 
-<div class="modal fade <?php if (isset($_SESSION['GENGeologicalAgeModal']) && $_SESSION['GENGeologicalAgeModal'] == 'true') { echo 'show'; } ?>"
+<div
+  class="modal fade <?php if (isset($_SESSION['GENGeologicalAgeModal']) && $_SESSION['GENGeologicalAgeModal'] == 'true') { echo 'show'; } ?>"
   id="GENGeologicalAgeModal" tabindex="-1" aria-labelledby="GENGeologicalAgeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="GENGeologicalAgeModalLabel">Geological age Thesaurus</h5>
+        <h5 class="modal-title" id="GENGeologicalAgeModalLabel">Geological age thesaurus</h5>
         <span class="input-group-text"><i class="bi bi-question-circle-fill"
             data-help-section-id="modalHelp"></i></span>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div id="GENGeologicalAgeModalThesaurus">
-          <input type="text" class="form-control mb-3" id="searchInputGENGeologicalAge" placeholder="Search for Keyword">
+          <input type="text" class="form-control mb-3" id="searchInputGENGeologicalAge"
+            placeholder="Search for Keyword">
           <div id="jstreeGENGeologicalAge"></div>
         </div>
       </div>
@@ -194,14 +196,14 @@
 
 
 
-<!-- Modal für International Chronostratigraphic Chart (2014) -->
+<!-- Modal für Pore fluid -->
 <div
   class="modal fade <?php if (isset($_SESSION['GENPoreFluideModal']) && $_SESSION['GENPoreFluideModal'] == 'true') { echo 'show'; } ?>"
   id="GENPoreFluideModal" tabindex="-1" aria-labelledby="GENPoreFluideModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="GENPoreFluideModalLabel">Pore Fluide</h5>
+        <h5 class="modal-title" id="GENPoreFluideModalLabel">Pore fluide thesaurus</h5>
         <span class="input-group-text"><i class="bi bi-question-circle-fill"
             data-help-section-id="modalHelp"></i></span>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -218,21 +220,22 @@
 
 
 
-<!-- Modal für Gemet Thesaurus -->
+<!-- Modal für Geilogical setting -->
 <div
   class="modal fade <?php if (isset($_SESSION['GENGeologicalSettingModal']) && $_SESSION['GENGeologicalSettingModal'] == 'true') { echo 'show'; } ?>"
   id="GENGeologicalSettingModal" tabindex="-1" aria-labelledby="GENGeologicalSettingModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="GENGeologicalSettingModalLabel">Geological setting Thesaurus</h5>
+        <h5 class="modal-title" id="GENGeologicalSettingModalLabel">Geological setting thesaurus</h5>
         <span class="input-group-text"><i class="bi bi-question-circle-fill"
             data-help-section-id="modalHelp"></i></span>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div id="GENGeologicalSettingModalThesaurus">
-          <input type="text" class="form-control mb-3" id="searchInputGENGeologicalSetting" placeholder="Search for Keyword">
+          <input type="text" class="form-control mb-3" id="searchInputGENGeologicalSetting"
+            placeholder="Search for Keyword">
           <div id="jstreeGENGeologicalSetting"></div>
         </div>
       </div>

@@ -140,7 +140,8 @@
                             <!--Button-->
                             <div class="col-auto p-2">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#AMOGPAncillaryEquipmentModal" id="AMOGPAncillaryEquipmentThesaurus">
+                                    data-bs-target="#AMOGPAncillaryEquipmentModal"
+                                    id="AMOGPAncillaryEquipmentThesaurus">
                                     <?php echo $translations['thesaurus']; ?>
                                 </button>
                             </div>
@@ -224,12 +225,13 @@
 
 <!------------------------------------- MODALS ---------------------------------------------------------------------->
 
+<!-- Modal für Modeled structure -->
 <div class="modal fade <?php if (isset($_SESSION['AMOGPModeledStructureModal']) && $_SESSION['AMOGPModeledStructureModal'] == 'true') { echo 'show'; } ?>"
     id="AMOGPModeledStructureModal" tabindex="-1" aria-labelledby="AMOGPModeledStructureModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="AMOGPModeledStructureModalLabel">Modeled Structure thesaurus</h5>
+                <h5 class="modal-title" id="AMOGPModeledStructureModalLabel">Modeled structure thesaurus</h5>
                 <span class="input-group-text"><i class="bi bi-question-circle-fill"
                         data-help-section-id="modalHelp"></i></span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -246,14 +248,15 @@
 </div>
 
 
-
+<!-- Modal für Modeled geomorphological feature -->
 <div class="modal fade <?php if (isset($_SESSION['AMOGPModeledGeomorphologicalFeatureModal']) && $_SESSION['AMOGPModeledGeomorphologicalFeatureModal'] == 'true') { echo 'show'; } ?>"
     id="AMOGPModeledGeomorphologicalFeatureModal" tabindex="-1"
     aria-labelledby="AMOGPModeledGeomorphologicalFeatureModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="AMOGPModeledGeomorphologicalFeatureModalLabel">Modeled Geomorphological Feature Thesaurus</h5>
+                <h5 class="modal-title" id="AMOGPModeledGeomorphologicalFeatureModalLabel">Modeled geomorphological
+                    feature thesaurus</h5>
                 <span class="input-group-text"><i class="bi bi-question-circle-fill"
                         data-help-section-id="modalHelp"></i></span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -270,13 +273,13 @@
 </div>
 
 
-
+<!-- Modal für Apparatus -->
 <div class="modal fade <?php if (isset($_SESSION['AMOGPApparatusModal']) && $_SESSION['AMOGPApparatusModal'] == 'true') { echo 'show'; } ?>"
     id="AMOGPApparatusModal" tabindex="-1" aria-labelledby="AMOGPApparatusModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="AMOGPApparatusModalLabel">Apparatus Thesaurus</h5>
+                <h5 class="modal-title" id="AMOGPApparatusModalLabel">Apparatus thesaurus</h5>
                 <span class="input-group-text"><i class="bi bi-question-circle-fill"
                         data-help-section-id="modalHelp"></i></span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -293,14 +296,14 @@
 </div>
 
 
-
+<!-- Modal für Ancillary Equipment -->
 <div class="modal fade <?php if (isset($_SESSION['AMOGPAncillaryEquipmentModal']) && $_SESSION['AMOGPAncillaryEquipmentModal'] == 'true') { echo 'show'; } ?>"
     id="AMOGPAncillaryEquipmentModal" tabindex="-1" aria-labelledby="AMOGPAncillaryEquipmentModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="AMOGPAncillaryEquipmentModalLabel">Ancillary Equipment Thesaurus</h5>
+                <h5 class="modal-title" id="AMOGPAncillaryEquipmentModalLabel">Ancillary equipment thesaurus</h5>
                 <span class="input-group-text"><i class="bi bi-question-circle-fill"
                         data-help-section-id="modalHelp"></i></span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -316,13 +319,13 @@
     </div>
 </div>
 
-
+<!-- Modal für measured property -->
 <div class="modal fade <?php if (isset($_SESSION['AMOGPMeasuredPropertyModal']) && $_SESSION['AMOGPMeasuredPropertyModal'] == 'true') { echo 'show'; } ?>"
     id="AMOGPMeasuredPropertyModal" tabindex="-1" aria-labelledby="AMOGPMeasuredPropertyModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="AMOGPMeasuredPropertyModalLabel">Measured Property</h5>
+                <h5 class="modal-title" id="AMOGPMeasuredPropertyModalLabel">Measured property thesaurus</h5>
                 <span class="input-group-text"><i class="bi bi-question-circle-fill"
                         data-help-section-id="modalHelp"></i></span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -339,13 +342,13 @@
 </div>
 
 
-
+<!-- Modal für Software -->
 <div class="modal fade <?php if (isset($_SESSION['AMOGPSoftwareModal']) && $_SESSION['AMOGPSoftwareModal'] == 'true') { echo 'show'; } ?>"
     id="AMOGPSoftwareModal" tabindex="-1" aria-labelledby="AMOGPSoftwareModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="AMOGPSoftwareModalLabel">Software Thesaurus</h5>
+                <h5 class="modal-title" id="AMOGPSoftwareModalLabel">Software thesaurus</h5>
                 <span class="input-group-text"><i class="bi bi-question-circle-fill"
                         data-help-section-id="modalHelp"></i></span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
