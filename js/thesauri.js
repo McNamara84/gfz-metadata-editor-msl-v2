@@ -54,7 +54,6 @@ $(document).ready(function () {
             jsonFile: 'json/porefluids.json',
             jsTreeId: '#jstreeGENPoreFluide',
             searchInputId: '#searchInputGENPoreFluide'
-
         },
         {
             inputId: '#inputGENGeologicalSetting',
@@ -62,6 +61,64 @@ $(document).ready(function () {
             jsTreeId: '#jstreeGENGeologicalSetting',
             searchInputId: '#searchInputGENGeologicalSetting'
         },
+        // Geochemistry - Wurzelelemente erforderlich
+        {
+            inputId: '#inputGEOCHAnalysisTechnique',
+            jsonFile: 'json/geochemistry.json',
+            jsTreeId: '#jstreeGEOCHAnalysisTechnique',
+            searchInputId: '#searchInputGEOCHAnalysisTechnique',
+            rootNodeId: 'https://epos-msl.uu.nl/voc/geochemistry/1.3/analysis'
+        },
+        {
+            inputId: '#inputGEOCHMeasuredProperty',
+            jsonFile: 'json/geochemistry.json',
+            jsTreeId: '#jstreeGEOCHMeasuredProperty',
+            searchInputId: '#searchInputGEOCHMeasuredProperty',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/geochemistry\/1.3\/measured_property'
+        },
+        // Analogue Modelling Of Geological Processes
+        {
+            inputId: '#inputAMOGPModeledStructure',
+            jsonFile: 'json/porefluids.json',
+            jsTreeId: '#jstreeAMOGPModeledStructure',
+            searchInputId: '#searchInputAMOGPModeledStructure',
+
+        },
+        {
+            inputId: '#inputAMOGPModeledGeomorphologicalFeature',
+            jsonFile: 'json/geochemistry.json',
+            jsTreeId: '#jstreeAMOGPModeledGeomorphologicalFeature',
+            searchInputId: '#searchInputAMOGPModeledGeomorphologicalFeature',
+
+        },
+        {
+            inputId: '#inputAMOGPApparatus',
+            jsonFile: 'json/geochemistry.json',
+            jsTreeId: '#jstreeAMOGPApparatus',
+            searchInputId: '#searchInputAMOGPApparatus',
+
+        },
+        {
+            inputId: '#inputAMOGPAncillaryEquipment',
+            jsonFile: 'json/geochemistry.json',
+            jsTreeId: '#jstreeAMOGPAncillaryEquipment',
+            searchInputId: '#searchInputAMOGPAncillaryEquipment',
+
+        },
+        {
+            inputId: '#inputAMOGPMeasuredProperty',
+            jsonFile: 'json/geochemistry.json',
+            jsTreeId: '#jstreeAMOGPMeasuredProperty',
+            searchInputId: '#searchInputAMOGPMeasuredProperty',
+
+        },
+        {
+            inputId: '#inputAMOGPSoftware',
+            jsonFile: 'json/geochemistry.json',
+            jsTreeId: '#jstreeAMOGPSoftware',
+            searchInputId: '#searchInputAMOGPSoftware',
+
+        }
     ];
 
     function initializeKeywordInput(config) {
@@ -69,25 +126,43 @@ $(document).ready(function () {
         var suggestedKeywords = [];
 
         function loadKeywords(data) {
-            //Keywords, die "NOT APLLICABLE" heißen herausfiltern
-            function filterNotApplicable(nodes) {
-                return nodes.filter(function (node) {
-                    return node.text !== "NOT APPLICABLE";
-                });
+            var filteredData = data;
+
+            // Wenn eine rootNodeId angegeben ist, wende die spezielle Filterung an
+            if (config.rootNodeId) {
+                function findNodeById(nodes, id) {
+                    for (var i = 0; i < nodes.length; i++) {
+                        if (nodes[i].id === id) {
+                            return nodes[i];
+                        }
+                        if (nodes[i].children) {
+                            var foundNode = findNodeById(nodes[i].children, id);
+                            if (foundNode) {
+                                return foundNode;
+                            }
+                        }
+                    }
+                    return null;
+                }
+
+                // Den gewünschten Knoten finden und nur seine Kinder verwenden
+                var selectedNode = findNodeById(data, config.rootNodeId);
+                if (selectedNode) {
+                    filteredData = selectedNode.children || [];
+                } else {
+                    console.error(`Root node with ID ${config.rootNodeId} not found in ${config.jsonFile}`);
+                    return;
+                }
             }
 
-            var filteredData = filterNotApplicable(data);
-            //Knoten vorbereiten und mit Daten anreichern
             function processNodes(nodes) {
                 return nodes.map(function (node) {
                     if (node.children) {
                         node.children = processNodes(node.children);
                     }
-                    //macht das Anzeigen der Keyword-Description bei drüberhovern möglich:
                     node.a_attr = {
                         title: node.description || node.text
                     };
-                    //speichert die Werte für scheme, schemeURI, language
                     node.original = {
                         scheme: node.scheme || "",
                         schemeURI: node.schemeURI || "",
@@ -96,12 +171,11 @@ $(document).ready(function () {
                     return node;
                 });
             }
+
             var processedData = processNodes(filteredData);
 
-            //Vorschlagsliste bauen, die im dropdown angezeigt wird
             function buildWhitelist(data, parentPath = []) {
                 data.forEach(function (item) {
-                    //Pfade anzeigen
                     var textToAdd = parentPath.concat(item.text).join(' > ');
                     suggestedKeywords.push({
                         value: textToAdd,
@@ -116,9 +190,9 @@ $(document).ready(function () {
                     }
                 });
             }
-            buildWhitelist(data);
 
-            // Tagify initialisieren
+            buildWhitelist(filteredData);
+
             var tagify = new Tagify(input, {
                 whitelist: suggestedKeywords,
                 enforceWhitelist: true,
@@ -130,7 +204,6 @@ $(document).ready(function () {
                 editTags: false,
             });
 
-            // jsTree initialisieren
             $(config.jsTreeId).jstree({
                 core: {
                     data: processedData,
@@ -142,7 +215,6 @@ $(document).ready(function () {
                     keep_selected_style: true
                 },
                 plugins: ['search', 'checkbox'],
-                //bei Suche werden auch die Descriptions (node.a_attr.title) durchsucht
                 search: {
                     show_only_matches: true,
                     search_callback: function (str, node) {
@@ -152,60 +224,32 @@ $(document).ready(function () {
                 }
             });
 
-            // Suche wird ausgeführt bei Eingabe ins Suchfeld
             $(config.searchInputId).on("input", function () {
                 $(config.jsTreeId).jstree(true).search($(this).val());
             });
 
-            //Wenn ein Knoten in jsTree ausgewählt wird, füge Tag hinzu
             $(config.jsTreeId).on("select_node.jstree", function (e, data) {
                 var fullPath = data.instance.get_path(data.node, " > ");
-                var existingTags = tagify.value.map((tag) => tag.value);
+                var existingTags = tagify.value.map((tag) => tag.id);
 
-                if (!existingTags.includes(fullPath)) {
-                    tagify.addTags([fullPath]);
+                if (!existingTags.includes(data.node.id)) {
+                    tagify.addTags([{
+                        value: fullPath,
+                        id: data.node.id,
+                        scheme: data.node.original.scheme,
+                        schemeURI: data.node.original.schemeURI,
+                        language: data.node.original.language
+                    }]);
                 }
             });
-
-            // //Wenn ein Knoten in jsTree abgewählt wird, entferne Tag
-            $(config.jsTreeId).on("deselect_node.jstree", function (e, data) {
-                var fullPath = data.instance.get_path(data.node, " > ");
-                tagify.removeTag(fullPath);
-            });
-
-            // Wenn ein Tag hinzugefügt wird, wähle entsprechenden Knoten in jsTree aus
-            tagify.on('add', function (e) {
-                var tagText = e.detail.data.value;
-                var jsTree = $(config.jsTreeId).jstree(true);
-                var node = findNodeByPath(jsTree, tagText);
-                if (node) {
-                    jsTree.select_node(node.id);
-                }
-            });
-
-            //wenn Tag entfernt wird, wird auch der Knoten abgewählt
-            tagify.on('remove', function (e) {
-                var tagText = e.detail.data.value;
-                var jsTree = $(config.jsTreeId).jstree(true);
-                var node = findNodeByPath(jsTree, tagText);
-                if (node) {
-                    jsTree.deselect_node(node.id);
-                }
-            });
-
-            function findNodeByPath(jsTree, path) {
-                return jsTree.get_json("#", { flat: true }).find(function (n) {
-                    return jsTree.get_path(n, " > ") === path;
-                });
-            }
         }
 
-        $.getJSON(config.jsonFile)
-            .done(loadKeywords)
-            .fail(function () {
-                alert(`${config.jsonFile} does not exist! Please run the appropriate API and consider setting up a CronJob for it.`);
-            });
+        $.getJSON(config.jsonFile, function (data) {
+            loadKeywords(data);
+        });
     }
 
-    keywordConfigurations.forEach(initializeKeywordInput);
+    keywordConfigurations.forEach(function (config) {
+        initializeKeywordInput(config);
+    });
 });
