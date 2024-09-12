@@ -65,44 +65,50 @@ $(document).ready(function () {
         // Analogue Modelling Of Geological Processes
         {
             inputId: '#inputAMOGPModeledStructure',
-            jsonFile: 'json/porefluids.json',
+            jsonFile: 'json/analogue.json',
             jsTreeId: '#jstreeAMOGPModeledStructure',
             searchInputId: '#searchInputAMOGPModeledStructure',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/modeled_structure'
 
         },
         {
             inputId: '#inputAMOGPModeledGeomorphologicalFeature',
-            jsonFile: 'json/geochemistry.json',
+            jsonFile: 'json/analogue.json',
             jsTreeId: '#jstreeAMOGPModeledGeomorphologicalFeature',
             searchInputId: '#searchInputAMOGPModeledGeomorphologicalFeature',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/modeled_geomorphological_feature'
 
         },
         {
             inputId: '#inputAMOGPApparatus',
-            jsonFile: 'json/geochemistry.json',
+            jsonFile: 'json/analogue.json',
             jsTreeId: '#jstreeAMOGPApparatus',
             searchInputId: '#searchInputAMOGPApparatus',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/apparatus'
 
         },
         {
             inputId: '#inputAMOGPAncillaryEquipment',
-            jsonFile: 'json/geochemistry.json',
+            jsonFile: 'json/analogue.json',
             jsTreeId: '#jstreeAMOGPAncillaryEquipment',
             searchInputId: '#searchInputAMOGPAncillaryEquipment',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/ancillary_equipment'
 
         },
         {
             inputId: '#inputAMOGPMeasuredProperty',
-            jsonFile: 'json/geochemistry.json',
+            jsonFile: 'json/analogue.json',
             jsTreeId: '#jstreeAMOGPMeasuredProperty',
             searchInputId: '#searchInputAMOGPMeasuredProperty',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/measured_property'
 
         },
         {
             inputId: '#inputAMOGPSoftware',
-            jsonFile: 'json/geochemistry.json',
+            jsonFile: 'json/analogue.json',
             jsTreeId: '#jstreeAMOGPSoftware',
             searchInputId: '#searchInputAMOGPSoftware',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/software'
 
         },
         // Geochemistry
