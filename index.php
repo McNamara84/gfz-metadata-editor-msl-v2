@@ -60,6 +60,7 @@ include ("formgroups/general.html");
 include ("formgroups/analogueModellingOfGeologicalProcesses.html");
 include ("formgroups/geochemistry.html");
 include ("formgroups/MicrosocopyAndTomography.html");
+include ("formgroups/paleomagnetism.html");
 include ("formgroups/thesaurusKeywords.html");
 include ("formgroups/freeKeywords.html");
 include ("formgroups/dates.html");

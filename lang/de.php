@@ -101,6 +101,13 @@ $translations = [
     'MATomography_A_F' => 'Analysiertes Merkmal',
     'MATomography_I_P' => 'Abgeleiteter Parameter',
 
+    // Form Group Paleomagnetism
+    'PALTIS' => 'Paläomagnetismus',
+    'PALTIS_A' => 'Apparat',
+    'PALTIS_E_C' => 'Kontrolle der Umgebung',
+    'PALTIS_M_P' => 'Gemessene Eigenschaft',
+    'PALTIS_I_B' => 'Abgeleitetes Verhalten',
+
     // Form Group Dates
     'dates' => 'Datumsangaben',
     'dateCreated' => 'Entstehungsdatum',

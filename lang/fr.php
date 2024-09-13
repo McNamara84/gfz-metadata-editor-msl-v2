@@ -107,6 +107,12 @@ $translations = [
     'MATomography_A_F' => 'Analyzed feature',
     'MATomography_I_P' => 'Inferred parameter',
 
+    // Form Group Paleomagnetism
+    'PALTIS' => 'Paleomagnetism',
+    'PALTIS_A' => 'Apparatus',
+    'PALTIS_E_C' => 'Environment control',
+    'PALTIS_M_P' => 'Measured property',
+    'PALTIS_I_B' => 'Inferred behavior',
 
     // Form Group Dates
     'dates' => 'Date',

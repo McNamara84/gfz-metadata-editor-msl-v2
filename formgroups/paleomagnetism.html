@@ -1,0 +1,152 @@
+<div class="card mb-2">
+    <div class="card-header">
+        <b>
+            <?php echo $translations['PALTIS']; ?>
+        </b>
+    </div>
+
+    <div id="MATomographyGroup">
+        <div class="accordion p-2" id="accordionPALTIS">
+
+            <div class="accordion-item">
+                <!--Accordion Header Apparatus-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapsePALTISApparatus" aria-expanded="false"
+                        aria-controls="collapsePALTISApparatus">
+                        <?php echo $translations['PALTIS_A']; ?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Apparatus-->
+                <div id="collapsePALTISApparatus" class="accordion-collapse collapse show"
+                    data-bs-parent="#accordionPALTIS">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputPALTISApparatus" name="PALTISApparatus" />
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="PALTISApparatusHelp"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#PALTISApparatusModal" id="PALTISApparatusThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <!--Accordion Header Environment control-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapsePALTISEnvironmentControl" aria-expanded="false"
+                        aria-controls="collapsePALTISEnvironmentControl">
+                        <?php echo $translations['PALTIS_E_C']; ?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Environment control-->
+                <div id="collapsePALTISEnvironmentControl" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionPALTIS">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputPALTISEnvironmentControl"
+                                        name="PALTISEnvironmentControl" />
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="PALTISEnvironmentControlHelp"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#PALTISEnvironmentControlModal"
+                                    id="PALTISEnvironmentControlThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <!--Accordion Header Measured property-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapsePALTISMeasuredProperty" aria-expanded="false"
+                        aria-controls="collapsePALTISMeasuredProperty">
+                        <?php echo $translations['PALTIS_M_P']; ?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Measured property-->
+                <div id="collapsePALTISMeasuredProperty" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionPALTIS">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputPALTISMeasuredProperty" name="PALTISMeasuredProperty" />
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="PALTISMeasuredPropertyHelp"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#PALTISMeasuredPropertyModal"
+                                    id="PALTISMeasuredPropertyThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <!--Accordion Header Inferred behavior-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapsePALTISInferredBehavior" aria-expanded="false"
+                        aria-controls="collapsePALTISInferredBehavior">
+                        <?php echo $translations['PALTIS_I_B']; ?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Inferred behavior-->
+                <div id="collapsePALTISInferredBehavior" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionPALTIS">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputPALTISInferredBehavior" name="PALTISInferredBehavior" />
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="PALTISInferredBehaviorHelp"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#PALTISInferredBehaviorModal"
+                                    id="PALTISInferredBehaviorThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
