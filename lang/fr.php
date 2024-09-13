@@ -99,6 +99,14 @@ $translations = [
     'Geochemistry_A_T' => 'Analysis technique',
     'Geochemistry_M_P' => 'Measured property',
 
+    // Form Group Microsocopy And Tomography
+    'MATomography' => 'Microsocopy And Tomography',
+    'MATomography_A' => 'Apparatus',
+    'MATomography_A_E' => 'Ancillary equipment',
+    'MATomography_A_T' => 'Analysis technique',
+    'MATomography_A_F' => 'Analyzed feature',
+    'MATomography_I_P' => 'Inferred parameter',
+
 
     // Form Group Dates
     'dates' => 'Date',

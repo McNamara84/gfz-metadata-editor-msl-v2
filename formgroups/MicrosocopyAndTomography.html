@@ -1,0 +1,307 @@
+<div class="card mb-2">
+    <div class="card-header">
+        <b>
+            <?php echo $translations['MATomography']; ?>
+        </b>
+    </div>
+
+    <div id="MATomographyGroup">
+        <div class="accordion p-2" id="accordionMATomography">
+
+            <div class="accordion-item">
+                <!--Accordion Header Apparatus-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseMATomographyApparatus" aria-expanded="false"
+                        aria-controls="collapseMATomographyApparatus">
+                        <?php echo $translations['MATomography_A']; ?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Apparatus-->
+                <div id="collapseMATomographyApparatus" class="accordion-collapse collapse show"
+                    data-bs-parent="#accordionMATomography">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputMATomographyApparatus" name="MATomographyApparatus" />
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="MATomographyApparatusHelp"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#MATomographyApparatusModal" id="MATomographyApparatusThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <!--Accordion Header Ancillary equipment-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseMATomographyAncillaryEquipment" aria-expanded="false"
+                        aria-controls="collapseMATomographyAncillaryEquipment">
+                        <?php echo $translations['MATomography_A_E']; ?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Ancillary equipment-->
+                <div id="collapseMATomographyAncillaryEquipment" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionMATomography">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputMATomographyAncillaryEquipment"
+                                        name="MATomographyAncillaryEquipment" />
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="MATomographyAncillaryEquipmentHelp"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#MATomographyAncillaryEquipmentModal"
+                                    id="MATomographyAncillaryEquipmentThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <!--Accordion Header Analysis technique-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseMATomographyAnalysisTechnique" aria-expanded="false"
+                        aria-controls="collapseMATomographyAnalysisTechnique">
+                        <?php echo $translations['MATomography_A_T']; ?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Analysis technique-->
+                <div id="collapseMATomographyAnalysisTechnique" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionMATomography">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputMATomographyAnalysisTechnique" name="MATomographyAnalysisTechnique" />
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="MATomographyAnalysisTechniqueHelp"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#MATomographyAnalysisTechniqueModal"
+                                    id="MATomographyAnalysisTechniqueThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <!--Accordion Header Analyzed feature-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseMATomographyAnalyzedFeature" aria-expanded="false"
+                        aria-controls="collapseMATomographyAnalyzedFeature">
+                        <?php echo $translations['MATomography_A_F']; ?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Analyzed feature-->
+                <div id="collapseMATomographyAnalyzedFeature" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionMATomography">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputMATomographyAnalyzedFeature" name="MATomographyAnalyzedFeature" />
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="MATomographyAnalyzedFeatureHelp"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#MATomographyAnalyzedFeatureModal"
+                                    id="MATomographyAnalyzedFeatureThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <!--Accordion Header Inferred parameter-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseMATomographyInferredParameter" aria-expanded="false"
+                        aria-controls="collapseMATomographyInferredParameter">
+                        <?php echo $translations['MATomography_I_P']; ?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Inferred parameter-->
+                <div id="collapseMATomographyInferredParameter" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionMATomography">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputMATomographyInferredParameter"
+                                        name="AMOGPMATomographyInferredParameter" />
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="AMOGPMATomographyInferredParameterHelp"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#MATomographyInferredParameterModal"
+                                    id="MATomographyInferredParameterThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!------------------------------------- MODALS ---------------------------------------------------------------------->
+
+<!-- Modal für Apparatus -->
+<div class="modal fade <?php if (isset($_SESSION['MATomographyApparatusModal']) && $_SESSION['MATomographyApparatusModal'] == 'true') { echo 'show'; } ?>"
+    id="MATomographyApparatusModal" tabindex="-1" aria-labelledby="MATomographyApparatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="MATomographyApparatusModalLabel">Apparatus thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="MATomographyApparatusModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputMATomographyApparatus"
+                        placeholder="Search for Keyword">
+                    <div id="jstreeMATomographyApparatus"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal für Ancillary equipment -->
+<div class="modal fade <?php if (isset($_SESSION['MATomographyAncillaryEquipmentModal']) && $_SESSION['MATomographyAncillaryEquipmentModal'] == 'true') { echo 'show'; } ?>"
+    id="MATomographyAncillaryEquipmentModal" tabindex="-1"
+    aria-labelledby="MATomographyAncillaryEquipmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="MATomographyAncillaryEquipmentModalLabel">Ancillary equipment thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="MATomographyAncillaryEquipmentModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputMATomographyAncillaryEquipment"
+                        placeholder="Search for Keyword">
+                    <div id="jstreeMATomographyAncillaryEquipment"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal für Analysis technique -->
+<div class="modal fade <?php if (isset($_SESSION['MATomographyAnalysisTechniqueModal']) && $_SESSION['MATomographyAnalysisTechniqueModal'] == 'true') { echo 'show'; } ?>"
+    id="MATomographyAnalysisTechniqueModal" tabindex="-1" aria-labelledby="MATomographyAnalysisTechniqueModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="MATomographyAnalysisTechniqueModalLabel">Analysis technique thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="MATomographyAnalysisTechniqueModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputMATomographyAnalysisTechnique"
+                        placeholder="Search for Keyword">
+                    <div id="jstreeMATomographyAnalysisTechnique"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal für Analyzed feature -->
+<div class="modal fade <?php if (isset($_SESSION['MATomographyAnalyzedFeatureModal']) && $_SESSION['MATomographyAnalyzedFeatureModal'] == 'true') { echo 'show'; } ?>"
+    id="MATomographyAnalyzedFeatureModal" tabindex="-1" aria-labelledby="MATomographyAnalyzedFeatureModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="MATomographyAnalyzedFeatureModalLabel">Analyzed feature thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="MATomographyAnalyzedFeatureModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputMATomographyAnalyzedFeature"
+                        placeholder="Search for Keyword">
+                    <div id="jstreeMATomographyAnalyzedFeature"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal für Inferred parameter -->
+<div class="modal fade <?php if (isset($_SESSION['MATomographyInferredParameterModal']) && $_SESSION['MATomographyInferredParameterModal'] == 'true') { echo 'show'; } ?>"
+    id="MATomographyInferredParameterModal" tabindex="-1" aria-labelledby="MATomographyInferredParameterModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="MATomographyInferredParameterModalLabel">Inferred parameter thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="MATomographyInferredParameterModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputMATomographyInferredParameter"
+                        placeholder="Search for Keyword">
+                    <div id="jstreeMATomographyInferredParameter"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

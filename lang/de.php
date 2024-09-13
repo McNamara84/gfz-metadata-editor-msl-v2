@@ -93,6 +93,14 @@ $translations = [
     'Geochemistry_A_T' => 'Analyseverfahren',
     'Geochemistry_M_P' => 'Gemessene Eigenschaft',
 
+    // Form Group Microsocopy And Tomography
+    'MATomography' => 'Mikrokopie und Tomographie',
+    'MATomography_A' => 'Apparat',
+    'MATomography_A_E' => 'Ergänzende Ausrüstung',
+    'MATomography_A_T' => 'Analyse-Technik',
+    'MATomography_A_F' => 'Analysiertes Merkmal',
+    'MATomography_I_P' => 'Abgeleiteter Parameter',
+
     // Form Group Dates
     'dates' => 'Datumsangaben',
     'dateCreated' => 'Entstehungsdatum',

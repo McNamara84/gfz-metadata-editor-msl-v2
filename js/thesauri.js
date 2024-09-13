@@ -69,7 +69,6 @@ $(document).ready(function () {
             jsTreeId: '#jstreeAMOGPModeledStructure',
             searchInputId: '#searchInputAMOGPModeledStructure',
             rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/modeled_structure'
-
         },
         {
             inputId: '#inputAMOGPModeledGeomorphologicalFeature',
@@ -77,7 +76,6 @@ $(document).ready(function () {
             jsTreeId: '#jstreeAMOGPModeledGeomorphologicalFeature',
             searchInputId: '#searchInputAMOGPModeledGeomorphologicalFeature',
             rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/modeled_geomorphological_feature'
-
         },
         {
             inputId: '#inputAMOGPApparatus',
@@ -85,7 +83,6 @@ $(document).ready(function () {
             jsTreeId: '#jstreeAMOGPApparatus',
             searchInputId: '#searchInputAMOGPApparatus',
             rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/apparatus'
-
         },
         {
             inputId: '#inputAMOGPAncillaryEquipment',
@@ -93,7 +90,6 @@ $(document).ready(function () {
             jsTreeId: '#jstreeAMOGPAncillaryEquipment',
             searchInputId: '#searchInputAMOGPAncillaryEquipment',
             rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/ancillary_equipment'
-
         },
         {
             inputId: '#inputAMOGPMeasuredProperty',
@@ -101,7 +97,6 @@ $(document).ready(function () {
             jsTreeId: '#jstreeAMOGPMeasuredProperty',
             searchInputId: '#searchInputAMOGPMeasuredProperty',
             rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/measured_property'
-
         },
         {
             inputId: '#inputAMOGPSoftware',
@@ -109,7 +104,6 @@ $(document).ready(function () {
             jsTreeId: '#jstreeAMOGPSoftware',
             searchInputId: '#searchInputAMOGPSoftware',
             rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/software'
-
         },
         // Geochemistry
         {
@@ -125,6 +119,42 @@ $(document).ready(function () {
             jsTreeId: '#jstreeGEOCHMeasuredProperty',
             searchInputId: '#searchInputGEOCHMeasuredProperty',
             rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/geochemistry\/1.3\/measured_property'
+        },
+        // Microsocopy And Tomography
+        {
+            inputId: '#inputMATomographyApparatus',
+            jsonFile: 'json/microscopy.json',
+            jsTreeId: '#jstreeMATomographyApparatus',
+            searchInputId: '#searchInputMATomographyApparatus',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/microscopy\/1.3\/apparatus'
+        },
+        {
+            inputId: '#inputMATomographyAncillaryEquipment',
+            jsonFile: 'json/microscopy.json',
+            jsTreeId: '#jstreeMATomographyAncillaryEquipment',
+            searchInputId: '#searchInputMATomographyAncillaryEquipment',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/microscopy\/1.3\/ancillary_equipment'
+        },
+        {
+            inputId: '#inputMATomographyAnalysisTechnique',
+            jsonFile: 'json/microscopy.json',
+            jsTreeId: '#jstreeMATomographyAnalysisTechnique',
+            searchInputId: '#searchInputMATomographyAnalysisTechnique',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/microscopy\/1.3\/technique'
+        },
+        {
+            inputId: '#inputMATomographyAnalyzedFeature',
+            jsonFile: 'json/microscopy.json',
+            jsTreeId: '#jstreeMATomographyAnalyzedFeature',
+            searchInputId: '#searchInputMATomographyAnalyzedFeature',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/microscopy\/1.3\/analyzed_feature'
+        },
+        {
+            inputId: '#inputMATomographyInferredParameter',
+            jsonFile: 'json/microscopy.json',
+            jsTreeId: '#jstreeMATomographyInferredParameter',
+            searchInputId: '#searchInputMATomographyInferredParameter',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/microscopy\/1.3\/inferred_parameter'
         },
     ];
 
