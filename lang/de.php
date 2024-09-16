@@ -108,6 +108,13 @@ $translations = [
     'PALTIS_M_P' => 'Gemessene Eigenschaft',
     'PALTIS_I_B' => 'Abgeleitetes Verhalten',
 
+    // Form Group Rock and melt physics
+    'RAMP' => 'Gesteins- und Schmelzphysik',
+    'RAMP_A' => 'Apparat',
+    'RAMP_A_E' => 'Ergänzende Ausrüstung',
+    'RAMP_M_P' => 'Gemessene Eigenschaft',
+    'RAMP_I_D_B' => 'Abgeleitetes Verformungsverhalten',
+
     // Form Group Dates
     'dates' => 'Datumsangaben',
     'dateCreated' => 'Entstehungsdatum',

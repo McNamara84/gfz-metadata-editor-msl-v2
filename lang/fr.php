@@ -114,6 +114,13 @@ $translations = [
     'PALTIS_M_P' => 'Measured property',
     'PALTIS_I_B' => 'Inferred behavior',
 
+    // Form Group Rock and melt physics
+    'RAMP' => 'Rock and melt physics',
+    'RAMP_A' => 'Apparatus',
+    'RAMP_A_E' => 'Ancillary equipment',
+    'RAMP_M_P' => 'Measured property',
+    'RAMP_I_D_B' => 'Inferred deformation behavior',
+
     // Form Group Dates
     'dates' => 'Date',
     'dateCreated' => 'Date de création.',

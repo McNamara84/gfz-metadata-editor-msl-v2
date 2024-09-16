@@ -185,6 +185,35 @@ $(document).ready(function () {
             searchInputId: '#searchInputPALTISInferredBehavior',
             rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior'
         },
+        // Rock and melt physics
+        {
+            inputId: '#inputRAMPApparatus',
+            jsonFile: 'json/rockphysics.json',
+            jsTreeId: '#jstreeRAMPApparatus',
+            searchInputId: '#searchInputRAMPApparatus',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/rockphysics\/1.3\/apparatus'
+        },
+        {
+            inputId: '#inputRAMPAncillaryEquipment',
+            jsonFile: 'json/rockphysics.json',
+            jsTreeId: '#jstreeRAMPAncillaryEquipment',
+            searchInputId: '#searchInputRAMPAncillaryEquipment',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/rockphysics\/1.3\/ancillary_equipment'
+        },
+        {
+            inputId: '#inputRAMPMeasuredProperty',
+            jsonFile: 'json/rockphysics.json',
+            jsTreeId: '#jstreeRAMPMeasuredProperty',
+            searchInputId: '#searchInputRAMPMeasuredProperty',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/rockphysics\/1.3\/measured_property'
+        },
+        {
+            inputId: '#inputRAMPInferredDeformationBehavior',
+            jsonFile: 'json/rockphysics.json',
+            jsTreeId: '#jstreeRAMPInferredDeformationBehavior',
+            searchInputId: '#searchInputRAMPInferredDeformationBehavior',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/rockphysics\/1.3\/inferred_deformation_behavior'
+        },
     ];
 
     // Funktion zum Initialisieren der Keyword-Eingabefelder
