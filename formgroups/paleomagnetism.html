@@ -150,3 +150,100 @@
         </div>
     </div>
 </div>
+
+
+
+
+<!------------------------------------- MODALS ---------------------------------------------------------------------->
+
+<!-- Modal für Apparatus -->
+<div class="modal fade <?php if (isset($_SESSION['PALTISApparatusModal']) && $_SESSION['PALTISApparatusModal'] == 'true') { echo 'show'; } ?>"
+    id="PALTISApparatusModal" tabindex="-1" aria-labelledby="PALTISApparatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="PALTISApparatusModalLabel">Apparatus thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="PALTISApparatusModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputPALTISApparatus"
+                        placeholder="Search for Keyword">
+                    <div id="jstreePALTISApparatus"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal für Environment control -->
+<div class="modal fade <?php if (isset($_SESSION['PALTISEnvironmentControlModal']) && $_SESSION['PALTISEnvironmentControlModal'] == 'true') { echo 'show'; } ?>"
+    id="PALTISEnvironmentControlModal" tabindex="-1"
+    aria-labelledby="PALTISEnvironmentControlModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="PALTISEnvironmentControlModalLabel">Environment control thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="PALTISEnvironmentControlModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputPALTISEnvironmentControl"
+                        placeholder="Search for Keyword">
+                    <div id="jstreePALTISEnvironmentControl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal für Measured property -->
+<div class="modal fade <?php if (isset($_SESSION['PALTISMeasuredPropertyModal']) && $_SESSION['PALTISMeasuredPropertyModal'] == 'true') { echo 'show'; } ?>"
+    id="PALTISMeasuredPropertyModal" tabindex="-1" aria-labelledby="PALTISMeasuredPropertyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="PALTISMeasuredPropertyModalLabel">Measured property thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="PALTISMeasuredPropertyModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputPALTISMeasuredProperty"
+                        placeholder="Search for Keyword">
+                    <div id="jstreePALTISMeasuredProperty"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal für Inferred behavior -->
+<div class="modal fade <?php if (isset($_SESSION['PALTISInferredBehaviorModal']) && $_SESSION['PALTISInferredBehaviorModal'] == 'true') { echo 'show'; } ?>"
+    id="PALTISInferredBehaviorModal" tabindex="-1" aria-labelledby="PALTISInferredBehaviorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="PALTISInferredBehaviorModalLabel">Inferred behavior thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="PALTISInferredBehaviorModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputPALTISInferredBehavior"
+                        placeholder="Search for Keyword">
+                    <div id="jstreePALTISInferredBehavior"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

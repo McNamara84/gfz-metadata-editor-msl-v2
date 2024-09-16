@@ -156,6 +156,35 @@ $(document).ready(function () {
             searchInputId: '#searchInputMATomographyInferredParameter',
             rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/microscopy\/1.3\/inferred_parameter'
         },
+        // Paleomagnetism
+        {
+            inputId: '#inputPALTISApparatus',
+            jsonFile: 'json/paleomagnetism.json',
+            jsTreeId: '#jstreePALTISApparatus',
+            searchInputId: '#searchInputPALTISApparatus',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus'
+        },
+        {
+            inputId: '#inputPALTISEnvironmentControl',
+            jsonFile: 'json/paleomagnetism.json',
+            jsTreeId: '#jstreePALTISEnvironmentControl',
+            searchInputId: '#searchInputPALTISEnvironmentControl',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control'
+        },
+        {
+            inputId: '#inputPALTISMeasuredProperty',
+            jsonFile: 'json/paleomagnetism.json',
+            jsTreeId: '#jstreePALTISMeasuredProperty',
+            searchInputId: '#searchInputPALTISMeasuredProperty',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property'
+        },
+        {
+            inputId: '#inputPALTISInferredBehavior',
+            jsonFile: 'json/paleomagnetism.json',
+            jsTreeId: '#jstreePALTISInferredBehavior',
+            searchInputId: '#searchInputPALTISInferredBehavior',
+            rootNodeId: 'https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior'
+        },
     ];
 
     // Funktion zum Initialisieren der Keyword-Eingabefelder
