@@ -3,10 +3,12 @@
     Please fill out the form in english.
   </div>
   <!-- Feedback Button -->
+  <?php if ($showFeedbackLink): ?>
   <button type="button" class="btn btn-warning feedback-button blink" id="feedback-btn" data-bs-toggle="modal"
     data-bs-target="#feedbackModal">
     Feedback geben
   </button>
+  <?php endif; ?>
   <!-- Feedback Modal -->
   <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
     <div class="modal-dialog">
