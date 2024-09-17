@@ -40,7 +40,13 @@ In der header.html und footer.html werden folgende Abhängikeiten von Drittanbie
 
 In der Datei `settings.php` können, neben den Zugangsdaten für die Datenbank, auch andere Einstellungen angepasst werden:
 
-- `maxTitles:` Legt die max. Anzahl an Titeln fest, die Nutzende im Editor eingeben können, fest.
+- `$maxTitles:` Legt die max. Anzahl an Titeln fest, die Nutzende im Editor eingeben können, fest.
+- `$smtpHost:`URL zum SMTP-Mailserver
+- `$smtpPort:` Port des Mailservers
+- `$smtpUser:` Nutzername des Postfachs zum Versenden der Mails
+- `$smtpPassword:` Password des Postfach
+- `$smtpSender:` Name des Absenders in den Feedback Mails
+- `$feedbackAdress:` Adresse an die das Feedback gesendet wird
 
 # API-Dokumentation
 
