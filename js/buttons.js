@@ -1,7 +1,46 @@
 $(document).ready(function () {
+  // Feedback versenden
+  $("#sendFeedback").click(function (event) {
+    event.preventDefault();
+    var feedbackTextPositiv = $("#feedbackTextPositiv").val();
+    var feedbackTextNegativ = $("#feedbackTextNegativ").val();
+
+    // Button ändern, wenn Senden in Arbeit
+    $("#sendFeedback").prop("disabled", true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Senden...');
+
+    $.ajax({
+      url: "send_feedback_mail.php",
+      type: "POST",
+      data: {
+        feedbackTextPositiv: feedbackTextPositiv,
+        feedbackTextNegativ: feedbackTextNegativ,
+      },
+      success: function (response) {
+        // Erfolgsmeldung zeigen
+        $("#feedbackStatus").html('<div class="alert alert-success">Feedback erfolgreich gesendet!</div>');
+
+        // Modal schließen nach 2 Sekunden
+        setTimeout(function () {
+          $("#feedbackModal").modal("hide");
+
+          // Statusmeldung zurücksetzen
+          $("#feedbackModal").on("hidden.bs.modal", function () {
+            $("#feedbackForm")[0].reset();
+            $("#feedbackStatus").html("");
+            $("#sendFeedback").prop("disabled", false).html("Senden");
+          });
+        }, 2000);
+      },
+      error: function (xhr, status, error) {
+        // Fehlermeldung zeigen
+        $("#feedbackStatus").html('<div class="alert alert-danger">Fehler beim Senden des Feedbacks: ' + error + "</div>");
+        // Senden-Button aktivieren
+        $("#sendFeedback").prop("disabled", false).html("Senden");
+      },
+    });
+  });
   // Tooltip initialisieren
   $('[data-bs-toggle="tooltip"]').tooltip();
-
 
   //////////////////////////// ADD AND REMOVE BUTTONS ///////////////////////////////////////////////////////////////
   //Remove  Button anlegen, der in Formgroups Authors, Contact Persons, Contributors genutzt wird
@@ -16,8 +55,8 @@ $(document).ready(function () {
     if (titlesNumber <= maxTitles) {
       // Vorbereitung der neuen Titelzeile durch Klonen und Zurücksetzen der Eingabefelder
       var newTitleRow = $addTitleBtn.closest(".row").clone();
-// Hilfe-Buttons entfernen
-deleteHelpButtonFromClonedRows(newTitleRow);
+      // Hilfe-Buttons entfernen
+      deleteHelpButtonFromClonedRows(newTitleRow);
       $(newTitleRow).find("input").val("");
       $(newTitleRow).find("select").html(optionTitleTypeHTML).val("");
       if (titlesNumber < maxTitles) {
@@ -117,8 +156,8 @@ deleteHelpButtonFromClonedRows(newTitleRow);
     // Plus Button mit Minus Button ersetzen
     newCPRow.find(".addCP").replaceWith(removeButton);
 
-     // Hilfe-Buttons entfernen
-     deleteHelpButtonFromClonedRows(newCPRow);
+    // Hilfe-Buttons entfernen
+    deleteHelpButtonFromClonedRows(newCPRow);
 
     CPGroup.append(newCPRow);
 
@@ -143,9 +182,9 @@ deleteHelpButtonFromClonedRows(newTitleRow);
     newContributorRow.find("input").val("").removeClass("is-invalid is-valid");
     newContributorRow.find("select").val("").removeClass("is-invalid is-valid");
     newContributorRow.find(".invalid-feedback, .valid-feedback").hide();
-      // Hilfe-Buttons entfernen
-      deleteHelpButtonFromClonedRows(newContributorRow);
-    
+    // Hilfe-Buttons entfernen
+    deleteHelpButtonFromClonedRows(newContributorRow);
+
     // Überschrift ausblenden für geklonte Zeile(n)
     newContributorRow.find("label.row-label").hide();
 
@@ -188,8 +227,8 @@ deleteHelpButtonFromClonedRows(newTitleRow);
     newContributorRow.find("select").val("").removeClass("is-invalid is-valid");
     newContributorRow.find(".invalid-feedback, .valid-feedback").hide();
 
-     // Hilfe-Buttons entfernen
-     deleteHelpButtonFromClonedRows(newContributorRow);
+    // Hilfe-Buttons entfernen
+    deleteHelpButtonFromClonedRows(newContributorRow);
 
     // Überschrift ausblenden für geklonte Zeile(n)
     newContributorRow.find("label.row-label").hide();
@@ -229,8 +268,8 @@ deleteHelpButtonFromClonedRows(newTitleRow);
     newtscLine.find("input").val("").removeClass("is-invalid is-valid");
     newtscLine.find("select").val("").removeClass("is-invalid is-valid");
     newtscLine.find(".invalid-feedback, .valid-feedback").hide();
- // Hilfe-Buttons entfernen
- deleteHelpButtonFromClonedRows(newtscLine);
+    // Hilfe-Buttons entfernen
+    deleteHelpButtonFromClonedRows(newtscLine);
 
     // Inkrementieren des Attributs tsc-row-id um 1 in newtscLine
     var newtscLineId = parseInt(newtscLine.attr("tsc-row-id")) + 1;
@@ -251,7 +290,6 @@ deleteHelpButtonFromClonedRows(newTitleRow);
   });
 
   $("#addRelatedWork").click(function () {
-
     var relatedworkGroup = $("#relatedworkGroup");
     // Erste Zeile, die später als Vorlage dient
     var firstRelatedWorkLine = relatedworkGroup.children().first();
@@ -262,9 +300,9 @@ deleteHelpButtonFromClonedRows(newTitleRow);
     // Einträge in den input-Fields löschen und valid/invalid feedback entfernen:
     newRelatedWorkRow.find("input").val("").removeClass("is-invalid");
     newRelatedWorkRow.find(".invalid-feedback").hide();
-    
-          //Hilfebuttons in geklonter Zeile löschen
-  deleteHelpButtonFromClonedRows(newRelatedWorkRow);
+
+    //Hilfebuttons in geklonter Zeile löschen
+    deleteHelpButtonFromClonedRows(newRelatedWorkRow);
 
     // Plus Button mit Minus Button ersetzen
     newRelatedWorkRow.find("#addRelatedWork").replaceWith(removeButton);
@@ -272,16 +310,13 @@ deleteHelpButtonFromClonedRows(newTitleRow);
     // Neue RelatedWorkLine zum DOM hinzufügen
     relatedworkGroup.append(newRelatedWorkRow);
 
-
     // Event-Handler für RemoveButton
     newRelatedWorkRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
     });
-
   });
-  
-  
-    $("#addFundingReference").click(function () {
+
+  $("#addFundingReference").click(function () {
     var fundingreferenceGroup = $("#fundingreferenceGroup");
     // Erste Zeile, die später als Vorlage dient
     var firstFundingReferenceLine = fundingreferenceGroup.children().first();
@@ -303,10 +338,10 @@ deleteHelpButtonFromClonedRows(newTitleRow);
     newFundingReferenceRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
     });
-// Autocomplete für das neue Eingabefeld initialisieren
-setUpAutocompleteFunder(newFundingReferenceRow.find(".inputFunder"));
- 
-setUpAutocompleteFunder();
+    // Autocomplete für das neue Eingabefeld initialisieren
+    setUpAutocompleteFunder(newFundingReferenceRow.find(".inputFunder"));
+
+    setUpAutocompleteFunder();
   });
 
   $("#addLaboratory").click(function () {
@@ -332,25 +367,23 @@ setUpAutocompleteFunder();
 
     // Tagify auf neues LaboratoryAffiliations Feld anwenden
     //autocompleteAffiliations("inputLaboratoryAffiliation" + uniqueSuffix, "hiddenLaboratoryRorId" + uniqueSuffix);
-    
+
     // Event-Handler für RemoveButton
     newOriginatingLaboratoryRow.on("click", ".removeButton", function () {
-    $(this).closest(".row").remove();
-        
+      $(this).closest(".row").remove();
+    });
   });
 
-});
-
   /////////////////////////////// HELP BUTTONS /////////////////////////////////////////////////////////////////
-  
+
   function deleteHelpButtonFromClonedRows(row, roundCornersClass = "input-right-with-round-corners") {
     row.find("span.input-group-text:has(i.bi-question-circle-fill)").each(function () {
       $(this).remove();
     });
-  
+
     row.find(".input-with-help").removeClass("input-right-no-round-corners").addClass(roundCornersClass);
   }
-  
+
   let hoverCount = 0;
   let timer = null;
 

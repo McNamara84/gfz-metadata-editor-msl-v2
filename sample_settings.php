@@ -33,3 +33,11 @@ $apiKeyTimezone = 'xxxxxxxxxxxx';
 $maxTitles = 2;
 // Anzeige des Feedback-Links (true für Anzeige, false für keine Anzeige)
 $showFeedbackLink = true;
+// Einstellungen für Mailversand mit SMTP
+$smtpHost = 'xxxxxx';
+$smtpPort = 465;
+$smtpUser = 'xxxxxxxxxxx';
+$smtpPassword = 'xxxxxxxxxxxx';
+$smtpSender = 'xxxxxxxxxxxx';
+// Zieladresse für Feedback
+$feedbackAdress = 'xxxxxxxx@xxxxxxxx';
