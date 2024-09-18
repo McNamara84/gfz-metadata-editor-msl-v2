@@ -55,7 +55,7 @@ Diese Dokumentation beschreibt die verfügbaren API-Endpunkte für die GFZ Data 
 
 ## Allgemeine Informationen
 
-- Basis-URL: `https://your-domain.com/api.php`
+- Basis-URL: `https://mde2.cats4future.de/api.php`
 - Alle Anfragen sollten via HTTPS erfolgen
 - Antworten werden im JSON-Format zurückgegeben, sofern nicht anders angegeben
 
