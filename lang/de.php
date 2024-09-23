@@ -176,4 +176,11 @@ $translations = [
     'submit_tooltip' => 'Die eingegebenen Daten oder Inhalte übermitteln.',
     'helpButtonon' => 'An',
     'helpButtonoff' => 'Aus',
+
+    // Testing
+    'feedbackButton' => 'Feedback',
+    'feedbackLabel' => 'Feedback einreichen',
+    'feedbackQuestion1' => 'Was gefällt dir am neuen Metadateneditor?',
+    'feedbackQuestion2' => 'Was gefällt Dir am neuen Metadateneditor nicht so sehr?',
+    'feedbackSendButton' => 'Feedback übermitteln',
 ];

@@ -177,4 +177,10 @@ $translations = [
     'helpButtonon' => 'On',
     'helpButtonoff' => 'Off',
 
+    // Testing
+    'feedbackButton' => 'Feedback',
+    'feedbackLabel' => 'Send Feedback',
+    'feedbackQuestion1' => 'What do you like about the new metadata editor?',
+    'feedbackQuestion2' => 'What don\'t you like so much about the new metadata editor?',
+    'feedbackSendButton' => 'Send Feedback',
 ];

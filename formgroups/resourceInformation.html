@@ -6,7 +6,7 @@
   <?php if ($showFeedbackLink): ?>
   <button type="button" class="btn btn-warning feedback-button blink" id="feedback-btn" data-bs-toggle="modal"
     data-bs-target="#feedbackModal">
-    Feedback geben
+    <?php echo $translations['feedbackButton']; ?>
   </button>
   <?php endif; ?>
   <!-- Feedback Modal -->
@@ -14,20 +14,20 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="feedbackModalLabel">Feedback geben</h5>
+          <h5 class="modal-title" id="feedbackModalLabel"><?php echo $translations['feedbackLabel']; ?></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form id="feedbackForm">
             <div class="mb-3">
-              <label for="feedbackTextPositiv" class="form-label">Was gefällt dir am neuen Metadateneditor?</label>
+              <label for="feedbackTextPositiv" class="form-label"><?php echo $translations['feedbackQuestion1']; ?></label>
               <textarea class="form-control" id="feedbackTextPositiv" rows="3" required></textarea>
             </div>
             <div class="mb-3">
-              <label for="feedbackTextNegativ" class="form-label">Was gefällt Dir am neuen Metadateneditor nicht so sehr?</label>
+              <label for="feedbackTextNegativ" class="form-label"><?php echo $translations['feedbackQuestion2']; ?></label>
               <textarea class="form-control" id="feedbackTextNegativ" rows="3" required></textarea>
             </div>
-            <button class="btn btn-primary" id="sendFeedback">Senden</button>
+            <button class="btn btn-primary" id="sendFeedback"><?php echo $translations['feedbackSendButton']; ?></button>
           </form>
         </div>
       </div>

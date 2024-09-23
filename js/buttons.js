@@ -6,7 +6,7 @@ $(document).ready(function () {
     var feedbackTextNegativ = $("#feedbackTextNegativ").val();
 
     // Button ändern, wenn Senden in Arbeit
-    $("#sendFeedback").prop("disabled", true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Senden...');
+    $("#sendFeedback").prop("disabled", true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...');
 
     $.ajax({
       url: "send_feedback_mail.php",
@@ -17,7 +17,7 @@ $(document).ready(function () {
       },
       success: function (response) {
         // Erfolgsmeldung zeigen
-        $("#feedbackStatus").html('<div class="alert alert-success">Feedback erfolgreich gesendet!</div>');
+        $("#feedbackStatus").html('<div class="alert alert-success">Feedback sent successfully!</div>');
 
         // Modal schließen nach 2 Sekunden
         setTimeout(function () {
@@ -27,13 +27,13 @@ $(document).ready(function () {
           $("#feedbackModal").on("hidden.bs.modal", function () {
             $("#feedbackForm")[0].reset();
             $("#feedbackStatus").html("");
-            $("#sendFeedback").prop("disabled", false).html("Senden");
+            $("#sendFeedback").prop("disabled", false).html("Send");
           });
         }, 2000);
       },
       error: function (xhr, status, error) {
         // Fehlermeldung zeigen
-        $("#feedbackStatus").html('<div class="alert alert-danger">Fehler beim Senden des Feedbacks: ' + error + "</div>");
+        $("#feedbackStatus").html('<div class="alert alert-danger">Error when sending feedback: ' + error + "</div>");
         // Senden-Button aktivieren
         $("#sendFeedback").prop("disabled", false).html("Senden");
       },
