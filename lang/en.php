@@ -49,6 +49,11 @@ $translations = [
     'website_invalid' => 'Please provide a valid URL.',
 
     // From Group Contributors
+    'originatingLaboratoryLabel' => 'Originating Laboratory',
+    'originatingLaboratoryName' => 'Name of the originating laboratory',
+    'originatingLaboratoryAffiliation' => 'Affiliation of the originating laboratory',
+
+    // From Group Contributors
     'contributors' => "Contributors",
     'contributors_lastname_invalid' => 'Please provide the last name of the contributor. Only letters are allowed.',
     'contributors_firstname_invalid' => 'Please provide the first name of the contributor. Only letters are allowed.',
@@ -152,14 +157,14 @@ $translations = [
     'tsc_cancel' => 'Cancel',
     'tsc_accept' => 'Accept',
 
-    //Formgroup related Work
+    // Formgroup related Work
     'relatedwork' => 'Related work',
     'relation' => 'Relation',
     'r_identifier_type' => 'Identifier type',
     'r_Identifier' => 'Identifier',
     'r_Identifier_invalid' => 'Please enter a valid identifier.',
 
-    //Formgroup Funding Reference
+    // Formgroup Funding Reference
     'funding_reference' => 'Funding Reference',
     'funder' => 'Funder',
     'grant_Number' => 'Grant Number',

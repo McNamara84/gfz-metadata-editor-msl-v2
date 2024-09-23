@@ -49,6 +49,11 @@ $translations = [
     'website_invalid' => 'Bitte geben Sie eine gültige URL an.',
 
     // From Group Contributors
+    'originatingLaboratoryLabel' => 'Herkunftslabor',
+    'originatingLaboratoryName' => 'Name des Herkunftslabors',
+    'originatingLaboratoryAffiliation' => 'Zugehörigkeit des Herkunftslabors',
+
+    // From Group Contributors
     'contributors' => "Mitwirkende",
     'contributors_lastname_invalid' => 'Bitte geben Sie den Nachnamen der/des Mitwirkenden ein. Es sind nur Buchstaben erlaubt.',
     'contributors_firstname_invalid' => 'Bitte geben Sie den Vornamen der/des Mitwirkenden ein. Es sind nur Buchstaben erlaubt.',
