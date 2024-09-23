@@ -1,192 +1,194 @@
 <?php
 ///////////////////////////////////////////////////////////////////
 // Description: French language file for the metadata editor     //
-// Author: Matan Israel                                          //
-// Version: 1.2                                                  //
+// Authors: Matan Israel, Holger Ehrmann                         //
+// Version: 1.5                                                  //
 // License: CC BY 4.0                                            //
 ///////////////////////////////////////////////////////////////////
 
 $translations = [
-    // Allgemeines
-    'logotitle' => 'Metadata Editor 1.5',
-    'choose' => 'Sélectionnez...',
-    'valid' => 'valide',
-    'PleaseChoose_invalid' => 'Veuillez sélectionner une option.',
+    // Général
+    'logotitle' => 'Éditeur de métadonnées 1.5',
+    'choose' => 'Choisissez...',
+    'valid' => 'Valide',
+    'PleaseChoose_invalid' => 'Veuillez choisir',
     'lastname' => 'Nom',
     'firstname' => 'Prénom',
-    'affiliation' => 'Affiliation',
-    'role_label' => 'rôle(s)',
+    'affiliation' => 'Affiliation(s)',
+    'role_label' => 'Rôle(s)',
     'add' => '+',
 
-    // Form Group Resource Information
+    // Groupe de formulaire Informations sur la ressource
     'resourceInformation' => 'Informations sur la ressource',
     'doi' => 'DOI',
-    'doi_invalid' => 'Format 10.ORGANISATION/ID (i.e.: 10.57757/IUGG23-3081) ou laisser vide',
-    'publicationYear' => 'Date de publication',
-    'publicationYear_invalid' => 'Veuillez rentrer une année valide (4 chiffres).',
-    'resourceType' => 'Type de ressource.',
+    'doi_invalid' => 'Utilisez le format 10.ORGANISATION/ID (ex.: 10.57757/IUGG23-3081) ou laissez vide',
+    'publicationYear' => 'Année de publication',
+    'publicationYear_invalid' => 'Veuillez fournir une année valide (4 chiffres).',
+    'resourceType' => 'Type de ressource',
     'version' => 'Version',
-    'version_invalid' => 'Laisser vide en cas de doute',
+    'version_invalid' => 'Si incertain, laissez vide',
     'languageofdataset' => 'Langue du jeu de données',
     'title' => 'Titre',
-    'title_invalid' => 'Veuillez donner un titre',
+    'title_invalid' => 'Veuillez fournir un titre',
     'titleType' => 'Type de titre',
 
-    // Form Group Rights
-    'rights' => 'Droits et licences',
-    'rightsTitle' => 'Nom de la license',
+    // Groupe de formulaire Droits
+    'rights' => 'Licences et droits',
+    'rightsTitle' => 'Licence',
 
-    // Form Group Authors
-    'authors' => 'Auteurs',
-    'lastname_invalid' => 'Veuillez entrer un nom pour le créateur',
-    'firstname_invalid' => 'Veuillez entrer le nom du créateur.',
-    'role_tooltip' => 'Rôle du contributeur dans la création de la ressource..',
+    // Groupe de formulaire Auteurs
+    'authors' => 'Auteur(s)',
+    'lastname_invalid' => 'Veuillez fournir un nom de famille.',
+    'firstname_invalid' => 'Veuillez fournir un prénom.',
     'authorORCID' => 'ORCID',
-    'authorORCID_tooltip' => 'Identifiez de manière unique une personne physique ou morale, selon différents schémas.',
+    'authorORCID_invalid' => 'Entrez un ORCID valide au format xxxx-xxxx-xxxx-xxxx',
+    'affiliation_invalid' => 'Veuillez fournir une affiliation.',
 
-    'authorORCID_invalid' => 'Donnez un ORCID valide (XXXX-XXXX-XXXX-XXX(X))',
-    'affiliation_invalid' => 'Veuillez donner entrer une affiliation.',
+    // Groupe de formulaire Personnes de contact
+    'contactpersons' => 'Personne(s) de contact',
+    'CP_lastname_invalid' => 'Veuillez fournir le nom de famille de la personne de contact.',
+    'CP_firstname_invalid' => 'Veuillez fournir le prénom de la personne de contact.',
+    'email' => 'Adresse e-mail',
+    'email_invalid' => 'L\'adresse e-mail n\'est pas valide.',
+    'position' => 'Poste',
+    'position_invalid' => 'Veuillez fournir un poste.',
+    'website' => 'Site web',
+    'website_invalid' => 'Veuillez fournir une URL valide.',
 
-    // Form Group Contact Persons
-    'contactpersons' => 'Contacts',
-    'contactpersons_tooltip' => 'La personne de contact pour l\'accès à l\'ensemble des données et pour les demandes de renseignements.',
-    'CP_lastname_invalid' => 'Veuillez entrer le nom de la personne à contacter.',
-    'CP_firstname_invalid' => 'Veuillez entrer le prénom de la personne à contacter.',
-    'email' => 'Adresse email',
-    'email_invalid' => 'L\'adresse email est invalide.',
-    'position' => 'Position',
-    'position_invalid' => 'Veuillez entrer la position de la personne.',
-    'website' => 'Site internet',
-    'website_invalid' => 'Veuillez entrer le site web de l\'organisation.',
+    // Groupe de formulaire Contributeurs
+    'originatingLaboratoryLabel' => 'Laboratoire d\'origine',
+    'originatingLaboratoryName' => 'Nom du laboratoire d\'origine',
+    'originatingLaboratoryAffiliation' => 'Affiliation du laboratoire d\'origine',
 
-    // From Group Contributors
     'contributors' => "Contributeurs",
-    'contributors_lastname_invalid' => 'Veuillez entrer le nom du contributeur; seules les lettres sont acceptées.',
-    'contributors_firstname_invalid' => 'Veuillez entrer le prénom du contributeur; seules les lettre sont acceptées.',
+    'contributors_lastname_invalid' => 'Veuillez fournir le nom de famille du contributeur. Seules les lettres sont autorisées.',
+    'contributors_firstname_invalid' => 'Veuillez fournir le prénom du contributeur. Seules les lettres sont autorisées.',
     'Organisation' => 'Nom de l\'organisation',
-    'Organisation_invalid' => 'Veuillez entrer un nom valide.',
-    'contributors_ORCID' => 'Contributeurs ORCID',
+    'Organisation_invalid' => 'Veuillez entrer un nom d\'organisation valide.',
+    'contributors_ORCID' => 'ORCID du contributeur',
     'contributors_ORCID_invalid' => 'Veuillez entrer un ORCID valide (XXXX-XXXX-XXXX-XXX(X))',
-    'contributorsPersonZeile' => 'Contributeurs (personnes)',
-    'contributorsInstitutionZeile' => 'Contributeurs (institutions)',
+    'contributorsPersonZeile' => 'Personne(s) contributrice(s)',
+    'contributorsInstitutionZeile' => 'Institution(s) contributrice(s)',
 
-    // Form Group Descriptions
-    // TODO: Übersetzen
+    // Groupe de formulaire Descriptions
     'descriptions' => 'Descriptions',
-    'd_abstract' => 'Abstract',
-    'd_methods' => 'Methods',
-    'd_technical_infos' => 'Technical Infos',
-    'd_other' => 'Other',
+    'd_abstract' => 'Résumé',
+    'd_abstract_tooltip' => 'Veuillez entrer un résumé...',
+    'd_methods' => 'Méthodes',
+    'd_methods_tooltip' => 'Veuillez décrire les méthodes...',
+    'd_technical_infos' => 'Informations techniques',
+    'd_technical_infos_tooltip' => 'Veuillez entrer des informations techniques...',
+    'd_other' => 'Autre',
+    'd_other_tooltip' => 'Veuillez entrer d\'autres informations...',
 
-    // Form Group General
-    'grl' => 'General',
-    'grl_Material' => 'Material',
-    'grl_geo_age' => 'Geological age',
-    'grl_Pore_fluid' => 'Pore fluid',
-    'grl_geo_setting' => 'Geological setting',
+    // Groupe de formulaire Général
+    'grl' => 'Général',
+    'grl_Material' => 'Matériau',
+    'grl_geo_age' => 'Âge géologique',
+    'grl_Pore_fluid' => 'Fluide interstitiel',
+    'grl_geo_setting' => 'Contexte géologique',
 
-    // Form Group Analogue modelling of geological processes
-    'AMOGP' => 'Analogue modelling of geological processes',
-    'AMOGP_M_S' => 'Modeled structure',
-    'AMOGP_M_G_F' => 'Modeled geomorphological feature',
-    'AMOGP_Apparatus' => 'Apparatus',
-    'AMOGP_A_E' => 'Ancillary Equipment',
-    'AMOGP_M_P' => 'measured property',
-    'AMOGP_Software' => 'Software',
+    // Groupe de formulaire Modélisation analogique des processus géologiques
+    'AMOGP' => 'Modélisation analogique des processus géologiques',
+    'AMOGP_M_S' => 'Structure modélisée',
+    'AMOGP_M_G_F' => 'Caractéristique géomorphologique modélisée',
+    'AMOGP_Apparatus' => 'Appareil',
+    'AMOGP_A_E' => 'Équipement auxiliaire',
+    'AMOGP_M_P' => 'Propriété mesurée',
+    'AMOGP_Software' => 'Logiciel',
 
-    // Form Group Geochemistry
-    'Geochemistry' => 'Geochemistry',
-    'Geochemistry_A_T' => 'Analysis technique',
-    'Geochemistry_M_P' => 'Measured property',
+    // Groupe de formulaire Géochimie
+    'Geochemistry' => 'Géochimie',
+    'Geochemistry_A_T' => 'Technique d\'analyse',
+    'Geochemistry_M_P' => 'Propriété mesurée',
 
-    // Form Group Microsocopy And Tomography
-    'MATomography' => 'Microsocopy And Tomography',
-    'MATomography_A' => 'Apparatus',
-    'MATomography_A_E' => 'Ancillary equipment',
-    'MATomography_A_T' => 'Analysis technique',
-    'MATomography_A_F' => 'Analyzed feature',
-    'MATomography_I_P' => 'Inferred parameter',
+    // Groupe de formulaire Microscopie et tomographie
+    'MATomography' => 'Microscopie et tomographie',
+    'MATomography_A' => 'Appareil',
+    'MATomography_A_E' => 'Équipement auxiliaire',
+    'MATomography_A_T' => 'Technique d\'analyse',
+    'MATomography_A_F' => 'Caractéristique analysée',
+    'MATomography_I_P' => 'Paramètre déduit',
 
-    // Form Group Paleomagnetism
-    'PALTIS' => 'Paleomagnetism',
-    'PALTIS_A' => 'Apparatus',
-    'PALTIS_E_C' => 'Environment control',
-    'PALTIS_M_P' => 'Measured property',
-    'PALTIS_I_B' => 'Inferred behavior',
+    // Groupe de formulaire Paléomagnétisme
+    'PALTIS' => 'Paléomagnétisme',
+    'PALTIS_A' => 'Appareil',
+    'PALTIS_E_C' => 'Contrôle de l\'environnement',
+    'PALTIS_M_P' => 'Propriété mesurée',
+    'PALTIS_I_B' => 'Comportement déduit',
 
-    // Form Group Rock and melt physics
-    'RAMP' => 'Rock and melt physics',
-    'RAMP_A' => 'Apparatus',
-    'RAMP_A_E' => 'Ancillary equipment',
-    'RAMP_M_P' => 'Measured property',
-    'RAMP_I_D_B' => 'Inferred deformation behavior',
+    // Groupe de formulaire Physique des roches et des magmas
+    'RAMP' => 'Physique des roches et des magmas',
+    'RAMP_A' => 'Appareil',
+    'RAMP_A_E' => 'Équipement auxiliaire',
+    'RAMP_M_P' => 'Propriété mesurée',
+    'RAMP_I_D_B' => 'Comportement de déformation déduit',
 
-    // Form Group Dates
-    'dates' => 'Date',
-    'dateCreated' => 'Date de création.',
-    'dateCreated_invalid' => 'Veuillez entrer une date valide.',
-    'embargoUntil' => 'Embargo jusqu\'à',
-    'embargo_invalid' => 'Veuillez entrer une date valide.',
+    // Groupe de formulaire Dates
+    'dates' => 'Dates',
+    'dateCreated' => 'Date de création',
+    'dateCreated_invalid' => 'Veuillez entrer une date valide !',
+    'embargoUntil' => 'Embargo jusqu\'au',
+    'embargo_invalid' => 'Veuillez entrer une date valide !',
 
-    // TODO: Form Group Spatial and Temporal Coverages
+    // Groupe de formulaire Mots-clés du thésaurus
+    'thesaurusKeywords' => 'Mots-clés du thésaurus',
+    'thesaurus' => 'Thésaurus',
+    'scienceKeywords' => 'Mots-clés scientifiques NASA GCMD',
+    'instruments' => 'Instruments NASA GCMD',
+    'platforms' => 'Plateformes NASA GCMD',
+    'chrono' => 'Charte chronostratigraphique internationale',
+    'cgi' => 'Lithologie simple CGI',
+    'Gemet' => 'Thésaurus GEMET',
+    'thesaurusLabel' => 'Ouvrez le thésaurus pour choisir des mots-clés ou commencez à taper...',
 
-    // Form Group Thesaurus Keywords
-    // TODO: Übersetzen
-    'thesaurusKeywords' => 'Thesaurus Keywords',
-    'thesaurus' => 'Thesaurus',
-    'scienceKeywords' => 'NASA GCMD Science Keywords',
-    'instruments' => 'NASA GCMD Instruments',
-    'platforms' => 'NASA GCMD Platforms',
-    'chrono' => 'International Chronostratigraphic Chart',
-    'cgi' => 'CGI Simple Lithology',
-    'Gemet' => 'GEMET Thesaurus',
-    'thesaurusLabel' => 'Open thesaurus to choose keywords or start typing...',
+    // Mots-clés libres
+    'freekeywords' => 'Mots-clés libres',
+    'freekeywords_input' => 'Veuillez entrer des mots-clés et les séparer par une virgule.',
 
-    // TODO: Übersetzen
-    // Free Keywords
-    'freekeywords' => 'Free Keywords',
-    'freekeywords_input' => 'Please enter keywords and separate them by a comma.',
-
-    // TODO: Form Group Spatial and Temooral Coverages
-    'tsc_spatialTemporalCoverages' => 'Spatial and Temporal Coverages',
-    'tsc_map' => 'Map',
+    // Groupe de formulaire Couvertures spatiales et temporelles
+    'tsc_spatialTemporalCoverages' => 'Couvertures spatiales et temporelles',
+    'tsc_map' => 'Carte',
     'tsc_latitude' => 'Latitude',
     'tsc_longitude' => 'Longitude',
     'tsc_description' => 'Description',
-    'tsc_description_placeholder' => 'Please enter the description of the temporal and spatial coverage...',
-    'tsc_start' => 'Start',
-    'tsc_end' => 'End',
-    'tsc_timezone' => 'Timezone',
-    'tsc_map_info' => '(Please choose coordinates with rectangle or marker)',
-    'tsc_cancel' => 'Cancel',
-    'tsc_accept' => 'Accept',
+    'tsc_description_placeholder' => 'Veuillez entrer la description de la couverture temporelle et spatiale...',
+    'tsc_start' => 'Début',
+    'tsc_end' => 'Fin',
+    'tsc_timezone' => 'Fuseau horaire',
+    'tsc_map_info' => '(Veuillez choisir les coordonnées avec un rectangle ou un marqueur)',
+    'tsc_cancel' => 'Annuler',
+    'tsc_accept' => 'Accepter',
 
-    //Formgroup related Work
-    //TODO: Übersetzen
-    'relatedwork' => 'Related work',
+    // Groupe de formulaire Travaux connexes
+    'relatedwork' => 'Travaux connexes',
     'relation' => 'Relation',
-    'r_identifier_type' => 'Identifier type',
-    'r_Identifier' => 'Identifier',
-    'r_Identifier_invalid' => 'Please enter a valid identifier.',
+    'r_identifier_type' => 'Type d\'identifiant',
+    'r_Identifier' => 'Identifiant',
+    'r_Identifier_invalid' => 'Veuillez entrer un identifiant valide.',
 
-    //Formgroup Funding Reference
-    //TODO: Übersetzen
-    'funding_reference' => 'Funding Reference',
-    'funder' => 'Funder',
-    'grant_Number' => 'Grant Number',
-    'grant_Name' => 'Grant Name',
+    // Groupe de formulaire Référence de financement
+    'funding_reference' => 'Référence de financement',
+    'funder' => 'Bailleur de fonds',
+    'grant_Number' => 'Numéro de subvention',
+    'grant_Name' => 'Nom de la subvention',
 
-
-    // Buttons
+    // Boutons
     'clear' => 'Effacer',
-    'clear_tooltip' => 'Tout effacer.',
+    'clear_tooltip' => 'Supprimer toutes les entrées ou le contenu.',
     'load' => 'Charger',
-    'load_tooltip' => 'Charger les donnés et le contenu.',
-    'saveAs' => 'Sauvegarder',
-    'saveAs_tooltip' => 'Sauvegarder les données ou le contenut sous un nouveau nom.',
-    'submit' => 'Transmettre',
-    'submit_tooltip' => 'Transmettre les données actuelles.',
-    // TDOD: Übersetzen
-    'helpButtonon' => 'On',
-    'helpButtonoff' => 'Off',
+    'load_tooltip' => 'Charger les données ou le contenu sauvegardé.',
+    'saveAs' => 'Enregistrer',
+    'saveAs_tooltip' => 'Enregistrer les données ou le contenu actuel sous un nouveau nom de fichier.',
+    'submit' => 'Soumettre',
+    'submit_tooltip' => 'Transmettre les données ou le contenu saisi.',
+    'helpButtonon' => 'Activé',
+    'helpButtonoff' => 'Désactivé',
+
+    // Test
+    'feedbackButton' => 'Commentaires',
+    'feedbackLabel' => 'Envoyer des commentaires',
+    'feedbackQuestion1' => 'Qu\'aimez-vous dans le nouvel éditeur de métadonnées ?',
+    'feedbackQuestion2' => 'Qu\'aimez-vous moins dans le nouvel éditeur de métadonnées ?',
+    'feedbackSendButton' => 'Envoyer les commentaires',
 ];
