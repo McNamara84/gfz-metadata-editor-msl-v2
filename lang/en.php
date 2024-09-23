@@ -64,8 +64,6 @@ $translations = [
     'contributorsPersonZeile' => 'Contributing Person(s)',
     'contributorsInstitutionZeile' => 'Contributing Institution(s)',
 
-    // From Group Spatial and temporal coverage
-
     // Form Group Descriptions
     'descriptions' => 'Descriptions',
     'd_abstract' => 'Abstract',
@@ -121,7 +119,6 @@ $translations = [
     'RAMP_I_D_B' => 'Inferred deformation behavior',
 
     //Formgroup thesaurusKeywords
-    // TODO: Translation
     'thesaurusKeywords' => 'Thesaurus Keywords',
     'thesaurus' => 'Thesaurus',
     'scienceKeywords' => 'NASA GCMD Science Keywords',

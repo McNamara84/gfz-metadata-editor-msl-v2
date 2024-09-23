@@ -3,8 +3,8 @@ $translations = [
     // Allgemeines
     'logotitle' => 'Metadata Editor 1.5',
     'choose' => 'Wählen Sie...',
-    'valid' => 'gültig',
-    'PleaseChoose_invalid' => 'Bitte Wählen Sie',
+    'valid' => 'Gültig',
+    'PleaseChoose_invalid' => 'Bitte wählen Sie',
     'lastname' => 'Nachname',
     'firstname' => 'Vorname',
     'affiliation' => 'Zugehörigkeit(en)',
@@ -39,8 +39,8 @@ $translations = [
 
     // Form Group Contactpersons
     'contactpersons' => 'Kontaktperson(en)',
-    'CP_lastname_invalid' => 'Bitte geben Sie den Nachnamen der Kontakperson ein.',
-    'CP_firstname_invalid' => 'Bitte geben Sie den Vornamen der Kontakperson ein.',
+    'CP_lastname_invalid' => 'Bitte geben Sie den Nachnamen der Kontaktperson ein.',
+    'CP_firstname_invalid' => 'Bitte geben Sie den Vornamen der Kontaktperson ein.',
     'email' => 'E-Mail-Adresse',
     'email_invalid' => 'Bitte überprüfen Sie die E-Mail-Adresse.',
     'position' => 'Position',
@@ -64,18 +64,16 @@ $translations = [
     'contributorsPersonZeile' => 'Mitwirkende Person(en)',
     'contributorsInstitutionZeile' => 'Mitwirkende Institution(en)',
 
-    // From Group Spatial and temporal coverage
-
     // Form Group Descriptions
     'descriptions' => 'Beschreibungen',
-    'd_abstract' => 'Abstract',
-    'd_abstract_tooltip' => 'Bitte ein Abstract eingeben...',
+    'd_abstract' => 'Zusammenfassung',
+    'd_abstract_tooltip' => 'Bitte geben Sie eine Zusammenfassung ein...',
     'd_methods' => 'Methoden',
-    'd_methods_tooltip' => 'Bitte Methoden beschreiben...',
+    'd_methods_tooltip' => 'Bitte beschreiben Sie die Methoden...',
     'd_technical_infos' => 'Technische Informationen',
-    'd_technical_infos_tooltip' => 'Bitte technische Informationen eingeben...',
-    'd_other' => 'Zusätzliches',
-    'd_other_tooltip' => 'Bitte zusätzliche Informationen eingeben...',
+    'd_technical_infos_tooltip' => 'Bitte geben Sie technische Informationen ein...',
+    'd_other' => 'Sonstiges',
+    'd_other_tooltip' => 'Bitte geben Sie sonstige Informationen ein...',
 
     // Form Group General
     'grl' => 'Allgemein',
@@ -90,7 +88,7 @@ $translations = [
     'AMOGP_M_G_F' => 'Modelliertes geomorphologisches Merkmal',
     'AMOGP_Apparatus' => 'Gerät',
     'AMOGP_A_E' => 'Ergänzende Ausrüstung',
-    'AMOGP_M_P' => 'gemessene Eigenschaft',
+    'AMOGP_M_P' => 'Gemessene Eigenschaft',
     'AMOGP_Software' => 'Software',
 
     // Form Group Geochemistry
@@ -99,7 +97,7 @@ $translations = [
     'Geochemistry_M_P' => 'Gemessene Eigenschaft',
 
     // Form Group Microsocopy And Tomography
-    'MATomography' => 'Mikrokopie und Tomographie',
+    'MATomography' => 'Mikroskopie und Tomographie',
     'MATomography_A' => 'Apparat',
     'MATomography_A_E' => 'Ergänzende Ausrüstung',
     'MATomography_A_T' => 'Analyse-Technik',
@@ -128,7 +126,7 @@ $translations = [
     'embargo_invalid' => 'Bitte geben Sie ein gültiges Datum ein!',
 
     //Formgroup thesaurusKeywords
-    'thesaurusKeywords' => 'Thesaurus Schlagwörter',
+    'thesaurusKeywords' => 'Thesaurus-Schlagwörter',
     'thesaurus' => 'Thesaurus',
     'scienceKeywords' => 'NASA GCMD Science Keywords',
     'instruments' => 'NASA GCMD Instruments',
@@ -142,7 +140,7 @@ $translations = [
     'freekeywords' => 'Freie Schlagwörter',
     'freekeywords_input' => 'Bitte Schlagwörter eintragen und durch ein Komma trennen.',
 
-    // Form Group Spatial and Temooral Coverages
+    // Form Group Spatial and Temporal Coverages
     'tsc_spatialTemporalCoverages' => 'Räumliche und zeitliche Erfassungsbereiche',
     'tsc_map' => 'Karte',
     'tsc_latitude' => 'Geografische Breite',
@@ -169,7 +167,6 @@ $translations = [
     'grant_Number' => 'Fördernummer',
     'grant_Name' => 'Fördername',
 
-
     // Buttons
     'clear' => 'Löschen',
     'clear_tooltip' => 'Alle Einträge oder Inhalte löschen.',
@@ -185,7 +182,7 @@ $translations = [
     // Testing
     'feedbackButton' => 'Feedback',
     'feedbackLabel' => 'Feedback einreichen',
-    'feedbackQuestion1' => 'Was gefällt dir am neuen Metadateneditor?',
-    'feedbackQuestion2' => 'Was gefällt Dir am neuen Metadateneditor nicht so sehr?',
+    'feedbackQuestion1' => 'Was gefällt Ihnen am neuen Metadateneditor?',
+    'feedbackQuestion2' => 'Was gefällt Ihnen am neuen Metadateneditor nicht so sehr?',
     'feedbackSendButton' => 'Feedback übermitteln',
 ];
