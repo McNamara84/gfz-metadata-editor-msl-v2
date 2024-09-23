@@ -534,6 +534,22 @@ JSON-Array mit Identifier-Typ-Objekten
   - Beispielwerte: `Technische Universität Berlin` `GFZ, Helmholtz-Zentrum Potsdam - Deutsches GeoForschungsZentrum GFZ`
   - **Hinweis**: Autocomplete-Funktion für das Eingabefeld Affiliation einsetzen! ähnlich der 'Author' Form group.
 
+### Originating Laboratory
+<!-- TODO: Speicherung der Eingaben in der Datenbank dokumentieren! -->
+- Labor aus dem die Daten stammen
+- Vorkommen: 1-n
+- Wird gespeichert als `<contributor contributorType="HostingInstitution">` im [DataCite-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype)
+- Name of the originating laboratory
+  - Name des Labors, gewählt aus einer Liste, oder Freitext.
+  - Vorkommen 1-n
+  - Datentyp: Zeichenkette
+  - Wird gespeichert als `<contributorName>` im [DataCite-Schema 4.5](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/) (TODO)
+- Affiliation of the originating laboratory
+  - Zugejhörigkeit des Labors, automatisch gewählt aus einer Liste je nach Laborname, oder Freitext, wenn Laborname auch Freitext.
+  - Vorkommen 1-n
+  - Datentyp: Zeichenkette
+  - Wird gespeichert als `<affiliation>` im [DataCite-Schema 4.5](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/) (TODO)
+
 ### Contributors
 
 - _Personal_
