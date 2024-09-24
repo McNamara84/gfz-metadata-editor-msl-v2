@@ -1,6 +1,7 @@
 {
     "require": {
         "easyrdf/easyrdf": "^1.1",
-        "phpmailer/phpmailer": "^6.9"
+        "phpmailer/phpmailer": "^6.9",
+        "nikic/fast-route": "^1.3"
     }
 }

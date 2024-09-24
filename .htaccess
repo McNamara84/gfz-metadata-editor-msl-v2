@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /mde-msl/
+
+    # Wenn die Datei oder das Verzeichnis nicht existiert, leite weiter
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Für API-Anfragen
+    RewriteRule ^api/(.*)$ api/index.php [QSA,L]
+
+    # Für alle anderen Anfragen (falls nötig)
+    # RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>

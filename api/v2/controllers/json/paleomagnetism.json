@@ -1,0 +1,2585 @@
+[
+    {
+        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus",
+        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+        "value": "Apparatus",
+        "text": "Apparatus",
+        "synonyms": [],
+        "children": [
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "demagnetiser",
+                "text": "demagnetiser",
+                "synonyms": [
+                    {
+                        "value": "demagnetizer"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-alternating_field_af_demagnetiser",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "alternating field (AF) demagnetiser",
+                        "text": "alternating field (AF) demagnetiser",
+                        "synonyms": [
+                            {
+                                "value": "alternating field (af) demagnetizer"
+                            },
+                            {
+                                "value": "af demagnetiser"
+                            },
+                            {
+                                "value": "af demagnetizer"
+                            },
+                            {
+                                "value": "demagnetisation type af"
+                            },
+                            {
+                                "value": "demagnetization type af"
+                            },
+                            {
+                                "value": "(af)"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-alternating_field_af_demagnetiser-2g_in-line_af_degausser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "2G in-line AF degausser",
+                                "text": "2G in-line AF degausser",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-alternating_field_af_demagnetiser-agico_af_demagnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "AGICO AF demagnetiser",
+                                "text": "AGICO AF demagnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "agico af demagnetizer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-alternating_field_af_demagnetiser-asc_af_demagnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "ASC AF demagnetiser",
+                                "text": "ASC AF demagnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "asc af demagnetizer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-alternating_field_af_demagnetiser-molspin_af_demagnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Molspin AF demagnetiser",
+                                "text": "Molspin AF demagnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "molspin af demagnetizer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-alternating_field_af_demagnetiser-rmi_af_demagnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "RMI AF demagnetiser",
+                                "text": "RMI AF demagnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "rmi af demagnetizer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-alternating_field_af_demagnetiser-schonstedt_af_demagnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Schonstedt AF demagnetiser",
+                                "text": "Schonstedt AF demagnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "schonstedt af demagnetizer"
+                                    }
+                                ],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-thermal_demagnetiser",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "thermal demagnetiser",
+                        "text": "thermal demagnetiser",
+                        "synonyms": [
+                            {
+                                "value": "thermal demagnetizer"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-thermal_demagnetiser-asc_scientific_thermal_demagnetiser_-_absolute_paleointensity",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "ASC Scientific thermal demagnetiser - absolute paleointensity",
+                                "text": "ASC Scientific thermal demagnetiser - absolute paleointensity",
+                                "synonyms": [
+                                    {
+                                        "value": "asc scientific thermal demagnetizer - absolute paleointensity"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-thermal_demagnetiser-asc_scientific_thermal_demagnetiser_-_dual_chamber",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "ASC Scientific thermal demagnetiser - dual chamber",
+                                "text": "ASC Scientific thermal demagnetiser - dual chamber",
+                                "synonyms": [
+                                    {
+                                        "value": "asc scientific thermal demagnetizer - dual chamber"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-thermal_demagnetiser-asc_scientific_thermal_demagnetiser_-_single_chamber",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "ASC Scientific thermal demagnetiser - single chamber",
+                                "text": "ASC Scientific thermal demagnetiser - single chamber",
+                                "synonyms": [
+                                    {
+                                        "value": "asc scientific thermal demagnetizer - single chamber"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-thermal_demagnetiser-magnetic_measurements_super-cooled_thermal_demagnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Magnetic measurements super-cooled thermal demagnetiser",
+                                "text": "Magnetic measurements super-cooled thermal demagnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "mmtd super-cooled thermal demagnetizer"
+                                    },
+                                    {
+                                        "value": "mmtd super-cooled"
+                                    },
+                                    {
+                                        "value": "mm super-cooled thermal demagnetizer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-thermal_demagnetiser-magnetic_measurements_thermal_demagnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Magnetic measurements thermal demagnetiser",
+                                "text": "Magnetic measurements thermal demagnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "mmtd thermal demagnetizer"
+                                    },
+                                    {
+                                        "value": "mmtd"
+                                    },
+                                    {
+                                        "value": "mm thermal demagnetizer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-thermal_demagnetiser-pyrox_scientific_thermal_demagnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Pyrox Scientific thermal demagnetiser",
+                                "text": "Pyrox Scientific thermal demagnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "pyrox scientific thermal demagnetizer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-thermal_demagnetiser-schonstedt_thermal_demagnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Schonstedt thermal demagnetiser",
+                                "text": "Schonstedt thermal demagnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "schonstedt thermal demagnetizer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-demagnetiser-thermal_demagnetiser-triaxe",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Triaxe",
+                                "text": "Triaxe",
+                                "synonyms": [],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "laboratory induced remanent magnetisation measurement",
+                "text": "laboratory induced remanent magnetisation measurement",
+                "synonyms": [
+                    {
+                        "value": "laboratory induced remanent magnetization measurement"
+                    },
+                    {
+                        "value": "artificial remanence measurement"
+                    },
+                    {
+                        "value": "magnetic mineralogy"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-anhysteretic_remanence_magnetiser_arm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "anhysteretic remanence magnetiser (ARM)",
+                        "text": "anhysteretic remanence magnetiser (ARM)",
+                        "synonyms": [
+                            {
+                                "value": "anhysteretic remanence magnetiser"
+                            },
+                            {
+                                "value": "anhysteretic remanence magnetizer"
+                            },
+                            {
+                                "value": "anhysteretic remanence arm acquisition"
+                            },
+                            {
+                                "value": "(arm)"
+                            },
+                            {
+                                "value": "amu"
+                            },
+                            {
+                                "value": "(amu)"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-anhysteretic_remanence_magnetiser_arm-2g_in_line_anhysteretic_magnetiser_unit_amu",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "2G in line anhysteretic magnetiser unit (AMU)",
+                                "text": "2G in line anhysteretic magnetiser unit (AMU)",
+                                "synonyms": [
+                                    {
+                                        "value": "2g in line anhysteretic magnetizer unit (amu)"
+                                    },
+                                    {
+                                        "value": "2g amu"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-anhysteretic_remanence_magnetiser_arm-agico_anhysteretic_magnetiser_unit_amu",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "AGICO anhysteretic magnetiser unit (AMU)",
+                                "text": "AGICO anhysteretic magnetiser unit (AMU)",
+                                "synonyms": [
+                                    {
+                                        "value": "agico anhysteretic magnetizer unit (amu)"
+                                    },
+                                    {
+                                        "value": "agico amu"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-anhysteretic_remanence_magnetiser_arm-asc_dtech2000_in_line_anysteretic_magnetiser_unit_amu",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "ASC DTech2000 in line anysteretic magnetiser unit (AMU)",
+                                "text": "ASC DTech2000 in line anysteretic magnetiser unit (AMU)",
+                                "synonyms": [
+                                    {
+                                        "value": "asc dtech2000 in line anysteretic magnetizer unit (amu)"
+                                    },
+                                    {
+                                        "value": "asc amu"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-anhysteretic_remanence_magnetiser_arm-molspin_in-line_anysteretic_magnetiser_unit_amu",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Molspin in-line anysteretic magnetiser unit (AMU)",
+                                "text": "Molspin in-line anysteretic magnetiser unit (AMU)",
+                                "synonyms": [
+                                    {
+                                        "value": "molspin in-line anysteretic magnetizer unit (amu)"
+                                    },
+                                    {
+                                        "value": "molspin amu"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-anhysteretic_remanence_magnetiser_arm-schonsted_anhysteretic_magnetiser_unit_amu",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Schonsted anhysteretic magnetiser unit (AMU)",
+                                "text": "Schonsted anhysteretic magnetiser unit (AMU)",
+                                "synonyms": [
+                                    {
+                                        "value": "schonsted amu"
+                                    }
+                                ],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-bitter_patterns",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "Bitter patterns",
+                        "text": "Bitter patterns",
+                        "synonyms": [
+                            {
+                                "value": "bitter pattern"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-coercitivity_spectrometer",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "coercitivity spectrometer",
+                        "text": "coercitivity spectrometer",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-coercitivity_spectrometer-mossbauer_spectrometer",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "M\u00f6ssbauer spectrometer",
+                                "text": "M\u00f6ssbauer spectrometer",
+                                "synonyms": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-hysteresis_properties",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "hysteresis properties",
+                        "text": "hysteresis properties",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-hysteresis_properties-ac_hysteresis_meter",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "AC hysteresis meter",
+                                "text": "AC hysteresis meter",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-hysteresis_properties-alternating_gradient_magnetometer_agm",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "alternating gradient magnetometer (AGM)",
+                                "text": "alternating gradient magnetometer (AGM)",
+                                "synonyms": [
+                                    {
+                                        "value": "agm"
+                                    },
+                                    {
+                                        "value": "(agm)"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-hysteresis_properties-magnetic_properties_measurement_system_mpms",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "magnetic properties measurement system (MPMS)",
+                                "text": "magnetic properties measurement system (MPMS)",
+                                "synonyms": [
+                                    {
+                                        "value": "mpms"
+                                    },
+                                    {
+                                        "value": "(mpms)"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-hysteresis_properties-physical_property_measurement_system_ppms",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "physical property measurement system (PPMS)",
+                                "text": "physical property measurement system (PPMS)",
+                                "synonyms": [
+                                    {
+                                        "value": "ppms"
+                                    },
+                                    {
+                                        "value": "(ppms)"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-hysteresis_properties-vibrating_sample_magnetometer_vsm_-_hysteresis_properties",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "vibrating sample magnetometer (VSM) - hysteresis properties",
+                                "text": "vibrating sample magnetometer (VSM) - hysteresis properties",
+                                "synonyms": [
+                                    {
+                                        "value": "vsm - hysteresis properties"
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-hysteresis_properties-vibrating_sample_magnetometer_vsm_-_hysteresis_properties-single_axis_vsm",
+                                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                        "value": "single axis VSM",
+                                        "text": "single axis VSM",
+                                        "synonyms": [
+                                            {
+                                                "value": "one axis vsm"
+                                            },
+                                            {
+                                                "value": "one-axis vsm"
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-hysteresis_properties-vibrating_sample_magnetometer_vsm_-_hysteresis_properties-triaxial_vsm",
+                                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                        "value": "triaxial VSM",
+                                        "text": "triaxial VSM",
+                                        "synonyms": [
+                                            {
+                                                "value": "tri-axial vsm"
+                                            },
+                                            {
+                                                "value": "three axes vsm"
+                                            },
+                                            {
+                                                "value": "three-axes vsm"
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-isothermal_remanent_magnetiser_irm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "isothermal remanent magnetiser (IRM)",
+                        "text": "isothermal remanent magnetiser (IRM)",
+                        "synonyms": [
+                            {
+                                "value": "isothermal remanent magnetiser"
+                            },
+                            {
+                                "value": "isothermal remanent magnetizer"
+                            },
+                            {
+                                "value": "irm"
+                            },
+                            {
+                                "value": "(irm)"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-isothermal_remanent_magnetiser_irm-2g_in_line_isothermal_remanent_magnetisation_irm_device",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "2G in line isothermal remanent magnetisation (IRM) device",
+                                "text": "2G in line isothermal remanent magnetisation (IRM) device",
+                                "synonyms": [
+                                    {
+                                        "value": "2g in line isothermal remanent magnetization (irm) device"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-isothermal_remanent_magnetiser_irm-2g_pulse_magnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "2G pulse magnetiser",
+                                "text": "2G pulse magnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "2g pulse magnetizer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-isothermal_remanent_magnetiser_irm-agico_pulse_magnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "AGICO pulse magnetiser",
+                                "text": "AGICO pulse magnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "agico pulse magnetizer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-isothermal_remanent_magnetiser_irm-asc_pulse_magnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "ASC pulse magnetiser",
+                                "text": "ASC pulse magnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "asc pulse magnetizer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-isothermal_remanent_magnetiser_irm-m2t_pulse_magnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "M2T pulse magnetiser",
+                                "text": "M2T pulse magnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "m2t pulse magnetizer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-isothermal_remanent_magnetiser_irm-magnetic_measurements_pulse_magnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "magnetic measurements pulse magnetiser",
+                                "text": "magnetic measurements pulse magnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "magnetic measurements pulse magnetizer"
+                                    }
+                                ],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-microscope_magnetic_scanning",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "microscope magnetic scanning",
+                        "text": "microscope magnetic scanning",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-microscope_magnetic_scanning-atomic_force_microscope_afm_magnetic_scanning",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "atomic force microscope (AFM) magnetic scanning",
+                                "text": "atomic force microscope (AFM) magnetic scanning",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-microscope_magnetic_scanning-magnetic_force_microscope_mfm",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "magnetic force microscope (MFM)",
+                                "text": "magnetic force microscope (MFM)",
+                                "synonyms": [
+                                    {
+                                        "value": "mfm"
+                                    },
+                                    {
+                                        "value": "(mfm)"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-microscope_magnetic_scanning-magneto_optic_kerr_effect_moke",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "magneto optic Kerr effect (MOKE)",
+                                "text": "magneto optic Kerr effect (MOKE)",
+                                "synonyms": [
+                                    {
+                                        "value": "surface magneto optic kerr effect (smoke)"
+                                    },
+                                    {
+                                        "value": "moke"
+                                    },
+                                    {
+                                        "value": "smoke"
+                                    },
+                                    {
+                                        "value": "(smoke)"
+                                    },
+                                    {
+                                        "value": "(moke)"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-microscope_magnetic_scanning-quantum_diamond_microscope_qdm",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "quantum diamond microscope (QDM)",
+                                "text": "quantum diamond microscope (QDM)",
+                                "synonyms": [
+                                    {
+                                        "value": "qdm"
+                                    },
+                                    {
+                                        "value": "(qdm)"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-microscope_magnetic_scanning-superconducting_quantum_interference_device_squid_microscope",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "superconducting quantum interference device (SQUID) microscope",
+                                "text": "superconducting quantum interference device (SQUID) microscope",
+                                "synonyms": [
+                                    {
+                                        "value": "(squid)"
+                                    },
+                                    {
+                                        "value": "superconducting quantum interference device"
+                                    },
+                                    {
+                                        "value": "super-conducting quantum interference device"
+                                    }
+                                ],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-thermoremanent_magnetiser_trm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "thermoremanent magnetiser (TRM)",
+                        "text": "thermoremanent magnetiser (TRM)",
+                        "synonyms": [
+                            {
+                                "value": "thermoremanent magnetiser"
+                            },
+                            {
+                                "value": "thermoremanent magnetizer"
+                            },
+                            {
+                                "value": "trm"
+                            },
+                            {
+                                "value": "(trm)"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-thermoremanent_magnetiser_trm-asc_scientific_thermal_demagnetiser_-_dual_chamber_with_controlled_field_coil",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "ASC Scientific thermal demagnetiser - dual chamber with controlled field coil",
+                                "text": "ASC Scientific thermal demagnetiser - dual chamber with controlled field coil",
+                                "synonyms": [
+                                    {
+                                        "value": "asc scientific thermal demagnetizer - dual chamber with controlled field coil"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-thermoremanent_magnetiser_trm-asc_scientific_thermal_demagnetiser_-_single_chamber_with_controlled_field_coil",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "ASC Scientific thermal demagnetiser - single chamber with controlled field coil",
+                                "text": "ASC Scientific thermal demagnetiser - single chamber with controlled field coil",
+                                "synonyms": [
+                                    {
+                                        "value": "asc scientific thermal demagnetizer - single chamber with controlled field coil"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-thermoremanent_magnetiser_trm-magnetic_measurements_super-cooled_thermal_demagnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Magnetic measurements super-cooled thermal demagnetiser",
+                                "text": "Magnetic measurements super-cooled thermal demagnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "mmtd super-cooled thermal demagnetizer"
+                                    },
+                                    {
+                                        "value": "mmtd super-cooled"
+                                    },
+                                    {
+                                        "value": "mm super-cooled thermal demagnetizer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-thermoremanent_magnetiser_trm-magnetic_measurements_thermal_demagnetiser",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Magnetic measurements thermal demagnetiser",
+                                "text": "Magnetic measurements thermal demagnetiser",
+                                "synonyms": [
+                                    {
+                                        "value": "mmtd thermal demagnetizer"
+                                    },
+                                    {
+                                        "value": "mmtd"
+                                    },
+                                    {
+                                        "value": "mm thermal demagnetizer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-thermoremanent_magnetiser_trm-pyrox_scientific_thermal_demagnetiser_with_controlled_field_coil",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Pyrox Scientific thermal demagnetiser with controlled field coil",
+                                "text": "Pyrox Scientific thermal demagnetiser with controlled field coil",
+                                "synonyms": [
+                                    {
+                                        "value": "pyrox scientific thermal demagnetizer with controlled field coil"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-thermoremanent_magnetiser_trm-triaxe",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Triaxe",
+                                "text": "Triaxe",
+                                "synonyms": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-variable_field_translation_balance_vftb",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "variable field translation balance (VFTB)",
+                        "text": "variable field translation balance (VFTB)",
+                        "synonyms": [
+                            {
+                                "value": "vftb"
+                            },
+                            {
+                                "value": "(vftb)"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-variable_field_translation_balance_vftb-mag_instruments_variable_field_translation_balance",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "MAG instruments variable field translation balance",
+                                "text": "MAG instruments variable field translation balance",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-laboratory_induced_remanent_magnetisation_measurement-variable_field_translation_balance_vftb-modified_horizontal_translation_curie_balance",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "modified horizontal translation Curie balance",
+                                "text": "modified horizontal translation Curie balance",
+                                "synonyms": [],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-magnetic_susceptibility_measurements",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "magnetic susceptibility measurements",
+                "text": "magnetic susceptibility measurements",
+                "synonyms": [],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-magnetic_susceptibility_measurements-susceptibility_meter",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "susceptibility meter",
+                        "text": "susceptibility meter",
+                        "synonyms": [
+                            {
+                                "value": "susceptometer"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-magnetic_susceptibility_measurements-susceptibility_meter-agico_kappabridge_susceptibility_meter",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "AGICO Kappabridge susceptibility meter",
+                                "text": "AGICO Kappabridge susceptibility meter",
+                                "synonyms": [
+                                    {
+                                        "value": "agico kappabridge susceptometer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-magnetic_susceptibility_measurements-susceptibility_meter-bartington_magnetic_susceptibility_meter",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Bartington magnetic susceptibility meter",
+                                "text": "Bartington magnetic susceptibility meter",
+                                "synonyms": [
+                                    {
+                                        "value": "bartington magnetic susceptometer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-magnetic_susceptibility_measurements-susceptibility_meter-dynomag_ac_susceptibility_meter",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "DynoMag AC susceptibility meter",
+                                "text": "DynoMag AC susceptibility meter",
+                                "synonyms": [
+                                    {
+                                        "value": "dynomag ac susceptometer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-magnetic_susceptibility_measurements-susceptibility_meter-lakeshore_susceptibility_meter",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Lakeshore susceptibility meter",
+                                "text": "Lakeshore susceptibility meter",
+                                "synonyms": [
+                                    {
+                                        "value": "lakeshore susceptometer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-magnetic_susceptibility_measurements-susceptibility_meter-magnon_susceptibility_meter",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Magnon susceptibility meter",
+                                "text": "Magnon susceptibility meter",
+                                "synonyms": [
+                                    {
+                                        "value": "magnon susceptometer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-magnetic_susceptibility_measurements-susceptibility_meter-mpms_susceptibility_meter",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "MPMS susceptibility meter",
+                                "text": "MPMS susceptibility meter",
+                                "synonyms": [
+                                    {
+                                        "value": "mpms susceptometer"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-magnetic_susceptibility_measurements-susceptibility_meter-sapphire_instruments_susceptibility_meter",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Sapphire Instruments susceptibility meter",
+                                "text": "Sapphire Instruments susceptibility meter",
+                                "synonyms": [
+                                    {
+                                        "value": "sapphire instruments susceptometer"
+                                    }
+                                ],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-natural_remanent_magnetisation_measurement",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "natural remanent magnetisation measurement",
+                "text": "natural remanent magnetisation measurement",
+                "synonyms": [
+                    {
+                        "value": "natural remanent magnetization measurement"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-natural_remanent_magnetisation_measurement-astatic_magnetometer",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "astatic magnetometer",
+                        "text": "astatic magnetometer",
+                        "synonyms": [
+                            {
+                                "value": "astatic gradiometer"
+                            },
+                            {
+                                "value": "parastatic gradiometer"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-natural_remanent_magnetisation_measurement-cryogenic_magnetometer",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "cryogenic magnetometer",
+                        "text": "cryogenic magnetometer",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-natural_remanent_magnetisation_measurement-cryogenic_magnetometer-cryogenic_magnetometer_for_discrete_samples",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "cryogenic magnetometer for discrete samples",
+                                "text": "cryogenic magnetometer for discrete samples",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-natural_remanent_magnetisation_measurement-cryogenic_magnetometer-cryogenic_magnetometer_for_long_core",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "cryogenic magnetometer for long core",
+                                "text": "cryogenic magnetometer for long core",
+                                "synonyms": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-natural_remanent_magnetisation_measurement-microwave_palaeointensity_system",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "microwave palaeointensity system",
+                        "text": "microwave palaeointensity system",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-natural_remanent_magnetisation_measurement-optically_pumped_rock_magnetometer",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "optically pumped rock magnetometer",
+                        "text": "optically pumped rock magnetometer",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-natural_remanent_magnetisation_measurement-spinner_magnetometer",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "spinner magnetometer",
+                        "text": "spinner magnetometer",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-natural_remanent_magnetisation_measurement-spinner_magnetometer-agico_spinner_magnetometer",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "AGICO spinner magnetometer",
+                                "text": "AGICO spinner magnetometer",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-natural_remanent_magnetisation_measurement-spinner_magnetometer-molspin_minispin",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Molspin minispin",
+                                "text": "Molspin minispin",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-natural_remanent_magnetisation_measurement-spinner_magnetometer-molspin_spinner",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Molspin spinner",
+                                "text": "Molspin spinner",
+                                "synonyms": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-natural_remanent_magnetisation_measurement-vibrating_sample_magnetometer_vsm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "vibrating sample magnetometer (VSM)",
+                        "text": "vibrating sample magnetometer (VSM)",
+                        "synonyms": [
+                            {
+                                "value": "vibrating sample magnetometer"
+                            },
+                            {
+                                "value": "vsm"
+                            },
+                            {
+                                "value": "(vsm)"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-natural_remanent_magnetisation_measurement-vibrating_sample_magnetometer_vsm-single_axis_vsm",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "single axis VSM",
+                                "text": "single axis VSM",
+                                "synonyms": [
+                                    {
+                                        "value": "one axis vsm"
+                                    },
+                                    {
+                                        "value": "one-axis vsm"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-natural_remanent_magnetisation_measurement-vibrating_sample_magnetometer_vsm-triaxe",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Triaxe",
+                                "text": "Triaxe",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-natural_remanent_magnetisation_measurement-vibrating_sample_magnetometer_vsm-triaxial_vsm",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "triaxial VSM",
+                                "text": "triaxial VSM",
+                                "synonyms": [
+                                    {
+                                        "value": "tri-axial vsm"
+                                    },
+                                    {
+                                        "value": "three axes vsm"
+                                    },
+                                    {
+                                        "value": "three-axes vsm"
+                                    }
+                                ],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-on-site_measurement",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "on-site measurement",
+                "text": "on-site measurement",
+                "synonyms": [
+                    {
+                        "value": "on site measurement"
+                    },
+                    {
+                        "value": "portable measurement"
+                    },
+                    {
+                        "value": "field measurement0"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-on-site_measurement-portable_gradiometer",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "portable gradiometer",
+                        "text": "portable gradiometer",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-on-site_measurement-portable_magnetometer",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "portable magnetometer",
+                        "text": "portable magnetometer",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-on-site_measurement-portable_magnetometer-bartington_single_axis_fluxgate",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Bartington single axis fluxgate",
+                                "text": "Bartington single axis fluxgate",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-on-site_measurement-portable_magnetometer-overhauser_magnetometer_system",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Overhauser magnetometer system",
+                                "text": "Overhauser magnetometer system",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-on-site_measurement-portable_magnetometer-portable_spinning_magnetometer_psm",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Portable spinning magnetometer (PSM)",
+                                "text": "Portable spinning magnetometer (PSM)",
+                                "synonyms": [
+                                    {
+                                        "value": "psm"
+                                    },
+                                    {
+                                        "value": "(psm)"
+                                    }
+                                ],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-on-site_measurement-portable_susceptibility_meter_psg",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "portable susceptibility meter (PSG)",
+                        "text": "portable susceptibility meter (PSG)",
+                        "synonyms": [
+                            {
+                                "value": "psg"
+                            },
+                            {
+                                "value": "(psg)"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-on-site_measurement-portable_susceptibility_meter_psg-bartington_psg",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Bartington PSG",
+                                "text": "Bartington PSG",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-on-site_measurement-portable_susceptibility_meter_psg-gf_instruments_psg",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "GF Instruments PSG",
+                                "text": "GF Instruments PSG",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-on-site_measurement-portable_susceptibility_meter_psg-si2b_psg",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "SI2B PSG",
+                                "text": "SI2B PSG",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-on-site_measurement-portable_susceptibility_meter_psg-terraplus_psg",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "TerraPlus PSG",
+                                "text": "TerraPlus PSG",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-on-site_measurement-portable_susceptibility_meter_psg-zh_instruments_psg",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "ZH Instruments PSG",
+                                "text": "ZH Instruments PSG",
+                                "synonyms": [],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-sampling_and_preparation",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "sampling and preparation",
+                "text": "sampling and preparation",
+                "synonyms": [],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-sampling_and_preparation-franz_magnetic_separator",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "Franz magnetic separator",
+                        "text": "Franz magnetic separator",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/apparatus-sampling_and_preparation-magnetic_extraction_system_in_aqueous_phase",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "magnetic extraction system in aqueous phase",
+                        "text": "magnetic extraction system in aqueous phase",
+                        "synonyms": [],
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control",
+        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+        "value": "Environment control",
+        "text": "Environment control",
+        "synonyms": [],
+        "children": [
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-atmosphere_control_system",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "atmosphere control system",
+                "text": "atmosphere control system",
+                "synonyms": [
+                    {
+                        "value": "air control system"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-atmosphere_control_system-air_atmosphere",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "air atmosphere",
+                        "text": "air atmosphere",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-atmosphere_control_system-argon_atmosphere",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "argon atmosphere",
+                        "text": "argon atmosphere",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-atmosphere_control_system-carbon_dioxide_atmosphere",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "carbon dioxide atmosphere",
+                        "text": "carbon dioxide atmosphere",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-atmosphere_control_system-carbon_monoxide_atmosphere",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "carbon monoxide atmosphere",
+                        "text": "carbon monoxide atmosphere",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-atmosphere_control_system-evacuated_atmosphere_vacuum",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "evacuated atmosphere (vacuum)",
+                        "text": "evacuated atmosphere (vacuum)",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-atmosphere_control_system-helium_atmosphere",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "helium atmosphere",
+                        "text": "helium atmosphere",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-atmosphere_control_system-nitrogen_atmosphere",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "nitrogen atmosphere",
+                        "text": "nitrogen atmosphere",
+                        "synonyms": [],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-contolled_magnetic_field_area",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "contolled magnetic field area",
+                "text": "contolled magnetic field area",
+                "synonyms": [],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-contolled_magnetic_field_area-helmholtz_coils",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "Helmholtz coils",
+                        "text": "Helmholtz coils",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-contolled_magnetic_field_area-helmholtz_coils-magnetic_measurements_active_shielding",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Magnetic Measurements active shielding",
+                                "text": "Magnetic Measurements active shielding",
+                                "synonyms": [
+                                    {
+                                        "value": "self-compensating helmholtz coils"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-contolled_magnetic_field_area-helmholtz_coils-magnetic_measurements_low_field_cage",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Magnetic Measurements low field cage",
+                                "text": "Magnetic Measurements low field cage",
+                                "synonyms": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-contolled_magnetic_field_area-shielded_room",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "shielded room",
+                        "text": "shielded room",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-contolled_magnetic_field_area-shielded_room-lodestar_magnetics_chamber",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Lodestar magnetics chamber",
+                                "text": "Lodestar magnetics chamber",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-contolled_magnetic_field_area-shielded_room-mu_metal_chamber",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Mu metal chamber",
+                                "text": "Mu metal chamber",
+                                "synonyms": [
+                                    {
+                                        "value": "mu-metal"
+                                    },
+                                    {
+                                        "value": "mu-ferro"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-contolled_magnetic_field_area-shielded_room-soft_iron_chamber",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "soft iron chamber",
+                                "text": "soft iron chamber",
+                                "synonyms": [
+                                    {
+                                        "value": "soft-iron"
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-contolled_magnetic_field_area-shielded_room-soudupin_chamber",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "Soudupin chamber",
+                                "text": "Soudupin chamber",
+                                "synonyms": [],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-temperature_control",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "temperature control",
+                "text": "temperature control",
+                "synonyms": [],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-temperature_control-cryostat_paleomagnetism",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "cryostat (paleomagnetism)",
+                        "text": "cryostat (paleomagnetism)",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-temperature_control-oven_paleomagnetism",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "oven (paleomagnetism)",
+                        "text": "oven (paleomagnetism)",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-temperature_control-oven_paleomagnetism-muffle_furnace",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "muffle furnace",
+                                "text": "muffle furnace",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/environment_control-temperature_control-oven_paleomagnetism-slow_cooling_oven",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "slow cooling oven",
+                                "text": "slow cooling oven",
+                                "synonyms": [],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property",
+        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+        "value": "Measured property",
+        "text": "Measured property",
+        "synonyms": [],
+        "children": [
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-demagnetisation",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "demagnetisation",
+                "text": "demagnetisation",
+                "synonyms": [
+                    {
+                        "value": "demagnetization"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-demagnetisation-alternating_field_af_demagnetisation",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "alternating field (AF) demagnetisation",
+                        "text": "alternating field (AF) demagnetisation",
+                        "synonyms": [
+                            {
+                                "value": "alternating field (af) demagnetization"
+                            },
+                            {
+                                "value": "alternating field demagnetisation"
+                            },
+                            {
+                                "value": "alternating field demagnetization"
+                            },
+                            {
+                                "value": "af demagnetisation"
+                            },
+                            {
+                                "value": "af demagnetization"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-demagnetisation-chemical_demagnetisation",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "chemical demagnetisation",
+                        "text": "chemical demagnetisation",
+                        "synonyms": [
+                            {
+                                "value": "chemical demagnetization"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-demagnetisation-low_temperature_demagnetisation",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "low temperature demagnetisation",
+                        "text": "low temperature demagnetisation",
+                        "synonyms": [
+                            {
+                                "value": "low temperature demagnetization"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-demagnetisation-microwave_demagnetisation",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "microwave demagnetisation",
+                        "text": "microwave demagnetisation",
+                        "synonyms": [
+                            {
+                                "value": "microwave demagnetization"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-demagnetisation-thermal_demagnetisation",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "thermal demagnetisation",
+                        "text": "thermal demagnetisation",
+                        "synonyms": [
+                            {
+                                "value": "thermal demagnetization"
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-first_order_reversal_curve_forc",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "first order reversal curve (FORC)",
+                "text": "first order reversal curve (FORC)",
+                "synonyms": [
+                    {
+                        "value": "forc"
+                    },
+                    {
+                        "value": "firstorderreversal curves forc"
+                    },
+                    {
+                        "value": "(forc)"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_anisotropy",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "magnetic anisotropy",
+                "text": "magnetic anisotropy",
+                "synonyms": [],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_anisotropy-anisotropy_of_anhysteretic_remanent_magnetisation_aarm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "anisotropy of anhysteretic remanent magnetisation (AARM)",
+                        "text": "anisotropy of anhysteretic remanent magnetisation (AARM)",
+                        "synonyms": [
+                            {
+                                "value": "anisotropy of anhysteretic remanent magnetization"
+                            },
+                            {
+                                "value": "anisotropic anhysteretic remanent magnetisation"
+                            },
+                            {
+                                "value": "anisotropic anhysteretic remanent magnetization"
+                            },
+                            {
+                                "value": "aarm"
+                            },
+                            {
+                                "value": "(aarm)"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_anisotropy-anisotropy_of_isothermal_remanent_magnetisation_airm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "anisotropy of isothermal remanent magnetisation (AIRM)",
+                        "text": "anisotropy of isothermal remanent magnetisation (AIRM)",
+                        "synonyms": [
+                            {
+                                "value": "anisotropy of isothermal remanent magnetization"
+                            },
+                            {
+                                "value": "anisotropic isothermal remanent magnetisation"
+                            },
+                            {
+                                "value": "anisotropic of isothermal remanent magnetization"
+                            },
+                            {
+                                "value": "airm"
+                            },
+                            {
+                                "value": "(airm)"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_anisotropy-anisotropy_of_magnetic_susceptibility_ams",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "anisotropy of magnetic susceptibility (AMS)",
+                        "text": "anisotropy of magnetic susceptibility (AMS)",
+                        "synonyms": [
+                            {
+                                "value": "anisotropic magnetic susceptibility"
+                            },
+                            {
+                                "value": "(ams)"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_anisotropy-anisotropy_of_partial_anhysteretic_remanent_magnetisation_paarm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "anisotropy of partial anhysteretic remanent magnetisation (pAARM)",
+                        "text": "anisotropy of partial anhysteretic remanent magnetisation (pAARM)",
+                        "synonyms": [
+                            {
+                                "value": "anisotropy of partial anhysteretic remanent magnetization"
+                            },
+                            {
+                                "value": "anisotropic partial anhysteretic remanent magnetisation"
+                            },
+                            {
+                                "value": "anisotropic partial anhysteretic remanent magnetization"
+                            },
+                            {
+                                "value": "paarm"
+                            },
+                            {
+                                "value": "(paarm)"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_anisotropy-anisotropy_of_thermalremanent_magnetisation_atrm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "anisotropy of thermalremanent magnetisation (ATRM)",
+                        "text": "anisotropy of thermalremanent magnetisation (ATRM)",
+                        "synonyms": [
+                            {
+                                "value": "anisotropy of thermalremanent magnetization"
+                            },
+                            {
+                                "value": "anisotropic thermal remanent magnetisation"
+                            },
+                            {
+                                "value": "anisotropic of thermalremanent magnetization"
+                            },
+                            {
+                                "value": "atrm"
+                            },
+                            {
+                                "value": "(atrm)"
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_hysteresis_curves",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "magnetic hysteresis curves",
+                "text": "magnetic hysteresis curves",
+                "synonyms": [
+                    {
+                        "value": "magnetic hysteresis loops"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_hysteresis_curves-hysteresis_parameters",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "hysteresis parameters",
+                        "text": "hysteresis parameters",
+                        "synonyms": [],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_remanence_demagnetisation_curves",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "magnetic remanence demagnetisation curves",
+                "text": "magnetic remanence demagnetisation curves",
+                "synonyms": [
+                    {
+                        "value": "magnetic remanence demagnetization curves"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_susceptibility",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "magnetic susceptibility",
+                "text": "magnetic susceptibility",
+                "synonyms": [],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_susceptibility-bulk_magnetic_susceptibility",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "bulk magnetic susceptibility",
+                        "text": "bulk magnetic susceptibility",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_susceptibility-field_dependent_magnetic_susceptibility",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "field dependent magnetic susceptibility",
+                        "text": "field dependent magnetic susceptibility",
+                        "synonyms": [
+                            {
+                                "value": "field dependence of magnetic susceptibility"
+                            },
+                            {
+                                "value": "field-dependence of magnetic susceptibility"
+                            },
+                            {
+                                "value": "field amplitude dependence"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_susceptibility-frequency_dependendent_magnetic_susceptibility",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "frequency dependendent magnetic susceptibility",
+                        "text": "frequency dependendent magnetic susceptibility",
+                        "synonyms": [
+                            {
+                                "value": "frequency dependendence of magnetic susceptibility"
+                            },
+                            {
+                                "value": "frequency-dependendence of magnetic susceptibility"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_susceptibility-high_temperature_magnetic_susceptibility",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "high temperature magnetic susceptibility",
+                        "text": "high temperature magnetic susceptibility",
+                        "synonyms": [
+                            {
+                                "value": "high t magnetic susceptibility"
+                            },
+                            {
+                                "value": "high-t magnetic susceptibility"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_susceptibility-in-phase_magnetic_susceptibility",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "in-phase magnetic susceptibility",
+                        "text": "in-phase magnetic susceptibility",
+                        "synonyms": [
+                            {
+                                "value": "in phase magnetic susceptibility"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_susceptibility-low_temperature_magnetic_susceptibility",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "low temperature magnetic susceptibility",
+                        "text": "low temperature magnetic susceptibility",
+                        "synonyms": [
+                            {
+                                "value": "low-t magnetic susceptibility"
+                            },
+                            {
+                                "value": "low t magnetic susceptibility"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetic_susceptibility-out-of-phase_magnetic_susceptibility",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "out-of-phase magnetic susceptibility",
+                        "text": "out-of-phase magnetic susceptibility",
+                        "synonyms": [
+                            {
+                                "value": "out of phase magnetic susceptibility"
+                            },
+                            {
+                                "value": "quadrature magnetic susceptibility"
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-magnetisation_acquisition_curves",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "magnetisation acquisition curves",
+                "text": "magnetisation acquisition curves",
+                "synonyms": [
+                    {
+                        "value": "magnetization acquisition curves"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-paleointensity",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "paleointensity",
+                "text": "paleointensity",
+                "synonyms": [
+                    {
+                        "value": "magnetic intensity"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-paleointensity-absolute_paleointensity",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "absolute paleointensity",
+                        "text": "absolute paleointensity",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-paleointensity-relative_paleointensity",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "relative paleointensity",
+                        "text": "relative paleointensity",
+                        "synonyms": [],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-remanent_magnetisation",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "remanent magnetisation",
+                "text": "remanent magnetisation",
+                "synonyms": [
+                    {
+                        "value": "remanent magnetization"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-remanent_magnetisation-anhysteretic_remanent_magnetisation_arm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "anhysteretic remanent magnetisation (ARM)",
+                        "text": "anhysteretic remanent magnetisation (ARM)",
+                        "synonyms": [
+                            {
+                                "value": "anhysteretic remanent magnetization (arm)"
+                            },
+                            {
+                                "value": "anhysteretic remanent magnetisation"
+                            },
+                            {
+                                "value": "anhysteretic remanent magnetization"
+                            },
+                            {
+                                "value": "(arm)"
+                            },
+                            {
+                                "value": "anhysteretic remanence arm acquisition"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-remanent_magnetisation-backfield_remanence_coercivity_brc",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "backfield remanence coercivity (BRC)",
+                        "text": "backfield remanence coercivity (BRC)",
+                        "synonyms": [
+                            {
+                                "value": "backfield remanence coercivity"
+                            },
+                            {
+                                "value": "brc"
+                            },
+                            {
+                                "value": "backfield remanent coercivity"
+                            },
+                            {
+                                "value": "(brc)"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-remanent_magnetisation-chemical_remanent_magnetisation_crm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "chemical remanent magnetisation (CRM)",
+                        "text": "chemical remanent magnetisation (CRM)",
+                        "synonyms": [
+                            {
+                                "value": "chemical remanenet magnetization (crm)"
+                            },
+                            {
+                                "value": "chemical remanent magnetisation"
+                            },
+                            {
+                                "value": "chemical remanenet magnetization"
+                            },
+                            {
+                                "value": "crm"
+                            },
+                            {
+                                "value": "(crm)"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-remanent_magnetisation-depositional_remanent_magnetisation_drm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "depositional remanent magnetisation (DRM)",
+                        "text": "depositional remanent magnetisation (DRM)",
+                        "synonyms": [
+                            {
+                                "value": "depositional remanent magnetization (drm)"
+                            },
+                            {
+                                "value": "depositional remanent magnetisation"
+                            },
+                            {
+                                "value": "depositional remanent magnetization"
+                            },
+                            {
+                                "value": "drm"
+                            },
+                            {
+                                "value": "(drm)"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-remanent_magnetisation-gyromagnetic_remanent_magnetisation_grm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "gyromagnetic remanent magnetisation (GRM)",
+                        "text": "gyromagnetic remanent magnetisation (GRM)",
+                        "synonyms": [
+                            {
+                                "value": "gyromagnetic remanent magnetization"
+                            },
+                            {
+                                "value": "rotational remanent magnetisation (rrm)"
+                            },
+                            {
+                                "value": "rotational remanent magnetization"
+                            },
+                            {
+                                "value": "rrm"
+                            },
+                            {
+                                "value": "grm"
+                            },
+                            {
+                                "value": "(rrm)"
+                            },
+                            {
+                                "value": "(grm)"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-remanent_magnetisation-isothermal_remanent_magnetisation_irm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "isothermal remanent magnetisation (IRM)",
+                        "text": "isothermal remanent magnetisation (IRM)",
+                        "synonyms": [
+                            {
+                                "value": "isothermal remanent magnetization (irm)"
+                            },
+                            {
+                                "value": "isothermal remanent magnetisation"
+                            },
+                            {
+                                "value": "isothermal remanent magnetization"
+                            },
+                            {
+                                "value": "irm"
+                            },
+                            {
+                                "value": "(irm)"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-remanent_magnetisation-natural_remanent_magnetisation_nrm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "natural remanent magnetisation (NRM)",
+                        "text": "natural remanent magnetisation (NRM)",
+                        "synonyms": [
+                            {
+                                "value": "natural remanent magnetization (nrm)"
+                            },
+                            {
+                                "value": "natural remanent magnetisation"
+                            },
+                            {
+                                "value": "natural remanent magnetization"
+                            },
+                            {
+                                "value": "nrm"
+                            },
+                            {
+                                "value": "(nrm)"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-remanent_magnetisation-partial_anhysteretic_remanent_magnetisation_parm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "partial anhysteretic remanent magnetisation (pARM)",
+                        "text": "partial anhysteretic remanent magnetisation (pARM)",
+                        "synonyms": [
+                            {
+                                "value": "partial anhysteretic remanent magnetization (parm)"
+                            },
+                            {
+                                "value": "partial anhysteretic remanent magnetisation"
+                            },
+                            {
+                                "value": "partial anhysteretic remanent magnetization"
+                            },
+                            {
+                                "value": "parm"
+                            },
+                            {
+                                "value": "(parm)"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-remanent_magnetisation-post-depositional_remanent_magnetisation_pdrm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "post-depositional remanent magnetisation (pDRM)",
+                        "text": "post-depositional remanent magnetisation (pDRM)",
+                        "synonyms": [
+                            {
+                                "value": "post-depositional remanent magnetization (pdrm)"
+                            },
+                            {
+                                "value": "post-depositional remanent magnetisation"
+                            },
+                            {
+                                "value": "post-depositional remanent magnetization"
+                            },
+                            {
+                                "value": "pdrm"
+                            },
+                            {
+                                "value": "(pdrm)"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-remanent_magnetisation-reversed_thermoremanent_magnetisation_rtrm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "reversed thermoremanent magnetisation (rTRM)",
+                        "text": "reversed thermoremanent magnetisation (rTRM)",
+                        "synonyms": [
+                            {
+                                "value": "reversed thermoremanent magnetization (rtrm)"
+                            },
+                            {
+                                "value": "reversed thermoremanent magnetisation"
+                            },
+                            {
+                                "value": "reversed thermoremanent magnetization"
+                            },
+                            {
+                                "value": "rtrm"
+                            },
+                            {
+                                "value": "(rtrm)"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-remanent_magnetisation-thermoremanent_magnetisation_trm",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "thermoremanent magnetisation (TRM)",
+                        "text": "thermoremanent magnetisation (TRM)",
+                        "synonyms": [
+                            {
+                                "value": "thermoremanent magnetization (trm)"
+                            },
+                            {
+                                "value": "thermoremanent magnetisation"
+                            },
+                            {
+                                "value": "thermoremanent magnetization"
+                            },
+                            {
+                                "value": "trm"
+                            },
+                            {
+                                "value": "(trm)"
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-thermomagnetic_magnetisation_curves",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "thermomagnetic magnetisation curves",
+                "text": "thermomagnetic magnetisation curves",
+                "synonyms": [
+                    {
+                        "value": "thermomagnetic magnetization curves"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-thermomagnetic_magnetisation_curves-high_temperature_thermomagnetic_curves",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "high temperature thermomagnetic curves",
+                        "text": "high temperature thermomagnetic curves",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/measured_property-thermomagnetic_magnetisation_curves-low_temperature_thermomagnetic_curves",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "low temperature thermomagnetic curves",
+                        "text": "low temperature thermomagnetic curves",
+                        "synonyms": [],
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior",
+        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+        "value": "Inferred behavior",
+        "text": "Inferred behavior",
+        "synonyms": [],
+        "children": [
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "anisotropy of magnetic susceptibility and remanence",
+                "text": "anisotropy of magnetic susceptibility and remanence",
+                "synonyms": [],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-deformation_and_compaction_in_sediments",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "deformation and compaction in sediments",
+                        "text": "deformation and compaction in sediments",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-dike_flow_direction",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "dike flow direction",
+                        "text": "dike flow direction",
+                        "synonyms": [
+                            {
+                                "value": "magmatic flow direction"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-ductile_deformation",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "ductile deformation",
+                        "text": "ductile deformation",
+                        "synonyms": [
+                            {
+                                "value": "plastic deformation"
+                            },
+                            {
+                                "value": "viscous deformation"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-emplacement_of_ore_body",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "emplacement of ore body",
+                        "text": "emplacement of ore body",
+                        "synonyms": [
+                            {
+                                "value": "mineral body"
+                            },
+                            {
+                                "value": "mineral enrichment"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-lava_flow_direction",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "lava flow direction",
+                        "text": "lava flow direction",
+                        "synonyms": [
+                            {
+                                "value": "volcanic flow direction"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-magnetic_anisotropy_degree",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "magnetic anisotropy degree",
+                        "text": "magnetic anisotropy degree",
+                        "synonyms": [
+                            {
+                                "value": "degree of magnetic anisotropy"
+                            },
+                            {
+                                "value": "magnetic fabrics and anisotropy"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-magnetic_anisotropy_through_rock_structure",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "magnetic anisotropy through rock structure",
+                        "text": "magnetic anisotropy through rock structure",
+                        "synonyms": [],
+                        "children": [
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-magnetic_anisotropy_through_rock_structure-magnetic_anisotropy_through_crystallographic_preferred_orientation_cpo",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "magnetic anisotropy through crystallographic preferred orientation (CPO)",
+                                "text": "magnetic anisotropy through crystallographic preferred orientation (CPO)",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-magnetic_anisotropy_through_rock_structure-magnetic_anisotropy_through_mineralogical_structure",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "magnetic anisotropy through mineralogical structure",
+                                "text": "magnetic anisotropy through mineralogical structure",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-magnetic_anisotropy_through_rock_structure-magnetic_anisotropy_through_sedimentary_structure",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "magnetic anisotropy through sedimentary structure",
+                                "text": "magnetic anisotropy through sedimentary structure",
+                                "synonyms": [],
+                                "children": []
+                            },
+                            {
+                                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-magnetic_anisotropy_through_rock_structure-magnetic_anisotropy_through_shape_preferred_orientation_spo",
+                                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                                "value": "magnetic anisotropy through shape preferred orientation (SPO)",
+                                "text": "magnetic anisotropy through shape preferred orientation (SPO)",
+                                "synonyms": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-magnetic_anomalies",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "magnetic anomalies",
+                        "text": "magnetic anomalies",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-magnetic_foliation",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "magnetic foliation",
+                        "text": "magnetic foliation",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-magnetic_lineation",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "magnetic lineation",
+                        "text": "magnetic lineation",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-natural_remanent_magnetisation_nrm_orientation",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "natural remanent magnetisation (NRM) orientation",
+                        "text": "natural remanent magnetisation (NRM) orientation",
+                        "synonyms": [
+                            {
+                                "value": "natural remanent magnetisation orientation"
+                            },
+                            {
+                                "value": "natural remanent magnetization orientation"
+                            },
+                            {
+                                "value": "nrm"
+                            },
+                            {
+                                "value": "(nrm)"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-paleo-magnetic_current_direction",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "paleo-magnetic current direction",
+                        "text": "paleo-magnetic current direction",
+                        "synonyms": [
+                            {
+                                "value": "paleomagnetic current direction"
+                            },
+                            {
+                                "value": "paleo magnetic current direction"
+                            },
+                            {
+                                "value": "magnetic current direction"
+                            },
+                            {
+                                "value": "magnetism current direction"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-anisotropy_of_magnetic_susceptibility_and_remanence-principal_axes_of_magnetic_susceptibility_and_remancence",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "principal axes of magnetic susceptibility and remancence",
+                        "text": "principal axes of magnetic susceptibility and remancence",
+                        "synonyms": [],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-magnetic_mineralogy_analyses",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "magnetic mineralogy analyses",
+                "text": "magnetic mineralogy analyses",
+                "synonyms": [],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-magnetic_mineralogy_analyses-archaeological_environment",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "archaeological environment",
+                        "text": "archaeological environment",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-magnetic_mineralogy_analyses-environmental_pollution",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "environmental pollution",
+                        "text": "environmental pollution",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-magnetic_mineralogy_analyses-heating_potential_of_magnetic_nanoparticles",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "heating potential of magnetic nanoparticles",
+                        "text": "heating potential of magnetic nanoparticles",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-magnetic_mineralogy_analyses-inferred_paleoclimate",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "inferred paleoclimate",
+                        "text": "inferred paleoclimate",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-magnetic_mineralogy_analyses-inferred_paleoenvironment",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "inferred paleoenvironment",
+                        "text": "inferred paleoenvironment",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-magnetic_mineralogy_analyses-magnetic_domain_state",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "magnetic domain state",
+                        "text": "magnetic domain state",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-magnetic_mineralogy_analyses-mineral_phase_analysis",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "mineral phase analysis",
+                        "text": "mineral phase analysis",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-magnetic_mineralogy_analyses-origin_of_remanence",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "origin of remanence",
+                        "text": "origin of remanence",
+                        "synonyms": [
+                            {
+                                "value": "remanence acquisition mechanism"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-magnetic_mineralogy_analyses-remanent_magnetisation_stability",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "remanent magnetisation stability",
+                        "text": "remanent magnetisation stability",
+                        "synonyms": [
+                            {
+                                "value": "remanent magnetization stability"
+                            },
+                            {
+                                "value": "remagnetisation"
+                            },
+                            {
+                                "value": "remagnetization"
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-natural_remanent_magnetisation_processing",
+                "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                "value": "natural remanent magnetisation processing",
+                "text": "natural remanent magnetisation processing",
+                "synonyms": [
+                    {
+                        "value": "natural remanent magnetization processing"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-natural_remanent_magnetisation_processing-_paleo-secular_variation",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "(paleo-)secular variation",
+                        "text": "(paleo-)secular variation",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-natural_remanent_magnetisation_processing-absolute_palaeointensity",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "absolute palaeointensity",
+                        "text": "absolute palaeointensity",
+                        "synonyms": [
+                            {
+                                "value": "archeointensity"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-natural_remanent_magnetisation_processing-archeomagnetic_dating",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "archeomagnetic dating",
+                        "text": "archeomagnetic dating",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-natural_remanent_magnetisation_processing-archeomagnetism",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "archeomagnetism",
+                        "text": "archeomagnetism",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-natural_remanent_magnetisation_processing-crustal_block_rotation",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "crustal block rotation",
+                        "text": "crustal block rotation",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-natural_remanent_magnetisation_processing-dating_volcanic_products",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "dating volcanic products",
+                        "text": "dating volcanic products",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-natural_remanent_magnetisation_processing-geodynamic_and_tectonic_processes",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "geodynamic and tectonic processes",
+                        "text": "geodynamic and tectonic processes",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-natural_remanent_magnetisation_processing-geomagnetic_polarity_time_scale_gpts",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "geomagnetic polarity time scale (GPTS)",
+                        "text": "geomagnetic polarity time scale (GPTS)",
+                        "synonyms": [
+                            {
+                                "value": "geomagnetic polarity time scale"
+                            },
+                            {
+                                "value": "gpts"
+                            },
+                            {
+                                "value": "(gpts)"
+                            },
+                            {
+                                "value": "geomagnetic field reversals"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-natural_remanent_magnetisation_processing-inferred_paleogeography",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "inferred paleogeography",
+                        "text": "inferred paleogeography",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-natural_remanent_magnetisation_processing-magnetostratigraphy",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "magnetostratigraphy",
+                        "text": "magnetostratigraphy",
+                        "synonyms": [],
+                        "children": []
+                    },
+                    {
+                        "id": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/inferred_behavior-natural_remanent_magnetisation_processing-relative_paleointensity",
+                        "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/paleomagnetism\/1.3\/",
+                        "value": "relative paleointensity",
+                        "text": "relative paleointensity",
+                        "synonyms": [
+                            {
+                                "value": "paleointensity"
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+]
