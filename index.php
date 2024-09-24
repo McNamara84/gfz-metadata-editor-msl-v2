@@ -59,7 +59,7 @@ include ("formgroups/descriptions.html");
 include ("formgroups/general.html");
 include ("formgroups/analogueModellingOfGeologicalProcesses.html");
 include ("formgroups/geochemistry.html");
-include ("formgroups/MicrosocopyAndTomography.html");
+include ("formgroups/microsocopyAndTomography.html");
 include ("formgroups/paleomagnetism.html");
 include ("formgroups/rockAndMeltPhysics.html");
 include ("formgroups/thesaurusKeywords.html");

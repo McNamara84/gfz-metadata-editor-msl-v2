@@ -97,7 +97,7 @@ $translations = [
     'Geochemistry_M_P' => 'Measured property',
 
     // Form Group Microsocopy And Tomography
-    'MATomography' => 'Microsocopy And Tomography',
+    'MATomography' => 'Microsocopy and tomography',
     'MATomography_A' => 'Apparatus',
     'MATomography_A_E' => 'Ancillary equipment',
     'MATomography_A_T' => 'Analysis technique',
