@@ -33,10 +33,11 @@ class VocabController
 
     public function getMslVocab($vars)
     {
-        $type = $vars['type'] ?? 'all';
+        $type = $vars['type'] ?? $_GET['type'] ?? 'all';
+
         $baseUrl = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/';
         $types = ['analogue', 'geochemistry', 'geologicalage', 'geologicalsetting', 'materials', 'microscopy', 'paleomagnetism', 'porefluids', 'rockphysics'];
-        $jsonDir = __DIR__ . '/json/';
+        $jsonDir = __DIR__ . '../../../json/';
 
         if (!file_exists($jsonDir)) {
             mkdir($jsonDir, 0755, true);
@@ -71,6 +72,8 @@ class VocabController
         }
 
         header('Content-Type: application/json');
-        echo json_encode($results);
+        echo json_encode([
+            'message' => "Updating vocab for type: $type"
+        ]);
     }
 }
