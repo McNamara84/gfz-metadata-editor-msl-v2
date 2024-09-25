@@ -343,7 +343,13 @@ $(document).ready(function () {
 
     setUpAutocompleteFunder();
   });
+  var labData;
 
+  $.getJSON("json/msl-labs.json", function (data) {
+    labData = data;
+    var firstRow = $("#laboratoryGroup .row").first();
+    initializeTagify(firstRow, data);
+  });
   var rowCounter = 1;
 
   $("#addLaboratory").click(function () {
@@ -381,6 +387,88 @@ $(document).ready(function () {
       $(this).closest(".row").remove();
     });
   });
+
+  function initializeTagify(row, data) {
+    var inputName = row.find('input[name="laboratoryName[]"]')[0];
+    var inputAffiliation = row.find('input[name="laboratoryAffiliation[]"]')[0];
+    var hiddenRorId = row.find('input[name="laboratoryRorIds[]"]')[0];
+
+    function findLabByName(name) {
+      return data.find((lab) => lab.name === name);
+    }
+
+    var tagifyName = new Tagify(inputName, {
+      whitelist: data.map((item) => item.name),
+      enforceWhitelist: false,
+      maxTags: 1,
+      dropdown: {
+        enabled: 1,
+        maxItems: 5,
+        position: "text",
+        closeOnSelect: true,
+        highlightFirst: true,
+      },
+      delimiters: null,
+      mode: "select",
+    });
+
+    var tagifyAffiliation = new Tagify(inputAffiliation, {
+      whitelist: data.map((item) => item.affiliation),
+      enforceWhitelist: false,
+      maxTags: 1,
+      dropdown: {
+        enabled: 1,
+        maxItems: 5,
+        position: "text",
+        closeOnSelect: true,
+        highlightFirst: true,
+      },
+      delimiters: null,
+      mode: "select",
+    });
+
+    tagifyName.on("add", function (e) {
+      var labName = e.detail.data.value;
+      var lab = findLabByName(labName);
+      if (lab) {
+        tagifyAffiliation.removeAllTags();
+        tagifyAffiliation.addTags([lab.affiliation]);
+        hiddenRorId.value = lab.ror_id || "";
+        tagifyAffiliation.setReadOnly(true);
+      } else {
+        tagifyAffiliation.removeAllTags();
+        hiddenRorId.value = "";
+        tagifyAffiliation.setReadOnly(false);
+      }
+    });
+
+    tagifyName.on("remove", function () {
+      tagifyAffiliation.removeAllTags();
+      hiddenRorId.value = "";
+      tagifyAffiliation.setReadOnly(false);
+    });
+
+    tagifyName.on("input", function (e) {
+      var value = e.detail.value;
+      if (value) {
+        var lab = findLabByName(value);
+        if (!lab) {
+          tagifyAffiliation.removeAllTags();
+          hiddenRorId.value = "";
+          tagifyAffiliation.setReadOnly(false);
+        }
+      }
+    });
+
+    tagifyAffiliation.on("input", function (e) {
+      var value = e.detail.value;
+      if (value && !tagifyAffiliation.state.readonly) {
+        tagifyAffiliation.addTags([value]);
+      }
+    });
+
+    return { tagifyName, tagifyAffiliation };
+  }
 
   /////////////////////////////// HELP BUTTONS /////////////////////////////////////////////////////////////////
 
