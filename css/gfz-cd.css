@@ -37,9 +37,6 @@
 
 /* Feedback Button */
 .feedback-button {
-    position: fixed;
-    right: 30px;
-    top: 75px;
     z-index: 1000;
     font-size: 12px;
     transition: transform 0.5s ease-in-out;
