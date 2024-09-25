@@ -18,37 +18,39 @@ externalDocs:
   description: Dokumentation of the API V1 at GitHub
   url: https://github.com/McNamara84/gfz-metadata-editor-msl-v2#api-endpunkte
 servers:
-- url: https://mde2.cats4future.de/api/v2
+  - url: https://mde2.cats4future.de/api/v2
 tags:
-- name: general
-  description: General operations for health checks an version
-- name: update
-  description: Operations about updating the vocabularies
+  - name: general
+    description: General operations for health checks an version
+  - name: update
+    description: Operations about updating the vocabularies
 paths:
   /update/vocabs/msl:
     get:
       tags:
-      - update
+        - update
       summary: Update MSL vocabularies
       description: Update vocabularies for MSL (Materials Science Laboratory)
       operationId: getMslVocab
       parameters:
-      - in: query
-        name: type
-        schema:
-          type: string
-          enum:
-          - all
-          - analogue
-          - geochemistry
-          - geologicalage
-          - geologicalsetting
-          - materials
-          - microscopy
-          - paleomagnetism
-          - porefluids
-          - rockphysics
-        description: "Type of vocabulary to update. If not provided, defaults to 'all'."
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum:
+              [
+                all,
+                analogue,
+                geochemistry,
+                geologicalage,
+                geologicalsetting,
+                materials,
+                microscopy,
+                paleomagnetism,
+                porefluids,
+                rockphysics,
+              ]
+          description: Type of vocabulary to update. If not provided, defaults to 'all'.
       responses:
         "200":
           description: Successful operation
@@ -59,16 +61,12 @@ paths:
                 properties:
                   message:
                     type: string
-                    examples:
-                    - Vocabularies updated successfully
+                    examples: ["Vocabularies updated successfully"]
                   updatedTypes:
                     type: array
                     items:
                       type: string
-                    examples:
-                    - analogue
-                    - geochemistry
-                    - geologicalage
+                    examples: ["analogue", "geochemistry", "geologicalage"]
         "400":
           description: Bad request
           content:
@@ -78,8 +76,7 @@ paths:
                 properties:
                   error:
                     type: string
-                    examples:
-                    - Invalid type specified
+                    examples: ["Invalid type specified"]
         "500":
           description: Internal server error
           content:
@@ -89,32 +86,34 @@ paths:
                 properties:
                   error:
                     type: string
-                    examples:
-                    - An error occurred while updating vocabularies
+                    examples: ["An error occurred while updating vocabularies"]
+
   /update/vocabs/msl/{type}:
     get:
       tags:
-      - update
+        - update
       summary: Update specific MSL vocabulary
       description: Update a specific vocabulary type for MSL
       operationId: getMslVocabByType
       parameters:
-      - in: path
-        name: type
-        required: true
-        schema:
-          type: string
-          enum:
-          - analogue
-          - geochemistry
-          - geologicalage
-          - geologicalsetting
-          - materials
-          - microscopy
-          - paleomagnetism
-          - porefluids
-          - rockphysics
-        description: Type of vocabulary to update
+        - in: path
+          name: type
+          required: true
+          schema:
+            type: string
+            enum:
+              [
+                analogue,
+                geochemistry,
+                geologicalage,
+                geologicalsetting,
+                materials,
+                microscopy,
+                paleomagnetism,
+                porefluids,
+                rockphysics,
+              ]
+          description: Type of vocabulary to update
       responses:
         "200":
           description: Successful operation
@@ -125,12 +124,10 @@ paths:
                 properties:
                   message:
                     type: string
-                    examples:
-                    - Vocabulary updated successfully
+                    examples: ["Vocabulary updated successfully"]
                   type:
                     type: string
-                    examples:
-                    - geologicalage
+                    examples: ["geologicalage"]
         "400":
           description: Bad request
           content:
@@ -140,8 +137,7 @@ paths:
                 properties:
                   error:
                     type: string
-                    examples:
-                    - Invalid type specified
+                    examples: ["Invalid type specified"]
         "500":
           description: Internal server error
           content:
@@ -151,12 +147,11 @@ paths:
                 properties:
                   error:
                     type: string
-                    examples:
-                    - An error occurred while updating vocabulary
+                    examples: ["An error occurred while updating vocabulary"]
   /general/alive:
     get:
       tags:
-      - general
+        - general
       summary: Health check
       description: Check if the API is responsive
       operationId: getAlive
@@ -170,8 +165,7 @@ paths:
                 properties:
                   message:
                     type: string
-                    examples:
-                    - I'm still alive...
+                    examples: ["I'm still alive..."]
         "500":
           description: Internal server error
           content:
@@ -181,8 +175,49 @@ paths:
                 properties:
                   error:
                     type: string
-                    examples:
-                    - An error occurred during health check
+                    examples: ["An error occurred during health check"]
+  /vocabs/sciencekeywords:
+    get:
+      tags:
+        - vocabularies
+      summary: Get GCMD Science Keywords
+      description: Retrieve the controlled vocabulary of GCMD Science Keywords from NASA as a JSON string
+      operationId: getGcmdScienceKeywords
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VocabularyTree"
+              example:
+                id: "https://gcmd.earthdata.nasa.gov/kms/concept/1eb0ea0a-312c-4d74-8d42-6f1ad758f999"
+                text: "Science Keywords"
+                language: "en"
+                scheme: "NASA/GCMD Earth Science Keywords"
+                schemeURI: "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords"
+                description: ""
+                children:
+                  - id: "https://gcmd.earthdata.nasa.gov/kms/concept/e9f67a66-e9fc-435c-b720-ae32a2c3d8f5"
+                    text: "EARTH SCIENCE"
+                    language: "en"
+                    scheme: "NASA/GCMD Earth Science Keywords"
+                    schemeURI: "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords"
+                    description: "any of various sciences, as geography, geology, or meteorology, that deal with the earth, its composition, or any of its changing aspects."
+                    children:
+                      - id: "https://gcmd.earthdata.nasa.gov/kms/concept/c47f6052-634e-40ef-a5ac-13f69f6f4c2a"
+                        text: "ATMOSPHERE"
+                        language: "en"
+                        scheme: "NASA/GCMD Earth Science Keywords"
+                        schemeURI: "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords"
+                        description: "A gaseous envelope gravitationally bound to a celestial body (e.g., a planet, its satellite, or a star)."
+                        children:
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     VocabularyUpdate:
@@ -190,42 +225,71 @@ components:
       properties:
         message:
           type: string
-          examples:
-          - Vocabularies updated successfully
+          examples: ["Vocabularies updated successfully"]
         updatedTypes:
           type: array
           items:
             type: string
-          examples:
-          - analogue
-          - geochemistry
-          - geologicalage
+          examples: ["analogue", "geochemistry", "geologicalage"]
+
     VocabularyType:
       type: string
       enum:
-      - analogue
-      - geochemistry
-      - geologicalage
-      - geologicalsetting
-      - materials
-      - microscopy
-      - paleomagnetism
-      - porefluids
-      - rockphysics
+        [
+          analogue,
+          geochemistry,
+          geologicalage,
+          geologicalsetting,
+          materials,
+          microscopy,
+          paleomagnetism,
+          porefluids,
+          rockphysics,
+        ]
+
     Error:
       type: object
       properties:
         error:
           type: string
           examples:
-          - An error occurred
+            [
+              "An error occurred",
+              "An error occurred while fetching Science Keywords",
+            ]
+
     HealthResponse:
       type: object
       properties:
         message:
           type: string
-          examples:
-          - I'm still alive...
+          examples: ["I'm still alive..."]
+    VocabularyTree:
+      type: object
+      properties:
+        id:
+          type: string
+        text:
+          type: string
+        language:
+          type: string
+        scheme:
+          type: string
+        schemeURI:
+          type: string
+        description:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: "#/components/schemas/VocabularyTree"
+      required:
+        - id
+        - text
+        - language
+        - scheme
+        - schemeURI
+
   securitySchemes:
     msl_auth:
       type: oauth2

@@ -63,7 +63,7 @@ Diese Dokumentation beschreibt die verfügbaren API-Endpunkte für die GFZ Data 
 
 [Interaktive Dokumentation](https://mde2.cats4future.de/api/v2/docs/index.html) der neuen APIv2-Endpunkte.
 
-### 1. GCMD Science Keywords
+### 1. GCMD Science Keywords (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getGcmdScienceKeywords
 
@@ -179,7 +179,7 @@ Exportiert einen Datensatz in allen drei XML-Formaten (DataCite, ISO, DIF) in ei
 **Antwort:**
 XML-Datei zum Download
 
-### 10. MSL Vokabulare aktualisieren (deprecated, neue Version in APIv2)
+### 10. MSL Vokabulare aktualisieren (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getMslVocab&type={vocab_type}
 
