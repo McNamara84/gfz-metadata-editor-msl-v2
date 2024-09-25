@@ -1,0 +1,241 @@
+openapi: 3.1.0
+info:
+  title: Metadata Editor 2 - MSL Edition
+  description: |-
+    This is the Metadata Editor API V2 from GFZ Data Services based on the OpenAPI 3.1 specification.  You can find the new Version on our [test server](https://mde2.cats4future.de).
+
+    Some useful links:
+    - [The MDE2-MSL repository](https://github.com/McNamara84/gfz-metadata-editor-msl-v2)
+    - [Test Server](https://mde2.cats4future.de)
+  termsOfService: https://github.com/McNamara84/gfz-metadata-editor-msl-v2
+  contact:
+    email: ehrmann@gfz-potsdam.de
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/McNamara84/gfz-metadata-editor-msl-v2/refs/heads/main/LICENSE.md
+  version: 1.5.0
+externalDocs:
+  description: Dokumentation of the API V1 at GitHub
+  url: https://github.com/McNamara84/gfz-metadata-editor-msl-v2#api-endpunkte
+servers:
+- url: https://mde2.cats4future.de/api/v2
+tags:
+- name: general
+  description: General operations for health checks an version
+- name: update
+  description: Operations about updating the vocabularies
+paths:
+  /update/vocabs/msl:
+    get:
+      tags:
+      - update
+      summary: Update MSL vocabularies
+      description: Update vocabularies for MSL (Materials Science Laboratory)
+      operationId: getMslVocab
+      parameters:
+      - in: query
+        name: type
+        schema:
+          type: string
+          enum:
+          - all
+          - analogue
+          - geochemistry
+          - geologicalage
+          - geologicalsetting
+          - materials
+          - microscopy
+          - paleomagnetism
+          - porefluids
+          - rockphysics
+        description: "Type of vocabulary to update. If not provided, defaults to 'all'."
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    examples:
+                    - Vocabularies updated successfully
+                  updatedTypes:
+                    type: array
+                    items:
+                      type: string
+                    examples:
+                    - analogue
+                    - geochemistry
+                    - geologicalage
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    examples:
+                    - Invalid type specified
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    examples:
+                    - An error occurred while updating vocabularies
+  /update/vocabs/msl/{type}:
+    get:
+      tags:
+      - update
+      summary: Update specific MSL vocabulary
+      description: Update a specific vocabulary type for MSL
+      operationId: getMslVocabByType
+      parameters:
+      - in: path
+        name: type
+        required: true
+        schema:
+          type: string
+          enum:
+          - analogue
+          - geochemistry
+          - geologicalage
+          - geologicalsetting
+          - materials
+          - microscopy
+          - paleomagnetism
+          - porefluids
+          - rockphysics
+        description: Type of vocabulary to update
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    examples:
+                    - Vocabulary updated successfully
+                  type:
+                    type: string
+                    examples:
+                    - geologicalage
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    examples:
+                    - Invalid type specified
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    examples:
+                    - An error occurred while updating vocabulary
+  /general/alive:
+    get:
+      tags:
+      - general
+      summary: Health check
+      description: Check if the API is responsive
+      operationId: getAlive
+      responses:
+        "200":
+          description: API is responsive
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    examples:
+                    - I'm still alive...
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    examples:
+                    - An error occurred during health check
+components:
+  schemas:
+    VocabularyUpdate:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - Vocabularies updated successfully
+        updatedTypes:
+          type: array
+          items:
+            type: string
+          examples:
+          - analogue
+          - geochemistry
+          - geologicalage
+    VocabularyType:
+      type: string
+      enum:
+      - analogue
+      - geochemistry
+      - geologicalage
+      - geologicalsetting
+      - materials
+      - microscopy
+      - paleomagnetism
+      - porefluids
+      - rockphysics
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          examples:
+          - An error occurred
+    HealthResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - I'm still alive...
+  securitySchemes:
+    msl_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://petstore3.swagger.io/oauth/login.jsp
+          scopes:
+            write:vocabs: modify vocabularies
+            read:vocabs: read vocabularies
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header

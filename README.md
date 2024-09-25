@@ -59,7 +59,9 @@ Diese Dokumentation beschreibt die verfügbaren API-Endpunkte für die GFZ Data 
 - Alle Anfragen sollten via HTTPS erfolgen
 - Antworten werden im JSON-Format zurückgegeben, sofern nicht anders angegeben
 
-## Endpunkte
+## API-Endpunkte
+
+[Interaktive Dokumentation](https://mde2.cats4future.de/api/v2/docs/index.html) der neuen APIv2-Endpunkte.
 
 ### 1. GCMD Science Keywords
 
@@ -177,7 +179,7 @@ Exportiert einen Datensatz in allen drei XML-Formaten (DataCite, ISO, DIF) in ei
 **Antwort:**
 XML-Datei zum Download
 
-### 10. MSL Vokabulare aktualisieren
+### 10. MSL Vokabulare aktualisieren (deprecated, neue Version in APIv2)
 
 GET ?action=getMslVocab&type={vocab_type}
 
