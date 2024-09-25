@@ -1,56 +1,8 @@
 $(document).ready(function () {
-  setupAutocomplete("#inputAuthorAffiliation", "#hiddenAuthorRorId");
-  setupAutocomplete("#inputCPAffiliation", "#hiddenCPRorId");
-
-  function setupAutocomplete(inputSelector, hiddenInputSelector) {
-    $(inputSelector).autocomplete({
-      source: function (request, response) {
-        $.ajax({
-          url: "api.php?action=getKeywords&curationType=isCurated",
-          dataType: "json",
-          success: function (data) {
-            var keywords = data.map(function (item) {
-              return item.free_keyword;
-            });
-            response(keywords);
-          },
-        });
-      },
-      select: function (event, ui) {
-        $(hiddenInputSelector).val(ui.item.value);
-      },
-    });
-  }
-
-  // Alle Optionen klonen und als Variable zwischenspeichern
-  var allOptions = $("#inputRights option").clone();
-
-  // Event Handler für Änderungen am Resource Type Select Element
-  $("#inputResourceType").change(function () {
-    var selectedResourceType = $("#inputResourceType option:selected").text().trim();
-
-    // Prüfung ob "Software" ausgewählt wurde
-    if (selectedResourceType === "Software") {
-      $("#inputRights").empty();
-
-      // Filtern der Optionen nach "MIT License" und "Apache License 2.0"
-      allOptions.each(function () {
-        var optionText = $(this).text().trim();
-
-        if (optionText === "MIT License" || optionText === "Apache License 2.0") {
-          $("#inputRights").append($(this).clone());
-        }
-      });
-    } else {
-      // Optionen zurücksetzen auf Klon der ursprünglichen Optionen
-      $("#inputRights").empty().append(allOptions.clone());
-    }
-  });
-  // Autocomplete mit Tagify für Labs
-  $.getJSON("json/msl-labs.json", function (data) {
-    var inputName = document.querySelector('input[name="laboratoryName[]"]');
-    var inputAffiliation = document.querySelector('input[name="laboratoryAffiliation[]"]');
-    var hiddenRorId = document.querySelector('input[name="laboratoryRorIds[]"]');
+  function initializeTagify(row, data) {
+    var inputName = row.find('input[name="laboratoryName[]"]')[0];
+    var inputAffiliation = row.find('input[name="laboratoryAffiliation[]"]')[0];
+    var hiddenRorId = row.find('input[name="laboratoryRorIds[]"]')[0];
 
     function findLabByName(name) {
       return data.find((lab) => lab.name === name);
@@ -61,7 +13,7 @@ $(document).ready(function () {
       enforceWhitelist: false,
       maxTags: 1,
       dropdown: {
-        enabled: 1, // Aktiviert das Dropdown
+        enabled: 1,
         maxItems: 5,
         position: "text",
         closeOnSelect: true,
@@ -76,7 +28,7 @@ $(document).ready(function () {
       enforceWhitelist: false,
       maxTags: 1,
       dropdown: {
-        enabled: 1, // Aktiviert das Dropdown
+        enabled: 1,
         maxItems: 5,
         position: "text",
         closeOnSelect: true,
@@ -125,5 +77,60 @@ $(document).ready(function () {
         tagifyAffiliation.addTags([value]);
       }
     });
+
+    return { tagifyName, tagifyAffiliation };
+  }
+  function setupAutocomplete(inputSelector, hiddenInputSelector) {
+    $(inputSelector).autocomplete({
+      source: function (request, response) {
+        $.ajax({
+          url: "api.php?action=getKeywords&curationType=isCurated",
+          dataType: "json",
+          success: function (data) {
+            var keywords = data.map(function (item) {
+              return item.free_keyword;
+            });
+            response(keywords);
+          },
+        });
+      },
+      select: function (event, ui) {
+        $(hiddenInputSelector).val(ui.item.value);
+      },
+    });
+  }
+
+  // Alle Optionen klonen und als Variable zwischenspeichern
+  var allOptions = $("#inputRights option").clone();
+
+  // Event Handler für Änderungen am Resource Type Select Element
+  $("#inputResourceType").change(function () {
+    var selectedResourceType = $("#inputResourceType option:selected").text().trim();
+
+    // Prüfung ob "Software" ausgewählt wurde
+    if (selectedResourceType === "Software") {
+      $("#inputRights").empty();
+
+      // Filtern der Optionen nach "MIT License" und "Apache License 2.0"
+      allOptions.each(function () {
+        var optionText = $(this).text().trim();
+
+        if (optionText === "MIT License" || optionText === "Apache License 2.0") {
+          $("#inputRights").append($(this).clone());
+        }
+      });
+    } else {
+      // Optionen zurücksetzen auf Klon der ursprünglichen Optionen
+      $("#inputRights").empty().append(allOptions.clone());
+    }
   });
+  // Autocomplete mit Tagify für Labs
+  var labData;
+  $.getJSON("json/msl-labs.json", function (data) {
+    labData = data;
+    var firstRow = $("#laboratoryGroup .row").first();
+    initializeTagify(firstRow, data);
+  });
+  setupAutocomplete("#inputAuthorAffiliation", "#hiddenAuthorRorId");
+  setupAutocomplete("#inputCPAffiliation", "#hiddenCPRorId");
 });

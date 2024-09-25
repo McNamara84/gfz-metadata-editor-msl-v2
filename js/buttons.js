@@ -344,20 +344,28 @@ $(document).ready(function () {
     setUpAutocompleteFunder();
   });
 
+  var rowCounter = 1;
+
   $("#addLaboratory").click(function () {
     var laboratoryGroup = $("#laboratoryGroup");
-    // Erste Zeile, die später als Vorlage dient
     var firstOriginatingLaboratoryLine = laboratoryGroup.children().first();
 
-    // Klonen der Vorlage
     var newOriginatingLaboratoryRow = firstOriginatingLaboratoryLine.clone();
 
     // Einträge in den input-Fields löschen und valid/invalid feedback entfernen:
     newOriginatingLaboratoryRow.find("input").val("").removeClass("is-invalid is-valid");
     newOriginatingLaboratoryRow.find(".invalid-feedback, .valid-feedback").hide();
 
-    // altes TagifyElement in der neuen Zeile entfernen (wird weiter unten in autocompleteAffiliation wieder intitialisiert)
-    // newOriginatingLaboratoryRow.find(".tagify").remove();
+    // Alte Tagify-Elemente entfernen
+    newOriginatingLaboratoryRow.find(".tagify").remove();
+
+    // IDs aktualisieren
+    rowCounter++;
+    newOriginatingLaboratoryRow.find("[id]").each(function () {
+      var oldId = $(this).attr("id");
+      var newId = oldId + "_" + rowCounter;
+      $(this).attr("id", newId);
+    });
 
     // Plus Button mit Minus Button ersetzen
     newOriginatingLaboratoryRow.find(".addLaboratory").replaceWith(removeButton);
@@ -365,8 +373,8 @@ $(document).ready(function () {
     // Neue LaboratoryLine zum DOM hinzufügen
     laboratoryGroup.append(newOriginatingLaboratoryRow);
 
-    // Tagify auf neues LaboratoryAffiliations Feld anwenden
-    //autocompleteAffiliations("inputLaboratoryAffiliation" + uniqueSuffix, "hiddenLaboratoryRorId" + uniqueSuffix);
+    // Tagify für die neue Zeile initialisieren
+    initializeTagify(newOriginatingLaboratoryRow, labData);
 
     // Event-Handler für RemoveButton
     newOriginatingLaboratoryRow.on("click", ".removeButton", function () {
