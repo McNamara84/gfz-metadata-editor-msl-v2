@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/controllers/GeneralController.php';
 require_once __DIR__ . '/controllers/VocabController.php';
 
 use FastRoute\Dispatcher;
