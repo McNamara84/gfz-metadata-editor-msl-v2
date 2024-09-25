@@ -23,7 +23,7 @@
             data-bs-title="<?php echo $translations['clear_tooltip']; ?>" id="resetButton" disabled>
             <?php echo $translations['clear']; ?>
           </button>
-          <button class="btn btn-primary" type="button" disabled>
+          <button class="btn btn-primary m-1" type="button" disabled>
             <?php echo $translations['load']; ?>
           </button>
           <!-- Workarround TODO: Button fixes -->
@@ -38,6 +38,12 @@
             Test
           </button>
           <!-- Alis God Mode - Ende -->
+          <?php if ($showFeedbackLink): ?>
+          <button type="button" class="btn btn-warning m-1" id="feedback-btn" data-bs-toggle="modal"
+            data-bs-target="#feedbackModal">
+            <?php echo $translations['feedbackButton']; ?>
+          </button>
+          <?php endif; ?>
         </div>
       </div>
     </div>
