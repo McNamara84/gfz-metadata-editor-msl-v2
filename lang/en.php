@@ -1,7 +1,7 @@
 <?php
 $translations = [
     // Allgemeines
-    'logotitle' => 'Metadata Editor 1.4',
+    'logotitle' => 'Metadata Editor 1.5',
     'choose' => 'Choose...',
     'valid' => 'Valid',
     'PleaseChoose_invalid' => 'Please choose',
@@ -49,6 +49,11 @@ $translations = [
     'website_invalid' => 'Please provide a valid URL.',
 
     // From Group Contributors
+    'originatingLaboratoryLabel' => 'Originating Laboratory',
+    'originatingLaboratoryName' => 'Name of the originating laboratory',
+    'originatingLaboratoryAffiliation' => 'Affiliation of the originating laboratory',
+
+    // From Group Contributors
     'contributors' => "Contributors",
     'contributors_lastname_invalid' => 'Please provide the last name of the contributor. Only letters are allowed.',
     'contributors_firstname_invalid' => 'Please provide the first name of the contributor. Only letters are allowed.',
@@ -58,8 +63,6 @@ $translations = [
     'contributors_ORCID_invalid' => 'Please enter a valid ORCID (XXXX-XXXX-XXXX-XXX(X))',
     'contributorsPersonZeile' => 'Contributing Person(s)',
     'contributorsInstitutionZeile' => 'Contributing Institution(s)',
-
-    // From Group Spatial and temporal coverage
 
     // Form Group Descriptions
     'descriptions' => 'Descriptions',
@@ -72,8 +75,50 @@ $translations = [
     'd_other' => 'Other',
     'd_other_tooltip' => 'Please enter other information..',
 
+    // Form Group General
+    'grl' => 'General',
+    'grl_Material' => 'Material',
+    'grl_geo_age' => 'Geological age',
+    'grl_Pore_fluid' => 'Pore fluid',
+    'grl_geo_setting' => 'Geological setting',
+
+    // Form Group Analogue modelling of geological processes
+    'AMOGP' => 'Analogue modelling of geological processes',
+    'AMOGP_M_S' => 'Modeled structure',
+    'AMOGP_M_G_F' => 'Modeled geomorphological feature',
+    'AMOGP_Apparatus' => 'Apparatus',
+    'AMOGP_A_E' => 'Ancillary Equipment',
+    'AMOGP_M_P' => 'measured property',
+    'AMOGP_Software' => 'Software',
+
+    // Form Group Geochemistry
+    'Geochemistry' => 'Geochemistry',
+    'Geochemistry_A_T' => 'Analysis technique',
+    'Geochemistry_M_P' => 'Measured property',
+
+    // Form Group Microsocopy And Tomography
+    'MATomography' => 'Microsocopy and tomography',
+    'MATomography_A' => 'Apparatus',
+    'MATomography_A_E' => 'Ancillary equipment',
+    'MATomography_A_T' => 'Analysis technique',
+    'MATomography_A_F' => 'Analyzed feature',
+    'MATomography_I_P' => 'Inferred parameter',
+
+    // Form Group Paleomagnetism
+    'PALTIS' => 'Paleomagnetism',
+    'PALTIS_A' => 'Apparatus',
+    'PALTIS_E_C' => 'Environment control',
+    'PALTIS_M_P' => 'Measured property',
+    'PALTIS_I_B' => 'Inferred behavior',
+
+    // Form Group Rock and melt physics
+    'RAMP' => 'Rock and melt physics',
+    'RAMP_A' => 'Apparatus',
+    'RAMP_A_E' => 'Ancillary equipment',
+    'RAMP_M_P' => 'Measured property',
+    'RAMP_I_D_B' => 'Inferred deformation behavior',
+
     //Formgroup thesaurusKeywords
-    // TODO: Translation
     'thesaurusKeywords' => 'Thesaurus Keywords',
     'thesaurus' => 'Thesaurus',
     'scienceKeywords' => 'NASA GCMD Science Keywords',
@@ -109,14 +154,14 @@ $translations = [
     'tsc_cancel' => 'Cancel',
     'tsc_accept' => 'Accept',
 
-    //Formgroup related Work
+    // Formgroup related Work
     'relatedwork' => 'Related work',
     'relation' => 'Relation',
     'r_identifier_type' => 'Identifier type',
     'r_Identifier' => 'Identifier',
     'r_Identifier_invalid' => 'Please enter a valid identifier.',
 
-    //Formgroup Funding Reference
+    // Formgroup Funding Reference
     'funding_reference' => 'Funding Reference',
     'funder' => 'Funder',
     'grant_Number' => 'Grant Number',
@@ -134,4 +179,10 @@ $translations = [
     'helpButtonon' => 'On',
     'helpButtonoff' => 'Off',
 
+    // Testing
+    'feedbackButton' => 'Feedback',
+    'feedbackLabel' => 'Send Feedback',
+    'feedbackQuestion1' => 'What do you like about the new metadata editor?',
+    'feedbackQuestion2' => 'What don\'t you like so much about the new metadata editor?',
+    'feedbackSendButton' => 'Send Feedback',
 ];

@@ -1,0 +1,44 @@
+<div class="card mb-2">
+    <div class="card-header">
+        <b>
+            <?php echo $translations['originatingLaboratoryLabel']; ?>
+        </b>
+    </div>
+    <div class="card-body">
+        <div id="laboratoryGroup">
+            <div class="row" data-laboratory-row>
+                <!--Eingabefeld Laboratory Name-->
+                <div class="col-sm-6 col-md-6 col-lg-7 p-1">
+                    <div class="input-group has-validation">
+                        <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                            id="inputLaboratoryName" name="laboratoryName[]"
+                            placeholder="<?php echo $translations['originatingLaboratoryName']; ?>" />
+                        <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                data-help-section-id="LaboratorynameHelp"></i></span>
+                    </div>
+                </div>
+                <!--Eingabefeld Laboratory Affiliation-->
+                <div class="col-sm-5 col-md-5 col-lg-4 p-1">
+                    <div class="input-group has-validation">
+                        <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                            id="inputLaboratoryAffiliation" name="laboratoryAffiliation[]"
+                            placeholder="<?php echo $translations['originatingLaboratoryAffiliation']; ?>" />
+                        <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                data-help-section-id="LaboratoryAffiliationHelp"></i></span>
+                        <input type="hidden" id="hiddenLaboratoryRorId" name="laboratoryRorIds[]" />
+                    </div>
+                </div>
+                <!--Button "add Laboratory"-->
+                <div class="col-sm-1 col-md-1 col-lg-1 p-1 d-flex justify-content-center align-items-center">
+                    <div class="align-items-center">
+                        <button type="button" class="btn btn-primary addLaboratory" id="addLaboratory"
+                            style="width: 36px">
+                            <?php echo $translations['add']; ?>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

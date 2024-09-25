@@ -1,11 +1,99 @@
 <?php
 ini_set("max_execution_time", 300);
 require 'vendor/autoload.php';
+
 use EasyRdf\Graph;
 use EasyRdf\RdfNamespace;
 
 include 'settings.php';
 include 'api_functions.php';
+
+// API-Hook für den Abruf des kontrollierten Vokabulars GCMD Science Keywords von der NASA als JSON-String für externe Anwendungen
+// Beispielaufruf: api.php?action=getGcmdScienceKeywords
+if ($_GET['action'] == 'getGcmdScienceKeywords') {
+    // json/gcmdScienceKeywords.json einlesen
+    $json = file_get_contents('json/gcmdScienceKeywords.json');
+    // JSON-String zurückgeben
+    echo $json;
+    // Skriptausführung beenden
+    exit();
+}
+
+// API-Hook für den Abruf aller kontrollierten Vocabulare von GitHub und Speicherung in getrennten JSON-Dateien
+// Beispielaufruf: api.php?action=getMslVocab&type=all oder api.php?action=getMslVocab&type=geologicalage
+if (isset($_GET['action']) && $_GET['action'] == 'getMslVocab') {
+    $type = $_GET['type'] ?? 'all';
+    $baseUrl = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/';
+    $types = ['analogue', 'geochemistry', 'geologicalage', 'geologicalsetting', 'materials', 'microscopy', 'paleomagnetism', 'porefluids', 'rockphysics'];
+    $jsonDir = __DIR__ . '/json/';
+
+    if (!file_exists($jsonDir)) {
+        mkdir($jsonDir, 0755, true);
+    }
+
+    $results = [];
+
+    if ($type == 'all') {
+        foreach ($types as $t) {
+            $latestVersion = getLatestVersion($baseUrl, $t);
+            if ($latestVersion) {
+                $url = "{$baseUrl}{$t}/{$latestVersion}/{$t}_" . str_replace('.', '-', $latestVersion) . ".json";
+                $savePath = $jsonDir . "{$t}.json";
+                $success = downloadAndSave($url, $savePath);
+                $results[$t] = $success ? "Updated to version {$latestVersion}" : "Failed to update";
+            } else {
+                $results[$t] = "No version found";
+            }
+        }
+    } elseif (in_array($type, $types)) {
+        $latestVersion = getLatestVersion($baseUrl, $type);
+        if ($latestVersion) {
+            $url = "{$baseUrl}{$type}/{$latestVersion}/{$type}_" . str_replace('.', '-', $latestVersion) . ".json";
+            $savePath = $jsonDir . "{$type}.json";
+            $success = downloadAndSave($url, $savePath);
+            $results[$type] = $success ? "Updated to version {$latestVersion}" : "Failed to update";
+        } else {
+            $results[$type] = "No version found";
+        }
+    } else {
+        $results['error'] = "Invalid type specified";
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode($results);
+    exit();
+}
+
+// API-Hook für den Abruf aller MSL Labs und Speicherung als msl-labs.json
+// Beispielaufruf: api.php?action=getMslLabs
+if (isset($_GET['action']) && $_GET['action'] == 'getMslLabs') {
+    try {
+        $mslLabs = fetchAndProcessMslLabs();
+        $jsonString = json_encode($mslLabs, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+        if ($jsonString === false) {
+            throw new Exception('Fehler beim Encodieren der Daten zu JSON: ' . json_last_error_msg());
+        }
+
+        $result = file_put_contents('json/msl-labs.json', $jsonString);
+
+        if ($result === false) {
+            throw new Exception('Fehler beim Speichern der JSON-Datei: ' . error_get_last()['message']);
+        }
+
+        echo 'MSL Labs erfolgreich aktualisiert';
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo 'Fehler: ' . $e->getMessage();
+
+        // Zusätzliche Debug-Informationen
+        echo '<br><br>Debug-Informationen:<br>';
+        echo 'PHP-Version: ' . phpversion() . '<br>';
+        echo 'JSON-Daten:<br><pre>' . htmlspecialchars(file_get_contents($url)) . '</pre>';
+    }
+    exit();
+}
+
 
 // API-Hook für den Abruf aller drei XML-Dateien (DataCie, ISO, DIF), Schachtelung der XML-Sturkutur in ein Element <envelope> sowie Download dieser gebündelten XML-Datei
 // Beispielaufruf: api.php?action=getResourcesAsOneFile&id=1
@@ -287,7 +375,6 @@ if ($_GET['action'] == 'getGemetConcepts') {
 
         // Success message
         echo "JSON data successfully saved to {$json_file}";
-
     } catch (Exception $e) {
         // Handle exceptions and clean up
         if (file_exists($rdf_file)) {

@@ -1,0 +1,365 @@
+<div class="card mb-2">
+    <div class="card-header">
+        <b>
+            <?php echo $translations['AMOGP']; ?>
+        </b>
+    </div>
+
+    <div id="AMOGPGroup">
+        <div class="accordion p-2" id="accordionAMOGP">
+
+            <div class="accordion-item">
+                <!--Accordion Header Modeled structure-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseAMOGPModeledStructure" aria-expanded="false"
+                        aria-controls="collapseAMOGPModeledStructure">
+                        <?php echo $translations['AMOGP_M_S'];?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Modeled structure-->
+                <div id="collapseAMOGPModeledStructure" class="accordion-collapse collapse show"
+                    data-bs-parent="#accordionAMOGP">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputAMOGPModeledStructure" name="AMOGPModeledStructure" />
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="AMOGPModeledStructureHelp"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#AMOGPModeledStructureModal" id="AMOGPModeledStructureThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="accordion-item">
+                <!--Accordion Header Modeled geomorphological feature-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseAMOGPModeledGeomorphologicalFeature" aria-expanded="false"
+                        aria-controls="collapseAMOGPModeledGeomorphologicalFeature">
+                        <?php echo $translations['AMOGP_M_G_F'];?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Modeled geomorphological feature-->
+                <div id="collapseAMOGPModeledGeomorphologicalFeature" class="accordion-collapse collapse "
+                    data-bs-parent="#accordionAMOGP">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputAMOGPModeledGeomorphologicalFeature"
+                                        name="AMOGPModeledGeomorphologicalFeature" />
+
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="AMOGPModeledGeomorphologicalFeatureHelp"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#AMOGPModeledGeomorphologicalFeatureModal"
+                                    id="AMOGPModeledGeomorphologicalFeatureThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <!--Accordion Header Apparatus-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseAMOGPApparatus" aria-expanded="false"
+                        aria-controls="collapseAMOGPApparatus">
+                        <?php echo $translations['AMOGP_Apparatus'];?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Apparatus-->
+                <div id="collapseAMOGPApparatus" class="accordion-collapse collapse " data-bs-parent="#accordionAMOGP">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputAMOGPApparatus" name="AMOGPApparatus" />
+
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="AMOGPApparatusHelp"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#AMOGPApparatusModal" id="AMOGPApparatusThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <!--Accordion Header Ancillary Equipment-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseAMOGPAncillaryEquipment" aria-expanded="false"
+                        aria-controls="collapseAMOGPAncillaryEquipment">
+                        <?php echo $translations['AMOGP_A_E'];?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Ancillary Equipment-->
+                <div id="collapseAMOGPAncillaryEquipment" class="accordion-collapse collapse "
+                    data-bs-parent="#accordionAMOGP">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputAMOGPAncillaryEquipment" name="AMOGPAncillaryEquipment" />
+
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="AMOGPAncillaryEquipmentHelp"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#AMOGPAncillaryEquipmentModal"
+                                    id="AMOGPAncillaryEquipmentThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <!--Accordion Header measured property-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseAMOGPMeasuredProperty" aria-expanded="false"
+                        aria-controls="collapseAMOGPMeasuredProperty">
+                        <?php echo $translations['AMOGP_M_P'];?>
+                    </button>
+                </h2>
+                <!--Eingabefeld measured property-->
+                <div id="collapseAMOGPMeasuredProperty" class="accordion-collapse collapse "
+                    data-bs-parent="#accordionAMOGP">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputAMOGPMeasuredProperty" name="AMOGPAMOGPMeasuredProperty" />
+
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="AMOGPAMOGPMeasuredPropertyHelp"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#AMOGPMeasuredPropertyModal" id="AMOGPMeasuredPropertyThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <!--Accordion Header Software-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseAMOGPSoftware" aria-expanded="false"
+                        aria-controls="collapseAMOGPSoftware">
+                        <?php echo $translations['AMOGP_Software'];?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Software-->
+                <div id="collapseAMOGPSoftware" class="accordion-collapse collapse " data-bs-parent="#accordionAMOGP">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputAMOGPSoftware" name="AMOGPSoftware" />
+
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="AMOGPSoftwareHelp"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#AMOGPSoftwareModal" id="AMOGPSoftwareThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!------------------------------------- MODALS ---------------------------------------------------------------------->
+
+<!-- Modal für Modeled structure -->
+<div class="modal fade <?php if (isset($_SESSION['AMOGPModeledStructureModal']) && $_SESSION['AMOGPModeledStructureModal'] == 'true') { echo 'show'; } ?>"
+    id="AMOGPModeledStructureModal" tabindex="-1" aria-labelledby="AMOGPModeledStructureModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AMOGPModeledStructureModalLabel">Modeled structure thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="AMOGPModeledStructureModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputAMOGPModeledStructure"
+                        placeholder="Search for Keyword">
+                    <div id="jstreeAMOGPModeledStructure"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal für Modeled geomorphological feature -->
+<div class="modal fade <?php if (isset($_SESSION['AMOGPModeledGeomorphologicalFeatureModal']) && $_SESSION['AMOGPModeledGeomorphologicalFeatureModal'] == 'true') { echo 'show'; } ?>"
+    id="AMOGPModeledGeomorphologicalFeatureModal" tabindex="-1"
+    aria-labelledby="AMOGPModeledGeomorphologicalFeatureModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AMOGPModeledGeomorphologicalFeatureModalLabel">Modeled geomorphological
+                    feature thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="AMOGPModeledGeomorphologicalFeatureModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputAMOGPModeledGeomorphologicalFeature"
+                        placeholder="Search for Keyword">
+                    <div id="jstreeAMOGPModeledGeomorphologicalFeature"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal für Apparatus -->
+<div class="modal fade <?php if (isset($_SESSION['AMOGPApparatusModal']) && $_SESSION['AMOGPApparatusModal'] == 'true') { echo 'show'; } ?>"
+    id="AMOGPApparatusModal" tabindex="-1" aria-labelledby="AMOGPApparatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AMOGPApparatusModalLabel">Apparatus thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="AMOGPApparatusModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputAMOGPApparatus"
+                        placeholder="Search for Keyword">
+                    <div id="jstreeAMOGPApparatus"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal für Ancillary Equipment -->
+<div class="modal fade <?php if (isset($_SESSION['AMOGPAncillaryEquipmentModal']) && $_SESSION['AMOGPAncillaryEquipmentModal'] == 'true') { echo 'show'; } ?>"
+    id="AMOGPAncillaryEquipmentModal" tabindex="-1" aria-labelledby="AMOGPAncillaryEquipmentModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AMOGPAncillaryEquipmentModalLabel">Ancillary equipment thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="AMOGPAncillaryEquipmentModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputAMOGPAncillaryEquipment"
+                        placeholder="Search for Keyword">
+                    <div id="jstreeAMOGPAncillaryEquipment"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal für measured property -->
+<div class="modal fade <?php if (isset($_SESSION['AMOGPMeasuredPropertyModal']) && $_SESSION['AMOGPMeasuredPropertyModal'] == 'true') { echo 'show'; } ?>"
+    id="AMOGPMeasuredPropertyModal" tabindex="-1" aria-labelledby="AMOGPMeasuredPropertyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AMOGPMeasuredPropertyModalLabel">Measured property thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="AMOGPMeasuredPropertyModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputAMOGPMeasuredProperty"
+                        placeholder="Search for Keyword">
+                    <div id="jstreeAMOGPMeasuredProperty"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal für Software -->
+<div class="modal fade <?php if (isset($_SESSION['AMOGPSoftwareModal']) && $_SESSION['AMOGPSoftwareModal'] == 'true') { echo 'show'; } ?>"
+    id="AMOGPSoftwareModal" tabindex="-1" aria-labelledby="AMOGPSoftwareModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AMOGPSoftwareModalLabel">Software thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="AMOGPSoftwareModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputAMOGPSoftware"
+                        placeholder="Search for Keyword">
+                    <div id="jstreeAMOGPSoftware"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

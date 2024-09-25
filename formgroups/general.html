@@ -1,0 +1,244 @@
+<div class="card mb-2">
+  <div class="card-header">
+    <b>
+      <?php echo $translations['grl']; ?>
+    </b>
+  </div>
+
+  <div id="generalGroup">
+    <div class="accordion p-2" id="accordionGeneral">
+
+      <div class="accordion-item">
+        <!--Accordion Header Material-->
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseGENMaterial" aria-expanded="false" aria-controls="collapseGENMaterial">
+            <?php echo $translations['grl_Material'];?>
+          </button>
+        </h2>
+        <!--Eingabefeld Material-->
+        <div id="collapseGENMaterial" class="accordion-collapse collapse show" data-bs-parent="#accordionGeneral">
+          <div class="accordion-body">
+            <div class="input-group has-validation">
+              <div class="form-floating">
+                <div class="input-group has-validation">
+                  <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                    id="inputGENMaterial" name="GENMaterial" />
+                  <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                      data-help-section-id="GENMaterial"></i></span>
+                </div>
+              </div>
+              <!--Button-->
+              <div class="col-auto p-2">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#GENMaterialModal"
+                  id="GENMaterialThesaurus">
+                  <?php echo $translations['thesaurus']; ?>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="accordion-item">
+        <!--Accordion Header Geological age-->
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseGENGeologicalAge" aria-expanded="false" aria-controls="collapseGENGeologicalAge">
+            <?php echo $translations['grl_geo_age'];?>
+          </button>
+        </h2>
+        <!--Eingabefeld Geological age-->
+        <div id="collapseGENGeologicalAge" class="accordion-collapse collapse " data-bs-parent="#accordionGeneral">
+          <div class="accordion-body">
+            <div class="input-group has-validation">
+              <div class="form-floating">
+                <div class="input-group has-validation">
+                  <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                    id="inputGENGeologicalAge" name="GENGeologicalAge" />
+
+                  <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                      data-help-section-id="GENGeologicalAge"></i></span>
+                </div>
+              </div>
+              <!--Button-->
+              <div class="col-auto p-2">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                  data-bs-target="#GENGeologicalAgeModal" id="GENGeologicalAgeThesaurus">
+                  <?php echo $translations['thesaurus']; ?>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <!--Accordion Header Pore fluid-->
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseGENPoreFluid" aria-expanded="false" aria-controls="collapseGENPoreFluid">
+            <?php echo $translations['grl_Pore_fluid'];?>
+          </button>
+        </h2>
+        <!--Eingabefeld Pore fluid-->
+        <div id="collapseGENPoreFluid" class="accordion-collapse collapse " data-bs-parent="#accordionGeneral">
+          <div class="accordion-body">
+            <div class="input-group has-validation">
+              <div class="form-floating">
+                <div class="input-group has-validation">
+                  <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                    id="inputGENPoreFluid" name="GENPoreFluid" />
+
+                  <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                      data-help-section-id="GENPoreFluid"></i></span>
+                </div>
+              </div>
+              <!--Button-->
+              <div class="col-auto p-2">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                  data-bs-target="#GENPoreFluideModal" id="GENPoreFluidThesaurus">
+                  <?php echo $translations['thesaurus']; ?>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <!--Accordion Header Geological setting-->
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseGENGeologicalSetting" aria-expanded="false"
+            aria-controls="collapseGENGeologicalSetting">
+            <?php echo $translations['grl_geo_setting'];?>
+          </button>
+        </h2>
+        <!--Eingabefeld Geological setting-->
+        <div id="collapseGENGeologicalSetting" class="accordion-collapse collapse " data-bs-parent="#accordionGeneral">
+          <div class="accordion-body">
+            <div class="input-group has-validation">
+              <div class="form-floating">
+                <div class="input-group has-validation">
+                  <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                    id="inputGENGeologicalSetting" name="GENGeologicalSetting" />
+                  <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                      data-help-section-id="GENGeologicalSetting"></i></span>
+                </div>
+              </div>
+              <!--Button-->
+              <div class="col-auto p-2">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                  data-bs-target="#GENGeologicalSettingModal" id="GENGeologicalSettingThesaurus">
+                  <?php echo $translations['thesaurus']; ?>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!------------------------------------- MODALS ---------------------------------------------------------------------->
+
+<!-- Modal für Material -->
+<div
+  class="modal fade <?php if (isset($_SESSION['GENMaterialModal']) && $_SESSION['GENMaterialModal'] == 'true') { echo 'show'; } ?>"
+  id="GENMaterialModal" tabindex="-1" aria-labelledby="GENMaterialModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="GENMaterialModalLabel">Material thesaurus</h5>
+        <span class="input-group-text"><i class="bi bi-question-circle-fill"
+            data-help-section-id="modalHelp"></i></span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="GENMaterialModalThesaurus">
+          <input type="text" class="form-control mb-3" id="searchInputGENMaterial" placeholder="Search for Keyword">
+          <div id="jstreeGENMaterial"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal für Geological age -->
+
+<div
+  class="modal fade <?php if (isset($_SESSION['GENGeologicalAgeModal']) && $_SESSION['GENGeologicalAgeModal'] == 'true') { echo 'show'; } ?>"
+  id="GENGeologicalAgeModal" tabindex="-1" aria-labelledby="GENGeologicalAgeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="GENGeologicalAgeModalLabel">Geological age thesaurus</h5>
+        <span class="input-group-text"><i class="bi bi-question-circle-fill"
+            data-help-section-id="modalHelp"></i></span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="GENGeologicalAgeModalThesaurus">
+          <input type="text" class="form-control mb-3" id="searchInputGENGeologicalAge"
+            placeholder="Search for Keyword">
+          <div id="jstreeGENGeologicalAge"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal für Pore fluid -->
+<div
+  class="modal fade <?php if (isset($_SESSION['GENPoreFluideModal']) && $_SESSION['GENPoreFluideModal'] == 'true') { echo 'show'; } ?>"
+  id="GENPoreFluideModal" tabindex="-1" aria-labelledby="GENPoreFluideModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="GENPoreFluideModalLabel">Pore fluide thesaurus</h5>
+        <span class="input-group-text"><i class="bi bi-question-circle-fill"
+            data-help-section-id="modalHelp"></i></span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="GENPoreFluideModalThesaurus">
+          <input type="text" class="form-control mb-3" id="searchInputGENPoreFluide" placeholder="Search for Keyword">
+          <div id="jstreeGENPoreFluide"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal für Geilogical setting -->
+<div
+  class="modal fade <?php if (isset($_SESSION['GENGeologicalSettingModal']) && $_SESSION['GENGeologicalSettingModal'] == 'true') { echo 'show'; } ?>"
+  id="GENGeologicalSettingModal" tabindex="-1" aria-labelledby="GENGeologicalSettingModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="GENGeologicalSettingModalLabel">Geological setting thesaurus</h5>
+        <span class="input-group-text"><i class="bi bi-question-circle-fill"
+            data-help-section-id="modalHelp"></i></span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="GENGeologicalSettingModalThesaurus">
+          <input type="text" class="form-control mb-3" id="searchInputGENGeologicalSetting"
+            placeholder="Search for Keyword">
+          <div id="jstreeGENGeologicalSetting"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,10 @@
 <?php
 $translations = [
     // Allgemeines
-    'logotitle' => 'Metadata Editor 1.4',
+    'logotitle' => 'Metadata Editor 1.5',
     'choose' => 'Wählen Sie...',
-    'valid' => 'gültig',
-    'PleaseChoose_invalid' => 'Bitte Wählen Sie',
+    'valid' => 'Gültig',
+    'PleaseChoose_invalid' => 'Bitte wählen Sie',
     'lastname' => 'Nachname',
     'firstname' => 'Vorname',
     'affiliation' => 'Zugehörigkeit(en)',
@@ -39,14 +39,19 @@ $translations = [
 
     // Form Group Contactpersons
     'contactpersons' => 'Kontaktperson(en)',
-    'CP_lastname_invalid' => 'Bitte geben Sie den Nachnamen der Kontakperson ein.',
-    'CP_firstname_invalid' => 'Bitte geben Sie den Vornamen der Kontakperson ein.',
+    'CP_lastname_invalid' => 'Bitte geben Sie den Nachnamen der Kontaktperson ein.',
+    'CP_firstname_invalid' => 'Bitte geben Sie den Vornamen der Kontaktperson ein.',
     'email' => 'E-Mail-Adresse',
     'email_invalid' => 'Bitte überprüfen Sie die E-Mail-Adresse.',
     'position' => 'Position',
     'position_invalid' => 'Bitte geben Sie eine Position an.',
     'website' => 'Website',
     'website_invalid' => 'Bitte geben Sie eine gültige URL an.',
+
+    // From Group Contributors
+    'originatingLaboratoryLabel' => 'Herkunftslabor',
+    'originatingLaboratoryName' => 'Name des Herkunftslabors',
+    'originatingLaboratoryAffiliation' => 'Zugehörigkeit des Herkunftslabors',
 
     // From Group Contributors
     'contributors' => "Mitwirkende",
@@ -59,18 +64,59 @@ $translations = [
     'contributorsPersonZeile' => 'Mitwirkende Person(en)',
     'contributorsInstitutionZeile' => 'Mitwirkende Institution(en)',
 
-    // From Group Spatial and temporal coverage
-
     // Form Group Descriptions
     'descriptions' => 'Beschreibungen',
-    'd_abstract' => 'Abstract',
-    'd_abstract_tooltip' => 'Bitte ein Abstract eingeben...',
+    'd_abstract' => 'Zusammenfassung',
+    'd_abstract_tooltip' => 'Bitte geben Sie eine Zusammenfassung ein...',
     'd_methods' => 'Methoden',
-    'd_methods_tooltip' => 'Bitte Methoden beschreiben...',
+    'd_methods_tooltip' => 'Bitte beschreiben Sie die Methoden...',
     'd_technical_infos' => 'Technische Informationen',
-    'd_technical_infos_tooltip' => 'Bitte technische Informationen eingeben...',
-    'd_other' => 'Zusätzliches',
-    'd_other_tooltip' => 'Bitte zusätzliche Informationen eingeben...',
+    'd_technical_infos_tooltip' => 'Bitte geben Sie technische Informationen ein...',
+    'd_other' => 'Sonstiges',
+    'd_other_tooltip' => 'Bitte geben Sie sonstige Informationen ein...',
+
+    // Form Group General
+    'grl' => 'Allgemein',
+    'grl_Material' => 'Material',
+    'grl_geo_age' => 'Geologisches Alter',
+    'grl_Pore_fluid' => 'Porenflüssigkeit',
+    'grl_geo_setting' => 'Geologisches Umfeld',
+
+    // Form Group Analogue modelling of geological processes
+    'AMOGP' => 'Analoge Modellierung von geologischen Prozessen',
+    'AMOGP_M_S' => 'Modellierte Struktur',
+    'AMOGP_M_G_F' => 'Modelliertes geomorphologisches Merkmal',
+    'AMOGP_Apparatus' => 'Gerät',
+    'AMOGP_A_E' => 'Ergänzende Ausrüstung',
+    'AMOGP_M_P' => 'Gemessene Eigenschaft',
+    'AMOGP_Software' => 'Software',
+
+    // Form Group Geochemistry
+    'Geochemistry' => 'Geochemie',
+    'Geochemistry_A_T' => 'Analyseverfahren',
+    'Geochemistry_M_P' => 'Gemessene Eigenschaft',
+
+    // Form Group Microsocopy And Tomography
+    'MATomography' => 'Mikroskopie und Tomographie',
+    'MATomography_A' => 'Apparat',
+    'MATomography_A_E' => 'Ergänzende Ausrüstung',
+    'MATomography_A_T' => 'Analyse-Technik',
+    'MATomography_A_F' => 'Analysiertes Merkmal',
+    'MATomography_I_P' => 'Abgeleiteter Parameter',
+
+    // Form Group Paleomagnetism
+    'PALTIS' => 'Paläomagnetismus',
+    'PALTIS_A' => 'Apparat',
+    'PALTIS_E_C' => 'Kontrolle der Umgebung',
+    'PALTIS_M_P' => 'Gemessene Eigenschaft',
+    'PALTIS_I_B' => 'Abgeleitetes Verhalten',
+
+    // Form Group Rock and melt physics
+    'RAMP' => 'Gesteins- und Schmelzphysik',
+    'RAMP_A' => 'Apparat',
+    'RAMP_A_E' => 'Ergänzende Ausrüstung',
+    'RAMP_M_P' => 'Gemessene Eigenschaft',
+    'RAMP_I_D_B' => 'Abgeleitetes Verformungsverhalten',
 
     // Form Group Dates
     'dates' => 'Datumsangaben',
@@ -80,7 +126,7 @@ $translations = [
     'embargo_invalid' => 'Bitte geben Sie ein gültiges Datum ein!',
 
     //Formgroup thesaurusKeywords
-    'thesaurusKeywords' => 'Thesaurus Schlagwörter',
+    'thesaurusKeywords' => 'Thesaurus-Schlagwörter',
     'thesaurus' => 'Thesaurus',
     'scienceKeywords' => 'NASA GCMD Science Keywords',
     'instruments' => 'NASA GCMD Instruments',
@@ -94,7 +140,7 @@ $translations = [
     'freekeywords' => 'Freie Schlagwörter',
     'freekeywords_input' => 'Bitte Schlagwörter eintragen und durch ein Komma trennen.',
 
-    // Form Group Spatial and Temooral Coverages
+    // Form Group Spatial and Temporal Coverages
     'tsc_spatialTemporalCoverages' => 'Räumliche und zeitliche Erfassungsbereiche',
     'tsc_map' => 'Karte',
     'tsc_latitude' => 'Geografische Breite',
@@ -121,7 +167,6 @@ $translations = [
     'grant_Number' => 'Fördernummer',
     'grant_Name' => 'Fördername',
 
-
     // Buttons
     'clear' => 'Löschen',
     'clear_tooltip' => 'Alle Einträge oder Inhalte löschen.',
@@ -133,4 +178,11 @@ $translations = [
     'submit_tooltip' => 'Die eingegebenen Daten oder Inhalte übermitteln.',
     'helpButtonon' => 'An',
     'helpButtonoff' => 'Aus',
+
+    // Testing
+    'feedbackButton' => 'Feedback',
+    'feedbackLabel' => 'Feedback einreichen',
+    'feedbackQuestion1' => 'Was gefällt Ihnen am neuen Metadateneditor?',
+    'feedbackQuestion2' => 'Was gefällt Ihnen am neuen Metadateneditor nicht so sehr?',
+    'feedbackSendButton' => 'Feedback übermitteln',
 ];

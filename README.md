@@ -1,7 +1,9 @@
 # Projektbeschreibung
+
 Dieser Metadaten-Editor entstand im Rahmen eines studentischen Kooperationsprojekt zwischen Fachhochschule Potsdam und dem GeoForschungsZentrum Potsdam. Der Editor speichert Metadaten zu Forschungsdatensätzen in validen XML-Dateien nach dem DataCite, dem ISO- und dem DIF-Schema.
 
 ## Installation
+
 1. Sicherstellen einer Entwicklungsumgebung mit PHP >8.2 sowie eines MySQL-Servers.
 2. XSL- und ZIP-Extension für PHP muss vorhanden und aktiviert sein.
 3. Apache und MySQL starten nicht vergessen.
@@ -16,6 +18,7 @@ Dieser Metadaten-Editor entstand im Rahmen eines studentischen Kooperationsproje
 Bei Problemen mit der Installation, hinterlasse gerne einen Eintrag im Issue Board dieses Repositories!
 
 ## Abhängigkeiten
+
 In der header.html und footer.html werden folgende Abhängikeiten von Drittanbietern eingebunden:
 
 - Bootstrap 5.3.3<br>
@@ -24,11 +27,11 @@ In der header.html und footer.html werden folgende Abhängikeiten von Drittanbie
   Für die Icons in der oberen rechten Ecke des Editors (Dark Mode Switch, Language Switch)
 - jQuery 3.7.1<br>
   Für die Event Handler in JavaScript und zum Vereinfachen des JavaScript-Codes allgemein.
-- jQuery UI 1.13.3<br>
+- jQuery UI 1.14.0<br>
   Erweitert jQuery um die Autocomplete-Funktion, die wir aktuell für die Affiliation-Felder nutzen.
 - Chosen 1.8.7<br>
   Da Bootstrap 5.3 keine einfach bedienbaren Multi-Select-Felder anbietet, wird diese Funktion mit Chosen implementiert. Design-Anpassungen waren notwendendig und werden in der Datei bs5-chosen.css umgesetzt.
-- Tagify 4.27.0<br>
+- Tagify 4.31.3<br>
   Wird für das Feld Thesaurus Keywords, die eingabe von mehreren Affiliations und Free Keywords genutzt.
 - jsTree 3.3.16<br>
   Wird zur Darstellung der GCMD Science Keywords als hierarchische Baumstruktur verwendet.
@@ -37,68 +40,298 @@ In der header.html und footer.html werden folgende Abhängikeiten von Drittanbie
 
 In der Datei `settings.php` können, neben den Zugangsdaten für die Datenbank, auch andere Einstellungen angepasst werden:
 
-- `maxTitles:` Legt die max. Anzahl an Titeln fest, die Nutzende im Editor eingeben können, fest.
+- `$maxTitles:` Legt die max. Anzahl an Titeln fest, die Nutzende im Editor eingeben können, fest.
+- `$showFeedbackLink:` true-> Feedback-Funktion eingeschaltet, false-> Feedback-Funktion ausgeschaltet
+- `$smtpHost:`URL zum SMTP-Mailserver
+- `$smtpPort:` Port des Mailservers
+- `$smtpUser:` Nutzername des Postfachs zum Versenden der Mails
+- `$smtpPassword:` Password des Postfach
+- `$smtpSender:` Name des Absenders in den Feedback Mails
+- `$feedbackAdress:` Adresse an die das Feedback gesendet wird
 
-### API-Endpunkte
+# API-Dokumentation
 
-#### getTimezones
+Diese Dokumentation beschreibt die verfügbaren API-Endpunkte für die GFZ Data Services Webanwendung. Sie richtet sich an Administratoren und Techniker, die diese Anwendung auf einem eigenen Webserver installieren und verwalten möchten.
 
-Der regelmäßige Aufruf zur Aktualisierung der Zeitzonen im Feld `Timezones` der Gruppe `Spatial and temporal coverage` per Cronjob wird empfohlen.
-Empfohlener Ausführungsintervall: Monatlich
-Aufzurufender URL: api.php?action=getTimezones
+## Allgemeine Informationen
 
-#### getNasaScienceKeywords
+- Basis-URL: `https://mde2.cats4future.de/api.php`
+- Alle Anfragen sollten via HTTPS erfolgen
+- Antworten werden im JSON-Format zurückgegeben, sofern nicht anders angegeben
 
-Damit der Thesaurus für die NASA Science Keywords aktuell bleibt, ist die regelmäßige Aktualisierung über diesen API-Endpunkt angedacht.
-Empfohlender Ausführungsintervall: Wöchentlich
-Auszuführende URL: api.php?action=getNasaScienceKeywords
+## API-Endpunkte
 
-#### getNasaInstrumentsKeywords
+[Interaktive Dokumentation](https://mde2.cats4future.de/api/v2/docs/index.html) der neuen APIv2-Endpunkte.
 
-Zur Erstellung des Thesaurus für die NASA Instruments Keywords bzw. zur regelmäßigen Aktualisierung ist dieser API-Endpunkt gedacht.
-Empfohlender Ausführungsintervall: Wöchentlich
-Auszuführende URL: api.php?action=getNasaInstrumentsKeywords
+### 1. GCMD Science Keywords (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
-#### getNasaPlatformsKeywords
+GET ?action=getGcmdScienceKeywords
 
-Um auch die NASA GCMD Platforms Keywords als JSON-Datei für den entsprechenden Thesaurus zu aktualisieren wird eine regelmäßige Ausführung von getNasaPlatformsKeywords empfohlen.
-Empfohlender Ausführungsintervall: Wöchentlich
-Auszuführende URL: api.php?action=getNasaPlatformsKeywords
+Liefert das kontrollierte Vokabular der GCMD Science Keywords.
 
-#### getChronostratKeywords
+**Antwort:**
+JSON-Array mit Objekten, die folgende Schlüssel enthalten:
 
-Die Chronostrat Keywords werden von der International Chronostratigraphic Chart International Commission on Stratigraphy veröffentlicht. Eine regelmäßige Aktualisierung wird empfohlen, jedoch werden diese Keywords eher selten aktualisiert.
-Empfohlender Ausführungsintervall: Monatlich
-Auszuführende URL: api.php?action=getChronostratKeywords
+- `id`: Eindeutige Kennung
+- `text`: Bezeichnung des Keywords
+- `language`: Sprachcode
+- `scheme`: Name des Schemas
+- `schemeURI`: URI des Schemas
+- `description`: Beschreibung
+- `children`: Array von Unterkategorien mit der gleichen Struktur
 
-#### getCGIKeywords
+### 2. Zeitzonen aktualisieren
 
-Die CGI Simple Lithology Keywords werden von der Commission for the Management and Application of Geoscience Information (CGI) entwickelt. Eine regelmäßige Aktualisierung wird empfohlen, jedoch werden diese Keywords eher selten aktualisiert.
-Empfohlender Ausführungsintervall: Monatlich
-Auszuführende URL: api.php?action=getCGIKeywords
+GET ?action=getTimezones
 
-#### getGemetConcepts
+Aktualisiert die Liste der Zeitzonen für das Feld `Timezones` in der Gruppe `Spatial and temporal coverage`.
 
-Die englischsprachigen Konzepte des GEneral Multilingual Environmental Thesaurus (Gemet) werden mit diesem API-Endpunkt beschafft. Eine regelmäßige Aktualisierung wird empfohlen, jedoch werden diese Konzepte und Terme nur "every few years" aktualisiert. Auch Korrekturen erfolgen nur alle paar Monate (siehe: [Gemet changes](https://www.eionet.europa.eu/gemet/en/changes/) )
-Empfohlender Ausführungsintervall: Monatlich
-Auszuführende URL: api.php?action=getGemetConcepts
+**Empfohlener Ausführungsintervall:** Monatlich
 
-#### getRorAffiliations
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
 
-Zur regelmäßigen Aktualisierung der Daten in den Auswahlfeldern für die Affiliations von Personen sollte dieser API-Endpunkt regelmäßig ausgeführt werden.
-Empfohlender Ausführungsintervall: Wöchentlich
-Auszuführende URL: api.php?action=getRorAffiliations
+### 3. NASA Science Keywords
 
-#### getCrossRefFunders
+GET ?action=getNasaScienceKeywords
 
-Zur regelmäßigen Aktualisierung der Auswwahloptionen im Funders-Dropdown-Feld wird die regelmäßige Ausführung von getCrossRefFunders nahegelegt.
-Empfohlender Ausführungsintervall: Wöchentlich
-Auszuführende URL: api.php?action=getCrossRefFunders
+Aktualisiert den Thesaurus für die NASA Science Keywords.
 
-#### getResourceAsDataciteXml
+**Empfohlener Ausführungsintervall:** Wöchentlich
 
-Der API-Endpunkt „getResourceAsDataciteXml” nimmt eine ID entgegen und exportiert den Datensatz mit dieser ID aus der Datenbank und transformiert ihn in eine valide XML-Datei gemäß dem [DataCite-Schema in der aktuellen Version 4.5 vom 22.01.2024](https://datacite-metadata-schema.readthedocs.io/en/4.5/). Der Endpunkt wird in erster Linie vom Metadateneditor selbst beötigt, kann aber zukünftig auch anderen Anwendungen eine valide DataCite-Datei liefern.
-Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 4. ROR Affiliations
+
+GET ?action=getRorAffiliations
+
+Aktualisiert die Daten für die Auswahlfelder der Affiliations von Personen.
+
+**Empfohlener Ausführungsintervall:** Wöchentlich
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 5. CrossRef Funders
+
+GET ?action=getCrossRefFunders
+
+Aktualisiert die Auswahloptionen im Funders-Dropdown-Feld.
+
+**Empfohlener Ausführungsintervall:** Wöchentlich
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 6. Resource als DataCite XML
+
+GET ?action=getResourceAsDataciteXml&id={resource_id}&download={true|false}
+
+Exportiert einen Datensatz als XML-Datei gemäß dem DataCite-Schema (Version 4.5).
+
+**Parameter:**
+
+- `id`: ID des Datensatzes (erforderlich)
+- `download`: Bei `true` wird die XML-Datei zum Download angeboten, bei `false` wird der XML-Inhalt zurückgegeben (optional, Standard: `false`)
+
+**Antwort:**
+XML-Datei oder XML-Inhalt
+
+### 7. Resource als ISO XML
+
+GET ?action=getResourceAsIsoXml&id={resource_id}&download={true|false}
+
+Exportiert einen Datensatz als XML-Datei gemäß dem ISO-Standard.
+
+**Parameter:**
+
+- `id`: ID des Datensatzes (erforderlich)
+- `download`: Bei `true` wird die XML-Datei zum Download angeboten, bei `false` wird der XML-Inhalt zurückgegeben (optional, Standard: `false`)
+
+**Antwort:**
+XML-Datei oder XML-Inhalt
+
+### 8. Resource als DIF XML
+
+GET ?action=getResourceAsDifXml&id={resource_id}&download={true|false}
+
+Exportiert einen Datensatz als XML-Datei gemäß dem DIF-Format.
+
+**Parameter:**
+
+- `id`: ID des Datensatzes (erforderlich)
+- `download`: Bei `true` wird die XML-Datei zum Download angeboten, bei `false` wird der XML-Inhalt zurückgegeben (optional, Standard: `false`)
+
+**Antwort:**
+XML-Datei oder XML-Inhalt
+
+### 9. Alle Ressourcen als eine XML-Datei
+
+GET ?action=getResourcesAsOneFile&id={resource_id}
+
+Exportiert einen Datensatz in allen drei XML-Formaten (DataCite, ISO, DIF) in einer einzigen XML-Datei.
+
+**Parameter:**
+
+- `id`: ID des Datensatzes (erforderlich)
+
+**Antwort:**
+XML-Datei zum Download
+
+### 10. MSL Vokabulare aktualisieren (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
+
+GET ?action=getMslVocab&type={vocab_type}
+
+Aktualisiert die kontrollierten Vokabulare des Materials Science Laboratory (MSL).
+
+**Parameter:**
+
+- `type`: Typ des Vokabulars (erforderlich)
+  - Mögliche Werte: `all`, `analogue`, `geochemistry`, `geologicalage`, `geologicalsetting`, `materials`, `microscopy`, `paleomagnetism`, `porefluids`, `rockphysics`
+
+**Antwort:**
+JSON-Objekt mit Aktualisierungsstatus für jedes Vokabular
+
+### 11. MSL Labs aktualisieren
+
+GET ?action=getMslLabs
+
+Aktualisiert die Liste der MSL Labs.
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 12. CGI Keywords aktualisieren
+
+GET ?action=getCGIKeywords
+
+Aktualisiert die CGI Simple Lithology Keywords.
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 13. Chronostrat Keywords aktualisieren
+
+GET ?action=getChronostratKeywords
+
+Aktualisiert die Keywords aus der International Chronostratigraphic Chart.
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 14. GEMET Concepts aktualisieren
+
+GET ?action=getGemetConcepts
+
+Aktualisiert die Konzepte des GEMET Thesaurus.
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 15. Rollen abrufen
+
+GET ?action=getRoles&type={role_type}
+
+Ruft Rollen aus der Datenbank ab.
+
+**Parameter:**
+
+- `type`: Typ der Rollen (erforderlich)
+  - Mögliche Werte: `all`, `person`, `institution`, `both`
+
+**Antwort:**
+JSON-Array mit Rollen-Objekten
+
+### 16. NASA Instruments Keywords aktualisieren
+
+GET ?action=getNasaInstrumentsKeywords
+
+Aktualisiert die NASA/GCMD Instruments Keywords.
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 17. NASA Platforms Keywords aktualisieren
+
+GET ?action=getNasaPlatformsKeywords
+
+Aktualisiert die NASA/GCMD Earth Platforms Keywords.
+
+**Antwort:**
+Bestätigungsnachricht über erfolgreiche Aktualisierung
+
+### 18. Lizenzen abrufen
+
+GET ?action=getLicenses&resourcetype={license_type}
+
+Ruft Lizenzen aus der Datenbank ab.
+
+**Parameter:**
+
+- `resourcetype`: Typ der Lizenzen (erforderlich)
+  - Mögliche Werte: `all`, `software`
+
+**Antwort:**
+JSON-Array mit Lizenz-Objekten
+
+### 19. Keywords abrufen
+
+GET ?action=getKeywords&curationType={curation_type}
+
+Ruft Keywords aus der Datenbank ab.
+
+**Parameter:**
+
+- `curationType`: Typ der Kuration (optional)
+  - Mögliche Werte: `all`, `isCurated`
+
+**Antwort:**
+JSON-Array mit Keyword-Objekten
+
+### 20. Relationen abrufen
+
+GET ?action=getRelations
+
+Ruft alle Relationen aus der Datenbank ab.
+
+**Antwort:**
+JSON-Array mit Relation-Objekten
+
+### 21. Identifier-Typ ermitteln
+
+GET ?action=getIdentifierType&identifier={identifier_string}
+
+Ermittelt den Typ eines gegebenen Identifiers.
+
+**Parameter:**
+
+- `identifier`: Der zu prüfende Identifier-String (erforderlich)
+
+**Antwort:**
+JSON-Objekt mit dem ermittelten Identifier-Typ oder einer Fehlermeldung
+
+### 22. Identifier-Pattern abrufen
+
+GET ?action=getPattern&type={identifier_type}
+
+Ruft das Regex-Pattern für einen bestimmten Identifier-Typ ab.
+
+**Parameter:**
+
+- `type`: Der Identifier-Typ (erforderlich)
+
+**Antwort:**
+JSON-Objekt mit dem Regex-Pattern oder einer Fehlermeldung
+
+### 23. Alle Identifier-Typen abrufen
+
+GET ?action=getIdentifierTypes
+
+Ruft alle verfügbaren Identifier-Typen aus der Datenbank ab.
+
+**Antwort:**
+JSON-Array mit Identifier-Typ-Objekten
 
 ## Formularfelder
 
@@ -111,7 +344,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: doi in der Tabelle Resource.
   - Restriktionen: Muss im Format "prefix/suffix" sein.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/identifier/)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/identifier/)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `10.5880/GFZ.3.1.2024.002` `10.5880/pik.2024.001`
 
@@ -122,7 +355,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: year in der Tabelle Resource.
   - Restriktionen: Muss im Format YYYY sein.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/publicationyear/)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/publicationyear/)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `1998` `2018` `1900`
 
@@ -133,7 +366,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: resource_type_general in der Tabelle Resource_Type.
   - Restriktionen: Muss ein „Recource Type“ ausgewählt werden.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/resourcetype/#a-resourcetypegeneral)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/resourcetype/#a-resourcetypegeneral)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Dataset` `Audiovisual` `Book`
 
@@ -144,7 +377,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: version in der Tabelle Resource.
   - Restriktionen: Zahl Punkt Zahl.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/version/)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/version/)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `1.0` `2.1` `3.5`
 
@@ -155,7 +388,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: name in der Tabelle Language.
   - Restriktionen: Muss eine „Sprache“ ausgewählt werden.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/language/)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/language/)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `"en" Englisch` `"de" Deutsch` `"fr" Französisch`
 
@@ -166,7 +399,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 1-n
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: text in der Tabelle title.
   - Restriktionen: Muss angegeben werden.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/title/)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/title/)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Drone based photogrammetry data at the Geysir geothermal field, Iceland`
 
@@ -176,7 +409,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: title in der Tabelle Title_Type.
   - Restriktionen: Muss ein „Title Type“ ausgewählt werden.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/title/#a-titletype)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/title/#a-titletype)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Main` `Subtitle` `Translated Title`
 
@@ -188,7 +421,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-n
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: text und rightsIdentifier in der Tabelle Rights.
   - Restriktionen: Muss eine „Linzenz“ ausgewählt werden.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/rights/)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/rights/)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Creative Commons Attribution 4.0 International (CC-BY-4.0)`
 
@@ -201,7 +434,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: familyname in der Tabelle Author.
   - Restriktionen: Muss angegeben werden.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/creator/#familyname)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/creator/#familyname)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Jemison` `Smith`
 
@@ -212,7 +445,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: givenname in der Tabelle Author.
   - Restriktionen: Muss angegeben werden.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/creator/#givenname)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/creator/#givenname)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `John` `Jane`
 
@@ -223,7 +456,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: orcid in der Tabelle Author.
   - Restriktionen: Muss im Format "xxxx-xxxx-xxxx-xxxx" sein.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/creator/#nameidentifier)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/creator/#nameidentifier)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `1452-9875-4521-7893` `0082-4781-1312-884x`
 
@@ -233,7 +466,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-n
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: name in der Tabelle Affiliation.
   - Restriktionen: Es ist optional.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/creator/#affiliation)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/creator/#affiliation)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Technische Universität Berlin` `GFZ, Helmholtz-Zentrum Potsdam - Deutsches GeoForschungsZentrum GFZ`
 
@@ -246,7 +479,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: familyname in der Tabelle Contact_Person
   - Restriktionen: Optimal aber wenn es angegeben wurde, muss auch die E-Mail-Adresse eingegeben.
-  - [Link zur Dokumentation von Schema Documentation for gmd mit der Beschreibung des Elements im Metadaten-Schema](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
+  - [gmd Schema-Dokumentation](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
   - Schema Version: "ISO" 2012-07-13
   - Beispielwerte: `Jemison` `Smith`
 
@@ -257,7 +490,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: givenname in der Tabelle Contact_Person
   - Restriktionen: Optimal aber wenn es angegeben wurde, muss auch der Nachname eigegeben.
-  - [Link zur Dokumentation von Schema Documentation for gmd mit der Beschreibung des Elements im Metadaten-Schema](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
+  - [gmd Schema-Dokumentation](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
   - Schema Version: "ISO" 2012-07-13
   - Beispielwerte: `John` `Jane`
 
@@ -268,7 +501,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: position in der Tabelle Contact_Person
   - Restriktionen: Optimal.
-  - [Link zur Dokumentation von Schema Documentation for gmd mit der Beschreibung des Elements im Metadaten-Schema](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
+  - [gmd Schema-Dokumentation](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
   - Schema Version: "ISO" 2012-07-13
   - Beispielwerte: `Arbeitsgruppenleiter` `Projektleiter`
 
@@ -279,7 +512,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: email in der Tabelle Contact_Person
   - Restriktionen: Optimal.
-  - [Link zur Dokumentation von Schema Documentation for gmd mit der Beschreibung des Elements im Metadaten-Schema](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
+  - [gmd Schema-Dokumentation](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
   - Schema Version: "ISO" 2012-07-13
   - Beispielwerte: `ali.mohammed@gfz-potsdam.de` `holger.ehrmann@gfz-potsdam.de`
 
@@ -289,7 +522,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: website in der Tabelle Contact_Person
   - Restriktionen: Optimal.
-  - [Link zur Dokumentation von Schema Documentation for gmd mit der Beschreibung des Elements im Metadaten-Schema](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
+  - [gmd Schema-Dokumentation](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
   - Schema Version: "ISO" 2012-07-13
   - Beispielwerte: `gfz-potsdam.de` `fh-potsdam.de`
 - Affiliation
@@ -298,10 +531,26 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-n
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: name in der Tabelle Affiliation.
   - Restriktionen: Optimal.
-  - [Link zur Dokumentation von Schema Documentation for gmd mit der Beschreibung des Elements im Metadaten-Schema](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
+  - [gmd Schema-Dokumentation](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
   - Schema Version: "ISO" 2012-07-13
   - Beispielwerte: `Technische Universität Berlin` `GFZ, Helmholtz-Zentrum Potsdam - Deutsches GeoForschungsZentrum GFZ`
   - **Hinweis**: Autocomplete-Funktion für das Eingabefeld Affiliation einsetzen! ähnlich der 'Author' Form group.
+
+### Originating Laboratory
+<!-- TODO: Speicherung der Eingaben in der Datenbank dokumentieren! -->
+- Labor aus dem die Daten stammen
+- Vorkommen: 1-n
+- Wird gespeichert als `<contributor contributorType="HostingInstitution">` im [DataCite-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype)
+- Name of the originating laboratory
+  - Name des Labors, gewählt aus einer Liste, oder Freitext.
+  - Vorkommen 1-n
+  - Datentyp: Zeichenkette
+  - Wird gespeichert als `<contributorName>` im [DataCite-Schema 4.5](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/) (TODO)
+- Affiliation of the originating laboratory
+  - Zugejhörigkeit des Labors, automatisch gewählt aus einer Liste je nach Laborname, oder Freitext, wenn Laborname auch Freitext.
+  - Vorkommen 1-n
+  - Datentyp: Zeichenkette
+  - Wird gespeichert als `<affiliation>` im [DataCite-Schema 4.5](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/) (TODO)
 
 ### Contributors
 
@@ -313,7 +562,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
   - Restriktionen: Optimal.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#familyname)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#familyname)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Jemison` `Smith`
 
@@ -324,7 +573,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
   - Restriktionen: Optimal.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#givenname)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#givenname)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `John` `Jane`
 
@@ -335,7 +584,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 1 _Gemäß der DataCite Dokumentation kann ein Mitwirkender nur eine Rolle haben. Allerdings ermöglicht der aktuelle MDE die Eingabe mehrerer Rollen für einen Mitwirkenden._
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
   - Restriktionen: muss mindestens eine Rolle ausgewählt werden./muss nur eine Rolle ausgewählt werden.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Data Manager` `Project Manager`
 
@@ -346,7 +595,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
   - Restriktionen: Muss im Format "xxxx-xxxx-xxxx-xxxx" sein.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-nameidentifierscheme)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-nameidentifierscheme)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `1452-9875-4521-7893` `0082-4781-1312-884x`
 
@@ -357,7 +606,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-n
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
   - Restriktionen: Es ist optional.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-affiliationidentifier)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-affiliationidentifier)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Technische Universität Berlin` `GFZ, Helmholtz-Zentrum Potsdam - Deutsches GeoForschungsZentrum GFZ`
 
@@ -369,7 +618,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
   - Restriktionen: Es ist optional.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-nametype)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-nametype)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `University of Applied Sciences Potsdam` `Helmholtz Centre Potsdam - GFZ German Research Centre for Geosciences`
 
@@ -379,7 +628,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 1 _Gemäß der DataCite Dokumentation kann ein Mitwirkender nur eine Rolle haben. Allerdings ermöglicht der aktuelle MDE die Eingabe mehrerer Rollen für einen Mitwirkenden._
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
   - Restriktionen: muss mindestens eine Rolle ausgewählt werden./muss nur eine Rolle ausgewählt werden.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Data Collector` `Data Curator`
 
@@ -391,7 +640,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
   - Restriktionen: Optimal.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#familyname)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#familyname)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Jemison` `Smith`
 
@@ -402,7 +651,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
   - Restriktionen: Optimal.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#givenname)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#givenname)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `John` `Jane`
 
@@ -413,7 +662,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 1 _Gemäß der DataCite Dokumentation kann ein Mitwirkender nur eine Rolle haben. Allerdings ermöglicht der aktuelle MDE die Eingabe mehrerer Rollen für einen Mitwirkenden._
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
   - Restriktionen: muss mindestens eine Rolle ausgewählt werden./muss nur eine Rolle ausgewählt werden.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Data Manager` `Project Manager`
 
@@ -424,7 +673,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
   - Restriktionen: Muss im Format "xxxx-xxxx-xxxx-xxxx" sein.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-nameidentifierscheme)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-nameidentifierscheme)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `1452-9875-4521-7893` `0082-4781-1312-884x`
 
@@ -435,7 +684,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-n
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
   - Restriktionen: Es ist optional.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-affiliationidentifier)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-affiliationidentifier)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Technische Universität Berlin` `GFZ, Helmholtz-Zentrum Potsdam - Deutsches GeoForschungsZentrum GFZ`
 
@@ -448,7 +697,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
   - Restriktionen: Es ist optional.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-nametype)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-nametype)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `University of Applied Sciences Potsdam` `Helmholtz Centre Potsdam - GFZ German Research Centre for Geosciences`
 
@@ -459,7 +708,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 1 _Gemäß der DataCite Dokumentation kann ein Mitwirkender nur eine Rolle haben. Allerdings ermöglicht der aktuelle MDE die Eingabe mehrerer Rollen für einen Mitwirkenden._
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
   - Restriktionen: muss mindestens eine Rolle ausgewählt werden./muss nur eine Rolle ausgewählt werden.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Data Collector` `Data Curator`
 
@@ -469,7 +718,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
 * Vorkommen: 0-n
 * Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
 * Restriktionen: Es ist optional.
-* [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#affiliation)
+* [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#affiliation)
 * Schema Version: "DataCite" 4.5
 * Beispielwerte: `Technische Universität Berlin` `GFZ, Helmholtz-Zentrum Potsdam - Deutsches GeoForschungsZentrum GFZ`
 
@@ -481,7 +730,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
 - Vorkommen: 1
   **Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!\*\*
 - Restriktionen: keine - Freitext
-- [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/descriptionType/#abstract)
+- [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/descriptionType/#abstract)
 - Schema Version: "DataCite" 4.5
 - Beispielwerte: `The dataset contains a subset of an airborne hyperspectral HyMap image over the Cabo de Gata-Nίjar Natural Park in Spain from 15.06.2005, and soil wet chemistry data based on in-situ soil sampling. The Cabo de Gata-Nίjar Natural Park is a semi-arid mediterranean area in Southern Spain, sparsely populated and with a range of landscape patterns.`
 
@@ -492,7 +741,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
     **Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!\*\*
   - Restriktionen: keine - Freitext
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/descriptionType/#methods)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/descriptionType/#methods)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Graphical representation of the steps used to reconstruct sequence alignments of the Nudix superfamily, as described in the Materials and Methods section. (A) The pipeline to build the 78-PDB structure guided sequence alignment. (B) The pipeline to build the 324-core sequence alignment guided by the 78-PDB sequence alignment. (C) The pipeline to build the alignment of the complete Nudix clan (38,950 sequences). (D) Illustration of how to combine two alignment into one guided by a scaffold alignment.`
 
@@ -503,7 +752,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
     **Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!\*\*
   - Restriktionen: keine - Freitext
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/descriptionType/#technicalinfo)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/descriptionType/#technicalinfo)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Scripts written and run using Wolfram Mathematica (confirmed with versions 10.2 to 11.1). Assumes raw data matches format produced by a LTQ Orbitrap Velos mass spectrometer and exported by the proprietary software (Xcalibur) to a comma-separated values (.csv) file. The .csv files are the expected input into the Mathematica scripts. `
 
@@ -512,7 +761,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
     **Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!\*\*
   - Restriktionen: keine - Freitext
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/descriptionType/#other)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/descriptionType/#other)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `This is the description of a data set that does not fit into the categories of abstract, methods or technical information, but is nevertheless extremely necessary.`
 
@@ -525,7 +774,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-n
   - Das zugehörige Feld in der Datenbank heißt: keyword in der Tabelle Thesaurus_Keywords
   - Restriktionen: Es stehen (Stand 18.06.2024) nur GCMD Science Keywords (Earth Science und Earth Science Services) zur Auswahl. **Weitere kontrollierte Vokabulare müssen/können/sollten noch hinzugefügt werden.**
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `EARTH SCIENCE` `AGRICULTURE`
 
@@ -536,7 +785,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank heißt: scheme in der Tabelle Thesaurus_Keywords
   - Restriktionen: bisher ist nur der Wert `NASA/GCMD Earth Science Keywords` möglich
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/#a-scheme)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/#a-scheme)
   - Schema Version: "DataCite" 4.5
   - Beispielwert: `NASA/GCMD Earth Science Keywords`
 
@@ -547,7 +796,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank heißt: schemeURI in der Tabelle Thesaurus_Keywords
   - Restriktionen: bisher ist nur der Wert `https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords` möglich
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/#b-schemeuri)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/#b-schemeuri)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords`
 
@@ -558,7 +807,7 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank heißt: valueURI in der Tabelle Thesaurus_Keywords
   - Restriktionen: wird aus der Datei gcmdScienceKeywords.json extrahiert
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/#c-valueuri)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/#c-valueuri)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `https://gcmd.earthdata.nasa.gov/kms/concept/a2cc8e02-3207-4c40-af41-9656404bac0a`
 
@@ -568,19 +817,19 @@ Auszuführende URL: api.php?action=getResourceAsDataciteXml&id=1
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank heißt: language in der Tabelle Thesaurus_Keywords
   - Restriktionen: wird aus der Datei gcmdScienceKeywords.json extrahiert
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/#subject)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/#subject)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `en` `de`
 
 ### Free Keywords
 
-* In dieses Feld kommen freie Schlagwörter, diese sind nicht an einen Thesaurus gebunden.
-  * Datentyp: Freitext
-  * Vorkommen: 0-n
-* Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: free_keywords
-  * Restriktionen: keine Duplikate
-  * Schema Version:
-* Beispielwerte: carbon dioxide emission, CO2 emission, methane emission, CH4 emission, peatland, wetland, eddy covariance, rewetting, emission factor, mitigation, Test
+- In dieses Feld kommen freie Schlagwörter, diese sind nicht an einen Thesaurus gebunden.
+  - Datentyp: Freitext
+  - Vorkommen: 0-n
+- Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: free_keywords
+  - Restriktionen: keine Duplikate
+  - Schema Version:
+- Beispielwerte: carbon dioxide emission, CO2 emission, methane emission, CH4 emission, peatland, wetland, eddy covariance, rewetting, emission factor, mitigation, Test
 
 ### Dates
 
@@ -683,7 +932,7 @@ Räumliche und zeitliche Einordnung des Datensatzes. Zur einfacheren Erfassung d
   - Vorkommen: 1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: relation_fk in der Tabelle Related_Work.
   - Restriktionen: Es muss ein Relation Type ausgewählt werden.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/relatedidentifier/#b-relationtype)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/relatedidentifier/#b-relationtype)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `IsCitedBy` `IsSupplementTo` `IsContinuedBy`
 
@@ -694,7 +943,7 @@ Räumliche und zeitliche Einordnung des Datensatzes. Zur einfacheren Erfassung d
   - Vorkommen: 1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: Identifier in der Tabelle Related_Work
   - Restriktionen: Muss angegeben werden.
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/relatedIdentifierType/)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/relatedIdentifierType/)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `ark:/13030/tqb3kh97gh8w` `arXiv:0706.0001`
 
@@ -705,40 +954,51 @@ Räumliche und zeitliche Einordnung des Datensatzes. Zur einfacheren Erfassung d
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: identifier_type_fk in der Tabelle Related_Work.
   - Restriktionen: Optional
-  - [Link zur Dokumentation von DataCite mit der Beschreibung des Elements im Metadaten-Schema](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/relatedidentifier/#a-relatedidentifiertype)
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/relatedidentifier/#a-relatedidentifiertype)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `ARK` `arXiv` `EAN13`
 
   ### Funding Reference
+
 * Funder
   In diesem Feld kommt der Name des Finanzierungsanbieters.
-  * Datentyp: Zeichenkette
-  * Vorkommen: 1
-  * Restriktionen: Um Vorschläge über der Api zu erhalten, ist es erforderlich, mindestens die ersten zwei Buchstaben der Funder einzugeben. Zudem besteht die Möglichkeit, die Funder manuell einzutragen.
-  * Schemata: DataCite
-  * Beispielwerte: `Gordon and Betty Moore Foundation` `Ford Foundation`
+  - Datentyp: Zeichenkette
+  - Vorkommen: 1
+  - Restriktionen: Um Vorschläge über der Api zu erhalten, ist es erforderlich, mindestens die ersten zwei Buchstaben der Funder einzugeben. Zudem besteht die Möglichkeit, die Funder manuell einzutragen.
+  - Schemata: DataCite
+  - Beispielwerte: `Gordon and Betty Moore Foundation` `Ford Foundation`
 * Grant Number
   In diesem Feld kommt der Code, der dem Geldgeber einer geförderten Zuwendung (Grant) zugewiesen wird.
-  * Datentyp: Zeichenkette
-  * Vorkommen: 0-1
-  * Restriktionen: Es ist optional.
-  * Schemata: DataCite
-  * Beispielwerte: `GBMF3859.01` `GBMF3859.22`
+  - Datentyp: Zeichenkette
+  - Vorkommen: 0-1
+  - Restriktionen: Es ist optional.
+  - Schemata: DataCite
+  - Beispielwerte: `GBMF3859.01` `GBMF3859.22`
 * Grant Name
   In diesem Feld kommt der lesbare Titel oder Name der Auszeichnung (grant).
-  * Datentyp: Text
-  * Vorkommen: 0-1
-  * Restriktionen: Es ist optional.
-  * Schemata: DataCite
-  * Beispielwerte: `Socioenvironmental Monitoring of the Amazon Basin and Xingu` `Grantmaking at a glance`
+  - Datentyp: Text
+  - Vorkommen: 0-1
+  - Restriktionen: Es ist optional.
+  - Schemata: DataCite
+  - Beispielwerte: `Socioenvironmental Monitoring of the Amazon Basin and Xingu` `Grantmaking at a glance`
 
 ## Datenvalidierung
 
-* Folgende Felder müssen zwingend ausgefüllt werden: **Publication Year**, **Title**, **Author Lastname**, **Author Firstname**, **Author Role**, **Author ORCID**, **Contributor ORCID**, **Contributor Role**, **Description Abstract** **Relation** und **Identifier**.❗
-* Die restlichen Felder **DOI**, **Resource Type**, **Version**, **Language of Dataset**, **Title Type**, **Rights**, **Contact Person Position**, **Contact Person Email**, **Contact Person Website**, **Author Affiliation**, **Contact Person Affiliation**, **Contributor Lastname**, **Contributor Firstname**, **Contributor Affiliation**, **Contributor Organisation Name**, **Description Methods**,  **Description TechnicalInfo**, **Description Other**, **Thesaurus Keywords** **Identifier Typ** können optional leer bleiben.✅
-
+- Folgende Felder müssen zwingend ausgefüllt werden: **Publication Year**, **Title**, **Author Lastname**, **Author Firstname**, **Author Role**, **Author ORCID**, **Contributor ORCID**, **Contributor Role**, **Description Abstract** **Relation** und **Identifier**.❗
+- Die restlichen Felder **DOI**, **Resource Type**, **Version**, **Language of Dataset**, **Title Type**, **Rights**, **Contact Person Position**, **Contact Person Email**, **Contact Person Website**, **Author Affiliation**, **Contact Person Affiliation**, **Contributor Lastname**, **Contributor Firstname**, **Contributor Affiliation**, **Contributor Organisation Name**, **Description Methods**, **Description TechnicalInfo**, **Description Other**, **Thesaurus Keywords** **Identifier Typ** können optional leer bleiben.✅
 
 ## Datenbankstruktur
 
+#### ER-Diagramm
+
+Das folgende ER-Diagramm zeigt die Beziehungen und Strukturen der Tabellen in der Datenbank.
+
+[![ER-Diagramm](doc/ER-Modell.jpg)](https://raw.githubusercontent.com/McNamara84/gfz-metadata-editor-msl-v2/feature/msl-frontend/doc/ER-Modell.jpg)
+
 ## Lizenz
+
 Dieses Projekt wurde 2024 von Studenten der Fachhochschule Potsdam in Zusammenarbeit mit dem Deutschen GeoForschungsZentrum entwickelt und wird unter der MIT-Lizenz veröffentlicht.
+
+```
+
+```

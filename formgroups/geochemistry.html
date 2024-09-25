@@ -1,0 +1,133 @@
+<div class="card mb-2">
+    <div class="card-header">
+        <b>
+            <?php echo $translations['Geochemistry']; ?>
+        </b>
+    </div>
+
+    <div id="geochemistryGroup">
+        <div class="accordion p-2" id="accordionGeochemistry">
+
+            <div class="accordion-item">
+                <!--Accordion Header Analysis technique-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseGEOCHAnalysisTechnique" aria-expanded="false"
+                        aria-controls="collapseGEOCHAnalysisTechnique">
+                        <?php echo $translations['Geochemistry_A_T'];?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Analysis technique-->
+                <div id="collapseGEOCHAnalysisTechnique" class="accordion-collapse collapse show"
+                    data-bs-parent="#accordionGeochemistry">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputGEOCHAnalysisTechnique" name="GEOCHAnalysisTechnique" />
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="GEOCHAnalysisTechnique"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#GEOCHAnalysisTechniqueModal" id="GEOCHAnalysisTechniqueThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="accordion-item">
+                <!--Accordion Header Measured property-->
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseGEOCHMeasuredProperty" aria-expanded="false"
+                        aria-controls="collapseGEOCHMeasuredProperty">
+                        <?php echo $translations['Geochemistry_M_P'];?>
+                    </button>
+                </h2>
+                <!--Eingabefeld Measured property-->
+                <div id="collapseGEOCHMeasuredProperty" class="accordion-collapse collapse "
+                    data-bs-parent="#accordionGeochemistry">
+                    <div class="accordion-body">
+                        <div class="input-group has-validation">
+                            <div class="form-floating">
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                        id="inputGEOCHMeasuredProperty" name="GEOCHMeasuredProperty" />
+                                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                            data-help-section-id="GEOCHMeasuredProperty"></i></span>
+                                </div>
+                            </div>
+                            <!--Button-->
+                            <div class="col-auto p-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#GEOCHMeasuredPropertyModal" id="GEOCHMeasuredPropertyThesaurus">
+                                    <?php echo $translations['thesaurus']; ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!------------------------------------- MODALS ---------------------------------------------------------------------->
+
+
+<!-- Modal für Analysis technique -->
+
+<div class="modal fade <?php if (isset($_SESSION['GEOCHAnalysisTechniqueModal']) && $_SESSION['GEOCHAnalysisTechniqueModal'] == 'true') { echo 'show'; } ?>"
+    id="GEOCHAnalysisTechniqueModal" tabindex="-1" aria-labelledby="GEOCHAnalysisTechniqueModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="GEOCHAnalysisTechniqueModalLabel">Analysis technique thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="GEOCHAnalysisTechniqueModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputGEOCHAnalysisTechnique"
+                        placeholder="Search for Keyword">
+                    <div id="jstreeGEOCHAnalysisTechnique"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal für Measured property -->
+<div class="modal fade <?php if (isset($_SESSION['GEOCHMeasuredPropertyModal']) && $_SESSION['GEOCHMeasuredPropertyModal'] == 'true') { echo 'show'; } ?>"
+    id="GEOCHMeasuredPropertyModal" tabindex="-1" aria-labelledby="GEOCHMeasuredPropertyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="GEOCHMeasuredPropertyModalLabel">Measured property thesaurus</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="GEOCHMeasuredPropertyModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputGEOCHMeasuredProperty"
+                        placeholder="Search for Keyword">
+                    <div id="jstreeGEOCHMeasuredProperty"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

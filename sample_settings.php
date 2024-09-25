@@ -25,10 +25,19 @@ if (basename(__FILE__) == basename($_SERVER['PHP_SELF'])) {
     }
 }
 
-// TODO: Umbenennen von $connection in $connection, aber aktuell zu großer Eingriff in Testumgebungen
 $connection = connectDb();
 
 // API Key für https://timezonedb.com/
 $apiKeyTimezone = 'xxxxxxxxxxxx';
 // maximale Anzahl der eingebbaren Titel
 $maxTitles = 2;
+// Anzeige des Feedback-Links (true für Anzeige, false für keine Anzeige)
+$showFeedbackLink = true;
+// Einstellungen für Mailversand mit SMTP
+$smtpHost = 'xxxxxx';
+$smtpPort = 465;
+$smtpUser = 'xxxxxxxxxxx';
+$smtpPassword = 'xxxxxxxxxxxx';
+$smtpSender = 'xxxxxxxxxxxx';
+// Zieladresse für Feedback
+$feedbackAdress = 'xxxxxxxx@xxxxxxxx';
