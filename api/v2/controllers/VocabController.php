@@ -76,4 +76,22 @@ class VocabController
             'message' => "Updating vocab for type: $type"
         ]);
     }
+    public function getGcmdScienceKeywords()
+    {
+        try {
+            $jsonPath = __DIR__ . '/../../../json/gcmdScienceKeywords.json';
+            if (!file_exists($jsonPath)) {
+                throw new Exception("Science Keywords file not found");
+            }
+            $json = file_get_contents($jsonPath);
+            if ($json === false) {
+                throw new Exception("Error reading Science Keywords file");
+            }
+            header('Content-Type: application/json');
+            echo $json;
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
 }
