@@ -1,8 +1,17 @@
 <?php
+// settings.php einbinden damit Variablen verfügbar sind
+require_once __DIR__ . '/../../../settings.php';
 class VocabController
 {
-    private $url = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/labs/labnames.json';
-    function fetchAndProcessMslLabs()
+    private $url;
+
+    public function __construct()
+    {
+        global $mslLabsUrl;
+        $this->url = $mslLabsUrl;
+    }
+
+    public function fetchAndProcessMslLabs()
     {
         // Daten von der URL abrufen mit User-Agent
         $opts = [
