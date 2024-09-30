@@ -193,7 +193,7 @@ Aktualisiert die kontrollierten Vokabulare des Materials Science Laboratory (MSL
 **Antwort:**
 JSON-Objekt mit Aktualisierungsstatus für jedes Vokabular
 
-### 11. MSL Labs aktualisieren
+### 11. MSL Labs aktualisieren  (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getMslLabs
 
