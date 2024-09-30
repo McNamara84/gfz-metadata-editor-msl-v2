@@ -13,9 +13,9 @@ info:
   license:
     name: MIT
     url: https://raw.githubusercontent.com/McNamara84/gfz-metadata-editor-msl-v2/refs/heads/main/LICENSE.md
-  version: 1.5.0
+  version: 1.5.1
 externalDocs:
-  description: Dokumentation of the API V1 at GitHub
+  description: Documentation of the API V1 at GitHub
   url: https://github.com/McNamara84/gfz-metadata-editor-msl-v2#api-endpunkte
 servers:
   - url: https://mde2.cats4future.de/api/v2
@@ -147,7 +147,7 @@ paths:
       tags:
         - update
       summary: Update MSL Labs vocabulary
-      description: Fetch and update the MSL Labs vocabulary from the GitHub repository
+      description: Fetch and update the MSL Labs vocabulary from the GitHub repository. The response includes the updated labs with their IDs.
       operationId: updateMslLabs
       responses:
         "200":
@@ -158,6 +158,13 @@ paths:
                 $ref: "#/components/schemas/MSLLabsUpdateResponse"
               example:
                 message: "MSL Labs vocabulary successfully updated"
+                labs:
+                  - id: "9cd562c216daa82792972a074a222c52"
+                    name: "Fragmentation Lab (Ludwig-Maximilians-University Munich, Germany)"
+                    affiliation: "Ludwig-Maximilians-University Munich, Munich, Germany"
+                  - id: "09e434194091574963c80f83d586875d"
+                    name: "TecMOD - GRmodel (CNRS-Rennes 1 University, France)"
+                    affiliation: "CNRS-Rennes 1 University, Rennes, France"
         "500":
           description: Internal server error
           content:
@@ -259,6 +266,33 @@ components:
         message:
           type: string
           example: "MSL Labs vocabulary successfully updated"
+        labs:
+          type: array
+          items:
+            $ref: "#/components/schemas/MSLLab"
+      required:
+        - message
+        - labs
+
+    MSLLab:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the lab
+          example: "lab1"
+        name:
+          type: string
+          description: Name of the laboratory
+          example: "Laboratory A"
+        affiliation:
+          type: string
+          description: Affiliation of the laboratory
+          example: "University X"
+      required:
+        - id
+        - name
+        - affiliation
 
     Error:
       type: object

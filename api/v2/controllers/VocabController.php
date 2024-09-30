@@ -40,6 +40,7 @@ class VocabController
         // Daten verarbeiten und nur benötigte Felder behalten
         $processedLabs = array_map(function ($lab) {
             return [
+                'id' => $lab['id'],
                 'name' => $lab['lab_editor_name'],
                 'affiliation' => $lab['affiliation']
             ];
