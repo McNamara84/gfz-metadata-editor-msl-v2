@@ -164,4 +164,44 @@ class VocabController
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
+    public function getRoles($vars)
+    {
+        global $connection;
+        $type = $vars['type'] ?? $_GET['type'] ?? 'all';
+
+        // SQL-Abfrage basierend auf dem Typ
+        if ($type == 'all') {
+            $sql = 'SELECT * FROM Role';
+        } elseif ($type == 'person') {
+            $sql = 'SELECT * FROM Role WHERE forInstitutions = 0';
+        } elseif ($type == 'institution') {
+            $sql = 'SELECT * FROM Role WHERE forInstitutions = 1';
+        } elseif ($type == 'both') {
+            $sql = 'SELECT * FROM Role WHERE forInstitutions = 2';
+        } else {
+            http_response_code(400);
+            echo json_encode(['error' => 'Invalid roles type specified']);
+            return;
+        }
+
+        if ($stmt = $connection->prepare($sql)) {
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $rolesList = $result->fetch_all(MYSQLI_ASSOC);
+
+            if ($rolesList) {
+                header('Content-Type: application/json');
+                echo json_encode($rolesList);
+            } else {
+                http_response_code(404);
+                echo json_encode(['error' => 'No roles found']);
+            }
+
+            $stmt->close();
+        } else {
+            http_response_code(500);
+            echo json_encode(['error' => 'Database error: ' . $connection->error]);
+        }
+    }
+
 }
