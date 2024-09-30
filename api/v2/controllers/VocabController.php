@@ -1,6 +1,43 @@
 <?php
 class VocabController
 {
+    private $url = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/labs/labnames.json';
+    function fetchAndProcessMslLabs()
+    {
+        // Daten von der URL abrufen mit User-Agent
+        $opts = [
+            'http' => [
+                'method' => 'GET',
+                'header' => 'User-Agent: PHP Script'
+            ]
+        ];
+        $context = stream_context_create($opts);
+        $jsonData = file_get_contents($this->url, false, $context);
+
+        if ($jsonData === false) {
+            throw new Exception('Fehler beim Abrufen der Daten von GitHub: ' . error_get_last()['message']);
+        }
+
+        // Zeichenkodierung korrigieren
+        $jsonData = mb_convert_encoding($jsonData, 'UTF-8', mb_detect_encoding($jsonData, 'UTF-8, ISO-8859-1', true));
+
+        // JSON-Daten decodieren
+        $labs = json_decode($jsonData, true);
+
+        if ($labs === null) {
+            throw new Exception('Fehler beim Decodieren der JSON-Daten: ' . json_last_error_msg());
+        }
+
+        // Daten verarbeiten und nur benötigte Felder behalten
+        $processedLabs = array_map(function ($lab) {
+            return [
+                'name' => $lab['lab_editor_name'],
+                'affiliation' => $lab['affiliation']
+            ];
+        }, $labs);
+
+        return $processedLabs;
+    }
     private function getLatestVersion($baseUrl, $type)
     {
         $versions = [];
@@ -89,6 +126,29 @@ class VocabController
             }
             header('Content-Type: application/json');
             echo $json;
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+    public function updateMslLabs()
+    {
+        try {
+            $mslLabs = $this->fetchAndProcessMslLabs();
+            $jsonString = json_encode($mslLabs, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+            if ($jsonString === false) {
+                throw new Exception('Error encoding data to JSON: ' . json_last_error_msg());
+            }
+
+            $result = file_put_contents(__DIR__ . '/../../../json/msl-labs.json', $jsonString);
+
+            if ($result === false) {
+                throw new Exception('Error saving JSON file: ' . error_get_last()['message']);
+            }
+
+            header('Content-Type: application/json');
+            echo json_encode(['message' => 'MSL Labs vocabulary successfully updated']);
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode(['error' => $e->getMessage()]);
