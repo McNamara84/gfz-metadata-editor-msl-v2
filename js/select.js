@@ -2,7 +2,11 @@ $(document).ready(function () {
   $.getJSON("json/timezones.json", function (data) {
     var timezoneSelect = $("#tscTimezone");
     $.each(data, function (index, timezone) {
-      var option = $("<option></option>").attr("value", timezone).text(timezone);
+      var label = timezone.label;
+      var utcOffset = label.substring(3, 9); // Extrahiert "+01:00" oder "-04:00"
+      var offsetValue = parseFloat(utcOffset.replace(":", ".")); // Konvertiert zu Kommazahl
+
+      var option = $("<option></option>").attr("value", offsetValue).text(label);
       timezoneSelect.append(option);
     });
   }).fail(function () {
@@ -283,13 +287,13 @@ $(document).on(
 // Event-Listener für neu hinzugefügte Felder
 $(document).on("click", ".addRelatedWork", function () {
   // Klonen Sie die vorhandene Zeile
-//  var newRow = $(this).closest(".row").clone(true);
+  //  var newRow = $(this).closest(".row").clone(true);
 
   // Leeren Sie die Eingabefelder in der neuen Zeile
- // newRow.find("input, select").val("");
+  // newRow.find("input, select").val("");
 
   // Fügen Sie die neue Zeile hinzu
- // $("#relatedworkGroup").append(newRow);
+  // $("#relatedworkGroup").append(newRow);
 
   // Aktualisieren Sie die IDs und Namen der Elemente in der neuen Zeile
   updateIdsAndNames();
