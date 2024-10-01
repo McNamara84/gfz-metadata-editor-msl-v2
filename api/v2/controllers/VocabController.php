@@ -204,4 +204,58 @@ class VocabController
         }
     }
 
+    public function updateTimezones()
+    {
+        global $apiKeyTimezone;
+
+        try {
+            // Die URL der TimeZoneDB API, um die Zeitzonendaten abzurufen
+            $apiUrl = 'http://api.timezonedb.com/v2.1/list-time-zone?key=' . urlencode($apiKeyTimezone) . '&format=json';
+
+            // Daten von der externen API abrufen
+            $response = file_get_contents($apiUrl);
+            if ($response === FALSE) {
+                throw new Exception('Error fetching data from timezonedb API.');
+            }
+
+            // Antwort in ein Array dekodieren
+            $data = json_decode($response, true);
+            if ($data['status'] != 'OK') {
+                throw new Exception('Error occurred: ' . $data['message']);
+            }
+
+            // Zeitzonen formatieren, UTC+X (Zone)
+            $formattedTimezones = [];
+            foreach ($data['zones'] as $zone) {
+                $offsetHours = floor($zone['gmtOffset'] / 3600);
+                $offsetMinutes = abs($zone['gmtOffset'] % 3600 / 60);
+                $offset = sprintf('%+03d:%02d', $offsetHours, $offsetMinutes);
+                $formattedTimezones[] = [
+                    'value' => $zone['zoneName'],
+                    'label' => sprintf('UTC%s (%s)', $offset, $zone['zoneName'])
+                ];
+            }
+
+            // Daten als JSON-String auf Server zwischenspeichern
+            $jsonDir = __DIR__ . '/../../../json/';
+            if (!file_exists($jsonDir)) {
+                mkdir($jsonDir, 0755, true);
+            }
+            $result = file_put_contents($jsonDir . 'timezones.json', json_encode($formattedTimezones, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+            if ($result === false) {
+                throw new Exception('Error saving JSON file: ' . error_get_last()['message']);
+            }
+
+            header('Content-Type: application/json');
+            echo json_encode([
+                'message' => 'Timezones successfully updated',
+                'timezones' => $formattedTimezones
+            ]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
 }
