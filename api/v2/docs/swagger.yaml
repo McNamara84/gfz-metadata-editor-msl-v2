@@ -27,6 +27,35 @@ tags:
   - name: vocabularies
     description: Operations related to retrieving vocabularies
 paths:
+  /update/timezones:
+    get:
+      tags:
+        - update
+      summary: Update timezones
+      description: Fetches the latest timezones from TimeZoneDB API and updates the local JSON file.
+      operationId: updateTimezones
+      responses:
+        "200":
+          description: Timezones successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TimezonesUpdateResponse"
+              example:
+                message: "Timezones successfully updated"
+                timezones:
+                  - value: "Europe/Berlin"
+                    label: "UTC+02:00 (Europe/Berlin)"
+                  - value: "America/New_York"
+                    label: "UTC-04:00 (America/New_York)"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "Error fetching data from timezonedb API."
   /update/vocabs/msl:
     get:
       tags:
@@ -304,6 +333,34 @@ paths:
                 error: "Database error: Connection failed"
 components:
   schemas:
+    TimezonesUpdateResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Timezones successfully updated"
+        timezones:
+          type: array
+          items:
+            $ref: "#/components/schemas/Timezone"
+      required:
+        - message
+        - timezones
+
+    Timezone:
+      type: object
+      properties:
+        value:
+          type: string
+          description: The timezone identifier
+          example: "Europe/Berlin"
+        label:
+          type: string
+          description: The formatted timezone label
+          example: "UTC+02:00 (Europe/Berlin)"
+      required:
+        - value
+        - label
     VocabularyUpdate:
       type: object
       properties:
@@ -317,7 +374,6 @@ components:
           example:
             analogue: "Updated to version 1.5"
             geochemistry: "Updated to version 1.4"
-
     MSLLabsUpdateResponse:
       type: object
       properties:

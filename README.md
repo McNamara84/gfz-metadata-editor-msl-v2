@@ -81,7 +81,7 @@ JSON-Array mit Objekten, die folgende Schlüssel enthalten:
 - `description`: Beschreibung
 - `children`: Array von Unterkategorien mit der gleichen Struktur
 
-### 2. Zeitzonen aktualisieren
+### 2. Zeitzonen aktualisieren (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getTimezones
 
