@@ -1,7 +1,8 @@
 <?php
-require_once '../settings.php';
+require_once './settings.php';
 require_once 'formgroups/save_resourceinformation_and_rights.php';
 require_once 'formgroups/save_authors.php';
+require_once 'formgroups/save_contactperson.php';
 require_once 'formgroups/save_freekeywords.php';
 require_once 'formgroups/save_contributors.php';
 require_once 'formgroups/save_descriptions.php';
@@ -13,6 +14,8 @@ require_once 'formgroups/save_fundingreferences.php';
 $resource_id = saveResourceInformationAndRights($connection, $_POST);
 // AUTHORS
 saveAuthors($connection, $_POST, $resource_id);
+// CONTACT PERSONS
+saveContactPerson($connection, $_POST, $resource_id);
 // CONTRIBUTORS
 saveContributors($connection, $_POST, $resource_id);
 // DESCRIPTIONS
