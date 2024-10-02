@@ -999,6 +999,7 @@ Das folgende ER-Diagramm zeigt die Beziehungen und Strukturen der Tabellen in de
 ## Testing
 Für einige Funktionen existieren bereits Unit Tests:
 - vendor/bin/phpunit tests/SaveResourceInformationAndRightsTest.php
+- vendor/bin/phpunit tests/SaveResourceInformationAndRightsTestThreeTitles.php
 
 ## Lizenz
 

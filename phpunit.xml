@@ -4,7 +4,7 @@
     verbose="true"
     stopOnFailure="false">
     <testsuites>
-        <testsuite name="Unit Tests">
+        <testsuite name="SaveTests">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
