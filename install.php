@@ -23,6 +23,9 @@ function dropTables($connection)
                 'Contact_Person',
                 'Contact_Person_has_Affiliation',
                 'Resource_has_Contact_Person',
+                'Originating_Laboratory',
+                'Originating_Laboratory_has_Affiliation',
+                'Resource_has_Originating_Laboratory',
                 'Contributor_Person',
                 'Contributor_Person_has_Role',
                 'Contributor_Person_has_Affiliation',
@@ -140,6 +143,32 @@ function createDatabaseStructure($connection)
            `email` VARCHAR(255) NOT NULL,
            `website` VARCHAR(255) NOT NULL,
            PRIMARY KEY (`contact_person_id`));",
+
+                "Originating_Laboratory" => "CREATE TABLE IF NOT EXISTS `Originating_Laboratory` (
+           `originating_laboratory_id` INT NOT NULL AUTO_INCREMENT,
+           `laboratoryname` TEXT(1000) NOT NULL,
+           `labId` VARCHAR(32) NULL,
+            PRIMARY KEY (`originating_laboratory_id`));",
+
+                "Originating_Laboratory_has_Affiliation" => "CREATE TABLE IF NOT EXISTS `Originating_Laboratory_has_Affiliation` (
+            `Originating_Laboratory_has_Affiliation_id` INT NOT NULL AUTO_INCREMENT,
+            `Originating_Laboratory_originating_laboratory_id` INT NOT NULL,
+            `Affiliation_affiliation_id` INT NOT NULL,
+            PRIMARY KEY (`Originating_Laboratory_has_Affiliation_id`),
+            FOREIGN KEY (`Originating_Laboratory_has_Affiliation_id`)
+            REFERENCES `Originating_Laboratory` (`originating_laboratory_id`),
+            FOREIGN KEY (`Affiliation_affiliation_id`)
+            REFERENCES `Affiliation` (`affiliation_id`));",
+
+                "Resource_has_Originating_Laboratory" => "CREATE TABLE IF NOT EXISTS `Resource_has_Originating_Laboratory` (
+            `Resource_has_Originating_Laboratory_id` INT NOT NULL AUTO_INCREMENT,
+            `Resource_resource_id` INT NOT NULL,
+            `Originating_Laboratory_originating_laboratory_id` INT NOT NULL,
+            PRIMARY KEY (`Resource_has_Originating_Laboratory_id`),
+            FOREIGN KEY (`Resource_resource_id`)
+            REFERENCES `Resource` (`resource_id`),
+            FOREIGN KEY (`Originating_Laboratory_originating_laboratory_id`)
+            REFERENCES `Originating_Laboratory` (`originating_laboratory_id`));",
 
                 "Contributor_Person" => "CREATE TABLE IF NOT EXISTS `Contributor_Person` (
            `contributor_person_id` INT NOT NULL AUTO_INCREMENT,
@@ -483,6 +512,11 @@ function insertTestDataIntoMainTables($connection)
                         ["familyName" => "Goebel", "givenname" => "Thomas", "position" => "Projektleiter", "email" => "Thomas.Goebel@tu-berlin.de", "website" => "www.tu.berlin"],
                         ["familyName" => "Wille", "givenname" => "Christian", "position" => "Abteilungsleiter", "email" => "Christian.Wille@fh-potsdam.de", "website" => "fh-potsdam.de"]
                 ],
+                "Originating_Laboratory" => [
+                        ["laboratoryname" => "FASTmodel- Laboratoire de modÃ©lisation analogique Fluides Automatique et SystÃ¨mes Thermiques (CNRS-Paris Sud Orsay University, France)", "labId" => "1b9abbf97c7caa2d763b647d476b2910"],
+                        ["laboratoryname" => "Fragmentation Lab (Ludwig-Maximilians-University Munich, Germany)", "labId" => "9cd562c216daa82792972a074a222c52"],
+                        ["laboratoryname" => "TecMOD - GRmodel (CNRS-Rennes 1 University, France", "labId" => "09e434194091574963c80f83d586875d"]
+                ],
                 "Contributor_Person" => [
                         ["familyName" => "Müller", "givenname" => "Anna", "orcid" => "4100-4503-1076-415X"],
                         ["familyName" => "Schmidt", "givenname" => "Johann", "orcid" => "4500-8523-8552-0861"],
@@ -712,6 +746,16 @@ function insertTestDataIntoHelpTables($connection)
                         ["Resource_resource_id" => 3, "Free_Keywords_free_keywords_id" => 1],
                         ["Resource_resource_id" => 2, "Free_Keywords_free_keywords_id" => 2],
                         ["Resource_resource_id" => 1, "Free_Keywords_free_keywords_id" => 3]
+                ],
+                "Originating_Laboratory_has_Affiliation" => [
+                        ["Affiliation_affiliation_id" => 2, "Originating_Laboratory_originating_laboratory_id" => 1],
+                        ["Affiliation_affiliation_id" => 2, "Originating_Laboratory_originating_laboratory_id" => 1],
+                        ["Affiliation_affiliation_id" => 3, "Originating_Laboratory_originating_laboratory_id" => 2]
+                ],
+                "Resource_has_Originating_Laboratory" => [
+                        ["Resource_resource_id" => 3, "originating_laboratory_originating_laboratory_id" => 1],
+                        ["Resource_resource_id" => 2, "originating_laboratory_originating_laboratory_id" => 3],
+                        ["Resource_resource_id" => 1, "originating_laboratory_originating_laboratory_id" => 2]
                 ],
         ];
 
