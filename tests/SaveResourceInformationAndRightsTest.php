@@ -145,4 +145,55 @@ class SaveResourceInformationAndRightsTest extends TestCase
             $index++;
         }
     }
+    public function testSaveResourceInformationAndRightsWithNullValues()
+    {
+        if (!function_exists('saveResourceInformationAndRights')) {
+            require_once __DIR__ . '/../save/formgroups/save_resourceinformation_and_rights.php';
+        }
+
+        $postData = [
+            "doi" => null,
+            "year" => 2023,
+            "dateCreated" => "2023-06-01",
+            "dateEmbargo" => null,
+            "resourcetype" => 4,
+            "version" => null,
+            "language" => 2,
+            "Rights" => 3,
+            "title" => ["Testing Title"],
+            "titleType" => [1]
+        ];
+
+        $resource_id = saveResourceInformationAndRights($this->connection, $postData);
+
+        // Überprüfen, ob eine Resource ID zurückgegeben wurde
+        $this->assertIsInt($resource_id);
+        $this->assertGreaterThan(0, $resource_id);
+
+        // Überprüfen, ob die Daten korrekt in die Datenbank eingetragen und abgerufen wurden
+        $stmt = $this->connection->prepare("SELECT * FROM Resource WHERE resource_id = ?");
+        $stmt->bind_param("i", $resource_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        $this->assertNull($row["doi"]);
+        $this->assertEquals($postData["year"], $row["year"]);
+        $this->assertEquals($postData["dateCreated"], $row["dateCreated"]);
+        $this->assertNull($row["dateEmbargoUntil"]);
+        $this->assertEquals($postData["resourcetype"], $row["Resource_Type_resource_name_id"]);
+        $this->assertNull($row["version"]);
+        $this->assertEquals($postData["language"], $row["Language_language_id"]);
+        $this->assertEquals($postData["Rights"], $row["Rights_rights_id"]);
+
+        // Überprüfen, ob der Titel korrekt eingetragen wurde
+        $stmt = $this->connection->prepare("SELECT * FROM Title WHERE Resource_resource_id = ?");
+        $stmt->bind_param("i", $resource_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        $this->assertEquals($postData["title"][0], $row["text"]);
+        $this->assertEquals($postData["titleType"][0], $row["Title_Type_fk"]);
+    }
 }
