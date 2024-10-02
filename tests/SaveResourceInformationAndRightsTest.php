@@ -1,6 +1,7 @@
 <?php
 namespace Tests;
 use PHPUnit\Framework\TestCase;
+use mysqli_sql_exception;
 
 require_once __DIR__ . '/../settings.php';
 
@@ -29,8 +30,8 @@ class SaveResourceInformationAndRightsTest extends TestCase
 
     private function cleanupTestData()
     {
-        $this->connection->query("DELETE FROM Title WHERE Resource_resource_id IN (SELECT resource_id FROM Resource WHERE doi IN ('10.5880/GFZ', '10.5880/GFZ.45.57'))");
-        $this->connection->query("DELETE FROM Resource WHERE doi IN ('10.5880/GFZ', '10.5880/GFZ.45.57')");
+        $this->connection->query("DELETE FROM Title WHERE Resource_resource_id IN (SELECT resource_id FROM Resource WHERE doi IN ('10.5880/GFZ', '10.5880/GFZ.45.57', '10.5880/GFZ.TEST.NULL'))");
+        $this->connection->query("DELETE FROM Resource WHERE doi IN ('10.5880/GFZ', '10.5880/GFZ.45.57', '10.5880/GFZ.TEST.NULL')");
     }
 
     public function testSaveResourceInformationAndRights()
@@ -195,5 +196,50 @@ class SaveResourceInformationAndRightsTest extends TestCase
 
         $this->assertEquals($postData["title"][0], $row["text"]);
         $this->assertEquals($postData["titleType"][0], $row["Title_Type_fk"]);
+    }
+    public function testSaveResourceInformationAndRightsWithEmptyRequiredFields()
+    {
+        if (!function_exists('saveResourceInformationAndRights')) {
+            require_once __DIR__ . '/../save/formgroups/save_resourceinformation_and_rights.php';
+        }
+
+        $postData = [
+            "doi" => null,
+            "year" => null,
+            "dateCreated" => null,
+            "dateEmbargo" => null,
+            "resourcetype" => null,
+            "version" => null,
+            "language" => null,
+            "Rights" => null,
+            "title" => [],
+            "titleType" => []
+        ];
+
+        // Zählen der bestehenden Datensätze vor dem Test
+        $countBefore = $this->connection->query("SELECT COUNT(*) as count FROM Resource")->fetch_assoc()['count'];
+
+        try {
+            $result = saveResourceInformationAndRights($this->connection, $postData);
+
+            // Überprüfen, ob false zurückgegeben wurde
+            $this->assertFalse($result, "Die Methode sollte false zurückgeben, wenn Pflichtfelder leer sind");
+
+            // Zählen der Datensätze nach dem Test
+            $countAfter = $this->connection->query("SELECT COUNT(*) as count FROM Resource")->fetch_assoc()['count'];
+
+            // Überprüfen, ob kein neuer Datensatz angelegt wurde
+            $this->assertEquals($countBefore, $countAfter, "Es sollte kein neuer Datensatz angelegt worden sein");
+
+            // Überprüfen, ob kein neuer Titel angelegt wurde
+            $titleCount = $this->connection->query("SELECT COUNT(*) as count FROM Title")->fetch_assoc()['count'];
+            $this->assertEquals(0, $titleCount, "Es sollte kein neuer Titel angelegt worden sein");
+        } catch (mysqli_sql_exception $e) {
+            if (strpos($e->getMessage(), "Column") !== false && strpos($e->getMessage(), "cannot be null") !== false) {
+                $this->fail("Die Funktion saveResourceInformationAndRights() versucht einen unvollständigen Datensatz in der Datenbank zu speichern!");
+            } else {
+                throw $e; // Andere SQL-Ausnahmen werfen
+            }
+        }
     }
 }
