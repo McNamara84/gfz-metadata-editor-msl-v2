@@ -242,4 +242,43 @@ class SaveResourceInformationAndRightsTest extends TestCase
             }
         }
     }
+    public function testPreventDuplicateResourceSave()
+    {
+        if (!function_exists('saveResourceInformationAndRights')) {
+            require_once __DIR__ . '/../save/formgroups/save_resourceinformation_and_rights.php';
+        }
+
+        $postData = [
+            "doi" => "10.5880/GFZ.DUPLICATE.TEST",
+            "year" => 2023,
+            "dateCreated" => "2023-06-01",
+            "dateEmbargo" => "2024-12-31",
+            "resourcetype" => 1,
+            "version" => 1.0,
+            "language" => 1,
+            "Rights" => 1,
+            "title" => ["Duplicate Test Dataset"],
+            "titleType" => [1]
+        ];
+
+        // Ersten Datensatz speichern
+        $first_resource_id = saveResourceInformationAndRights($this->connection, $postData);
+        $this->assertIsInt($first_resource_id);
+        $this->assertGreaterThan(0, $first_resource_id);
+
+        // Versuchen, denselben Datensatz erneut zu speichern
+        $second_resource_id = saveResourceInformationAndRights($this->connection, $postData);
+
+        // Überprüfen, ob false zurückgegeben wurde (oder eine andere Indikation für Duplikat)
+        $this->assertFalse($second_resource_id, "Die Funktion sollte false zurückgeben, wenn versucht wird, eine doppelte DOI zu speichern");
+
+        // Überprüfen, ob nur ein Datensatz in der Datenbank existiert
+        $stmt = $this->connection->prepare("SELECT COUNT(*) as count FROM Resource WHERE doi = ?");
+        $stmt->bind_param("s", $postData["doi"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $count = $result->fetch_assoc()['count'];
+
+        $this->assertEquals(1, $count, "Es sollte nur ein Datensatz mit dieser DOI in der Datenbank existieren");
+    }
 }
