@@ -1,4 +1,5 @@
 <?php
+require_once '../settings.php';
 require_once 'formgroups/save_resourceinformation_and_rights.php';
 require_once 'formgroups/save_authors.php';
 require_once 'formgroups/save_freekeywords.php';

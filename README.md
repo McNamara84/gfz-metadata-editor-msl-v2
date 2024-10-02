@@ -996,10 +996,10 @@ Das folgende ER-Diagramm zeigt die Beziehungen und Strukturen der Tabellen in de
 
 [![ER-Diagramm](doc/ER-Modell.jpg)](https://raw.githubusercontent.com/McNamara84/gfz-metadata-editor-msl-v2/feature/msl-frontend/doc/ER-Modell.jpg)
 
+## Testing
+Für einige Funktionen existieren bereits Unit Tests:
+- vendor/bin/phpunit tests/SaveResourceInformationAndRightsTest.php
+
 ## Lizenz
 
 Dieses Projekt wurde 2024 von Studenten der Fachhochschule Potsdam in Zusammenarbeit mit dem Deutschen GeoForschungsZentrum entwickelt und wird unter der MIT-Lizenz veröffentlicht.
-
-```
-
-```
