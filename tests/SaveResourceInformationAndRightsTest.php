@@ -5,10 +5,22 @@ use mysqli_sql_exception;
 
 require_once __DIR__ . '/../settings.php';
 
+/**
+ * Testklasse für die Funktionalität zum Speichern von Ressourceninformationen und Rechten.
+ * 
+ * Diese Klasse enthält verschiedene Testfälle, die die korrekte Funktionsweise
+ * der saveResourceInformationAndRights-Funktion unter verschiedenen Bedingungen überprüfen.
+ */
 class SaveResourceInformationAndRightsTest extends TestCase
 {
     private $connection;
 
+    /**
+     * Setzt die Testumgebung auf.
+     * 
+     * Stellt eine Verbindung zur Testdatenbank her und überspringt den Test,
+     * falls die Datenbank nicht verfügbar ist.
+     */
     protected function setUp(): void
     {
         global $connection;
@@ -19,21 +31,30 @@ class SaveResourceInformationAndRightsTest extends TestCase
 
         $dbname = 'geobrains-msl-test';
         if ($this->connection->select_db($dbname) === false) {
-            $this->markTestSkipped("Testdatenbank '$dbname' nicht verfügbar.");
+            $this->markTestSkipped("Testdatenbank '$dbname' ist nicht verfügbar. Bitte überprüfen Sie die Datenbankverbindung.");
         }
     }
 
+    /**
+     * Bereinigt die Testdaten nach jedem Test.
+     */
     protected function tearDown(): void
     {
         $this->cleanupTestData();
     }
 
+    /**
+     * Löscht alle Testdaten aus der Datenbank.
+     */
     private function cleanupTestData()
     {
         $this->connection->query("DELETE FROM Title WHERE Resource_resource_id IN (SELECT resource_id FROM Resource WHERE doi IN ('10.5880/GFZ', '10.5880/GFZ.45.57', '10.5880/GFZ.TEST.NULL', '10.5880/GFZ.DUPLICATE.TEST', '10.5880/GFZ.DUPLICATE.TITLE.TEST'))");
         $this->connection->query("DELETE FROM Resource WHERE doi IN ('10.5880/GFZ', '10.5880/GFZ.45.57', '10.5880/GFZ.TEST.NULL', '10.5880/GFZ.DUPLICATE.TEST', '10.5880/GFZ.DUPLICATE.TITLE.TEST')");
     }
 
+    /**
+     * Testet das Speichern von Ressourceninformationen und Rechten mit allen Feldern.
+     */
     public function testSaveResourceInformationAndRights()
     {
         if (!function_exists('saveResourceInformationAndRights')) {
@@ -55,9 +76,8 @@ class SaveResourceInformationAndRightsTest extends TestCase
 
         $resource_id = saveResourceInformationAndRights($this->connection, $postData);
 
-        // Überprüfen, ob eine Resource ID zurückgegeben wurde
-        $this->assertIsInt($resource_id);
-        $this->assertGreaterThan(0, $resource_id);
+        $this->assertIsInt($resource_id, "Die Funktion sollte eine gültige Resource ID zurückgeben.");
+        $this->assertGreaterThan(0, $resource_id, "Die zurückgegebene Resource ID sollte größer als 0 sein.");
 
         // Überprüfen, ob die Daten korrekt in die Datenbank eingetragen wurden
         $stmt = $this->connection->prepare("SELECT * FROM Resource WHERE resource_id = ?");
@@ -66,14 +86,14 @@ class SaveResourceInformationAndRightsTest extends TestCase
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
-        $this->assertEquals($postData["doi"], $row["doi"]);
-        $this->assertEquals($postData["year"], $row["year"]);
-        $this->assertEquals($postData["dateCreated"], $row["dateCreated"]);
-        $this->assertEquals($postData["dateEmbargo"], $row["dateEmbargoUntil"]);
-        $this->assertEquals($postData["resourcetype"], $row["Resource_Type_resource_name_id"]);
-        $this->assertEquals($postData["version"], $row["version"]);
-        $this->assertEquals($postData["language"], $row["Language_language_id"]);
-        $this->assertEquals($postData["Rights"], $row["Rights_rights_id"]);
+        $this->assertEquals($postData["doi"], $row["doi"], "Die DOI wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["year"], $row["year"], "Das Jahr wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["dateCreated"], $row["dateCreated"], "Das Erstellungsdatum wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["dateEmbargo"], $row["dateEmbargoUntil"], "Das Embargodatum wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["resourcetype"], $row["Resource_Type_resource_name_id"], "Der Ressourcentyp wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["version"], $row["version"], "Die Version wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["language"], $row["Language_language_id"], "Die Sprache wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["Rights"], $row["Rights_rights_id"], "Die Rechte wurden nicht korrekt gespeichert.");
 
         // Überprüfen, ob der Titel korrekt eingetragen wurde
         $stmt = $this->connection->prepare("SELECT * FROM Title WHERE Resource_resource_id = ?");
@@ -82,10 +102,13 @@ class SaveResourceInformationAndRightsTest extends TestCase
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
-        $this->assertEquals($postData["title"][0], $row["text"]);
-        $this->assertEquals($postData["titleType"][0], $row["Title_Type_fk"]);
+        $this->assertEquals($postData["title"][0], $row["text"], "Der Titel wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["titleType"][0], $row["Title_Type_fk"], "Der Titeltyp wurde nicht korrekt gespeichert.");
     }
 
+    /**
+     * Testet das Speichern von Ressourceninformationen mit drei Titeln.
+     */
     public function testSaveResourceInformationAndRightsWithThreeTitles()
     {
         if (!function_exists('saveResourceInformationAndRights')) {
@@ -111,9 +134,8 @@ class SaveResourceInformationAndRightsTest extends TestCase
 
         $resource_id = saveResourceInformationAndRights($this->connection, $postData);
 
-        // Überprüfen, ob eine Resource ID zurückgegeben wurde
-        $this->assertIsInt($resource_id);
-        $this->assertGreaterThan(0, $resource_id);
+        $this->assertIsInt($resource_id, "Die Funktion sollte eine gültige Resource ID zurückgeben.");
+        $this->assertGreaterThan(0, $resource_id, "Die zurückgegebene Resource ID sollte größer als 0 sein.");
 
         // Überprüfen, ob die Ressource-Daten korrekt in die Datenbank eingetragen wurden
         $stmt = $this->connection->prepare("SELECT * FROM Resource WHERE resource_id = ?");
@@ -122,14 +144,14 @@ class SaveResourceInformationAndRightsTest extends TestCase
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
-        $this->assertEquals($postData["doi"], $row["doi"]);
-        $this->assertEquals($postData["year"], $row["year"]);
-        $this->assertEquals($postData["dateCreated"], $row["dateCreated"]);
-        $this->assertEquals($postData["dateEmbargo"], $row["dateEmbargoUntil"]);
-        $this->assertEquals($postData["resourcetype"], $row["Resource_Type_resource_name_id"]);
-        $this->assertEquals($postData["version"], $row["version"]);
-        $this->assertEquals($postData["language"], $row["Language_language_id"]);
-        $this->assertEquals($postData["Rights"], $row["Rights_rights_id"]);
+        $this->assertEquals($postData["doi"], $row["doi"], "Die DOI wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["year"], $row["year"], "Das Jahr wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["dateCreated"], $row["dateCreated"], "Das Erstellungsdatum wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["dateEmbargo"], $row["dateEmbargoUntil"], "Das Embargodatum wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["resourcetype"], $row["Resource_Type_resource_name_id"], "Der Ressourcentyp wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["version"], $row["version"], "Die Version wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["language"], $row["Language_language_id"], "Die Sprache wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["Rights"], $row["Rights_rights_id"], "Die Rechte wurden nicht korrekt gespeichert.");
 
         // Überprüfen, ob alle drei Titel korrekt eingetragen wurden
         $stmt = $this->connection->prepare("SELECT * FROM Title WHERE Resource_resource_id = ? ORDER BY Title_Type_fk");
@@ -146,6 +168,10 @@ class SaveResourceInformationAndRightsTest extends TestCase
             $index++;
         }
     }
+
+    /**
+     * Testet das Speichern von Ressourceninformationen mit Null-Werten.
+     */
     public function testSaveResourceInformationAndRightsWithNullValues()
     {
         if (!function_exists('saveResourceInformationAndRights')) {
@@ -167,9 +193,8 @@ class SaveResourceInformationAndRightsTest extends TestCase
 
         $resource_id = saveResourceInformationAndRights($this->connection, $postData);
 
-        // Überprüfen, ob eine Resource ID zurückgegeben wurde
-        $this->assertIsInt($resource_id);
-        $this->assertGreaterThan(0, $resource_id);
+        $this->assertIsInt($resource_id, "Die Funktion sollte eine gültige Resource ID zurückgeben.");
+        $this->assertGreaterThan(0, $resource_id, "Die zurückgegebene Resource ID sollte größer als 0 sein.");
 
         // Überprüfen, ob die Daten korrekt in die Datenbank eingetragen und abgerufen wurden
         $stmt = $this->connection->prepare("SELECT * FROM Resource WHERE resource_id = ?");
@@ -178,14 +203,14 @@ class SaveResourceInformationAndRightsTest extends TestCase
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
-        $this->assertNull($row["doi"]);
-        $this->assertEquals($postData["year"], $row["year"]);
-        $this->assertEquals($postData["dateCreated"], $row["dateCreated"]);
-        $this->assertNull($row["dateEmbargoUntil"]);
-        $this->assertEquals($postData["resourcetype"], $row["Resource_Type_resource_name_id"]);
-        $this->assertNull($row["version"]);
-        $this->assertEquals($postData["language"], $row["Language_language_id"]);
-        $this->assertEquals($postData["Rights"], $row["Rights_rights_id"]);
+        $this->assertNull($row["doi"], "Die DOI sollte null sein.");
+        $this->assertEquals($postData["year"], $row["year"], "Das Jahr wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["dateCreated"], $row["dateCreated"], "Das Erstellungsdatum wurde nicht korrekt gespeichert.");
+        $this->assertNull($row["dateEmbargoUntil"], "Das Embargodatum sollte null sein.");
+        $this->assertEquals($postData["resourcetype"], $row["Resource_Type_resource_name_id"], "Der Ressourcentyp wurde nicht korrekt gespeichert.");
+        $this->assertNull($row["version"], "Die Version sollte null sein.");
+        $this->assertEquals($postData["language"], $row["Language_language_id"], "Die Sprache wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["Rights"], $row["Rights_rights_id"], "Die Rechte wurden nicht korrekt gespeichert.");
 
         // Überprüfen, ob der Titel korrekt eingetragen wurde
         $stmt = $this->connection->prepare("SELECT * FROM Title WHERE Resource_resource_id = ?");
@@ -194,9 +219,13 @@ class SaveResourceInformationAndRightsTest extends TestCase
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
-        $this->assertEquals($postData["title"][0], $row["text"]);
-        $this->assertEquals($postData["titleType"][0], $row["Title_Type_fk"]);
+        $this->assertEquals($postData["title"][0], $row["text"], "Der Titel wurde nicht korrekt gespeichert.");
+        $this->assertEquals($postData["titleType"][0], $row["Title_Type_fk"], "Der Titeltyp wurde nicht korrekt gespeichert.");
     }
+
+    /**
+     * Testet das Verhalten bei leeren Pflichtfeldern.
+     */
     public function testSaveResourceInformationAndRightsWithEmptyRequiredFields()
     {
         if (!function_exists('saveResourceInformationAndRights')) {
@@ -222,13 +251,11 @@ class SaveResourceInformationAndRightsTest extends TestCase
         try {
             $result = saveResourceInformationAndRights($this->connection, $postData);
 
-            // Überprüfen, ob false zurückgegeben wurde
             $this->assertFalse($result, "Die Methode sollte false zurückgeben, wenn Pflichtfelder leer sind");
 
             // Zählen der Datensätze nach dem Test
             $countAfter = $this->connection->query("SELECT COUNT(*) as count FROM Resource")->fetch_assoc()['count'];
 
-            // Überprüfen, ob kein neuer Datensatz angelegt wurde
             $this->assertEquals($countBefore, $countAfter, "Es sollte kein neuer Datensatz angelegt worden sein");
 
             // Überprüfen, ob kein neuer Titel angelegt wurde
@@ -242,6 +269,10 @@ class SaveResourceInformationAndRightsTest extends TestCase
             }
         }
     }
+
+    /**
+     * Testet die Verhinderung von doppelten Ressourcen-Speicherungen.
+     */
     public function testPreventDuplicateResourceSave()
     {
         if (!function_exists('saveResourceInformationAndRights')) {
@@ -263,13 +294,12 @@ class SaveResourceInformationAndRightsTest extends TestCase
 
         // Ersten Datensatz speichern
         $first_resource_id = saveResourceInformationAndRights($this->connection, $postData);
-        $this->assertIsInt($first_resource_id);
-        $this->assertGreaterThan(0, $first_resource_id);
+        $this->assertIsInt($first_resource_id, "Die erste Speicherung sollte eine gültige Resource ID zurückgeben.");
+        $this->assertGreaterThan(0, $first_resource_id, "Die erste Resource ID sollte größer als 0 sein.");
 
         // Versuchen, denselben Datensatz erneut zu speichern
         $second_resource_id = saveResourceInformationAndRights($this->connection, $postData);
 
-        // Überprüfen, ob false zurückgegeben wurde (oder eine andere Indikation für Duplikat)
         $this->assertFalse($second_resource_id, "Die Funktion sollte false zurückgeben, wenn versucht wird, eine doppelte DOI zu speichern");
 
         // Überprüfen, ob nur ein Datensatz in der Datenbank existiert
@@ -281,6 +311,10 @@ class SaveResourceInformationAndRightsTest extends TestCase
 
         $this->assertEquals(1, $count, "Es sollte nur ein Datensatz mit dieser DOI in der Datenbank existieren");
     }
+
+    /**
+     * Testet die Handhabung von doppelten Titeln.
+     */
     public function testHandleDuplicateTitles()
     {
         if (!function_exists('saveResourceInformationAndRights')) {
@@ -301,8 +335,8 @@ class SaveResourceInformationAndRightsTest extends TestCase
         ];
 
         $resource_id = saveResourceInformationAndRights($this->connection, $postData);
-        $this->assertIsInt($resource_id);
-        $this->assertGreaterThan(0, $resource_id);
+        $this->assertIsInt($resource_id, "Die Funktion sollte eine gültige Resource ID zurückgeben.");
+        $this->assertGreaterThan(0, $resource_id, "Die zurückgegebene Resource ID sollte größer als 0 sein.");
 
         // Überprüfen, ob nur zwei Titel gespeichert wurden (ein Duplikat entfernt)
         $stmt = $this->connection->prepare("SELECT * FROM Title WHERE Resource_resource_id = ? ORDER BY Title_Type_fk");
@@ -317,9 +351,9 @@ class SaveResourceInformationAndRightsTest extends TestCase
             $titles[] = $row;
         }
 
-        $this->assertEquals("Duplicate Title", $titles[0]['text']);
-        $this->assertEquals(1, $titles[0]['Title_Type_fk']);
-        $this->assertEquals("Unique Title", $titles[1]['text']);
-        $this->assertEquals(2, $titles[1]['Title_Type_fk']);
+        $this->assertEquals("Duplicate Title", $titles[0]['text'], "Der erste Titel sollte 'Duplicate Title' sein");
+        $this->assertEquals(1, $titles[0]['Title_Type_fk'], "Der erste Titel sollte den Typ 1 haben");
+        $this->assertEquals("Unique Title", $titles[1]['text'], "Der zweite Titel sollte 'Unique Title' sein");
+        $this->assertEquals(2, $titles[1]['Title_Type_fk'], "Der zweite Titel sollte den Typ 2 haben");
     }
 }
