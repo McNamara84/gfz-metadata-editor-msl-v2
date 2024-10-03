@@ -30,8 +30,8 @@ class SaveResourceInformationAndRightsTest extends TestCase
 
     private function cleanupTestData()
     {
-        $this->connection->query("DELETE FROM Title WHERE Resource_resource_id IN (SELECT resource_id FROM Resource WHERE doi IN ('10.5880/GFZ', '10.5880/GFZ.45.57', '10.5880/GFZ.TEST.NULL'))");
-        $this->connection->query("DELETE FROM Resource WHERE doi IN ('10.5880/GFZ', '10.5880/GFZ.45.57', '10.5880/GFZ.TEST.NULL')");
+        $this->connection->query("DELETE FROM Title WHERE Resource_resource_id IN (SELECT resource_id FROM Resource WHERE doi IN ('10.5880/GFZ', '10.5880/GFZ.45.57', '10.5880/GFZ.TEST.NULL', '10.5880/GFZ.DUPLICATE.TEST', '10.5880/GFZ.DUPLICATE.TITLE.TEST'))");
+        $this->connection->query("DELETE FROM Resource WHERE doi IN ('10.5880/GFZ', '10.5880/GFZ.45.57', '10.5880/GFZ.TEST.NULL', '10.5880/GFZ.DUPLICATE.TEST', '10.5880/GFZ.DUPLICATE.TITLE.TEST')");
     }
 
     public function testSaveResourceInformationAndRights()
@@ -280,5 +280,46 @@ class SaveResourceInformationAndRightsTest extends TestCase
         $count = $result->fetch_assoc()['count'];
 
         $this->assertEquals(1, $count, "Es sollte nur ein Datensatz mit dieser DOI in der Datenbank existieren");
+    }
+    public function testHandleDuplicateTitles()
+    {
+        if (!function_exists('saveResourceInformationAndRights')) {
+            require_once __DIR__ . '/../save/formgroups/save_resourceinformation_and_rights.php';
+        }
+
+        $postData = [
+            "doi" => "10.5880/GFZ.DUPLICATE.TITLE.TEST",
+            "year" => 2023,
+            "dateCreated" => "2023-06-01",
+            "dateEmbargo" => "2024-12-31",
+            "resourcetype" => 1,
+            "version" => 1.0,
+            "language" => 1,
+            "Rights" => 1,
+            "title" => ["Duplicate Title", "Duplicate Title", "Unique Title"],
+            "titleType" => [1, 1, 2]
+        ];
+
+        $resource_id = saveResourceInformationAndRights($this->connection, $postData);
+        $this->assertIsInt($resource_id);
+        $this->assertGreaterThan(0, $resource_id);
+
+        // Überprüfen, ob nur zwei Titel gespeichert wurden (ein Duplikat entfernt)
+        $stmt = $this->connection->prepare("SELECT * FROM Title WHERE Resource_resource_id = ? ORDER BY Title_Type_fk");
+        $stmt->bind_param("i", $resource_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $this->assertEquals(2, $result->num_rows, "Es sollten genau zwei Titel gespeichert worden sein");
+
+        $titles = [];
+        while ($row = $result->fetch_assoc()) {
+            $titles[] = $row;
+        }
+
+        $this->assertEquals("Duplicate Title", $titles[0]['text']);
+        $this->assertEquals(1, $titles[0]['Title_Type_fk']);
+        $this->assertEquals("Unique Title", $titles[1]['text']);
+        $this->assertEquals(2, $titles[1]['Title_Type_fk']);
     }
 }
