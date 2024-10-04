@@ -8,40 +8,47 @@
  * @param mysqli $connection     Die Datenbankverbindung.
  * @param array  $postData       Die POST-Daten aus dem Formular.
  *
- * @return int|false             Die ID der neu erstellten Resource oder false, wenn die DOI bereits existiert oder ungültige Daten vorliegen.
+ * @return int|false             Die ID der neu erstellten Resource oder false, wenn die DOI bereits existiert oder Pflichtfelder fehlen.
  *
  * @throws mysqli_sql_exception  Wenn ein Datenbankfehler auftritt.
  */
 function saveResourceInformationAndRights($connection, $postData)
 {
-    // Daten aus dem Formular an PHP-Variablen übergeben
-    $doi = $postData["doi"];
-    $year = isset($postData["year"]) ? (int) $postData["year"] : null;
-    $datecreated = $postData["dateCreated"] ?? null;
-    $dateembargountil = $postData["dateEmbargo"] ?? null;
-    $resourcetype = isset($postData["resourcetype"]) && $postData["resourcetype"] !== '' ? (int) $postData["resourcetype"] : null;
-    $version = isset($postData["version"]) && $postData["version"] !== '' ? (float) $postData["version"] : null;
-    $language = isset($postData["language"]) ? (int) $postData["language"] : null;
-    $rights = isset($postData["Rights"]) ? (int) $postData["Rights"] : null;
-
-    // Prüfen, ob ein Datensatz mit der gleichen DOI bereits existiert
-    $stmt = $connection->prepare("SELECT COUNT(*) FROM Resource WHERE doi = ?");
-    $stmt->bind_param("s", $doi);
-    $stmt->execute();
-    $stmt->bind_result($count);
-    $stmt->fetch();
-    $stmt->close();
-
-    if ($count > 0) {
-        return false; // DOI existiert bereits, nichts wird gespeichert
+    // Pflichtfelder überprüfen
+    $requiredFields = ['year', 'dateCreated', 'resourcetype', 'language', 'Rights', 'title', 'titleType'];
+    foreach ($requiredFields as $field) {
+        if (!isset($postData[$field]) || $postData[$field] === '' || $postData[$field] === null) {
+            return false; // Pflichtfeld fehlt oder ist leer
+        }
     }
 
-    // Überprüfen, ob alle erforderlichen Daten vorhanden sind
-    if (
-        $year === null || $resourcetype === null || $language === null || $rights === null ||
-        empty($postData['title']) || !is_array($postData['title'])
-    ) {
-        return false; // Ungültige oder fehlende Daten
+    // Weitere Überprüfungen für Arrays
+    if (!is_array($postData['title']) || !is_array($postData['titleType']) || empty($postData['title']) || empty($postData['titleType'])) {
+        return false; // title oder titleType ist kein Array oder leer
+    }
+
+    // Daten aus dem Formular an PHP-Variablen übergeben
+    $doi = $postData["doi"] ?? null;
+    $year = (int) $postData["year"];
+    $datecreated = $postData["dateCreated"];
+    $dateembargountil = $postData["dateEmbargo"] ?? null;
+    $resourcetype = (int) $postData["resourcetype"];
+    $version = isset($postData["version"]) && $postData["version"] !== '' ? (float) $postData["version"] : null;
+    $language = (int) $postData["language"];
+    $rights = (int) $postData["Rights"];
+
+    // Prüfen, ob ein Datensatz mit der gleichen DOI bereits existiert
+    if ($doi !== null) {
+        $stmt = $connection->prepare("SELECT COUNT(*) FROM Resource WHERE doi = ?");
+        $stmt->bind_param("s", $doi);
+        $stmt->execute();
+        $stmt->bind_result($count);
+        $stmt->fetch();
+        $stmt->close();
+
+        if ($count > 0) {
+            return false; // DOI existiert bereits, nichts wird gespeichert
+        }
     }
 
     // Insert-Anweisung für Ressource Information
@@ -52,16 +59,14 @@ function saveResourceInformationAndRights($connection, $postData)
     $stmt->close();
 
     // Speichern aller Titles und Title Types
-    if (isset($postData['title'], $postData['titleType']) && is_array($postData['title']) && is_array($postData['titleType'])) {
-        $titles = $postData['title'];
-        $titleTypes = $postData['titleType'];
-        $len = count($titles);
-        for ($i = 0; $i < $len; $i++) {
-            $stmt = $connection->prepare("INSERT INTO Title (`text`, `Title_Type_fk`, `Resource_resource_id`) VALUES (?, ?, ?)");
-            $stmt->bind_param("sii", $titles[$i], $titleTypes[$i], $resource_id);
-            $stmt->execute();
-            $stmt->close();
-        }
+    $titles = $postData['title'];
+    $titleTypes = $postData['titleType'];
+    $len = count($titles);
+    for ($i = 0; $i < $len; $i++) {
+        $stmt = $connection->prepare("INSERT INTO Title (`text`, `Title_Type_fk`, `Resource_resource_id`) VALUES (?, ?, ?)");
+        $stmt->bind_param("sii", $titles[$i], $titleTypes[$i], $resource_id);
+        $stmt->execute();
+        $stmt->close();
     }
 
     return $resource_id;
