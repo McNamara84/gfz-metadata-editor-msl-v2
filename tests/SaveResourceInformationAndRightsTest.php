@@ -48,8 +48,8 @@ class SaveResourceInformationAndRightsTest extends TestCase
      */
     private function cleanupTestData()
     {
-        $this->connection->query("DELETE FROM Title WHERE Resource_resource_id IN (SELECT resource_id FROM Resource WHERE doi IN ('10.5880/GFZ', '10.5880/GFZ.45.57', '10.5880/GFZ.TEST.NULL', '10.5880/GFZ.DUPLICATE.TEST', '10.5880/GFZ.DUPLICATE.TITLE.TEST'))");
-        $this->connection->query("DELETE FROM Resource WHERE doi IN ('10.5880/GFZ', '10.5880/GFZ.45.57', '10.5880/GFZ.TEST.NULL', '10.5880/GFZ.DUPLICATE.TEST', '10.5880/GFZ.DUPLICATE.TITLE.TEST')");
+        $this->connection->query("DELETE FROM Title WHERE 1");
+        $this->connection->query("DELETE FROM Resource WHERE 1");
     }
 
     /**
