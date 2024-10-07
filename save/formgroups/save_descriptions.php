@@ -17,11 +17,17 @@ function saveDescriptions($connection, $postData, $resource_id)
         'Other' => 'descriptionOther'
     ];
 
+    if (!isset($postData['descriptionAbstract']) || empty($postData['descriptionAbstract'])) {
+        return false;
+    }
+
     foreach ($descriptionTypes as $type => $postKey) {
         if (isset($postData[$postKey]) && !empty($postData[$postKey])) {
             insertDescription($connection, $type, $postData[$postKey], $resource_id);
         }
     }
+
+    return true;
 }
 
 /**
