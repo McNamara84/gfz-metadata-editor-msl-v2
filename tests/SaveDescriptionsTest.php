@@ -1,0 +1,157 @@
+<?php
+namespace Tests;
+use PHPUnit\Framework\TestCase;
+use mysqli_sql_exception;
+
+require_once __DIR__ . '/../settings.php';
+require_once __DIR__ . '/../save/formgroups/save_descriptions.php';
+
+class SaveDescriptionsTest extends TestCase
+{
+    private $connection;
+
+    protected function setUp(): void
+    {
+        global $connection;
+        if (!$connection) {
+            $connection = connectDb();
+        }
+        $this->connection = $connection;
+
+        $dbname = 'geobrains-msl-test';
+        if ($this->connection->select_db($dbname) === false) {
+            $this->markTestSkipped("Testdatenbank '$dbname' ist nicht verfügbar. Bitte überprüfen Sie die Datenbankverbindung.");
+        }
+    }
+
+    protected function tearDown(): void
+    {
+        $this->cleanupTestData();
+    }
+
+    private function cleanupTestData()
+    {
+        $this->connection->query("DELETE FROM Description");
+        $this->connection->query("DELETE FROM Title");
+        $this->connection->query("DELETE FROM Resource");
+    }
+
+    /**
+     * Alle vier Descriptions wurden ausgefüllt
+     */
+    public function testSaveAllDescriptions()
+    {
+        $resourceData = [
+            "doi" => "10.5880/GFZ.TEST.ALL.DESCRIPTIONS",
+            "year" => 2023,
+            "dateCreated" => "2023-06-01",
+            "resourcetype" => 1,
+            "language" => 1,
+            "Rights" => 1,
+            "title" => ["Test All Descriptions"],
+            "titleType" => [1]
+        ];
+        $resource_id = saveResourceInformationAndRights($this->connection, $resourceData);
+
+        $postData = [
+            "descriptionAbstract" => "This is an abstract.",
+            "descriptionMethods" => "These are the methods.",
+            "descriptionTechnical" => "This is technical information.",
+            "descriptionOther" => "This is other information."
+        ];
+
+        saveDescriptions($this->connection, $postData, $resource_id);
+
+        // Überprüfen, ob alle vier Descriptions gespeichert wurden
+        $stmt = $this->connection->prepare("SELECT * FROM Description WHERE resource_id = ?");
+        $stmt->bind_param("i", $resource_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $this->assertEquals(4, $result->num_rows, "Es sollten genau vier Descriptions gespeichert worden sein.");
+
+        $descriptions = $result->fetch_all(MYSQLI_ASSOC);
+        $descriptionTypes = ['Abstract', 'Methods', 'Technical Information', 'Other'];
+
+        foreach ($descriptions as $description) {
+            $this->assertContains($description['type'], $descriptionTypes, "Der Beschreibungstyp '{$description['type']}' ist nicht gültig.");
+            $this->assertEquals($postData["description" . str_replace(' ', '', $description['type'])], $description['description'], "Der Inhalt der {$description['type']} Beschreibung stimmt nicht überein.");
+        }
+    }
+
+    /**
+     * Nur Abstract wurde ausgefüllt
+     */
+    public function testSaveOnlyAbstract()
+    {
+        $resourceData = [
+            "doi" => "10.5880/GFZ.TEST.ONLY.ABSTRACT",
+            "year" => 2023,
+            "dateCreated" => "2023-06-01",
+            "resourcetype" => 1,
+            "language" => 1,
+            "Rights" => 1,
+            "title" => ["Test Only Abstract"],
+            "titleType" => [1]
+        ];
+        $resource_id = saveResourceInformationAndRights($this->connection, $resourceData);
+
+        $postData = [
+            "descriptionAbstract" => "This is an abstract.",
+            "descriptionMethods" => "",
+            "descriptionTechnical" => "",
+            "descriptionOther" => ""
+        ];
+
+        saveDescriptions($this->connection, $postData, $resource_id);
+
+        // Überprüfen, ob nur Abstract gespeichert wurde
+        $stmt = $this->connection->prepare("SELECT * FROM Description WHERE resource_id = ?");
+        $stmt->bind_param("i", $resource_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $this->assertEquals(1, $result->num_rows, "Es sollte genau eine Description gespeichert worden sein.");
+
+        $description = $result->fetch_assoc();
+        $this->assertEquals('Abstract', $description['type'], "Der gespeicherte Beschreibungstyp sollte 'Abstract' sein.");
+        $this->assertEquals($postData['descriptionAbstract'], $description['description'], "Der Inhalt der Abstract Beschreibung stimmt nicht überein.");
+    }
+
+    /**
+     * Nur Methods wurde ausgefüllt (sollte fehlschlagen)
+     */
+    public function testSaveOnlyMethods()
+    {
+        $resourceData = [
+            "doi" => "10.5880/GFZ.TEST.ONLY.METHODS",
+            "year" => 2023,
+            "dateCreated" => "2023-06-01",
+            "resourcetype" => 1,
+            "language" => 1,
+            "Rights" => 1,
+            "title" => ["Test Only Methods"],
+            "titleType" => [1]
+        ];
+        $resource_id = saveResourceInformationAndRights($this->connection, $resourceData);
+
+        $postData = [
+            "descriptionAbstract" => "",
+            "descriptionMethods" => "These are the methods.",
+            "descriptionTechnical" => "",
+            "descriptionOther" => ""
+        ];
+
+        $result = saveDescriptions($this->connection, $postData, $resource_id);
+
+        $this->assertFalse($result, "Die Funktion sollte false zurückgeben, wenn nur Methods ausgefüllt ist.");
+
+        // Überprüfen, ob keine Descriptions gespeichert wurden
+        $stmt = $this->connection->prepare("SELECT COUNT(*) as count FROM Description WHERE resource_id = ?");
+        $stmt->bind_param("i", $resource_id);
+        $stmt->execute();
+        $count = $stmt->get_result()->fetch_assoc()['count'];
+
+        $this->assertEquals(0, $count, "Es sollten keine Descriptions gespeichert worden sein.");
+    }
+}
