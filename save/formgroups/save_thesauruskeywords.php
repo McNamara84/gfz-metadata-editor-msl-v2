@@ -9,7 +9,22 @@
  * @return void
  */
 function saveThesaurusKeywords($connection, $postData, $resource_id) {
-    $fieldsToProcess = ['thesaurusKeywords', 'instruments', 'platforms', 'chrono', 'cgi', 'gemet'];
+    
+    $fieldsToProcess = [
+    // Thesaurus Keywords
+    'thesaurusKeywords', 
+    // General
+    'GENMaterial', 'GENGeologicalAge', 'GENPoreFluid', 'GENGeologicalSetting',
+    // Analogue modelling of geological processes
+    'AMOGPModeledStructure', 'AMOGPModeledGeomorphologicalFeature', 'AMOGPApparatus', 'AMOGPAncillaryEquipment', 'AMOGPAMOGPMeasuredProperty', 'AMOGPSoftware',
+    // Geochemistry
+    'GEOCHAnalysisTechnique', 'GEOCHMeasuredProperty',
+    // Microsocopy and tomography
+    'MATomographyApparatus', 'MATomographyAncillaryEquipment', 'MATomographyAnalysisTechnique', 'MATomographyAnalyzedFeature', 'AMOGPMATomographyInferredParameter',
+    // Paleomagnetism
+    'PALTISApparatus', 'PALTISEnvironmentControl', 'PALTISMeasuredProperty', 'PALTISInferredBehavior',
+    // Rock and melt physics
+    'RAMPApparatus', 'RAMPAncillaryEquipment', 'RAMPMeasuredProperty', 'RAMPInferredDeformationBehavior'];
 
     foreach ($fieldsToProcess as $field) {
         if (isset($postData[$field]) && $postData[$field] !== '') {
@@ -37,7 +52,7 @@ function processThesaurusKeyword($connection, $entry, $resource_id) {
     $valueURI = isset($entry['id']) ? $entry['id'] : null;
     $scheme = isset($entry['scheme']) ? $entry['scheme'] : '';
     $schemeURI = isset($entry['schemeURI']) ? $entry['schemeURI'] : '';
-    $language = isset($entry['language']) ? $entry['language'] : '';
+    $language = isset($entry['language']) ? $entry['language'] : 'en';
 
     if (!empty($value)) {
         $thesaurus_keywords_id = getOrCreateThesaurusKeyword($connection, $value, $scheme, $schemeURI, $valueURI, $language);

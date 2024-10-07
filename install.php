@@ -194,11 +194,21 @@ function createDatabaseStructure($connection)
                 "Thesaurus_Keywords" => "CREATE TABLE IF NOT EXISTS `Thesaurus_Keywords` (
             `thesaurus_keywords_id` INT NOT NULL AUTO_INCREMENT,
             `keyword` TEXT(256) NOT NULL,
-            `scheme` TEXT(256) NOT NULL,
-            `schemeURI` VARCHAR(256) NOT NULL,
+            `scheme` TEXT(256) NULL,
+            `schemeURI` VARCHAR(256) NULL,
             `valueURI` VARCHAR(1000) NULL,
             `language` VARCHAR(20) NOT NULL,
             PRIMARY KEY (`thesaurus_keywords_id`));",
+
+                "Resource_has_Thesaurus_Keywords" => "CREATE TABLE IF NOT EXISTS `Resource_has_Thesaurus_Keywords` (
+            `Resource_has_Thesaurus_Keywords_id` INT NOT NULL AUTO_INCREMENT,
+            `Resource_resource_id` INT NOT NULL,
+            `Thesaurus_Keywords_thesaurus_keywords_id` INT NOT NULL,
+            PRIMARY KEY (`Resource_has_Thesaurus_Keywords_id`),
+            FOREIGN KEY (`Resource_resource_id`)
+            REFERENCES `Resource` (`resource_id`),
+            FOREIGN KEY (`Thesaurus_Keywords_thesaurus_keywords_id`)
+            REFERENCES `Thesaurus_Keywords` (`thesaurus_keywords_id`));",
 
                 "Free_Keywords" => "CREATE TABLE IF NOT EXISTS Free_Keywords (
             free_keywords_id INT NOT NULL AUTO_INCREMENT,
@@ -213,15 +223,6 @@ function createDatabaseStructure($connection)
             FOREIGN KEY (Resource_resource_id) REFERENCES Resource (resource_id),
             FOREIGN KEY (Free_Keywords_free_keywords_id) REFERENCES Free_Keywords (free_keywords_id))",
 
-                "Resource_has_Thesaurus_Keywords" => "CREATE TABLE IF NOT EXISTS `Resource_has_Thesaurus_Keywords` (
-            `Resource_has_Thesaurus_Keywords_id` INT NOT NULL AUTO_INCREMENT,
-            `Resource_resource_id` INT NOT NULL,
-            `Thesaurus_Keywords_thesaurus_keywords_id` INT NOT NULL,
-            PRIMARY KEY (`Resource_has_Thesaurus_Keywords_id`),
-            FOREIGN KEY (`Resource_resource_id`)
-            REFERENCES `Resource` (`resource_id`),
-            FOREIGN KEY (`Thesaurus_Keywords_thesaurus_keywords_id`)
-            REFERENCES `Thesaurus_Keywords` (`thesaurus_keywords_id`));",
 
                 "Spatial_Temporal_Coverage" => "CREATE TABLE IF NOT EXISTS `Spatial_Temporal_Coverage` (
             `spatial_temporal_coverage_id` INT NOT NULL AUTO_INCREMENT,
