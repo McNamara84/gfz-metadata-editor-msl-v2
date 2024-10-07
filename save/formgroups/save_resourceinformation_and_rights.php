@@ -4,6 +4,7 @@
  *
  * Diese Funktion prüft zuerst, ob ein Datensatz mit der gleichen DOI bereits existiert.
  * Falls ja, gibt sie false zurück. Andernfalls speichert sie die Daten in der Datenbank.
+ * Doppelte Titel werden nur einmal gespeichert.
  *
  * @param mysqli $connection     Die Datenbankverbindung.
  * @param array  $postData       Die POST-Daten aus dem Formular.
@@ -58,13 +59,24 @@ function saveResourceInformationAndRights($connection, $postData)
     $resource_id = $stmt->insert_id;
     $stmt->close();
 
-    // Speichern aller Titles und Title Types
+    // Speichern aller einzigartigen Titles und Title Types
     $titles = $postData['title'];
     $titleTypes = $postData['titleType'];
-    $len = count($titles);
-    for ($i = 0; $i < $len; $i++) {
+    $uniqueTitles = [];
+
+    for ($i = 0; $i < count($titles); $i++) {
+        $key = $titles[$i] . '|' . $titleTypes[$i]; // Eindeutiger Schlüssel für jede Titel-TitleType-Kombination
+        if (!isset($uniqueTitles[$key])) {
+            $uniqueTitles[$key] = [
+                'text' => $titles[$i],
+                'type' => $titleTypes[$i]
+            ];
+        }
+    }
+
+    foreach ($uniqueTitles as $title) {
         $stmt = $connection->prepare("INSERT INTO Title (`text`, `Title_Type_fk`, `Resource_resource_id`) VALUES (?, ?, ?)");
-        $stmt->bind_param("sii", $titles[$i], $titleTypes[$i], $resource_id);
+        $stmt->bind_param("sii", $title['text'], $title['type'], $resource_id);
         $stmt->execute();
         $stmt->close();
     }
