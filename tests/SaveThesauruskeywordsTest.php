@@ -116,7 +116,7 @@ class SaveThesauruskeywordsTest extends TestCase
     }
 
     /**
-     * Test 2: Alle Thesaurus Keyword Eingabefelder wurden mit je 3 Keywords befüllt
+     * Alle Thesaurus Keyword Eingabefelder wurden mit je 3 Keywords befüllt
      */
     public function testSaveAllThesaurusKeywordsMultiple()
     {
@@ -232,7 +232,7 @@ class SaveThesauruskeywordsTest extends TestCase
     }
 
     /**
-     * Test 3: Nur einzelne Thesaurus Keyword Eingabefelder wurden befüllt
+     * Nur einzelne Thesaurus Keyword Eingabefelder wurden befüllt
      */
     public function testSavePartialThesaurusKeywords()
     {
@@ -299,7 +299,7 @@ class SaveThesauruskeywordsTest extends TestCase
     }
 
     /**
-     * Test 4: Keine Thesaurus Keyword Eingabefelder wurden befüllt
+     * Keine Thesaurus Keyword Eingabefelder wurden befüllt
      */
     public function testSaveNoThesaurusKeywords()
     {
