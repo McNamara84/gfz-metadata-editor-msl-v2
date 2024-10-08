@@ -38,7 +38,7 @@ function saveContactPerson($connection, $postData, $resource_id)
         $len = count($familynames);
         for ($i = 0; $i < $len; $i++) {
             // Prüfen, ob alle Pflichtfelder ausgefüllt sind
-            if (empty($familynames[$i]) || empty($emails[$i])) {
+            if (empty($familynames[$i]) || empty($emails[$i]) || empty($websites[$i])) {
                 continue; // Überspringe diese Kontaktperson, wenn ein Pflichtfeld fehlt
             }
 
