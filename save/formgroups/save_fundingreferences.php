@@ -9,7 +9,7 @@
  * @param array $postData Die POST-Daten aus dem Formular.
  * @param int $resource_id Die ID der zugehörigen Ressource.
  *
- * @return void
+ * @return boolean Gibt true zurück, wenn die Speicherung erfolgreich war, ansonsten false.
  *
  * @throws mysqli_sql_exception Wenn ein Datenbankfehler auftritt.
  */
@@ -26,7 +26,14 @@ function saveFundingReferences($connection, $postData, $resource_id)
         $grantName = $postData['grantName'];
         $len = count($funder);
 
+        $saveSuccessful = false;
+
         for ($i = 0; $i < $len; $i++) {
+            // Überprüfe, ob das Pflichtfeld 'funder' ausgefüllt ist
+            if (empty($funder[$i])) {
+                continue;  // Überspringe diesen Eintrag, wenn das Pflichtfeld leer ist
+            }
+
             // Extrahiere die letzten 10 Stellen der CrossRef Funder ID, falls vorhanden
             $funderIdString = !empty($funderId[$i]) ? extractLastTenDigits($funderId[$i]) : null;
             $funderidTyp = !empty($funderIdString) ? "Crossref Funder ID" : null;
@@ -37,12 +44,16 @@ function saveFundingReferences($connection, $postData, $resource_id)
             $funding_reference_id = insertFundingReference($connection, $funder[$i], $funderIdString, $funderidTyp, $grantNummer[$i], $grantName[$i]);
             if ($funding_reference_id) {
                 linkResourceToFundingReference($connection, $resource_id, $funding_reference_id);
+                $saveSuccessful = true;
             } else {
                 error_log("Failed to insert Funding Reference");
             }
         }
+
+        return $saveSuccessful;
     } else {
         error_log("Invalid postData structure");
+        return false;
     }
 }
 
