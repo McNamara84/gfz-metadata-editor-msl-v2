@@ -78,11 +78,19 @@ function saveContactPerson($connection, $postData, $resource_id)
  */
 function saveContactPersonAffiliations($connection, $contact_person_id, $affiliation, $rorId)
 {
-    $affiliation_name = parseAffiliationCPData($affiliation)[0];
-    $rorId = parseAffiliationCPData($rorId)[0];
+    $affiliation_data = parseAffiliationCPData($affiliation);
+    $rorId_data = parseAffiliationCPData($rorId);
+
+    // Wenn keine Affiliation angegeben wurde, beenden wir die Funktion ohne etwas zu speichern
+    if (empty($affiliation_data)) {
+        return;
+    }
+
+    $affiliation_name = $affiliation_data[0];
+    $rorId = !empty($rorId_data) ? $rorId_data[0] : null;
 
     // Teilstring "https://ror.org/" von ROR-ID entfernen
-    $rorId = str_replace("https://ror.org/", "", $rorId);
+    $rorId = $rorId ? str_replace("https://ror.org/", "", $rorId) : null;
 
     // Affiliation einfügen oder aktualisieren
     $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?) 
@@ -117,7 +125,7 @@ function saveContactPersonAffiliations($connection, $contact_person_id, $affilia
  */
 function parseAffiliationCPData($data)
 {
-    if (empty($data)) {
+    if (empty($data) || $data === '[]') {
         return [];
     }
 

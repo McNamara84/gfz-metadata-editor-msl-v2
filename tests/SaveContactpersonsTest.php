@@ -207,10 +207,17 @@ class SaveContactpersonsTest extends TestCase
             $this->assertEquals(1, $stmt->get_result()->num_rows, "Die Verknüpfung zur Resource für Contact Person " . ($i + 1) . " wurde nicht korrekt erstellt.");
 
             // Überprüfen der Affiliation (falls vorhanden)
-            if (!empty($postData["cpAffiliation"][$i])) {
+            $stmt = $this->connection->prepare("SELECT COUNT(*) as count FROM Contact_Person_has_Affiliation WHERE contact_Person_contact_person_id = ?");
+            $stmt->bind_param("i", $result["contact_person_id"]);
+            $stmt->execute();
+            $affiliationCount = $stmt->get_result()->fetch_assoc()['count'];
+
+            if (!empty($postData["cpAffiliation"][$i]) && $postData["cpAffiliation"][$i] !== '[]') {
+                $this->assertEquals(1, $affiliationCount, "Es sollte eine Affiliation für Contact Person " . ($i + 1) . " gespeichert worden sein.");
+
                 $stmt = $this->connection->prepare("SELECT a.name, a.rorId FROM Affiliation a 
-                                                    JOIN Contact_Person_has_Affiliation cpha ON a.affiliation_id = cpha.Affiliation_affiliation_id
-                                                    WHERE cpha.contact_Person_contact_person_id = ?");
+                                                JOIN Contact_Person_has_Affiliation cpha ON a.affiliation_id = cpha.Affiliation_affiliation_id
+                                                WHERE cpha.contact_Person_contact_person_id = ?");
                 $stmt->bind_param("i", $result["contact_person_id"]);
                 $stmt->execute();
                 $affiliationResult = $stmt->get_result()->fetch_assoc();
@@ -219,10 +226,6 @@ class SaveContactpersonsTest extends TestCase
                 $this->assertEquals(json_decode($postData["cpAffiliation"][$i], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation für Contact Person " . ($i + 1) . " wurde nicht korrekt gespeichert.");
                 $this->assertEquals(str_replace("https://ror.org/", "", json_decode($postData["hiddenCPRorId"][$i], true)[0]["value"]), $affiliationResult["rorId"], "Die ROR-ID der Affiliation für Contact Person " . ($i + 1) . " wurde nicht korrekt gespeichert.");
             } else {
-                $stmt = $this->connection->prepare("SELECT COUNT(*) as count FROM Contact_Person_has_Affiliation WHERE contact_Person_contact_person_id = ?");
-                $stmt->bind_param("i", $result["contact_person_id"]);
-                $stmt->execute();
-                $affiliationCount = $stmt->get_result()->fetch_assoc()['count'];
                 $this->assertEquals(0, $affiliationCount, "Es sollte keine Affiliation für Contact Person " . ($i + 1) . " gespeichert worden sein.");
             }
         }
