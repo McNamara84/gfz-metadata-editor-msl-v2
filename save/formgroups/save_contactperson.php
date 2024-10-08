@@ -67,7 +67,7 @@ function saveContactPerson($connection, $postData, $resource_id)
             $stmt->close();
 
             if (!empty($affiliations)) {
-                saveContactPersonAffiliations($connection, $contact_person_id, $affiliations, $rorIds);
+                saveContactPersonAffiliations($connection, $contact_person_id, $affiliations[$i], $rorIds[$i]);
             }
         }
     }
@@ -76,78 +76,77 @@ function saveContactPerson($connection, $postData, $resource_id)
 /**
  * Speichert die Affiliationen von Contact persons.
  */
-
-
-function saveContactPersonAffiliations($connection, $contact_person_id, $affiliations, $rorIds)
+function saveContactPersonAffiliations($connection, $contact_person_id, $affiliation, $rorId)
 {
-    $affiliations_array = parseAffiliationCPData($affiliations);
-    $rorIds_array = parseAffiliationCPData($rorIds);
+    $affiliation_name = parseAffiliationCPData($affiliation)[0];
+    $rorId = parseAffiliationCPData($rorId)[0];
 
-    foreach ($affiliations_array as $index => $affiliation_name) {
-        $rorId = $rorIds_array[$index] ?? null;
-        // Teilstring "https://ror.org/" von ROR-ID entfernen
-        $rorId = str_replace("https://ror.org/", "", $rorId);
+    // Teilstring "https://ror.org/" von ROR-ID entfernen
+    $rorId = str_replace("https://ror.org/", "", $rorId);
 
-        // Affiliation einfügen oder aktualisieren
-        $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?) 
-                              ON DUPLICATE KEY UPDATE affiliation_id = LAST_INSERT_ID(affiliation_id), 
-                              rorId = COALESCE(VALUES(rorId), rorId)");
-        $stmt->bind_param("ss", $affiliation_name, $rorId);
-        $stmt->execute();
-        $affiliation_id = $stmt->insert_id;
-        $stmt->close();
+    // Affiliation einfügen oder aktualisieren
+    $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?) 
+                          ON DUPLICATE KEY UPDATE affiliation_id = LAST_INSERT_ID(affiliation_id), 
+                          rorId = COALESCE(VALUES(rorId), rorId)");
+    $stmt->bind_param("ss", $affiliation_name, $rorId);
+    $stmt->execute();
+    $affiliation_id = $stmt->insert_id;
+    $stmt->close();
 
-        // Prüfen, ob die Verknüpfung zwischen Kontaktperson und Affiliation bereits existiert
-        $stmt = $connection->prepare("SELECT 1 FROM Contact_Person_has_Affiliation 
-                              WHERE contact_Person_contact_person_id = ? AND Affiliation_affiliation_id = ?");
+    // Prüfen, ob die Verknüpfung zwischen Kontaktperson und Affiliation bereits existiert
+    $stmt = $connection->prepare("SELECT 1 FROM Contact_Person_has_Affiliation 
+                          WHERE contact_Person_contact_person_id = ? AND Affiliation_affiliation_id = ?");
+    $stmt->bind_param("ii", $contact_person_id, $affiliation_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 0) {
+        // Neue Verknüpfung hinzufügen
+        $stmt = $connection->prepare("INSERT INTO Contact_Person_has_Affiliation (contact_Person_contact_person_id, Affiliation_affiliation_id) VALUES (?, ?)");
         $stmt->bind_param("ii", $contact_person_id, $affiliation_id);
         $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows == 0) {
-            // Neue Verknüpfung hinzufügen
-            $stmt = $connection->prepare("INSERT INTO Contact_Person_has_Affiliation (contact_Person_contact_person_id, Affiliation_affiliation_id) VALUES (?, ?)");
-            $stmt->bind_param("ii", $contact_person_id, $affiliation_id);
-            $stmt->execute();
-        }
-        $stmt->close();
     }
+    $stmt->close();
 }
-
-
 
 /**
  * Parst die Affiliationsdaten.
  *
- * @param string $data Die zu parsenden Daten.
+ * @param mixed $data Die zu parsenden Daten.
  * @return array Die geparsten Daten als Array.
  */
 function parseAffiliationCPData($data)
 {
-    
     if (empty($data)) {
         return [];
     }
 
     if (is_array($data)) {
-        // Wenn es bereits ein Array ist, es direkt zurückgeben
         return array_map(function ($item) {
+            if (is_string($item)) {
+                $decoded = json_decode($item, true);
+                if (json_last_error() === JSON_ERROR_NONE && isset($decoded[0]['value'])) {
+                    return trim($decoded[0]['value']);
+                }
+            }
             return is_array($item) && isset($item['value']) ? trim($item['value']) : trim($item);
         }, $data);
     }
 
-    // Wenn die Daten ein String sind, versuchen, JSON zu decodieren
-    $decoded = json_decode($data, true);
-
-    if (json_last_error() === JSON_ERROR_NONE) {
-        if (is_array($decoded)) {
-            return array_map(function ($item) {
-                return is_array($item) && isset($item['value']) ? trim($item['value']) : trim($item);
-            }, $decoded);
-        } else {
-            return [trim($decoded)];
+    if (is_string($data)) {
+        $decoded = json_decode($data, true);
+        if (json_last_error() === JSON_ERROR_NONE) {
+            if (is_array($decoded) && isset($decoded[0]['value'])) {
+                return [trim($decoded[0]['value'])];
+            }
+            if (is_array($decoded)) {
+                return array_map(function ($item) {
+                    return is_array($item) && isset($item['value']) ? trim($item['value']) : trim($item);
+                }, $decoded);
+            }
         }
-    } else {
         return [trim($data)];
     }
+
+    return [trim($data)];
 }
