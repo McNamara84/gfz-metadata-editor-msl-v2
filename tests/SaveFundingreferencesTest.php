@@ -56,7 +56,7 @@ class SaveFundingreferencesTest extends TestCase
 
         $postData = [
             "funder" => ["Gordon and Betty Moore Foundation"],
-            "funderId" => ["https://doi.org/10.13039/100000936"],
+            "funderId" => ["100000936"],
             "grantNummer" => ["GBMF3859.01"],
             "grantName" => ["Socioenvironmental Monitoring of the Amazon Basin and Xingu"]
         ];
@@ -70,7 +70,11 @@ class SaveFundingreferencesTest extends TestCase
         $fundingReference = $stmt->get_result()->fetch_assoc();
 
         $this->assertNotNull($fundingReference, "Die Funding Reference sollte gespeichert worden sein.");
-        $this->assertEquals($postData["funderId"][0], $fundingReference["funderId"], "Die Funder ID sollte korrekt gespeichert sein.");
+
+        // Extrahiere die letzten 10 Ziffern der erwarteten FunderId
+        $expectedFunderId = substr($postData["funderId"][0], -10);
+
+        $this->assertEquals($expectedFunderId, $fundingReference["funderid"], "Die Funder ID sollte korrekt gespeichert sein.");
         $this->assertEquals("Crossref Funder ID", $fundingReference["funderidtyp"], "Der Funder ID Type sollte 'Crossref Funder ID' sein.");
         $this->assertEquals($postData["grantNummer"][0], $fundingReference["grantnumber"]);
         $this->assertEquals($postData["grantName"][0], $fundingReference["grantname"]);

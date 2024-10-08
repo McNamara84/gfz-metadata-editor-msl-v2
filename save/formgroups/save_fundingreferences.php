@@ -28,30 +28,33 @@ function saveFundingReferences($connection, $postData, $resource_id)
         $len = count($funder);
 
         for ($i = 0; $i < $len; $i++) {
-            $funding_reference_id = insertFundingReference($connection, $funder[$i], $funderId[$i], $funderidTyp, $grantNummer[$i], $grantName[$i]);
+            // Extrahiere die letzten 10 Stellen der CrossRef Funder ID
+            $funderIdString = extractLastTenDigits($funderId[$i]);
+
+            error_log("Original FunderId: " . $funderId[$i]);
+            error_log("Extracted FunderId: " . $funderIdString);
+
+            $funding_reference_id = insertFundingReference($connection, $funder[$i], $funderIdString, $funderidTyp, $grantNummer[$i], $grantName[$i]);
             if ($funding_reference_id) {
                 linkResourceToFundingReference($connection, $resource_id, $funding_reference_id);
+            } else {
+                error_log("Failed to insert Funding Reference");
             }
         }
+    } else {
+        error_log("Invalid postData structure");
     }
 }
 
-/**
- * Fügt eine Funding Reference in die Datenbank ein.
- *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param string $funder Der Name des Geldgebers.
- * @param string $funderId Die ID des Geldgebers.
- * @param string $funderidTyp Der Typ der Geldgeber-ID.
- * @param string $grantNummer Die Nummer des Zuschusses.
- * @param string $grantName Der Name des Zuschusses.
- *
- * @return int|null Die ID der eingefügten Funding Reference oder null bei einem Fehler.
- */
 function insertFundingReference($connection, $funder, $funderId, $funderidTyp, $grantNummer, $grantName)
 {
-    $stmt = $connection->prepare("INSERT INTO Funding_Reference (`funder`, `funderId`, `funderidtyp`, `grantnumber`, `grantname`) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sisss", $funder, $funderId, $funderidTyp, $grantNummer, $grantName);
+    $stmt = $connection->prepare("INSERT INTO Funding_Reference (`funder`, `funderid`, `funderidtyp`, `grantnumber`, `grantname`) VALUES (?, ?, ?, ?, ?)");
+    if (!$stmt) {
+        error_log("Prepare failed: " . $connection->error);
+        return null;
+    }
+
+    $stmt->bind_param("sssss", $funder, $funderId, $funderidTyp, $grantNummer, $grantName);
 
     if ($stmt->execute()) {
         $funding_reference_id = $stmt->insert_id;
@@ -62,6 +65,15 @@ function insertFundingReference($connection, $funder, $funderId, $funderidTyp, $
         $stmt->close();
         return null;
     }
+}
+
+function extractLastTenDigits($funderId)
+{
+    // Entferne alle nicht-numerischen Zeichen
+    $numericOnly = preg_replace('/[^0-9]/', '', $funderId);
+
+    // Extrahiere die letzten 10 Ziffern
+    return substr($numericOnly, -10);
 }
 
 /**
