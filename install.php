@@ -2,7 +2,7 @@
 if (!file_exists("settings.php")) {
         die("Fehler: Die Datei 'settings.php' wurde nicht gefunden. Bitte stellen Sie sicher, dass diese Datei korrekt befüllt wurde. Ein Beispiel entnehmen Sie der Datei sample_settings.php.");
 }
-include ("settings.php");
+include("settings.php");
 if (!isset($connection) || !$connection) {
         die("Fehler: Die Datenbankverbindung konnte nicht hergestellt werden. Bitte überprüfen Sie die Einstellungen in 'settings.php' und die Erreichbarkeit der Datenbank.");
 }
@@ -273,7 +273,7 @@ function createDatabaseStructure($connection)
                 "Funding_Reference" => "CREATE TABLE IF NOT EXISTS `Funding_Reference` (
            `funding_reference_id` INT NOT NULL AUTO_INCREMENT,
            `funder` VARCHAR(265) NOT NULL,
-           `funderid` INT (255) NULL,
+           `funderid` VARCHAR(11) NULL,
            `funderidtyp` VARCHAR(25) NOT NULL,
            `grantnumber` VARCHAR(45) NULL,
            `grantname` VARCHAR(75) NULL,
