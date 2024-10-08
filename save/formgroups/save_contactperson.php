@@ -12,8 +12,8 @@
  *                        - positions: array
  *                        - emails: array
  *                        - websites: array
- *                        - affiliation: array
- *                        - rorIds: array
+ *                        - affiliation: array (optional, aber nur, wenn auch keine RorID vorhanden ist)
+ *                        - rorIds: array (optional)
  * @param int $resource_id Die ID der zugehörigen Ressource.
  *
  * @return void
@@ -38,8 +38,15 @@ function saveContactPerson($connection, $postData, $resource_id)
         $len = count($familynames);
         for ($i = 0; $i < $len; $i++) {
             // Prüfen, ob alle Pflichtfelder ausgefüllt sind
-            if (empty($familynames[$i]) || empty($emails[$i]) || empty($websites[$i])) {
+            if (empty($familynames[$i]) || empty($emails[$i])) {
                 continue; // Überspringe diese Kontaktperson, wenn ein Pflichtfeld fehlt
+            }
+
+            // Prüfen, ob eine gültige Affiliation vorhanden ist
+            $affiliationData = parseAffiliationCPData($affiliations[$i] ?? '[]');
+            $rorIdData = parseAffiliationCPData($rorIds[$i] ?? '[]');
+            if (empty($affiliationData) && !empty($rorIdData)) {
+                continue; // Überspringe diese Kontaktperson, wenn nur eine ROR-ID ohne Affiliation vorhanden ist
             }
 
             // Prüfen, ob die Kontaktperson bereits existiert (basierend auf E-Mail)
@@ -71,7 +78,7 @@ function saveContactPerson($connection, $postData, $resource_id)
             $stmt->execute();
             $stmt->close();
 
-            if (!empty($affiliations[$i])) {
+            if (!empty($affiliationData)) {
                 saveContactPersonAffiliations($connection, $contact_person_id, $affiliations[$i], $rorIds[$i] ?? null);
             }
         }
