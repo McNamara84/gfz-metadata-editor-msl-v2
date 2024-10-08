@@ -37,6 +37,11 @@ function saveContactPerson($connection, $postData, $resource_id)
 
         $len = count($familynames);
         for ($i = 0; $i < $len; $i++) {
+            // Prüfen, ob alle Pflichtfelder ausgefüllt sind
+            if (empty($familynames[$i]) || empty($emails[$i]) || empty($websites[$i])) {
+                continue; // Überspringe diese Kontaktperson, wenn ein Pflichtfeld fehlt
+            }
+
             // Prüfen, ob die Kontaktperson bereits existiert (basierend auf E-Mail)
             $stmt = $connection->prepare("SELECT contact_person_id FROM Contact_Person WHERE email = ?");
             $stmt->bind_param("s", $emails[$i]);
@@ -47,14 +52,14 @@ function saveContactPerson($connection, $postData, $resource_id)
                 // Kontaktperson existiert bereits, aktualisiere die Daten
                 $row = $result->fetch_assoc();
                 $contact_person_id = $row['contact_person_id'];
-                $websites[$i] = preg_replace('#^https?://#', '', $websites[$i]); // Protokoll abschneiden
+                $websites[$i] = isset($websites[$i]) ? preg_replace('#^https?://#', '', $websites[$i]) : ''; // Protokoll abschneiden
                 $stmt = $connection->prepare("UPDATE Contact_Person SET familyname = ?, givenname = ?, position = ?, website = ? WHERE contact_person_id = ?");
                 $stmt->bind_param("ssssi", $familynames[$i], $givennames[$i], $positions[$i], $websites[$i], $contact_person_id);
             } else {
                 // Neue Kontaktperson einfügen
-                $websites[$i] = preg_replace('#^https?://#', '', $websites[$i]);  // Protokoll abschneiden
+                $website = isset($websites[$i]) ? preg_replace('#^https?://#', '', $websites[$i]) : '';  // Protokoll abschneiden
                 $stmt = $connection->prepare("INSERT INTO Contact_Person (familyname, givenname, position, email, website) VALUES (?, ?, ?, ?, ?)");
-                $stmt->bind_param("sssss", $familynames[$i], $givennames[$i], $positions[$i], $emails[$i], $websites[$i]);
+                $stmt->bind_param("sssss", $familynames[$i], $givennames[$i], $positions[$i], $emails[$i], $website);
             }
             $stmt->execute();
             $contact_person_id = $stmt->insert_id ?: $contact_person_id;
@@ -66,8 +71,8 @@ function saveContactPerson($connection, $postData, $resource_id)
             $stmt->execute();
             $stmt->close();
 
-            if (!empty($affiliations)) {
-                saveContactPersonAffiliations($connection, $contact_person_id, $affiliations[$i], $rorIds[$i]);
+            if (!empty($affiliations[$i])) {
+                saveContactPersonAffiliations($connection, $contact_person_id, $affiliations[$i], $rorIds[$i] ?? null);
             }
         }
     }
