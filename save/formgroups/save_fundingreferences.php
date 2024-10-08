@@ -22,14 +22,14 @@ function saveFundingReferences($connection, $postData, $resource_id)
     ) {
         $funder = $postData['funder'];
         $funderId = $postData['funderId'];
-        $funderidTyp = "Crossref Funder ID";
         $grantNummer = $postData['grantNummer'];
         $grantName = $postData['grantName'];
         $len = count($funder);
 
         for ($i = 0; $i < $len; $i++) {
-            // Extrahiere die letzten 10 Stellen der CrossRef Funder ID
-            $funderIdString = extractLastTenDigits($funderId[$i]);
+            // Extrahiere die letzten 10 Stellen der CrossRef Funder ID, falls vorhanden
+            $funderIdString = !empty($funderId[$i]) ? extractLastTenDigits($funderId[$i]) : null;
+            $funderidTyp = !empty($funderIdString) ? "Crossref Funder ID" : null;
 
             error_log("Original FunderId: " . $funderId[$i]);
             error_log("Extracted FunderId: " . $funderIdString);

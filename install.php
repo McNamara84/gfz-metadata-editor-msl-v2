@@ -274,7 +274,7 @@ function createDatabaseStructure($connection)
            `funding_reference_id` INT NOT NULL AUTO_INCREMENT,
            `funder` VARCHAR(265) NOT NULL,
            `funderid` VARCHAR(11) NULL,
-           `funderidtyp` VARCHAR(25) NOT NULL,
+           `funderidtyp` VARCHAR(25) NULL,
            `grantnumber` VARCHAR(45) NULL,
            `grantname` VARCHAR(75) NULL,
             PRIMARY KEY (`funding_reference_id`));",
