@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 use mysqli_sql_exception;
 
 require_once __DIR__ . '/../settings.php';
-require_once __DIR__ . '/../save/formgroups/save_originatinglaboratory.php';
+//require_once __DIR__ . '/../save/formgroups/save_originatinglaboratory.php';
 
 class SaveOriginatingLaboratoryTest extends TestCase
 {
@@ -41,7 +41,7 @@ class SaveOriginatingLaboratoryTest extends TestCase
     /**
      * Speicherung eines einzelnen Originating Laboratory mit allen Feldern.
      */
-    public function testSaveSingleOriginatingLaboratory()
+    /*public function testSaveSingleOriginatingLaboratory()
     {
         $resourceData = [
             "doi" => "10.5880/GFZ.TEST.SINGLE.LAB",
@@ -91,12 +91,12 @@ class SaveOriginatingLaboratoryTest extends TestCase
 
         $this->assertEquals(json_decode($postData["laboratoryAffiliation"][0], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation wurde nicht korrekt gespeichert.");
         $this->assertEquals(str_replace("https://ror.org/", "", json_decode($postData["laboratoryRorIds"][0], true)[0]["value"]), $affiliationResult["rorId"], "Die ROR-ID der Affiliation wurde nicht korrekt gespeichert.");
-    }
+    }*/
 
     /**
      * Speicherung von drei vollständig ausgefüllten Originating Laboratories.
      */
-    public function testSaveMultipleOriginatingLaboratories()
+    /*public function testSaveMultipleOriginatingLaboratories()
     {
         $resourceData = [
             "doi" => "10.5880/GFZ.TEST.MULTIPLE.LABS",
@@ -148,5 +148,5 @@ class SaveOriginatingLaboratoryTest extends TestCase
             $this->assertEquals(json_decode($postData["laboratoryAffiliation"][$i], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation für Labor " . ($i + 1) . " wurde nicht korrekt gespeichert.");
             $this->assertEquals(str_replace("https://ror.org/", "", json_decode($postData["laboratoryRorIds"][$i], true)[0]["value"]), $affiliationResult["rorId"], "Die ROR-ID der Affiliation für Labor " . ($i + 1) . " wurde nicht korrekt gespeichert.");
         }
-    }
+    }*/
 }

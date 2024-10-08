@@ -52,11 +52,11 @@ class SaveAuthorsTest extends TestCase
     {
         $this->connection->query("SET FOREIGN_KEY_CHECKS=0");
 
-        $this->connection->query("DELETE FROM Resource_has_Author WHERE Resource_resource_id IN (SELECT resource_id FROM Resource WHERE doi LIKE '10.5880/%')");
+        $this->connection->query("DELETE FROM Resource_has_Author");
         $this->connection->query("DELETE FROM Author_has_Affiliation");
         $this->connection->query("DELETE FROM Author");
         $this->connection->query("DELETE FROM Affiliation");
-        $this->connection->query("DELETE FROM Resource WHERE doi LIKE '10.5880/%'");
+        $this->connection->query("DELETE FROM Resource");
 
         $this->connection->query("SET FOREIGN_KEY_CHECKS=1");
     }

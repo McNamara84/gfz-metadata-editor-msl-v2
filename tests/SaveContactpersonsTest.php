@@ -35,6 +35,7 @@ class SaveContactpersonsTest extends TestCase
         $this->connection->query("DELETE FROM Resource_has_Contact_Person");
         $this->connection->query("DELETE FROM Contact_Person");
         $this->connection->query("DELETE FROM Affiliation");
+        $this->connection->query("DELETE FROM Title");
         $this->connection->query("DELETE FROM Resource");
     }
 
