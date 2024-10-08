@@ -80,7 +80,7 @@ class SaveFreekeywordsTest extends TestCase
     }
 
     /**
-     * Test 2: Ein freies Keyword wurde eingegeben, das bereits existiert, aber noch nicht kuratiert wurde
+     * Ein freies Keyword wurde eingegeben, das bereits existiert, aber noch nicht kuratiert wurde
      */
     public function testSaveExistingUncuratedFreeKeyword()
     {
@@ -125,7 +125,7 @@ class SaveFreekeywordsTest extends TestCase
     }
 
     /**
-     * Test 3: Ein Keyword wurde eingegeben, das bereits existiert und kuratiert wurde
+     * Ein Keyword wurde eingegeben, das bereits existiert und kuratiert wurde
      */
     public function testSaveExistingCuratedFreeKeyword()
     {
@@ -170,7 +170,7 @@ class SaveFreekeywordsTest extends TestCase
     }
 
     /**
-     * Test 4: Mehrere Keywords wurden ausgewählt, manche existieren bereits, manche sind kuratiert und manche nicht
+     * Mehrere Keywords wurden ausgewählt, manche existieren bereits, manche sind kuratiert und manche nicht
      */
     public function testSaveMultipleMixedFreeKeywords()
     {
@@ -234,7 +234,7 @@ class SaveFreekeywordsTest extends TestCase
     }
 
     /**
-     * Test 5: Das Eingabefeld für Free Keywords wurde nicht befüllt
+     * Das Eingabefeld für Free Keywords wurde nicht befüllt
      */
     public function testSaveNoFreeKeywords()
     {
