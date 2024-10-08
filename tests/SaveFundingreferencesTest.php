@@ -70,8 +70,8 @@ class SaveFundingreferencesTest extends TestCase
         $fundingReference = $stmt->get_result()->fetch_assoc();
 
         $this->assertNotNull($fundingReference, "Die Funding Reference sollte gespeichert worden sein.");
-        $this->assertNull($fundingReference["funderId"], "Die Funder ID sollte null sein.");
-        $this->assertNull($fundingReference["funderidtyp"], "Der Funder ID Type sollte null sein.");
+        $this->assertEquals($postData["funderId"][0], $fundingReference["funderId"], "Die Funder ID sollte korrekt gespeichert sein.");
+        $this->assertEquals("Crossref Funder ID", $fundingReference["funderidtyp"], "Der Funder ID Type sollte 'Crossref Funder ID' sein.");
         $this->assertEquals($postData["grantNummer"][0], $fundingReference["grantnumber"]);
         $this->assertEquals($postData["grantName"][0], $fundingReference["grantname"]);
 
