@@ -9,7 +9,7 @@
  * @param array $postData Die POST-Daten aus dem Formular.
  * @param int $resource_id Die ID der zugehörigen Ressource.
  *
- * @return void
+ * @return boolean Gibt true zurück, wenn die Speicherung erfolgreich war, ansonsten false.
  *
  * @throws mysqli_sql_exception Wenn ein Datenbankfehler auftritt.
  */
@@ -32,13 +32,39 @@ function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
     foreach ($requiredFields as $field) {
         if (!isset($postData[$field]) || !is_array($postData[$field])) {
             error_log("Missing or invalid STC field: $field");
-            return;
+            return false;
         }
     }
 
     $len = count($postData['tscLatitudeMin']);
+    $allSuccessful = true;
 
     for ($i = 0; $i < $len; $i++) {
+        // Überprüfen, ob die Koordinaten gültig sind
+        if (empty($postData['tscLatitudeMin'][$i]) && empty($postData['tscLatitudeMax'][$i])) {
+            error_log("Both Latitude Min and Max are empty for entry $i");
+            return false;
+        }
+        if (empty($postData['tscLongitudeMin'][$i]) && empty($postData['tscLongitudeMax'][$i])) {
+            error_log("Both Longitude Min and Max are empty for entry $i");
+            return false;
+        }
+
+        // Überprüfen, ob mindestens Latitude Min und Longitude Min vorhanden sind
+        if (empty($postData['tscLatitudeMin'][$i]) || empty($postData['tscLongitudeMin'][$i])) {
+            error_log("Latitude Min or Longitude Min is missing for entry $i");
+            return false;
+        }
+
+        // Überprüfen, ob Enddatum und Enduhrzeit vorhanden sind, aber Startdatum oder Startuhrzeit fehlen
+        if (
+            (!empty($postData['tscDateEnd'][$i]) || !empty($postData['tscTimeEnd'][$i])) &&
+            (empty($postData['tscDateStart'][$i]) || empty($postData['tscTimeStart'][$i]))
+        ) {
+            error_log("End date/time is set but start date/time is missing for entry $i");
+            return false;
+        }
+
         $stcData = [
             'latitudeMin' => $postData['tscLatitudeMin'][$i],
             'latitudeMax' => $postData['tscLatitudeMax'][$i],
@@ -50,11 +76,20 @@ function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
             'timezone' => $postData['tscTimezone'][$i]
         ];
 
+        // Entferne leere Strings
+        $stcData = array_map(function ($value) {
+            return $value === '' ? null : $value;
+        }, $stcData);
+
         $stc_id = insertSpatialTemporalCoverage($connection, $stcData);
         if ($stc_id) {
             linkResourceToSTC($connection, $resource_id, $stc_id);
+        } else {
+            $allSuccessful = false;
         }
     }
+
+    return $allSuccessful;
 }
 
 /**

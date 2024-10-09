@@ -33,6 +33,7 @@ class SaveSpatialTemporalCoverageTest extends TestCase
     {
         $this->connection->query("DELETE FROM Resource_has_Spatial_Temporal_Coverage");
         $this->connection->query("DELETE FROM Spatial_Temporal_Coverage");
+        $this->connection->query("DELETE FROM Title");
         $this->connection->query("DELETE FROM Resource");
     }
 
