@@ -392,6 +392,7 @@ $(document).ready(function () {
     var inputName = row.find('input[name="laboratoryName[]"]')[0];
     var inputAffiliation = row.find('input[name="laboratoryAffiliation[]"]')[0];
     var hiddenRorId = row.find('input[name="laboratoryRorIds[]"]')[0];
+    var hiddenLabId = row.find('input[name="LabId[]"]')[0];
 
     function findLabByName(name) {
       return data.find((lab) => lab.name === name);
@@ -434,10 +435,12 @@ $(document).ready(function () {
         tagifyAffiliation.removeAllTags();
         tagifyAffiliation.addTags([lab.affiliation]);
         hiddenRorId.value = lab.ror_id || "";
+        hiddenLabId.value = lab.id;
         tagifyAffiliation.setReadOnly(true);
       } else {
         tagifyAffiliation.removeAllTags();
         hiddenRorId.value = "";
+        hiddenLabId.value = "";
         tagifyAffiliation.setReadOnly(false);
       }
     });
@@ -445,6 +448,7 @@ $(document).ready(function () {
     tagifyName.on("remove", function () {
       tagifyAffiliation.removeAllTags();
       hiddenRorId.value = "";
+      hiddenLabId.value = "";
       tagifyAffiliation.setReadOnly(false);
     });
 

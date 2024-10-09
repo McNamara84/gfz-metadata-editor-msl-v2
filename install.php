@@ -2,7 +2,7 @@
 if (!file_exists("settings.php")) {
         die("Fehler: Die Datei 'settings.php' wurde nicht gefunden. Bitte stellen Sie sicher, dass diese Datei korrekt befüllt wurde. Ein Beispiel entnehmen Sie der Datei sample_settings.php.");
 }
-include ("settings.php");
+include("settings.php");
 if (!isset($connection) || !$connection) {
         die("Fehler: Die Datenbankverbindung konnte nicht hergestellt werden. Bitte überprüfen Sie die Einstellungen in 'settings.php' und die Erreichbarkeit der Datenbank.");
 }
@@ -23,6 +23,9 @@ function dropTables($connection)
                 'Contact_Person',
                 'Contact_Person_has_Affiliation',
                 'Resource_has_Contact_Person',
+                'Originating_Laboratory',
+                'Originating_Laboratory_has_Affiliation',
+                'Resource_has_Originating_Laboratory',
                 'Contributor_Person',
                 'Contributor_Person_has_Role',
                 'Contributor_Person_has_Affiliation',
@@ -141,6 +144,32 @@ function createDatabaseStructure($connection)
            `website` VARCHAR(255) NOT NULL,
            PRIMARY KEY (`contact_person_id`));",
 
+                "Originating_Laboratory" => "CREATE TABLE IF NOT EXISTS `Originating_Laboratory` (
+           `originating_laboratory_id` INT NOT NULL AUTO_INCREMENT,
+           `laboratoryname` TEXT(1000) NOT NULL,
+           `labId` VARCHAR(32) NULL UNIQUE,
+           PRIMARY KEY (`originating_laboratory_id`));",
+
+                "Originating_Laboratory_has_Affiliation" => "CREATE TABLE IF NOT EXISTS `Originating_Laboratory_has_Affiliation` (
+           `Originating_Laboratory_has_Affiliation_id` INT NOT NULL AUTO_INCREMENT,
+           `Originating_Laboratory_originating_laboratory_id` INT NOT NULL,
+           `Affiliation_affiliation_id` INT NOT NULL,
+           PRIMARY KEY (`Originating_Laboratory_has_Affiliation_id`),
+           FOREIGN KEY (`Originating_Laboratory_originating_laboratory_id`)
+           REFERENCES `Originating_Laboratory` (`originating_laboratory_id`),
+           FOREIGN KEY (`Affiliation_affiliation_id`)
+           REFERENCES `Affiliation` (`affiliation_id`));",
+
+                "CREATE TABLE IF NOT EXISTS `Resource_has_Originating_Laboratory` (
+           `Resource_has_Originating_Laboratory_id` INT NOT NULL AUTO_INCREMENT,
+           `Resource_resource_id` INT NOT NULL,
+           `Originating_Laboratory_originating_laboratory_id` INT NOT NULL,
+           PRIMARY KEY (`Resource_has_Originating_Laboratory_id`),
+           FOREIGN KEY (`Resource_resource_id`)
+           REFERENCES `Resource` (`resource_id`),
+           FOREIGN KEY (`Originating_Laboratory_originating_laboratory_id`)
+           REFERENCES `Originating_Laboratory` (`originating_laboratory_id`));",
+
                 "Contributor_Person" => "CREATE TABLE IF NOT EXISTS `Contributor_Person` (
            `contributor_person_id` INT NOT NULL AUTO_INCREMENT,
            `familyname` TEXT(666) NOT NULL,
@@ -155,7 +184,7 @@ function createDatabaseStructure($connection)
 
                 "Description" => "CREATE TABLE IF NOT EXISTS `Description` (
             `description_id` INT NOT NULL AUTO_INCREMENT,
-            `type` VARCHAR(20) NOT NULL,
+            `type` VARCHAR(22) NOT NULL,
             `description` TEXT(5000) NOT NULL,
             `resource_id` INT NOT NULL,
             PRIMARY KEY (`description_id`),
@@ -165,11 +194,21 @@ function createDatabaseStructure($connection)
                 "Thesaurus_Keywords" => "CREATE TABLE IF NOT EXISTS `Thesaurus_Keywords` (
             `thesaurus_keywords_id` INT NOT NULL AUTO_INCREMENT,
             `keyword` TEXT(256) NOT NULL,
-            `scheme` TEXT(256) NOT NULL,
-            `schemeURI` VARCHAR(256) NOT NULL,
+            `scheme` TEXT(256) NULL,
+            `schemeURI` VARCHAR(256) NULL,
             `valueURI` VARCHAR(1000) NULL,
             `language` VARCHAR(20) NOT NULL,
             PRIMARY KEY (`thesaurus_keywords_id`));",
+
+                "Resource_has_Thesaurus_Keywords" => "CREATE TABLE IF NOT EXISTS `Resource_has_Thesaurus_Keywords` (
+            `Resource_has_Thesaurus_Keywords_id` INT NOT NULL AUTO_INCREMENT,
+            `Resource_resource_id` INT NOT NULL,
+            `Thesaurus_Keywords_thesaurus_keywords_id` INT NOT NULL,
+            PRIMARY KEY (`Resource_has_Thesaurus_Keywords_id`),
+            FOREIGN KEY (`Resource_resource_id`)
+            REFERENCES `Resource` (`resource_id`),
+            FOREIGN KEY (`Thesaurus_Keywords_thesaurus_keywords_id`)
+            REFERENCES `Thesaurus_Keywords` (`thesaurus_keywords_id`));",
 
                 "Free_Keywords" => "CREATE TABLE IF NOT EXISTS Free_Keywords (
             free_keywords_id INT NOT NULL AUTO_INCREMENT,
@@ -184,15 +223,6 @@ function createDatabaseStructure($connection)
             FOREIGN KEY (Resource_resource_id) REFERENCES Resource (resource_id),
             FOREIGN KEY (Free_Keywords_free_keywords_id) REFERENCES Free_Keywords (free_keywords_id))",
 
-                "Resource_has_Thesaurus_Keywords" => "CREATE TABLE IF NOT EXISTS `Resource_has_Thesaurus_Keywords` (
-            `Resource_has_Thesaurus_Keywords_id` INT NOT NULL AUTO_INCREMENT,
-            `Resource_resource_id` INT NOT NULL,
-            `Thesaurus_Keywords_thesaurus_keywords_id` INT NOT NULL,
-            PRIMARY KEY (`Resource_has_Thesaurus_Keywords_id`),
-            FOREIGN KEY (`Resource_resource_id`)
-            REFERENCES `Resource` (`resource_id`),
-            FOREIGN KEY (`Thesaurus_Keywords_thesaurus_keywords_id`)
-            REFERENCES `Thesaurus_Keywords` (`thesaurus_keywords_id`));",
 
                 "Spatial_Temporal_Coverage" => "CREATE TABLE IF NOT EXISTS `Spatial_Temporal_Coverage` (
             `spatial_temporal_coverage_id` INT NOT NULL AUTO_INCREMENT,
@@ -243,8 +273,8 @@ function createDatabaseStructure($connection)
                 "Funding_Reference" => "CREATE TABLE IF NOT EXISTS `Funding_Reference` (
            `funding_reference_id` INT NOT NULL AUTO_INCREMENT,
            `funder` VARCHAR(265) NOT NULL,
-           `funderid` INT (255) NULL,
-           `funderidtyp` VARCHAR(25) NOT NULL,
+           `funderid` VARCHAR(11) NULL,
+           `funderidtyp` VARCHAR(25) NULL,
            `grantnumber` VARCHAR(45) NULL,
            `grantname` VARCHAR(75) NULL,
             PRIMARY KEY (`funding_reference_id`));",
@@ -430,7 +460,7 @@ function insertTestDataIntoMainTables($connection)
                         ["code" => "fr", "name" => "French"]
                 ],
                 "Resource" => [
-                        ["doi" => "http://doi.org/10.1029/2023JB028411", "version" => 1.0, "year" => 2024, "dateCreated" => "2024-06-05", "dateEmbargoUntil" => "2024-06-15", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1],
+                        ["doi" => "http://doi.org/10.1029/2023JB028411", "version" => null, "year" => 2024, "dateCreated" => "2024-06-05", "dateEmbargoUntil" => "2024-06-15", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1],
                         ["doi" => "https://doi.org/10.5880/GFZ.2.4.2024.001", "version" => 2.1, "year" => 2024, "dateCreated" => "1999-04-07", "dateEmbargoUntil" => "2000-12-31", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1],
                         ["doi" => "http://doi.org/10.1038/s43247-024-01226-9", "version" => 1.23, "year" => 2024, "dateCreated" => "2023-07-02", "dateEmbargoUntil" => "2023-07-10", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1]
                 ],
@@ -482,6 +512,11 @@ function insertTestDataIntoMainTables($connection)
                         ["familyName" => "Grzegorz", "givenname" => "Kwiatek", "position" => "Arbeitsgruppenleiter", "email" => "Kwiatek.Grzegorz@gfz-potsdam.de", "website" => "gfz-potsdam.de"],
                         ["familyName" => "Goebel", "givenname" => "Thomas", "position" => "Projektleiter", "email" => "Thomas.Goebel@tu-berlin.de", "website" => "www.tu.berlin"],
                         ["familyName" => "Wille", "givenname" => "Christian", "position" => "Abteilungsleiter", "email" => "Christian.Wille@fh-potsdam.de", "website" => "fh-potsdam.de"]
+                ],
+                "Originating_Laboratory" => [
+                        ["laboratoryname" => "FASTmodel- Laboratoire de modÃ©lisation analogique Fluides Automatique et SystÃ¨mes Thermiques (CNRS-Paris Sud Orsay University, France)", "labId" => "1b9abbf97c7caa2d763b647d476b2910"],
+                        ["laboratoryname" => "Fragmentation Lab (Ludwig-Maximilians-University Munich, Germany)", "labId" => "9cd562c216daa82792972a074a222c52"],
+                        ["laboratoryname" => "TecMOD - GRmodel (CNRS-Rennes 1 University, France", "labId" => "09e434194091574963c80f83d586875d"]
                 ],
                 "Contributor_Person" => [
                         ["familyName" => "Müller", "givenname" => "Anna", "orcid" => "4100-4503-1076-415X"],
@@ -712,6 +747,16 @@ function insertTestDataIntoHelpTables($connection)
                         ["Resource_resource_id" => 3, "Free_Keywords_free_keywords_id" => 1],
                         ["Resource_resource_id" => 2, "Free_Keywords_free_keywords_id" => 2],
                         ["Resource_resource_id" => 1, "Free_Keywords_free_keywords_id" => 3]
+                ],
+                "Originating_Laboratory_has_Affiliation" => [
+                        ["Affiliation_affiliation_id" => 2, "Originating_Laboratory_originating_laboratory_id" => 1],
+                        ["Affiliation_affiliation_id" => 2, "Originating_Laboratory_originating_laboratory_id" => 1],
+                        ["Affiliation_affiliation_id" => 3, "Originating_Laboratory_originating_laboratory_id" => 2]
+                ],
+                "Resource_has_Originating_Laboratory" => [
+                        ["Resource_resource_id" => 3, "originating_laboratory_originating_laboratory_id" => 1],
+                        ["Resource_resource_id" => 2, "originating_laboratory_originating_laboratory_id" => 3],
+                        ["Resource_resource_id" => 1, "originating_laboratory_originating_laboratory_id" => 2]
                 ],
         ];
 

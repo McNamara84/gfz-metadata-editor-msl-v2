@@ -2,7 +2,11 @@ $(document).ready(function () {
   $.getJSON("json/timezones.json", function (data) {
     var timezoneSelect = $("#tscTimezone");
     $.each(data, function (index, timezone) {
-      var option = $("<option></option>").attr("value", timezone).text(timezone);
+      var label = timezone.label;
+      var utcOffset = label.substring(3, 9); // Extrahiert "+01:00" oder "-04:00"
+      var offsetValue = parseFloat(utcOffset.replace(":", ".")); // Konvertiert zu Kommazahl
+
+      var option = $("<option></option>").attr("value", offsetValue).text(label);
       timezoneSelect.append(option);
     });
   }).fail(function () {
@@ -50,21 +54,21 @@ $(document).ready(function () {
 
   function setupRolesDropdown(roletype, id) {
     if (roletype == "person") {
-      $.getJSON("./api.php?action=getRoles&type=person", function (data) {
+      $.getJSON("./api/v2/vocabs/roles/person", function (data) {
         $.each(data, function (key, val) {
           $(id).append("<option>" + val.name + "</option>");
         });
         $(".chosen-select").trigger("chosen:updated");
       });
     } else if (roletype == "institution") {
-      $.getJSON("./api.php?action=getRoles&type=institution", function (data) {
+      $.getJSON("./api/v2/vocabs/roles/institution", function (data) {
         $.each(data, function (key, val) {
           $(id).append("<option>" + val.name + "</option>");
         });
         $(".chosen-select").trigger("chosen:updated");
       });
     } else {
-      $.getJSON("./api.php?action=getRoles&type=both", function (data) {
+      $.getJSON("./api/v2/vocabs/roles/both", function (data) {
         $.each(data, function (key, val) {
           $(id).append("<option>" + val.name + "</option>");
         });
@@ -283,13 +287,13 @@ $(document).on(
 // Event-Listener für neu hinzugefügte Felder
 $(document).on("click", ".addRelatedWork", function () {
   // Klonen Sie die vorhandene Zeile
-//  var newRow = $(this).closest(".row").clone(true);
+  //  var newRow = $(this).closest(".row").clone(true);
 
   // Leeren Sie die Eingabefelder in der neuen Zeile
- // newRow.find("input, select").val("");
+  // newRow.find("input, select").val("");
 
   // Fügen Sie die neue Zeile hinzu
- // $("#relatedworkGroup").append(newRow);
+  // $("#relatedworkGroup").append(newRow);
 
   // Aktualisieren Sie die IDs und Namen der Elemente in der neuen Zeile
   updateIdsAndNames();

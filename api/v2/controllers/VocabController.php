@@ -1,6 +1,53 @@
 <?php
+// settings.php einbinden damit Variablen verfügbar sind
+require_once __DIR__ . '/../../../settings.php';
 class VocabController
 {
+    private $url;
+
+    public function __construct()
+    {
+        global $mslLabsUrl;
+        $this->url = $mslLabsUrl;
+    }
+
+    public function fetchAndProcessMslLabs()
+    {
+        // Daten von der URL abrufen mit User-Agent
+        $opts = [
+            'http' => [
+                'method' => 'GET',
+                'header' => 'User-Agent: PHP Script'
+            ]
+        ];
+        $context = stream_context_create($opts);
+        $jsonData = file_get_contents($this->url, false, $context);
+
+        if ($jsonData === false) {
+            throw new Exception('Fehler beim Abrufen der Daten von GitHub: ' . error_get_last()['message']);
+        }
+
+        // Zeichenkodierung korrigieren
+        $jsonData = mb_convert_encoding($jsonData, 'UTF-8', mb_detect_encoding($jsonData, 'UTF-8, ISO-8859-1', true));
+
+        // JSON-Daten decodieren
+        $labs = json_decode($jsonData, true);
+
+        if ($labs === null) {
+            throw new Exception('Fehler beim Decodieren der JSON-Daten: ' . json_last_error_msg());
+        }
+
+        // Daten verarbeiten und nur benötigte Felder behalten
+        $processedLabs = array_map(function ($lab) {
+            return [
+                'id' => $lab['id'],
+                'name' => $lab['lab_editor_name'],
+                'affiliation' => $lab['affiliation']
+            ];
+        }, $labs);
+
+        return $processedLabs;
+    }
     private function getLatestVersion($baseUrl, $type)
     {
         $versions = [];
@@ -94,4 +141,121 @@ class VocabController
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
+    public function updateMslLabs()
+    {
+        try {
+            $mslLabs = $this->fetchAndProcessMslLabs();
+            $jsonString = json_encode($mslLabs, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+            if ($jsonString === false) {
+                throw new Exception('Error encoding data to JSON: ' . json_last_error_msg());
+            }
+
+            $result = file_put_contents(__DIR__ . '/../../../json/msl-labs.json', $jsonString);
+
+            if ($result === false) {
+                throw new Exception('Error saving JSON file: ' . error_get_last()['message']);
+            }
+
+            header('Content-Type: application/json');
+            echo json_encode(['message' => 'MSL Labs vocabulary successfully updated']);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+    public function getRoles($vars)
+    {
+        global $connection;
+        $type = $vars['type'] ?? $_GET['type'] ?? 'all';
+
+        // SQL-Abfrage basierend auf dem Typ
+        if ($type == 'all') {
+            $sql = 'SELECT * FROM Role';
+        } elseif ($type == 'person') {
+            $sql = 'SELECT * FROM Role WHERE forInstitutions = 0';
+        } elseif ($type == 'institution') {
+            $sql = 'SELECT * FROM Role WHERE forInstitutions = 1';
+        } elseif ($type == 'both') {
+            $sql = 'SELECT * FROM Role WHERE forInstitutions = 2';
+        } else {
+            http_response_code(400);
+            echo json_encode(['error' => 'Invalid roles type specified']);
+            return;
+        }
+
+        if ($stmt = $connection->prepare($sql)) {
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $rolesList = $result->fetch_all(MYSQLI_ASSOC);
+
+            if ($rolesList) {
+                header('Content-Type: application/json');
+                echo json_encode($rolesList);
+            } else {
+                http_response_code(404);
+                echo json_encode(['error' => 'No roles found']);
+            }
+
+            $stmt->close();
+        } else {
+            http_response_code(500);
+            echo json_encode(['error' => 'Database error: ' . $connection->error]);
+        }
+    }
+
+    public function updateTimezones()
+    {
+        global $apiKeyTimezone;
+
+        try {
+            // Die URL der TimeZoneDB API, um die Zeitzonendaten abzurufen
+            $apiUrl = 'http://api.timezonedb.com/v2.1/list-time-zone?key=' . urlencode($apiKeyTimezone) . '&format=json';
+
+            // Daten von der externen API abrufen
+            $response = file_get_contents($apiUrl);
+            if ($response === FALSE) {
+                throw new Exception('Error fetching data from timezonedb API.');
+            }
+
+            // Antwort in ein Array dekodieren
+            $data = json_decode($response, true);
+            if ($data['status'] != 'OK') {
+                throw new Exception('Error occurred: ' . $data['message']);
+            }
+
+            // Zeitzonen formatieren, UTC+X (Zone)
+            $formattedTimezones = [];
+            foreach ($data['zones'] as $zone) {
+                $offsetHours = floor($zone['gmtOffset'] / 3600);
+                $offsetMinutes = abs($zone['gmtOffset'] % 3600 / 60);
+                $offset = sprintf('%+03d:%02d', $offsetHours, $offsetMinutes);
+                $formattedTimezones[] = [
+                    'value' => $zone['zoneName'],
+                    'label' => sprintf('UTC%s (%s)', $offset, $zone['zoneName'])
+                ];
+            }
+
+            // Daten als JSON-String auf Server zwischenspeichern
+            $jsonDir = __DIR__ . '/../../../json/';
+            if (!file_exists($jsonDir)) {
+                mkdir($jsonDir, 0755, true);
+            }
+            $result = file_put_contents($jsonDir . 'timezones.json', json_encode($formattedTimezones, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+            if ($result === false) {
+                throw new Exception('Error saving JSON file: ' . error_get_last()['message']);
+            }
+
+            header('Content-Type: application/json');
+            echo json_encode([
+                'message' => 'Timezones successfully updated',
+                'timezones' => $formattedTimezones
+            ]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
 }

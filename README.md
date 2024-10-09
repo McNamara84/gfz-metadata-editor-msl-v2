@@ -33,14 +33,15 @@ In der header.html und footer.html werden folgende Abhängikeiten von Drittanbie
   Da Bootstrap 5.3 keine einfach bedienbaren Multi-Select-Felder anbietet, wird diese Funktion mit Chosen implementiert. Design-Anpassungen waren notwendendig und werden in der Datei bs5-chosen.css umgesetzt.
 - Tagify 4.31.3<br>
   Wird für das Feld Thesaurus Keywords, die eingabe von mehreren Affiliations und Free Keywords genutzt.
-- jsTree 3.3.16<br>
-  Wird zur Darstellung der GCMD Science Keywords als hierarchische Baumstruktur verwendet.
+- jsTree 3.3.17<br>
+  Wird zur Darstellung der Thesauri als hierarchische Baumstruktur verwendet.
 
 ## Einstellungen
 
 In der Datei `settings.php` können, neben den Zugangsdaten für die Datenbank, auch andere Einstellungen angepasst werden:
 
 - `$maxTitles:` Legt die max. Anzahl an Titeln fest, die Nutzende im Editor eingeben können, fest.
+- `$mslLabsUrl:` URL zur JSON-Datei mit der aktuellen Liste an Laboratorien.
 - `$showFeedbackLink:` true-> Feedback-Funktion eingeschaltet, false-> Feedback-Funktion ausgeschaltet
 - `$smtpHost:`URL zum SMTP-Mailserver
 - `$smtpPort:` Port des Mailservers
@@ -80,7 +81,7 @@ JSON-Array mit Objekten, die folgende Schlüssel enthalten:
 - `description`: Beschreibung
 - `children`: Array von Unterkategorien mit der gleichen Struktur
 
-### 2. Zeitzonen aktualisieren
+### 2. Zeitzonen aktualisieren (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getTimezones
 
@@ -193,7 +194,7 @@ Aktualisiert die kontrollierten Vokabulare des Materials Science Laboratory (MSL
 **Antwort:**
 JSON-Objekt mit Aktualisierungsstatus für jedes Vokabular
 
-### 11. MSL Labs aktualisieren
+### 11. MSL Labs aktualisieren (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getMslLabs
 
@@ -229,7 +230,7 @@ Aktualisiert die Konzepte des GEMET Thesaurus.
 **Antwort:**
 Bestätigungsnachricht über erfolgreiche Aktualisierung
 
-### 15. Rollen abrufen
+### 15. Rollen abrufen (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getRoles&type={role_type}
 
@@ -995,10 +996,11 @@ Das folgende ER-Diagramm zeigt die Beziehungen und Strukturen der Tabellen in de
 
 [![ER-Diagramm](doc/ER-Modell.jpg)](https://raw.githubusercontent.com/McNamara84/gfz-metadata-editor-msl-v2/feature/msl-frontend/doc/ER-Modell.jpg)
 
+## Testing
+Für einige Funktionen existieren bereits Unit Tests:
+- vendor/bin/phpunit tests/SaveResourceInformationAndRightsTest.php
+- vendor/bin/phpunit tests/SaveResourceInformationAndRightsTestThreeTitles.php
+
 ## Lizenz
 
 Dieses Projekt wurde 2024 von Studenten der Fachhochschule Potsdam in Zusammenarbeit mit dem Deutschen GeoForschungsZentrum entwickelt und wird unter der MIT-Lizenz veröffentlicht.
-
-```
-
-```

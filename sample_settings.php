@@ -31,6 +31,8 @@ $connection = connectDb();
 $apiKeyTimezone = 'xxxxxxxxxxxx';
 // maximale Anzahl der eingebbaren Titel
 $maxTitles = 2;
+// URL zur Quelle mit sämtlichen Laboren für MSL
+$mslLabsUrl = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/labs/labnames.json';
 // Anzeige des Feedback-Links (true für Anzeige, false für keine Anzeige)
 $showFeedbackLink = true;
 // Einstellungen für Mailversand mit SMTP
