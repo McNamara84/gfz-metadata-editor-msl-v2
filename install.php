@@ -147,28 +147,28 @@ function createDatabaseStructure($connection)
                 "Originating_Laboratory" => "CREATE TABLE IF NOT EXISTS `Originating_Laboratory` (
            `originating_laboratory_id` INT NOT NULL AUTO_INCREMENT,
            `laboratoryname` TEXT(1000) NOT NULL,
-           `labId` VARCHAR(32) NULL,
-            PRIMARY KEY (`originating_laboratory_id`));",
+           `labId` VARCHAR(32) NULL UNIQUE,
+           PRIMARY KEY (`originating_laboratory_id`));",
 
                 "Originating_Laboratory_has_Affiliation" => "CREATE TABLE IF NOT EXISTS `Originating_Laboratory_has_Affiliation` (
-            `Originating_Laboratory_has_Affiliation_id` INT NOT NULL AUTO_INCREMENT,
-            `Originating_Laboratory_originating_laboratory_id` INT NOT NULL,
-            `Affiliation_affiliation_id` INT NOT NULL,
-            PRIMARY KEY (`Originating_Laboratory_has_Affiliation_id`),
-            FOREIGN KEY (`Originating_Laboratory_has_Affiliation_id`)
-            REFERENCES `Originating_Laboratory` (`originating_laboratory_id`),
-            FOREIGN KEY (`Affiliation_affiliation_id`)
-            REFERENCES `Affiliation` (`affiliation_id`));",
+           `Originating_Laboratory_has_Affiliation_id` INT NOT NULL AUTO_INCREMENT,
+           `Originating_Laboratory_originating_laboratory_id` INT NOT NULL,
+           `Affiliation_affiliation_id` INT NOT NULL,
+           PRIMARY KEY (`Originating_Laboratory_has_Affiliation_id`),
+           FOREIGN KEY (`Originating_Laboratory_originating_laboratory_id`)
+           REFERENCES `Originating_Laboratory` (`originating_laboratory_id`),
+           FOREIGN KEY (`Affiliation_affiliation_id`)
+           REFERENCES `Affiliation` (`affiliation_id`));",
 
-                "Resource_has_Originating_Laboratory" => "CREATE TABLE IF NOT EXISTS `Resource_has_Originating_Laboratory` (
-            `Resource_has_Originating_Laboratory_id` INT NOT NULL AUTO_INCREMENT,
-            `Resource_resource_id` INT NOT NULL,
-            `Originating_Laboratory_originating_laboratory_id` INT NOT NULL,
-            PRIMARY KEY (`Resource_has_Originating_Laboratory_id`),
-            FOREIGN KEY (`Resource_resource_id`)
-            REFERENCES `Resource` (`resource_id`),
-            FOREIGN KEY (`Originating_Laboratory_originating_laboratory_id`)
-            REFERENCES `Originating_Laboratory` (`originating_laboratory_id`));",
+                "CREATE TABLE IF NOT EXISTS `Resource_has_Originating_Laboratory` (
+           `Resource_has_Originating_Laboratory_id` INT NOT NULL AUTO_INCREMENT,
+           `Resource_resource_id` INT NOT NULL,
+           `Originating_Laboratory_originating_laboratory_id` INT NOT NULL,
+           PRIMARY KEY (`Resource_has_Originating_Laboratory_id`),
+           FOREIGN KEY (`Resource_resource_id`)
+           REFERENCES `Resource` (`resource_id`),
+           FOREIGN KEY (`Originating_Laboratory_originating_laboratory_id`)
+           REFERENCES `Originating_Laboratory` (`originating_laboratory_id`));",
 
                 "Contributor_Person" => "CREATE TABLE IF NOT EXISTS `Contributor_Person` (
            `contributor_person_id` INT NOT NULL AUTO_INCREMENT,
