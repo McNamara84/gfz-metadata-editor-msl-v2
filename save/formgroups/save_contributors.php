@@ -12,7 +12,15 @@ function saveContributors($connection, $postData, $resource_id)
 {
     $valid_roles = getValidRoles($connection);
     saveContributorPersons($connection, $postData, $resource_id, $valid_roles);
-    saveContributorInstitutions($connection, $postData, $resource_id, $valid_roles);
+
+    // Nur Institutionen speichern, wenn entsprechende Daten vorhanden sind
+    if (
+        isset($postData['cbOrganisationName']) &&
+        is_array($postData['cbOrganisationName']) &&
+        !empty($postData['cbOrganisationName'][0])
+    ) {
+        saveContributorInstitutions($connection, $postData, $resource_id, $valid_roles);
+    }
 }
 
 /**
@@ -60,11 +68,20 @@ function saveContributorPersons($connection, $postData, $resource_id, $valid_rol
 
         $len = count($cbPersonLastnames);
         for ($i = 0; $i < $len; $i++) {
+            // Überprüfen, ob der Nachname vorhanden ist
+            if (empty(trim($cbPersonLastnames[$i]))) {
+                continue; // Überspringe diesen Datensatz, wenn der Nachname fehlt
+            }
+
             $contributor_person_id = saveOrUpdateContributorPerson($connection, $cbPersonLastnames[$i], $cbPersonFirstnames[$i], $cbORCIDs[$i]);
             linkResourceToContributorPerson($connection, $resource_id, $contributor_person_id);
-            if (!empty($cbAffiliations[$i])) {
+
+            // Nur nicht-leere Affiliationen verarbeiten
+            $affiliations = parseAffiliationData($cbAffiliations[$i]);
+            if (!empty($affiliations)) {
                 saveContributorPersonAffiliation($connection, $contributor_person_id, $cbAffiliations[$i], $cbRorIds[$i] ?? null);
             }
+
             saveContributorPersonRoles($connection, $contributor_person_id, $cbPersonRoles[$i], $valid_roles);
         }
     }
@@ -132,31 +149,32 @@ function linkResourceToContributorPerson($connection, $resource_id, $contributor
  */
 function saveContributorPersonAffiliation($connection, $contributor_person_id, $affiliation_data, $rorId_data)
 {
-    $affiliation_name = parseAffiliationData($affiliation_data)[0];
-    $rorId = $rorId_data ? parseAffiliationData($rorId_data)[0] : null;
-    $rorId = $rorId ? str_replace("https://ror.org/", "", $rorId) : null;
+    $affiliations = parseAffiliationData($affiliation_data);
+    $rorIds = parseAffiliationData($rorId_data);
 
-    $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?) 
-                                  ON DUPLICATE KEY UPDATE 
-                                  name = VALUES(name),
-                                  rorId = COALESCE(VALUES(rorId), rorId)");
-    $stmt->bind_param("ss", $affiliation_name, $rorId);
-    $stmt->execute();
-    $affiliation_id = $stmt->insert_id ?: $connection->insert_id;
-    $stmt->close();
+    foreach ($affiliations as $index => $affiliation_name) {
+        if (empty($affiliation_name)) {
+            continue; // Überspringe leere Affiliationen
+        }
 
-    $stmt = $connection->prepare("SELECT 1 FROM Contributor_Person_has_Affiliation 
-                                  WHERE Contributor_Person_contributor_person_id = ? AND Affiliation_affiliation_id = ?");
-    $stmt->bind_param("ii", $contributor_person_id, $affiliation_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
+        $rorId = isset($rorIds[$index]) ? str_replace("https://ror.org/", "", $rorIds[$index]) : null;
 
-    if ($result->num_rows == 0) {
-        $stmt = $connection->prepare("INSERT INTO Contributor_Person_has_Affiliation (Contributor_Person_contributor_person_id, Affiliation_affiliation_id) VALUES (?, ?)");
+        $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?) 
+                                      ON DUPLICATE KEY UPDATE 
+                                      name = VALUES(name),
+                                      rorId = COALESCE(VALUES(rorId), rorId)");
+        $stmt->bind_param("ss", $affiliation_name, $rorId);
+        $stmt->execute();
+        $affiliation_id = $stmt->insert_id ?: $connection->insert_id;
+        $stmt->close();
+
+        $stmt = $connection->prepare("INSERT IGNORE INTO Contributor_Person_has_Affiliation 
+                                      (Contributor_Person_contributor_person_id, Affiliation_affiliation_id) 
+                                      VALUES (?, ?)");
         $stmt->bind_param("ii", $contributor_person_id, $affiliation_id);
         $stmt->execute();
+        $stmt->close();
     }
-    $stmt->close();
 }
 
 /**
@@ -171,18 +189,25 @@ function saveContributorPersonAffiliation($connection, $contributor_person_id, $
  */
 function saveContributorPersonRoles($connection, $contributor_person_id, $roles, $valid_roles)
 {
+    error_log("Saving roles for contributor_person_id: $contributor_person_id");
+    error_log("Roles to save: " . print_r($roles, true));
+    error_log("Valid roles: " . print_r($valid_roles, true));
+
     if (!is_array($roles)) {
         $roles = [$roles];
     }
 
+    // Lösche bestehende Rollen
     $stmt = $connection->prepare("DELETE FROM Contributor_Person_has_Role WHERE Contributor_Person_contributor_person_id = ?");
     $stmt->bind_param("i", $contributor_person_id);
     $stmt->execute();
     $stmt->close();
 
     foreach ($roles as $role_name) {
+        error_log("Processing role: $role_name");
         if (isset($valid_roles[$role_name])) {
             $role_id = $valid_roles[$role_name];
+            error_log("Valid role found. Role ID: $role_id");
             $stmt = $connection->prepare("INSERT INTO Contributor_Person_has_Role (Contributor_Person_contributor_person_id, Role_role_id) VALUES (?, ?)");
             $stmt->bind_param("ii", $contributor_person_id, $role_id);
             $stmt->execute();
@@ -218,12 +243,14 @@ function saveContributorInstitutions($connection, $postData, $resource_id, $vali
 
         $len = count($cbOrganisationNames);
         for ($i = 0; $i < $len; $i++) {
-            $contributor_institution_id = saveOrUpdateContributorInstitution($connection, $cbOrganisationNames[$i]);
-            linkResourceToContributorInstitution($connection, $resource_id, $contributor_institution_id);
-            if (!empty($cbOrganisationAffiliations[$i])) {
-                saveContributorInstitutionAffiliation($connection, $contributor_institution_id, $cbOrganisationAffiliations[$i], $cbOrganisationRorIds[$i] ?? null);
+            if (!empty(trim($cbOrganisationNames[$i])) && !empty($cbOrganisationRoles[$i])) {
+                $contributor_institution_id = saveOrUpdateContributorInstitution($connection, $cbOrganisationNames[$i]);
+                linkResourceToContributorInstitution($connection, $resource_id, $contributor_institution_id);
+                if (!empty($cbOrganisationAffiliations[$i])) {
+                    saveContributorInstitutionAffiliation($connection, $contributor_institution_id, $cbOrganisationAffiliations[$i], $cbOrganisationRorIds[$i] ?? null);
+                }
+                saveContributorInstitutionRoles($connection, $contributor_institution_id, $cbOrganisationRoles[$i], $valid_roles);
             }
-            saveContributorInstitutionRoles($connection, $contributor_institution_id, $cbOrganisationRoles[$i], $valid_roles);
         }
     }
 }

@@ -288,7 +288,7 @@ class SaveContributorsTest extends TestCase
             "cbORCID" => ["0000-0001-2345-6789", "0000-0002-3456-7890", "0000-0003-4567-8901"],
             "cbAffiliation" => ['[{"value":"University A"}]', '[{"value":"University B"}]', '[{"value":"University C"}]'],
             "cbpRorIds" => ['[{"value":"https://ror.org/03yrm5c26"}]', '[{"value":"https://ror.org/02nr0ka47"}]', '[{"value":"https://ror.org/0168r3w48"}]'],
-            "cbPersonRoles" => [["DataCollector"], ["DataCurator"], ["Researcher"]]
+            "cbPersonRoles" => [["Data Collector"], ["Data Curator"], ["Researcher"]]
         ];
 
         saveContributors($this->connection, $postData, $resource_id);
