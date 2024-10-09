@@ -10,10 +10,11 @@
                 <!--Eingabefeld Laboratory Name-->
                 <div class="col-sm-6 col-md-6 col-lg-7 p-1">
                     <div class="input-group has-validation">
-                        <input type="text" class="form-control input-with-help input-right-no-round-corners"
-                            id="inputLaboratoryName" name="laboratoryName[]"
+                        <input type="text"
+                            class="form-control input-with-help input-right-no-round-corners inputLaboratoryName"
+                            name="laboratoryName[]"
                             placeholder="<?php echo $translations['originatingLaboratoryName']; ?>" />
-                            <input type="hidden" id="LabId" name="LabId">
+                        <input type="hidden" class="LabId" name="LabId[]">
                         <span class="input-group-text"><i class="bi bi-question-circle-fill"
                                 data-help-section-id="LaboratorynameHelp"></i></span>
                     </div>
