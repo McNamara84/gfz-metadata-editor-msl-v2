@@ -60,22 +60,30 @@ class SaveDescriptionsTest extends TestCase
             "descriptionOther" => "This is other information."
         ];
 
-        saveDescriptions($this->connection, $postData, $resource_id);
+        $result = saveDescriptions($this->connection, $postData, $resource_id);
+
+        $this->assertTrue($result, "saveDescriptions sollte true zurückgeben, wenn alle Beschreibungen erfolgreich gespeichert wurden.");
 
         // Überprüfen, ob alle vier Descriptions gespeichert wurden
-        $stmt = $this->connection->prepare("SELECT * FROM Description WHERE resource_id = ?");
+        $stmt = $this->connection->prepare("SELECT * FROM Description WHERE resource_id = ? ORDER BY type");
         $stmt->bind_param("i", $resource_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
         $this->assertEquals(4, $result->num_rows, "Es sollten genau vier Descriptions gespeichert worden sein.");
 
-        $descriptions = $result->fetch_all(MYSQLI_ASSOC);
-        $descriptionTypes = ['Abstract', 'Methods', 'Technical Information', 'Other'];
+        $expectedDescriptions = [
+            ['type' => 'Abstract', 'description' => $postData['descriptionAbstract']],
+            ['type' => 'Methods', 'description' => $postData['descriptionMethods']],
+            ['type' => 'Other', 'description' => $postData['descriptionOther']],
+            ['type' => 'Technical Information', 'description' => $postData['descriptionTechnical']]
+        ];
 
-        foreach ($descriptions as $description) {
-            $this->assertContains($description['type'], $descriptionTypes, "Der Beschreibungstyp '{$description['type']}' ist nicht gültig.");
-            $this->assertEquals($postData["description" . str_replace(' ', '', $description['type'])], $description['description'], "Der Inhalt der {$description['type']} Beschreibung stimmt nicht überein.");
+        $index = 0;
+        while ($description = $result->fetch_assoc()) {
+            $this->assertEquals($expectedDescriptions[$index]['type'], $description['type'], "Der Beschreibungstyp stimmt nicht überein.");
+            $this->assertEquals($expectedDescriptions[$index]['description'], $description['description'], "Der Inhalt der {$description['type']} Beschreibung stimmt nicht überein.");
+            $index++;
         }
     }
 
