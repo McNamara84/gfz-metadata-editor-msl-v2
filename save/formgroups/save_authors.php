@@ -39,6 +39,18 @@ function saveAuthors($connection, $postData, $resource_id)
             $affiliation_data = isset($affiliations[$i]) ? $affiliations[$i] : '';
             $rorId_data = isset($rorIds[$i]) ? $rorIds[$i] : '';
 
+            // Überspringe Autoren ohne Nachnamen
+            if (empty($familyname)) {
+                continue;
+            }
+
+            // Überprüfe, ob eine ROR-ID ohne Affiliation vorliegt
+            $rorIdArray = parseAffiliationData($rorId_data);
+            $affiliationArray = parseAffiliationData($affiliation_data);
+            if (!empty($rorIdArray) && empty($affiliationArray)) {
+                continue; // Überspringe diesen Autor
+            }
+
             // Prüfen, ob der Autor bereits existiert
             $stmt = $connection->prepare("SELECT author_id FROM Author WHERE orcid = ?");
             $stmt->bind_param("s", $orcid);
@@ -69,6 +81,7 @@ function saveAuthors($connection, $postData, $resource_id)
             $stmt->execute();
             $stmt->close();
 
+            // Immer Affiliationen speichern, unabhängig davon, ob der Autor neu ist oder bereits existiert
             if (!empty($affiliation_data)) {
                 saveAuthorAffiliations($connection, $author_id, $affiliation_data, $rorId_data);
             }
@@ -95,25 +108,35 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
         $rorId = $rorIds_array[$index] ?? null;
         $rorId = str_replace("https://ror.org/", "", $rorId);
 
-        $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?) 
-                                      ON DUPLICATE KEY UPDATE affiliation_id = LAST_INSERT_ID(affiliation_id), 
-                                      rorId = COALESCE(VALUES(rorId), rorId)");
-        $stmt->bind_param("ss", $affiliation_name, $rorId);
-        $stmt->execute();
-        $affiliation_id = $stmt->insert_id;
-        $stmt->close();
-
-        $stmt = $connection->prepare("SELECT 1 FROM Author_has_Affiliation 
-                                      WHERE Author_author_id = ? AND Affiliation_affiliation_id = ?");
-        $stmt->bind_param("ii", $author_id, $affiliation_id);
+        // Prüfen, ob die Affiliation bereits existiert
+        $stmt = $connection->prepare("SELECT affiliation_id FROM Affiliation WHERE name = ?");
+        $stmt->bind_param("s", $affiliation_name);
         $stmt->execute();
         $result = $stmt->get_result();
 
-        if ($result->num_rows == 0) {
-            $stmt = $connection->prepare("INSERT INTO Author_has_Affiliation (Author_author_id, Affiliation_affiliation_id) VALUES (?, ?)");
-            $stmt->bind_param("ii", $author_id, $affiliation_id);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $affiliation_id = $row['affiliation_id'];
+
+            // Aktualisiere die ROR-ID, falls nötig
+            if (!empty($rorId)) {
+                $stmt = $connection->prepare("UPDATE Affiliation SET rorId = ? WHERE affiliation_id = ?");
+                $stmt->bind_param("si", $rorId, $affiliation_id);
+                $stmt->execute();
+            }
+        } else {
+            // Neue Affiliation einfügen
+            $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?)");
+            $stmt->bind_param("ss", $affiliation_name, $rorId);
             $stmt->execute();
+            $affiliation_id = $stmt->insert_id;
         }
+        $stmt->close();
+
+        // Verknüpfung zwischen Autor und Affiliation erstellen, falls sie noch nicht existiert
+        $stmt = $connection->prepare("INSERT IGNORE INTO Author_has_Affiliation (Author_author_id, Affiliation_affiliation_id) VALUES (?, ?)");
+        $stmt->bind_param("ii", $author_id, $affiliation_id);
+        $stmt->execute();
         $stmt->close();
     }
 }
