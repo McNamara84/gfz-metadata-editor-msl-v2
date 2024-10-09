@@ -54,21 +54,21 @@ $(document).ready(function () {
 
   function setupRolesDropdown(roletype, id) {
     if (roletype == "person") {
-      $.getJSON("./api/v2/vocabs/roles/person", function (data) {
+      $.getJSON("./api.php?action=getRoles&type=person", function (data) {
         $.each(data, function (key, val) {
           $(id).append("<option>" + val.name + "</option>");
         });
         $(".chosen-select").trigger("chosen:updated");
       });
     } else if (roletype == "institution") {
-      $.getJSON("./api/v2/vocabs/roles/institution", function (data) {
+      $.getJSON("./api.php?action=getRoles&type=institution", function (data) {
         $.each(data, function (key, val) {
           $(id).append("<option>" + val.name + "</option>");
         });
         $(".chosen-select").trigger("chosen:updated");
       });
     } else {
-      $.getJSON("./api/v2/vocabs/roles/both", function (data) {
+      $.getJSON("./api.php?action=getRoles&type=both", function (data) {
         $.each(data, function (key, val) {
           $(id).append("<option>" + val.name + "</option>");
         });
