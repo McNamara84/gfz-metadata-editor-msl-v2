@@ -184,7 +184,7 @@ function createDatabaseStructure($connection)
 
                 "Description" => "CREATE TABLE IF NOT EXISTS `Description` (
             `description_id` INT NOT NULL AUTO_INCREMENT,
-            `type` VARCHAR(20) NOT NULL,
+            `type` VARCHAR(22) NOT NULL,
             `description` TEXT(5000) NOT NULL,
             `resource_id` INT NOT NULL,
             PRIMARY KEY (`description_id`),
