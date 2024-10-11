@@ -81,48 +81,8 @@ $translations = [
     'd_other' => 'Autre',
     'd_other_tooltip' => 'Veuillez entrer d\'autres informations...',
 
-    // Groupe de formulaire Général
-    'grl' => 'Général',
-    'grl_Material' => 'Matériau',
-    'grl_geo_age' => 'Âge géologique',
-    'grl_Pore_fluid' => 'Fluide interstitiel',
-    'grl_geo_setting' => 'Contexte géologique',
-
-    // Groupe de formulaire Modélisation analogique des processus géologiques
-    'AMOGP' => 'Modélisation analogique des processus géologiques',
-    'AMOGP_M_S' => 'Structure modélisée',
-    'AMOGP_M_G_F' => 'Caractéristique géomorphologique modélisée',
-    'AMOGP_Apparatus' => 'Appareil',
-    'AMOGP_A_E' => 'Équipement auxiliaire',
-    'AMOGP_M_P' => 'Propriété mesurée',
-    'AMOGP_Software' => 'Logiciel',
-
-    // Groupe de formulaire Géochimie
-    'Geochemistry' => 'Géochimie',
-    'Geochemistry_A_T' => 'Technique d\'analyse',
-    'Geochemistry_M_P' => 'Propriété mesurée',
-
-    // Groupe de formulaire Microscopie et tomographie
-    'MATomography' => 'Microscopie et tomographie',
-    'MATomography_A' => 'Appareil',
-    'MATomography_A_E' => 'Équipement auxiliaire',
-    'MATomography_A_T' => 'Technique d\'analyse',
-    'MATomography_A_F' => 'Caractéristique analysée',
-    'MATomography_I_P' => 'Paramètre déduit',
-
-    // Groupe de formulaire Paléomagnétisme
-    'PALTIS' => 'Paléomagnétisme',
-    'PALTIS_A' => 'Appareil',
-    'PALTIS_E_C' => 'Contrôle de l\'environnement',
-    'PALTIS_M_P' => 'Propriété mesurée',
-    'PALTIS_I_B' => 'Comportement déduit',
-
-    // Groupe de formulaire Physique des roches et des magmas
-    'RAMP' => 'Physique des roches et des magmas',
-    'RAMP_A' => 'Appareil',
-    'RAMP_A_E' => 'Équipement auxiliaire',
-    'RAMP_M_P' => 'Propriété mesurée',
-    'RAMP_I_D_B' => 'Comportement de déformation déduit',
+    // Form Group MSL-Keywords
+    'mslKeywords' => 'Mots clés MSL',
 
     // Groupe de formulaire Dates
     'dates' => 'Dates',

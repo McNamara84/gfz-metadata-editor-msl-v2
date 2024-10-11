@@ -1,0 +1,55 @@
+<div class="card mb-2">
+    <div class="card-header">
+        <b>
+            <?php echo $translations['mslKeywords']; ?>
+        </b>
+    </div>
+
+    <div class="card-body">
+        <!--Eingabefeld-->
+        <div class="input-group has-validation">
+            <div class="form-floating">
+                <div class="input-group has-validation">
+                    <input type="text" class="form-control input-with-help input-rigt-no-round-corners"
+                        id="inputMSLKeywords" name="MSLKeywords" />
+                    <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                            data-help-section-id="mslkeywords"></i>
+                    </span>
+                </div>
+            </div>
+            <!--Button-->
+            <div class="col-auto p-2">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#MSLKeywordsModal"
+                    id="MSLKeywords">
+                    <?php echo $translations['thesaurus']; ?>
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!------------------------------------- MODALS ---------------------------------------------------------------------->
+<!-- Modal für MSL-Keywords -->
+<div class="modal fade <?php if 
+      (isset($_SESSION['MSLKeywordsModal']) && $_SESSION['MSLKeywordsModal'] == 'true') 
+      {echo 'show'; } ?>
+      " id="MSLKeywordsModal" tabindex="-1" aria-labelledby="MSLKeywordsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="MSLKeywordsModalLabel"> MSL Keywords</h5>
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                        data-help-section-id="modalHelp"></i></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="MSLKeywordsModalThesaurus">
+                    <input type="text" class="form-control mb-3" id="searchInputMSLKeywords"
+                        placeholder="Search for Keyword">
+                    <div id="jstreeMSLKeywords"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -75,48 +75,8 @@ $translations = [
     'd_other' => 'Sonstiges',
     'd_other_tooltip' => 'Bitte geben Sie sonstige Informationen ein...',
 
-    // Form Group General
-    'grl' => 'Allgemein',
-    'grl_Material' => 'Material',
-    'grl_geo_age' => 'Geologisches Alter',
-    'grl_Pore_fluid' => 'Porenflüssigkeit',
-    'grl_geo_setting' => 'Geologisches Umfeld',
-
-    // Form Group Analogue modelling of geological processes
-    'AMOGP' => 'Analoge Modellierung von geologischen Prozessen',
-    'AMOGP_M_S' => 'Modellierte Struktur',
-    'AMOGP_M_G_F' => 'Modelliertes geomorphologisches Merkmal',
-    'AMOGP_Apparatus' => 'Gerät',
-    'AMOGP_A_E' => 'Ergänzende Ausrüstung',
-    'AMOGP_M_P' => 'Gemessene Eigenschaft',
-    'AMOGP_Software' => 'Software',
-
-    // Form Group Geochemistry
-    'Geochemistry' => 'Geochemie',
-    'Geochemistry_A_T' => 'Analyseverfahren',
-    'Geochemistry_M_P' => 'Gemessene Eigenschaft',
-
-    // Form Group Microsocopy And Tomography
-    'MATomography' => 'Mikroskopie und Tomographie',
-    'MATomography_A' => 'Apparat',
-    'MATomography_A_E' => 'Ergänzende Ausrüstung',
-    'MATomography_A_T' => 'Analyse-Technik',
-    'MATomography_A_F' => 'Analysiertes Merkmal',
-    'MATomography_I_P' => 'Abgeleiteter Parameter',
-
-    // Form Group Paleomagnetism
-    'PALTIS' => 'Paläomagnetismus',
-    'PALTIS_A' => 'Apparat',
-    'PALTIS_E_C' => 'Kontrolle der Umgebung',
-    'PALTIS_M_P' => 'Gemessene Eigenschaft',
-    'PALTIS_I_B' => 'Abgeleitetes Verhalten',
-
-    // Form Group Rock and melt physics
-    'RAMP' => 'Gesteins- und Schmelzphysik',
-    'RAMP_A' => 'Apparat',
-    'RAMP_A_E' => 'Ergänzende Ausrüstung',
-    'RAMP_M_P' => 'Gemessene Eigenschaft',
-    'RAMP_I_D_B' => 'Abgeleitetes Verformungsverhalten',
+    // Form Group MSL-Keywords
+    'mslKeywords' => 'MSL-Schlüsselwörter',
 
     // Form Group Dates
     'dates' => 'Datumsangaben',
