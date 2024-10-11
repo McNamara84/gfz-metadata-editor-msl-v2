@@ -61,7 +61,7 @@ paths:
       tags:
         - update
       summary: Update MSL vocabularies
-      description: Update vocabularies for MSL (Materials Science Laboratory)
+      description: Update vocabularies for MSL
       operationId: getMslVocab
       parameters:
         - in: query
@@ -100,63 +100,6 @@ paths:
                   message: "Updating vocab for type: all"
                   updatedTypes:
                     analogue: "Updated to version 1.5"
-                    geochemistry: "Updated to version 1.4"
-        "400":
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        "500":
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
-  /update/vocabs/msl/{type}:
-    get:
-      tags:
-        - update
-      summary: Update specific MSL vocabulary
-      description: Update a specific vocabulary type for MSL
-      operationId: getMslVocabByType
-      parameters:
-        - in: path
-          name: type
-          required: true
-          schema:
-            type: string
-            enum:
-              [
-                analogue,
-                geochemistry,
-                geologicalage,
-                geologicalsetting,
-                materials,
-                microscopy,
-                paleomagnetism,
-                porefluids,
-                rockphysics,
-              ]
-          description: Type of vocabulary to update
-      responses:
-        "200":
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  updatedTypes:
-                    type: object
-                    additionalProperties:
-                      type: string
-                example:
-                  message: "Updating vocab for type: geochemistry"
-                  updatedTypes:
                     geochemistry: "Updated to version 1.4"
         "400":
           description: Bad request
