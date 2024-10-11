@@ -1,4 +1,7 @@
 {
+    "name": "mde2msl/mde2msl",
+    "description": "Editor for research metadata of MSL data.",
+    "license": "MIT",
     "require": {
         "easyrdf/easyrdf": "^1.1",
         "phpmailer/phpmailer": "^6.9",
@@ -6,5 +9,18 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^11.4"
+    },
+    "autoload": {
+        "classmap": [
+            ""
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
     }
 }
