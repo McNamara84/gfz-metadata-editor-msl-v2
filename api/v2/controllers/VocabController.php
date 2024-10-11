@@ -84,22 +84,28 @@ class VocabController
 
         $baseUrl = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/';
         $types = ['analogue', 'geochemistry', 'geologicalage', 'geologicalsetting', 'materials', 'microscopy', 'paleomagnetism', 'porefluids', 'rockphysics'];
-        $jsonDir = __DIR__ . '../../../json/';
+        $jsonDir = __DIR__ . '/../../../json/';
+        $combinedJsonFile = $jsonDir . 'msl-vocabularies.json';
 
         if (!file_exists($jsonDir)) {
             mkdir($jsonDir, 0755, true);
         }
 
         $results = [];
+        $combinedData = [];
 
         if ($type == 'all') {
             foreach ($types as $t) {
                 $latestVersion = $this->getLatestVersion($baseUrl, $t);
                 if ($latestVersion) {
                     $url = "{$baseUrl}{$t}/{$latestVersion}/{$t}_" . str_replace('.', '-', $latestVersion) . ".json";
-                    $savePath = $jsonDir . "{$t}.json";
-                    $success = $this->downloadAndSave($url, $savePath);
-                    $results[$t] = $success ? "Updated to version {$latestVersion}" : "Failed to update";
+                    $jsonContent = $this->downloadContent($url);
+                    if ($jsonContent !== false) {
+                        $combinedData[$t] = json_decode($jsonContent, true);
+                        $results[$t] = "Updated to version {$latestVersion}";
+                    } else {
+                        $results[$t] = "Failed to update";
+                    }
                 } else {
                     $results[$t] = "No version found";
                 }
@@ -108,9 +114,13 @@ class VocabController
             $latestVersion = $this->getLatestVersion($baseUrl, $type);
             if ($latestVersion) {
                 $url = "{$baseUrl}{$type}/{$latestVersion}/{$type}_" . str_replace('.', '-', $latestVersion) . ".json";
-                $savePath = $jsonDir . "{$type}.json";
-                $success = $this->downloadAndSave($url, $savePath);
-                $results[$type] = $success ? "Updated to version {$latestVersion}" : "Failed to update";
+                $jsonContent = $this->downloadContent($url);
+                if ($jsonContent !== false) {
+                    $combinedData[$type] = json_decode($jsonContent, true);
+                    $results[$type] = "Updated to version {$latestVersion}";
+                } else {
+                    $results[$type] = "Failed to update";
+                }
             } else {
                 $results[$type] = "No version found";
             }
@@ -118,10 +128,34 @@ class VocabController
             $results['error'] = "Invalid type specified";
         }
 
+        // Merge new data with existing data
+        if (file_exists($combinedJsonFile)) {
+            $existingData = json_decode(file_get_contents($combinedJsonFile), true);
+            $combinedData = array_merge($existingData, $combinedData);
+        }
+
+        // Save combined data
+        if (!empty($combinedData)) {
+            file_put_contents($combinedJsonFile, json_encode($combinedData, JSON_PRETTY_PRINT));
+        }
+
         header('Content-Type: application/json');
         echo json_encode([
-            'message' => "Updating vocab for type: $type"
+            'message' => "Updating vocab for type: $type",
+            'results' => $results
         ]);
+    }
+
+    private function downloadContent($url)
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        $content = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        return ($httpCode == 200) ? $content : false;
     }
     public function getGcmdScienceKeywords()
     {
