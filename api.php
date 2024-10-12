@@ -12,6 +12,7 @@ use EasyRdf\RdfNamespace;
 include 'settings.php';
 include 'api_functions.php';
 
+/* Deprecated. Use APIv2 instead. */
 // API-Hook für den Abruf des kontrollierten Vokabulars GCMD Science Keywords von der NASA als JSON-String für externe Anwendungen
 // Beispielaufruf: api.php?action=getGcmdScienceKeywords
 if ($_GET['action'] == 'getGcmdScienceKeywords') {
@@ -23,6 +24,7 @@ if ($_GET['action'] == 'getGcmdScienceKeywords') {
     exit();
 }
 
+/* Deprecated. Use APIv2 instead. */
 // API-Hook für den Abruf aller kontrollierten Vocabulare von GitHub und Speicherung in getrennten JSON-Dateien
 // Beispielaufruf: api.php?action=getMslVocab&type=all oder api.php?action=getMslVocab&type=geologicalage
 if (isset($_GET['action']) && $_GET['action'] == 'getMslVocab') {
@@ -68,6 +70,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'getMslVocab') {
     exit();
 }
 
+/* Deprecated. Use APIv2 instead. */
 // API-Hook für den Abruf aller MSL Labs und Speicherung als msl-labs.json
 // Beispielaufruf: api.php?action=getMslLabs
 if (isset($_GET['action']) && $_GET['action'] == 'getMslLabs') {
@@ -458,6 +461,7 @@ if ($_GET['action'] == 'getCrossRefFunders') {
     exit();
 }
 
+/* Deprecated. Use APIv2 instead. */
 // Beispielaufruf: api.php?action=getRoles&type=all
 // API-Hook für Eingabefelder mit Roles
 if ($_GET['action'] == 'getRoles') {
@@ -494,6 +498,7 @@ if ($_GET['action'] == 'getRoles') {
     }
 }
 
+/* Deprecated. Use APIv2 instead. */
 // Beispielaufruf api.php?action=getNasaInstrumentsKeywords
 if ($_GET['action'] == 'getNasaInstrumentsKeywords') {
     $conceptSchemes = [
@@ -590,7 +595,8 @@ if ($_GET['action'] === 'getKeywords') {
     exit;
 }
 
-// Beispielaufruf api.php?action=getes, aktualisiert Timezones
+/* Deprecated. Use APIv2 instead. */
+// Beispielaufruf api.php?action=getTimezones, aktualisiert Timezones
 if ($_GET['action'] == 'getTimezones') {
     // Die URL der TimeZoneDB API, um die Zeitzonendaten abzurufen
     $apiUrl = 'http://api.timezonedb.com/v2.1/list-time-zone?key=' . $apiKeyTimezone . '&format=json';

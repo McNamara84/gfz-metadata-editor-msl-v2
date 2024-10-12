@@ -34,6 +34,7 @@ function downloadAndSave($url, $savePath)
     return file_put_contents($savePath, $json) !== false;
 }
 
+/* Deprecated. Use APIv2 instead. */
 // MSL labs und zugehörige Affiliationen von
 $url = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/labs/labnames.json';
 // abrufen und verarbeiten
