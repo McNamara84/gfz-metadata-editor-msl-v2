@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Resource>
   <doi>http://doi.org/10.1029/2023JB028411</doi>
-  <version>1</version>
+  <version/>
   <year>2024</year>
   <dateCreated>2024-06-05</dateCreated>
   <dateEmbargoUntil>2024-06-15</dateEmbargoUntil>
@@ -194,4 +194,17 @@
       <grantname>Grants database</grantname>
     </FundingReference>
   </FundingReferences>
+  <OriginatingLaboratories>
+    <OriginatingLaboratory>
+      <laboratoryname>Fragmentation Lab (Ludwig-Maximilians-University Munich, Germany)</laboratoryname>
+      <labId>9cd562c216daa82792972a074a222c52</labId>
+      <Affiliations>
+        <Affiliation>
+          <affiliation_id>3</affiliation_id>
+          <name>University of Applied Sciences Potsdam</name>
+          <rorId>012m9bp23</rorId>
+        </Affiliation>
+      </Affiliations>
+    </OriginatingLaboratory>
+  </OriginatingLaboratories>
 </Resource>

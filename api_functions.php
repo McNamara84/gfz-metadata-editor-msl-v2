@@ -137,42 +137,13 @@ function transformAndSaveOrDownloadXml($id, $format, $download = false)
     }
 }
 
-function getResourceType($connection, $resource_type_id)
-{
-    $stmt = $connection->prepare("
-        SELECT * FROM Resource_Type 
-        WHERE resource_name_id = ?
-    ");
-    $stmt->bind_param('i', $resource_type_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    return $result->fetch_assoc();
-}
-
-function getRights($connection, $rightsIdentifier)
-{
-    $stmt = $connection->prepare("
-        SELECT * FROM Rights 
-        WHERE rightsIdentifier = ?
-    ");
-    $stmt->bind_param('s', $rightsIdentifier);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    return $result->fetch_assoc();
-}
-
-function getLanguage($connection, $language_id)
-{
-    $stmt = $connection->prepare("
-        SELECT * FROM Language 
-        WHERE language_id = ?
-    ");
-    $stmt->bind_param('i', $language_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    return $result->fetch_assoc();
-}
-
+/**
+ * Retrieves thesaurus keywords for a given resource.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $resource_id The ID of the resource.
+ * @return array An array of thesaurus keywords.
+ */
 function getThesaurusKeywords($connection, $resource_id)
 {
     $stmt = $connection->prepare("
@@ -187,6 +158,15 @@ function getThesaurusKeywords($connection, $resource_id)
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+/**
+ * Retrieves related data for a single record from a specified table.
+ *
+ * @param mysqli $connection The database connection.
+ * @param string $table The name of the table.
+ * @param string $idColumn The name of the ID column.
+ * @param int $id The ID value to search for.
+ * @return array|null An associative array of the related data, or null if not found.
+ */
 function getRelatedData($connection, $table, $idColumn, $id)
 {
     $stmt = $connection->prepare("SELECT * FROM $table WHERE $idColumn = ?");
@@ -196,6 +176,15 @@ function getRelatedData($connection, $table, $idColumn, $id)
     return $result->fetch_assoc();
 }
 
+/**
+ * Retrieves multiple related data records from a specified table.
+ *
+ * @param mysqli $connection The database connection.
+ * @param string $table The name of the table.
+ * @param string $foreignKeyColumn The name of the foreign key column.
+ * @param int $id The ID value to search for.
+ * @return array An array of associative arrays containing the related data.
+ */
 function getRelatedDataMultiple($connection, $table, $foreignKeyColumn, $id)
 {
     $stmt = $connection->prepare("SELECT * FROM $table WHERE $foreignKeyColumn = ?");
@@ -205,6 +194,13 @@ function getRelatedDataMultiple($connection, $table, $foreignKeyColumn, $id)
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+/**
+ * Retrieves affiliations for a given author.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $author_id The ID of the author.
+ * @return array An array of affiliations for the author.
+ */
 function getAuthorAffiliations($connection, $author_id)
 {
     $affiliations = [];
@@ -223,6 +219,13 @@ function getAuthorAffiliations($connection, $author_id)
     return $affiliations;
 }
 
+/**
+ * Retrieves authors for a given resource.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $resource_id The ID of the resource.
+ * @return array An array of authors with their details and affiliations.
+ */
 function getAuthors($connection, $resource_id)
 {
     $authors = [];
@@ -247,12 +250,19 @@ function getAuthors($connection, $resource_id)
     return $authors;
 }
 
+/**
+ * Retrieves titles for a given resource.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $resource_id The ID of the resource.
+ * @return array An array of titles with their types.
+ */
 function getTitles($connection, $resource_id)
 {
     $stmt = $connection->prepare("
         SELECT t.*, tt.name as title_type_name
-        FROM Title t
-        JOIN Title_Type tt ON t.Title_Type_fk = tt.title_type_id
+        FROM title t
+        JOIN title_type tt ON t.Title_Type_fk = tt.title_type_id
         WHERE t.Resource_resource_id = ?
     ");
     $stmt->bind_param('i', $resource_id);
@@ -261,6 +271,13 @@ function getTitles($connection, $resource_id)
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+/**
+ * Retrieves descriptions for a given resource.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $resource_id The ID of the resource.
+ * @return array An array of descriptions.
+ */
 function getDescriptions($connection, $resource_id)
 {
     $stmt = $connection->prepare("
@@ -273,6 +290,13 @@ function getDescriptions($connection, $resource_id)
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+/**
+ * Retrieves affiliations for a given contributor person.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $contributor_person_id The ID of the contributor person.
+ * @return array An array of affiliations for the contributor person.
+ */
 function getContributorPersonAffiliations($connection, $contributor_person_id)
 {
     $affiliations = [];
@@ -298,6 +322,13 @@ function getContributorPersonAffiliations($connection, $contributor_person_id)
     return $affiliations;
 }
 
+/**
+ * Retrieves roles for a given contributor person.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $contributor_person_id The ID of the contributor person.
+ * @return array An array of roles for the contributor person.
+ */
 function getContributorPersonRoles($connection, $contributor_person_id)
 {
     $roles = [];
@@ -319,6 +350,13 @@ function getContributorPersonRoles($connection, $contributor_person_id)
     return $roles;
 }
 
+/**
+ * Retrieves affiliations for a given contributor institution.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $contributor_institution_id The ID of the contributor institution.
+ * @return array An array of affiliations for the contributor institution.
+ */
 function getContributorInstitutionAffiliations($connection, $contributor_institution_id)
 {
     $affiliations = [];
@@ -344,6 +382,13 @@ function getContributorInstitutionAffiliations($connection, $contributor_institu
     return $affiliations;
 }
 
+/**
+ * Retrieves roles for a given contributor institution.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $contributor_institution_id The ID of the contributor institution.
+ * @return array An array of roles for the contributor institution.
+ */
 function getContributorInstitutionRoles($connection, $contributor_institution_id)
 {
     $roles = [];
@@ -365,6 +410,13 @@ function getContributorInstitutionRoles($connection, $contributor_institution_id
     return $roles;
 }
 
+/**
+ * Retrieves contributors (persons and institutions) for a given resource.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $resource_id The ID of the resource.
+ * @return array An array containing two sub-arrays: 'persons' and 'institutions'.
+ */
 function getContributors($connection, $resource_id)
 {
     $contributors = ['persons' => [], 'institutions' => []];
@@ -409,6 +461,13 @@ function getContributors($connection, $resource_id)
     return $contributors;
 }
 
+/**
+ * Retrieves contact persons for a given resource.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $resource_id The ID of the resource.
+ * @return array An array of contact persons with their details and affiliations.
+ */
 function getContactPersons($connection, $resource_id)
 {
     $contactPersons = [];
@@ -436,6 +495,13 @@ function getContactPersons($connection, $resource_id)
     return $contactPersons;
 }
 
+/**
+ * Retrieves affiliations for a given contact person.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $contact_person_id The ID of the contact person.
+ * @return array An array of affiliations for the contact person.
+ */
 function getContactPersonAffiliations($connection, $contact_person_id)
 {
     $affiliations = [];
@@ -461,6 +527,13 @@ function getContactPersonAffiliations($connection, $contact_person_id)
     return $affiliations;
 }
 
+/**
+ * Retrieves funding references for a given resource.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $resource_id The ID of the resource.
+ * @return array An array of funding references.
+ */
 function getFundingReferences($connection, $resource_id)
 {
     $funding_references = getRelatedDataMultiple($connection, 'Resource_has_Funding_Reference', 'Resource_resource_id', $resource_id);
@@ -473,6 +546,13 @@ function getFundingReferences($connection, $resource_id)
     return $funding_references;
 }
 
+/**
+ * Retrieves related works for a given resource.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $resource_id The ID of the resource.
+ * @return array An array of related works with their identifiers, relations, and identifier types.
+ */
 function getRelatedWorks($connection, $resource_id)
 {
     $stmt = $connection->prepare("
@@ -497,6 +577,13 @@ function getRelatedWorks($connection, $resource_id)
     return $relatedWorks;
 }
 
+/**
+ * Retrieves spatial temporal coverage for a given resource.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $resource_id The ID of the resource.
+ * @return array An array of spatial temporal coverage data.
+ */
 function getSpatialTemporalCoverage($connection, $resource_id)
 {
     $stmt = $connection->prepare("
@@ -511,6 +598,13 @@ function getSpatialTemporalCoverage($connection, $resource_id)
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+/**
+ * Retrieves free keywords for a given resource.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $resource_id The ID of the resource.
+ * @return array An array of free keywords.
+ */
 function getFreeKeywords($connection, $resource_id)
 {
     $stmt = $connection->prepare("
@@ -525,12 +619,74 @@ function getFreeKeywords($connection, $resource_id)
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
-// Speichern einer Resource als XML-Datei nach unserem eigenen "Freestyle"-Schema
+/**
+ * Retrieves originating laboratories for a given resource.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $resource_id The ID of the resource.
+ * @return array An array of originating laboratories with their details and affiliations.
+ */
+function getOriginatingLaboratories($connection, $resource_id)
+{
+    $laboratories = [];
+    $stmt = $connection->prepare("
+        SELECT ol.*
+        FROM originating_laboratory ol
+        JOIN resource_has_originating_laboratory rhol ON ol.originating_laboratory_id = rhol.Originating_Laboratory_originating_laboratory_id
+        WHERE rhol.Resource_resource_id = ?
+    ");
+    $stmt->bind_param('i', $resource_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $laboratory = [
+            'laboratoryname' => $row['laboratoryname'],
+            'labId' => $row['labId'],
+            'Affiliations' => getOriginatingLaboratoryAffiliations($connection, $row['originating_laboratory_id'])
+        ];
+        $laboratories[] = $laboratory;
+    }
+    return $laboratories;
+}
+
+/**
+ * Retrieves affiliations for a given originating laboratory.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $originating_laboratory_id The ID of the originating laboratory.
+ * @return array An array of affiliations for the originating laboratory.
+ */
+function getOriginatingLaboratoryAffiliations($connection, $originating_laboratory_id)
+{
+    $affiliations = [];
+    $stmt = $connection->prepare("
+        SELECT a.*
+        FROM affiliation a
+        JOIN originating_laboratory_has_affiliation olha ON a.affiliation_id = olha.Affiliation_affiliation_id
+        WHERE olha.Originating_Laboratory_originating_laboratory_id = ?
+    ");
+    $stmt->bind_param('i', $originating_laboratory_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $affiliations[] = $row;
+    }
+    return $affiliations;
+}
+
+/**
+ * Generates an XML representation of a resource and saves it to a xml file without any scheme.
+ *
+ * @param mysqli $connection The database connection.
+ * @param int $id The ID of the resource.
+ * @return string The XML representation of the resource as a string.
+ * @throws Exception If the resource is not found.
+ */
 function getResourceAsXml($connection, $id)
 {
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
-    $stmt = $connection->prepare('SELECT * FROM Resource WHERE resource_id = ?');
+    $stmt = $connection->prepare('SELECT * FROM resource WHERE resource_id = ?');
     $stmt->bind_param('i', $id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -543,45 +699,33 @@ function getResourceAsXml($connection, $id)
     $xml = new SimpleXMLElement('<Resource/>');
 
     // Resource Information
-    $xml->addChild('doi', htmlspecialchars($resource['doi']));
-    $xml->addChild('version', htmlspecialchars($resource['version']));
+    $xml->addChild('doi', htmlspecialchars($resource['doi'] ?? ''));
+    $xml->addChild('version', htmlspecialchars($resource['version'] ?? ''));
     $xml->addChild('year', htmlspecialchars($resource['year']));
     $xml->addChild('dateCreated', htmlspecialchars($resource['dateCreated']));
-    $xml->addChild('dateEmbargoUntil', htmlspecialchars($resource['dateEmbargoUntil']));
+    $xml->addChild('dateEmbargoUntil', htmlspecialchars($resource['dateEmbargoUntil'] ?? ''));
 
     // Rights
-    $defaultRightsIdentifier = "CC-BY-4.0";
-    if (isset($_POST['Rights']) && !empty($_POST['Rights'])) {
-        $rightsIdentifier = $_POST['Rights'];
-    } else {
-        $rightsIdentifier = $defaultRightsIdentifier;
-        error_log("Kein Rights-Wert übermittelt, verwende Standardwert: " . $defaultRightsIdentifier);
-    }
-    $rights = getRights($connection, $rightsIdentifier);
+    $rights = getRelatedData($connection, 'rights', 'rights_id', $resource['Rights_rights_id']);
     if ($rights) {
         $rightsXml = $xml->addChild('Rights');
         foreach ($rights as $key => $value) {
-            $rightsXml->addChild($key, htmlspecialchars($value));
+            $rightsXml->addChild($key, htmlspecialchars($value ?? ''));
         }
-    } else {
-        error_log("Keine Rechte gefunden für rightsIdentifier: " . $rightsIdentifier);
     }
 
-    // Aktualisieren Sie $resource mit dem verwendeten rightsIdentifier
-    $resource['Rights_rights_id'] = $rightsIdentifier;
-
     // Resource Type
-    $resourceType = getResourceType($connection, $resource['Resource_Type_resource_name_id']);
+    $resourceType = getRelatedData($connection, 'resource_type', 'resource_name_id', $resource['Resource_Type_resource_name_id']);
     $resourceTypeXml = $xml->addChild('ResourceType');
     foreach ($resourceType as $key => $value) {
-        $resourceTypeXml->addChild($key, htmlspecialchars($value));
+        $resourceTypeXml->addChild($key, htmlspecialchars($value ?? ''));
     }
 
     // Language
-    $language = getLanguage($connection, $resource['Language_language_id']);
+    $language = getRelatedData($connection, 'language', 'language_id', $resource['Language_language_id']);
     $languageXml = $xml->addChild('Language');
     foreach ($language as $key => $value) {
-        $languageXml->addChild($key, htmlspecialchars($value));
+        $languageXml->addChild($key, htmlspecialchars($value ?? ''));
     }
 
     // Titles
@@ -589,8 +733,8 @@ function getResourceAsXml($connection, $id)
     $titlesXml = $xml->addChild('Titles');
     foreach ($titles as $title) {
         $titleXml = $titlesXml->addChild('Title');
-        $titleXml->addChild('text', htmlspecialchars($title['text']));
-        $titleXml->addChild('type', htmlspecialchars($title['title_type_name']));
+        $titleXml->addChild('text', htmlspecialchars($title['text'] ?? ''));
+        $titleXml->addChild('type', htmlspecialchars($title['title_type_name'] ?? ''));
     }
 
     // Authors
@@ -598,17 +742,12 @@ function getResourceAsXml($connection, $id)
     $authorsXml = $xml->addChild('Authors');
     foreach ($authors as $author) {
         $authorXml = $authorsXml->addChild('Author');
-
         $authorXml->addChild('familyname', htmlspecialchars($author['familyname'] ?? ''));
         $authorXml->addChild('givenname', htmlspecialchars($author['givenname'] ?? ''));
-
-        // ORCID hinzufügen
-        $orcid = $author['orcid'] ?? null;
-        if ($orcid !== null && $orcid !== '') {
-            $authorXml->addChild('orcid', htmlspecialchars($orcid));
+        if (isset($author['orcid']) && $author['orcid'] !== '') {
+            $authorXml->addChild('orcid', htmlspecialchars($author['orcid']));
         }
-
-        if (isset($author['Affiliations']) && is_array($author['Affiliations'])) {
+        if (isset($author['Affiliations'])) {
             $affiliationsXml = $authorXml->addChild('Affiliations');
             foreach ($author['Affiliations'] as $affiliation) {
                 $affiliationXml = $affiliationsXml->addChild('Affiliation');
@@ -618,7 +757,6 @@ function getResourceAsXml($connection, $id)
             }
         }
     }
-
 
     // Descriptions
     $descriptions = getDescriptions($connection, $id);
@@ -639,13 +777,10 @@ function getResourceAsXml($connection, $id)
         $personXml = $personsXml->addChild('Person');
         $personXml->addChild('familyname', htmlspecialchars($person['familyname'] ?? ''));
         $personXml->addChild('givenname', htmlspecialchars($person['givenname'] ?? ''));
-
-        $orcid = $person['orcid'] ?? null;
-        if ($orcid !== null && $orcid !== '') {
-            $personXml->addChild('orcid', htmlspecialchars($orcid));
+        if (isset($person['orcid']) && $person['orcid'] !== '') {
+            $personXml->addChild('orcid', htmlspecialchars($person['orcid']));
         }
-
-        if (isset($person['Affiliations']) && is_array($person['Affiliations'])) {
+        if (isset($person['Affiliations'])) {
             $affiliationsXml = $personXml->addChild('Affiliations');
             foreach ($person['Affiliations'] as $affiliation) {
                 $affiliationXml = $affiliationsXml->addChild('Affiliation');
@@ -654,8 +789,7 @@ function getResourceAsXml($connection, $id)
                 }
             }
         }
-
-        if (isset($person['Roles']) && is_array($person['Roles'])) {
+        if (isset($person['Roles'])) {
             $rolesXml = $personXml->addChild('Roles');
             foreach ($person['Roles'] as $role) {
                 $roleXml = $rolesXml->addChild('Role');
@@ -669,8 +803,7 @@ function getResourceAsXml($connection, $id)
     foreach ($contributors['institutions'] as $institution) {
         $institutionXml = $institutionsXml->addChild('Institution');
         $institutionXml->addChild('name', htmlspecialchars($institution['name'] ?? ''));
-
-        if (isset($institution['Affiliations']) && is_array($institution['Affiliations'])) {
+        if (isset($institution['Affiliations'])) {
             $affiliationsXml = $institutionXml->addChild('Affiliations');
             foreach ($institution['Affiliations'] as $affiliation) {
                 $affiliationXml = $affiliationsXml->addChild('Affiliation');
@@ -679,8 +812,7 @@ function getResourceAsXml($connection, $id)
                 }
             }
         }
-
-        if (isset($institution['Roles']) && is_array($institution['Roles'])) {
+        if (isset($institution['Roles'])) {
             $rolesXml = $institutionXml->addChild('Roles');
             foreach ($institution['Roles'] as $role) {
                 $roleXml = $rolesXml->addChild('Role');
@@ -699,8 +831,7 @@ function getResourceAsXml($connection, $id)
         $contactPersonXml->addChild('position', htmlspecialchars($contactPerson['position'] ?? ''));
         $contactPersonXml->addChild('email', htmlspecialchars($contactPerson['email'] ?? ''));
         $contactPersonXml->addChild('website', htmlspecialchars($contactPerson['website'] ?? ''));
-
-        if (isset($contactPerson['Affiliations']) && is_array($contactPerson['Affiliations'])) {
+        if (isset($contactPerson['Affiliations'])) {
             $affiliationsXml = $contactPersonXml->addChild('Affiliations');
             foreach ($contactPerson['Affiliations'] as $affiliation) {
                 $affiliationXml = $affiliationsXml->addChild('Affiliation');
@@ -717,10 +848,8 @@ function getResourceAsXml($connection, $id)
     foreach ($relatedWorks as $work) {
         $workXml = $relatedWorksXml->addChild('RelatedWork');
         $workXml->addChild('Identifier', htmlspecialchars($work['Identifier']));
-
         $relationXml = $workXml->addChild('Relation');
         $relationXml->addChild('name', htmlspecialchars($work['Relation']['name']));
-
         $identifierTypeXml = $workXml->addChild('IdentifierType');
         $identifierTypeXml->addChild('name', htmlspecialchars($work['IdentifierType']['name']));
     }
@@ -731,7 +860,7 @@ function getResourceAsXml($connection, $id)
     foreach ($spatialTemporalCoverages as $coverage) {
         $coverageXml = $coveragesXml->addChild('SpatialTemporalCoverage');
         foreach ($coverage as $key => $value) {
-            $coverageXml->addChild($key, htmlspecialchars($value));
+            $coverageXml->addChild($key, htmlspecialchars($value ?? ''));
         }
     }
 
@@ -741,7 +870,7 @@ function getResourceAsXml($connection, $id)
     foreach ($thesaurusKeywords as $keyword) {
         $keywordXml = $keywordsXml->addChild('Keyword');
         foreach ($keyword as $key => $value) {
-            $keywordXml->addChild($key, htmlspecialchars($value));
+            $keywordXml->addChild($key, htmlspecialchars($value ?? ''));
         }
     }
 
@@ -761,7 +890,25 @@ function getResourceAsXml($connection, $id)
     foreach ($fundingReferences as $reference) {
         $referenceXml = $fundingReferencesXml->addChild('FundingReference');
         foreach ($reference as $key => $value) {
-            $referenceXml->addChild($key, htmlspecialchars($value));
+            $referenceXml->addChild($key, htmlspecialchars($value ?? ''));
+        }
+    }
+
+    // Originating Laboratory
+    $originatingLaboratories = getOriginatingLaboratories($connection, $id);
+    $originatingLaboratoriesXml = $xml->addChild('OriginatingLaboratories');
+    foreach ($originatingLaboratories as $laboratory) {
+        $laboratoryXml = $originatingLaboratoriesXml->addChild('OriginatingLaboratory');
+        $laboratoryXml->addChild('laboratoryname', htmlspecialchars($laboratory['laboratoryname']));
+        $laboratoryXml->addChild('labId', htmlspecialchars($laboratory['labId'] ?? ''));
+        if (isset($laboratory['Affiliations'])) {
+            $affiliationsXml = $laboratoryXml->addChild('Affiliations');
+            foreach ($laboratory['Affiliations'] as $affiliation) {
+                $affiliationXml = $affiliationsXml->addChild('Affiliation');
+                foreach ($affiliation as $key => $value) {
+                    $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
+                }
+            }
         }
     }
 
