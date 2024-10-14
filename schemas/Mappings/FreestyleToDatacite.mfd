@@ -10,7 +10,7 @@
 					<targets>
 						<datapoint pos="0" key="12"/>
 					</targets>
-					<view ltx="765" lty="19" rbx="882" rby="36"/>
+					<view ltx="374" lty="-90" rbx="491" rby="-73"/>
 					<data>
 						<constant value="http://doi.org/" datatype="string"/>
 					</data>
@@ -23,7 +23,7 @@
 					<targets>
 						<datapoint pos="0" key="21"/>
 					</targets>
-					<view ltx="984" lty="76" rbx="1048" rby="130"/>
+					<view ltx="593" lty="-33" rbx="657" rby="21"/>
 				</component>
 				<component name="string-length" library="core" uid="14" kind="5">
 					<sources>
@@ -32,30 +32,15 @@
 					<targets>
 						<datapoint pos="0" key="18"/>
 					</targets>
-					<view ltx="805" lty="76" rbx="900" rby="114"/>
+					<view ltx="414" lty="-33" rbx="509" rby="5"/>
 				</component>
 				<component name="constant" library="core" uid="17" kind="2">
 					<targets>
 						<datapoint pos="0" key="16"/>
 					</targets>
-					<view ltx="917" lty="113" rbx="957" rby="130"/>
+					<view ltx="526" lty="4" rbx="566" rby="21"/>
 					<data>
 						<constant value="0" datatype="decimal"/>
-					</data>
-				</component>
-				<component name="substring-after" library="core" uid="8" kind="5">
-					<sources>
-						<datapoint pos="0" key="9"/>
-						<datapoint pos="1" key="10"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="11"/>
-					</targets>
-					<view ltx="895" lty="-18" rbx="999" rby="36"/>
-					<data>
-						<comment>
-							<text>Abschneiden des URIs von der DOI</text>
-						</comment>
 					</data>
 				</component>
 				<component name="if-else" library="core" uid="12" kind="4">
@@ -67,22 +52,10 @@
 					<targets>
 						<datapoint pos="0" key="15"/>
 					</targets>
-					<view ltx="1076" lty="101" rbx="1180" rby="174"/>
+					<view ltx="685" lty="-8" rbx="789" rby="65"/>
 					<data>
 						<comment>
 							<text>Wurde version befüllt?</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="4" kind="2">
-					<targets>
-						<datapoint pos="0" key="7"/>
-					</targets>
-					<view ltx="1493" lty="-79" rbx="1555" rby="-62"/>
-					<data>
-						<constant value="DOI" datatype="string"/>
-						<comment>
-							<text>Von uns wird nur die DOI als Identifier unterstützt</text>
 						</comment>
 					</data>
 				</component>
@@ -90,11 +63,116 @@
 					<targets>
 						<datapoint pos="0" key="25"/>
 					</targets>
-					<view ltx="1493" lty="-46" rbx="1574" rby="-29"/>
+					<view ltx="1493" lty="-124" rbx="1574" rby="-107"/>
 					<data>
 						<constant value="Dataset" datatype="string"/>
 						<comment>
 							<text>Default value laut altem MDE</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="29" kind="2">
+					<targets>
+						<datapoint pos="0" key="38"/>
+					</targets>
+					<view ltx="385" lty="333" rbx="430" rby="350"/>
+					<data>
+						<constant value=" " datatype="string"/>
+					</data>
+				</component>
+				<component name="substring-before" library="core" uid="28" kind="5">
+					<sources>
+						<datapoint pos="0" key="40"/>
+						<datapoint pos="1" key="41"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="42"/>
+					</targets>
+					<view ltx="463" lty="296" rbx="577" rby="350"/>
+				</component>
+				<component name="if-else" library="core" uid="32" kind="4">
+					<sources>
+						<datapoint pos="0" key="43"/>
+						<datapoint pos="1" key="44"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="45"/>
+					</targets>
+					<view ltx="526" lty="118" rbx="630" rby="191"/>
+					<data>
+						<comment>
+							<text>Wenn TitleType MainTitle, dann nur Sprachkürzel einfügen</text>
+						</comment>
+					</data>
+				</component>
+				<component name="contains" library="core" uid="20" kind="5">
+					<sources>
+						<datapoint pos="0" key="46"/>
+						<datapoint pos="1" key="37"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="47"/>
+					</targets>
+					<view ltx="374" lty="170" rbx="472" rby="224"/>
+				</component>
+				<component name="if-else" library="core" uid="22" kind="4">
+					<sources>
+						<datapoint pos="0" key="48"/>
+						<datapoint/>
+						<datapoint pos="2" key="49"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="50"/>
+					</targets>
+					<view ltx="733" lty="207" rbx="837" rby="280"/>
+					<data>
+						<comment>
+							<text>Wenn TitleType nicht MainTitle, TitleType ohne Leerzeichen übernehmen</text>
+						</comment>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="31" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="51"/>
+						<datapoint pos="1" key="52"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="53"/>
+					</targets>
+					<view ltx="626" lty="241" rbx="708" rby="297"/>
+				</component>
+				<component name="substring-after" library="core" uid="26" kind="5">
+					<sources>
+						<datapoint pos="0" key="54"/>
+						<datapoint pos="1" key="55"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="56"/>
+					</targets>
+					<view ltx="473" lty="243" rbx="577" rby="297"/>
+				</component>
+				<component name="constant" library="core" uid="21" kind="2">
+					<targets>
+						<datapoint pos="0" key="36"/>
+					</targets>
+					<view ltx="259" lty="207" rbx="351" rby="224"/>
+					<data>
+						<constant value="Main Title" datatype="string"/>
+					</data>
+				</component>
+				<component name="substring-after" library="core" uid="8" kind="5">
+					<sources>
+						<datapoint pos="0" key="9"/>
+						<datapoint pos="1" key="10"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="11"/>
+					</targets>
+					<view ltx="504" lty="-127" rbx="608" rby="-73"/>
+					<data>
+						<comment>
+							<text>Abschneiden des URIs von der DOI</text>
 						</comment>
 					</data>
 				</component>
@@ -117,18 +195,27 @@
 										<entry name="identifier" ns="1" inpkey="5">
 											<entry name="identifierType" type="attribute" inpkey="6"/>
 										</entry>
-										<entry name="titles" ns="1" inpkey="30" expanded="1">
-											<entry name="title" ns="1" inpkey="31" expanded="1">
+										<entry name="titles" ns="1" inpkey="30">
+											<entry name="title" ns="1" inpkey="31">
 												<entry name="titleType" type="attribute" inpkey="32"/>
 												<entry name="lang" ns="2" type="attribute" inpkey="39"/>
 											</entry>
 										</entry>
 										<entry name="publicationYear" ns="1" inpkey="22"/>
-										<entry name="resourceType" ns="1" inpkey="26" expanded="1">
+										<entry name="resourceType" ns="1" inpkey="26">
 											<entry name="resourceTypeGeneral" type="attribute" inpkey="27"/>
 										</entry>
 										<entry name="language" ns="1" inpkey="28"/>
 										<entry name="version" ns="1" inpkey="2"/>
+										<entry name="rightsList" ns="1" expanded="1">
+											<entry name="rights" ns="1" inpkey="57" expanded="1">
+												<entry name="rightsURI" type="attribute" inpkey="58"/>
+												<entry name="rightsIdentifier" type="attribute" inpkey="59"/>
+												<entry name="rightsIdentifierScheme" type="attribute" inpkey="60"/>
+												<entry name="schemeURI" type="attribute" inpkey="61"/>
+												<entry name="lang" ns="2" type="attribute" inpkey="62"/>
+											</entry>
+										</entry>
 									</entry>
 								</entry>
 							</entry>
@@ -136,24 +223,17 @@
 						<document schema="..\DataCite\DataCiteSchema45.xsd" instanceroot="{http://datacite.org/schema/kernel-4}resource" inputinstance="..\DataCite\DataCiteExample45.xml" outputinstance="..\DataCite\DataCiteExample45.xml"/>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="29" kind="2">
+				<component name="constant" library="core" uid="33" kind="2">
 					<targets>
-						<datapoint pos="0" key="38"/>
+						<datapoint pos="0" key="63"/>
 					</targets>
-					<view ltx="776" lty="442" rbx="821" rby="459"/>
+					<view ltx="1493" lty="-90" rbx="1548" rby="-73"/>
 					<data>
-						<constant value=" " datatype="string"/>
+						<constant value="en" datatype="string"/>
+						<comment>
+							<text>Default language</text>
+						</comment>
 					</data>
-				</component>
-				<component name="substring-before" library="core" uid="28" kind="5">
-					<sources>
-						<datapoint pos="0" key="40"/>
-						<datapoint pos="1" key="41"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="42"/>
-					</targets>
-					<view ltx="854" lty="405" rbx="968" rby="459"/>
 				</component>
 				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
 					<properties XSLTTargetEncoding="UTF-8"/>
@@ -172,13 +252,18 @@
 										<entry name="doi" outkey="8"/>
 										<entry name="version" outkey="4"/>
 										<entry name="year" outkey="23"/>
+										<entry name="Rights" expanded="1">
+											<entry name="text" outkey="64"/>
+											<entry name="rightsIdentifier" outkey="65"/>
+											<entry name="rightsURI" outkey="66"/>
+										</entry>
 										<entry name="ResourceType">
 											<entry name="resource_type_general" outkey="24"/>
 										</entry>
-										<entry name="Language" expanded="1">
+										<entry name="Language">
 											<entry name="code" outkey="29"/>
 										</entry>
-										<entry name="Titles" outkey="33" expanded="1">
+										<entry name="Titles" outkey="33">
 											<entry name="Title" expanded="1">
 												<entry name="text" outkey="34"/>
 												<entry name="type" outkey="35"/>
@@ -191,75 +276,40 @@
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
 					</data>
 				</component>
-				<component name="if-else" library="core" uid="32" kind="4">
-					<sources>
-						<datapoint pos="0" key="43"/>
-						<datapoint pos="1" key="44"/>
-						<datapoint/>
-					</sources>
+				<component name="constant" library="core" uid="34" kind="2">
 					<targets>
-						<datapoint pos="0" key="45"/>
+						<datapoint pos="0" key="67"/>
 					</targets>
-					<view ltx="917" lty="227" rbx="1021" rby="300"/>
+					<view ltx="1493" lty="-57" rbx="1561" rby="-40"/>
 					<data>
+						<constant value="SPDX" datatype="string"/>
 						<comment>
-							<text>Wenn TitleType MainTitle, dann nur Sprachkürzel einfügen</text>
+							<text>Default rights scheme</text>
 						</comment>
 					</data>
 				</component>
-				<component name="contains" library="core" uid="20" kind="5">
-					<sources>
-						<datapoint pos="0" key="46"/>
-						<datapoint pos="1" key="37"/>
-					</sources>
+				<component name="constant" library="core" uid="4" kind="2">
 					<targets>
-						<datapoint pos="0" key="47"/>
+						<datapoint pos="0" key="7"/>
 					</targets>
-					<view ltx="765" lty="279" rbx="863" rby="333"/>
-				</component>
-				<component name="if-else" library="core" uid="22" kind="4">
-					<sources>
-						<datapoint pos="0" key="48"/>
-						<datapoint/>
-						<datapoint pos="2" key="49"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="50"/>
-					</targets>
-					<view ltx="1124" lty="316" rbx="1228" rby="389"/>
+					<view ltx="1493" lty="-157" rbx="1555" rby="-140"/>
 					<data>
+						<constant value="DOI" datatype="string"/>
 						<comment>
-							<text>Wenn TitleType nicht MainTitle, TitleType ohne Leerzeichen übernehmen</text>
+							<text>Von uns wird nur die DOI als Identifier unterstützt</text>
 						</comment>
 					</data>
 				</component>
-				<component name="concat" library="core" uid="31" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="51"/>
-						<datapoint pos="1" key="52"/>
-					</sources>
+				<component name="constant" library="core" uid="35" kind="2">
 					<targets>
-						<datapoint pos="0" key="53"/>
+						<datapoint pos="0" key="68"/>
 					</targets>
-					<view ltx="1017" lty="350" rbx="1099" rby="406"/>
-				</component>
-				<component name="substring-after" library="core" uid="26" kind="5">
-					<sources>
-						<datapoint pos="0" key="54"/>
-						<datapoint pos="1" key="55"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="56"/>
-					</targets>
-					<view ltx="864" lty="352" rbx="968" rby="406"/>
-				</component>
-				<component name="constant" library="core" uid="21" kind="2">
-					<targets>
-						<datapoint pos="0" key="36"/>
-					</targets>
-					<view ltx="650" lty="316" rbx="742" rby="333"/>
+					<view ltx="1493" lty="-22" rbx="1642" rby="-5"/>
 					<data>
-						<constant value="Main Title" datatype="string"/>
+						<constant value="https://spdx.org/licenses/" datatype="string"/>
+						<comment>
+							<text>Default rights scheme uri</text>
+						</comment>
 					</data>
 				</component>
 			</children>
@@ -395,6 +445,36 @@
 					<vertex vertexkey="42">
 						<edges>
 							<edge vertexkey="52"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="64">
+						<edges>
+							<edge vertexkey="57"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="66">
+						<edges>
+							<edge vertexkey="58"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="65">
+						<edges>
+							<edge vertexkey="59"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="67">
+						<edges>
+							<edge vertexkey="60"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="68">
+						<edges>
+							<edge vertexkey="61"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="63">
+						<edges>
+							<edge vertexkey="62"/>
 						</edges>
 					</vertex>
 				</vertices>
