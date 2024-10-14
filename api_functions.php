@@ -678,8 +678,6 @@ function getOriginatingLaboratoryAffiliations($connection, $originating_laborato
  */
 function getResourceAsXml($connection, $id)
 {
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
     $stmt = $connection->prepare('SELECT * FROM resource WHERE resource_id = ?');
     $stmt->bind_param('i', $id);
     $stmt->execute();
