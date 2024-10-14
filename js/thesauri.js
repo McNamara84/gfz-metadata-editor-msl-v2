@@ -53,54 +53,32 @@ $(document).ready(function () {
 
         // Funktion zum Laden und Verarbeiten der Keywords aus der JSON-Datei
         function loadKeywords(data) {
-            var filteredData = data;
+            var filteredData = [];
 
-            // Wenn eine rootNodeId angegeben ist, wende die spezielle Filterung an
-            if (config.rootNodeId) {
-                function findNodeById(nodes, id) {
-                    for (var i = 0; i < nodes.length; i++) {
-                        if (nodes[i].id === id) {
-                            return nodes[i];
-                        }
-                        if (nodes[i].children) {
-                            var foundNode = findNodeById(nodes[i].children, id);
-                            if (foundNode) {
-                                return foundNode;
-                            }
-                        }
+            // Prüfen, ob die Datee Arrays enthält oder Objekt und darunter Arrays enthält 
+            if (Array.isArray(data)) {
+                // Für Arrays nur
+                filteredData = processNodes(data); 
+            } else {
+                // Für Objekte 
+                for (var rootKey in data) {
+                    if (data.hasOwnProperty(rootKey)) {
+                        var rootChildren = data[rootKey];
+
+                        var rootNode = {
+                            text: rootKey,
+                            children: rootChildren.map(function (child) {
+                                return processNode(child);
+                            })
+                        };
+
+                        filteredData.push(rootNode);
                     }
-                    return null;
                 }
-
-                // Den gewünschten Knoten finden und nur seine Kinder verwenden
-                var selectedNode = findNodeById(data, config.rootNodeId);
-                if (selectedNode) {
-                    filteredData = selectedNode.children || [];
-                } else {
-                    console.error(`Root node with ID ${config.rootNodeId} not found in ${config.jsonFile}`);
-                    return;
-                }
-            }
-
-            function processNodes(nodes) {
-                return nodes.map(function (node) {
-                    if (node.children) {
-                        node.children = processNodes(node.children);
-                    }
-                    node.a_attr = {
-                        title: node.description || node.text
-                    };
-                    node.original = {
-                        scheme: node.scheme || "",
-                        schemeURI: node.schemeURI || "",
-                        language: node.language || ""
-                    };
-                    return node;
-                });
             }
 
             var processedData = processNodes(filteredData);
-            // Funktion zum Erstellen der Whitelist (Vorschläge) für Tagify
+
             function buildWhitelist(data, parentPath = []) {
                 data.forEach(function (item) {
                     var textToAdd = parentPath.concat(item.text).join(' > ');
@@ -179,4 +157,66 @@ $(document).ready(function () {
     keywordConfigurations.forEach(function (config) {
         initializeKeywordInput(config);
     });
+
+    function processNode(node) {
+        if (node.children) {
+            node.children = node.children.map(function (child) {
+                return processNode(child);
+            });
+        }
+
+        node.a_attr = {
+            title: node.description || node.text
+        };
+        node.original = {
+            scheme: node.scheme || "",
+            schemeURI: node.schemeURI || "",
+            language: node.language || ""
+        };
+
+        return node;
+    }
+
+    function processNodes(nodes) {
+        return nodes.map(function (node) {
+            return processNode(node);
+        });
+    }
+
+    function processNode(node) {
+        // Überprüfen, ob neue oder alte Struktur vorliegt, und Attribute entsprechend zuordnen
+        var id = node.id || node.uri || ""; 
+        var text = node.text || node.label || node.value || "No text";  
+        var schemeURI = node.schemeURI || node.vocab_uri || "";  
+        var language = node.language || "";  
+    
+        // Bearbeite die Kindknoten
+        if (node.children && Array.isArray(node.children)) {
+            node.children = node.children.map(function (child) {
+                return processNode(child);
+            });
+        } else {
+            node.children = [];
+        }
+    
+        // Erstelle das 'a_attr' Attribut und das 'original' Attribut für das Knotenobjekt
+        node.a_attr = {
+            title: node.description || node.text || "No description"
+        };
+        node.original = {
+            scheme: node.scheme || "",
+            schemeURI: schemeURI, 
+            language: language 
+        };
+    
+        // Rückgabe des angepassten Knotens mit den neuen Attributen
+        return {
+            id: id,
+            text: text, 
+            children: node.children, 
+            a_attr: node.a_attr, 
+            original: node.original
+        };
+    }
+    
 });
