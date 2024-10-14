@@ -302,7 +302,7 @@ function getContributorPersonAffiliations($connection, $contributor_person_id)
 {
     $affiliations = [];
     $stmt = $connection->prepare("
-        SELECT a.*
+        SELECT a.affiliation_id, a.name, a.rorId
         FROM Affiliation a
         JOIN Contributor_Person_has_Affiliation cpha ON a.affiliation_id = cpha.Affiliation_affiliation_id
         WHERE cpha.Contributor_Person_contributor_person_id = ?
@@ -314,12 +314,9 @@ function getContributorPersonAffiliations($connection, $contributor_person_id)
         $affiliations[] = [
             'affiliation_id' => $row['affiliation_id'] ?? null,
             'name' => $row['name'] ?? null,
-            'city' => $row['city'] ?? null,
-            'country' => $row['country'] ?? null,
             'rorId' => $row['rorId'] ?? null
         ];
     }
-
     return $affiliations;
 }
 
@@ -362,7 +359,7 @@ function getContributorInstitutionAffiliations($connection, $contributor_institu
 {
     $affiliations = [];
     $stmt = $connection->prepare("
-        SELECT a.*
+        SELECT a.affiliation_id, a.name, a.rorId
         FROM Affiliation a
         JOIN Contributor_Institution_has_Affiliation ciha ON a.affiliation_id = ciha.Affiliation_affiliation_id
         WHERE ciha.Contributor_Institution_contributor_institution_id = ?
@@ -375,8 +372,6 @@ function getContributorInstitutionAffiliations($connection, $contributor_institu
         $affiliations[] = [
             'affiliation_id' => $row['affiliation_id'] ?? null,
             'name' => $row['name'] ?? null,
-            'city' => $row['city'] ?? null,
-            'country' => $row['country'] ?? null,
             'rorId' => $row['rorId'] ?? null
         ];
     }
@@ -507,7 +502,7 @@ function getContactPersonAffiliations($connection, $contact_person_id)
 {
     $affiliations = [];
     $stmt = $connection->prepare("
-        SELECT a.*
+        SELECT a.affiliation_id, a.name, a.rorId
         FROM Affiliation a
         JOIN Contact_Person_has_Affiliation cpha ON a.affiliation_id = cpha.Affiliation_affiliation_id
         WHERE cpha.Contact_Person_contact_person_id = ?
@@ -520,8 +515,6 @@ function getContactPersonAffiliations($connection, $contact_person_id)
         $affiliations[] = [
             'affiliation_id' => $row['affiliation_id'] ?? null,
             'name' => $row['name'] ?? null,
-            'city' => $row['city'] ?? null,
-            'country' => $row['country'] ?? null,
             'rorId' => $row['rorId'] ?? null
         ];
     }
@@ -861,6 +854,10 @@ function getResourceAsXml($connection, $id)
     foreach ($spatialTemporalCoverages as $coverage) {
         $coverageXml = $coveragesXml->addChild('SpatialTemporalCoverage');
         foreach ($coverage as $key => $value) {
+            if ($key === 'dateTimeStart' || $key === 'dateTimeEnd') {
+                $datetime = new DateTime($value);
+                $value = $datetime->format('Y-m-d\TH:i:s');
+            }
             $coverageXml->addChild($key, htmlspecialchars($value ?? ''));
         }
     }
