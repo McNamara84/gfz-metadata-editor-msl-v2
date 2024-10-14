@@ -6,6 +6,98 @@
 		<properties SelectedLanguage="xslt"/>
 		<structure>
 			<children>
+				<component name="constant" library="core" uid="9" kind="2">
+					<targets>
+						<datapoint pos="0" key="12"/>
+					</targets>
+					<view ltx="765" lty="19" rbx="882" rby="36"/>
+					<data>
+						<constant value="http://doi.org/" datatype="string"/>
+					</data>
+				</component>
+				<component name="greater" library="core" uid="16" kind="5">
+					<sources>
+						<datapoint pos="0" key="19"/>
+						<datapoint pos="1" key="20"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="21"/>
+					</targets>
+					<view ltx="984" lty="76" rbx="1048" rby="130"/>
+				</component>
+				<component name="string-length" library="core" uid="14" kind="5">
+					<sources>
+						<datapoint pos="0" key="17"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="18"/>
+					</targets>
+					<view ltx="805" lty="76" rbx="900" rby="114"/>
+				</component>
+				<component name="constant" library="core" uid="17" kind="2">
+					<targets>
+						<datapoint pos="0" key="16"/>
+					</targets>
+					<view ltx="917" lty="113" rbx="957" rby="130"/>
+					<data>
+						<constant value="0" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="substring-after" library="core" uid="8" kind="5">
+					<sources>
+						<datapoint pos="0" key="9"/>
+						<datapoint pos="1" key="10"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="11"/>
+					</targets>
+					<view ltx="895" lty="-18" rbx="999" rby="36"/>
+					<data>
+						<comment>
+							<text>Abschneiden des URIs von der DOI</text>
+						</comment>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="12" kind="4">
+					<sources>
+						<datapoint pos="0" key="13"/>
+						<datapoint pos="1" key="14"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="15"/>
+					</targets>
+					<view ltx="1076" lty="101" rbx="1180" rby="174"/>
+					<data>
+						<comment>
+							<text>Wurde version befüllt?</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="4" kind="2">
+					<targets>
+						<datapoint pos="0" key="7"/>
+					</targets>
+					<view ltx="1493" lty="-79" rbx="1555" rby="-62"/>
+					<data>
+						<constant value="DOI" datatype="string"/>
+						<comment>
+							<text>Von uns wird nur die DOI als Identifier unterstützt</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="18" kind="2">
+					<targets>
+						<datapoint pos="0" key="25"/>
+					</targets>
+					<view ltx="1493" lty="-46" rbx="1574" rby="-29"/>
+					<data>
+						<constant value="Dataset" datatype="string"/>
+						<comment>
+							<text>Default value laut altem MDE</text>
+						</comment>
+					</data>
+				</component>
 				<component name="DataCiteSchema45" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1775" lty="4" rbx="2163" rby="832"/>
@@ -13,14 +105,30 @@
 						<root>
 							<header>
 								<namespaces>
+									<namespace/>
 									<namespace uid="http://datacite.org/schema/kernel-4"/>
+									<namespace uid="http://www.w3.org/XML/1998/namespace"/>
 									<namespace uid="http://www.altova.com/mapforce"/>
 								</namespaces>
 							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="resource" inpkey="1" expanded="1">
-										<entry name="version" inpkey="2"/>
+							<entry name="FileInstance" ns="3" expanded="1">
+								<entry name="document" ns="3" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="resource" ns="1" inpkey="1" expanded="1">
+										<entry name="identifier" ns="1" inpkey="5">
+											<entry name="identifierType" type="attribute" inpkey="6"/>
+										</entry>
+										<entry name="titles" ns="1" inpkey="30" expanded="1">
+											<entry name="title" ns="1" inpkey="31" expanded="1">
+												<entry name="titleType" type="attribute" inpkey="32"/>
+												<entry name="lang" ns="2" type="attribute" inpkey="39"/>
+											</entry>
+										</entry>
+										<entry name="publicationYear" ns="1" inpkey="22"/>
+										<entry name="resourceType" ns="1" inpkey="26" expanded="1">
+											<entry name="resourceTypeGeneral" type="attribute" inpkey="27"/>
+										</entry>
+										<entry name="language" ns="1" inpkey="28"/>
+										<entry name="version" ns="1" inpkey="2"/>
 									</entry>
 								</entry>
 							</entry>
@@ -28,11 +136,30 @@
 						<document schema="..\DataCite\DataCiteSchema45.xsd" instanceroot="{http://datacite.org/schema/kernel-4}resource" inputinstance="..\DataCite\DataCiteExample45.xml" outputinstance="..\DataCite\DataCiteExample45.xml"/>
 					</data>
 				</component>
+				<component name="constant" library="core" uid="29" kind="2">
+					<targets>
+						<datapoint pos="0" key="38"/>
+					</targets>
+					<view ltx="776" lty="442" rbx="821" rby="459"/>
+					<data>
+						<constant value=" " datatype="string"/>
+					</data>
+				</component>
+				<component name="substring-before" library="core" uid="28" kind="5">
+					<sources>
+						<datapoint pos="0" key="40"/>
+						<datapoint pos="1" key="41"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="42"/>
+					</targets>
+					<view ltx="854" lty="405" rbx="968" rby="459"/>
+				</component>
 				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
 					<properties XSLTTargetEncoding="UTF-8"/>
 					<view rbx="200" rby="356"/>
 					<data>
-						<root>
+						<root scrollposition="1">
 							<header>
 								<namespaces>
 									<namespace/>
@@ -42,12 +169,97 @@
 							<entry name="FileInstance" ns="1" expanded="1">
 								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
 									<entry name="Resource" outkey="3" expanded="1">
+										<entry name="doi" outkey="8"/>
 										<entry name="version" outkey="4"/>
+										<entry name="year" outkey="23"/>
+										<entry name="ResourceType">
+											<entry name="resource_type_general" outkey="24"/>
+										</entry>
+										<entry name="Language" expanded="1">
+											<entry name="code" outkey="29"/>
+										</entry>
+										<entry name="Titles" outkey="33" expanded="1">
+											<entry name="Title" expanded="1">
+												<entry name="text" outkey="34"/>
+												<entry name="type" outkey="35"/>
+											</entry>
+										</entry>
 									</entry>
 								</entry>
 							</entry>
 						</root>
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="32" kind="4">
+					<sources>
+						<datapoint pos="0" key="43"/>
+						<datapoint pos="1" key="44"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="45"/>
+					</targets>
+					<view ltx="917" lty="227" rbx="1021" rby="300"/>
+					<data>
+						<comment>
+							<text>Wenn TitleType MainTitle, dann nur Sprachkürzel einfügen</text>
+						</comment>
+					</data>
+				</component>
+				<component name="contains" library="core" uid="20" kind="5">
+					<sources>
+						<datapoint pos="0" key="46"/>
+						<datapoint pos="1" key="37"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="47"/>
+					</targets>
+					<view ltx="765" lty="279" rbx="863" rby="333"/>
+				</component>
+				<component name="if-else" library="core" uid="22" kind="4">
+					<sources>
+						<datapoint pos="0" key="48"/>
+						<datapoint/>
+						<datapoint pos="2" key="49"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="50"/>
+					</targets>
+					<view ltx="1124" lty="316" rbx="1228" rby="389"/>
+					<data>
+						<comment>
+							<text>Wenn TitleType nicht MainTitle, TitleType ohne Leerzeichen übernehmen</text>
+						</comment>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="31" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="51"/>
+						<datapoint pos="1" key="52"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="53"/>
+					</targets>
+					<view ltx="1017" lty="350" rbx="1099" rby="406"/>
+				</component>
+				<component name="substring-after" library="core" uid="26" kind="5">
+					<sources>
+						<datapoint pos="0" key="54"/>
+						<datapoint pos="1" key="55"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="56"/>
+					</targets>
+					<view ltx="864" lty="352" rbx="968" rby="406"/>
+				</component>
+				<component name="constant" library="core" uid="21" kind="2">
+					<targets>
+						<datapoint pos="0" key="36"/>
+					</targets>
+					<view ltx="650" lty="316" rbx="742" rby="333"/>
+					<data>
+						<constant value="Main Title" datatype="string"/>
 					</data>
 				</component>
 			</children>
@@ -59,9 +271,130 @@
 							<edge vertexkey="1"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="4">
+					<vertex vertexkey="15">
 						<edges>
 							<edge vertexkey="2"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="11">
+						<edges>
+							<edge vertexkey="5"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="7">
+						<edges>
+							<edge vertexkey="6"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="8">
+						<edges>
+							<edge vertexkey="9"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="12">
+						<edges>
+							<edge vertexkey="10"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="21">
+						<edges>
+							<edge vertexkey="13"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="4">
+						<edges>
+							<edge vertexkey="14"/>
+							<edge vertexkey="17"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="18">
+						<edges>
+							<edge vertexkey="19"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="16">
+						<edges>
+							<edge vertexkey="20"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="23">
+						<edges>
+							<edge vertexkey="22"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="25">
+						<edges>
+							<edge vertexkey="26"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="24">
+						<edges>
+							<edge vertexkey="27"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="29">
+						<edges>
+							<edge vertexkey="28"/>
+							<edge vertexkey="44"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="33">
+						<edges>
+							<edge vertexkey="30"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="34">
+						<edges>
+							<edge vertexkey="31"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="50">
+						<edges>
+							<edge vertexkey="32"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="36">
+						<edges>
+							<edge vertexkey="37"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="45">
+						<edges>
+							<edge vertexkey="39"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="35">
+						<edges>
+							<edge vertexkey="40"/>
+							<edge vertexkey="46"/>
+							<edge vertexkey="54"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="38">
+						<edges>
+							<edge vertexkey="41"/>
+							<edge vertexkey="55"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="47">
+						<edges>
+							<edge vertexkey="43"/>
+							<edge vertexkey="48"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="53">
+						<edges>
+							<edge vertexkey="49"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="56">
+						<edges>
+							<edge vertexkey="51"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="42">
+						<edges>
+							<edge vertexkey="52"/>
 						</edges>
 					</vertex>
 				</vertices>
