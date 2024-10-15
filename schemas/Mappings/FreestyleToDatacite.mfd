@@ -170,18 +170,6 @@
 						</comment>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="45" kind="2">
-					<targets>
-						<datapoint pos="0" key="101"/>
-					</targets>
-					<view ltx="1493" lty="118" rbx="1558" rby="135"/>
-					<data>
-						<constant value="ROR" datatype="string"/>
-						<comment>
-							<text>Default affiliationIdentifierScheme</text>
-						</comment>
-					</data>
-				</component>
 				<component name="constant" library="core" uid="29" kind="2">
 					<targets>
 						<datapoint pos="0" key="38"/>
@@ -289,6 +277,69 @@
 						</comment>
 					</data>
 				</component>
+				<component name="constant" library="core" uid="48" kind="2">
+					<targets>
+						<datapoint pos="0" key="110"/>
+					</targets>
+					<view ltx="1492" lty="185" rbx="1609" rby="202"/>
+					<data>
+						<constant value="ContactPerson" datatype="string"/>
+						<comment>
+							<text>Default PersonType for Contact Persons</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="41" kind="2">
+					<targets>
+						<datapoint pos="0" key="71"/>
+					</targets>
+					<view ltx="1493" lty="48" rbx="1569" rby="65"/>
+					<data>
+						<constant value="ORCID" datatype="string"/>
+						<comment>
+							<text>Default nameIdentifierScheme</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="40" kind="2">
+					<targets>
+						<datapoint pos="0" key="72"/>
+					</targets>
+					<view ltx="1493" lty="82" rbx="1624" rby="99"/>
+					<data>
+						<constant value="https://orcid.org/" datatype="string"/>
+						<comment>
+							<text>Default nameIdentifierSchemeUri</text>
+						</comment>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="44" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="98"/>
+						<datapoint pos="1" key="99"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="100"/>
+					</targets>
+					<view ltx="781" lty="317" rbx="863" rby="373"/>
+					<data>
+						<comment>
+							<text>RorID vervollständigen mit URI</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="50" kind="2">
+					<targets>
+						<datapoint pos="0" key="128"/>
+					</targets>
+					<view ltx="1493" lty="226" rbx="1561" rby="243"/>
+					<data>
+						<constant value="labid" datatype="string"/>
+						<comment>
+							<text>Default nameIdentifierScheme for labs</text>
+						</comment>
+					</data>
+				</component>
 				<component name="constant" library="core" uid="46" kind="2">
 					<targets>
 						<datapoint pos="0" key="102"/>
@@ -301,15 +352,66 @@
 						</comment>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="48" kind="2">
+				<component name="constant" library="core" uid="51" kind="2">
 					<targets>
-						<datapoint pos="0" key="110"/>
+						<datapoint pos="0" key="129"/>
 					</targets>
-					<view ltx="1492" lty="185" rbx="1609" rby="202"/>
+					<view ltx="1493" lty="263" rbx="1630" rby="280"/>
 					<data>
-						<constant value="ContactPerson" datatype="string"/>
+						<constant value="HostingInstitution" datatype="string"/>
 						<comment>
-							<text>Default PersonType for Contact Persons</text>
+							<text>Default contributorType for labs</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="45" kind="2">
+					<targets>
+						<datapoint pos="0" key="101"/>
+					</targets>
+					<view ltx="1493" lty="118" rbx="1558" rby="135"/>
+					<data>
+						<constant value="ROR" datatype="string"/>
+						<comment>
+							<text>Default affiliationIdentifierScheme</text>
+						</comment>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="49" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="107"/>
+						<datapoint pos="1" key="108"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="109"/>
+					</targets>
+					<view ltx="781" lty="389" rbx="863" rby="445"/>
+					<data>
+						<comment>
+							<text>RorID vervollständigen mit URI</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="42" kind="2">
+					<targets>
+						<datapoint pos="0" key="90"/>
+					</targets>
+					<view ltx="626" lty="338" rbx="746" rby="355"/>
+					<data>
+						<constant value="https://ror.org/" datatype="string"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="56" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="125"/>
+						<datapoint pos="1" key="126"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="127"/>
+					</targets>
+					<view ltx="781" lty="458" rbx="863" rby="514"/>
+					<data>
+						<comment>
+							<text>RorID vervollständigen mit URI</text>
 						</comment>
 					</data>
 				</component>
@@ -360,16 +462,28 @@
 										<entry name="resourceType" ns="1" inpkey="26">
 											<entry name="resourceTypeGeneral" type="attribute" inpkey="27"/>
 										</entry>
-										<entry name="contributors" ns="1" expanded="1">
-											<entry name="contributor" ns="1" inpkey="111" expanded="1">
+										<entry name="contributors" ns="1">
+											<entry name="contributor" ns="1" inpkey="111">
 												<entry name="contributorType" type="attribute" inpkey="112"/>
 												<entry name="contributorName" ns="1" inpkey="113"/>
 												<entry name="givenName" ns="1" inpkey="114"/>
 												<entry name="familyName" ns="1" inpkey="115"/>
-												<entry name="affiliation" ns="1" inpkey="116" expanded="1">
+												<entry name="affiliation" ns="1" inpkey="116">
 													<entry name="affiliationIdentifier" type="attribute" inpkey="117"/>
 													<entry name="affiliationIdentifierScheme" type="attribute" inpkey="118"/>
 													<entry name="schemeURI" type="attribute" inpkey="119"/>
+												</entry>
+											</entry>
+											<entry name="contributor" ns="1" inpkey="130" clone="1">
+												<entry name="contributorType" type="attribute" inpkey="131"/>
+												<entry name="contributorName" ns="1" inpkey="132"/>
+												<entry name="nameIdentifier" ns="1" inpkey="133">
+													<entry name="nameIdentifierScheme" type="attribute" inpkey="134"/>
+												</entry>
+												<entry name="affiliation" ns="1" inpkey="135">
+													<entry name="affiliationIdentifier" type="attribute" inpkey="136"/>
+													<entry name="affiliationIdentifierScheme" type="attribute" inpkey="137"/>
+													<entry name="schemeURI" type="attribute" inpkey="138"/>
 												</entry>
 											</entry>
 										</entry>
@@ -391,50 +505,11 @@
 						<document schema="..\DataCite\DataCiteSchema45.xsd" instanceroot="{http://datacite.org/schema/kernel-4}resource" inputinstance="..\DataCite\DataCiteExample45.xml" outputinstance="..\DataCite\DataCiteExample45.xml"/>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="41" kind="2">
-					<targets>
-						<datapoint pos="0" key="71"/>
-					</targets>
-					<view ltx="1493" lty="48" rbx="1569" rby="65"/>
-					<data>
-						<constant value="ORCID" datatype="string"/>
-						<comment>
-							<text>Default nameIdentifierScheme</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="40" kind="2">
-					<targets>
-						<datapoint pos="0" key="72"/>
-					</targets>
-					<view ltx="1493" lty="82" rbx="1624" rby="99"/>
-					<data>
-						<constant value="https://orcid.org/" datatype="string"/>
-						<comment>
-							<text>Default nameIdentifierSchemeUri</text>
-						</comment>
-					</data>
-				</component>
-				<component name="concat" library="core" uid="44" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="98"/>
-						<datapoint pos="1" key="99"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="100"/>
-					</targets>
-					<view ltx="808" lty="508" rbx="890" rby="564"/>
-					<data>
-						<comment>
-							<text>RorID vervollständigen mit URI</text>
-						</comment>
-					</data>
-				</component>
 				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
 					<properties XSLTTargetEncoding="UTF-8"/>
 					<view rbx="200" rby="356"/>
 					<data>
-						<root scrollposition="120">
+						<root scrollposition="1">
 							<header>
 								<namespaces>
 									<namespace/>
@@ -477,7 +552,7 @@
 												</entry>
 											</entry>
 										</entry>
-										<entry name="ContactPersons" expanded="1">
+										<entry name="ContactPersons">
 											<entry name="ContactPerson" outkey="120" expanded="1">
 												<entry name="familyname" outkey="121"/>
 												<entry name="givenname" outkey="122"/>
@@ -489,35 +564,22 @@
 												</entry>
 											</entry>
 										</entry>
+										<entry name="OriginatingLaboratories">
+											<entry name="OriginatingLaboratory" outkey="139" expanded="1">
+												<entry name="laboratoryname" outkey="140"/>
+												<entry name="labId" outkey="141"/>
+												<entry name="Affiliations" expanded="1">
+													<entry name="Affiliation" outkey="142" expanded="1">
+														<entry name="rorId" outkey="143"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
 									</entry>
 								</entry>
 							</entry>
 						</root>
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="42" kind="2">
-					<targets>
-						<datapoint pos="0" key="90"/>
-					</targets>
-					<view ltx="653" lty="529" rbx="773" rby="546"/>
-					<data>
-						<constant value="https://ror.org/" datatype="string"/>
-					</data>
-				</component>
-				<component name="concat" library="core" uid="49" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="107"/>
-						<datapoint pos="1" key="108"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="109"/>
-					</targets>
-					<view ltx="808" lty="580" rbx="890" rby="636"/>
-					<data>
-						<comment>
-							<text>RorID vervollständigen mit URI</text>
-						</comment>
 					</data>
 				</component>
 			</children>
@@ -747,11 +809,13 @@
 					<vertex vertexkey="101">
 						<edges>
 							<edge vertexkey="84"/>
+							<edge vertexkey="137"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="102">
 						<edges>
 							<edge vertexkey="85"/>
+							<edge vertexkey="138"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="69">
@@ -764,6 +828,7 @@
 						<edges>
 							<edge vertexkey="98"/>
 							<edge vertexkey="107"/>
+							<edge vertexkey="125"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="97">
@@ -811,6 +876,46 @@
 					<vertex vertexkey="109">
 						<edges>
 							<edge vertexkey="117"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="143">
+						<edges>
+							<edge vertexkey="126"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="139">
+						<edges>
+							<edge vertexkey="130"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="129">
+						<edges>
+							<edge vertexkey="131"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="140">
+						<edges>
+							<edge vertexkey="132"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="141">
+						<edges>
+							<edge vertexkey="133"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="128">
+						<edges>
+							<edge vertexkey="134"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="142">
+						<edges>
+							<edge vertexkey="135"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="127">
+						<edges>
+							<edge vertexkey="136"/>
 						</edges>
 					</vertex>
 				</vertices>
