@@ -122,21 +122,6 @@
 						<constant value="Main Title" datatype="string"/>
 					</data>
 				</component>
-				<component name="substring-after" library="core" uid="8" kind="5">
-					<sources>
-						<datapoint pos="0" key="9"/>
-						<datapoint pos="1" key="10"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="11"/>
-					</targets>
-					<view ltx="504" lty="-127" rbx="608" rby="-73"/>
-					<data>
-						<comment>
-							<text>Abschneiden des URIs von der DOI</text>
-						</comment>
-					</data>
-				</component>
 				<component name="constant" library="core" uid="33" kind="2">
 					<targets>
 						<datapoint pos="0" key="63"/>
@@ -161,18 +146,6 @@
 						</comment>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="4" kind="2">
-					<targets>
-						<datapoint pos="0" key="7"/>
-					</targets>
-					<view ltx="1493" lty="-157" rbx="1555" rby="-140"/>
-					<data>
-						<constant value="DOI" datatype="string"/>
-						<comment>
-							<text>Von uns wird nur die DOI als Identifier unterstützt</text>
-						</comment>
-					</data>
-				</component>
 				<component name="constant" library="core" uid="35" kind="2">
 					<targets>
 						<datapoint pos="0" key="68"/>
@@ -183,15 +156,6 @@
 						<comment>
 							<text>Default rights scheme uri</text>
 						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="38" kind="2">
-					<targets>
-						<datapoint pos="0" key="69"/>
-					</targets>
-					<view ltx="415" lty="389" rbx="463" rby="406"/>
-					<data>
-						<constant value=", " datatype="string"/>
 					</data>
 				</component>
 				<component name="constant" library="core" uid="39" kind="2">
@@ -206,184 +170,6 @@
 						</comment>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="41" kind="2">
-					<targets>
-						<datapoint pos="0" key="71"/>
-					</targets>
-					<view ltx="1493" lty="48" rbx="1569" rby="65"/>
-					<data>
-						<constant value="ORCID" datatype="string"/>
-						<comment>
-							<text>Default nameIdentifierScheme</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="40" kind="2">
-					<targets>
-						<datapoint pos="0" key="72"/>
-					</targets>
-					<view ltx="1493" lty="82" rbx="1624" rby="99"/>
-					<data>
-						<constant value="https://orcid.org/" datatype="string"/>
-						<comment>
-							<text>Default nameIdentifierSchemeUri</text>
-						</comment>
-					</data>
-				</component>
-				<component name="DataCiteSchema45" library="xml" uid="3" kind="14">
-					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
-					<view ltx="1775" lty="4" rbx="2163" rby="832"/>
-					<data>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://datacite.org/schema/kernel-4"/>
-									<namespace uid="http://www.w3.org/XML/1998/namespace"/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="3" expanded="1">
-								<entry name="document" ns="3" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="resource" ns="1" inpkey="1" expanded="1">
-										<entry name="identifier" ns="1" inpkey="5">
-											<entry name="identifierType" type="attribute" inpkey="6"/>
-										</entry>
-										<entry name="creators" ns="1" inpkey="73" expanded="1">
-											<entry name="creator" ns="1" inpkey="74" expanded="1">
-												<entry name="creatorName" ns="1" inpkey="75">
-													<entry name="nameType" type="attribute" inpkey="76"/>
-												</entry>
-												<entry name="givenName" ns="1" inpkey="77"/>
-												<entry name="familyName" ns="1" inpkey="78"/>
-												<entry name="nameIdentifier" ns="1" inpkey="79" expanded="1">
-													<entry name="nameIdentifierScheme" type="attribute" inpkey="80"/>
-													<entry name="schemeURI" type="attribute" inpkey="81"/>
-												</entry>
-												<entry name="affiliation" ns="1" inpkey="82" expanded="1">
-													<entry name="affiliationIdentifier" type="attribute" inpkey="83"/>
-													<entry name="affiliationIdentifierScheme" type="attribute" inpkey="84"/>
-													<entry name="schemeURI" type="attribute" inpkey="85"/>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="titles" ns="1" inpkey="30">
-											<entry name="title" ns="1" inpkey="31">
-												<entry name="titleType" type="attribute" inpkey="32"/>
-												<entry name="lang" ns="2" type="attribute" inpkey="39"/>
-											</entry>
-										</entry>
-										<entry name="publicationYear" ns="1" inpkey="22"/>
-										<entry name="resourceType" ns="1" inpkey="26">
-											<entry name="resourceTypeGeneral" type="attribute" inpkey="27"/>
-										</entry>
-										<entry name="language" ns="1" inpkey="28"/>
-										<entry name="version" ns="1" inpkey="2"/>
-										<entry name="rightsList" ns="1">
-											<entry name="rights" ns="1" inpkey="57" expanded="1">
-												<entry name="rightsURI" type="attribute" inpkey="58"/>
-												<entry name="rightsIdentifier" type="attribute" inpkey="59"/>
-												<entry name="rightsIdentifierScheme" type="attribute" inpkey="60"/>
-												<entry name="schemeURI" type="attribute" inpkey="61"/>
-												<entry name="lang" ns="2" type="attribute" inpkey="62"/>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\DataCite\DataCiteSchema45.xsd" instanceroot="{http://datacite.org/schema/kernel-4}resource" inputinstance="..\DataCite\DataCiteExample45.xml" outputinstance="..\DataCite\DataCiteExample45.xml"/>
-					</data>
-				</component>
-				<component name="concat" library="core" uid="37" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="86"/>
-						<datapoint pos="1" key="87"/>
-						<datapoint pos="2" key="88"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="89"/>
-					</targets>
-					<view ltx="474" lty="349" rbx="566" rby="422"/>
-					<data>
-						<comment>
-							<text>Connecting Authors Lastname and Firstname</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="42" kind="2">
-					<targets>
-						<datapoint pos="0" key="90"/>
-					</targets>
-					<view ltx="653" lty="529" rbx="773" rby="546"/>
-					<data>
-						<constant value="https://ror.org/" datatype="string"/>
-					</data>
-				</component>
-				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
-					<properties XSLTTargetEncoding="UTF-8"/>
-					<view rbx="200" rby="356"/>
-					<data>
-						<root scrollposition="52">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="Resource" outkey="3" expanded="1">
-										<entry name="doi" outkey="8"/>
-										<entry name="version" outkey="4"/>
-										<entry name="year" outkey="23"/>
-										<entry name="Rights">
-											<entry name="text" outkey="64"/>
-											<entry name="rightsIdentifier" outkey="65"/>
-											<entry name="rightsURI" outkey="66"/>
-										</entry>
-										<entry name="ResourceType">
-											<entry name="resource_type_general" outkey="24"/>
-										</entry>
-										<entry name="Language">
-											<entry name="code" outkey="29"/>
-										</entry>
-										<entry name="Titles" outkey="33">
-											<entry name="Title" expanded="1">
-												<entry name="text" outkey="34"/>
-												<entry name="type" outkey="35"/>
-											</entry>
-										</entry>
-										<entry name="Authors" outkey="91" expanded="1">
-											<entry name="Author" outkey="92" expanded="1">
-												<entry name="familyname" outkey="93"/>
-												<entry name="givenname" outkey="94"/>
-												<entry name="orcid" outkey="95"/>
-												<entry name="Affiliations" expanded="1">
-													<entry name="Affiliation" expanded="1">
-														<entry name="name" outkey="96"/>
-														<entry name="rorId" outkey="97"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
-					</data>
-				</component>
-				<component name="concat" library="core" uid="44" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="98"/>
-						<datapoint pos="1" key="99"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="100"/>
-					</targets>
-					<view ltx="808" lty="508" rbx="890" rby="564"/>
-				</component>
 				<component name="constant" library="core" uid="45" kind="2">
 					<targets>
 						<datapoint pos="0" key="101"/>
@@ -393,18 +179,6 @@
 						<constant value="ROR" datatype="string"/>
 						<comment>
 							<text>Default affiliationIdentifierScheme</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="46" kind="2">
-					<targets>
-						<datapoint pos="0" key="102"/>
-					</targets>
-					<view ltx="1493" lty="151" rbx="1609" rby="168"/>
-					<data>
-						<constant value="https://ror.org" datatype="string"/>
-						<comment>
-							<text>Default schemeURI for Affiliations</text>
 						</comment>
 					</data>
 				</component>
@@ -446,6 +220,305 @@
 						<datapoint pos="0" key="56"/>
 					</targets>
 					<view ltx="474" lty="279" rbx="578" rby="333"/>
+				</component>
+				<component name="substring-after" library="core" uid="8" kind="5">
+					<sources>
+						<datapoint pos="0" key="9"/>
+						<datapoint pos="1" key="10"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="11"/>
+					</targets>
+					<view ltx="504" lty="-127" rbx="608" rby="-73"/>
+					<data>
+						<comment>
+							<text>Abschneiden des URIs von der DOI</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="4" kind="2">
+					<targets>
+						<datapoint pos="0" key="7"/>
+					</targets>
+					<view ltx="1493" lty="-157" rbx="1555" rby="-140"/>
+					<data>
+						<constant value="DOI" datatype="string"/>
+						<comment>
+							<text>Von uns wird nur die DOI als Identifier unterstützt</text>
+						</comment>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="37" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="86"/>
+						<datapoint pos="1" key="87"/>
+						<datapoint pos="2" key="88"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="89"/>
+					</targets>
+					<view ltx="474" lty="349" rbx="566" rby="422"/>
+					<data>
+						<comment>
+							<text>Connecting Authors Lastname and Firstname</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="38" kind="2">
+					<targets>
+						<datapoint pos="0" key="69"/>
+					</targets>
+					<view ltx="415" lty="389" rbx="463" rby="406"/>
+					<data>
+						<constant value=", " datatype="string"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="47" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="106"/>
+						<datapoint pos="1" key="103"/>
+						<datapoint pos="2" key="105"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="104"/>
+					</targets>
+					<view ltx="474" lty="441" rbx="566" rby="514"/>
+					<data>
+						<comment>
+							<text>Connecting Contact Persons Lastname and Firstname</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="46" kind="2">
+					<targets>
+						<datapoint pos="0" key="102"/>
+					</targets>
+					<view ltx="1493" lty="151" rbx="1609" rby="168"/>
+					<data>
+						<constant value="https://ror.org" datatype="string"/>
+						<comment>
+							<text>Default schemeURI for Affiliations</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="48" kind="2">
+					<targets>
+						<datapoint pos="0" key="110"/>
+					</targets>
+					<view ltx="1492" lty="185" rbx="1609" rby="202"/>
+					<data>
+						<constant value="ContactPerson" datatype="string"/>
+						<comment>
+							<text>Default PersonType for Contact Persons</text>
+						</comment>
+					</data>
+				</component>
+				<component name="DataCiteSchema45" library="xml" uid="3" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="1775" lty="4" rbx="2163" rby="832"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://datacite.org/schema/kernel-4"/>
+									<namespace uid="http://www.w3.org/XML/1998/namespace"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="3" expanded="1">
+								<entry name="document" ns="3" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="resource" ns="1" inpkey="1" expanded="1">
+										<entry name="identifier" ns="1" inpkey="5">
+											<entry name="identifierType" type="attribute" inpkey="6"/>
+										</entry>
+										<entry name="creators" ns="1" inpkey="73">
+											<entry name="creator" ns="1" inpkey="74" expanded="1">
+												<entry name="creatorName" ns="1" inpkey="75">
+													<entry name="nameType" type="attribute" inpkey="76"/>
+												</entry>
+												<entry name="givenName" ns="1" inpkey="77"/>
+												<entry name="familyName" ns="1" inpkey="78"/>
+												<entry name="nameIdentifier" ns="1" inpkey="79">
+													<entry name="nameIdentifierScheme" type="attribute" inpkey="80"/>
+													<entry name="schemeURI" type="attribute" inpkey="81"/>
+												</entry>
+												<entry name="affiliation" ns="1" inpkey="82">
+													<entry name="affiliationIdentifier" type="attribute" inpkey="83"/>
+													<entry name="affiliationIdentifierScheme" type="attribute" inpkey="84"/>
+													<entry name="schemeURI" type="attribute" inpkey="85"/>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="titles" ns="1" inpkey="30">
+											<entry name="title" ns="1" inpkey="31">
+												<entry name="titleType" type="attribute" inpkey="32"/>
+												<entry name="lang" ns="2" type="attribute" inpkey="39"/>
+											</entry>
+										</entry>
+										<entry name="publicationYear" ns="1" inpkey="22"/>
+										<entry name="resourceType" ns="1" inpkey="26">
+											<entry name="resourceTypeGeneral" type="attribute" inpkey="27"/>
+										</entry>
+										<entry name="contributors" ns="1" expanded="1">
+											<entry name="contributor" ns="1" inpkey="111" expanded="1">
+												<entry name="contributorType" type="attribute" inpkey="112"/>
+												<entry name="contributorName" ns="1" inpkey="113"/>
+												<entry name="givenName" ns="1" inpkey="114"/>
+												<entry name="familyName" ns="1" inpkey="115"/>
+												<entry name="affiliation" ns="1" inpkey="116" expanded="1">
+													<entry name="affiliationIdentifier" type="attribute" inpkey="117"/>
+													<entry name="affiliationIdentifierScheme" type="attribute" inpkey="118"/>
+													<entry name="schemeURI" type="attribute" inpkey="119"/>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="language" ns="1" inpkey="28"/>
+										<entry name="version" ns="1" inpkey="2"/>
+										<entry name="rightsList" ns="1">
+											<entry name="rights" ns="1" inpkey="57" expanded="1">
+												<entry name="rightsURI" type="attribute" inpkey="58"/>
+												<entry name="rightsIdentifier" type="attribute" inpkey="59"/>
+												<entry name="rightsIdentifierScheme" type="attribute" inpkey="60"/>
+												<entry name="schemeURI" type="attribute" inpkey="61"/>
+												<entry name="lang" ns="2" type="attribute" inpkey="62"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\DataCite\DataCiteSchema45.xsd" instanceroot="{http://datacite.org/schema/kernel-4}resource" inputinstance="..\DataCite\DataCiteExample45.xml" outputinstance="..\DataCite\DataCiteExample45.xml"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="41" kind="2">
+					<targets>
+						<datapoint pos="0" key="71"/>
+					</targets>
+					<view ltx="1493" lty="48" rbx="1569" rby="65"/>
+					<data>
+						<constant value="ORCID" datatype="string"/>
+						<comment>
+							<text>Default nameIdentifierScheme</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="40" kind="2">
+					<targets>
+						<datapoint pos="0" key="72"/>
+					</targets>
+					<view ltx="1493" lty="82" rbx="1624" rby="99"/>
+					<data>
+						<constant value="https://orcid.org/" datatype="string"/>
+						<comment>
+							<text>Default nameIdentifierSchemeUri</text>
+						</comment>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="44" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="98"/>
+						<datapoint pos="1" key="99"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="100"/>
+					</targets>
+					<view ltx="808" lty="508" rbx="890" rby="564"/>
+					<data>
+						<comment>
+							<text>RorID vervollständigen mit URI</text>
+						</comment>
+					</data>
+				</component>
+				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view rbx="200" rby="356"/>
+					<data>
+						<root scrollposition="120">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Resource" outkey="3" expanded="1">
+										<entry name="doi" outkey="8"/>
+										<entry name="version" outkey="4"/>
+										<entry name="year" outkey="23"/>
+										<entry name="Rights">
+											<entry name="text" outkey="64"/>
+											<entry name="rightsIdentifier" outkey="65"/>
+											<entry name="rightsURI" outkey="66"/>
+										</entry>
+										<entry name="ResourceType">
+											<entry name="resource_type_general" outkey="24"/>
+										</entry>
+										<entry name="Language">
+											<entry name="code" outkey="29"/>
+										</entry>
+										<entry name="Titles" outkey="33">
+											<entry name="Title" expanded="1">
+												<entry name="text" outkey="34"/>
+												<entry name="type" outkey="35"/>
+											</entry>
+										</entry>
+										<entry name="Authors" outkey="91">
+											<entry name="Author" outkey="92" expanded="1">
+												<entry name="familyname" outkey="93"/>
+												<entry name="givenname" outkey="94"/>
+												<entry name="orcid" outkey="95"/>
+												<entry name="Affiliations" expanded="1">
+													<entry name="Affiliation" expanded="1">
+														<entry name="name" outkey="96"/>
+														<entry name="rorId" outkey="97"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="ContactPersons" expanded="1">
+											<entry name="ContactPerson" outkey="120" expanded="1">
+												<entry name="familyname" outkey="121"/>
+												<entry name="givenname" outkey="122"/>
+												<entry name="Affiliations" expanded="1">
+													<entry name="Affiliation" expanded="1">
+														<entry name="name" outkey="123"/>
+														<entry name="rorId" outkey="124"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="42" kind="2">
+					<targets>
+						<datapoint pos="0" key="90"/>
+					</targets>
+					<view ltx="653" lty="529" rbx="773" rby="546"/>
+					<data>
+						<constant value="https://ror.org/" datatype="string"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="49" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="107"/>
+						<datapoint pos="1" key="108"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="109"/>
+					</targets>
+					<view ltx="808" lty="580" rbx="890" rby="636"/>
+					<data>
+						<comment>
+							<text>RorID vervollständigen mit URI</text>
+						</comment>
+					</data>
 				</component>
 			</children>
 			<graph directed="1">
@@ -652,11 +725,13 @@
 					<vertex vertexkey="71">
 						<edges>
 							<edge vertexkey="80"/>
+							<edge vertexkey="118"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="72">
 						<edges>
 							<edge vertexkey="81"/>
+							<edge vertexkey="119"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="96">
@@ -682,16 +757,60 @@
 					<vertex vertexkey="69">
 						<edges>
 							<edge vertexkey="87"/>
+							<edge vertexkey="103"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="90">
 						<edges>
 							<edge vertexkey="98"/>
+							<edge vertexkey="107"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="97">
 						<edges>
 							<edge vertexkey="99"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="122">
+						<edges>
+							<edge vertexkey="105"/>
+							<edge vertexkey="114"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="121">
+						<edges>
+							<edge vertexkey="106"/>
+							<edge vertexkey="115"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="124">
+						<edges>
+							<edge vertexkey="108"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="120">
+						<edges>
+							<edge vertexkey="111"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="110">
+						<edges>
+							<edge vertexkey="112"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="104">
+						<edges>
+							<edge vertexkey="113"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="123">
+						<edges>
+							<edge vertexkey="116"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="109">
+						<edges>
+							<edge vertexkey="117"/>
 						</edges>
 					</vertex>
 				</vertices>
