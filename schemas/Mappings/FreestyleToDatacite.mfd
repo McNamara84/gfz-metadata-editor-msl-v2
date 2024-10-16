@@ -440,18 +440,6 @@
 						</comment>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="33" kind="2">
-					<targets>
-						<datapoint pos="0" key="63"/>
-					</targets>
-					<view ltx="1493" lty="-90" rbx="1548" rby="-73"/>
-					<data>
-						<constant value="en" datatype="string"/>
-						<comment>
-							<text>Default language</text>
-						</comment>
-					</data>
-				</component>
 				<component name="substring-after" library="core" uid="64" kind="5">
 					<sources>
 						<datapoint pos="0" key="183"/>
@@ -805,6 +793,30 @@
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
 					</data>
 				</component>
+				<component name="constant" library="core" uid="81" kind="2">
+					<targets>
+						<datapoint pos="0" key="270"/>
+					</targets>
+					<view ltx="1493" lty="-191" rbx="1625" rby="-174"/>
+					<data>
+						<constant value="GFZ Data Services" datatype="string"/>
+						<comment>
+							<text>Deafult publisher at GFZ</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="33" kind="2">
+					<targets>
+						<datapoint pos="0" key="63"/>
+					</targets>
+					<view ltx="1493" lty="-90" rbx="1548" rby="-73"/>
+					<data>
+						<constant value="en" datatype="string"/>
+						<comment>
+							<text>Default language</text>
+						</comment>
+					</data>
+				</component>
 				<component name="DataCiteSchema45" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1775" lty="4" rbx="2163" rby="832"/>
@@ -847,6 +859,9 @@
 												<entry name="titleType" type="attribute" inpkey="32"/>
 												<entry name="lang" ns="2" type="attribute" inpkey="39"/>
 											</entry>
+										</entry>
+										<entry name="publisher" ns="1" inpkey="271">
+											<entry name="lang" ns="2" type="attribute" inpkey="272"/>
 										</entry>
 										<entry name="publicationYear" ns="1" inpkey="22"/>
 										<entry name="resourceType" ns="1" inpkey="26">
@@ -1120,6 +1135,7 @@
 						<edges>
 							<edge vertexkey="62"/>
 							<edge vertexkey="218"/>
+							<edge vertexkey="272"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="91">
@@ -1547,6 +1563,11 @@
 					<vertex vertexkey="264">
 						<edges>
 							<edge vertexkey="269"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="270">
+						<edges>
+							<edge vertexkey="271"/>
 						</edges>
 					</vertex>
 				</vertices>
