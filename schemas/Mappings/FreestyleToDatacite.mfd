@@ -768,6 +768,248 @@
 					</targets>
 					<view lty="653" rbx="56" rby="707"/>
 				</component>
+				<component name="if-else" library="core" uid="158" kind="4">
+					<sources>
+						<datapoint pos="0" key="400"/>
+						<datapoint pos="1" key="407"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="408"/>
+					</targets>
+					<view ltx="288" lty="605" rbx="392" rby="678"/>
+				</component>
+				<component name="logical-and" library="core" uid="151" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="389"/>
+						<datapoint pos="1" key="390"/>
+						<datapoint pos="2" key="412"/>
+						<datapoint pos="3" key="422"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="394"/>
+					</targets>
+					<view ltx="160" lty="492" rbx="252" rby="582"/>
+				</component>
+				<component name="if-else" library="core" uid="162" kind="4">
+					<sources>
+						<datapoint pos="0" key="418"/>
+						<datapoint/>
+						<datapoint pos="2" key="423"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="416"/>
+					</targets>
+					<view ltx="288" lty="685" rbx="392" rby="758"/>
+				</component>
+				<component name="if-else" library="core" uid="163" kind="4">
+					<sources>
+						<datapoint pos="0" key="419"/>
+						<datapoint/>
+						<datapoint pos="2" key="424"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="425"/>
+					</targets>
+					<view ltx="288" lty="757" rbx="392" rby="830"/>
+				</component>
+				<component name="concat" library="core" uid="165" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="426"/>
+						<datapoint pos="1" key="427"/>
+						<datapoint pos="2" key="428"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="429"/>
+					</targets>
+					<view ltx="1124" lty="911" rbx="1216" rby="984"/>
+				</component>
+				<component name="constant" library="core" uid="166" kind="2">
+					<targets>
+						<datapoint pos="0" key="430"/>
+					</targets>
+					<view ltx="1064" lty="950" rbx="1110" rby="967"/>
+					<data>
+						<constant value="/" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="168" kind="2">
+					<targets>
+						<datapoint pos="0" key="431"/>
+					</targets>
+					<view ltx="1493" lty="441" rbx="1575" rby="458"/>
+					<data>
+						<constant value="Created" datatype="string"/>
+						<comment>
+							<text>Default value for dataType when dataset was created</text>
+						</comment>
+					</data>
+				</component>
+				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view rbx="200" rby="356"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Resource" outkey="3" expanded="1">
+										<entry name="doi" outkey="8"/>
+										<entry name="version" outkey="4"/>
+										<entry name="year" outkey="23"/>
+										<entry name="dateCreated" outkey="432"/>
+										<entry name="dateEmbargoUntil" outkey="433"/>
+										<entry name="Rights">
+											<entry name="text" outkey="64"/>
+											<entry name="rightsIdentifier" outkey="65"/>
+											<entry name="rightsURI" outkey="66"/>
+										</entry>
+										<entry name="ResourceType">
+											<entry name="resource_type_general" outkey="24"/>
+										</entry>
+										<entry name="Language">
+											<entry name="code" outkey="29"/>
+										</entry>
+										<entry name="Titles" outkey="33">
+											<entry name="Title" expanded="1">
+												<entry name="text" outkey="34"/>
+												<entry name="type" outkey="35"/>
+											</entry>
+										</entry>
+										<entry name="Authors" outkey="91">
+											<entry name="Author" outkey="92" expanded="1">
+												<entry name="familyname" outkey="93"/>
+												<entry name="givenname" outkey="94"/>
+												<entry name="orcid" outkey="95"/>
+												<entry name="Affiliations" expanded="1">
+													<entry name="Affiliation" expanded="1">
+														<entry name="name" outkey="96"/>
+														<entry name="rorId" outkey="97"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="Descriptions">
+											<entry name="Description" outkey="227">
+												<entry name="type" outkey="228"/>
+												<entry name="description" outkey="229"/>
+											</entry>
+										</entry>
+										<entry name="Contributors">
+											<entry name="Persons">
+												<entry name="Person" outkey="173">
+													<entry name="familyname" outkey="174"/>
+													<entry name="givenname" outkey="175"/>
+													<entry name="orcid" outkey="176"/>
+													<entry name="Affiliations">
+														<entry name="Affiliation">
+															<entry name="name" outkey="177"/>
+															<entry name="rorId" outkey="178"/>
+														</entry>
+													</entry>
+													<entry name="Roles" expanded="1">
+														<entry name="Role" expanded="1">
+															<entry name="name" outkey="179"/>
+														</entry>
+													</entry>
+												</entry>
+											</entry>
+											<entry name="Institutions">
+												<entry name="Institution" outkey="191" expanded="1">
+													<entry name="name" outkey="192"/>
+													<entry name="Affiliations">
+														<entry name="Affiliation">
+															<entry name="name" outkey="201"/>
+															<entry name="rorId" outkey="202"/>
+														</entry>
+													</entry>
+													<entry name="Roles" expanded="1">
+														<entry name="Role" expanded="1">
+															<entry name="name" outkey="193"/>
+														</entry>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="ContactPersons">
+											<entry name="ContactPerson" outkey="120" expanded="1">
+												<entry name="familyname" outkey="121"/>
+												<entry name="givenname" outkey="122"/>
+												<entry name="Affiliations" expanded="1">
+													<entry name="Affiliation" expanded="1">
+														<entry name="name" outkey="123"/>
+														<entry name="rorId" outkey="124"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="RelatedWorks" outkey="262">
+											<entry name="RelatedWork">
+												<entry name="Identifier" outkey="263"/>
+												<entry name="Relation">
+													<entry name="name" outkey="264"/>
+												</entry>
+												<entry name="IdentifierType">
+													<entry name="name" outkey="265"/>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="SpatialTemporalCoverages">
+											<entry name="SpatialTemporalCoverage">
+												<entry name="latitudeMin" outkey="276"/>
+												<entry name="latitudeMax" outkey="306"/>
+												<entry name="longitudeMin" outkey="311"/>
+												<entry name="longitudeMax" outkey="316"/>
+												<entry name="Description" outkey="360"/>
+												<entry name="dateTimeStart" outkey="434"/>
+												<entry name="dateTimeEnd" outkey="435"/>
+											</entry>
+										</entry>
+										<entry name="FundingReferences">
+											<entry name="FundingReference" outkey="245">
+												<entry name="funder" outkey="246"/>
+												<entry name="funderid" outkey="247"/>
+												<entry name="funderidtyp" outkey="248"/>
+												<entry name="grantnumber" outkey="249"/>
+												<entry name="grantname" outkey="250"/>
+											</entry>
+										</entry>
+										<entry name="OriginatingLaboratories">
+											<entry name="OriginatingLaboratory" outkey="139">
+												<entry name="laboratoryname" outkey="140"/>
+												<entry name="labId" outkey="141"/>
+												<entry name="Affiliations" expanded="1">
+													<entry name="Affiliation" expanded="1">
+														<entry name="name" outkey="180"/>
+														<entry name="rorId" outkey="143"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="167" kind="2">
+					<targets>
+						<datapoint pos="0" key="436"/>
+					</targets>
+					<view ltx="1492" lty="405" rbx="1582" rby="422"/>
+					<data>
+						<constant value="Collected" datatype="string"/>
+						<comment>
+							<text>Default value for dateType when data was collected</text>
+						</comment>
+					</data>
+				</component>
 				<component name="DataCiteSchema45" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1775" lty="4" rbx="2163" rby="832"/>
@@ -871,6 +1113,17 @@
 												</entry>
 											</entry>
 										</entry>
+										<entry name="dates" ns="1" expanded="1">
+											<entry name="date" ns="1" inpkey="437" expanded="1">
+												<entry name="dateType" type="attribute" inpkey="438"/>
+											</entry>
+											<entry name="date" ns="1" inpkey="439" clone="1">
+												<entry name="dateType" type="attribute" inpkey="440"/>
+											</entry>
+											<entry name="date" ns="1" inpkey="441" clone="1">
+												<entry name="dateType" type="attribute" inpkey="442"/>
+											</entry>
+										</entry>
 										<entry name="language" ns="1" inpkey="28"/>
 										<entry name="relatedIdentifiers" ns="1" inpkey="266">
 											<entry name="relatedIdentifier" ns="1" inpkey="267">
@@ -895,14 +1148,14 @@
 												<entry name="#text" inpkey="219"/>
 											</entry>
 										</entry>
-										<entry name="geoLocations" ns="1" expanded="1">
-											<entry name="geoLocation" ns="1" expanded="1">
+										<entry name="geoLocations" ns="1">
+											<entry name="geoLocation" ns="1">
 												<entry name="geoLocationPlace" ns="1" inpkey="359"/>
-												<entry name="geoLocationPoint" ns="1" expanded="1">
+												<entry name="geoLocationPoint" ns="1">
 													<entry name="pointLongitude" ns="1" inpkey="420"/>
 													<entry name="pointLatitude" ns="1" inpkey="421"/>
 												</entry>
-												<entry name="geoLocationBox" ns="1" expanded="1">
+												<entry name="geoLocationBox" ns="1">
 													<entry name="westBoundLongitude" ns="1" inpkey="312"/>
 													<entry name="eastBoundLongitude" ns="1" inpkey="350"/>
 													<entry name="southBoundLatitude" ns="1" inpkey="295"/>
@@ -928,199 +1181,17 @@
 						<document schema="..\DataCite\DataCiteSchema45.xsd" instanceroot="{http://datacite.org/schema/kernel-4}resource" inputinstance="..\DataCite\DataCiteExample45.xml" outputinstance="..\DataCite\DataCiteExample45.xml"/>
 					</data>
 				</component>
-				<component name="if-else" library="core" uid="158" kind="4">
-					<sources>
-						<datapoint pos="0" key="400"/>
-						<datapoint pos="1" key="407"/>
-						<datapoint/>
-					</sources>
+				<component name="constant" library="core" uid="169" kind="2">
 					<targets>
-						<datapoint pos="0" key="408"/>
+						<datapoint pos="0" key="443"/>
 					</targets>
-					<view ltx="288" lty="605" rbx="392" rby="678"/>
-				</component>
-				<component name="logical-and" library="core" uid="151" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="389"/>
-						<datapoint pos="1" key="390"/>
-						<datapoint pos="2" key="412"/>
-						<datapoint pos="3" key="422"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="394"/>
-					</targets>
-					<view ltx="160" lty="492" rbx="252" rby="582"/>
-				</component>
-				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
-					<properties XSLTTargetEncoding="UTF-8"/>
-					<view rbx="200" rby="356"/>
+					<view ltx="1494" lty="476" rbx="1582" rby="493"/>
 					<data>
-						<root scrollposition="172">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="Resource" outkey="3" expanded="1">
-										<entry name="doi" outkey="8"/>
-										<entry name="version" outkey="4"/>
-										<entry name="year" outkey="23"/>
-										<entry name="Rights">
-											<entry name="text" outkey="64"/>
-											<entry name="rightsIdentifier" outkey="65"/>
-											<entry name="rightsURI" outkey="66"/>
-										</entry>
-										<entry name="ResourceType">
-											<entry name="resource_type_general" outkey="24"/>
-										</entry>
-										<entry name="Language">
-											<entry name="code" outkey="29"/>
-										</entry>
-										<entry name="Titles" outkey="33">
-											<entry name="Title" expanded="1">
-												<entry name="text" outkey="34"/>
-												<entry name="type" outkey="35"/>
-											</entry>
-										</entry>
-										<entry name="Authors" outkey="91">
-											<entry name="Author" outkey="92" expanded="1">
-												<entry name="familyname" outkey="93"/>
-												<entry name="givenname" outkey="94"/>
-												<entry name="orcid" outkey="95"/>
-												<entry name="Affiliations" expanded="1">
-													<entry name="Affiliation" expanded="1">
-														<entry name="name" outkey="96"/>
-														<entry name="rorId" outkey="97"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="Descriptions">
-											<entry name="Description" outkey="227">
-												<entry name="type" outkey="228"/>
-												<entry name="description" outkey="229"/>
-											</entry>
-										</entry>
-										<entry name="Contributors">
-											<entry name="Persons">
-												<entry name="Person" outkey="173">
-													<entry name="familyname" outkey="174"/>
-													<entry name="givenname" outkey="175"/>
-													<entry name="orcid" outkey="176"/>
-													<entry name="Affiliations">
-														<entry name="Affiliation">
-															<entry name="name" outkey="177"/>
-															<entry name="rorId" outkey="178"/>
-														</entry>
-													</entry>
-													<entry name="Roles" expanded="1">
-														<entry name="Role" expanded="1">
-															<entry name="name" outkey="179"/>
-														</entry>
-													</entry>
-												</entry>
-											</entry>
-											<entry name="Institutions">
-												<entry name="Institution" outkey="191" expanded="1">
-													<entry name="name" outkey="192"/>
-													<entry name="Affiliations">
-														<entry name="Affiliation">
-															<entry name="name" outkey="201"/>
-															<entry name="rorId" outkey="202"/>
-														</entry>
-													</entry>
-													<entry name="Roles" expanded="1">
-														<entry name="Role" expanded="1">
-															<entry name="name" outkey="193"/>
-														</entry>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="ContactPersons">
-											<entry name="ContactPerson" outkey="120" expanded="1">
-												<entry name="familyname" outkey="121"/>
-												<entry name="givenname" outkey="122"/>
-												<entry name="Affiliations" expanded="1">
-													<entry name="Affiliation" expanded="1">
-														<entry name="name" outkey="123"/>
-														<entry name="rorId" outkey="124"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="RelatedWorks" outkey="262">
-											<entry name="RelatedWork">
-												<entry name="Identifier" outkey="263"/>
-												<entry name="Relation">
-													<entry name="name" outkey="264"/>
-												</entry>
-												<entry name="IdentifierType">
-													<entry name="name" outkey="265"/>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="SpatialTemporalCoverages" expanded="1">
-											<entry name="SpatialTemporalCoverage" expanded="1">
-												<entry name="latitudeMin" outkey="276"/>
-												<entry name="latitudeMax" outkey="306"/>
-												<entry name="longitudeMin" outkey="311"/>
-												<entry name="longitudeMax" outkey="316"/>
-												<entry name="Description" outkey="360"/>
-											</entry>
-										</entry>
-										<entry name="FundingReferences">
-											<entry name="FundingReference" outkey="245">
-												<entry name="funder" outkey="246"/>
-												<entry name="funderid" outkey="247"/>
-												<entry name="funderidtyp" outkey="248"/>
-												<entry name="grantnumber" outkey="249"/>
-												<entry name="grantname" outkey="250"/>
-											</entry>
-										</entry>
-										<entry name="OriginatingLaboratories">
-											<entry name="OriginatingLaboratory" outkey="139">
-												<entry name="laboratoryname" outkey="140"/>
-												<entry name="labId" outkey="141"/>
-												<entry name="Affiliations" expanded="1">
-													<entry name="Affiliation" expanded="1">
-														<entry name="name" outkey="180"/>
-														<entry name="rorId" outkey="143"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
+						<constant value="Available" datatype="string"/>
+						<comment>
+							<text>Default value for dateType when embargo ends</text>
+						</comment>
 					</data>
-				</component>
-				<component name="if-else" library="core" uid="162" kind="4">
-					<sources>
-						<datapoint pos="0" key="418"/>
-						<datapoint/>
-						<datapoint pos="2" key="423"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="416"/>
-					</targets>
-					<view ltx="288" lty="685" rbx="392" rby="758"/>
-				</component>
-				<component name="if-else" library="core" uid="163" kind="4">
-					<sources>
-						<datapoint pos="0" key="419"/>
-						<datapoint/>
-						<datapoint pos="2" key="424"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="425"/>
-					</targets>
-					<view ltx="288" lty="757" rbx="392" rby="830"/>
 				</component>
 			</children>
 			<graph directed="1">
@@ -1833,6 +1904,51 @@
 					<vertex vertexkey="414">
 						<edges>
 							<edge vertexkey="422"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="434">
+						<edges>
+							<edge vertexkey="426"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="430">
+						<edges>
+							<edge vertexkey="427"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="435">
+						<edges>
+							<edge vertexkey="428"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="433">
+						<edges>
+							<edge vertexkey="437"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="443">
+						<edges>
+							<edge vertexkey="438"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="429">
+						<edges>
+							<edge vertexkey="439"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="436">
+						<edges>
+							<edge vertexkey="440"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="432">
+						<edges>
+							<edge vertexkey="441"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="431">
+						<edges>
+							<edge vertexkey="442"/>
 						</edges>
 					</vertex>
 				</vertices>
