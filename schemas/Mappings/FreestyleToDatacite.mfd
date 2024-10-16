@@ -626,11 +626,50 @@
 						</comment>
 					</data>
 				</component>
+				<component name="constant" library="core" uid="77" kind="2">
+					<targets>
+						<datapoint pos="0" key="244"/>
+					</targets>
+					<view ltx="1492" lty="338" rbx="1645" rby="355"/>
+					<data>
+						<constant value="http://dx.doi.org/10.13039/" datatype="string"/>
+						<comment>
+							<text>Default URI for FunderID</text>
+						</comment>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="79" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="251"/>
+						<datapoint pos="1" key="252"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="253"/>
+					</targets>
+					<view ltx="1083" lty="323" rbx="1165" rby="379"/>
+					<data>
+						<comment>
+							<text>FunderIdUri + FunderId</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="80" kind="2">
+					<targets>
+						<datapoint pos="0" key="261"/>
+					</targets>
+					<view ltx="1493" lty="374" rbx="1652" rby="391"/>
+					<data>
+						<constant value="https://www.crossref.org/services/funder-registry/" datatype="string"/>
+						<comment>
+							<text>Default schemeURI for FunderIdScheme</text>
+						</comment>
+					</data>
+				</component>
 				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
 					<properties XSLTTargetEncoding="UTF-8"/>
 					<view rbx="200" rby="356"/>
 					<data>
-						<root scrollposition="172">
+						<root scrollposition="1">
 							<header>
 								<namespaces>
 									<namespace/>
@@ -727,8 +766,19 @@
 												</entry>
 											</entry>
 										</entry>
-										<entry name="FundingReferences" expanded="1">
-											<entry name="FundingReference" outkey="245" expanded="1">
+										<entry name="RelatedWorks" outkey="262">
+											<entry name="RelatedWork">
+												<entry name="Identifier" outkey="263"/>
+												<entry name="Relation">
+													<entry name="name" outkey="264"/>
+												</entry>
+												<entry name="IdentifierType">
+													<entry name="name" outkey="265"/>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="FundingReferences">
+											<entry name="FundingReference" outkey="245">
 												<entry name="funder" outkey="246"/>
 												<entry name="funderid" outkey="247"/>
 												<entry name="funderidtyp" outkey="248"/>
@@ -753,33 +803,6 @@
 							</entry>
 						</root>
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="77" kind="2">
-					<targets>
-						<datapoint pos="0" key="244"/>
-					</targets>
-					<view ltx="1492" lty="338" rbx="1645" rby="355"/>
-					<data>
-						<constant value="http://dx.doi.org/10.13039/" datatype="string"/>
-						<comment>
-							<text>Default URI for FunderID</text>
-						</comment>
-					</data>
-				</component>
-				<component name="concat" library="core" uid="79" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="251"/>
-						<datapoint pos="1" key="252"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="253"/>
-					</targets>
-					<view ltx="1083" lty="323" rbx="1165" rby="379"/>
-					<data>
-						<comment>
-							<text>FunderIdUri + FunderId</text>
-						</comment>
 					</data>
 				</component>
 				<component name="DataCiteSchema45" library="xml" uid="3" kind="14">
@@ -883,6 +906,12 @@
 											</entry>
 										</entry>
 										<entry name="language" ns="1" inpkey="28"/>
+										<entry name="relatedIdentifiers" ns="1" inpkey="266">
+											<entry name="relatedIdentifier" ns="1" inpkey="267">
+												<entry name="relatedIdentifierType" type="attribute" inpkey="268"/>
+												<entry name="relationType" type="attribute" inpkey="269"/>
+											</entry>
+										</entry>
 										<entry name="version" ns="1" inpkey="2"/>
 										<entry name="rightsList" ns="1">
 											<entry name="rights" ns="1" inpkey="57" expanded="1">
@@ -900,10 +929,10 @@
 												<entry name="#text" inpkey="219"/>
 											</entry>
 										</entry>
-										<entry name="fundingReferences" ns="1" expanded="1">
-											<entry name="fundingReference" ns="1" inpkey="254" expanded="1">
+										<entry name="fundingReferences" ns="1">
+											<entry name="fundingReference" ns="1" inpkey="254">
 												<entry name="funderName" ns="1" inpkey="255"/>
-												<entry name="funderIdentifier" ns="1" inpkey="256" expanded="1">
+												<entry name="funderIdentifier" ns="1" inpkey="256">
 													<entry name="funderIdentifierType" type="attribute" inpkey="257"/>
 													<entry name="schemeURI" type="attribute" inpkey="258"/>
 												</entry>
@@ -916,18 +945,6 @@
 							</entry>
 						</root>
 						<document schema="..\DataCite\DataCiteSchema45.xsd" instanceroot="{http://datacite.org/schema/kernel-4}resource" inputinstance="..\DataCite\DataCiteExample45.xml" outputinstance="..\DataCite\DataCiteExample45.xml"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="80" kind="2">
-					<targets>
-						<datapoint pos="0" key="261"/>
-					</targets>
-					<view ltx="1493" lty="374" rbx="1652" rby="391"/>
-					<data>
-						<constant value="https://www.crossref.org/services/funder-registry/" datatype="string"/>
-						<comment>
-							<text>Default schemeURI for FunderIdScheme</text>
-						</comment>
 					</data>
 				</component>
 			</children>
@@ -1510,6 +1527,26 @@
 					<vertex vertexkey="250">
 						<edges>
 							<edge vertexkey="260"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="262">
+						<edges>
+							<edge vertexkey="266"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="263">
+						<edges>
+							<edge vertexkey="267"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="265">
+						<edges>
+							<edge vertexkey="268"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="264">
+						<edges>
+							<edge vertexkey="269"/>
 						</edges>
 					</vertex>
 				</vertices>
