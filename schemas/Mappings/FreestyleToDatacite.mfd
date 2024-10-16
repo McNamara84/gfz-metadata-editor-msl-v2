@@ -845,11 +845,59 @@
 						</comment>
 					</data>
 				</component>
+				<component name="constant" library="core" uid="167" kind="2">
+					<targets>
+						<datapoint pos="0" key="436"/>
+					</targets>
+					<view ltx="1492" lty="405" rbx="1582" rby="422"/>
+					<data>
+						<constant value="Collected" datatype="string"/>
+						<comment>
+							<text>Default value for dateType when data was collected</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="169" kind="2">
+					<targets>
+						<datapoint pos="0" key="443"/>
+					</targets>
+					<view ltx="1494" lty="476" rbx="1582" rby="493"/>
+					<data>
+						<constant value="Available" datatype="string"/>
+						<comment>
+							<text>Default value for dateType when embargo ends</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="170" kind="2">
+					<targets>
+						<datapoint pos="0" key="444"/>
+					</targets>
+					<view ltx="1494" lty="511" rbx="1563" rby="528"/>
+					<data>
+						<constant value="EPOS" datatype="string"/>
+						<comment>
+							<text>Default value for subjects o EPOS projects</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="171" kind="2">
+					<targets>
+						<datapoint pos="0" key="445"/>
+					</targets>
+					<view ltx="1494" lty="546" rbx="1647" rby="563"/>
+					<data>
+						<constant value="multi-scale laboratories" datatype="string"/>
+						<comment>
+							<text>Default value for subjects in MSL projects</text>
+						</comment>
+					</data>
+				</component>
 				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
 					<properties XSLTTargetEncoding="UTF-8"/>
 					<view rbx="200" rby="356"/>
 					<data>
-						<root scrollposition="1">
+						<root scrollposition="70">
 							<header>
 								<namespaces>
 									<namespace/>
@@ -970,6 +1018,20 @@
 												<entry name="dateTimeEnd" outkey="435"/>
 											</entry>
 										</entry>
+										<entry name="ThesaurusKeywords">
+											<entry name="Keyword">
+												<entry name="keyword" outkey="446"/>
+												<entry name="scheme" outkey="447"/>
+												<entry name="schemeURI" outkey="448"/>
+												<entry name="valueURI" outkey="449"/>
+												<entry name="language" outkey="450"/>
+											</entry>
+										</entry>
+										<entry name="FreeKeywords" expanded="1">
+											<entry name="Keyword" expanded="1">
+												<entry name="free_keyword" outkey="451"/>
+											</entry>
+										</entry>
 										<entry name="FundingReferences">
 											<entry name="FundingReference" outkey="245">
 												<entry name="funder" outkey="246"/>
@@ -996,18 +1058,6 @@
 							</entry>
 						</root>
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="167" kind="2">
-					<targets>
-						<datapoint pos="0" key="436"/>
-					</targets>
-					<view ltx="1492" lty="405" rbx="1582" rby="422"/>
-					<data>
-						<constant value="Collected" datatype="string"/>
-						<comment>
-							<text>Default value for dateType when data was collected</text>
-						</comment>
 					</data>
 				</component>
 				<component name="DataCiteSchema45" library="xml" uid="3" kind="14">
@@ -1059,6 +1109,17 @@
 										<entry name="publicationYear" ns="1" inpkey="22"/>
 										<entry name="resourceType" ns="1" inpkey="26">
 											<entry name="resourceTypeGeneral" type="attribute" inpkey="27"/>
+										</entry>
+										<entry name="subjects" ns="1" expanded="1">
+											<entry name="subject" ns="1" inpkey="452"/>
+											<entry name="subject" ns="1" inpkey="453" clone="1"/>
+											<entry name="subject" ns="1" inpkey="454" clone="1">
+												<entry name="subjectScheme" type="attribute" inpkey="455"/>
+												<entry name="schemeURI" type="attribute" inpkey="456"/>
+												<entry name="valueURI" type="attribute" inpkey="457"/>
+												<entry name="lang" ns="2" type="attribute" inpkey="458"/>
+											</entry>
+											<entry name="subject" ns="1" inpkey="459" clone="1"/>
 										</entry>
 										<entry name="contributors" ns="1">
 											<entry name="contributor" ns="1" inpkey="111">
@@ -1113,8 +1174,8 @@
 												</entry>
 											</entry>
 										</entry>
-										<entry name="dates" ns="1" expanded="1">
-											<entry name="date" ns="1" inpkey="437" expanded="1">
+										<entry name="dates" ns="1">
+											<entry name="date" ns="1" inpkey="437">
 												<entry name="dateType" type="attribute" inpkey="438"/>
 											</entry>
 											<entry name="date" ns="1" inpkey="439" clone="1">
@@ -1179,18 +1240,6 @@
 							</entry>
 						</root>
 						<document schema="..\DataCite\DataCiteSchema45.xsd" instanceroot="{http://datacite.org/schema/kernel-4}resource" inputinstance="..\DataCite\DataCiteExample45.xml" outputinstance="..\DataCite\DataCiteExample45.xml"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="169" kind="2">
-					<targets>
-						<datapoint pos="0" key="443"/>
-					</targets>
-					<view ltx="1494" lty="476" rbx="1582" rby="493"/>
-					<data>
-						<constant value="Available" datatype="string"/>
-						<comment>
-							<text>Default value for dateType when embargo ends</text>
-						</comment>
 					</data>
 				</component>
 			</children>
@@ -1949,6 +1998,46 @@
 					<vertex vertexkey="431">
 						<edges>
 							<edge vertexkey="442"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="444">
+						<edges>
+							<edge vertexkey="452"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="445">
+						<edges>
+							<edge vertexkey="453"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="446">
+						<edges>
+							<edge vertexkey="454"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="447">
+						<edges>
+							<edge vertexkey="455"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="448">
+						<edges>
+							<edge vertexkey="456"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="449">
+						<edges>
+							<edge vertexkey="457"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="450">
+						<edges>
+							<edge vertexkey="458"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="451">
+						<edges>
+							<edge vertexkey="459"/>
 						</edges>
 					</vertex>
 				</vertices>
