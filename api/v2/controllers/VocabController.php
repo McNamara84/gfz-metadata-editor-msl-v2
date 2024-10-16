@@ -63,19 +63,24 @@ class VocabController
         return end($versions);
     }
 
-    private function downloadAndSave($url, $savePath)
+    private function processItem($item, $scheme, $schemeURI)
     {
-        $json = @file_get_contents($url);
-        if ($json === false) {
-            return false;
+        $newItem = [
+            'id' => $item['uri'] ?? '',
+            'text' => $item['label'] ?? $item['value'] ?? '',
+            'language' => 'en',
+            'scheme' => $scheme,
+            'schemeURI' => $schemeURI,
+            'description' => '',
+            'children' => []
+        ];
+
+        if (isset($item['children']) && !empty($item['children'])) {
+            foreach ($item['children'] as $child) {
+                $newItem['children'][] = $this->processItem($child, $scheme, $schemeURI);
+            }
         }
-        // Schlüssel "uri" in JSON-Datei umbenennen in "id"
-        $json = str_replace('"uri":', '"id":', $json);
-        // Schlüssel "vocab_uri" in JSON-Datei umbenennen in "schemeURI"
-        $json = str_replace('"vocab_uri":', '"schemeURI":', $json);
-        // Schlüssel "label" in JSON-Datei umbenennen in "text"
-        $json = str_replace('"label":', '"text":', $json);
-        return file_put_contents($savePath, $json) !== false;
+        return $newItem;
     }
 
     public function getMslVocab($vars)
@@ -101,8 +106,17 @@ class VocabController
                     $url = "{$baseUrl}{$t}/{$latestVersion}/{$t}_" . str_replace('.', '-', $latestVersion) . ".json";
                     $jsonContent = $this->downloadContent($url);
                     if ($jsonContent !== false) {
-                        $combinedData[$t] = json_decode($jsonContent, true);
-                        $results[$t] = "Updated to version {$latestVersion}";
+                        $data = json_decode($jsonContent, true);
+                        if (!empty($data)) {
+                            $rootItem = $data[0];
+                            $scheme = 'EPOS WP16 ' . ucfirst($t) . ' ' . ($rootItem['label'] ?? $rootItem['value'] ?? '');
+                            $schemeURI = $rootItem['vocab_uri'] ?? '';
+                            $processedData = $this->processItem($rootItem, $scheme, $schemeURI);
+                            $combinedData[] = $processedData;
+                            $results[$t] = "Updated to version {$latestVersion}";
+                        } else {
+                            $results[$t] = "No data found";
+                        }
                     } else {
                         $results[$t] = "Failed to update";
                     }
@@ -116,8 +130,17 @@ class VocabController
                 $url = "{$baseUrl}{$type}/{$latestVersion}/{$type}_" . str_replace('.', '-', $latestVersion) . ".json";
                 $jsonContent = $this->downloadContent($url);
                 if ($jsonContent !== false) {
-                    $combinedData[$type] = json_decode($jsonContent, true);
-                    $results[$type] = "Updated to version {$latestVersion}";
+                    $data = json_decode($jsonContent, true);
+                    if (!empty($data)) {
+                        $rootItem = $data[0];
+                        $scheme = 'EPOS WP16 ' . ucfirst($type) . ' ' . ($rootItem['label'] ?? $rootItem['value'] ?? '');
+                        $schemeURI = $rootItem['vocab_uri'] ?? '';
+                        $processedData = $this->processItem($rootItem, $scheme, $schemeURI);
+                        $combinedData[] = $processedData;
+                        $results[$type] = "Updated to version {$latestVersion}";
+                    } else {
+                        $results[$type] = "No data found";
+                    }
                 } else {
                     $results[$type] = "Failed to update";
                 }
@@ -128,13 +151,7 @@ class VocabController
             $results['error'] = "Invalid type specified";
         }
 
-        // Merge new data with existing data
-        if (file_exists($combinedJsonFile)) {
-            $existingData = json_decode(file_get_contents($combinedJsonFile), true);
-            $combinedData = array_merge($existingData, $combinedData);
-        }
-
-        // Save combined data
+        // Speichern der kombinierten Daten
         if (!empty($combinedData)) {
             file_put_contents($combinedJsonFile, json_encode($combinedData, JSON_PRETTY_PRINT));
         }
