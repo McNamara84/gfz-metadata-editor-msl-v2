@@ -7,36 +7,6 @@ $(document).ready(function () {
             jsTreeId: '#jstreeScience',   // ID des jsTrees
             searchInputId: '#searchInputScience'  // ID des Suchfeldes für diesen Baum
         },
-        {
-            inputId: '#inputInstruments',
-            jsonFile: 'json/gcmdInstrumentsKeywords.json',
-            jsTreeId: '#jstreeInstruments',
-            searchInputId: '#searchInputInstruments'
-        },
-        {
-            inputId: '#inputPlatforms',
-            jsonFile: 'json/gcmdPlatformsKeywords.json',
-            jsTreeId: '#jstreePlatforms',
-            searchInputId: '#searchInputPlatforms'
-        },
-        {
-            inputId: '#inputChrono',
-            jsonFile: 'json/ChronostratKeywords.json',
-            jsTreeId: '#jstreeChrono',
-            searchInputId: '#searchInputChrono'
-        },
-        {
-            inputId: '#inputCgi',
-            jsonFile: 'json/cgi.json',
-            jsTreeId: '#jstreeCgi',
-            searchInputId: '#searchInputCgi'
-        },
-        {
-            inputId: '#inputGemet',
-            jsonFile: 'json/gemet.json',
-            jsTreeId: '#jstreeGemet',
-            searchInputId: '#searchInputGemet'
-        },
         // MSL-Keywords
         {
             inputId: '#inputMSLKeywords',
@@ -46,39 +16,64 @@ $(document).ready(function () {
         },
     ];
 
-    // Funktion zum Initialisieren der Keyword-Eingabefelder
+    // Initialisiere das Keyword-Eingabefeld
     function initializeKeywordInput(config) {
         var input = $(config.inputId)[0];
         var suggestedKeywords = [];
 
-        // Funktion zum Laden und Verarbeiten der Keywords aus der JSON-Datei
+        // Keywords aus der JSON-Datei laden und verarbeiten
         function loadKeywords(data) {
-            var filteredData = [];
+            var filteredData = data;
 
-            // Prüfen, ob die Datee Arrays enthält oder Objekt und darunter Arrays enthält 
-            if (Array.isArray(data)) {
-                // Für Arrays nur
-                filteredData = processNodes(data); 
-            } else {
-                // Für Objekte 
-                for (var rootKey in data) {
-                    if (data.hasOwnProperty(rootKey)) {
-                        var rootChildren = data[rootKey];
-
-                        var rootNode = {
-                            text: rootKey,
-                            children: rootChildren.map(function (child) {
-                                return processNode(child);
-                            })
-                        };
-
-                        filteredData.push(rootNode);
+            // Spezifischen Knoten filtern, falls rootNodeId angegeben ist
+            if (config.rootNodeId) {
+                function findNodeById(nodes, id) {
+                    for (var i = 0; i < nodes.length; i++) {
+                        if (nodes[i].id === id) {
+                            return nodes[i];
+                        }
+                        if (nodes[i].children) {
+                            var foundNode = findNodeById(nodes[i].children, id);
+                            if (foundNode) {
+                                return foundNode;
+                            }
+                        }
                     }
+                    return null;
                 }
+
+                // Knoten und seine Kinder filtern
+                var selectedNode = findNodeById(data, config.rootNodeId);
+                if (selectedNode) {
+                    filteredData = selectedNode.children || [];
+                } else {
+                    console.error(`Root node with ID ${config.rootNodeId} not found in ${config.jsonFile}`);
+                    return;
+                }
+            }
+
+            // Verarbeite Knoten für die Baumstruktur
+            function processNodes(nodes) {
+                return nodes.map(function (node) {
+                    if (node.children) {
+                        node.children = processNodes(node.children);
+                    }
+                    // Tooltip für jeden Knoten
+                    node.a_attr = {
+                        title: node.description || node.text
+                    };
+                    node.original = {
+                        scheme: node.scheme || "",
+                        schemeURI: node.schemeURI || "",
+                        language: node.language || ""
+                    };
+                    return node;
+                });
             }
 
             var processedData = processNodes(filteredData);
 
+            // Erstelle die Vorschlagsliste für Tagify
             function buildWhitelist(data, parentPath = []) {
                 data.forEach(function (item) {
                     var textToAdd = parentPath.concat(item.text).join(' > ');
@@ -90,6 +85,7 @@ $(document).ready(function () {
                         language: item.language
                     });
 
+                    // Rekursive Verarbeitung von Unterknoten
                     if (item.children) {
                         buildWhitelist(item.children, parentPath.concat(item.text));
                     }
@@ -98,45 +94,51 @@ $(document).ready(function () {
 
             buildWhitelist(filteredData);
 
+            // Initialisiere Tagify für das Eingabefeld
             var tagify = new Tagify(input, {
                 whitelist: suggestedKeywords,
                 enforceWhitelist: true,
                 dropdown: {
-                    maxItems: 50,
-                    enabled: 3,
-                    closeOnSelect: true
+                    maxItems: 50,  // Maximale Anzahl der Vorschläge
+                    enabled: 3,    // Dropdown nach 3 Zeichen anzeigen
+                    closeOnSelect: true  // Dropdown nach Auswahl schließen
                 },
-                editTags: false,
+                editTags: false,  // Keine Bearbeitung von Tags erlaubt
             });
 
+            // Initialisiere jsTree mit den verarbeiteten Daten
             $(config.jsTreeId).jstree({
                 core: {
                     data: processedData,
                     themes: {
-                        icons: false
+                        icons: false  // Keine Icons anzeigen
                     }
                 },
                 checkbox: {
-                    keep_selected_style: true
+                    keep_selected_style: true  // Checkbox-Style beibehalten
                 },
-                plugins: ['search', 'checkbox'],
+                plugins: ['search', 'checkbox'],  // Such- und Checkbox-Plugin aktivieren
                 search: {
-                    show_only_matches: true,
+                    show_only_matches: true,  // Nur passende Knoten anzeigen
                     search_callback: function (str, node) {
+                        // Suchkriterium für Text oder Tooltip
                         return node.text.toLowerCase().indexOf(str.toLowerCase()) !== -1 ||
                             (node.a_attr && node.a_attr.title && node.a_attr.title.toLowerCase().indexOf(str.toLowerCase()) !== -1);
                     }
                 }
             });
 
+            // Echtzeitsuche im Baum
             $(config.searchInputId).on("input", function () {
                 $(config.jsTreeId).jstree(true).search($(this).val());
             });
 
+            // Knoten auswählen und als Tag hinzufügen
             $(config.jsTreeId).on("select_node.jstree", function (e, data) {
                 var fullPath = data.instance.get_path(data.node, " > ");
                 var existingTags = tagify.value.map((tag) => tag.id);
 
+                // Nur hinzufügen, wenn noch nicht vorhanden
                 if (!existingTags.includes(data.node.id)) {
                     tagify.addTags([{
                         value: fullPath,
@@ -149,74 +151,14 @@ $(document).ready(function () {
             });
         }
 
+        // Lade die JSON-Datei mit den Keywords
         $.getJSON(config.jsonFile, function (data) {
             loadKeywords(data);
         });
     }
 
+    // Initialisiere alle Keyword-Eingabefelder
     keywordConfigurations.forEach(function (config) {
         initializeKeywordInput(config);
     });
-
-    function processNode(node) {
-        if (node.children) {
-            node.children = node.children.map(function (child) {
-                return processNode(child);
-            });
-        }
-
-        node.a_attr = {
-            title: node.description || node.text
-        };
-        node.original = {
-            scheme: node.scheme || "",
-            schemeURI: node.schemeURI || "",
-            language: node.language || ""
-        };
-
-        return node;
-    }
-
-    function processNodes(nodes) {
-        return nodes.map(function (node) {
-            return processNode(node);
-        });
-    }
-
-    function processNode(node) {
-        // Überprüfen, ob neue oder alte Struktur vorliegt, und Attribute entsprechend zuordnen
-        var id = node.id || node.uri || ""; 
-        var text = node.text || node.label || node.value || "No text";  
-        var schemeURI = node.schemeURI || node.vocab_uri || "";  
-        var language = node.language || "";  
-    
-        // Bearbeite die Kindknoten
-        if (node.children && Array.isArray(node.children)) {
-            node.children = node.children.map(function (child) {
-                return processNode(child);
-            });
-        } else {
-            node.children = [];
-        }
-    
-        // Erstelle das 'a_attr' Attribut und das 'original' Attribut für das Knotenobjekt
-        node.a_attr = {
-            title: node.description || node.text || "No description"
-        };
-        node.original = {
-            scheme: node.scheme || "",
-            schemeURI: schemeURI, 
-            language: language 
-        };
-    
-        // Rückgabe des angepassten Knotens mit den neuen Attributen
-        return {
-            id: id,
-            text: text, 
-            children: node.children, 
-            a_attr: node.a_attr, 
-            original: node.original
-        };
-    }
-    
 });
