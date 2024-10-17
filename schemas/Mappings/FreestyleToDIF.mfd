@@ -6,25 +6,6 @@
 		<properties SelectedLanguage="xslt"/>
 		<structure>
 			<children>
-				<component name="substring-after" library="core" uid="5" kind="5">
-					<sources>
-						<datapoint pos="0" key="3"/>
-						<datapoint pos="1" key="4"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="5"/>
-					</targets>
-					<view ltx="914" lty="-46" rbx="1008" rby="6"/>
-				</component>
-				<component name="constant" library="core" uid="6" kind="2">
-					<targets>
-						<datapoint pos="0" key="6"/>
-					</targets>
-					<view ltx="774" lty="-45" rbx="881" rby="-29"/>
-					<data>
-						<constant value="http://doi.org/" datatype="string"/>
-					</data>
-				</component>
 				<component name="DIF" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1895" lty="-4" rbx="2254" rby="987"/>
@@ -73,6 +54,7 @@
 										<entry name="Titles" expanded="1">
 											<entry name="Title" expanded="1">
 												<entry name="text" outkey="13"/>
+												<entry name="type" outkey="18"/>
 											</entry>
 										</entry>
 									</entry>
@@ -80,6 +62,67 @@
 							</entry>
 						</root>
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
+					</data>
+				</component>
+				<component name="substring-after" library="core" uid="5" kind="5">
+					<sources>
+						<datapoint pos="0" key="3"/>
+						<datapoint pos="1" key="4"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="5"/>
+					</targets>
+					<view ltx="1478" lty="49" rbx="1572" rby="101"/>
+					<data>
+						<comment>
+							<text>Hier wird den anfang von DOI (http://doi.org/) abgeschnitten und der 
+Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="6" kind="2">
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="1345" lty="84" rbx="1452" rby="100"/>
+					<data>
+						<constant value="http://doi.org/" datatype="string"/>
+					</data>
+				</component>
+				<component name="contains" library="core" uid="10" kind="5">
+					<sources>
+						<datapoint pos="0" key="15"/>
+						<datapoint pos="1" key="16"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="17"/>
+					</targets>
+					<view ltx="867" lty="212" rbx="953" rby="264"/>
+				</component>
+				<component name="constant" library="core" uid="8" kind="2">
+					<targets>
+						<datapoint pos="0" key="14"/>
+					</targets>
+					<view ltx="755" lty="248" rbx="840" rby="264"/>
+					<data>
+						<constant value="Main Title" datatype="string"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="7" kind="4">
+					<sources>
+						<datapoint pos="0" key="19"/>
+						<datapoint pos="1" key="20"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="21"/>
+					</targets>
+					<view ltx="996" lty="182" rbx="1088" rby="253"/>
+					<data>
+						<comment>
+							<text>Im DIF-Schema darf nur ein Title in der XML-Datei gespeichert wird. 
+Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es main ist dann darf es eingetragen werden wenn nicht dann wird es ignoriert.</text>
+						</comment>
 					</data>
 				</component>
 			</children>
@@ -106,7 +149,7 @@
 							<edge vertexkey="7"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="13">
+					<vertex vertexkey="21">
 						<edges>
 							<edge vertexkey="8"/>
 							<edge vertexkey="9"/>
@@ -115,6 +158,26 @@
 					<vertex vertexkey="12">
 						<edges>
 							<edge vertexkey="10"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="18">
+						<edges>
+							<edge vertexkey="15"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="14">
+						<edges>
+							<edge vertexkey="16"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="17">
+						<edges>
+							<edge vertexkey="19"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="13">
+						<edges>
+							<edge vertexkey="20"/>
 						</edges>
 					</vertex>
 				</vertices>
