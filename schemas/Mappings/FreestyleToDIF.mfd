@@ -6,11 +6,30 @@
 		<properties SelectedLanguage="xslt"/>
 		<structure>
 			<children>
+				<component name="substring-after" library="core" uid="5" kind="5">
+					<sources>
+						<datapoint pos="0" key="3"/>
+						<datapoint pos="1" key="4"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="5"/>
+					</targets>
+					<view ltx="914" lty="-46" rbx="1008" rby="6"/>
+				</component>
+				<component name="constant" library="core" uid="6" kind="2">
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="774" lty="-45" rbx="881" rby="-29"/>
+					<data>
+						<constant value="http://doi.org/" datatype="string"/>
+					</data>
+				</component>
 				<component name="DIF" library="xml" uid="3" kind="14">
-					<properties XSLTDefaultOutput="1"/>
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1895" lty="-4" rbx="2254" rby="987"/>
 					<data>
-						<root scrollposition="1">
+						<root>
 							<header>
 								<namespaces>
 									<namespace uid="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/"/>
@@ -19,7 +38,16 @@
 							</header>
 							<entry name="FileInstance" ns="1" expanded="1">
 								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="DIF" inpkey="1" expanded="1"/>
+									<entry name="DIF" inpkey="1" expanded="1">
+										<entry name="Entry_ID" inpkey="7"/>
+										<entry name="Entry_Title" inpkey="8"/>
+										<entry name="Data_Set_Citation" expanded="1">
+											<entry name="Dataset_Title" inpkey="9"/>
+											<entry name="Dataset_Release_Date" inpkey="10"/>
+										</entry>
+										<entry name="Personnel" expanded="1"/>
+										<entry name="Discipline" expanded="1"/>
+									</entry>
 								</entry>
 							</entry>
 						</root>
@@ -27,7 +55,7 @@
 					</data>
 				</component>
 				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
-					<properties/>
+					<properties XSLTTargetEncoding="UTF-8"/>
 					<view rbx="300" rby="847"/>
 					<data>
 						<root>
@@ -39,7 +67,15 @@
 							</header>
 							<entry name="FileInstance" ns="1" expanded="1">
 								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="Resource" outkey="2" expanded="1"/>
+									<entry name="Resource" outkey="2" expanded="1">
+										<entry name="doi" outkey="11"/>
+										<entry name="year" outkey="12"/>
+										<entry name="Titles" expanded="1">
+											<entry name="Title" expanded="1">
+												<entry name="text" outkey="13"/>
+											</entry>
+										</entry>
+									</entry>
 								</entry>
 							</entry>
 						</root>
@@ -53,6 +89,32 @@
 					<vertex vertexkey="2">
 						<edges>
 							<edge vertexkey="1"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="11">
+						<edges>
+							<edge vertexkey="3"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="4"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="7"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="13">
+						<edges>
+							<edge vertexkey="8"/>
+							<edge vertexkey="9"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="12">
+						<edges>
+							<edge vertexkey="10"/>
 						</edges>
 					</vertex>
 				</vertices>
