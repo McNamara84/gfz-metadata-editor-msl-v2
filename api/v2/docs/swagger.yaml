@@ -375,29 +375,23 @@ components:
     VocabularyTree:
       type: array
       items:
-        $ref: "#/components/schemas/VocabularyNode"
+      $ref: "#/components/schemas/VocabularyNode"
 
     VocabularyNode:
       type: object
       properties:
         id:
           type: string
-          example: "https://epos-msl.uu.nl/voc/analoguemodelling/1.3/modeled_structure"
         text:
           type: string
-          example: "Modeled structure"
         language:
           type: string
-          example: "en"
         scheme:
           type: string
-          example: "EPOS WP16 Analogue Modeled structure"
         schemeURI:
           type: string
-          example: "https://epos-msl.uu.nl/voc/analoguemodelling/1.3/"
         description:
           type: string
-          example: ""
         children:
           type: array
           items:
@@ -419,7 +413,7 @@ components:
           example: 1
         name:
           type: string
-          example: "Author"
+          example: "Data Curator"
         forInstitutions:
           type: integer
           description: |
