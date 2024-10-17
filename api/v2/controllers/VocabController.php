@@ -108,11 +108,24 @@ class VocabController
                     if ($jsonContent !== false) {
                         $data = json_decode($jsonContent, true);
                         if (!empty($data)) {
-                            $rootItem = $data[0];
-                            $scheme = 'EPOS WP16 ' . ucfirst($t) . ' ' . ($rootItem['label'] ?? $rootItem['value'] ?? '');
-                            $schemeURI = $rootItem['vocab_uri'] ?? '';
-                            $processedData = $this->processItem($rootItem, $scheme, $schemeURI);
-                            $combinedData[] = $processedData;
+                            $schemeURI = $data[0]['vocab_uri'] ?? '';
+                            $scheme = 'EPOS WP16 ' . ucfirst($t);
+                            $newRoot = [
+                                'id' => $schemeURI,
+                                'text' => ucfirst($t),
+                                'language' => 'en',
+                                'scheme' => $scheme,
+                                'schemeURI' => $schemeURI,
+                                'description' => '',
+                                'children' => []
+                            ];
+
+                            foreach ($data as $item) {
+                                $processedItem = $this->processItem($item, $scheme, $schemeURI);
+                                $newRoot['children'][] = $processedItem;
+                            }
+
+                            $combinedData[] = $newRoot;
                             $results[$t] = "Updated to version {$latestVersion}";
                         } else {
                             $results[$t] = "No data found";
@@ -132,11 +145,24 @@ class VocabController
                 if ($jsonContent !== false) {
                     $data = json_decode($jsonContent, true);
                     if (!empty($data)) {
-                        $rootItem = $data[0];
-                        $scheme = 'EPOS WP16 ' . ucfirst($type) . ' ' . ($rootItem['label'] ?? $rootItem['value'] ?? '');
-                        $schemeURI = $rootItem['vocab_uri'] ?? '';
-                        $processedData = $this->processItem($rootItem, $scheme, $schemeURI);
-                        $combinedData[] = $processedData;
+                        $schemeURI = $data[0]['vocab_uri'] ?? '';
+                        $scheme = 'EPOS WP16 ' . ucfirst($type);
+                        $newRoot = [
+                            'id' => $schemeURI,
+                            'text' => ucfirst($type),
+                            'language' => 'en',
+                            'scheme' => $scheme,
+                            'schemeURI' => $schemeURI,
+                            'description' => '',
+                            'children' => []
+                        ];
+
+                        foreach ($data as $item) {
+                            $processedItem = $this->processItem($item, $scheme, $schemeURI);
+                            $newRoot['children'][] = $processedItem;
+                        }
+
+                        $combinedData[] = $newRoot;
                         $results[$type] = "Updated to version {$latestVersion}";
                     } else {
                         $results[$type] = "No data found";
@@ -162,6 +188,7 @@ class VocabController
             'results' => $results
         ]);
     }
+
 
     private function downloadContent($url)
     {
