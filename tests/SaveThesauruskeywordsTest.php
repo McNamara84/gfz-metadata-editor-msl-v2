@@ -66,12 +66,11 @@ class SaveThesauruskeywordsTest extends TestCase
         $stmt->execute();
         $result = $stmt->get_result();
 
-        $this->assertEquals(2, $result->num_rows, "Es sollten genau 26 Thesaurus Keywords gespeichert worden sein.");
+        $this->assertEquals(2, $result->num_rows, "Es sollten genau 2 Thesaurus Keywords gespeichert worden sein.");
 
         $expectedKeywords = [
-            "Keyword1", "Material1", "Age1", "Fluid1", "Setting1", "Structure1", "Feature1", "Apparatus1", "Equipment1", 
-            "Property1", "Software1", "Technique1", "Property2", "Apparatus2", "Equipment2", "Technique2", "Feature2", 
-            "Parameter1", "Apparatus3", "Control1", "Property3", "Behavior1", "Apparatus4", "Equipment3", "Property4", "Behavior2"
+            "Keyword1",
+            "Material1",
         ];
 
         while ($row = $result->fetch_assoc()) {
@@ -81,14 +80,11 @@ class SaveThesauruskeywordsTest extends TestCase
                 $this->assertEquals("http://example.com/scheme", $row['schemeURI']);
                 $this->assertEquals("http://example.com/1", $row['valueURI']);
                 $this->assertEquals("en", $row['language']);
-            } elseif ($row['keyword'] == 'Age1') {
-                $this->assertEquals("GENGeologicalAge", $row['scheme']);
-                $this->assertEquals("http://example.com/age1", $row['valueURI']);
-                $this->assertEquals("en", $row['language']);
             } else {
                 $this->assertEquals("en", $row['language'], "Die Sprache sollte standardmäßig 'en' sein für das Keyword '{$row['keyword']}'.");
             }
         }
+
     }
 
     /**
@@ -110,10 +106,14 @@ class SaveThesauruskeywordsTest extends TestCase
 
         $postData = [
             "thesaurusKeywords" => json_encode([
-                ["value" => "Keyword1"], ["value" => "Keyword2"], ["value" => "Keyword3"]
+                ["value" => "Keyword1"],
+                ["value" => "Keyword2"],
+                ["value" => "Keyword3"]
             ]),
             "MSLKeywords" => json_encode([
-                ["value" => "Material1"], ["value" => "Material2"], ["value" => "Material3"]
+                ["value" => "Material1"],
+                ["value" => "Material2"],
+                ["value" => "Material3"]
             ])
         ];
 
@@ -124,7 +124,7 @@ class SaveThesauruskeywordsTest extends TestCase
         $stmt->execute();
         $result = $stmt->get_result()->fetch_assoc();
 
-        $this->assertEquals(6, $result['count'], "Es sollten genau 78 Thesaurus Keywords gespeichert worden sein.");
+        $this->assertEquals(6, $result['count'], "Es sollten genau 6 Thesaurus Keywords gespeichert worden sein.");
 
         // Check if all keywords are linked to the resource
         $stmt = $this->connection->prepare("SELECT COUNT(*) as count FROM Resource_has_Thesaurus_Keywords WHERE Resource_resource_id = ?");
@@ -132,7 +132,7 @@ class SaveThesauruskeywordsTest extends TestCase
         $stmt->execute();
         $result = $stmt->get_result()->fetch_assoc();
 
-        $this->assertEquals(6, $result['count'], "Es sollten genau 78 Verknüpfungen zwischen Resource und Thesaurus Keywords existieren.");
+        $this->assertEquals(6, $result['count'], "Es sollten genau 6 Verknüpfungen zwischen Resource und Thesaurus Keywords existieren.");
     }
 
     /**
@@ -154,27 +154,7 @@ class SaveThesauruskeywordsTest extends TestCase
 
         $postData = [
             "thesaurusKeywords" => json_encode([["value" => "Keyword1"]]),
-            "GENMaterial" => "",
-            "MSLKeywords" => json_encode([["value" => "Age1"]]),
-            "GENPoreFluid" => "",
-            "AMOGPAncillaryEquipment" => "",
-            "AMOGPAMOGPMeasuredProperty" => "",
-            "AMOGPSoftware" => "",
-            "GEOCHAnalysisTechnique" => "",
-            "GEOCHMeasuredProperty" => "",
-            "MATomographyApparatus" => "",
-            "MATomographyAncillaryEquipment" => "",
-            "MATomographyAnalysisTechnique" => "",
-            "MATomographyAnalyzedFeature" => "",
-            "AMOGPMATomographyInferredParameter" => "",
-            "PALTISApparatus" => "",
-            "PALTISEnvironmentControl" => "",
-            "PALTISMeasuredProperty" => "",
-            "PALTISInferredBehavior" => "",
-            "RAMPApparatus" => "",
-            "RAMPAncillaryEquipment" => "",
-            "RAMPMeasuredProperty" => "",
-            "RAMPInferredDeformationBehavior" => ""
+            "MSLKeywords" => json_encode([["value" => "Age1"]])
         ];
 
         saveThesaurusKeywords($this->connection, $postData, $resource_id);
@@ -184,7 +164,7 @@ class SaveThesauruskeywordsTest extends TestCase
         $stmt->execute();
         $result = $stmt->get_result();
 
-        $this->assertEquals(2, $result->num_rows, "Es sollten genau vier Thesaurus Keywords gespeichert worden sein.");
+        $this->assertEquals(2, $result->num_rows, "Es sollten genau 2 Thesaurus Keywords gespeichert worden sein.");
 
         $keywords = [];
         while ($row = $result->fetch_assoc()) {
@@ -193,9 +173,6 @@ class SaveThesauruskeywordsTest extends TestCase
 
         $this->assertContains("Keyword1", $keywords, "Keyword1 sollte gespeichert worden sein.");
         $this->assertContains("Age1", $keywords, "Age1 sollte gespeichert worden sein.");
-        $this->assertContains("Age1", $keywords, "Setting1 sollte gespeichert worden sein.");
-        $this->assertContains("Keyword1", $keywords, "Apparatus1 sollte gespeichert worden sein.");
-        $this->assertNotContains("Material1", $keywords, "Material1 sollte nicht gespeichert worden sein.");
     }
 
     /**
@@ -217,31 +194,7 @@ class SaveThesauruskeywordsTest extends TestCase
 
         $postData = [
             "thesaurusKeywords" => "",
-            "GENMaterial" => "",
-            "GENGeologicalAge" => "",
-            "GENPoreFluid" => "",
-            "GENGeologicalSetting" => "",
-            "AMOGPModeledStructure" => "",
-            "AMOGPModeledGeomorphologicalFeature" => "",
-            "AMOGPApparatus" => "",
-            "AMOGPAncillaryEquipment" => "",
-            "AMOGPAMOGPMeasuredProperty" => "",
-            "AMOGPSoftware" => "",
-            "GEOCHAnalysisTechnique" => "",
-            "GEOCHMeasuredProperty" => "",
-            "MATomographyApparatus" => "",
-            "MATomographyAncillaryEquipment" => "",
-            "MATomographyAnalysisTechnique" => "",
-            "MATomographyAnalyzedFeature" => "",
-            "AMOGPMATomographyInferredParameter" => "",
-            "PALTISApparatus" => "",
-            "PALTISEnvironmentControl" => "",
-            "PALTISMeasuredProperty" => "",
-            "PALTISInferredBehavior" => "",
-            "RAMPApparatus" => "",
-            "RAMPAncillaryEquipment" => "",
-            "RAMPMeasuredProperty" => "",
-            "RAMPInferredDeformationBehavior" => ""
+            "MSLKeywords" => ""
         ];
 
         saveThesaurusKeywords($this->connection, $postData, $resource_id);
