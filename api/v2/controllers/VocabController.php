@@ -1,14 +1,22 @@
 <?php
 // settings.php einbinden damit Variablen verfügbar sind
 require_once __DIR__ . '/../../../settings.php';
+/**
+ * Class VocabController
+ *
+ * This controller provides endpoints for the fetching of vocabulaires with the API.
+ */
 class VocabController
 {
     private $url;
+    private $mslVocabsUrl;
 
     public function __construct()
     {
         global $mslLabsUrl;
+        global $mslVocabsUrl;
         $this->url = $mslLabsUrl;
+        $this->mslVocabsUrl = $mslVocabsUrl;
     }
 
     public function fetchAndProcessMslLabs()
@@ -87,7 +95,6 @@ class VocabController
     {
         $type = $vars['type'] ?? $_GET['type'] ?? 'all';
 
-        $baseUrl = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/';
         $types = ['analogue', 'geochemistry', 'geologicalage', 'geologicalsetting', 'materials', 'microscopy', 'paleomagnetism', 'porefluids', 'rockphysics'];
         $jsonDir = __DIR__ . '/../../../json/';
         $combinedJsonFile = $jsonDir . 'msl-vocabularies.json';
@@ -101,9 +108,9 @@ class VocabController
 
         if ($type == 'all') {
             foreach ($types as $t) {
-                $latestVersion = $this->getLatestVersion($baseUrl, $t);
+                $latestVersion = $this->getLatestVersion($this->mslVocabsUrl, $t);
                 if ($latestVersion) {
-                    $url = "{$baseUrl}{$t}/{$latestVersion}/{$t}_" . str_replace('.', '-', $latestVersion) . ".json";
+                    $url = "{$this->mslVocabsUrl}{$t}/{$latestVersion}/{$t}_" . str_replace('.', '-', $latestVersion) . ".json";
                     $jsonContent = $this->downloadContent($url);
                     if ($jsonContent !== false) {
                         $data = json_decode($jsonContent, true);
@@ -138,9 +145,9 @@ class VocabController
                 }
             }
         } elseif (in_array($type, $types)) {
-            $latestVersion = $this->getLatestVersion($baseUrl, $type);
+            $latestVersion = $this->getLatestVersion($this->mslVocabsUrl, $type);
             if ($latestVersion) {
-                $url = "{$baseUrl}{$type}/{$latestVersion}/{$type}_" . str_replace('.', '-', $latestVersion) . ".json";
+                $url = "{$this->mslVocabsUrl}{$type}/{$latestVersion}/{$type}_" . str_replace('.', '-', $latestVersion) . ".json";
                 $jsonContent = $this->downloadContent($url);
                 if ($jsonContent !== false) {
                     $data = json_decode($jsonContent, true);
