@@ -822,6 +822,31 @@ JSON-Array mit Identifier-Typ-Objekten
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `en` `de`
 
+
+### MSL Keywords
+
+- MSL Keyword
+
+  - In dieses Feld können Schlagwörter zur inhaltlichen Beschreibung des Datensatzes eingefügt werden
+  - Datentyp: Zeichenkette
+  - Vorkommen: 0-n
+  - Das zugehörige Feld in der Datenbank heißt: keyword in der Tabelle Thesaurus_Keywords
+  - Restriktionen: Es gibt die Möglichkeit, entweder die gewünschten Keywords in der Suchleiste einzugeben oder direkt in das Eingabefeld zu tippen. Die Auswahloption steht auch zur Verfügung.
+  - [EPOS-Dokumentation](https://epos-msl.uu.nl/about)
+  - Schema Version: "EPOS Multi-Scale Laboratories (MSL) " 1.3
+  - Beispielwerte: `hydrogeochemistery` `alternating field (AF) demagnetiser`
+
+- hiddenFielder: scheme, schemeURI, valueURI und language
+
+  - hier werden bei Auswahl eines Keywords die zugehörigen versteckten Eingabefeldern wie schemes, schemeURIs, valueURIs und languages gespeichert
+  - Datentyp: Zeichenkette
+  - Vorkommen: 0-1
+  - Die zugehörigen Feldern in der Datenbank heißen: scheme, schemeURI, valueURI und language in der Tabelle Thesaurus_Keywords
+  - Restriktionen: Falls in der Json-Datei die scheme nicht verfügbar ist wird in der Datenbank der eingabefeldname eingetragen `MSLKeywords`, `en` wird in der Tabelle unter language eingetragen, wenn die Sprache in der Json-Datei nicht verfügbar ist 
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/#subject)
+  - Schema Version: "DataCite" 4.5
+  - Beispielwert: `"scheme": "EPOS WP16 Analogue"// "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/"// "id": "https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/software-visual_fortran_compaq"// "language": "en"` `"scheme": "EPOS WP16 Analogue"// "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/"// "id": "https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/software-visual_studio_microsoft"// "language": "en"`
+
 ### Free Keywords
 
 - In dieses Feld kommen freie Schlagwörter, diese sind nicht an einen Thesaurus gebunden.
@@ -986,7 +1011,7 @@ Räumliche und zeitliche Einordnung des Datensatzes. Zur einfacheren Erfassung d
 ## Datenvalidierung
 
 - Folgende Felder müssen zwingend ausgefüllt werden: **Publication Year**, **Title**, **Author Lastname**, **Author Firstname**, **Author Role**, **Author ORCID**, **Contributor ORCID**, **Contributor Role**, **Description Abstract** **Relation** und **Identifier**.❗
-- Die restlichen Felder **DOI**, **Resource Type**, **Version**, **Language of Dataset**, **Title Type**, **Rights**, **Contact Person Position**, **Contact Person Email**, **Contact Person Website**, **Author Affiliation**, **Contact Person Affiliation**, **Contributor Lastname**, **Contributor Firstname**, **Contributor Affiliation**, **Contributor Organisation Name**, **Description Methods**, **Description TechnicalInfo**, **Description Other**, **Thesaurus Keywords** **Identifier Typ** können optional leer bleiben.✅
+- Die restlichen Felder **DOI**, **Resource Type**, **Version**, **Language of Dataset**, **Title Type**, **Rights**, **Contact Person Position**, **Contact Person Email**, **Contact Person Website**, **Author Affiliation**, **Contact Person Affiliation**, **Contributor Lastname**, **Contributor Firstname**, **Contributor Affiliation**, **Contributor Organisation Name**, **Description Methods**, **Description TechnicalInfo**, **Description Other**, **Thesaurus Keywords**, **MSL Keywords** und **Identifier Typ** können optional leer bleiben.✅
 
 ## Datenbankstruktur
 
