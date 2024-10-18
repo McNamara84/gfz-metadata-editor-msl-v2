@@ -689,6 +689,8 @@ function getResourceAsXml($connection, $id)
     }
 
     $xml = new SimpleXMLElement('<Resource/>');
+    // 
+    $xml->addChild('currentDate', date('Y-m-d'));
 
     // Resource Information
     $xml->addChild('doi', htmlspecialchars($resource['doi'] ?? ''));
