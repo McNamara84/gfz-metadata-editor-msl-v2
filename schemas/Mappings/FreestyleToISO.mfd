@@ -43,21 +43,6 @@
 						<constant value="http://doi.org/" datatype="string"/>
 					</data>
 				</component>
-				<component name="substring-after" library="core" uid="11" kind="5">
-					<sources>
-						<datapoint pos="0" key="27"/>
-						<datapoint pos="1" key="28"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="29"/>
-					</targets>
-					<view ltx="412" lty="-65" rbx="516" rby="-11"/>
-					<data>
-						<comment>
-							<text>http://doi.org/ entfernen von DOI</text>
-						</comment>
-					</data>
-				</component>
 				<component name="if-else" library="core" uid="6" kind="4">
 					<sources>
 						<datapoint pos="0" key="30"/>
@@ -162,37 +147,6 @@
 						<comment>
 							<text>Main Title?</text>
 						</comment>
-					</data>
-				</component>
-				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
-					<properties XSLTTargetEncoding="UTF-8"/>
-					<view rbx="200" rby="356"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="Resource" outkey="2" expanded="1">
-										<entry name="doi" outkey="38"/>
-										<entry name="Language" expanded="1">
-											<entry name="code" outkey="39"/>
-										</entry>
-										<entry name="Titles">
-											<entry name="Title">
-												<entry name="text" outkey="11"/>
-												<entry name="type" outkey="12"/>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
 					</data>
 				</component>
 				<component name="constant" library="core" uid="23" kind="2">
@@ -303,11 +257,206 @@
 						</comment>
 					</data>
 				</component>
+				<component name="constant" library="core" uid="32" kind="2">
+					<targets>
+						<datapoint pos="0" key="66"/>
+					</targets>
+					<view ltx="1585" lty="107" rbx="1708" rby="124"/>
+					<data>
+						<constant value="pointOfContact" datatype="string"/>
+						<comment>
+							<text>Default CI_RoleCode an codeListValue for Contact Organisations</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="33" kind="2">
+					<targets>
+						<datapoint pos="0" key="67"/>
+					</targets>
+					<view ltx="1586" lty="138" rbx="1745" rby="155"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for Roles Contact Organisations</text>
+						</comment>
+					</data>
+				</component>
+				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view rbx="200" rby="356"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Resource" outkey="2" expanded="1">
+										<entry name="currentDate" outkey="68"/>
+										<entry name="doi" outkey="38"/>
+										<entry name="Language">
+											<entry name="code" outkey="39"/>
+										</entry>
+										<entry name="Titles" expanded="1">
+											<entry name="Title" expanded="1">
+												<entry name="text" outkey="11"/>
+												<entry name="type" outkey="12"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="34" kind="2">
+					<targets>
+						<datapoint pos="0" key="74"/>
+					</targets>
+					<view ltx="1586" lty="170" rbx="1668" rby="187"/>
+					<data>
+						<constant value="revision" datatype="string"/>
+						<comment>
+							<text>Default CI_DateTypeCode and codeListValue</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="35" kind="2">
+					<targets>
+						<datapoint pos="0" key="75"/>
+					</targets>
+					<view ltx="1585" lty="202" rbx="1744" rby="219"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for CI_DateTypeCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="36" kind="2">
+					<targets>
+						<datapoint pos="0" key="76"/>
+					</targets>
+					<view ltx="1585" lty="235" rbx="1744" rby="252"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ProgressCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for MD_ProgressCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="37" kind="2">
+					<targets>
+						<datapoint pos="0" key="77"/>
+					</targets>
+					<view ltx="1586" lty="268" rbx="1677" rby="285"/>
+					<data>
+						<constant value="Complete" datatype="string"/>
+						<comment>
+							<text>Default MD_ProgressCode and codeListValue for MD_ProgressCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="38" kind="2">
+					<targets>
+						<datapoint pos="0" key="78"/>
+					</targets>
+					<view ltx="572" lty="550" rbx="727" rby="567"/>
+					<data>
+						<constant value="http://dx.doi.org/doi:" datatype="string"/>
+					</data>
+				</component>
+				<component name="substring-after" library="core" uid="11" kind="5">
+					<sources>
+						<datapoint pos="0" key="27"/>
+						<datapoint pos="1" key="28"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="29"/>
+					</targets>
+					<view ltx="412" lty="-65" rbx="516" rby="-11"/>
+					<data>
+						<comment>
+							<text>http://doi.org/ entfernen von DOI</text>
+						</comment>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="40" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="79"/>
+						<datapoint pos="1" key="80"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="81"/>
+					</targets>
+					<view ltx="794" lty="550" rbx="876" rby="606"/>
+				</component>
+				<component name="constant" library="core" uid="41" kind="2">
+					<targets>
+						<datapoint pos="0" key="82"/>
+					</targets>
+					<view ltx="1586" lty="300" rbx="1751" rby="317"/>
+					<data>
+						<constant value="WWW:LINK-1.0-http--link" datatype="string"/>
+						<comment>
+							<text>Default characterString for protocol</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="42" kind="2">
+					<targets>
+						<datapoint pos="0" key="83"/>
+					</targets>
+					<view ltx="1586" lty="332" rbx="1682" rby="349"/>
+					<data>
+						<constant value="Download" datatype="string"/>
+						<comment>
+							<text>Default CharacterString for name and description</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="43" kind="2">
+					<targets>
+						<datapoint pos="0" key="84"/>
+					</targets>
+					<view ltx="1682" lty="332" rbx="1777" rby="349"/>
+					<data>
+						<constant value="download" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="44" kind="2">
+					<targets>
+						<datapoint pos="0" key="85"/>
+					</targets>
+					<view ltx="1586" lty="364" rbx="1745" rby="381"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for CI_OnlineFunctionCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="45" kind="2">
+					<targets>
+						<datapoint pos="0" key="86"/>
+					</targets>
+					<view ltx="1585" lty="396" rbx="1744" rby="413"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode_download" datatype="string"/>
+						<comment>
+							<text>Default codeListValue for CI_OnlineFunctionCode</text>
+						</comment>
+					</data>
+				</component>
 				<component name="gmd" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1912" lty="-14" rbx="2245" rby="994"/>
 					<data>
-						<root scrollposition="1">
+						<root scrollposition="508">
 							<header>
 								<namespaces>
 									<namespace uid="http://www.isotc211.org/2005/gco"/>
@@ -341,7 +490,7 @@
 												<entry name="codeListValue" ns="2" type="attribute" inpkey="53"/>
 											</entry>
 										</entry>
-										<entry name="contact" ns="1" expanded="1">
+										<entry name="contact" ns="1">
 											<entry name="CI_ResponsibleParty" ns="1" expanded="1">
 												<entry name="organisationName" ns="1">
 													<entry name="CharacterString" inpkey="54"/>
@@ -371,6 +520,9 @@
 												</entry>
 											</entry>
 										</entry>
+										<entry name="dateStamp" ns="1">
+											<entry name="Date" inpkey="69"/>
+										</entry>
 										<entry name="identificationInfo" ns="1">
 											<entry name="MD_DataIdentification" ns="1">
 												<entry name="citation" ns="1">
@@ -381,6 +533,55 @@
 														<entry name="alternateTitle" ns="1">
 															<entry name="CharacterString" inpkey="56"/>
 														</entry>
+														<entry name="date" ns="1">
+															<entry name="CI_Date" ns="1" expanded="1">
+																<entry name="date" ns="1" expanded="1">
+																	<entry name="Date" inpkey="70"/>
+																</entry>
+																<entry name="dateType" ns="1" expanded="1">
+																	<entry name="CI_DateTypeCode" ns="1" inpkey="71" expanded="1">
+																		<entry name="codeList" ns="2" type="attribute" inpkey="72"/>
+																		<entry name="codeListValue" ns="2" type="attribute" inpkey="73"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+													</entry>
+												</entry>
+												<entry name="status" ns="1">
+													<entry name="MD_ProgressCode" ns="1" inpkey="87" expanded="1">
+														<entry name="codeList" ns="2" type="attribute" inpkey="88"/>
+														<entry name="codeListValue" ns="2" type="attribute" inpkey="89"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="distributionInfo" ns="1" expanded="1">
+											<entry name="MD_Distribution" ns="1" expanded="1">
+												<entry name="transferOptions" ns="1" expanded="1">
+													<entry name="MD_DigitalTransferOptions" ns="1" expanded="1">
+														<entry name="onLine" ns="1" expanded="1">
+															<entry name="CI_OnlineResource" ns="1" expanded="1">
+																<entry name="linkage" ns="1">
+																	<entry name="URL" ns="1" inpkey="90"/>
+																</entry>
+																<entry name="protocol" ns="1">
+																	<entry name="CharacterString" inpkey="91"/>
+																</entry>
+																<entry name="name" ns="1">
+																	<entry name="CharacterString" inpkey="92"/>
+																</entry>
+																<entry name="description" ns="1">
+																	<entry name="CharacterString" inpkey="93"/>
+																</entry>
+																<entry name="function" ns="1">
+																	<entry name="CI_OnLineFunctionCode" ns="1" inpkey="94">
+																		<entry name="codeList" ns="2" type="attribute" inpkey="95"/>
+																		<entry name="codeListValue" ns="2" type="attribute" inpkey="96"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
 													</entry>
 												</entry>
 											</entry>
@@ -390,30 +591,6 @@
 							</entry>
 						</root>
 						<document schema="..\ISO\gmd.xsd" instanceroot="{http://www.isotc211.org/2005/gmd}MD_Metadata" outputinstance="..\ISO\gmd.xml"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="32" kind="2">
-					<targets>
-						<datapoint pos="0" key="66"/>
-					</targets>
-					<view ltx="1585" lty="107" rbx="1708" rby="124"/>
-					<data>
-						<constant value="pointOfContact" datatype="string"/>
-						<comment>
-							<text>Default CI_RoleCode an codeListValue for Contact Organisations</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="33" kind="2">
-					<targets>
-						<datapoint pos="0" key="67"/>
-					</targets>
-					<view ltx="1586" lty="138" rbx="1745" rby="155"/>
-					<data>
-						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" datatype="string"/>
-						<comment>
-							<text>Default codeList for Roles Contact Organisations</text>
-						</comment>
 					</data>
 				</component>
 			</children>
@@ -476,6 +653,7 @@
 					<vertex vertexkey="29">
 						<edges>
 							<edge vertexkey="24"/>
+							<edge vertexkey="80"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="26">
@@ -575,6 +753,70 @@
 					<vertex vertexkey="67">
 						<edges>
 							<edge vertexkey="64"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="68">
+						<edges>
+							<edge vertexkey="69"/>
+							<edge vertexkey="70"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="74">
+						<edges>
+							<edge vertexkey="71"/>
+							<edge vertexkey="73"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="75">
+						<edges>
+							<edge vertexkey="72"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="78">
+						<edges>
+							<edge vertexkey="79"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="77">
+						<edges>
+							<edge vertexkey="87"/>
+							<edge vertexkey="89"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="76">
+						<edges>
+							<edge vertexkey="88"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="81">
+						<edges>
+							<edge vertexkey="90"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="82">
+						<edges>
+							<edge vertexkey="91"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="83">
+						<edges>
+							<edge vertexkey="92"/>
+							<edge vertexkey="93"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="84">
+						<edges>
+							<edge vertexkey="94"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="85">
+						<edges>
+							<edge vertexkey="95"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="86">
+						<edges>
+							<edge vertexkey="96"/>
 						</edges>
 					</vertex>
 				</vertices>
