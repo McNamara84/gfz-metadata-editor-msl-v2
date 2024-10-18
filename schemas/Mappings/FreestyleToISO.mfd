@@ -281,38 +281,6 @@
 						</comment>
 					</data>
 				</component>
-				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
-					<properties XSLTTargetEncoding="UTF-8"/>
-					<view rbx="200" rby="356"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="Resource" outkey="2" expanded="1">
-										<entry name="currentDate" outkey="68"/>
-										<entry name="doi" outkey="38"/>
-										<entry name="Language">
-											<entry name="code" outkey="39"/>
-										</entry>
-										<entry name="Titles" expanded="1">
-											<entry name="Title" expanded="1">
-												<entry name="text" outkey="11"/>
-												<entry name="type" outkey="12"/>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
-					</data>
-				</component>
 				<component name="constant" library="core" uid="34" kind="2">
 					<targets>
 						<datapoint pos="0" key="74"/>
@@ -452,11 +420,70 @@
 						</comment>
 					</data>
 				</component>
+				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view rbx="200" rby="356"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Resource" outkey="2" expanded="1">
+										<entry name="currentDate" outkey="68"/>
+										<entry name="doi" outkey="38"/>
+										<entry name="Rights" expanded="1">
+											<entry name="rightsIdentifier" outkey="97"/>
+										</entry>
+										<entry name="Language">
+											<entry name="code" outkey="39"/>
+										</entry>
+										<entry name="Titles">
+											<entry name="Title">
+												<entry name="text" outkey="11"/>
+												<entry name="type" outkey="12"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="46" kind="2">
+					<targets>
+						<datapoint pos="0" key="98"/>
+					</targets>
+					<view ltx="1585" lty="422" rbx="1744" rby="439"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/codeList.xml#MD_RestrictionCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for MD_RestrictionCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="47" kind="2">
+					<targets>
+						<datapoint pos="0" key="99"/>
+					</targets>
+					<view ltx="1586" lty="452" rbx="1716" rby="469"/>
+					<data>
+						<constant value="otherRestrictions" datatype="string"/>
+						<comment>
+							<text>Default codeListValue for MD_RestrictionCode</text>
+						</comment>
+					</data>
+				</component>
 				<component name="gmd" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1912" lty="-14" rbx="2245" rby="994"/>
 					<data>
-						<root scrollposition="508">
+						<root scrollposition="411">
 							<header>
 								<namespaces>
 									<namespace uid="http://www.isotc211.org/2005/gco"/>
@@ -523,8 +550,8 @@
 										<entry name="dateStamp" ns="1">
 											<entry name="Date" inpkey="69"/>
 										</entry>
-										<entry name="identificationInfo" ns="1">
-											<entry name="MD_DataIdentification" ns="1">
+										<entry name="identificationInfo" ns="1" expanded="1">
+											<entry name="MD_DataIdentification" ns="1" expanded="1">
 												<entry name="citation" ns="1">
 													<entry name="CI_Citation" ns="1">
 														<entry name="title" ns="1">
@@ -554,14 +581,32 @@
 														<entry name="codeListValue" ns="2" type="attribute" inpkey="89"/>
 													</entry>
 												</entry>
+												<entry name="resourceConstraints" ns="1" expanded="1">
+													<entry name="MD_Constraints" ns="1">
+														<entry name="useLimitation" ns="1">
+															<entry name="CharacterString" inpkey="100"/>
+														</entry>
+													</entry>
+													<entry name="MD_LegalConstraints" ns="1">
+														<entry name="accessConstraints" ns="1">
+															<entry name="MD_RestrictionCode" ns="1">
+																<entry name="codeList" ns="2" type="attribute" inpkey="101"/>
+																<entry name="codeListValue" ns="2" type="attribute" inpkey="102"/>
+															</entry>
+														</entry>
+														<entry name="otherConstraints" ns="1">
+															<entry name="CharacterString" inpkey="103"/>
+														</entry>
+													</entry>
+												</entry>
 											</entry>
 										</entry>
-										<entry name="distributionInfo" ns="1" expanded="1">
-											<entry name="MD_Distribution" ns="1" expanded="1">
-												<entry name="transferOptions" ns="1" expanded="1">
-													<entry name="MD_DigitalTransferOptions" ns="1" expanded="1">
-														<entry name="onLine" ns="1" expanded="1">
-															<entry name="CI_OnlineResource" ns="1" expanded="1">
+										<entry name="distributionInfo" ns="1">
+											<entry name="MD_Distribution" ns="1">
+												<entry name="transferOptions" ns="1">
+													<entry name="MD_DigitalTransferOptions" ns="1">
+														<entry name="onLine" ns="1">
+															<entry name="CI_OnlineResource" ns="1">
 																<entry name="linkage" ns="1">
 																	<entry name="URL" ns="1" inpkey="90"/>
 																</entry>
@@ -817,6 +862,22 @@
 					<vertex vertexkey="86">
 						<edges>
 							<edge vertexkey="96"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="97">
+						<edges>
+							<edge vertexkey="100"/>
+							<edge vertexkey="103"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="98">
+						<edges>
+							<edge vertexkey="101"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="99">
+						<edges>
+							<edge vertexkey="102"/>
 						</edges>
 					</vertex>
 				</vertices>
