@@ -333,7 +333,7 @@
 					<targets>
 						<datapoint pos="0" key="78"/>
 					</targets>
-					<view ltx="572" lty="550" rbx="727" rby="567"/>
+					<view ltx="616" lty="2" rbx="771" rby="19"/>
 					<data>
 						<constant value="http://dx.doi.org/doi:" datatype="string"/>
 					</data>
@@ -352,16 +352,6 @@
 							<text>http://doi.org/ entfernen von DOI</text>
 						</comment>
 					</data>
-				</component>
-				<component name="concat" library="core" uid="40" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="79"/>
-						<datapoint pos="1" key="80"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="81"/>
-					</targets>
-					<view ltx="794" lty="550" rbx="876" rby="606"/>
 				</component>
 				<component name="constant" library="core" uid="41" kind="2">
 					<targets>
@@ -420,41 +410,6 @@
 						</comment>
 					</data>
 				</component>
-				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
-					<properties XSLTTargetEncoding="UTF-8"/>
-					<view rbx="200" rby="356"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="Resource" outkey="2" expanded="1">
-										<entry name="currentDate" outkey="68"/>
-										<entry name="doi" outkey="38"/>
-										<entry name="Rights" expanded="1">
-											<entry name="rightsIdentifier" outkey="97"/>
-										</entry>
-										<entry name="Language">
-											<entry name="code" outkey="39"/>
-										</entry>
-										<entry name="Titles">
-											<entry name="Title">
-												<entry name="text" outkey="11"/>
-												<entry name="type" outkey="12"/>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
-					</data>
-				</component>
 				<component name="constant" library="core" uid="46" kind="2">
 					<targets>
 						<datapoint pos="0" key="98"/>
@@ -479,21 +434,98 @@
 						</comment>
 					</data>
 				</component>
+				<component name="concat" library="core" uid="40" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="79"/>
+						<datapoint pos="1" key="80"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="81"/>
+					</targets>
+					<view ltx="838" lty="2" rbx="920" rby="58"/>
+				</component>
+				<component name="constant" library="core" uid="50" kind="2">
+					<targets>
+						<datapoint pos="0" key="104"/>
+					</targets>
+					<view ltx="1585" lty="485" rbx="1711" rby="502"/>
+					<data>
+						<constant value="http://orcid.org/" datatype="string"/>
+						<comment>
+							<text>Default ORCID URI</text>
+						</comment>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="49" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="105"/>
+						<datapoint pos="1" key="106"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="107"/>
+					</targets>
+					<view ltx="875" lty="582" rbx="957" rby="638"/>
+				</component>
+				<component name="constant" library="core" uid="53" kind="2">
+					<targets>
+						<datapoint pos="0" key="108"/>
+					</targets>
+					<view ltx="568" lty="724" rbx="616" rby="741"/>
+					<data>
+						<constant value=", " datatype="string"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="52" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="109"/>
+						<datapoint pos="1" key="110"/>
+						<datapoint pos="2" key="111"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="112"/>
+					</targets>
+					<view ltx="616" lty="683" rbx="708" rby="756"/>
+				</component>
+				<component name="constant" library="core" uid="54" kind="2">
+					<targets>
+						<datapoint pos="0" key="113"/>
+					</targets>
+					<view ltx="1585" lty="516" rbx="1744" rby="533"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" datatype="string"/>
+						<comment>
+							<text>Default CodeList for Author Roles</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="55" kind="2">
+					<targets>
+						<datapoint pos="0" key="114"/>
+					</targets>
+					<view ltx="1585" lty="547" rbx="1662" rby="564"/>
+					<data>
+						<constant value="author" datatype="string"/>
+						<comment>
+							<text>Default CodeListValue for Author Role</text>
+						</comment>
+					</data>
+				</component>
 				<component name="gmd" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1912" lty="-14" rbx="2245" rby="994"/>
 					<data>
-						<root scrollposition="411">
+						<root scrollposition="1">
 							<header>
 								<namespaces>
 									<namespace uid="http://www.isotc211.org/2005/gco"/>
 									<namespace uid="http://www.isotc211.org/2005/gmd"/>
 									<namespace/>
+									<namespace uid="http://www.w3.org/1999/xlink"/>
 									<namespace uid="http://www.altova.com/mapforce"/>
 								</namespaces>
 							</header>
-							<entry name="FileInstance" ns="3" expanded="1">
-								<entry name="document" ns="3" expanded="1" casttotargettypemode="cast-in-subtree">
+							<entry name="FileInstance" ns="4" expanded="1">
+								<entry name="document" ns="4" expanded="1" casttotargettypemode="cast-in-subtree">
 									<entry name="MD_Metadata" ns="1" inpkey="1" expanded="1">
 										<entry name="fileIdentifier" ns="1">
 											<entry name="CharacterString" inpkey="46"/>
@@ -550,8 +582,8 @@
 										<entry name="dateStamp" ns="1">
 											<entry name="Date" inpkey="69"/>
 										</entry>
-										<entry name="identificationInfo" ns="1" expanded="1">
-											<entry name="MD_DataIdentification" ns="1" expanded="1">
+										<entry name="identificationInfo" ns="1">
+											<entry name="MD_DataIdentification" ns="1">
 												<entry name="citation" ns="1">
 													<entry name="CI_Citation" ns="1">
 														<entry name="title" ns="1">
@@ -573,6 +605,23 @@
 																</entry>
 															</entry>
 														</entry>
+														<entry name="citedResponsibleParty" ns="1" inpkey="115">
+															<entry name="href" ns="3" type="attribute" inpkey="116"/>
+															<entry name="CI_ResponsibleParty" ns="1">
+																<entry name="individualName" ns="1">
+																	<entry name="CharacterString" inpkey="117"/>
+																</entry>
+																<entry name="organisationName" ns="1">
+																	<entry name="CharacterString" inpkey="118"/>
+																</entry>
+																<entry name="role" ns="1">
+																	<entry name="CI_RoleCode" ns="1" inpkey="119">
+																		<entry name="codeList" ns="2" type="attribute" inpkey="120"/>
+																		<entry name="codeListValue" ns="2" type="attribute" inpkey="121"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
 													</entry>
 												</entry>
 												<entry name="status" ns="1">
@@ -581,7 +630,7 @@
 														<entry name="codeListValue" ns="2" type="attribute" inpkey="89"/>
 													</entry>
 												</entry>
-												<entry name="resourceConstraints" ns="1" expanded="1">
+												<entry name="resourceConstraints" ns="1">
 													<entry name="MD_Constraints" ns="1">
 														<entry name="useLimitation" ns="1">
 															<entry name="CharacterString" inpkey="100"/>
@@ -636,6 +685,53 @@
 							</entry>
 						</root>
 						<document schema="..\ISO\gmd.xsd" instanceroot="{http://www.isotc211.org/2005/gmd}MD_Metadata" outputinstance="..\ISO\gmd.xml"/>
+					</data>
+				</component>
+				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view rbx="200" rby="356"/>
+					<data>
+						<root scrollposition="19">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Resource" outkey="2" expanded="1">
+										<entry name="currentDate" outkey="68"/>
+										<entry name="doi" outkey="38"/>
+										<entry name="Rights">
+											<entry name="rightsIdentifier" outkey="97"/>
+										</entry>
+										<entry name="Language">
+											<entry name="code" outkey="39"/>
+										</entry>
+										<entry name="Titles">
+											<entry name="Title">
+												<entry name="text" outkey="11"/>
+												<entry name="type" outkey="12"/>
+											</entry>
+										</entry>
+										<entry name="Authors">
+											<entry name="Author" outkey="122">
+												<entry name="familyname" outkey="123"/>
+												<entry name="givenname" outkey="124"/>
+												<entry name="orcid" outkey="125"/>
+												<entry name="Affiliations">
+													<entry name="Affiliation">
+														<entry name="name" outkey="126"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
 					</data>
 				</component>
 			</children>
@@ -878,6 +974,62 @@
 					<vertex vertexkey="99">
 						<edges>
 							<edge vertexkey="102"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="104">
+						<edges>
+							<edge vertexkey="105"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="125">
+						<edges>
+							<edge vertexkey="106"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="123">
+						<edges>
+							<edge vertexkey="109"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="108">
+						<edges>
+							<edge vertexkey="110"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="124">
+						<edges>
+							<edge vertexkey="111"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="122">
+						<edges>
+							<edge vertexkey="115"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="107">
+						<edges>
+							<edge vertexkey="116"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="112">
+						<edges>
+							<edge vertexkey="117"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="126">
+						<edges>
+							<edge vertexkey="118"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="114">
+						<edges>
+							<edge vertexkey="119"/>
+							<edge vertexkey="121"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="113">
+						<edges>
+							<edge vertexkey="120"/>
 						</edges>
 					</vertex>
 				</vertices>
