@@ -6,31 +6,169 @@
 		<properties SelectedLanguage="xslt"/>
 		<structure>
 			<children>
-				<component name="gmd" library="xml" uid="3" kind="14">
-					<properties XSLTDefaultOutput="1"/>
-					<view ltx="1912" lty="-14" rbx="2245" rby="994"/>
+				<component name="exists" library="core" uid="5" kind="5">
+					<sources>
+						<datapoint pos="0" key="20"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="21"/>
+					</targets>
+					<view ltx="565" lty="-169" rbx="641" rby="-131"/>
+				</component>
+				<component name="constant" library="core" uid="9" kind="2">
+					<targets>
+						<datapoint pos="0" key="22"/>
+					</targets>
+					<view ltx="454" lty="-108" rbx="516" rby="-91"/>
 					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace uid="http://www.isotc211.org/2005/gmd"/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="MD_Metadata" inpkey="1" expanded="1"/>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\ISO\gmd.xsd" instanceroot="{http://www.isotc211.org/2005/gmd}MD_Metadata" outputinstance="..\ISO\gmd.xml"/>
+						<constant value="doi:" datatype="string"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="8" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="23"/>
+						<datapoint pos="1" key="24"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="25"/>
+					</targets>
+					<view ltx="542" lty="-108" rbx="624" rby="-52"/>
+				</component>
+				<component name="constant" library="core" uid="12" kind="2">
+					<targets>
+						<datapoint pos="0" key="26"/>
+					</targets>
+					<view ltx="272" lty="-28" rbx="389" rby="-11"/>
+					<data>
+						<constant value="http://doi.org/" datatype="string"/>
+					</data>
+				</component>
+				<component name="substring-after" library="core" uid="11" kind="5">
+					<sources>
+						<datapoint pos="0" key="27"/>
+						<datapoint pos="1" key="28"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="29"/>
+					</targets>
+					<view ltx="412" lty="-65" rbx="516" rby="-11"/>
+					<data>
+						<comment>
+							<text>http://doi.org/ entfernen von DOI</text>
+						</comment>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="6" kind="4">
+					<sources>
+						<datapoint pos="0" key="30"/>
+						<datapoint pos="1" key="31"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="32"/>
+					</targets>
+					<view ltx="667" lty="-108" rbx="771" rby="-35"/>
+					<data>
+						<comment>
+							<text>Nur wenn befüllt</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="15" kind="2">
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="272" lty="396" rbx="364" rby="413"/>
+					<data>
+						<constant value="Main Title" datatype="string"/>
+					</data>
+				</component>
+				<component name="contains" library="core" uid="14" kind="5">
+					<sources>
+						<datapoint pos="0" key="7"/>
+						<datapoint pos="1" key="8"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="9"/>
+					</targets>
+					<view ltx="397" lty="359" rbx="495" rby="413"/>
+				</component>
+				<component name="contains" library="core" uid="19" kind="5">
+					<sources>
+						<datapoint pos="0" key="19"/>
+						<datapoint pos="1" key="16"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="17"/>
+					</targets>
+					<view ltx="397" lty="431" rbx="495" rby="485"/>
+				</component>
+				<component name="constant" library="core" uid="17" kind="2">
+					<targets>
+						<datapoint pos="0" key="15"/>
+					</targets>
+					<view ltx="243" lty="468" rbx="364" rby="485"/>
+					<data>
+						<constant value="Alternative Title" datatype="string"/>
+					</data>
+				</component>
+				<component name="exists" library="core" uid="21" kind="5">
+					<sources>
+						<datapoint pos="0" key="33"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="34"/>
+					</targets>
+					<view ltx="651" lty="375" rbx="727" rby="413"/>
+				</component>
+				<component name="if-else" library="core" uid="22" kind="4">
+					<sources>
+						<datapoint pos="0" key="35"/>
+						<datapoint pos="1" key="36"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="37"/>
+					</targets>
+					<view ltx="755" lty="378" rbx="859" rby="451"/>
+				</component>
+				<component name="if-else" library="core" uid="18" kind="4">
+					<sources>
+						<datapoint pos="0" key="18"/>
+						<datapoint pos="1" key="14"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="13"/>
+					</targets>
+					<view ltx="520" lty="378" rbx="624" rby="451"/>
+					<data>
+						<comment>
+							<text>Alternative Title?</text>
+						</comment>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="16" kind="4">
+					<sources>
+						<datapoint pos="0" key="4"/>
+						<datapoint pos="1" key="5"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="520" lty="289" rbx="624" rby="362"/>
+					<data>
+						<comment>
+							<text>Main Title?</text>
+						</comment>
 					</data>
 				</component>
 				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
-					<properties/>
+					<properties XSLTTargetEncoding="UTF-8"/>
 					<view rbx="200" rby="356"/>
 					<data>
-						<root>
+						<root scrollposition="1">
 							<header>
 								<namespaces>
 									<namespace/>
@@ -39,11 +177,243 @@
 							</header>
 							<entry name="FileInstance" ns="1" expanded="1">
 								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="Resource" outkey="2" expanded="1"/>
+									<entry name="Resource" outkey="2" expanded="1">
+										<entry name="doi" outkey="38"/>
+										<entry name="Language" expanded="1">
+											<entry name="code" outkey="39"/>
+										</entry>
+										<entry name="Titles">
+											<entry name="Title">
+												<entry name="text" outkey="11"/>
+												<entry name="type" outkey="12"/>
+											</entry>
+										</entry>
+									</entry>
 								</entry>
 							</entry>
 						</root>
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="23" kind="2">
+					<targets>
+						<datapoint pos="0" key="40"/>
+					</targets>
+					<view ltx="1585" lty="-169" rbx="1745" rby="-152"/>
+					<data>
+						<constant value="http://www.loc.gov/standards/iso639-1/" datatype="string"/>
+						<comment>
+							<text>Default language CodeList</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="25" kind="2">
+					<targets>
+						<datapoint pos="0" key="41"/>
+					</targets>
+					<view ltx="1585" lty="-108" rbx="1648" rby="-91"/>
+					<data>
+						<constant value="utf8" datatype="string"/>
+						<comment>
+							<text>Default CodeListValue for MD_CharacterSetCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="26" kind="2">
+					<targets>
+						<datapoint pos="0" key="42"/>
+					</targets>
+					<view ltx="1585" lty="-79" rbx="1744" rby="-62"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for MD_ScopeCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="24" kind="2">
+					<targets>
+						<datapoint pos="0" key="43"/>
+					</targets>
+					<view ltx="1585" lty="-136" rbx="1744" rby="-119"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/codeList.xml#MD_CharacterSetCode" datatype="string"/>
+						<comment>
+							<text>Default CodeList for MD_CharacterSetCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="27" kind="2">
+					<targets>
+						<datapoint pos="0" key="44"/>
+					</targets>
+					<view ltx="1585" lty="-52" rbx="1665" rby="-35"/>
+					<data>
+						<constant value="dataset" datatype="string"/>
+						<comment>
+							<text>Default codeListValue for MD_ScopeCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="28" kind="2">
+					<targets>
+						<datapoint pos="0" key="45"/>
+					</targets>
+					<view ltx="1585" lty="-24" rbx="1751" rby="-7"/>
+					<data>
+						<constant value="GFZ German Research Center for Geosciences" datatype="string"/>
+						<comment>
+							<text>Default organisationName for CI_ResponsibleParty</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="29" kind="2">
+					<targets>
+						<datapoint pos="0" key="57"/>
+					</targets>
+					<view ltx="1585" lty="9" rbx="1747" rby="26"/>
+					<data>
+						<constant value="https://www.gfz-potsdam.de/" datatype="string"/>
+						<comment>
+							<text>Default URL for linkage</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="31" kind="2">
+					<targets>
+						<datapoint pos="0" key="58"/>
+					</targets>
+					<view ltx="1585" lty="74" rbx="1744" rby="91"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for CI_OnLineFunctionCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="30" kind="2">
+					<targets>
+						<datapoint pos="0" key="59"/>
+					</targets>
+					<view ltx="1585" lty="41" rbx="1688" rby="58"/>
+					<data>
+						<constant value="information" datatype="string"/>
+						<comment>
+							<text>Default CI_OnLineFunctionCode and codeListValue</text>
+						</comment>
+					</data>
+				</component>
+				<component name="gmd" library="xml" uid="3" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="1912" lty="-14" rbx="2245" rby="994"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://www.isotc211.org/2005/gco"/>
+									<namespace uid="http://www.isotc211.org/2005/gmd"/>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="3" expanded="1">
+								<entry name="document" ns="3" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="MD_Metadata" ns="1" inpkey="1" expanded="1">
+										<entry name="fileIdentifier" ns="1">
+											<entry name="CharacterString" inpkey="46"/>
+										</entry>
+										<entry name="language" ns="1">
+											<entry name="CharacterString" inpkey="47"/>
+											<entry name="LanguageCode" ns="1">
+												<entry name="codeList" ns="2" type="attribute" inpkey="48"/>
+												<entry name="codeListValue" ns="2" type="attribute" inpkey="49"/>
+											</entry>
+										</entry>
+										<entry name="characterSet" ns="1">
+											<entry name="MD_CharacterSetCode" ns="1">
+												<entry name="codeList" ns="2" type="attribute" inpkey="50"/>
+												<entry name="codeListValue" ns="2" type="attribute" inpkey="51"/>
+											</entry>
+										</entry>
+										<entry name="hierarchyLevel" ns="1">
+											<entry name="MD_ScopeCode" ns="1">
+												<entry name="codeList" ns="2" type="attribute" inpkey="52"/>
+												<entry name="codeListValue" ns="2" type="attribute" inpkey="53"/>
+											</entry>
+										</entry>
+										<entry name="contact" ns="1" expanded="1">
+											<entry name="CI_ResponsibleParty" ns="1" expanded="1">
+												<entry name="organisationName" ns="1">
+													<entry name="CharacterString" inpkey="54"/>
+												</entry>
+												<entry name="contactInfo" ns="1">
+													<entry name="CI_Contact" ns="1">
+														<entry name="onlineResource" ns="1">
+															<entry name="CI_OnlineResource" ns="1">
+																<entry name="linkage" ns="1">
+																	<entry name="URL" ns="1" inpkey="55"/>
+																</entry>
+																<entry name="function" ns="1">
+																	<entry name="CI_OnLineFunctionCode" ns="1" inpkey="60">
+																		<entry name="codeList" ns="2" type="attribute" inpkey="61"/>
+																		<entry name="codeListValue" ns="2" type="attribute" inpkey="62"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+													</entry>
+												</entry>
+												<entry name="role" ns="1" expanded="1">
+													<entry name="CI_RoleCode" ns="1" inpkey="63" expanded="1">
+														<entry name="codeList" ns="2" type="attribute" inpkey="64"/>
+														<entry name="codeListValue" ns="2" type="attribute" inpkey="65"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="identificationInfo" ns="1">
+											<entry name="MD_DataIdentification" ns="1">
+												<entry name="citation" ns="1">
+													<entry name="CI_Citation" ns="1">
+														<entry name="title" ns="1">
+															<entry name="CharacterString" inpkey="10"/>
+														</entry>
+														<entry name="alternateTitle" ns="1">
+															<entry name="CharacterString" inpkey="56"/>
+														</entry>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\ISO\gmd.xsd" instanceroot="{http://www.isotc211.org/2005/gmd}MD_Metadata" outputinstance="..\ISO\gmd.xml"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="32" kind="2">
+					<targets>
+						<datapoint pos="0" key="66"/>
+					</targets>
+					<view ltx="1585" lty="107" rbx="1708" rby="124"/>
+					<data>
+						<constant value="pointOfContact" datatype="string"/>
+						<comment>
+							<text>Default CI_RoleCode an codeListValue for Contact Organisations</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="33" kind="2">
+					<targets>
+						<datapoint pos="0" key="67"/>
+					</targets>
+					<view ltx="1586" lty="138" rbx="1745" rby="155"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for Roles Contact Organisations</text>
+						</comment>
 					</data>
 				</component>
 			</children>
@@ -53,6 +423,158 @@
 					<vertex vertexkey="2">
 						<edges>
 							<edge vertexkey="1"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="9">
+						<edges>
+							<edge vertexkey="4"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="11">
+						<edges>
+							<edge vertexkey="5"/>
+							<edge vertexkey="14"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="12">
+						<edges>
+							<edge vertexkey="7"/>
+							<edge vertexkey="19"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="8"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="10"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="15">
+						<edges>
+							<edge vertexkey="16"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="17">
+						<edges>
+							<edge vertexkey="18"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="38">
+						<edges>
+							<edge vertexkey="20"/>
+							<edge vertexkey="27"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="22">
+						<edges>
+							<edge vertexkey="23"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="29">
+						<edges>
+							<edge vertexkey="24"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="26">
+						<edges>
+							<edge vertexkey="28"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="21">
+						<edges>
+							<edge vertexkey="30"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="25">
+						<edges>
+							<edge vertexkey="31"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="13">
+						<edges>
+							<edge vertexkey="33"/>
+							<edge vertexkey="36"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="34">
+						<edges>
+							<edge vertexkey="35"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="32">
+						<edges>
+							<edge vertexkey="46"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="39">
+						<edges>
+							<edge vertexkey="47"/>
+							<edge vertexkey="49"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="40">
+						<edges>
+							<edge vertexkey="48"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="43">
+						<edges>
+							<edge vertexkey="50"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="41">
+						<edges>
+							<edge vertexkey="51"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="42">
+						<edges>
+							<edge vertexkey="52"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="44">
+						<edges>
+							<edge vertexkey="53"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="45">
+						<edges>
+							<edge vertexkey="54"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="57">
+						<edges>
+							<edge vertexkey="55"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="37">
+						<edges>
+							<edge vertexkey="56"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="59">
+						<edges>
+							<edge vertexkey="60"/>
+							<edge vertexkey="62"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="58">
+						<edges>
+							<edge vertexkey="61"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="66">
+						<edges>
+							<edge vertexkey="63"/>
+							<edge vertexkey="65"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="67">
+						<edges>
+							<edge vertexkey="64"/>
 						</edges>
 					</vertex>
 				</vertices>
