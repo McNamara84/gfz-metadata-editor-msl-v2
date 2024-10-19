@@ -456,35 +456,14 @@
 						</comment>
 					</data>
 				</component>
-				<component name="concat" library="core" uid="49" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="105"/>
-						<datapoint pos="1" key="106"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="107"/>
-					</targets>
-					<view ltx="875" lty="582" rbx="957" rby="638"/>
-				</component>
 				<component name="constant" library="core" uid="53" kind="2">
 					<targets>
 						<datapoint pos="0" key="108"/>
 					</targets>
-					<view ltx="568" lty="724" rbx="616" rby="741"/>
+					<view ltx="553" lty="516" rbx="601" rby="533"/>
 					<data>
 						<constant value=", " datatype="string"/>
 					</data>
-				</component>
-				<component name="concat" library="core" uid="52" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="109"/>
-						<datapoint pos="1" key="110"/>
-						<datapoint pos="2" key="111"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="112"/>
-					</targets>
-					<view ltx="616" lty="683" rbx="708" rby="756"/>
 				</component>
 				<component name="constant" library="core" uid="54" kind="2">
 					<targets>
@@ -509,6 +488,27 @@
 							<text>Default CodeListValue for Author Role</text>
 						</comment>
 					</data>
+				</component>
+				<component name="concat" library="core" uid="52" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="109"/>
+						<datapoint pos="1" key="110"/>
+						<datapoint pos="2" key="111"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="112"/>
+					</targets>
+					<view ltx="601" lty="475" rbx="693" rby="548"/>
+				</component>
+				<component name="concat" library="core" uid="49" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="105"/>
+						<datapoint pos="1" key="106"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="107"/>
+					</targets>
+					<view ltx="777" lty="475" rbx="859" rby="531"/>
 				</component>
 				<component name="gmd" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
@@ -582,8 +582,8 @@
 										<entry name="dateStamp" ns="1">
 											<entry name="Date" inpkey="69"/>
 										</entry>
-										<entry name="identificationInfo" ns="1">
-											<entry name="MD_DataIdentification" ns="1">
+										<entry name="identificationInfo" ns="1" expanded="1">
+											<entry name="MD_DataIdentification" ns="1" expanded="1">
 												<entry name="citation" ns="1">
 													<entry name="CI_Citation" ns="1">
 														<entry name="title" ns="1">
@@ -623,6 +623,9 @@
 															</entry>
 														</entry>
 													</entry>
+												</entry>
+												<entry name="abstract" ns="1" inpkey="144" expanded="1">
+													<entry name="CharacterString" inpkey="145"/>
 												</entry>
 												<entry name="status" ns="1">
 													<entry name="MD_ProgressCode" ns="1" inpkey="87" expanded="1">
@@ -727,11 +730,44 @@
 												</entry>
 											</entry>
 										</entry>
+										<entry name="Descriptions" outkey="146" expanded="1">
+											<entry name="Description" expanded="1">
+												<entry name="description" outkey="140"/>
+											</entry>
+										</entry>
 									</entry>
 								</entry>
 							</entry>
 						</root>
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="57" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="132"/>
+						<datapoint pos="1" key="147"/>
+						<datapoint pos="2" key="148"/>
+						<datapoint pos="3" key="149"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="150"/>
+					</targets>
+					<view ltx="926" lty="620" rbx="1018" rby="710"/>
+					<data>
+						<comment>
+							<text>Um alle vier descriptions zu einem einzelnen abstract-Element zusammenfügen, muss folgender Workaround angewendet werden. Den XSLT-Code nach dem Export austauschen:
+&lt;abstract&gt;
+    &lt;CharacterString&gt;
+        &lt;xsl:for-each select=&quot;*[local-name()=&apos;Descriptions&apos; and namespace-uri()=&apos;&apos;]/*[local-name()=&apos;Description&apos; and namespace-uri()=&apos;&apos;]&quot;&gt;
+            &lt;xsl:if test=&quot;position() &amp;gt; 1&quot;&gt;
+                &lt;!-- Fügt einen Zeilenumbruch zwischen den Beschreibungen hinzu --&gt;
+                &lt;xsl:text&gt;&amp;#xA;&amp;#xA;&lt;/xsl:text&gt;
+            &lt;/xsl:if&gt;
+            &lt;xsl:value-of select=&quot;*[local-name()=&apos;description&apos; and namespace-uri()=&apos;&apos;]&quot;/&gt;
+        &lt;/xsl:for-each&gt;
+    &lt;/CharacterString&gt;
+&lt;/abstract&gt;</text>
+						</comment>
 					</data>
 				</component>
 			</children>
@@ -1030,6 +1066,24 @@
 					<vertex vertexkey="113">
 						<edges>
 							<edge vertexkey="120"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="140">
+						<edges>
+							<edge vertexkey="132"/>
+							<edge vertexkey="147"/>
+							<edge vertexkey="148"/>
+							<edge vertexkey="149"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="146">
+						<edges>
+							<edge vertexkey="144"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="150">
+						<edges>
+							<edge vertexkey="145"/>
 						</edges>
 					</vertex>
 				</vertices>
