@@ -6,40 +6,74 @@
 		<properties SelectedLanguage="xslt"/>
 		<structure>
 			<children>
-				<component name="DIF" library="xml" uid="3" kind="14">
-					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
-					<view ltx="1895" lty="-4" rbx="2254" rby="987"/>
+				<component name="substring-after" library="core" uid="5" kind="5">
+					<sources>
+						<datapoint pos="0" key="3"/>
+						<datapoint pos="1" key="4"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="5"/>
+					</targets>
+					<view ltx="1478" lty="49" rbx="1582" rby="103"/>
 					<data>
-						<root>
-							<header>
-								<namespaces>
-									<namespace uid="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/"/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="DIF" inpkey="1" expanded="1">
-										<entry name="Entry_ID" inpkey="7"/>
-										<entry name="Entry_Title" inpkey="8"/>
-										<entry name="Data_Set_Citation" expanded="1">
-											<entry name="Dataset_Title" inpkey="9"/>
-											<entry name="Dataset_Release_Date" inpkey="10"/>
-										</entry>
-										<entry name="Personnel" expanded="1"/>
-										<entry name="Discipline" expanded="1"/>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\GCMD\DIF.xsd" instanceroot="{http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/}DIF" outputinstance="..\GCMD\DIF.xml"/>
+						<comment>
+							<text>Hier wird den anfang von DOI (http://doi.org/) abgeschnitten und der 
+Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
+						</comment>
 					</data>
+				</component>
+				<component name="constant" library="core" uid="6" kind="2">
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="1345" lty="84" rbx="1462" rby="101"/>
+					<data>
+						<constant value="http://doi.org/" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="8" kind="2">
+					<targets>
+						<datapoint pos="0" key="14"/>
+					</targets>
+					<view ltx="734" lty="265" rbx="827" rby="282"/>
+					<data>
+						<constant value="Main Title" datatype="string"/>
+					</data>
+				</component>
+				<component name="contains" library="core" uid="59" kind="5">
+					<sources>
+						<datapoint pos="0" key="28"/>
+						<datapoint pos="1" key="26"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="23"/>
+					</targets>
+					<view ltx="874" lty="364" rbx="972" rby="418"/>
+				</component>
+				<component name="constant" library="core" uid="58" kind="2">
+					<targets>
+						<datapoint pos="0" key="25"/>
+					</targets>
+					<view ltx="734" lty="401" rbx="818" rby="418"/>
+					<data>
+						<constant value="Abstract" datatype="string"/>
+					</data>
+				</component>
+				<component name="contains" library="core" uid="10" kind="5">
+					<sources>
+						<datapoint pos="0" key="15"/>
+						<datapoint pos="1" key="16"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="17"/>
+					</targets>
+					<view ltx="874" lty="228" rbx="972" rby="282"/>
 				</component>
 				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
 					<properties XSLTTargetEncoding="UTF-8"/>
 					<view rbx="300" rby="847"/>
 					<data>
-						<root>
+						<root scrollposition="1">
 							<header>
 								<namespaces>
 									<namespace/>
@@ -57,55 +91,19 @@
 												<entry name="type" outkey="18"/>
 											</entry>
 										</entry>
+										<entry name="Authors" expanded="1">
+											<entry name="Author" expanded="1"/>
+										</entry>
+										<entry name="Descriptions" expanded="1">
+											<entry name="Description" expanded="1">
+												<entry name="type" outkey="29"/>
+											</entry>
+										</entry>
 									</entry>
 								</entry>
 							</entry>
 						</root>
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
-					</data>
-				</component>
-				<component name="substring-after" library="core" uid="5" kind="5">
-					<sources>
-						<datapoint pos="0" key="3"/>
-						<datapoint pos="1" key="4"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="5"/>
-					</targets>
-					<view ltx="1478" lty="49" rbx="1572" rby="101"/>
-					<data>
-						<comment>
-							<text>Hier wird den anfang von DOI (http://doi.org/) abgeschnitten und der 
-Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="6" kind="2">
-					<targets>
-						<datapoint pos="0" key="6"/>
-					</targets>
-					<view ltx="1345" lty="84" rbx="1452" rby="100"/>
-					<data>
-						<constant value="http://doi.org/" datatype="string"/>
-					</data>
-				</component>
-				<component name="contains" library="core" uid="10" kind="5">
-					<sources>
-						<datapoint pos="0" key="15"/>
-						<datapoint pos="1" key="16"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="17"/>
-					</targets>
-					<view ltx="867" lty="212" rbx="953" rby="264"/>
-				</component>
-				<component name="constant" library="core" uid="8" kind="2">
-					<targets>
-						<datapoint pos="0" key="14"/>
-					</targets>
-					<view ltx="755" lty="248" rbx="840" rby="264"/>
-					<data>
-						<constant value="Main Title" datatype="string"/>
 					</data>
 				</component>
 				<component name="if-else" library="core" uid="7" kind="4">
@@ -117,7 +115,56 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					<targets>
 						<datapoint pos="0" key="21"/>
 					</targets>
-					<view ltx="996" lty="182" rbx="1088" rby="253"/>
+					<view ltx="1042" lty="191" rbx="1146" rby="264"/>
+					<data>
+						<comment>
+							<text>Im DIF-Schema darf nur ein Title in der XML-Datei gespeichert wird. 
+Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es main ist dann darf es eingetragen werden wenn nicht dann wird es ignoriert.</text>
+						</comment>
+					</data>
+				</component>
+				<component name="DIF" library="xml" uid="3" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="1895" lty="-4" rbx="2254" rby="987"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="DIF" inpkey="1" expanded="1">
+										<entry name="Entry_ID" inpkey="7"/>
+										<entry name="Entry_Title" inpkey="8"/>
+										<entry name="Data_Set_Citation" expanded="1">
+											<entry name="Dataset_Title" inpkey="9"/>
+											<entry name="Dataset_Release_Date" inpkey="10"/>
+										</entry>
+										<entry name="Personnel" expanded="1"/>
+										<entry name="Discipline" expanded="1"/>
+										<entry name="Summary" inpkey="30" expanded="1">
+											<entry name="Abstract" inpkey="31"/>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\GCMD\DIF.xsd" instanceroot="{http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/}DIF" outputinstance="..\GCMD\DIF.xml"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="60" kind="4">
+					<sources>
+						<datapoint pos="0" key="24"/>
+						<datapoint/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="22"/>
+					</targets>
+					<view ltx="1005" lty="345" rbx="1109" rby="418"/>
 					<data>
 						<comment>
 							<text>Im DIF-Schema darf nur ein Title in der XML-Datei gespeichert wird. 
@@ -178,6 +225,85 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<vertex vertexkey="13">
 						<edges>
 							<edge vertexkey="20"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="23">
+						<edges>
+							<edge vertexkey="24"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="25">
+						<edges>
+							<edge vertexkey="26"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="29">
+						<edges>
+							<edge vertexkey="28"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="22">
+						<edges>
+							<edge vertexkey="30"/>
+							<edge vertexkey="31"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="KombiniereAutoren" library="aggregate functions" uid="43" inline="1" editable="1" blackbox="0">
+		<structure>
+			<children>
+				<component name="constant" library="core" uid="57" kind="2">
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="783" lty="454" rbx="828" rby="471"/>
+					<data>
+						<constant value=";" datatype="string"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="48" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="880" lty="536" rbx="962" rby="592"/>
+				</component>
+				<component name="Autor" library="core" uid="45" kind="6">
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="783" lty="379" rbx="869" rby="417"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="Autor"/>
+					</data>
+				</component>
+				<component name="KombinierteAutoren" library="core" uid="46" kind="7">
+					<sources>
+						<datapoint pos="0" key="6"/>
+					</sources>
+					<view ltx="933" lty="379" rbx="1065" rby="417"/>
+					<data>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="KombinierteAutoren"/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="6"/>
 						</edges>
 					</vertex>
 				</vertices>
