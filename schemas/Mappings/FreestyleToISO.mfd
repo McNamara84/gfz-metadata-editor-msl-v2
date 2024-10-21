@@ -233,54 +233,6 @@
 						</comment>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="31" kind="2">
-					<targets>
-						<datapoint pos="0" key="58"/>
-					</targets>
-					<view ltx="1585" lty="74" rbx="1744" rby="91"/>
-					<data>
-						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" datatype="string"/>
-						<comment>
-							<text>Default codeList for CI_OnLineFunctionCode</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="30" kind="2">
-					<targets>
-						<datapoint pos="0" key="59"/>
-					</targets>
-					<view ltx="1585" lty="41" rbx="1688" rby="58"/>
-					<data>
-						<constant value="information" datatype="string"/>
-						<comment>
-							<text>Default CI_OnLineFunctionCode and codeListValue</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="32" kind="2">
-					<targets>
-						<datapoint pos="0" key="66"/>
-					</targets>
-					<view ltx="1585" lty="107" rbx="1708" rby="124"/>
-					<data>
-						<constant value="pointOfContact" datatype="string"/>
-						<comment>
-							<text>Default CI_RoleCode an codeListValue for Contact Organisations</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="33" kind="2">
-					<targets>
-						<datapoint pos="0" key="67"/>
-					</targets>
-					<view ltx="1586" lty="138" rbx="1745" rby="155"/>
-					<data>
-						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" datatype="string"/>
-						<comment>
-							<text>Default codeList for Roles Contact Organisations</text>
-						</comment>
-					</data>
-				</component>
 				<component name="constant" library="core" uid="34" kind="2">
 					<targets>
 						<datapoint pos="0" key="74"/>
@@ -510,11 +462,210 @@
 					</targets>
 					<view ltx="777" lty="475" rbx="859" rby="531"/>
 				</component>
+				<component name="concat" library="core" uid="57" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="132"/>
+						<datapoint pos="1" key="147"/>
+						<datapoint pos="2" key="148"/>
+						<datapoint pos="3" key="149"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="150"/>
+					</targets>
+					<view ltx="777" lty="-483" rbx="869" rby="-393"/>
+					<data>
+						<comment>
+							<text>Um alle vier descriptions zu einem einzelnen abstract-Element zusammenfügen, muss folgender Workaround angewendet werden. Den XSLT-Code nach dem Export austauschen:
+&lt;abstract&gt;
+    &lt;CharacterString&gt;
+        &lt;xsl:for-each select=&quot;*[local-name()=&apos;Descriptions&apos; and namespace-uri()=&apos;&apos;]/*[local-name()=&apos;Description&apos; and namespace-uri()=&apos;&apos;]&quot;&gt;
+            &lt;xsl:if test=&quot;position() &amp;gt; 1&quot;&gt;
+                &lt;!-- Fügt einen Zeilenumbruch zwischen den Beschreibungen hinzu --&gt;
+                &lt;xsl:text&gt;&amp;#xA;&amp;#xA;&lt;/xsl:text&gt;
+            &lt;/xsl:if&gt;
+            &lt;xsl:value-of select=&quot;*[local-name()=&apos;description&apos; and namespace-uri()=&apos;&apos;]&quot;/&gt;
+        &lt;/xsl:for-each&gt;
+    &lt;/CharacterString&gt;
+&lt;/abstract&gt;</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="62" kind="2">
+					<targets>
+						<datapoint pos="0" key="151"/>
+					</targets>
+					<view ltx="616" lty="710" rbx="664" rby="727"/>
+					<data>
+						<constant value=", " datatype="string"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="61" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="152"/>
+						<datapoint pos="1" key="153"/>
+						<datapoint pos="2" key="154"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="155"/>
+					</targets>
+					<view ltx="689" lty="671" rbx="781" rby="744"/>
+					<data>
+						<comment>
+							<text>Contact Person Lastname, Firstname</text>
+						</comment>
+					</data>
+				</component>
+				<component name="string-length" library="core" uid="64" kind="5">
+					<sources>
+						<datapoint pos="0" key="156"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="157"/>
+					</targets>
+					<view ltx="319" lty="610" rbx="414" rby="648"/>
+				</component>
+				<component name="constant" library="core" uid="65" kind="2">
+					<targets>
+						<datapoint pos="0" key="158"/>
+					</targets>
+					<view ltx="374" lty="671" rbx="414" rby="688"/>
+					<data>
+						<constant value="0" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="greater" library="core" uid="68" kind="5">
+					<sources>
+						<datapoint pos="0" key="159"/>
+						<datapoint pos="1" key="160"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="161"/>
+					</targets>
+					<view ltx="454" lty="634" rbx="518" rby="688"/>
+				</component>
+				<component name="if-else" library="core" uid="66" kind="4">
+					<sources>
+						<datapoint pos="0" key="162"/>
+						<datapoint pos="1" key="163"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="164"/>
+					</targets>
+					<view ltx="636" lty="563" rbx="740" rby="636"/>
+					<data>
+						<comment>
+							<text>Contact Person Position?</text>
+						</comment>
+					</data>
+				</component>
+				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view rbx="188" rby="450"/>
+					<data>
+						<root scrollposition="44">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Resource" outkey="2" expanded="1">
+										<entry name="currentDate" outkey="68"/>
+										<entry name="doi" outkey="38"/>
+										<entry name="Rights">
+											<entry name="rightsIdentifier" outkey="97"/>
+										</entry>
+										<entry name="Language">
+											<entry name="code" outkey="39"/>
+										</entry>
+										<entry name="Titles">
+											<entry name="Title">
+												<entry name="text" outkey="11"/>
+												<entry name="type" outkey="12"/>
+											</entry>
+										</entry>
+										<entry name="Authors">
+											<entry name="Author" outkey="122">
+												<entry name="familyname" outkey="123"/>
+												<entry name="givenname" outkey="124"/>
+												<entry name="orcid" outkey="125"/>
+												<entry name="Affiliations">
+													<entry name="Affiliation">
+														<entry name="name" outkey="126"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="Descriptions" outkey="146">
+											<entry name="Description">
+												<entry name="description" outkey="140"/>
+											</entry>
+										</entry>
+										<entry name="ContactPersons" expanded="1">
+											<entry name="ContactPerson" outkey="165" expanded="1">
+												<entry name="familyname" outkey="166"/>
+												<entry name="givenname" outkey="167"/>
+												<entry name="position" outkey="168"/>
+												<entry name="email" outkey="169"/>
+												<entry name="website" outkey="170"/>
+												<entry name="Affiliations">
+													<entry name="Affiliation">
+														<entry name="name" outkey="171"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="30" kind="2">
+					<targets>
+						<datapoint pos="0" key="59"/>
+					</targets>
+					<view ltx="1585" lty="41" rbx="1688" rby="58"/>
+					<data>
+						<constant value="information" datatype="string"/>
+						<comment>
+							<text>Default CI_OnLineFunctionCode and codeListValue</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="31" kind="2">
+					<targets>
+						<datapoint pos="0" key="58"/>
+					</targets>
+					<view ltx="1585" lty="74" rbx="1744" rby="91"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for CI_OnLineFunctionCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="70" kind="2">
+					<targets>
+						<datapoint pos="0" key="172"/>
+					</targets>
+					<view ltx="1585" lty="579" rbx="1744" rby="596"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode_information" datatype="string"/>
+						<comment>
+							<text>Default codeListValue for Contact Persons</text>
+						</comment>
+					</data>
+				</component>
 				<component name="gmd" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1912" lty="-14" rbx="2245" rby="994"/>
 					<data>
-						<root scrollposition="1">
+						<root scrollposition="496">
 							<header>
 								<namespaces>
 									<namespace uid="http://www.isotc211.org/2005/gco"/>
@@ -624,13 +775,56 @@
 														</entry>
 													</entry>
 												</entry>
-												<entry name="abstract" ns="1" inpkey="144" expanded="1">
+												<entry name="abstract" ns="1" inpkey="144">
 													<entry name="CharacterString" inpkey="145"/>
 												</entry>
 												<entry name="status" ns="1">
 													<entry name="MD_ProgressCode" ns="1" inpkey="87" expanded="1">
 														<entry name="codeList" ns="2" type="attribute" inpkey="88"/>
 														<entry name="codeListValue" ns="2" type="attribute" inpkey="89"/>
+													</entry>
+												</entry>
+												<entry name="pointOfContact" ns="1" expanded="1">
+													<entry name="CI_ResponsibleParty" ns="1" expanded="1">
+														<entry name="individualName" ns="1" inpkey="173">
+															<entry name="CharacterString" inpkey="174"/>
+														</entry>
+														<entry name="organisationName" ns="1">
+															<entry name="CharacterString" inpkey="175"/>
+														</entry>
+														<entry name="positionName" ns="1">
+															<entry name="CharacterString" inpkey="176"/>
+														</entry>
+														<entry name="contactInfo" ns="1">
+															<entry name="CI_Contact" ns="1">
+																<entry name="address" ns="1">
+																	<entry name="CI_Address" ns="1">
+																		<entry name="electronicMailAddress" ns="1">
+																			<entry name="CharacterString" inpkey="177"/>
+																		</entry>
+																	</entry>
+																</entry>
+																<entry name="onlineResource" ns="1">
+																	<entry name="CI_OnlineResource" ns="1">
+																		<entry name="linkage" ns="1">
+																			<entry name="URL" ns="1" inpkey="178"/>
+																		</entry>
+																		<entry name="function" ns="1">
+																			<entry name="CI_OnLineFunctionCode" ns="1" inpkey="179">
+																				<entry name="codeList" ns="2" type="attribute" inpkey="180"/>
+																				<entry name="codeListValue" ns="2" type="attribute" inpkey="181"/>
+																			</entry>
+																		</entry>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="role" ns="1" expanded="1">
+															<entry name="CI_RoleCode" ns="1" inpkey="182" expanded="1">
+																<entry name="codeList" ns="2" type="attribute" inpkey="183"/>
+																<entry name="codeListValue" ns="2" type="attribute" inpkey="184"/>
+															</entry>
+														</entry>
 													</entry>
 												</entry>
 												<entry name="resourceConstraints" ns="1">
@@ -690,83 +884,27 @@
 						<document schema="..\ISO\gmd.xsd" instanceroot="{http://www.isotc211.org/2005/gmd}MD_Metadata" outputinstance="..\ISO\gmd.xml"/>
 					</data>
 				</component>
-				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
-					<properties XSLTTargetEncoding="UTF-8"/>
-					<view rbx="200" rby="356"/>
+				<component name="constant" library="core" uid="33" kind="2">
+					<targets>
+						<datapoint pos="0" key="67"/>
+					</targets>
+					<view ltx="1586" lty="138" rbx="1745" rby="155"/>
 					<data>
-						<root scrollposition="19">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="Resource" outkey="2" expanded="1">
-										<entry name="currentDate" outkey="68"/>
-										<entry name="doi" outkey="38"/>
-										<entry name="Rights">
-											<entry name="rightsIdentifier" outkey="97"/>
-										</entry>
-										<entry name="Language">
-											<entry name="code" outkey="39"/>
-										</entry>
-										<entry name="Titles">
-											<entry name="Title">
-												<entry name="text" outkey="11"/>
-												<entry name="type" outkey="12"/>
-											</entry>
-										</entry>
-										<entry name="Authors">
-											<entry name="Author" outkey="122">
-												<entry name="familyname" outkey="123"/>
-												<entry name="givenname" outkey="124"/>
-												<entry name="orcid" outkey="125"/>
-												<entry name="Affiliations">
-													<entry name="Affiliation">
-														<entry name="name" outkey="126"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="Descriptions" outkey="146" expanded="1">
-											<entry name="Description" expanded="1">
-												<entry name="description" outkey="140"/>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for Roles Contact Organisations</text>
+						</comment>
 					</data>
 				</component>
-				<component name="concat" library="core" uid="57" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="132"/>
-						<datapoint pos="1" key="147"/>
-						<datapoint pos="2" key="148"/>
-						<datapoint pos="3" key="149"/>
-					</sources>
+				<component name="constant" library="core" uid="32" kind="2">
 					<targets>
-						<datapoint pos="0" key="150"/>
+						<datapoint pos="0" key="66"/>
 					</targets>
-					<view ltx="926" lty="620" rbx="1018" rby="710"/>
+					<view ltx="1585" lty="107" rbx="1708" rby="124"/>
 					<data>
+						<constant value="pointOfContact" datatype="string"/>
 						<comment>
-							<text>Um alle vier descriptions zu einem einzelnen abstract-Element zusammenfügen, muss folgender Workaround angewendet werden. Den XSLT-Code nach dem Export austauschen:
-&lt;abstract&gt;
-    &lt;CharacterString&gt;
-        &lt;xsl:for-each select=&quot;*[local-name()=&apos;Descriptions&apos; and namespace-uri()=&apos;&apos;]/*[local-name()=&apos;Description&apos; and namespace-uri()=&apos;&apos;]&quot;&gt;
-            &lt;xsl:if test=&quot;position() &amp;gt; 1&quot;&gt;
-                &lt;!-- Fügt einen Zeilenumbruch zwischen den Beschreibungen hinzu --&gt;
-                &lt;xsl:text&gt;&amp;#xA;&amp;#xA;&lt;/xsl:text&gt;
-            &lt;/xsl:if&gt;
-            &lt;xsl:value-of select=&quot;*[local-name()=&apos;description&apos; and namespace-uri()=&apos;&apos;]&quot;/&gt;
-        &lt;/xsl:for-each&gt;
-    &lt;/CharacterString&gt;
-&lt;/abstract&gt;</text>
+							<text>Default CI_RoleCode an codeListValue for Contact Organisations</text>
 						</comment>
 					</data>
 				</component>
@@ -914,22 +1052,27 @@
 						<edges>
 							<edge vertexkey="60"/>
 							<edge vertexkey="62"/>
+							<edge vertexkey="179"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="58">
 						<edges>
 							<edge vertexkey="61"/>
+							<edge vertexkey="180"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="66">
 						<edges>
 							<edge vertexkey="63"/>
 							<edge vertexkey="65"/>
+							<edge vertexkey="182"/>
+							<edge vertexkey="184"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="67">
 						<edges>
 							<edge vertexkey="64"/>
+							<edge vertexkey="183"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="68">
@@ -1084,6 +1227,77 @@
 					<vertex vertexkey="150">
 						<edges>
 							<edge vertexkey="145"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="166">
+						<edges>
+							<edge vertexkey="152"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="151">
+						<edges>
+							<edge vertexkey="153"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="167">
+						<edges>
+							<edge vertexkey="154"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="168">
+						<edges>
+							<edge vertexkey="156"/>
+							<edge vertexkey="163"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="157">
+						<edges>
+							<edge vertexkey="159"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="158">
+						<edges>
+							<edge vertexkey="160"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="161">
+						<edges>
+							<edge vertexkey="162"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="165">
+						<edges>
+							<edge vertexkey="173"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="155">
+						<edges>
+							<edge vertexkey="174"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="171">
+						<edges>
+							<edge vertexkey="175"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="164">
+						<edges>
+							<edge vertexkey="176"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="169">
+						<edges>
+							<edge vertexkey="177"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="170">
+						<edges>
+							<edge vertexkey="178"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="172">
+						<edges>
+							<edge vertexkey="181"/>
 						</edges>
 					</vertex>
 				</vertices>
