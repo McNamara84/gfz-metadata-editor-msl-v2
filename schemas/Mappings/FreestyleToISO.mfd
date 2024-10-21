@@ -1029,11 +1029,129 @@
 						<constant value="NASA/GCMD Earth Science Keywords" datatype="string"/>
 					</data>
 				</component>
+				<component name="constant" library="core" uid="117" kind="2">
+					<targets>
+						<datapoint pos="0" key="346"/>
+					</targets>
+					<view ltx="636" lty="223" rbx="676" rby="240"/>
+					<data>
+						<constant value="0" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="string-length" library="core" uid="116" kind="5">
+					<sources>
+						<datapoint pos="0" key="347"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="348"/>
+					</targets>
+					<view ltx="727" lty="202" rbx="822" rby="240"/>
+				</component>
+				<component name="greater" library="core" uid="114" kind="5">
+					<sources>
+						<datapoint pos="0" key="349"/>
+						<datapoint pos="1" key="350"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="351"/>
+					</targets>
+					<view ltx="856" lty="186" rbx="920" rby="240"/>
+				</component>
+				<component name="if-else" library="core" uid="118" kind="4">
+					<sources>
+						<datapoint pos="0" key="352"/>
+						<datapoint pos="1" key="353"/>
+						<datapoint pos="2" key="354"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="355"/>
+					</targets>
+					<view ltx="984" lty="202" rbx="1088" rby="275"/>
+				</component>
+				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view rbx="188" rby="450"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Resource" outkey="2" expanded="1">
+										<entry name="currentDate" outkey="68"/>
+										<entry name="doi" outkey="38"/>
+										<entry name="dateCreated" outkey="356"/>
+										<entry name="Rights">
+											<entry name="rightsIdentifier" outkey="97"/>
+										</entry>
+										<entry name="Language">
+											<entry name="code" outkey="39"/>
+										</entry>
+										<entry name="Titles">
+											<entry name="Title" expanded="1">
+												<entry name="text" outkey="11"/>
+												<entry name="type" outkey="12"/>
+											</entry>
+										</entry>
+										<entry name="Authors">
+											<entry name="Author" outkey="122">
+												<entry name="familyname" outkey="123"/>
+												<entry name="givenname" outkey="124"/>
+												<entry name="orcid" outkey="125"/>
+												<entry name="Affiliations">
+													<entry name="Affiliation">
+														<entry name="name" outkey="126"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="Descriptions" outkey="146">
+											<entry name="Description">
+												<entry name="description" outkey="140"/>
+											</entry>
+										</entry>
+										<entry name="ContactPersons">
+											<entry name="ContactPerson" outkey="165">
+												<entry name="familyname" outkey="166"/>
+												<entry name="givenname" outkey="167"/>
+												<entry name="position" outkey="168"/>
+												<entry name="email" outkey="169"/>
+												<entry name="website" outkey="170"/>
+												<entry name="Affiliations">
+													<entry name="Affiliation">
+														<entry name="name" outkey="171"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="ThesaurusKeywords">
+											<entry name="Keyword">
+												<entry name="keyword" outkey="188"/>
+												<entry name="scheme" outkey="200"/>
+												<entry name="language" outkey="227"/>
+											</entry>
+										</entry>
+										<entry name="FreeKeywords" outkey="344">
+											<entry name="Keyword">
+												<entry name="free_keyword" outkey="345"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
+					</data>
+				</component>
 				<component name="gmd" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1912" lty="-14" rbx="2245" rby="994"/>
 					<data>
-						<root scrollposition="750">
+						<root scrollposition="1">
 							<header>
 								<namespaces>
 									<namespace uid="http://www.isotc211.org/2005/gco"/>
@@ -1101,8 +1219,8 @@
 										<entry name="dateStamp" ns="1">
 											<entry name="Date" inpkey="69"/>
 										</entry>
-										<entry name="identificationInfo" ns="1" expanded="1">
-											<entry name="MD_DataIdentification" ns="1" expanded="1">
+										<entry name="identificationInfo" ns="1">
+											<entry name="MD_DataIdentification" ns="1">
 												<entry name="citation" ns="1">
 													<entry name="CI_Citation" ns="1">
 														<entry name="title" ns="1">
@@ -1111,7 +1229,7 @@
 														<entry name="alternateTitle" ns="1">
 															<entry name="CharacterString" inpkey="56"/>
 														</entry>
-														<entry name="date" ns="1">
+														<entry name="date" ns="1" expanded="1">
 															<entry name="CI_Date" ns="1" expanded="1">
 																<entry name="date" ns="1" expanded="1">
 																	<entry name="Date" inpkey="70"/>
@@ -1195,7 +1313,7 @@
 														</entry>
 													</entry>
 												</entry>
-												<entry name="descriptiveKeywords" ns="1" expanded="1">
+												<entry name="descriptiveKeywords" ns="1">
 													<entry name="MD_Keywords" ns="1" inpkey="191">
 														<entry name="keyword" ns="1" inpkey="189">
 															<entry name="CharacterString" inpkey="192"/>
@@ -1324,8 +1442,8 @@
 															</entry>
 														</entry>
 													</entry>
-													<entry name="MD_Keywords" ns="1" inpkey="341" expanded="1" clone="1">
-														<entry name="keyword" ns="1" inpkey="342" expanded="1">
+													<entry name="MD_Keywords" ns="1" inpkey="341" clone="1">
+														<entry name="keyword" ns="1" inpkey="342">
 															<entry name="CharacterString" inpkey="343"/>
 														</entry>
 													</entry>
@@ -1386,84 +1504,6 @@
 							</entry>
 						</root>
 						<document schema="..\ISO\gmd.xsd" instanceroot="{http://www.isotc211.org/2005/gmd}MD_Metadata" outputinstance="..\ISO\gmd.xml"/>
-					</data>
-				</component>
-				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
-					<properties XSLTTargetEncoding="UTF-8"/>
-					<view rbx="188" rby="450"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="Resource" outkey="2" expanded="1">
-										<entry name="currentDate" outkey="68"/>
-										<entry name="doi" outkey="38"/>
-										<entry name="Rights">
-											<entry name="rightsIdentifier" outkey="97"/>
-										</entry>
-										<entry name="Language">
-											<entry name="code" outkey="39"/>
-										</entry>
-										<entry name="Titles">
-											<entry name="Title" expanded="1">
-												<entry name="text" outkey="11"/>
-												<entry name="type" outkey="12"/>
-											</entry>
-										</entry>
-										<entry name="Authors">
-											<entry name="Author" outkey="122">
-												<entry name="familyname" outkey="123"/>
-												<entry name="givenname" outkey="124"/>
-												<entry name="orcid" outkey="125"/>
-												<entry name="Affiliations">
-													<entry name="Affiliation">
-														<entry name="name" outkey="126"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="Descriptions" outkey="146">
-											<entry name="Description">
-												<entry name="description" outkey="140"/>
-											</entry>
-										</entry>
-										<entry name="ContactPersons">
-											<entry name="ContactPerson" outkey="165">
-												<entry name="familyname" outkey="166"/>
-												<entry name="givenname" outkey="167"/>
-												<entry name="position" outkey="168"/>
-												<entry name="email" outkey="169"/>
-												<entry name="website" outkey="170"/>
-												<entry name="Affiliations">
-													<entry name="Affiliation">
-														<entry name="name" outkey="171"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="ThesaurusKeywords">
-											<entry name="Keyword">
-												<entry name="keyword" outkey="188"/>
-												<entry name="scheme" outkey="200"/>
-												<entry name="language" outkey="227"/>
-											</entry>
-										</entry>
-										<entry name="FreeKeywords" outkey="344" expanded="1">
-											<entry name="Keyword" expanded="1">
-												<entry name="free_keyword" outkey="345"/>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
 					</data>
 				</component>
 			</children>
@@ -1636,7 +1676,6 @@
 					<vertex vertexkey="68">
 						<edges>
 							<edge vertexkey="69"/>
-							<edge vertexkey="70"/>
 							<edge vertexkey="228"/>
 							<edge vertexkey="229"/>
 							<edge vertexkey="329"/>
@@ -1647,6 +1686,12 @@
 							<edge vertexkey="334"/>
 							<edge vertexkey="335"/>
 							<edge vertexkey="340"/>
+							<edge vertexkey="354"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="355">
+						<edges>
+							<edge vertexkey="70"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="74">
@@ -2151,6 +2196,27 @@
 						<edges>
 							<edge vertexkey="342"/>
 							<edge vertexkey="343"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="346">
+						<edges>
+							<edge vertexkey="347"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="356">
+						<edges>
+							<edge vertexkey="349"/>
+							<edge vertexkey="353"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="348">
+						<edges>
+							<edge vertexkey="350"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="351">
+						<edges>
+							<edge vertexkey="352"/>
 						</edges>
 					</vertex>
 				</vertices>
