@@ -14,7 +14,7 @@
 					<targets>
 						<datapoint pos="0" key="5"/>
 					</targets>
-					<view ltx="1478" lty="49" rbx="1582" rby="103"/>
+					<view ltx="1478" lty="49" rbx="1570" rby="99"/>
 					<data>
 						<comment>
 							<text>Hier wird den anfang von DOI (http://doi.org/) abgeschnitten und der 
@@ -26,7 +26,7 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					<targets>
 						<datapoint pos="0" key="6"/>
 					</targets>
-					<view ltx="1345" lty="84" rbx="1462" rby="101"/>
+					<view ltx="1345" lty="84" rbx="1450" rby="100"/>
 					<data>
 						<constant value="http://doi.org/" datatype="string"/>
 					</data>
@@ -35,7 +35,7 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					<targets>
 						<datapoint pos="0" key="14"/>
 					</targets>
-					<view ltx="734" lty="265" rbx="827" rby="282"/>
+					<view ltx="734" lty="265" rbx="818" rby="281"/>
 					<data>
 						<constant value="Main Title" datatype="string"/>
 					</data>
@@ -48,7 +48,7 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					<targets>
 						<datapoint pos="0" key="17"/>
 					</targets>
-					<view ltx="874" lty="228" rbx="972" rby="282"/>
+					<view ltx="874" lty="228" rbx="956" rby="278"/>
 				</component>
 				<component name="if-else" library="core" uid="7" kind="4">
 					<sources>
@@ -59,7 +59,7 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					<targets>
 						<datapoint pos="0" key="21"/>
 					</targets>
-					<view ltx="1042" lty="191" rbx="1146" rby="264"/>
+					<view ltx="1042" lty="191" rbx="1133" rby="256"/>
 					<data>
 						<comment>
 							<text>Im DIF-Schema darf nur ein Title in der XML-Datei gespeichert wird. 
@@ -75,7 +75,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="23"/>
 					</targets>
-					<view ltx="609" lty="315" rbx="707" rby="369"/>
+					<view ltx="609" lty="315" rbx="691" rby="365"/>
 				</component>
 				<component name="greater" library="core" uid="64" kind="5">
 					<sources>
@@ -85,7 +85,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="48"/>
 					</targets>
-					<view ltx="820" lty="956" rbx="884" rby="1010"/>
+					<view ltx="702" lty="565" rbx="760" rby="615"/>
 				</component>
 				<component name="greater" library="core" uid="65" kind="5">
 					<sources>
@@ -95,7 +95,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="56"/>
 					</targets>
-					<view ltx="820" lty="1009" rbx="884" rby="1063"/>
+					<view ltx="702" lty="618" rbx="760" rby="668"/>
 				</component>
 				<component name="greater" library="core" uid="66" kind="5">
 					<sources>
@@ -105,7 +105,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="62"/>
 					</targets>
-					<view ltx="820" lty="1060" rbx="884" rby="1114"/>
+					<view ltx="702" lty="669" rbx="760" rby="719"/>
 				</component>
 				<component name="greater" library="core" uid="75" kind="5">
 					<sources>
@@ -115,16 +115,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="37"/>
 					</targets>
-					<view ltx="820" lty="903" rbx="884" rby="957"/>
-				</component>
-				<component name="constant" library="core" uid="63" kind="2">
-					<targets>
-						<datapoint pos="0" key="35"/>
-					</targets>
-					<view ltx="675" lty="966" rbx="715" rby="983"/>
-					<data>
-						<constant value="0" datatype="decimal"/>
-					</data>
+					<view ltx="702" lty="512" rbx="760" rby="562"/>
 				</component>
 				<component name="string-length" library="core" uid="71" kind="5">
 					<sources>
@@ -133,7 +124,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="33"/>
 					</targets>
-					<view ltx="609" lty="1018" rbx="704" rby="1056"/>
+					<view ltx="491" lty="627" rbx="574" rby="662"/>
 				</component>
 				<component name="string-length" library="core" uid="70" kind="5">
 					<sources>
@@ -142,7 +133,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="64"/>
 					</targets>
-					<view ltx="609" lty="1055" rbx="704" rby="1093"/>
+					<view ltx="491" lty="664" rbx="574" rby="699"/>
 				</component>
 				<component name="string-length" library="core" uid="69" kind="5">
 					<sources>
@@ -151,7 +142,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="67"/>
 					</targets>
-					<view ltx="609" lty="1092" rbx="704" rby="1130"/>
+					<view ltx="491" lty="701" rbx="574" rby="736"/>
 				</component>
 				<component name="string-length" library="core" uid="68" kind="5">
 					<sources>
@@ -160,22 +151,122 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="72"/>
 					</targets>
-					<view ltx="609" lty="1129" rbx="704" rby="1167"/>
+					<view ltx="491" lty="738" rbx="574" rby="773"/>
 				</component>
 				<component name="constant" library="core" uid="58" kind="2">
 					<targets>
 						<datapoint pos="0" key="25"/>
 					</targets>
-					<view ltx="472" lty="352" rbx="556" rby="369"/>
+					<view ltx="472" lty="352" rbx="549" rby="368"/>
 					<data>
 						<constant value="Abstract" datatype="string"/>
+					</data>
+				</component>
+				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view rbx="300" rby="847"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Resource" outkey="2" expanded="1">
+										<entry name="doi" outkey="11"/>
+										<entry name="year" outkey="12"/>
+										<entry name="Titles" expanded="1">
+											<entry name="Title" expanded="1">
+												<entry name="text" outkey="13"/>
+												<entry name="type" outkey="18"/>
+											</entry>
+										</entry>
+										<entry name="Authors" expanded="1">
+											<entry name="Author" expanded="1"/>
+										</entry>
+										<entry name="Descriptions" expanded="1">
+											<entry name="Description" expanded="1">
+												<entry name="type" outkey="29"/>
+												<entry name="description" outkey="32"/>
+											</entry>
+										</entry>
+										<entry name="SpatialTemporalCoverages" expanded="1">
+											<entry name="SpatialTemporalCoverage" expanded="1">
+												<entry name="latitudeMin" outkey="83"/>
+												<entry name="latitudeMax" outkey="84"/>
+												<entry name="longitudeMin" outkey="85"/>
+												<entry name="longitudeMax" outkey="86"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="73" kind="4">
+					<sources>
+						<datapoint pos="0" key="50"/>
+						<datapoint pos="1" key="90"/>
+						<datapoint pos="2" key="91"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="92"/>
+					</targets>
+					<view ltx="830" lty="541" rbx="921" rby="606"/>
+				</component>
+				<component name="if-else" library="core" uid="72" kind="4">
+					<sources>
+						<datapoint pos="0" key="57"/>
+						<datapoint pos="1" key="93"/>
+						<datapoint pos="2" key="94"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="95"/>
+					</targets>
+					<view ltx="830" lty="613" rbx="921" rby="678"/>
+				</component>
+				<component name="if-else" library="core" uid="67" kind="4">
+					<sources>
+						<datapoint pos="0" key="63"/>
+						<datapoint pos="1" key="96"/>
+						<datapoint pos="2" key="97"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="98"/>
+					</targets>
+					<view ltx="830" lty="685" rbx="921" rby="750"/>
+				</component>
+				<component name="logical-and" library="core" uid="74" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="44"/>
+						<datapoint pos="1" key="49"/>
+						<datapoint pos="2" key="71"/>
+						<datapoint pos="3" key="66"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="99"/>
+					</targets>
+					<view ltx="1092" lty="565" rbx="1170" rby="645"/>
+				</component>
+				<component name="constant" library="core" uid="63" kind="2">
+					<targets>
+						<datapoint pos="0" key="35"/>
+					</targets>
+					<view ltx="557" lty="575" rbx="593" rby="591"/>
+					<data>
+						<constant value="0" datatype="decimal"/>
 					</data>
 				</component>
 				<component name="DIF" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1895" lty="-4" rbx="2254" rby="987"/>
 					<data>
-						<root scrollposition="168">
+						<root scrollposition="216">
 							<header>
 								<namespaces>
 									<namespace uid="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/"/>
@@ -218,57 +309,11 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="22"/>
 					</targets>
-					<view ltx="734" lty="326" rbx="838" rby="399"/>
+					<view ltx="734" lty="326" rbx="825" rby="391"/>
 					<data>
 						<comment>
 							<text>Im DIF-Schema wird nur &quot;Abstrakt&quot; von allen Descriptions gespeichert und die anderen Descriptions nicht. Mit diesem Filter wird einfach herausgefiltert und wird einfach abstrakt &quot;Abstrakt&quot; gespeichert und der Rest nicht.</text>
 						</comment>
-					</data>
-				</component>
-				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
-					<properties XSLTTargetEncoding="UTF-8"/>
-					<view rbx="300" rby="847"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="Resource" outkey="2" expanded="1">
-										<entry name="doi" outkey="11"/>
-										<entry name="year" outkey="12"/>
-										<entry name="Titles" expanded="1">
-											<entry name="Title" expanded="1">
-												<entry name="text" outkey="13"/>
-												<entry name="type" outkey="18"/>
-											</entry>
-										</entry>
-										<entry name="Authors" expanded="1">
-											<entry name="Author" expanded="1"/>
-										</entry>
-										<entry name="Descriptions" expanded="1">
-											<entry name="Description" expanded="1">
-												<entry name="type" outkey="29"/>
-												<entry name="description" outkey="32"/>
-											</entry>
-										</entry>
-										<entry name="SpatialTemporalCoverages" expanded="1">
-											<entry name="SpatialTemporalCoverage" expanded="1">
-												<entry name="latitudeMin" outkey="83"/>
-												<entry name="latitudeMax" outkey="84"/>
-												<entry name="longitudeMin" outkey="85"/>
-												<entry name="longitudeMax" outkey="86"/>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
 					</data>
 				</component>
 				<component name="if-else" library="core" uid="76" kind="4">
@@ -280,52 +325,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="89"/>
 					</targets>
-					<view ltx="948" lty="838" rbx="1052" rby="911"/>
-				</component>
-				<component name="if-else" library="core" uid="73" kind="4">
-					<sources>
-						<datapoint pos="0" key="50"/>
-						<datapoint pos="1" key="90"/>
-						<datapoint pos="2" key="91"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="92"/>
-					</targets>
-					<view ltx="948" lty="932" rbx="1052" rby="1005"/>
-				</component>
-				<component name="if-else" library="core" uid="72" kind="4">
-					<sources>
-						<datapoint pos="0" key="57"/>
-						<datapoint pos="1" key="93"/>
-						<datapoint pos="2" key="94"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="95"/>
-					</targets>
-					<view ltx="948" lty="1004" rbx="1052" rby="1077"/>
-				</component>
-				<component name="if-else" library="core" uid="67" kind="4">
-					<sources>
-						<datapoint pos="0" key="63"/>
-						<datapoint pos="1" key="96"/>
-						<datapoint pos="2" key="97"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="98"/>
-					</targets>
-					<view ltx="948" lty="1076" rbx="1052" rby="1149"/>
-				</component>
-				<component name="logical-and" library="core" uid="74" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="44"/>
-						<datapoint pos="1" key="49"/>
-						<datapoint pos="2" key="71"/>
-						<datapoint pos="3" key="66"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="99"/>
-					</targets>
-					<view ltx="1210" lty="956" rbx="1302" rby="1046"/>
+					<view ltx="830" lty="447" rbx="921" rby="512"/>
 				</component>
 			</children>
 			<graph directed="1">
