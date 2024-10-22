@@ -128,10 +128,10 @@ $(document).ready(function () {
         position: { my: "left bottom", at: "left top", collision: "flip" }, // Neue Zeile
       })
       .autocomplete("instance")._renderItem = function (ul, item) {
-      return $("<li>")
-        .append("<div>" + item.name + "</div>")
-        .appendTo(ul);
-    };
+        return $("<li>")
+          .append("<div>" + item.name + "</div>")
+          .appendTo(ul);
+      };
   }
 
   // Relation-Dropdownfeld befüllen
@@ -169,12 +169,8 @@ $(document).ready(function () {
     var inputIdentifier = $(selectElement).closest(".row").find('input[name^="rIdentifier"]');
 
     $.ajax({
-      url: "api.php",
+      url: "api/v2/validation/patterns/" + encodeURIComponent(selectedType),
       method: "GET",
-      data: {
-        action: "getPattern",
-        type: selectedType,
-      },
       dataType: "json",
       success: function (response) {
         if (response && response.pattern) {
