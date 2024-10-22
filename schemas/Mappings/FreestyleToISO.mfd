@@ -452,34 +452,6 @@
 					</targets>
 					<view ltx="777" lty="475" rbx="859" rby="531"/>
 				</component>
-				<component name="concat" library="core" uid="57" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="132"/>
-						<datapoint pos="1" key="147"/>
-						<datapoint pos="2" key="148"/>
-						<datapoint pos="3" key="149"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="150"/>
-					</targets>
-					<view ltx="777" lty="-483" rbx="869" rby="-393"/>
-					<data>
-						<comment>
-							<text>Um alle vier descriptions zu einem einzelnen abstract-Element zusammenfügen, muss folgender Workaround angewendet werden. Den XSLT-Code nach dem Export austauschen:
-&lt;abstract&gt;
-    &lt;CharacterString&gt;
-        &lt;xsl:for-each select=&quot;*[local-name()=&apos;Descriptions&apos; and namespace-uri()=&apos;&apos;]/*[local-name()=&apos;Description&apos; and namespace-uri()=&apos;&apos;]&quot;&gt;
-            &lt;xsl:if test=&quot;position() &amp;gt; 1&quot;&gt;
-                &lt;!-- Fügt einen Zeilenumbruch zwischen den Beschreibungen hinzu --&gt;
-                &lt;xsl:text&gt;&amp;#xA;&amp;#xA;&lt;/xsl:text&gt;
-            &lt;/xsl:if&gt;
-            &lt;xsl:value-of select=&quot;*[local-name()=&apos;description&apos; and namespace-uri()=&apos;&apos;]&quot;/&gt;
-        &lt;/xsl:for-each&gt;
-    &lt;/CharacterString&gt;
-&lt;/abstract&gt;</text>
-						</comment>
-					</data>
-				</component>
 				<component name="constant" library="core" uid="62" kind="2">
 					<targets>
 						<datapoint pos="0" key="151"/>
@@ -703,17 +675,6 @@
 						<datapoint pos="0" key="218"/>
 					</targets>
 					<view ltx="542" lty="1089" rbx="646" rby="1162"/>
-				</component>
-				<component name="if-else" library="core" uid="83" kind="4">
-					<sources>
-						<datapoint pos="0" key="225"/>
-						<datapoint pos="1" key="221"/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="219"/>
-					</targets>
-					<view ltx="542" lty="1161" rbx="646" rby="1234"/>
 				</component>
 				<component name="constant" library="core" uid="71" kind="2">
 					<targets>
@@ -1029,14 +990,15 @@
 						<constant value="NASA/GCMD Earth Science Keywords" datatype="string"/>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="117" kind="2">
+				<component name="greater" library="core" uid="114" kind="5">
+					<sources>
+						<datapoint pos="0" key="349"/>
+						<datapoint pos="1" key="350"/>
+					</sources>
 					<targets>
-						<datapoint pos="0" key="346"/>
+						<datapoint pos="0" key="351"/>
 					</targets>
-					<view ltx="636" lty="223" rbx="676" rby="240"/>
-					<data>
-						<constant value="0" datatype="decimal"/>
-					</data>
+					<view ltx="856" lty="186" rbx="920" rby="240"/>
 				</component>
 				<component name="string-length" library="core" uid="116" kind="5">
 					<sources>
@@ -1047,15 +1009,14 @@
 					</targets>
 					<view ltx="727" lty="202" rbx="822" rby="240"/>
 				</component>
-				<component name="greater" library="core" uid="114" kind="5">
-					<sources>
-						<datapoint pos="0" key="349"/>
-						<datapoint pos="1" key="350"/>
-					</sources>
+				<component name="constant" library="core" uid="117" kind="2">
 					<targets>
-						<datapoint pos="0" key="351"/>
+						<datapoint pos="0" key="346"/>
 					</targets>
-					<view ltx="856" lty="186" rbx="920" rby="240"/>
+					<view ltx="636" lty="223" rbx="676" rby="240"/>
+					<data>
+						<constant value="0" datatype="decimal"/>
+					</data>
 				</component>
 				<component name="if-else" library="core" uid="118" kind="4">
 					<sources>
@@ -1068,101 +1029,209 @@
 					</targets>
 					<view ltx="984" lty="202" rbx="1088" rby="275"/>
 				</component>
-				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
-					<properties XSLTTargetEncoding="UTF-8"/>
-					<view rbx="188" rby="450"/>
+				<component name="constant" library="core" uid="121" kind="2">
+					<targets>
+						<datapoint pos="0" key="360"/>
+					</targets>
+					<view ltx="1048" lty="700" rbx="1088" rby="717"/>
 					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="Resource" outkey="2" expanded="1">
-										<entry name="currentDate" outkey="68"/>
-										<entry name="doi" outkey="38"/>
-										<entry name="dateCreated" outkey="356"/>
-										<entry name="Rights">
-											<entry name="rightsIdentifier" outkey="97"/>
-										</entry>
-										<entry name="Language">
-											<entry name="code" outkey="39"/>
-										</entry>
-										<entry name="Titles">
-											<entry name="Title" expanded="1">
-												<entry name="text" outkey="11"/>
-												<entry name="type" outkey="12"/>
-											</entry>
-										</entry>
-										<entry name="Authors">
-											<entry name="Author" outkey="122">
-												<entry name="familyname" outkey="123"/>
-												<entry name="givenname" outkey="124"/>
-												<entry name="orcid" outkey="125"/>
-												<entry name="Affiliations">
-													<entry name="Affiliation">
-														<entry name="name" outkey="126"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="Descriptions" outkey="146">
-											<entry name="Description">
-												<entry name="description" outkey="140"/>
-											</entry>
-										</entry>
-										<entry name="ContactPersons">
-											<entry name="ContactPerson" outkey="165">
-												<entry name="familyname" outkey="166"/>
-												<entry name="givenname" outkey="167"/>
-												<entry name="position" outkey="168"/>
-												<entry name="email" outkey="169"/>
-												<entry name="website" outkey="170"/>
-												<entry name="Affiliations">
-													<entry name="Affiliation">
-														<entry name="name" outkey="171"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="ThesaurusKeywords">
-											<entry name="Keyword">
-												<entry name="keyword" outkey="188"/>
-												<entry name="scheme" outkey="200"/>
-												<entry name="language" outkey="227"/>
-											</entry>
-										</entry>
-										<entry name="FreeKeywords" outkey="344">
-											<entry name="Keyword">
-												<entry name="free_keyword" outkey="345"/>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
+						<constant value="0" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="83" kind="4">
+					<sources>
+						<datapoint pos="0" key="225"/>
+						<datapoint pos="1" key="221"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="219"/>
+					</targets>
+					<view ltx="542" lty="1161" rbx="646" rby="1234"/>
+				</component>
+				<component name="greater" library="core" uid="119" kind="5">
+					<sources>
+						<datapoint pos="0" key="364"/>
+						<datapoint pos="1" key="358"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="362"/>
+					</targets>
+					<view ltx="1204" lty="601" rbx="1268" rby="655"/>
+				</component>
+				<component name="greater" library="core" uid="123" kind="5">
+					<sources>
+						<datapoint pos="0" key="385"/>
+						<datapoint pos="1" key="372"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="369"/>
+					</targets>
+					<view ltx="1204" lty="654" rbx="1268" rby="708"/>
+				</component>
+				<component name="greater" library="core" uid="127" kind="5">
+					<sources>
+						<datapoint pos="0" key="386"/>
+						<datapoint pos="1" key="378"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="375"/>
+					</targets>
+					<view ltx="1204" lty="707" rbx="1268" rby="761"/>
+				</component>
+				<component name="greater" library="core" uid="131" kind="5">
+					<sources>
+						<datapoint pos="0" key="387"/>
+						<datapoint pos="1" key="384"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="381"/>
+					</targets>
+					<view ltx="1204" lty="758" rbx="1268" rby="812"/>
+				</component>
+				<component name="if-else" library="core" uid="134" kind="4">
+					<sources>
+						<datapoint pos="0" key="382"/>
+						<datapoint pos="1" key="408"/>
+						<datapoint pos="2" key="412"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="409"/>
+					</targets>
+					<view ltx="1332" lty="774" rbx="1436" rby="847"/>
+				</component>
+				<component name="concat" library="core" uid="57" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="132"/>
+						<datapoint pos="1" key="147"/>
+						<datapoint pos="2" key="148"/>
+						<datapoint pos="3" key="149"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="150"/>
+					</targets>
+					<view ltx="777" lty="-483" rbx="869" rby="-393"/>
+					<data>
+						<comment>
+							<text>Um alle vier descriptions zu einem einzelnen abstract-Element zusammenfügen, muss folgender Workaround angewendet werden. Den XSLT-Code nach dem Export austauschen:
+&lt;abstract&gt;
+    &lt;CharacterString&gt;
+        &lt;xsl:for-each select=&quot;*[local-name()=&apos;Descriptions&apos; and namespace-uri()=&apos;&apos;]/*[local-name()=&apos;Description&apos; and namespace-uri()=&apos;&apos;]&quot;&gt;
+            &lt;xsl:if test=&quot;position() &amp;gt; 1&quot;&gt;
+                &lt;!-- Fügt einen Zeilenumbruch zwischen den Beschreibungen hinzu --&gt;
+                &lt;xsl:text&gt;&amp;#xA;&amp;#xA;&lt;/xsl:text&gt;
+            &lt;/xsl:if&gt;
+            &lt;xsl:value-of select=&quot;*[local-name()=&apos;description&apos; and namespace-uri()=&apos;&apos;]&quot;/&gt;
+        &lt;/xsl:for-each&gt;
+    &lt;/CharacterString&gt;
+&lt;/abstract&gt;</text>
+						</comment>
+					</data>
+				</component>
+				<component name="string-length" library="core" uid="132" kind="5">
+					<sources>
+						<datapoint pos="0" key="413"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="414"/>
+					</targets>
+					<view ltx="993" lty="827" rbx="1088" rby="865"/>
+				</component>
+				<component name="string-length" library="core" uid="128" kind="5">
+					<sources>
+						<datapoint pos="0" key="374"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="377"/>
+					</targets>
+					<view ltx="993" lty="790" rbx="1088" rby="828"/>
+				</component>
+				<component name="string-length" library="core" uid="124" kind="5">
+					<sources>
+						<datapoint pos="0" key="368"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="371"/>
+					</targets>
+					<view ltx="993" lty="753" rbx="1088" rby="791"/>
+				</component>
+				<component name="string-length" library="core" uid="120" kind="5">
+					<sources>
+						<datapoint pos="0" key="361"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="357"/>
+					</targets>
+					<view ltx="993" lty="716" rbx="1088" rby="754"/>
+				</component>
+				<component name="if-else" library="core" uid="130" kind="4">
+					<sources>
+						<datapoint pos="0" key="376"/>
+						<datapoint pos="1" key="393"/>
+						<datapoint pos="2" key="415"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="394"/>
+					</targets>
+					<view ltx="1332" lty="702" rbx="1436" rby="775"/>
+				</component>
+				<component name="if-else" library="core" uid="122" kind="4">
+					<sources>
+						<datapoint pos="0" key="363"/>
+						<datapoint pos="1" key="359"/>
+						<datapoint pos="2" key="416"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="366"/>
+					</targets>
+					<view ltx="1332" lty="558" rbx="1436" rby="631"/>
+				</component>
+				<component name="if-else" library="core" uid="126" kind="4">
+					<sources>
+						<datapoint pos="0" key="370"/>
+						<datapoint pos="1" key="410"/>
+						<datapoint pos="2" key="417"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="411"/>
+					</targets>
+					<view ltx="1332" lty="630" rbx="1436" rby="703"/>
+				</component>
+				<component name="logical-and" library="core" uid="136" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="388"/>
+						<datapoint pos="1" key="389"/>
+						<datapoint pos="2" key="390"/>
+						<datapoint pos="3" key="391"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="392"/>
+					</targets>
+					<view ltx="1497" lty="671" rbx="1589" rby="761"/>
+					<data>
+						<comment>
+							<text>All 4 coord fields filled -&gt; Box
+Only 2 coord fields filled -&gt; Point</text>
+						</comment>
 					</data>
 				</component>
 				<component name="gmd" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1912" lty="-14" rbx="2245" rby="994"/>
 					<data>
-						<root scrollposition="1">
+						<root scrollposition="1138">
 							<header>
 								<namespaces>
 									<namespace uid="http://www.isotc211.org/2005/gco"/>
 									<namespace uid="http://www.isotc211.org/2005/gmd"/>
 									<namespace/>
 									<namespace uid="http://www.w3.org/1999/xlink"/>
+									<namespace uid="http://www.opengis.net/gml"/>
 									<namespace uid="http://www.altova.com/mapforce"/>
 								</namespaces>
 							</header>
-							<entry name="FileInstance" ns="4" expanded="1">
-								<entry name="document" ns="4" expanded="1" casttotargettypemode="cast-in-subtree">
+							<entry name="FileInstance" ns="5" expanded="1">
+								<entry name="document" ns="5" expanded="1" casttotargettypemode="cast-in-subtree">
 									<entry name="MD_Metadata" ns="1" inpkey="1" expanded="1">
 										<entry name="fileIdentifier" ns="1">
 											<entry name="CharacterString" inpkey="46"/>
@@ -1219,8 +1288,8 @@
 										<entry name="dateStamp" ns="1">
 											<entry name="Date" inpkey="69"/>
 										</entry>
-										<entry name="identificationInfo" ns="1">
-											<entry name="MD_DataIdentification" ns="1">
+										<entry name="identificationInfo" ns="1" expanded="1">
+											<entry name="MD_DataIdentification" ns="1" expanded="1">
 												<entry name="citation" ns="1">
 													<entry name="CI_Citation" ns="1">
 														<entry name="title" ns="1">
@@ -1467,6 +1536,39 @@
 													</entry>
 												</entry>
 												<entry name="language" ns="1" inpkey="234"/>
+												<entry name="extent" ns="1" inpkey="395" expanded="1">
+													<entry name="EX_Extent" ns="1" expanded="1">
+														<entry name="description" ns="1">
+															<entry name="CharacterString" inpkey="396"/>
+														</entry>
+														<entry name="geographicElement" ns="1" inpkey="397">
+															<entry name="EX_GeographicBoundingBox" ns="1">
+																<entry name="westBoundLongitude" ns="1" expanded="1">
+																	<entry name="Decimal" inpkey="398"/>
+																</entry>
+																<entry name="eastBoundLongitude" ns="1" expanded="1">
+																	<entry name="Decimal" inpkey="399"/>
+																</entry>
+																<entry name="southBoundLatitude" ns="1" expanded="1">
+																	<entry name="Decimal" inpkey="400"/>
+																</entry>
+																<entry name="northBoundLatitude" ns="1" expanded="1">
+																	<entry name="Decimal" inpkey="401"/>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="temporalElement" ns="1" expanded="1">
+															<entry name="EX_TemporalExtent" ns="1" expanded="1">
+																<entry name="extent" ns="1" expanded="1">
+																	<entry name="TimePeriod" ns="4" expanded="1">
+																		<entry name="beginPosition" ns="4" inpkey="418"/>
+																		<entry name="endPosition" ns="4" inpkey="419" expanded="1"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+													</entry>
+												</entry>
 											</entry>
 										</entry>
 										<entry name="distributionInfo" ns="1">
@@ -1504,6 +1606,127 @@
 							</entry>
 						</root>
 						<document schema="..\ISO\gmd.xsd" instanceroot="{http://www.isotc211.org/2005/gmd}MD_Metadata" outputinstance="..\ISO\gmd.xml"/>
+					</data>
+				</component>
+				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view rbx="188" rby="450"/>
+					<data>
+						<root scrollposition="77">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Resource" outkey="2" expanded="1">
+										<entry name="currentDate" outkey="68"/>
+										<entry name="doi" outkey="38"/>
+										<entry name="dateCreated" outkey="356"/>
+										<entry name="Rights">
+											<entry name="rightsIdentifier" outkey="97"/>
+										</entry>
+										<entry name="Language">
+											<entry name="code" outkey="39"/>
+										</entry>
+										<entry name="Titles">
+											<entry name="Title" expanded="1">
+												<entry name="text" outkey="11"/>
+												<entry name="type" outkey="12"/>
+											</entry>
+										</entry>
+										<entry name="Authors">
+											<entry name="Author" outkey="122">
+												<entry name="familyname" outkey="123"/>
+												<entry name="givenname" outkey="124"/>
+												<entry name="orcid" outkey="125"/>
+												<entry name="Affiliations">
+													<entry name="Affiliation">
+														<entry name="name" outkey="126"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="Descriptions" outkey="146">
+											<entry name="Description">
+												<entry name="description" outkey="140"/>
+											</entry>
+										</entry>
+										<entry name="ContactPersons">
+											<entry name="ContactPerson" outkey="165">
+												<entry name="familyname" outkey="166"/>
+												<entry name="givenname" outkey="167"/>
+												<entry name="position" outkey="168"/>
+												<entry name="email" outkey="169"/>
+												<entry name="website" outkey="170"/>
+												<entry name="Affiliations">
+													<entry name="Affiliation">
+														<entry name="name" outkey="171"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="SpatialTemporalCoverages" expanded="1">
+											<entry name="SpatialTemporalCoverage" outkey="402" expanded="1">
+												<entry name="latitudeMin" outkey="403"/>
+												<entry name="latitudeMax" outkey="404"/>
+												<entry name="longitudeMin" outkey="405"/>
+												<entry name="longitudeMax" outkey="406"/>
+												<entry name="Description" outkey="407"/>
+												<entry name="dateTimeStart" outkey="420"/>
+												<entry name="dateTimeEnd" outkey="421"/>
+												<entry name="timezone" outkey="422"/>
+											</entry>
+										</entry>
+										<entry name="ThesaurusKeywords">
+											<entry name="Keyword">
+												<entry name="keyword" outkey="188"/>
+												<entry name="scheme" outkey="200"/>
+												<entry name="language" outkey="227"/>
+											</entry>
+										</entry>
+										<entry name="FreeKeywords" outkey="344">
+											<entry name="Keyword">
+												<entry name="free_keyword" outkey="345"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="138" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="423"/>
+						<datapoint pos="1" key="424"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="425"/>
+					</targets>
+					<view ltx="1507" lty="974" rbx="1589" rby="1030"/>
+					<data>
+						<comment>
+							<text>Start DateTime+Timezone</text>
+						</comment>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="140" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="426"/>
+						<datapoint pos="1" key="427"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="428"/>
+					</targets>
+					<view ltx="1507" lty="1045" rbx="1589" rby="1101"/>
+					<data>
+						<comment>
+							<text>End DateTime+Timezone</text>
+						</comment>
 					</data>
 				</component>
 			</children>
@@ -2217,6 +2440,147 @@
 					<vertex vertexkey="351">
 						<edges>
 							<edge vertexkey="352"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="360">
+						<edges>
+							<edge vertexkey="358"/>
+							<edge vertexkey="372"/>
+							<edge vertexkey="378"/>
+							<edge vertexkey="384"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="403">
+						<edges>
+							<edge vertexkey="359"/>
+							<edge vertexkey="361"/>
+							<edge vertexkey="416"/>
+							<edge vertexkey="417"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="362">
+						<edges>
+							<edge vertexkey="363"/>
+							<edge vertexkey="388"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="357">
+						<edges>
+							<edge vertexkey="364"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="404">
+						<edges>
+							<edge vertexkey="368"/>
+							<edge vertexkey="410"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="369">
+						<edges>
+							<edge vertexkey="370"/>
+							<edge vertexkey="389"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="405">
+						<edges>
+							<edge vertexkey="374"/>
+							<edge vertexkey="393"/>
+							<edge vertexkey="412"/>
+							<edge vertexkey="415"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="375">
+						<edges>
+							<edge vertexkey="376"/>
+							<edge vertexkey="390"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="381">
+						<edges>
+							<edge vertexkey="382"/>
+							<edge vertexkey="391"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="371">
+						<edges>
+							<edge vertexkey="385"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="377">
+						<edges>
+							<edge vertexkey="386"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="414">
+						<edges>
+							<edge vertexkey="387"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="392">
+						<edges>
+							<edge vertexkey="395"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="407">
+						<edges>
+							<edge vertexkey="396"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="402">
+						<edges>
+							<edge vertexkey="397"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="394">
+						<edges>
+							<edge vertexkey="398"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="409">
+						<edges>
+							<edge vertexkey="399"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="366">
+						<edges>
+							<edge vertexkey="400"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="411">
+						<edges>
+							<edge vertexkey="401"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="406">
+						<edges>
+							<edge vertexkey="408"/>
+							<edge vertexkey="413"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="425">
+						<edges>
+							<edge vertexkey="418"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="428">
+						<edges>
+							<edge vertexkey="419"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="420">
+						<edges>
+							<edge vertexkey="423"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="422">
+						<edges>
+							<edge vertexkey="424"/>
+							<edge vertexkey="427"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="421">
+						<edges>
+							<edge vertexkey="426"/>
 						</edges>
 					</vertex>
 				</vertices>
