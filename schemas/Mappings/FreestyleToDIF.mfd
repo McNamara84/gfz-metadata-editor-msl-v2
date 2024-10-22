@@ -50,6 +50,181 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					</targets>
 					<view ltx="874" lty="228" rbx="972" rby="282"/>
 				</component>
+				<component name="if-else" library="core" uid="7" kind="4">
+					<sources>
+						<datapoint pos="0" key="19"/>
+						<datapoint pos="1" key="20"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="21"/>
+					</targets>
+					<view ltx="1042" lty="191" rbx="1146" rby="264"/>
+					<data>
+						<comment>
+							<text>Im DIF-Schema darf nur ein Title in der XML-Datei gespeichert wird. 
+Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es main ist dann darf es eingetragen werden wenn nicht dann wird es ignoriert.</text>
+						</comment>
+					</data>
+				</component>
+				<component name="contains" library="core" uid="59" kind="5">
+					<sources>
+						<datapoint pos="0" key="28"/>
+						<datapoint pos="1" key="26"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="23"/>
+					</targets>
+					<view ltx="609" lty="315" rbx="707" rby="369"/>
+				</component>
+				<component name="greater" library="core" uid="64" kind="5">
+					<sources>
+						<datapoint pos="0" key="65"/>
+						<datapoint pos="1" key="47"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="48"/>
+					</targets>
+					<view ltx="820" lty="956" rbx="884" rby="1010"/>
+				</component>
+				<component name="greater" library="core" uid="65" kind="5">
+					<sources>
+						<datapoint pos="0" key="68"/>
+						<datapoint pos="1" key="55"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="56"/>
+					</targets>
+					<view ltx="820" lty="1009" rbx="884" rby="1063"/>
+				</component>
+				<component name="greater" library="core" uid="66" kind="5">
+					<sources>
+						<datapoint pos="0" key="73"/>
+						<datapoint pos="1" key="36"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="62"/>
+					</targets>
+					<view ltx="820" lty="1060" rbx="884" rby="1114"/>
+				</component>
+				<component name="greater" library="core" uid="75" kind="5">
+					<sources>
+						<datapoint pos="0" key="34"/>
+						<datapoint pos="1" key="54"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="37"/>
+					</targets>
+					<view ltx="820" lty="903" rbx="884" rby="957"/>
+				</component>
+				<component name="constant" library="core" uid="63" kind="2">
+					<targets>
+						<datapoint pos="0" key="35"/>
+					</targets>
+					<view ltx="675" lty="966" rbx="715" rby="983"/>
+					<data>
+						<constant value="0" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="string-length" library="core" uid="71" kind="5">
+					<sources>
+						<datapoint pos="0" key="74"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="33"/>
+					</targets>
+					<view ltx="609" lty="1018" rbx="704" rby="1056"/>
+				</component>
+				<component name="string-length" library="core" uid="70" kind="5">
+					<sources>
+						<datapoint pos="0" key="75"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="64"/>
+					</targets>
+					<view ltx="609" lty="1055" rbx="704" rby="1093"/>
+				</component>
+				<component name="string-length" library="core" uid="69" kind="5">
+					<sources>
+						<datapoint pos="0" key="76"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="67"/>
+					</targets>
+					<view ltx="609" lty="1092" rbx="704" rby="1130"/>
+				</component>
+				<component name="string-length" library="core" uid="68" kind="5">
+					<sources>
+						<datapoint pos="0" key="77"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="72"/>
+					</targets>
+					<view ltx="609" lty="1129" rbx="704" rby="1167"/>
+				</component>
+				<component name="constant" library="core" uid="58" kind="2">
+					<targets>
+						<datapoint pos="0" key="25"/>
+					</targets>
+					<view ltx="472" lty="352" rbx="556" rby="369"/>
+					<data>
+						<constant value="Abstract" datatype="string"/>
+					</data>
+				</component>
+				<component name="DIF" library="xml" uid="3" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="1895" lty="-4" rbx="2254" rby="987"/>
+					<data>
+						<root scrollposition="168">
+							<header>
+								<namespaces>
+									<namespace uid="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="DIF" inpkey="1" expanded="1">
+										<entry name="Entry_ID" inpkey="7"/>
+										<entry name="Entry_Title" inpkey="8"/>
+										<entry name="Data_Set_Citation" expanded="1">
+											<entry name="Dataset_Title" inpkey="9"/>
+											<entry name="Dataset_Release_Date" inpkey="10"/>
+										</entry>
+										<entry name="Personnel" expanded="1"/>
+										<entry name="Discipline" expanded="1"/>
+										<entry name="Spatial_Coverage" inpkey="78" expanded="1">
+											<entry name="Southernmost_Latitude" inpkey="79"/>
+											<entry name="Northernmost_Latitude" inpkey="80"/>
+											<entry name="Westernmost_Longitude" inpkey="81"/>
+											<entry name="Easternmost_Longitude" inpkey="82"/>
+										</entry>
+										<entry name="Summary" expanded="1">
+											<entry name="Abstract" inpkey="31"/>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\GCMD\DIF.xsd" instanceroot="{http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/}DIF" outputinstance="..\GCMD\DIF.xml"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="60" kind="4">
+					<sources>
+						<datapoint pos="0" key="24"/>
+						<datapoint pos="1" key="27"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="22"/>
+					</targets>
+					<view ltx="734" lty="326" rbx="838" rby="399"/>
+					<data>
+						<comment>
+							<text>Im DIF-Schema wird nur &quot;Abstrakt&quot; von allen Descriptions gespeichert und die anderen Descriptions nicht. Mit diesem Filter wird einfach herausgefiltert und wird einfach abstrakt &quot;Abstrakt&quot; gespeichert und der Rest nicht.</text>
+						</comment>
+					</data>
+				</component>
 				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
 					<properties XSLTTargetEncoding="UTF-8"/>
 					<view rbx="300" rby="847"/>
@@ -81,6 +256,14 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 												<entry name="description" outkey="32"/>
 											</entry>
 										</entry>
+										<entry name="SpatialTemporalCoverages" expanded="1">
+											<entry name="SpatialTemporalCoverage" expanded="1">
+												<entry name="latitudeMin" outkey="83"/>
+												<entry name="latitudeMax" outkey="84"/>
+												<entry name="longitudeMin" outkey="85"/>
+												<entry name="longitudeMax" outkey="86"/>
+											</entry>
+										</entry>
 									</entry>
 								</entry>
 							</entry>
@@ -88,89 +271,61 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
 					</data>
 				</component>
-				<component name="contains" library="core" uid="59" kind="5">
+				<component name="if-else" library="core" uid="76" kind="4">
 					<sources>
-						<datapoint pos="0" key="28"/>
-						<datapoint pos="1" key="26"/>
+						<datapoint pos="0" key="38"/>
+						<datapoint pos="1" key="87"/>
+						<datapoint pos="2" key="88"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="23"/>
+						<datapoint pos="0" key="89"/>
 					</targets>
-					<view ltx="602" lty="315" rbx="700" rby="369"/>
+					<view ltx="948" lty="838" rbx="1052" rby="911"/>
 				</component>
-				<component name="if-else" library="core" uid="60" kind="4">
+				<component name="if-else" library="core" uid="73" kind="4">
 					<sources>
-						<datapoint pos="0" key="24"/>
-						<datapoint pos="1" key="27"/>
-						<datapoint/>
+						<datapoint pos="0" key="50"/>
+						<datapoint pos="1" key="90"/>
+						<datapoint pos="2" key="91"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="22"/>
+						<datapoint pos="0" key="92"/>
 					</targets>
-					<view ltx="723" lty="336" rbx="827" rby="409"/>
-					<data>
-						<comment>
-							<text>Im DIF-Schema wird nur &quot;Abstrakt&quot; von allen Descriptions gespeichert und die anderen Descriptions nicht. Mit diesem Filter wird einfach herausgefiltert und wird einfach abstrakt &quot;Abstrakt&quot; gespeichert und der Rest nicht.</text>
-						</comment>
-					</data>
+					<view ltx="948" lty="932" rbx="1052" rby="1005"/>
 				</component>
-				<component name="constant" library="core" uid="58" kind="2">
-					<targets>
-						<datapoint pos="0" key="25"/>
-					</targets>
-					<view ltx="419" lty="315" rbx="503" rby="332"/>
-					<data>
-						<constant value="Abstract" datatype="string"/>
-					</data>
-				</component>
-				<component name="DIF" library="xml" uid="3" kind="14">
-					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
-					<view ltx="1895" lty="-4" rbx="2254" rby="987"/>
-					<data>
-						<root scrollposition="117">
-							<header>
-								<namespaces>
-									<namespace uid="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/"/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="DIF" inpkey="1" expanded="1">
-										<entry name="Entry_ID" inpkey="7"/>
-										<entry name="Entry_Title" inpkey="8"/>
-										<entry name="Data_Set_Citation" expanded="1">
-											<entry name="Dataset_Title" inpkey="9"/>
-											<entry name="Dataset_Release_Date" inpkey="10"/>
-										</entry>
-										<entry name="Personnel" expanded="1"/>
-										<entry name="Discipline" expanded="1"/>
-										<entry name="Summary" expanded="1">
-											<entry name="Abstract" inpkey="31"/>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\GCMD\DIF.xsd" instanceroot="{http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/}DIF" outputinstance="..\GCMD\DIF.xml"/>
-					</data>
-				</component>
-				<component name="if-else" library="core" uid="7" kind="4">
+				<component name="if-else" library="core" uid="72" kind="4">
 					<sources>
-						<datapoint pos="0" key="19"/>
-						<datapoint pos="1" key="20"/>
-						<datapoint/>
+						<datapoint pos="0" key="57"/>
+						<datapoint pos="1" key="93"/>
+						<datapoint pos="2" key="94"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="21"/>
+						<datapoint pos="0" key="95"/>
 					</targets>
-					<view ltx="1042" lty="191" rbx="1146" rby="264"/>
-					<data>
-						<comment>
-							<text>Im DIF-Schema darf nur ein Title in der XML-Datei gespeichert wird. 
-Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es main ist dann darf es eingetragen werden wenn nicht dann wird es ignoriert.</text>
-						</comment>
-					</data>
+					<view ltx="948" lty="1004" rbx="1052" rby="1077"/>
+				</component>
+				<component name="if-else" library="core" uid="67" kind="4">
+					<sources>
+						<datapoint pos="0" key="63"/>
+						<datapoint pos="1" key="96"/>
+						<datapoint pos="2" key="97"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="98"/>
+					</targets>
+					<view ltx="948" lty="1076" rbx="1052" rby="1149"/>
+				</component>
+				<component name="logical-and" library="core" uid="74" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="44"/>
+						<datapoint pos="1" key="49"/>
+						<datapoint pos="2" key="71"/>
+						<datapoint pos="3" key="66"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="99"/>
+					</targets>
+					<view ltx="1210" lty="956" rbx="1302" rby="1046"/>
 				</component>
 			</children>
 			<graph directed="1">
@@ -250,6 +405,111 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<vertex vertexkey="22">
 						<edges>
 							<edge vertexkey="31"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="33">
+						<edges>
+							<edge vertexkey="34"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="35">
+						<edges>
+							<edge vertexkey="36"/>
+							<edge vertexkey="47"/>
+							<edge vertexkey="54"/>
+							<edge vertexkey="55"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="37">
+						<edges>
+							<edge vertexkey="38"/>
+							<edge vertexkey="44"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="48">
+						<edges>
+							<edge vertexkey="49"/>
+							<edge vertexkey="50"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="56">
+						<edges>
+							<edge vertexkey="57"/>
+							<edge vertexkey="71"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="62">
+						<edges>
+							<edge vertexkey="63"/>
+							<edge vertexkey="66"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="64">
+						<edges>
+							<edge vertexkey="65"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="67">
+						<edges>
+							<edge vertexkey="68"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="72">
+						<edges>
+							<edge vertexkey="73"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="83">
+						<edges>
+							<edge vertexkey="74"/>
+							<edge vertexkey="87"/>
+							<edge vertexkey="88"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="84">
+						<edges>
+							<edge vertexkey="75"/>
+							<edge vertexkey="90"/>
+							<edge vertexkey="91"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="85">
+						<edges>
+							<edge vertexkey="76"/>
+							<edge vertexkey="93"/>
+							<edge vertexkey="94"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="86">
+						<edges>
+							<edge vertexkey="77"/>
+							<edge vertexkey="96"/>
+							<edge vertexkey="97"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="99">
+						<edges>
+							<edge vertexkey="78"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="89">
+						<edges>
+							<edge vertexkey="79"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="92">
+						<edges>
+							<edge vertexkey="80"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="95">
+						<edges>
+							<edge vertexkey="81"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="98">
+						<edges>
+							<edge vertexkey="82"/>
 						</edges>
 					</vertex>
 				</vertices>
