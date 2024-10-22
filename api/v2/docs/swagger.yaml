@@ -26,6 +26,8 @@ tags:
     description: Operations about updating the vocabularies
   - name: vocabularies
     description: Operations related to retrieving vocabularies
+  - name: validation
+    description: Operations to validate data
 paths:
   /update/timezones:
     get:
@@ -41,21 +43,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/TimezonesUpdateResponse"
-              example:
-                message: "Timezones successfully updated"
-                timezones:
-                  - value: "Europe/Berlin"
-                    label: "UTC+02:00 (Europe/Berlin)"
-                  - value: "America/New_York"
-                    label: "UTC-04:00 (America/New_York)"
         "500":
           description: Internal server error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-              example:
-                error: "Error fetching data from timezonedb API."
   /update/vocabs/msl:
     get:
       tags:
@@ -89,11 +82,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/VocabularyUpdate"
-              example:
-                message: "Updating vocab for type: all"
-                results:
-                  analogue: "Updated to version 1.5"
-                  geochemistry: "Updated to version 1.4"
         "400":
           description: Bad request
           content:
@@ -106,7 +94,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
   /update/vocabs/msl/labs:
     get:
       tags:
@@ -121,24 +108,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/MSLLabsUpdateResponse"
-              example:
-                message: "MSL Labs vocabulary successfully updated"
-                labs:
-                  - id: "lab1"
-                    name: "Laboratory A"
-                    affiliation: "University X"
-                  - id: "lab2"
-                    name: "Laboratory B"
-                    affiliation: "Institute Y"
         "500":
           description: Internal server error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-              example:
-                error: "Error saving JSON file: Permission denied"
-
   /general/alive:
     get:
       tags:
@@ -153,17 +128,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthResponse"
-              example:
-                message: "I'm still alive..."
         "500":
           description: Internal server error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-              example:
-                error: "An error occurred during health check"
-
   /vocabs/sciencekeywords:
     get:
       tags:
@@ -178,37 +148,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/VocabularyTree"
-              example:
-                - id: "https://gcmd.earthdata.nasa.gov/kms/concept/1eb0ea0a-312c-4d74-8d42-6f1ad758f999"
-                  text: "Science Keywords"
-                  language: "en"
-                  scheme: "NASA/GCMD Earth Science Keywords"
-                  schemeURI: "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords"
-                  description: ""
-                  children:
-                    - id: "https://gcmd.earthdata.nasa.gov/kms/concept/e9f67a66-e9fc-435c-b720-ae32a2c3d8f5"
-                      text: "EARTH SCIENCE"
-                      language: "en"
-                      scheme: "NASA/GCMD Earth Science Keywords"
-                      schemeURI: "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords"
-                      description: "Any of various sciences that deal with the Earth."
-                      children:
-                        - id: "https://gcmd.earthdata.nasa.gov/kms/concept/c47f6052-634e-40ef-a5ac-13f69f6f4c2a"
-                          text: "ATMOSPHERE"
-                          language: "en"
-                          scheme: "NASA/GCMD Earth Science Keywords"
-                          schemeURI: "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords"
-                          description: "A gaseous envelope gravitationally bound to a celestial body."
-                          children:
         "500":
           description: Internal server error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-              example:
-                error: "An error occurred while fetching Science Keywords"
-
   /vocabs/roles:
     get:
       tags:
@@ -236,37 +181,57 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Role"
-              example:
-                - id: 1
-                  name: "Author"
-                  forInstitutions: 0
-                - id: 2
-                  name: "Editor"
-                  forInstitutions: 1
         "400":
           description: Bad request
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-              example:
-                error: "Invalid roles type specified"
         "404":
           description: No roles found
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-              example:
-                error: "No roles found"
         "500":
           description: Internal server error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-              example:
-                error: "Database error: Connection failed"
+  /validation/patterns/{type}:
+    get:
+      tags:
+        - validation
+      summary: Retrieve regex pattern for validation
+      description: Returns the regex pattern for the validation of the specified type.
+      operationId: getPattern
+      parameters:
+        - in: path
+          name: type
+          required: true
+          schema:
+            type: string
+          description: The type for which the validation pattern is to be retrieved.
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PatternResponse"
+        "404":
+          description: Pattern not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     TimezonesUpdateResponse:
@@ -282,7 +247,6 @@ components:
       required:
         - message
         - timezones
-
     Timezone:
       type: object
       properties:
@@ -297,7 +261,6 @@ components:
       required:
         - value
         - label
-
     VocabularyUpdate:
       type: object
       properties:
@@ -315,7 +278,6 @@ components:
       required:
         - message
         - results
-
     MSLLabsUpdateResponse:
       type: object
       properties:
@@ -329,7 +291,6 @@ components:
       required:
         - message
         - labs
-
     MSLLab:
       type: object
       properties:
@@ -349,34 +310,22 @@ components:
         - id
         - name
         - affiliation
-
     Error:
       type: object
       properties:
         error:
           type: string
-          examples:
-            - "An error occurred"
-            - "Fehler beim Abrufen der Daten von GitHub: Could not resolve host: github.com"
-            - "Fehler beim Decodieren der JSON-Daten: Syntax error"
-            - "Error encoding data to JSON: Malformed UTF-8 characters, possibly incorrectly encoded"
-            - "Error saving JSON file: Permission denied"
-            - "Invalid type specified"
-            - "No roles found"
-            - "Database error: Connection failed"
-
+          example: "An error occurred"
     HealthResponse:
       type: object
       properties:
         message:
           type: string
           example: "I'm still alive..."
-
     VocabularyTree:
       type: array
       items:
-      $ref: "#/components/schemas/VocabularyNode"
-
+        $ref: "#/components/schemas/VocabularyNode"
     VocabularyNode:
       type: object
       properties:
@@ -404,7 +353,6 @@ components:
         - schemeURI
         - description
         - children
-
     Role:
       type: object
       properties:
@@ -426,7 +374,14 @@ components:
         - id
         - name
         - forInstitutions
-
+    PatternResponse:
+      type: object
+      properties:
+        pattern:
+          type: string
+          example: "^[a-zA-Z0-9]{10}$"
+      required:
+        - pattern
   securitySchemes:
     msl_auth:
       type: oauth2
