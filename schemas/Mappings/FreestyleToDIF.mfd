@@ -40,25 +40,6 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 						<constant value="Main Title" datatype="string"/>
 					</data>
 				</component>
-				<component name="contains" library="core" uid="59" kind="5">
-					<sources>
-						<datapoint pos="0" key="28"/>
-						<datapoint pos="1" key="26"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="23"/>
-					</targets>
-					<view ltx="874" lty="364" rbx="972" rby="418"/>
-				</component>
-				<component name="constant" library="core" uid="58" kind="2">
-					<targets>
-						<datapoint pos="0" key="25"/>
-					</targets>
-					<view ltx="734" lty="401" rbx="818" rby="418"/>
-					<data>
-						<constant value="Abstract" datatype="string"/>
-					</data>
-				</component>
 				<component name="contains" library="core" uid="10" kind="5">
 					<sources>
 						<datapoint pos="0" key="15"/>
@@ -97,6 +78,7 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 										<entry name="Descriptions" expanded="1">
 											<entry name="Description" expanded="1">
 												<entry name="type" outkey="29"/>
+												<entry name="description" outkey="32"/>
 											</entry>
 										</entry>
 									</entry>
@@ -106,28 +88,46 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
 					</data>
 				</component>
-				<component name="if-else" library="core" uid="7" kind="4">
+				<component name="contains" library="core" uid="59" kind="5">
 					<sources>
-						<datapoint pos="0" key="19"/>
-						<datapoint pos="1" key="20"/>
+						<datapoint pos="0" key="28"/>
+						<datapoint pos="1" key="26"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="23"/>
+					</targets>
+					<view ltx="602" lty="315" rbx="700" rby="369"/>
+				</component>
+				<component name="if-else" library="core" uid="60" kind="4">
+					<sources>
+						<datapoint pos="0" key="24"/>
+						<datapoint pos="1" key="27"/>
 						<datapoint/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="21"/>
+						<datapoint pos="0" key="22"/>
 					</targets>
-					<view ltx="1042" lty="191" rbx="1146" rby="264"/>
+					<view ltx="723" lty="336" rbx="827" rby="409"/>
 					<data>
 						<comment>
-							<text>Im DIF-Schema darf nur ein Title in der XML-Datei gespeichert wird. 
-Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es main ist dann darf es eingetragen werden wenn nicht dann wird es ignoriert.</text>
+							<text>Im DIF-Schema wird nur &quot;Abstrakt&quot; von allen Descriptions gespeichert und die anderen Descriptions nicht. Mit diesem Filter wird einfach herausgefiltert und wird einfach abstrakt &quot;Abstrakt&quot; gespeichert und der Rest nicht.</text>
 						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="58" kind="2">
+					<targets>
+						<datapoint pos="0" key="25"/>
+					</targets>
+					<view ltx="419" lty="315" rbx="503" rby="332"/>
+					<data>
+						<constant value="Abstract" datatype="string"/>
 					</data>
 				</component>
 				<component name="DIF" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1895" lty="-4" rbx="2254" rby="987"/>
 					<data>
-						<root scrollposition="1">
+						<root scrollposition="117">
 							<header>
 								<namespaces>
 									<namespace uid="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/"/>
@@ -145,7 +145,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 										</entry>
 										<entry name="Personnel" expanded="1"/>
 										<entry name="Discipline" expanded="1"/>
-										<entry name="Summary" inpkey="30" expanded="1">
+										<entry name="Summary" expanded="1">
 											<entry name="Abstract" inpkey="31"/>
 										</entry>
 									</entry>
@@ -155,16 +155,16 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 						<document schema="..\GCMD\DIF.xsd" instanceroot="{http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/}DIF" outputinstance="..\GCMD\DIF.xml"/>
 					</data>
 				</component>
-				<component name="if-else" library="core" uid="60" kind="4">
+				<component name="if-else" library="core" uid="7" kind="4">
 					<sources>
-						<datapoint pos="0" key="24"/>
-						<datapoint/>
+						<datapoint pos="0" key="19"/>
+						<datapoint pos="1" key="20"/>
 						<datapoint/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="22"/>
+						<datapoint pos="0" key="21"/>
 					</targets>
-					<view ltx="1005" lty="345" rbx="1109" rby="418"/>
+					<view ltx="1042" lty="191" rbx="1146" rby="264"/>
 					<data>
 						<comment>
 							<text>Im DIF-Schema darf nur ein Title in der XML-Datei gespeichert wird. 
@@ -237,6 +237,11 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 							<edge vertexkey="26"/>
 						</edges>
 					</vertex>
+					<vertex vertexkey="32">
+						<edges>
+							<edge vertexkey="27"/>
+						</edges>
+					</vertex>
 					<vertex vertexkey="29">
 						<edges>
 							<edge vertexkey="28"/>
@@ -244,7 +249,6 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					</vertex>
 					<vertex vertexkey="22">
 						<edges>
-							<edge vertexkey="30"/>
 							<edge vertexkey="31"/>
 						</edges>
 					</vertex>
