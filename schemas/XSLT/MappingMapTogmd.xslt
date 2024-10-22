@@ -108,7 +108,14 @@
 									<CI_Date>
 										<date>
 											<gco:Date>
-												<xsl:value-of select="*[local-name()='currentDate' and namespace-uri()='']"/>
+												<xsl:choose>
+													<xsl:when test="(string(*[local-name()='dateCreated' and namespace-uri()='']) &gt; string(string-length(string(0))))">
+														<xsl:value-of select="*[local-name()='dateCreated' and namespace-uri()='']"/>
+													</xsl:when>
+													<xsl:otherwise>
+														<xsl:value-of select="*[local-name()='currentDate' and namespace-uri()='']"/>
+													</xsl:otherwise>
+												</xsl:choose>
 											</gco:Date>
 										</date>
 										<dateType>
@@ -153,7 +160,6 @@
 							</CI_Citation>
 						</citation>
 						<abstract>
-							<!-- FIX: Fehlende XSLT-Funktion in MapForce händisch nachgetragen -->
 							<CharacterString>
 								<xsl:for-each select="*[local-name()='Descriptions' and namespace-uri()='']/*[local-name()='Description' and namespace-uri()='']">
 									<xsl:if test="position() &gt; 1">
@@ -163,7 +169,7 @@
 									<xsl:value-of select="*[local-name()='description' and namespace-uri()='']"/>
 								</xsl:for-each>
 							</CharacterString>
-						</abstract>						
+						</abstract>
 						<status>
 							<MD_ProgressCode>
 								<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ProgressCode</xsl:attribute>
@@ -171,6 +177,284 @@
 								<xsl:value-of select="'Complete'"/>
 							</MD_ProgressCode>
 						</status>
+						<pointOfContact>
+							<CI_ResponsibleParty>
+								<xsl:for-each select="*[local-name()='ContactPersons' and namespace-uri()='']/*[local-name()='ContactPerson' and namespace-uri()='']">
+									<xsl:variable name="var10_cur" select="."/>
+									<individualName>
+										<gco:CharacterString>
+											<xsl:value-of select="concat(*[local-name()='familyname' and namespace-uri()=''], ', ', *[local-name()='givenname' and namespace-uri()=''])"/>
+										</gco:CharacterString>
+									</individualName>
+								</xsl:for-each>
+								<organisationName>
+									<xsl:for-each select="*[local-name()='ContactPersons' and namespace-uri()='']/*[local-name()='ContactPerson' and namespace-uri()='']/*[local-name()='Affiliations' and namespace-uri()='']/*[local-name()='Affiliation' and namespace-uri()='']">
+										<xsl:variable name="var11_cur" select="."/>
+										<gco:CharacterString>
+											<xsl:value-of select="*[local-name()='name' and namespace-uri()='']"/>
+										</gco:CharacterString>
+									</xsl:for-each>
+								</organisationName>
+								<positionName>
+									<xsl:for-each select="(./*[local-name()='ContactPersons' and namespace-uri()='']/*[local-name()='ContactPerson' and namespace-uri()=''])[(string-length(string(*[local-name()='position' and namespace-uri()=''])) &gt; 0)]">
+										<xsl:variable name="var12_cur" select="."/>
+										<gco:CharacterString>
+											<xsl:value-of select="*[local-name()='position' and namespace-uri()='']"/>
+										</gco:CharacterString>
+									</xsl:for-each>
+								</positionName>
+								<contactInfo>
+									<CI_Contact>
+										<address>
+											<CI_Address>
+												<electronicMailAddress>
+													<xsl:for-each select="*[local-name()='ContactPersons' and namespace-uri()='']/*[local-name()='ContactPerson' and namespace-uri()='']">
+														<xsl:variable name="var13_cur" select="."/>
+														<gco:CharacterString>
+															<xsl:value-of select="*[local-name()='email' and namespace-uri()='']"/>
+														</gco:CharacterString>
+													</xsl:for-each>
+												</electronicMailAddress>
+											</CI_Address>
+										</address>
+										<onlineResource>
+											<CI_OnlineResource>
+												<linkage>
+													<xsl:for-each select="*[local-name()='ContactPersons' and namespace-uri()='']/*[local-name()='ContactPerson' and namespace-uri()='']">
+														<xsl:variable name="var14_cur" select="."/>
+														<URL>
+															<xsl:value-of select="*[local-name()='website' and namespace-uri()='']"/>
+														</URL>
+													</xsl:for-each>
+												</linkage>
+												<function>
+													<CI_OnLineFunctionCode>
+														<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode</xsl:attribute>
+														<xsl:attribute name="codeListValue" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode_information</xsl:attribute>
+														<xsl:value-of select="'information'"/>
+													</CI_OnLineFunctionCode>
+												</function>
+											</CI_OnlineResource>
+										</onlineResource>
+									</CI_Contact>
+								</contactInfo>
+								<role>
+									<CI_RoleCode>
+										<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode</xsl:attribute>
+										<xsl:attribute name="codeListValue" namespace="">pointOfContact</xsl:attribute>
+										<xsl:value-of select="'pointOfContact'"/>
+									</CI_RoleCode>
+								</role>
+							</CI_ResponsibleParty>
+						</pointOfContact>
+						<descriptiveKeywords>
+							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Analogue')]">
+								<xsl:variable name="var15_filter" select="."/>
+								<MD_Keywords>
+									<keyword>
+										<gco:CharacterString>
+											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+										</gco:CharacterString>
+									</keyword>
+									<thesaurusName>
+										<CI_Citation>
+											<title>
+												<gco:CharacterString>
+													<xsl:value-of select="'EPOS WP16 Analogue'"/>
+												</gco:CharacterString>
+											</title>
+											<date/>
+										</CI_Citation>
+									</thesaurusName>
+								</MD_Keywords>
+							</xsl:for-each>
+							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Geochemistry')]">
+								<xsl:variable name="var16_filter" select="."/>
+								<MD_Keywords>
+									<keyword>
+										<gco:CharacterString>
+											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+										</gco:CharacterString>
+									</keyword>
+									<thesaurusName>
+										<CI_Citation>
+											<title/>
+											<date/>
+										</CI_Citation>
+									</thesaurusName>
+								</MD_Keywords>
+							</xsl:for-each>
+							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Geologicalage')]">
+								<xsl:variable name="var17_filter" select="."/>
+								<MD_Keywords>
+									<keyword>
+										<gco:CharacterString>
+											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+										</gco:CharacterString>
+									</keyword>
+									<thesaurusName>
+										<CI_Citation>
+											<title>
+												<gco:CharacterString>
+													<xsl:value-of select="'EPOS WP16 Geologicalage'"/>
+												</gco:CharacterString>
+											</title>
+											<date/>
+										</CI_Citation>
+									</thesaurusName>
+								</MD_Keywords>
+							</xsl:for-each>
+							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Geologicalsetting')]">
+								<xsl:variable name="var18_filter" select="."/>
+								<MD_Keywords>
+									<keyword>
+										<gco:CharacterString>
+											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+										</gco:CharacterString>
+									</keyword>
+									<thesaurusName>
+										<CI_Citation>
+											<title>
+												<gco:CharacterString>
+													<xsl:value-of select="'EPOS WP16 Geologicalsetting'"/>
+												</gco:CharacterString>
+											</title>
+											<date/>
+										</CI_Citation>
+									</thesaurusName>
+								</MD_Keywords>
+							</xsl:for-each>
+							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Materials')]">
+								<xsl:variable name="var19_filter" select="."/>
+								<MD_Keywords>
+									<keyword>
+										<gco:CharacterString>
+											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+										</gco:CharacterString>
+									</keyword>
+									<thesaurusName>
+										<CI_Citation>
+											<title>
+												<gco:CharacterString>
+													<xsl:value-of select="'EPOS WP16 Materials'"/>
+												</gco:CharacterString>
+											</title>
+											<date/>
+										</CI_Citation>
+									</thesaurusName>
+								</MD_Keywords>
+							</xsl:for-each>
+							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Microscopy')]">
+								<xsl:variable name="var20_filter" select="."/>
+								<MD_Keywords>
+									<keyword>
+										<gco:CharacterString>
+											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+										</gco:CharacterString>
+									</keyword>
+									<thesaurusName>
+										<CI_Citation>
+											<title>
+												<gco:CharacterString>
+													<xsl:value-of select="'EPOS WP16 Microscopy'"/>
+												</gco:CharacterString>
+											</title>
+											<date/>
+										</CI_Citation>
+									</thesaurusName>
+								</MD_Keywords>
+							</xsl:for-each>
+							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Paleomagnetism')]">
+								<xsl:variable name="var21_filter" select="."/>
+								<MD_Keywords>
+									<keyword>
+										<gco:CharacterString>
+											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+										</gco:CharacterString>
+									</keyword>
+									<thesaurusName>
+										<CI_Citation>
+											<title>
+												<gco:CharacterString>
+													<xsl:value-of select="'EPOS WP16 Paleomagnetism'"/>
+												</gco:CharacterString>
+											</title>
+											<date/>
+										</CI_Citation>
+									</thesaurusName>
+								</MD_Keywords>
+							</xsl:for-each>
+							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Porefluids')]">
+								<xsl:variable name="var22_filter" select="."/>
+								<MD_Keywords>
+									<keyword>
+										<gco:CharacterString>
+											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+										</gco:CharacterString>
+									</keyword>
+									<thesaurusName>
+										<CI_Citation>
+											<title>
+												<gco:CharacterString>
+													<xsl:value-of select="'EPOS WP16 Porefluids'"/>
+												</gco:CharacterString>
+											</title>
+											<date/>
+										</CI_Citation>
+									</thesaurusName>
+								</MD_Keywords>
+							</xsl:for-each>
+							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Rockphysics')]">
+								<xsl:variable name="var23_filter" select="."/>
+								<MD_Keywords>
+									<keyword>
+										<gco:CharacterString>
+											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+										</gco:CharacterString>
+									</keyword>
+									<thesaurusName>
+										<CI_Citation>
+											<title>
+												<gco:CharacterString>
+													<xsl:value-of select="'EPOS WP16 Rockphysics'"/>
+												</gco:CharacterString>
+											</title>
+											<date/>
+										</CI_Citation>
+									</thesaurusName>
+								</MD_Keywords>
+							</xsl:for-each>
+							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'NASA/GCMD Earth Science Keywords')]">
+								<xsl:variable name="var24_filter" select="."/>
+								<MD_Keywords>
+									<keyword>
+										<gco:CharacterString>
+											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+										</gco:CharacterString>
+									</keyword>
+									<thesaurusName>
+										<CI_Citation>
+											<title>
+												<gco:CharacterString>
+													<xsl:value-of select="'NASA/GCMD Earth Science Keywords'"/>
+												</gco:CharacterString>
+											</title>
+											<date/>
+										</CI_Citation>
+									</thesaurusName>
+								</MD_Keywords>
+							</xsl:for-each>
+							<MD_Keywords>
+								<xsl:for-each select="*[local-name()='FreeKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()='']">
+									<xsl:variable name="var25_cur" select="."/>
+									<keyword>
+										<gco:CharacterString>
+											<xsl:value-of select="*[local-name()='free_keyword' and namespace-uri()='']"/>
+										</gco:CharacterString>
+									</keyword>
+								</xsl:for-each>
+							</MD_Keywords>
+						</descriptiveKeywords>
 						<resourceConstraints>
 							<MD_Constraints>
 								<useLimitation>
@@ -193,6 +477,54 @@
 								</otherConstraints>
 							</MD_LegalConstraints>
 						</resourceConstraints>
+						<xsl:for-each select="*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()='']">
+							<xsl:variable name="var26_cur" select="."/>
+							<language/>
+						</xsl:for-each>
+						<xsl:for-each select="*[local-name()='SpatialTemporalCoverages' and namespace-uri()='']/*[local-name()='SpatialTemporalCoverage' and namespace-uri()='']">
+							<xsl:variable name="var27_cur" select="."/>
+							<extent>
+								<EX_Extent>
+									<description>
+										<gco:CharacterString>
+											<xsl:value-of select="*[local-name()='Description' and namespace-uri()='']"/>
+										</gco:CharacterString>
+									</description>
+									<geographicElement>
+										<EX_GeographicBoundingBox>
+											<westBoundLongitude>
+												<xsl:if test="(string-length(string(number(*[local-name()='longitudeMin' and namespace-uri()='']))) &gt; 0)">
+													<gco:Decimal>
+														<xsl:value-of select="number(*[local-name()='longitudeMin' and namespace-uri()=''])"/>
+													</gco:Decimal>
+												</xsl:if>
+											</westBoundLongitude>
+											<eastBoundLongitude>
+												<xsl:if test="(*[local-name()='longitudeMax' and namespace-uri()=''] &gt; 0)">
+													<gco:Decimal>
+														<xsl:value-of select="number(*[local-name()='longitudeMax' and namespace-uri()=''])"/>
+													</gco:Decimal>
+												</xsl:if>
+											</eastBoundLongitude>
+											<southBoundLatitude>
+												<xsl:if test="(string-length(string(number(*[local-name()='latitudeMin' and namespace-uri()='']))) &gt; 0)">
+													<gco:Decimal>
+														<xsl:value-of select="number(*[local-name()='latitudeMin' and namespace-uri()=''])"/>
+													</gco:Decimal>
+												</xsl:if>
+											</southBoundLatitude>
+											<northBoundLatitude>
+												<xsl:if test="(string-length(string(number(*[local-name()='latitudeMax' and namespace-uri()='']))) &gt; 0)">
+													<gco:Decimal>
+														<xsl:value-of select="number(*[local-name()='latitudeMax' and namespace-uri()=''])"/>
+													</gco:Decimal>
+												</xsl:if>
+											</northBoundLatitude>
+										</EX_GeographicBoundingBox>
+									</geographicElement>
+								</EX_Extent>
+							</extent>
+						</xsl:for-each>
 					</MD_DataIdentification>
 				</identificationInfo>
 				<distributionInfo>
