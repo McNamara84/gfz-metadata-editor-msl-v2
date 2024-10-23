@@ -18,7 +18,7 @@
           <div class="input-group has-validation">
             <div class="form-floating">
               <input type="text" class="form-control" id="inputContributorLastname" pattern="^[a-zA-ZäöüÄÖÜß \-]*$"
-                name="cbPersonLastname[]" />
+                name="cbPersonLastname[]" oninput="checkMandatoryFields()" />
               <label for="inputContributorLastname">
                 <?php echo $translations['lastname']; ?>
               </label>
@@ -35,7 +35,7 @@
           <div class="input-group has-validation">
             <div class="form-floating">
               <input type="text" class="form-control" id="inputContributorFirstname" pattern="^[a-zA-ZäöüÄÖÜß \-]*$"
-                name="cbPersonFirstname[]" />
+                name="cbPersonFirstname[]" oninput="checkMandatoryFields()" />
               <label for="inputContributorFirstname">
                 <?php echo $translations['firstname']; ?>
               </label>
@@ -50,7 +50,7 @@
         <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
           <div class="form-floating">
             <select data-placeholder="<?php echo $translations['role_label']; ?>" class="form-select chosen-select"
-              id="inputContributorsPerRole" name="cbPersonRoles[]" multiple="multiple" required>
+              id="inputContributorsPerRole" name="cbPersonRoles[]" multiple="multiple">
             </select>
             <div class="invalid-feedback">
               <?php echo $translations['PleaseChoose_invalid']; ?>
@@ -64,8 +64,7 @@
           <div class="input-group has-validation">
             <div class="form-floating">
               <input type="text" class="form-control input-with-help input-right-no-round-corners"
-                id="inputContributorORCID" name="cbORCID[]" pattern="^[0-9]{4}-[0-9]{4}-[0-9]{4}-([0-9]{4}|[0-9]{3}X)$"
-                required />
+                id="inputContributorORCID" name="cbORCID[]" pattern="^[0-9]{4}-[0-9]{4}-[0-9]{4}-([0-9]{4}|[0-9]{3}X)$" />
               <label for="inputContributorORCID">
                 <?php echo $translations['contributors_ORCID']; ?>
               </label>
