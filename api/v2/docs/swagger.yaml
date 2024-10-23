@@ -232,6 +232,32 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /validation/identifiertypes:
+    get:
+      tags:
+        - validation
+      summary: Retrieve all identifier types
+      description: Returns a list of all available identifier types with their validation patterns.
+      operationId: getIdentifierTypes
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IdentifierTypesResponse"
+        "404":
+          description: No identifier types found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     TimezonesUpdateResponse:
@@ -382,6 +408,39 @@ components:
           example: "^[a-zA-Z0-9]{10}$"
       required:
         - pattern
+    IdentifierTypesResponse:
+      type: object
+      properties:
+        identifierTypes:
+          type: array
+          items:
+            $ref: "#/components/schemas/IdentifierType"
+      required:
+        - identifierTypes
+    IdentifierType:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the identifier type
+          example: 1
+        name:
+          type: string
+          description: Name of the identifier type
+          example: "DOI"
+        pattern:
+          type: string
+          description: Regular expression pattern for validation
+          example: "^10\\.\\d{4,9}/[-._;()/:A-Z0-9]+$"
+        description:
+          type: string
+          description: Description of the identifier type
+          example: "Digital Object Identifier"
+      required:
+        - id
+        - name
+        - pattern
+        - description
   securitySchemes:
     msl_auth:
       type: oauth2

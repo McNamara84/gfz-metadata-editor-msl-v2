@@ -301,7 +301,7 @@ Ruft alle Relationen aus der Datenbank ab.
 **Antwort:**
 JSON-Array mit Relation-Objekten
 
-### 21. Identifier-Typ ermitteln
+### 21. Identifier-Typ ermitteln (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getIdentifierType&identifier={identifier_string}
 
