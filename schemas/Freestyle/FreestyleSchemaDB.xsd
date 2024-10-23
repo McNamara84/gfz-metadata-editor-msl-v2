@@ -252,10 +252,10 @@
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="spatial_temporal_coverage_id" type="xs:integer"/>
-										<xs:element name="latitudeMin" type="xs:decimal"/>
-										<xs:element name="latitudeMax" type="xs:decimal"/>
-										<xs:element name="longitudeMin" type="xs:decimal"/>
-										<xs:element name="longitudeMax" type="xs:decimal"/>
+										<xs:element name="latitudeMin" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+										<xs:element name="latitudeMax" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+										<xs:element name="longitudeMin" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+										<xs:element name="longitudeMax" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
 										<xs:element name="Description" type="xs:string"/>
 										<xs:element name="dateTimeStart" type="xs:dateTime"/>
 										<xs:element name="dateTimeEnd" type="xs:dateTime"/>

@@ -10,5 +10,6 @@ return [
     ['GET', '/vocabs/sciencekeywords', [new VocabController(), 'getGcmdScienceKeywords']],
     ['GET', '/vocabs/roles[/{type}]', [new VocabController(), 'getRoles']],
     ['GET', '/validation/patterns[/{type}]', [new ValidationController(), 'getPattern']],
+    ['GET', '/validation/identifiertypes', [new ValidationController(), 'getIdentifierTypes']],
     // TODO: Weitere Endpunkte ergänzen
 ];

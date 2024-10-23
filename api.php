@@ -716,6 +716,7 @@ function getUniqueDelimiter($pattern)
     throw new Exception("Kein eindeutiger Delimiter gefunden");
 }
 
+/* Deprecated. Use APIv2 instead. */
 // API-Hook, der ein bestimmtes Pattern aus dem pattern-Attribut der Tabelle Identifier_Type zurückgibt, basierend auf dem übergebenen Identifier
 // Beispielaufruf api.php?action=getPattern&type=DOI
 if ($_GET['action'] == 'getPattern') {
@@ -735,6 +736,7 @@ if ($_GET['action'] == 'getPattern') {
     exit();
 }
 
+/* Deprecated. Use APIv2 instead. */
 // API-Hook getIdentifierTypes, der alle Identifier Types aus der Datenbank abruft
 // Beispielaufruf ./api.php?action=getIdentifierTypes
 if ($_GET['action'] == 'getIdentifierTypes') {
@@ -748,12 +750,11 @@ if ($_GET['action'] == 'getIdentifierTypes') {
         }
         echo json_encode($identifierTypes);
     } else {
-        echo 'Keine Identifier Types gefunden';
+        echo 'No identifier types found';
     }
     // Skriptausführung beenden
     exit();
 }
-
 
 // API-Endpunkt für die Rückgabe aller Affiliation-Einträge unter ROR, abgerufen über den Data Dump von ror.org
 // Beispielhafter API-Aufruf: api.php?action=getRorAffiliations
