@@ -1029,15 +1029,6 @@
 					</targets>
 					<view ltx="984" lty="202" rbx="1088" rby="275"/>
 				</component>
-				<component name="constant" library="core" uid="121" kind="2">
-					<targets>
-						<datapoint pos="0" key="360"/>
-					</targets>
-					<view ltx="1048" lty="700" rbx="1088" rby="717"/>
-					<data>
-						<constant value="0" datatype="decimal"/>
-					</data>
-				</component>
 				<component name="if-else" library="core" uid="83" kind="4">
 					<sources>
 						<datapoint pos="0" key="225"/>
@@ -1048,57 +1039,6 @@
 						<datapoint pos="0" key="219"/>
 					</targets>
 					<view ltx="542" lty="1161" rbx="646" rby="1234"/>
-				</component>
-				<component name="greater" library="core" uid="119" kind="5">
-					<sources>
-						<datapoint pos="0" key="364"/>
-						<datapoint pos="1" key="358"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="362"/>
-					</targets>
-					<view ltx="1204" lty="601" rbx="1268" rby="655"/>
-				</component>
-				<component name="greater" library="core" uid="123" kind="5">
-					<sources>
-						<datapoint pos="0" key="385"/>
-						<datapoint pos="1" key="372"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="369"/>
-					</targets>
-					<view ltx="1204" lty="654" rbx="1268" rby="708"/>
-				</component>
-				<component name="greater" library="core" uid="127" kind="5">
-					<sources>
-						<datapoint pos="0" key="386"/>
-						<datapoint pos="1" key="378"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="375"/>
-					</targets>
-					<view ltx="1204" lty="707" rbx="1268" rby="761"/>
-				</component>
-				<component name="greater" library="core" uid="131" kind="5">
-					<sources>
-						<datapoint pos="0" key="387"/>
-						<datapoint pos="1" key="384"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="381"/>
-					</targets>
-					<view ltx="1204" lty="758" rbx="1268" rby="812"/>
-				</component>
-				<component name="if-else" library="core" uid="134" kind="4">
-					<sources>
-						<datapoint pos="0" key="382"/>
-						<datapoint pos="1" key="408"/>
-						<datapoint pos="2" key="412"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="409"/>
-					</targets>
-					<view ltx="1332" lty="774" rbx="1436" rby="847"/>
 				</component>
 				<component name="concat" library="core" uid="57" kind="5" growable="1" growablebasename="value">
 					<sources>
@@ -1128,86 +1068,83 @@
 						</comment>
 					</data>
 				</component>
-				<component name="string-length" library="core" uid="132" kind="5">
+				<component name="concat" library="core" uid="140" kind="5" growable="1" growablebasename="value">
 					<sources>
-						<datapoint pos="0" key="413"/>
+						<datapoint pos="0" key="426"/>
+						<datapoint pos="1" key="427"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="414"/>
+						<datapoint pos="0" key="428"/>
 					</targets>
-					<view ltx="993" lty="827" rbx="1088" rby="865"/>
+					<view ltx="1507" lty="1045" rbx="1589" rby="1101"/>
+					<data>
+						<comment>
+							<text>End DateTime+Timezone</text>
+						</comment>
+					</data>
 				</component>
-				<component name="string-length" library="core" uid="128" kind="5">
+				<component name="concat" library="core" uid="138" kind="5" growable="1" growablebasename="value">
 					<sources>
-						<datapoint pos="0" key="374"/>
+						<datapoint pos="0" key="423"/>
+						<datapoint pos="1" key="424"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="377"/>
+						<datapoint pos="0" key="425"/>
 					</targets>
-					<view ltx="993" lty="790" rbx="1088" rby="828"/>
+					<view ltx="1507" lty="974" rbx="1589" rby="1030"/>
+					<data>
+						<comment>
+							<text>Start DateTime+Timezone</text>
+						</comment>
+					</data>
 				</component>
-				<component name="string-length" library="core" uid="124" kind="5">
+				<component name="exists" library="core" uid="177" kind="5">
 					<sources>
-						<datapoint pos="0" key="368"/>
+						<datapoint pos="0" key="474"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="371"/>
+						<datapoint pos="0" key="475"/>
 					</targets>
-					<view ltx="993" lty="753" rbx="1088" rby="791"/>
+					<view ltx="1158" lty="737" rbx="1234" rby="775"/>
 				</component>
-				<component name="string-length" library="core" uid="120" kind="5">
+				<component name="exists" library="core" uid="178" kind="5">
 					<sources>
-						<datapoint pos="0" key="361"/>
+						<datapoint pos="0" key="476"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="357"/>
+						<datapoint pos="0" key="477"/>
 					</targets>
-					<view ltx="993" lty="716" rbx="1088" rby="754"/>
+					<view ltx="1158" lty="772" rbx="1234" rby="810"/>
 				</component>
-				<component name="if-else" library="core" uid="130" kind="4">
+				<component name="exists" library="core" uid="179" kind="5">
 					<sources>
-						<datapoint pos="0" key="376"/>
-						<datapoint pos="1" key="393"/>
-						<datapoint pos="2" key="415"/>
+						<datapoint pos="0" key="478"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="394"/>
+						<datapoint pos="0" key="479"/>
 					</targets>
-					<view ltx="1332" lty="702" rbx="1436" rby="775"/>
+					<view ltx="1158" lty="809" rbx="1234" rby="847"/>
 				</component>
-				<component name="if-else" library="core" uid="122" kind="4">
+				<component name="exists" library="core" uid="176" kind="5">
 					<sources>
-						<datapoint pos="0" key="363"/>
-						<datapoint pos="1" key="359"/>
-						<datapoint pos="2" key="416"/>
+						<datapoint pos="0" key="480"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="366"/>
+						<datapoint pos="0" key="481"/>
 					</targets>
-					<view ltx="1332" lty="558" rbx="1436" rby="631"/>
-				</component>
-				<component name="if-else" library="core" uid="126" kind="4">
-					<sources>
-						<datapoint pos="0" key="370"/>
-						<datapoint pos="1" key="410"/>
-						<datapoint pos="2" key="417"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="411"/>
-					</targets>
-					<view ltx="1332" lty="630" rbx="1436" rby="703"/>
+					<view ltx="1158" lty="700" rbx="1234" rby="738"/>
 				</component>
 				<component name="logical-and" library="core" uid="136" kind="5" growable="1" growablebasename="value">
 					<sources>
-						<datapoint pos="0" key="388"/>
-						<datapoint pos="1" key="389"/>
-						<datapoint pos="2" key="390"/>
-						<datapoint pos="3" key="391"/>
+						<datapoint pos="0" key="482"/>
+						<datapoint pos="1" key="483"/>
+						<datapoint pos="2" key="484"/>
+						<datapoint pos="3" key="485"/>
 					</sources>
 					<targets>
 						<datapoint pos="0" key="392"/>
 					</targets>
-					<view ltx="1497" lty="671" rbx="1589" rby="761"/>
+					<view ltx="1277" lty="737" rbx="1369" rby="827"/>
 					<data>
 						<comment>
 							<text>All 4 coord fields filled -&gt; Box
@@ -1215,11 +1152,55 @@ Only 2 coord fields filled -&gt; Point</text>
 						</comment>
 					</data>
 				</component>
+				<component name="if-else" library="core" uid="181" kind="4">
+					<sources>
+						<datapoint pos="0" key="466"/>
+						<datapoint pos="1" key="465"/>
+						<datapoint pos="2" key="488"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="467"/>
+					</targets>
+					<view ltx="1564" lty="706" rbx="1668" rby="779"/>
+				</component>
+				<component name="if-else" library="core" uid="182" kind="4">
+					<sources>
+						<datapoint pos="0" key="469"/>
+						<datapoint pos="1" key="468"/>
+						<datapoint pos="2" key="489"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="470"/>
+					</targets>
+					<view ltx="1564" lty="778" rbx="1668" rby="851"/>
+				</component>
+				<component name="if-else" library="core" uid="180" kind="4">
+					<sources>
+						<datapoint pos="0" key="462"/>
+						<datapoint pos="1" key="463"/>
+						<datapoint pos="2" key="487"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="464"/>
+					</targets>
+					<view ltx="1564" lty="636" rbx="1668" rby="709"/>
+				</component>
+				<component name="if-else" library="core" uid="183" kind="4">
+					<sources>
+						<datapoint pos="0" key="472"/>
+						<datapoint pos="1" key="486"/>
+						<datapoint pos="2" key="490"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="473"/>
+					</targets>
+					<view ltx="1564" lty="850" rbx="1668" rby="923"/>
+				</component>
 				<component name="gmd" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1912" lty="-14" rbx="2245" rby="994"/>
 					<data>
-						<root scrollposition="1138">
+						<root scrollposition="710">
 							<header>
 								<namespaces>
 									<namespace uid="http://www.isotc211.org/2005/gco"/>
@@ -1538,11 +1519,11 @@ Only 2 coord fields filled -&gt; Point</text>
 												<entry name="language" ns="1" inpkey="234"/>
 												<entry name="extent" ns="1" inpkey="395" expanded="1">
 													<entry name="EX_Extent" ns="1" expanded="1">
-														<entry name="description" ns="1">
+														<entry name="description" ns="1" expanded="1">
 															<entry name="CharacterString" inpkey="396"/>
 														</entry>
-														<entry name="geographicElement" ns="1" inpkey="397">
-															<entry name="EX_GeographicBoundingBox" ns="1">
+														<entry name="geographicElement" ns="1" expanded="1">
+															<entry name="EX_GeographicBoundingBox" ns="1" expanded="1">
 																<entry name="westBoundLongitude" ns="1" expanded="1">
 																	<entry name="Decimal" inpkey="398"/>
 																</entry>
@@ -1697,36 +1678,6 @@ Only 2 coord fields filled -&gt; Point</text>
 							</entry>
 						</root>
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
-					</data>
-				</component>
-				<component name="concat" library="core" uid="138" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="423"/>
-						<datapoint pos="1" key="424"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="425"/>
-					</targets>
-					<view ltx="1507" lty="974" rbx="1589" rby="1030"/>
-					<data>
-						<comment>
-							<text>Start DateTime+Timezone</text>
-						</comment>
-					</data>
-				</component>
-				<component name="concat" library="core" uid="140" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="426"/>
-						<datapoint pos="1" key="427"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="428"/>
-					</targets>
-					<view ltx="1507" lty="1045" rbx="1589" rby="1101"/>
-					<data>
-						<comment>
-							<text>End DateTime+Timezone</text>
-						</comment>
 					</data>
 				</component>
 			</children>
@@ -2442,81 +2393,7 @@ Only 2 coord fields filled -&gt; Point</text>
 							<edge vertexkey="352"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="360">
-						<edges>
-							<edge vertexkey="358"/>
-							<edge vertexkey="372"/>
-							<edge vertexkey="378"/>
-							<edge vertexkey="384"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="403">
-						<edges>
-							<edge vertexkey="359"/>
-							<edge vertexkey="361"/>
-							<edge vertexkey="416"/>
-							<edge vertexkey="417"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="362">
-						<edges>
-							<edge vertexkey="363"/>
-							<edge vertexkey="388"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="357">
-						<edges>
-							<edge vertexkey="364"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="404">
-						<edges>
-							<edge vertexkey="368"/>
-							<edge vertexkey="410"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="369">
-						<edges>
-							<edge vertexkey="370"/>
-							<edge vertexkey="389"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="405">
-						<edges>
-							<edge vertexkey="374"/>
-							<edge vertexkey="393"/>
-							<edge vertexkey="412"/>
-							<edge vertexkey="415"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="375">
-						<edges>
-							<edge vertexkey="376"/>
-							<edge vertexkey="390"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="381">
-						<edges>
-							<edge vertexkey="382"/>
-							<edge vertexkey="391"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="371">
-						<edges>
-							<edge vertexkey="385"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="377">
-						<edges>
-							<edge vertexkey="386"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="414">
-						<edges>
-							<edge vertexkey="387"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="392">
+					<vertex vertexkey="402">
 						<edges>
 							<edge vertexkey="395"/>
 						</edges>
@@ -2526,35 +2403,24 @@ Only 2 coord fields filled -&gt; Point</text>
 							<edge vertexkey="396"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="402">
-						<edges>
-							<edge vertexkey="397"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="394">
+					<vertex vertexkey="470">
 						<edges>
 							<edge vertexkey="398"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="409">
+					<vertex vertexkey="473">
 						<edges>
 							<edge vertexkey="399"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="366">
+					<vertex vertexkey="464">
 						<edges>
 							<edge vertexkey="400"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="411">
+					<vertex vertexkey="467">
 						<edges>
 							<edge vertexkey="401"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="406">
-						<edges>
-							<edge vertexkey="408"/>
-							<edge vertexkey="413"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="425">
@@ -2581,6 +2447,62 @@ Only 2 coord fields filled -&gt; Point</text>
 					<vertex vertexkey="421">
 						<edges>
 							<edge vertexkey="426"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="392">
+						<edges>
+							<edge vertexkey="462"/>
+							<edge vertexkey="466"/>
+							<edge vertexkey="469"/>
+							<edge vertexkey="472"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="403">
+						<edges>
+							<edge vertexkey="463"/>
+							<edge vertexkey="480"/>
+							<edge vertexkey="487"/>
+							<edge vertexkey="488"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="404">
+						<edges>
+							<edge vertexkey="465"/>
+							<edge vertexkey="474"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="405">
+						<edges>
+							<edge vertexkey="468"/>
+							<edge vertexkey="476"/>
+							<edge vertexkey="489"/>
+							<edge vertexkey="490"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="406">
+						<edges>
+							<edge vertexkey="478"/>
+							<edge vertexkey="486"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="481">
+						<edges>
+							<edge vertexkey="482"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="475">
+						<edges>
+							<edge vertexkey="483"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="477">
+						<edges>
+							<edge vertexkey="484"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="479">
+						<edges>
+							<edge vertexkey="485"/>
 						</edges>
 					</vertex>
 				</vertices>

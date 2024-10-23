@@ -689,7 +689,6 @@ function getResourceAsXml($connection, $id)
     }
 
     $xml = new SimpleXMLElement('<Resource/>');
-    // 
     $xml->addChild('currentDate', date('Y-m-d'));
 
     // Resource Information
@@ -858,7 +857,14 @@ function getResourceAsXml($connection, $id)
                 $datetime = new DateTime($value);
                 $value = $datetime->format('Y-m-d\TH:i:s');
             }
-            $coverageXml->addChild($key, htmlspecialchars($value ?? ''));
+            // Überprüfen, ob Max-Werte vorhanden sind und nicht leer
+            if (in_array($key, ['latitudeMax', 'longitudeMax'])) {
+                if (!empty($value)) {
+                    $coverageXml->addChild($key, htmlspecialchars($value));
+                }
+            } else {
+                $coverageXml->addChild($key, htmlspecialchars($value ?? ''));
+            }
         }
     }
 
