@@ -14,7 +14,7 @@
 					<targets>
 						<datapoint pos="0" key="5"/>
 					</targets>
-					<view ltx="1478" lty="49" rbx="1572" rby="102"/>
+					<view ltx="1478" lty="49" rbx="1573" rby="102"/>
 					<data>
 						<comment>
 							<text>Hier wird den anfang von DOI (http://doi.org/) abgeschnitten und der 
@@ -26,18 +26,9 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					<targets>
 						<datapoint pos="0" key="6"/>
 					</targets>
-					<view ltx="1345" lty="84" rbx="1451" rby="100"/>
+					<view ltx="1345" lty="84" rbx="1455" rby="100"/>
 					<data>
 						<constant value="http://doi.org/" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="8" kind="2">
-					<targets>
-						<datapoint pos="0" key="14"/>
-					</targets>
-					<view ltx="734" lty="265" rbx="820" rby="281"/>
-					<data>
-						<constant value="Main Title" datatype="string"/>
 					</data>
 				</component>
 				<component name="contains" library="core" uid="10" kind="5">
@@ -48,7 +39,7 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					<targets>
 						<datapoint pos="0" key="17"/>
 					</targets>
-					<view ltx="874" lty="228" rbx="962" rby="281"/>
+					<view ltx="874" lty="228" rbx="961" rby="281"/>
 				</component>
 				<component name="if-else" library="core" uid="7" kind="4">
 					<sources>
@@ -59,7 +50,7 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					<targets>
 						<datapoint pos="0" key="21"/>
 					</targets>
-					<view ltx="1042" lty="191" rbx="1136" rby="262"/>
+					<view ltx="1042" lty="191" rbx="1136" rby="263"/>
 					<data>
 						<comment>
 							<text>Im DIF-Schema darf nur ein Title in der XML-Datei gespeichert wird. 
@@ -75,13 +66,13 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="23"/>
 					</targets>
-					<view ltx="609" lty="315" rbx="697" rby="368"/>
+					<view ltx="609" lty="315" rbx="696" rby="368"/>
 				</component>
 				<component name="constant" library="core" uid="58" kind="2">
 					<targets>
 						<datapoint pos="0" key="25"/>
 					</targets>
-					<view ltx="472" lty="352" rbx="550" rby="368"/>
+					<view ltx="472" lty="352" rbx="552" rby="368"/>
 					<data>
 						<constant value="Abstract" datatype="string"/>
 					</data>
@@ -95,7 +86,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="22"/>
 					</targets>
-					<view ltx="734" lty="326" rbx="828" rby="397"/>
+					<view ltx="734" lty="326" rbx="828" rby="398"/>
 					<data>
 						<comment>
 							<text>Im DIF-Schema wird nur &quot;Abstrakt&quot; von allen Descriptions gespeichert und die anderen Descriptions nicht. Mit diesem Filter wird einfach herausgefiltert und wird einfach abstrakt &quot;Abstrakt&quot; gespeichert und der Rest nicht.</text>
@@ -109,7 +100,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="131"/>
 					</targets>
-					<view ltx="642" lty="578" rbx="710" rby="615"/>
+					<view ltx="642" lty="578" rbx="709" rby="615"/>
 				</component>
 				<component name="if-else" library="core" uid="84" kind="4">
 					<sources>
@@ -120,7 +111,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="111"/>
 					</targets>
-					<view ltx="863" lty="446" rbx="957" rby="517"/>
+					<view ltx="863" lty="446" rbx="957" rby="518"/>
 				</component>
 				<component name="if-else" library="core" uid="85" kind="4">
 					<sources>
@@ -131,7 +122,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="115"/>
 					</targets>
-					<view ltx="864" lty="524" rbx="958" rby="595"/>
+					<view ltx="864" lty="524" rbx="958" rby="596"/>
 				</component>
 				<component name="exists" library="core" uid="82" kind="5">
 					<sources>
@@ -140,7 +131,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="138"/>
 					</targets>
-					<view ltx="642" lty="614" rbx="710" rby="651"/>
+					<view ltx="642" lty="614" rbx="709" rby="651"/>
 				</component>
 				<component name="if-else" library="core" uid="87" kind="4">
 					<sources>
@@ -151,7 +142,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="123"/>
 					</targets>
-					<view ltx="864" lty="605" rbx="958" rby="676"/>
+					<view ltx="864" lty="605" rbx="958" rby="677"/>
 				</component>
 				<component name="exists" library="core" uid="78" kind="5">
 					<sources>
@@ -160,7 +151,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="134"/>
 					</targets>
-					<view ltx="642" lty="541" rbx="710" rby="578"/>
+					<view ltx="642" lty="541" rbx="709" rby="578"/>
 				</component>
 				<component name="exists" library="core" uid="83" kind="5">
 					<sources>
@@ -169,7 +160,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="136"/>
 					</targets>
-					<view ltx="642" lty="650" rbx="710" rby="687"/>
+					<view ltx="642" lty="650" rbx="709" rby="687"/>
 					<data>
 						<comment>
 							<text>Überprüft, ob der Knoten existiert. Wenn der Knoten vorhanden ist, gibt es true zurück, andernfalls false.</text>
@@ -186,7 +177,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="104"/>
 					</targets>
-					<view ltx="746" lty="562" rbx="830" rby="650"/>
+					<view ltx="746" lty="562" rbx="829" rby="650"/>
 					<data>
 						<comment>
 							<text>Kombiniert mehrere boolesche Ausdrücke. Gibt true zurück, wenn alle Eingaben true sind, ansonsten false.</text>
@@ -202,7 +193,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="127"/>
 					</targets>
-					<view ltx="863" lty="711" rbx="957" rby="782"/>
+					<view ltx="863" lty="711" rbx="957" rby="783"/>
 					<data>
 						<comment>
 							<text>Überprüft die Bedingung. Wenn die Bedingung true ist, wird value-true zurückgegeben, ansonsten value-false.
@@ -210,48 +201,11 @@ Und hier wird auch überprüft ob auch die max Felder leer sind falls es der Fal
 						</comment>
 					</data>
 				</component>
-				<component name="DIF" library="xml" uid="3" kind="14">
-					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
-					<view ltx="1895" lty="-4" rbx="2254" rby="987"/>
-					<data>
-						<root>
-							<header>
-								<namespaces>
-									<namespace uid="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/"/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="DIF" inpkey="1" expanded="1">
-										<entry name="Entry_ID" inpkey="7"/>
-										<entry name="Entry_Title" inpkey="8"/>
-										<entry name="Data_Set_Citation" expanded="1">
-											<entry name="Dataset_Creator" inpkey="141"/>
-											<entry name="Dataset_Title" inpkey="9"/>
-											<entry name="Dataset_Release_Date" inpkey="10"/>
-										</entry>
-										<entry name="Spatial_Coverage" inpkey="139">
-											<entry name="Southernmost_Latitude" inpkey="79"/>
-											<entry name="Northernmost_Latitude" inpkey="80"/>
-											<entry name="Westernmost_Longitude" inpkey="81"/>
-											<entry name="Easternmost_Longitude" inpkey="82"/>
-										</entry>
-										<entry name="Summary" expanded="1">
-											<entry name="Abstract" inpkey="31"/>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\GCMD\DIF.xsd" instanceroot="{http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/}DIF" outputinstance="..\GCMD\DIF.xml"/>
-					</data>
-				</component>
 				<component name="constant" library="core" uid="91" kind="2">
 					<targets>
 						<datapoint pos="0" key="142"/>
 					</targets>
-					<view ltx="451" lty="191" rbx="496" rby="207"/>
+					<view ltx="451" lty="191" rbx="497" rby="207"/>
 					<data>
 						<constant value=", " datatype="string"/>
 					</data>
@@ -260,7 +214,7 @@ Und hier wird auch überprüft ob auch die max Felder leer sind falls es der Fal
 					<properties XSLTTargetEncoding="UTF-8"/>
 					<view rbx="300" rby="847"/>
 					<data>
-						<root scrollposition="1">
+						<root>
 							<header>
 								<namespaces>
 									<namespace/>
@@ -315,7 +269,120 @@ Und hier wird auch überprüft ob auch die max Felder leer sind falls es der Fal
 					<targets>
 						<datapoint pos="0" key="148"/>
 					</targets>
-					<view ltx="518" lty="152" rbx="602" rby="223"/>
+					<view ltx="518" lty="152" rbx="601" rby="224"/>
+				</component>
+				<component name="constant" library="core" uid="8" kind="2">
+					<targets>
+						<datapoint pos="0" key="14"/>
+					</targets>
+					<view ltx="734" lty="265" rbx="821" rby="281"/>
+					<data>
+						<constant value="Main Title" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="116" kind="2">
+					<targets>
+						<datapoint pos="0" key="154"/>
+					</targets>
+					<view ltx="1596" lty="635" rbx="1751" rby="651"/>
+					<data>
+						<constant value="Deutsches GeoForschungsZentrum GFZ" datatype="string"/>
+					</data>
+				</component>
+				<component name="DIF" library="xml" uid="3" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="1895" lty="-4" rbx="2254" rby="987"/>
+					<data>
+						<root scrollposition="152">
+							<header>
+								<namespaces>
+									<namespace uid="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="DIF" inpkey="1" expanded="1">
+										<entry name="Entry_ID" inpkey="7"/>
+										<entry name="Entry_Title" inpkey="8"/>
+										<entry name="Data_Set_Citation" expanded="1">
+											<entry name="Dataset_Creator" inpkey="141"/>
+											<entry name="Dataset_Title" inpkey="9"/>
+											<entry name="Dataset_Release_Date" inpkey="10"/>
+										</entry>
+										<entry name="Parameters" expanded="1"/>
+										<entry name="Spatial_Coverage" inpkey="139">
+											<entry name="Southernmost_Latitude" inpkey="79"/>
+											<entry name="Northernmost_Latitude" inpkey="80"/>
+											<entry name="Westernmost_Longitude" inpkey="81"/>
+											<entry name="Easternmost_Longitude" inpkey="82"/>
+										</entry>
+										<entry name="Data_Center" expanded="1">
+											<entry name="Data_Center_Name" expanded="1">
+												<entry name="Short_Name" inpkey="155"/>
+												<entry name="Long_Name" inpkey="157"/>
+											</entry>
+											<entry name="Personnel" expanded="1">
+												<entry name="Role" inpkey="153"/>
+												<entry name="Last_Name" inpkey="158"/>
+											</entry>
+										</entry>
+										<entry name="Summary" expanded="1">
+											<entry name="Abstract" inpkey="31"/>
+										</entry>
+										<entry name="Metadata_Name" inpkey="150"/>
+										<entry name="Metadata_Version" inpkey="159"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\GCMD\DIF.xsd" instanceroot="{http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/}DIF" outputinstance="..\GCMD\DIF.xml"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="117" kind="2">
+					<targets>
+						<datapoint pos="0" key="156"/>
+					</targets>
+					<view ltx="1596" lty="651" rbx="1655" rby="667"/>
+					<data>
+						<constant value="GFZ" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="114" kind="2">
+					<targets>
+						<datapoint pos="0" key="151"/>
+					</targets>
+					<view ltx="1596" lty="719" rbx="1754" rby="735"/>
+					<data>
+						<constant value="DATA CENTER CONTACT" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="115" kind="2">
+					<targets>
+						<datapoint pos="0" key="152"/>
+					</targets>
+					<view ltx="1596" lty="735" rbx="1751" rby="751"/>
+					<data>
+						<constant value="Deutsches GeoForschungsZentrum GFZ" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="113" kind="2">
+					<targets>
+						<datapoint pos="0" key="160"/>
+					</targets>
+					<view ltx="1657" lty="885" rbx="1719" rby="901"/>
+					<data>
+						<constant value="9.8.2" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="112" kind="2">
+					<targets>
+						<datapoint pos="0" key="149"/>
+					</targets>
+					<view ltx="1657" lty="869" rbx="1713" rby="885"/>
+					<data>
+						<constant value="DIF" datatype="string"/>
+					</data>
 				</component>
 			</children>
 			<graph directed="1">
@@ -496,6 +563,36 @@ Und hier wird auch überprüft ob auch die max Felder leer sind falls es der Fal
 					<vertex vertexkey="144">
 						<edges>
 							<edge vertexkey="147"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="149">
+						<edges>
+							<edge vertexkey="150"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="151">
+						<edges>
+							<edge vertexkey="153"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="154">
+						<edges>
+							<edge vertexkey="155"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="156">
+						<edges>
+							<edge vertexkey="157"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="152">
+						<edges>
+							<edge vertexkey="158"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="160">
+						<edges>
+							<edge vertexkey="159"/>
 						</edges>
 					</vertex>
 				</vertices>
