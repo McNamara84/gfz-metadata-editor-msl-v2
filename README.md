@@ -327,7 +327,7 @@ Ruft das Regex-Pattern für einen bestimmten Identifier-Typ ab.
 **Antwort:**
 JSON-Objekt mit dem Regex-Pattern oder einer Fehlermeldung
 
-### 23. Alle Identifier-Typen abrufen
+### 23. Alle Identifier-Typen abrufen (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getIdentifierTypes
 

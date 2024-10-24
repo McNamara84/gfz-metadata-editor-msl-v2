@@ -420,10 +420,6 @@ components:
     IdentifierType:
       type: object
       properties:
-        id:
-          type: integer
-          description: Unique identifier for the identifier type
-          example: 1
         name:
           type: string
           description: Name of the identifier type
@@ -437,7 +433,6 @@ components:
           description: Description of the identifier type
           example: "Digital Object Identifier"
       required:
-        - id
         - name
         - pattern
         - description

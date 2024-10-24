@@ -46,7 +46,7 @@ class ValidationController
 
     public function getIdentifierTypes()
     {
-        $stmt = $this->connection->prepare('SELECT * FROM Identifier_Type');
+        $stmt = $this->connection->prepare('SELECT name, pattern, description FROM Identifier_Type');
 
         if (!$stmt) {
             http_response_code(500);
@@ -66,7 +66,6 @@ class ValidationController
             $identifierTypes = [];
             while ($row = $result->fetch_assoc()) {
                 $identifierTypes[] = [
-                    'id' => $row['id'],
                     'name' => $row['name'],
                     'pattern' => $row['pattern'],
                     'description' => $row['description']

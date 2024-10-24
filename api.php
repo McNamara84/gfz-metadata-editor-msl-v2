@@ -645,6 +645,7 @@ if ($_GET['action'] == 'getRelations') {
     exit();
 }
 
+/* Deprecated. Use APIv2 instead. */
 // API-Hook, der einen bestimmten Identifier Type aus der Datenbank zurückgibt, basieren auf dem übergebenen Identifier
 // Beispielaufruf api.php?action=getIdentifierType&identifier=10.1371/journal.pbio.0020449
 if ($_GET['action'] == 'getIdentifierType') {

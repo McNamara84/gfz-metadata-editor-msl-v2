@@ -214,11 +214,21 @@ $(document).ready(function () {
 
 //Funktion zum Befüllen des Dropdownmenüs von Identifiertypen
 function setupIdentifierTypesDropdown(id) {
-  $.getJSON("./api.php?action=getIdentifierTypes", function (data) {
-    $.each(data, function (key, val) {
-      $(id).append("<option>" + val.name + "</option>");
-    });
-    $(".chosen-select").trigger("chosen:updated");
+  $.getJSON("./api/v2/validation/identifiertypes", function (response) {
+    if (response && response.identifierTypes) {
+      response.identifierTypes.forEach(function (type) {
+        $(id).append($("<option>", {
+          value: type.name,
+          text: type.name,
+          title: type.description // Nutzt die description als Tooltip
+        }));
+      });
+      $(".chosen-select").trigger("chosen:updated");
+    } else {
+      console.warn("Keine Identifier-Typen verfügbar");
+    }
+  }).fail(function (jqXHR, textStatus, errorThrown) {
+    console.error("Fehler beim Laden der Identifier-Typen:", textStatus, errorThrown);
   });
 }
 
@@ -236,8 +246,20 @@ function updateIdentifierType(inputElement) {
         if (response && response.identifierTypes) {
           // Finde den passenden Identifier-Typ basierend auf dem Pattern
           const matchingType = response.identifierTypes.find(type => {
-            const pattern = new RegExp(type.pattern);
-            return pattern.test(identifier);
+            try {
+              // Pattern bereinigen
+              let pattern = type.pattern;
+              // Entferne führende und nachfolgende Slashes und Modifikatoren
+              pattern = pattern.replace(/^\/|\/[igm]*$/g, '');
+              // Entferne überflüssige Escapes
+              pattern = pattern.replace(/\\{2}/g, '\\');
+
+              const regex = new RegExp(pattern);
+              return regex.test(identifier);
+            } catch (e) {
+              console.warn(`Ungültiges Pattern für ${type.name}:`, e);
+              return false;
+            }
           });
 
           if (matchingType) {
