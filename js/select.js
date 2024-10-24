@@ -229,23 +229,31 @@ function updateIdentifierType(inputElement) {
 
   if (identifier) {
     $.ajax({
-      url: "api.php",
+      url: "api/v2/validation/identifiertypes",
       method: "GET",
-      data: {
-        action: "getIdentifierType",
-        identifier: identifier,
-      },
       dataType: "json",
       success: function (response) {
-        if (response && response.identifier_type) {
-          selectElement.val(response.identifier_type);
-          selectElement.trigger("change");
+        if (response && response.identifierTypes) {
+          // Finde den passenden Identifier-Typ basierend auf dem Pattern
+          const matchingType = response.identifierTypes.find(type => {
+            const pattern = new RegExp(type.pattern);
+            return pattern.test(identifier);
+          });
+
+          if (matchingType) {
+            selectElement.val(matchingType.name);
+            selectElement.trigger("change");
+          } else {
+            selectElement.val(""); // Setze auf leeren Wert zurück wenn kein Pattern matched
+          }
         } else {
-          selectElement.val(""); // Setze auf leeren Wert zurück
+          selectElement.val(""); // Setze auf leeren Wert zurück wenn keine Types verfügbar
+          console.warn("Keine Identifier-Typen in der Antwort gefunden");
         }
       },
       error: function (xhr, status, error) {
-        console.error("Fehler beim Abrufen des Identifier-Typs:", status, error);
+        console.error("Fehler beim Abrufen der Identifier-Typen:", status, error);
+        selectElement.val(""); // Setze auf leeren Wert zurück im Fehlerfall
       },
     });
   } else {
