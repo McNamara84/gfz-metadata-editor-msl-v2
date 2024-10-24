@@ -118,7 +118,7 @@
           <div class="input-group has-validation">
             <div class="form-floating">
               <input type="text" class="form-control input-with-help input-right-no-round-corners"
-                id="inputOrganisationName" name="cbOrganisationName[]" />
+                id="inputOrganisationName" name="cbOrganisationName[]" oninput="checkMandatoryFields()" />
               <label for="inputOrganisationName">
                 <?php echo $translations['Organisation']; ?>
               </label>
