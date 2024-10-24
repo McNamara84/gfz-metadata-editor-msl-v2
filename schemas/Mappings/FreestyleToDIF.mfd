@@ -14,7 +14,7 @@
 					<targets>
 						<datapoint pos="0" key="5"/>
 					</targets>
-					<view ltx="1478" lty="49" rbx="1573" rby="102"/>
+					<view ltx="1478" lty="49" rbx="1572" rby="102"/>
 					<data>
 						<comment>
 							<text>Hier wird den anfang von DOI (http://doi.org/) abgeschnitten und der 
@@ -26,7 +26,7 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					<targets>
 						<datapoint pos="0" key="6"/>
 					</targets>
-					<view ltx="1345" lty="84" rbx="1455" rby="100"/>
+					<view ltx="1345" lty="84" rbx="1451" rby="100"/>
 					<data>
 						<constant value="http://doi.org/" datatype="string"/>
 					</data>
@@ -39,7 +39,7 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					<targets>
 						<datapoint pos="0" key="17"/>
 					</targets>
-					<view ltx="874" lty="228" rbx="961" rby="281"/>
+					<view ltx="874" lty="228" rbx="962" rby="281"/>
 				</component>
 				<component name="if-else" library="core" uid="7" kind="4">
 					<sources>
@@ -50,7 +50,7 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					<targets>
 						<datapoint pos="0" key="21"/>
 					</targets>
-					<view ltx="1042" lty="191" rbx="1136" rby="263"/>
+					<view ltx="1042" lty="191" rbx="1136" rby="262"/>
 					<data>
 						<comment>
 							<text>Im DIF-Schema darf nur ein Title in der XML-Datei gespeichert wird. 
@@ -66,13 +66,13 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="23"/>
 					</targets>
-					<view ltx="609" lty="315" rbx="696" rby="368"/>
+					<view ltx="609" lty="315" rbx="697" rby="368"/>
 				</component>
 				<component name="constant" library="core" uid="58" kind="2">
 					<targets>
 						<datapoint pos="0" key="25"/>
 					</targets>
-					<view ltx="472" lty="352" rbx="552" rby="368"/>
+					<view ltx="472" lty="352" rbx="550" rby="368"/>
 					<data>
 						<constant value="Abstract" datatype="string"/>
 					</data>
@@ -86,7 +86,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="22"/>
 					</targets>
-					<view ltx="734" lty="326" rbx="828" rby="398"/>
+					<view ltx="734" lty="326" rbx="828" rby="397"/>
 					<data>
 						<comment>
 							<text>Im DIF-Schema wird nur &quot;Abstrakt&quot; von allen Descriptions gespeichert und die anderen Descriptions nicht. Mit diesem Filter wird einfach herausgefiltert und wird einfach abstrakt &quot;Abstrakt&quot; gespeichert und der Rest nicht.</text>
@@ -100,7 +100,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="131"/>
 					</targets>
-					<view ltx="642" lty="578" rbx="709" rby="615"/>
+					<view ltx="642" lty="578" rbx="710" rby="615"/>
 				</component>
 				<component name="if-else" library="core" uid="84" kind="4">
 					<sources>
@@ -111,7 +111,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="111"/>
 					</targets>
-					<view ltx="863" lty="446" rbx="957" rby="518"/>
+					<view ltx="863" lty="446" rbx="957" rby="517"/>
 				</component>
 				<component name="if-else" library="core" uid="85" kind="4">
 					<sources>
@@ -122,7 +122,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="115"/>
 					</targets>
-					<view ltx="864" lty="524" rbx="958" rby="596"/>
+					<view ltx="864" lty="524" rbx="958" rby="595"/>
 				</component>
 				<component name="exists" library="core" uid="82" kind="5">
 					<sources>
@@ -131,7 +131,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="138"/>
 					</targets>
-					<view ltx="642" lty="614" rbx="709" rby="651"/>
+					<view ltx="642" lty="614" rbx="710" rby="651"/>
 				</component>
 				<component name="if-else" library="core" uid="87" kind="4">
 					<sources>
@@ -142,7 +142,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="123"/>
 					</targets>
-					<view ltx="864" lty="605" rbx="958" rby="677"/>
+					<view ltx="864" lty="605" rbx="958" rby="676"/>
 				</component>
 				<component name="exists" library="core" uid="78" kind="5">
 					<sources>
@@ -151,7 +151,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="134"/>
 					</targets>
-					<view ltx="642" lty="541" rbx="709" rby="578"/>
+					<view ltx="642" lty="541" rbx="710" rby="578"/>
 				</component>
 				<component name="exists" library="core" uid="83" kind="5">
 					<sources>
@@ -160,7 +160,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="136"/>
 					</targets>
-					<view ltx="642" lty="650" rbx="709" rby="687"/>
+					<view ltx="642" lty="650" rbx="710" rby="687"/>
 					<data>
 						<comment>
 							<text>Überprüft, ob der Knoten existiert. Wenn der Knoten vorhanden ist, gibt es true zurück, andernfalls false.</text>
@@ -177,7 +177,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="104"/>
 					</targets>
-					<view ltx="746" lty="562" rbx="829" rby="650"/>
+					<view ltx="746" lty="562" rbx="830" rby="650"/>
 					<data>
 						<comment>
 							<text>Kombiniert mehrere boolesche Ausdrücke. Gibt true zurück, wenn alle Eingaben true sind, ansonsten false.</text>
@@ -193,7 +193,7 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="127"/>
 					</targets>
-					<view ltx="863" lty="711" rbx="957" rby="783"/>
+					<view ltx="863" lty="711" rbx="957" rby="782"/>
 					<data>
 						<comment>
 							<text>Überprüft die Bedingung. Wenn die Bedingung true ist, wird value-true zurückgegeben, ansonsten value-false.
@@ -205,7 +205,7 @@ Und hier wird auch überprüft ob auch die max Felder leer sind falls es der Fal
 					<targets>
 						<datapoint pos="0" key="142"/>
 					</targets>
-					<view ltx="451" lty="191" rbx="497" rby="207"/>
+					<view ltx="451" lty="191" rbx="496" rby="207"/>
 					<data>
 						<constant value=", " datatype="string"/>
 					</data>
@@ -269,13 +269,13 @@ Und hier wird auch überprüft ob auch die max Felder leer sind falls es der Fal
 					<targets>
 						<datapoint pos="0" key="148"/>
 					</targets>
-					<view ltx="518" lty="152" rbx="601" rby="224"/>
+					<view ltx="518" lty="152" rbx="602" rby="223"/>
 				</component>
 				<component name="constant" library="core" uid="8" kind="2">
 					<targets>
 						<datapoint pos="0" key="14"/>
 					</targets>
-					<view ltx="734" lty="265" rbx="821" rby="281"/>
+					<view ltx="734" lty="265" rbx="820" rby="281"/>
 					<data>
 						<constant value="Main Title" datatype="string"/>
 					</data>
@@ -284,7 +284,7 @@ Und hier wird auch überprüft ob auch die max Felder leer sind falls es der Fal
 					<targets>
 						<datapoint pos="0" key="154"/>
 					</targets>
-					<view ltx="1596" lty="635" rbx="1751" rby="651"/>
+					<view ltx="1596" lty="635" rbx="1748" rby="651"/>
 					<data>
 						<constant value="Deutsches GeoForschungsZentrum GFZ" datatype="string"/>
 					</data>
@@ -352,7 +352,7 @@ Und hier wird auch überprüft ob auch die max Felder leer sind falls es der Fal
 					<targets>
 						<datapoint pos="0" key="151"/>
 					</targets>
-					<view ltx="1596" lty="719" rbx="1754" rby="735"/>
+					<view ltx="1596" lty="719" rbx="1752" rby="735"/>
 					<data>
 						<constant value="DATA CENTER CONTACT" datatype="string"/>
 					</data>
@@ -361,18 +361,9 @@ Und hier wird auch überprüft ob auch die max Felder leer sind falls es der Fal
 					<targets>
 						<datapoint pos="0" key="152"/>
 					</targets>
-					<view ltx="1596" lty="735" rbx="1751" rby="751"/>
+					<view ltx="1596" lty="735" rbx="1748" rby="751"/>
 					<data>
 						<constant value="Deutsches GeoForschungsZentrum GFZ" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="113" kind="2">
-					<targets>
-						<datapoint pos="0" key="160"/>
-					</targets>
-					<view ltx="1657" lty="885" rbx="1719" rby="901"/>
-					<data>
-						<constant value="9.8.2" datatype="string"/>
 					</data>
 				</component>
 				<component name="constant" library="core" uid="112" kind="2">
@@ -382,6 +373,15 @@ Und hier wird auch überprüft ob auch die max Felder leer sind falls es der Fal
 					<view ltx="1657" lty="869" rbx="1713" rby="885"/>
 					<data>
 						<constant value="DIF" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="113" kind="2">
+					<targets>
+						<datapoint pos="0" key="160"/>
+					</targets>
+					<view ltx="1657" lty="885" rbx="1719" rby="901"/>
+					<data>
+						<constant value="9.9.3" datatype="string"/>
 					</data>
 				</component>
 			</children>
