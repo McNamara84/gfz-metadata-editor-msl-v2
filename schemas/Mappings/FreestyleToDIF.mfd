@@ -14,7 +14,7 @@
 					<targets>
 						<datapoint pos="0" key="5"/>
 					</targets>
-					<view ltx="1478" lty="49" rbx="1582" rby="103"/>
+					<view ltx="1478" lty="49" rbx="1572" rby="102"/>
 					<data>
 						<comment>
 							<text>Hier wird den anfang von DOI (http://doi.org/) abgeschnitten und der 
@@ -26,7 +26,7 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					<targets>
 						<datapoint pos="0" key="6"/>
 					</targets>
-					<view ltx="1345" lty="84" rbx="1462" rby="101"/>
+					<view ltx="1345" lty="84" rbx="1451" rby="100"/>
 					<data>
 						<constant value="http://doi.org/" datatype="string"/>
 					</data>
@@ -35,7 +35,7 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					<targets>
 						<datapoint pos="0" key="14"/>
 					</targets>
-					<view ltx="734" lty="265" rbx="827" rby="282"/>
+					<view ltx="734" lty="265" rbx="820" rby="281"/>
 					<data>
 						<constant value="Main Title" datatype="string"/>
 					</data>
@@ -48,7 +48,7 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					<targets>
 						<datapoint pos="0" key="17"/>
 					</targets>
-					<view ltx="874" lty="228" rbx="972" rby="282"/>
+					<view ltx="874" lty="228" rbx="962" rby="281"/>
 				</component>
 				<component name="if-else" library="core" uid="7" kind="4">
 					<sources>
@@ -59,7 +59,7 @@ Rest (10.1029/2023JB028411) in der XML-Datei gespeichert</text>
 					<targets>
 						<datapoint pos="0" key="21"/>
 					</targets>
-					<view ltx="1042" lty="191" rbx="1146" rby="264"/>
+					<view ltx="1042" lty="191" rbx="1136" rby="262"/>
 					<data>
 						<comment>
 							<text>Im DIF-Schema darf nur ein Title in der XML-Datei gespeichert wird. 
@@ -75,22 +75,146 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 					<targets>
 						<datapoint pos="0" key="23"/>
 					</targets>
-					<view ltx="609" lty="315" rbx="707" rby="369"/>
+					<view ltx="609" lty="315" rbx="697" rby="368"/>
 				</component>
 				<component name="constant" library="core" uid="58" kind="2">
 					<targets>
 						<datapoint pos="0" key="25"/>
 					</targets>
-					<view ltx="472" lty="352" rbx="556" rby="369"/>
+					<view ltx="472" lty="352" rbx="550" rby="368"/>
 					<data>
 						<constant value="Abstract" datatype="string"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="60" kind="4">
+					<sources>
+						<datapoint pos="0" key="24"/>
+						<datapoint pos="1" key="27"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="22"/>
+					</targets>
+					<view ltx="734" lty="326" rbx="828" rby="397"/>
+					<data>
+						<comment>
+							<text>Im DIF-Schema wird nur &quot;Abstrakt&quot; von allen Descriptions gespeichert und die anderen Descriptions nicht. Mit diesem Filter wird einfach herausgefiltert und wird einfach abstrakt &quot;Abstrakt&quot; gespeichert und der Rest nicht.</text>
+						</comment>
+					</data>
+				</component>
+				<component name="exists" library="core" uid="81" kind="5">
+					<sources>
+						<datapoint pos="0" key="130"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="131"/>
+					</targets>
+					<view ltx="642" lty="578" rbx="710" rby="615"/>
+				</component>
+				<component name="if-else" library="core" uid="84" kind="4">
+					<sources>
+						<datapoint pos="0" key="110"/>
+						<datapoint pos="1" key="113"/>
+						<datapoint pos="2" key="112"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="111"/>
+					</targets>
+					<view ltx="863" lty="446" rbx="957" rby="517"/>
+				</component>
+				<component name="if-else" library="core" uid="85" kind="4">
+					<sources>
+						<datapoint pos="0" key="114"/>
+						<datapoint pos="1" key="117"/>
+						<datapoint pos="2" key="116"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="115"/>
+					</targets>
+					<view ltx="864" lty="524" rbx="958" rby="595"/>
+				</component>
+				<component name="exists" library="core" uid="82" kind="5">
+					<sources>
+						<datapoint pos="0" key="137"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="138"/>
+					</targets>
+					<view ltx="642" lty="614" rbx="710" rby="651"/>
+				</component>
+				<component name="if-else" library="core" uid="87" kind="4">
+					<sources>
+						<datapoint pos="0" key="122"/>
+						<datapoint pos="1" key="125"/>
+						<datapoint pos="2" key="124"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="123"/>
+					</targets>
+					<view ltx="864" lty="605" rbx="958" rby="676"/>
+				</component>
+				<component name="exists" library="core" uid="78" kind="5">
+					<sources>
+						<datapoint pos="0" key="133"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="134"/>
+					</targets>
+					<view ltx="642" lty="541" rbx="710" rby="578"/>
+				</component>
+				<component name="exists" library="core" uid="83" kind="5">
+					<sources>
+						<datapoint pos="0" key="135"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="136"/>
+					</targets>
+					<view ltx="642" lty="650" rbx="710" rby="687"/>
+					<data>
+						<comment>
+							<text>Überprüft, ob der Knoten existiert. Wenn der Knoten vorhanden ist, gibt es true zurück, andernfalls false.</text>
+						</comment>
+					</data>
+				</component>
+				<component name="logical-and" library="core" uid="79" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="102"/>
+						<datapoint pos="1" key="100"/>
+						<datapoint pos="2" key="132"/>
+						<datapoint pos="3" key="101"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="104"/>
+					</targets>
+					<view ltx="746" lty="562" rbx="830" rby="650"/>
+					<data>
+						<comment>
+							<text>Kombiniert mehrere boolesche Ausdrücke. Gibt true zurück, wenn alle Eingaben true sind, ansonsten false.</text>
+						</comment>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="88" kind="4">
+					<sources>
+						<datapoint pos="0" key="126"/>
+						<datapoint pos="1" key="129"/>
+						<datapoint pos="2" key="128"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="127"/>
+					</targets>
+					<view ltx="863" lty="711" rbx="957" rby="782"/>
+					<data>
+						<comment>
+							<text>Überprüft die Bedingung. Wenn die Bedingung true ist, wird value-true zurückgegeben, ansonsten value-false.
+Und hier wird auch überprüft ob auch die max Felder leer sind falls es der Fall ist dann bekommen die die Werte von Mini Felder</text>
+						</comment>
 					</data>
 				</component>
 				<component name="DIF" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1895" lty="-4" rbx="2254" rby="987"/>
 					<data>
-						<root scrollposition="96">
+						<root>
 							<header>
 								<namespaces>
 									<namespace uid="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/"/>
@@ -103,12 +227,11 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 										<entry name="Entry_ID" inpkey="7"/>
 										<entry name="Entry_Title" inpkey="8"/>
 										<entry name="Data_Set_Citation" expanded="1">
+											<entry name="Dataset_Creator" inpkey="141"/>
 											<entry name="Dataset_Title" inpkey="9"/>
 											<entry name="Dataset_Release_Date" inpkey="10"/>
 										</entry>
-										<entry name="Personnel" expanded="1"/>
-										<entry name="Discipline" expanded="1"/>
-										<entry name="Spatial_Coverage" inpkey="139" expanded="1">
+										<entry name="Spatial_Coverage" inpkey="139">
 											<entry name="Southernmost_Latitude" inpkey="79"/>
 											<entry name="Northernmost_Latitude" inpkey="80"/>
 											<entry name="Westernmost_Longitude" inpkey="81"/>
@@ -124,61 +247,14 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 						<document schema="..\GCMD\DIF.xsd" instanceroot="{http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/}DIF" outputinstance="..\GCMD\DIF.xml"/>
 					</data>
 				</component>
-				<component name="if-else" library="core" uid="60" kind="4">
-					<sources>
-						<datapoint pos="0" key="24"/>
-						<datapoint pos="1" key="27"/>
-						<datapoint/>
-					</sources>
+				<component name="constant" library="core" uid="91" kind="2">
 					<targets>
-						<datapoint pos="0" key="22"/>
+						<datapoint pos="0" key="142"/>
 					</targets>
-					<view ltx="734" lty="326" rbx="838" rby="399"/>
+					<view ltx="451" lty="191" rbx="496" rby="207"/>
 					<data>
-						<comment>
-							<text>Im DIF-Schema wird nur &quot;Abstrakt&quot; von allen Descriptions gespeichert und die anderen Descriptions nicht. Mit diesem Filter wird einfach herausgefiltert und wird einfach abstrakt &quot;Abstrakt&quot; gespeichert und der Rest nicht.</text>
-						</comment>
+						<constant value=", " datatype="string"/>
 					</data>
-				</component>
-				<component name="exists" library="core" uid="81" kind="5">
-					<sources>
-						<datapoint pos="0" key="130"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="131"/>
-					</targets>
-					<view ltx="642" lty="578" rbx="718" rby="616"/>
-				</component>
-				<component name="if-else" library="core" uid="84" kind="4">
-					<sources>
-						<datapoint pos="0" key="110"/>
-						<datapoint pos="1" key="113"/>
-						<datapoint pos="2" key="112"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="111"/>
-					</targets>
-					<view ltx="863" lty="446" rbx="967" rby="519"/>
-				</component>
-				<component name="if-else" library="core" uid="85" kind="4">
-					<sources>
-						<datapoint pos="0" key="114"/>
-						<datapoint pos="1" key="117"/>
-						<datapoint pos="2" key="116"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="115"/>
-					</targets>
-					<view ltx="864" lty="524" rbx="968" rby="597"/>
-				</component>
-				<component name="exists" library="core" uid="82" kind="5">
-					<sources>
-						<datapoint pos="0" key="137"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="138"/>
-					</targets>
-					<view ltx="642" lty="614" rbx="718" rby="652"/>
 				</component>
 				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
 					<properties XSLTTargetEncoding="UTF-8"/>
@@ -196,23 +272,26 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 									<entry name="Resource" outkey="2" expanded="1">
 										<entry name="doi" outkey="11"/>
 										<entry name="year" outkey="12"/>
-										<entry name="Titles" expanded="1">
-											<entry name="Title" expanded="1">
+										<entry name="Titles">
+											<entry name="Title">
 												<entry name="text" outkey="13"/>
 												<entry name="type" outkey="18"/>
 											</entry>
 										</entry>
 										<entry name="Authors" expanded="1">
-											<entry name="Author" expanded="1"/>
+											<entry name="Author" expanded="1">
+												<entry name="familyname" outkey="143"/>
+												<entry name="givenname" outkey="144"/>
+											</entry>
 										</entry>
-										<entry name="Descriptions" expanded="1">
-											<entry name="Description" expanded="1">
+										<entry name="Descriptions">
+											<entry name="Description">
 												<entry name="type" outkey="29"/>
 												<entry name="description" outkey="32"/>
 											</entry>
 										</entry>
-										<entry name="SpatialTemporalCoverages" expanded="1">
-											<entry name="SpatialTemporalCoverage" expanded="1">
+										<entry name="SpatialTemporalCoverages">
+											<entry name="SpatialTemporalCoverage">
 												<entry name="spatial_temporal_coverage_id" outkey="140"/>
 												<entry name="latitudeMin" outkey="83"/>
 												<entry name="latitudeMax" outkey="84"/>
@@ -227,73 +306,16 @@ Hier wird erstmal gefiltert welche &apos;Titletype&apos; vorhaden ist, falls es 
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
 					</data>
 				</component>
-				<component name="if-else" library="core" uid="87" kind="4">
+				<component name="concat" library="core" uid="90" kind="5" growable="1" growablebasename="value">
 					<sources>
-						<datapoint pos="0" key="122"/>
-						<datapoint pos="1" key="125"/>
-						<datapoint pos="2" key="124"/>
+						<datapoint pos="0" key="145"/>
+						<datapoint pos="1" key="146"/>
+						<datapoint pos="2" key="147"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="123"/>
+						<datapoint pos="0" key="148"/>
 					</targets>
-					<view ltx="864" lty="605" rbx="968" rby="678"/>
-				</component>
-				<component name="exists" library="core" uid="78" kind="5">
-					<sources>
-						<datapoint pos="0" key="133"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="134"/>
-					</targets>
-					<view ltx="642" lty="541" rbx="718" rby="579"/>
-				</component>
-				<component name="exists" library="core" uid="83" kind="5">
-					<sources>
-						<datapoint pos="0" key="135"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="136"/>
-					</targets>
-					<view ltx="642" lty="650" rbx="718" rby="688"/>
-					<data>
-						<comment>
-							<text>Überprüft, ob der Knoten existiert. Wenn der Knoten vorhanden ist, gibt es true zurück, andernfalls false.</text>
-						</comment>
-					</data>
-				</component>
-				<component name="logical-and" library="core" uid="79" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="102"/>
-						<datapoint pos="1" key="100"/>
-						<datapoint pos="2" key="132"/>
-						<datapoint pos="3" key="101"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="104"/>
-					</targets>
-					<view ltx="746" lty="562" rbx="838" rby="652"/>
-					<data>
-						<comment>
-							<text>Kombiniert mehrere boolesche Ausdrücke. Gibt true zurück, wenn alle Eingaben true sind, ansonsten false.</text>
-						</comment>
-					</data>
-				</component>
-				<component name="if-else" library="core" uid="88" kind="4">
-					<sources>
-						<datapoint pos="0" key="126"/>
-						<datapoint pos="1" key="129"/>
-						<datapoint pos="2" key="128"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="127"/>
-					</targets>
-					<view ltx="863" lty="711" rbx="967" rby="784"/>
-					<data>
-						<comment>
-							<text>Überprüft die Bedingung. Wenn die Bedingung true ist, wird value-true zurückgegeben, ansonsten value-false.
-Und hier wird auch überprüft ob auch die max Felder leer sind falls es der Fall ist dann bekommen die die Werte von Mini Felder</text>
-						</comment>
-					</data>
+					<view ltx="518" lty="152" rbx="602" rby="223"/>
 				</component>
 			</children>
 			<graph directed="1">
@@ -454,6 +476,26 @@ Und hier wird auch überprüft ob auch die max Felder leer sind falls es der Fal
 					<vertex vertexkey="140">
 						<edges>
 							<edge vertexkey="139"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="148">
+						<edges>
+							<edge vertexkey="141"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="143">
+						<edges>
+							<edge vertexkey="145"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="142">
+						<edges>
+							<edge vertexkey="146"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="144">
+						<edges>
+							<edge vertexkey="147"/>
 						</edges>
 					</vertex>
 				</vertices>
