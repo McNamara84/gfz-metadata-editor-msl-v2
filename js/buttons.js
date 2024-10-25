@@ -275,18 +275,17 @@ $(document).ready(function () {
     var newtscLineId = parseInt(newtscLine.attr("tsc-row-id")) + 1;
     newtscLine.attr("tsc-row-id", newtscLineId);
 
-    // Erstellen des "Entfernen"-Buttons im geklonten Element
-    var removeBtn = $("<button/>", {
-      text: "-",
-      type: "button",
-      class: "btn btn-danger removetsc",
-      click: function () {
-        $(this).closest("[tsc-row]").remove();
-      },
-    }).css("width", "36px");
-    newtscLine.find(".tscAddButton").replaceWith(removeBtn);
-    // Hinzufügen der neuen TSCzeile
+
+    // Plus Button mit Minus Button ersetzen
+    newtscLine.find("#tscAddButton").replaceWith(removeButton);
+
+    // Neue tscLine zum DOM hinzufügen
     tscGroup.append(newtscLine);
+
+    // Event-Handler für RemoveButton
+    newtscLine.on("click", ".removeButton", function () {
+      $(this).closest(".row").remove();
+    });
   });
 
   $("#addRelatedWork").click(function () {
