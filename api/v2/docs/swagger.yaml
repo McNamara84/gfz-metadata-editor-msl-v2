@@ -28,6 +28,8 @@ tags:
     description: Operations related to retrieving vocabularies
   - name: validation
     description: Operations to validate data
+  - name: dataset
+    description: Operations for dataset management and export
 paths:
   /update/timezones:
     get:
@@ -258,6 +260,98 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /dataset/export/{id}/{scheme}:
+    get:
+      tags:
+        - dataset
+      summary: Export dataset as XML
+      description: |
+        Export a dataset as XML file in different metadata schemes. Available schemes are:
+        * DataCite - for DOI registration and citation
+        * ISO 19115 - for geospatial metadata
+        * DIF - Directory Interchange Format for NASA's GCMD
+      operationId: exportDataset
+      parameters:
+        - name: id
+          in: path
+          description: ID of the dataset to export
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: scheme
+          in: path
+          description: Metadata scheme for the export
+          required: true
+          schema:
+            type: string
+            enum:
+              - datacite
+              - iso
+              - dif
+            example: datacite
+        - name: download
+          in: query
+          description: If true, the response will be downloaded as a file
+          required: false
+          schema:
+            type: boolean
+            default: false
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/xml:
+              schema:
+                type: string
+                format: binary
+              examples:
+                datacite:
+                  summary: DataCite XML example
+                  value: |
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <resource xmlns="http://datacite.org/schema/kernel-4">
+                      <identifier identifierType="DOI">10.5880/GFZ.4.1.2023.001</identifier>
+                      <!-- Additional DataCite XML content -->
+                    </resource>
+                iso:
+                  summary: ISO 19115 XML example
+                  value: |
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd">
+                      <!-- ISO 19115 XML content -->
+                    </gmd:MD_Metadata>
+                dif:
+                  summary: DIF XML example
+                  value: |
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <DIF xmlns="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/">
+                      <!-- DIF XML content -->
+                    </DIF>
+        "400":
+          description: Invalid ID or scheme supplied
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "Invalid metadata scheme. Supported schemes are: datacite, iso, dif"
+        "404":
+          description: Dataset not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "Dataset with ID 123 not found"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "Error transforming dataset to XML"
 components:
   schemas:
     TimezonesUpdateResponse:
@@ -436,16 +530,3 @@ components:
         - name
         - pattern
         - description
-  securitySchemes:
-    msl_auth:
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: https://petstore3.swagger.io/oauth/login.jsp
-          scopes:
-            write:vocabs: modify vocabularies
-            read:vocabs: read vocabularies
-    api_key:
-      type: apiKey
-      name: api_key
-      in: header
