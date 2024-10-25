@@ -127,7 +127,7 @@ Aktualisiert die Auswahloptionen im Funders-Dropdown-Feld.
 **Antwort:**
 Bestätigungsnachricht über erfolgreiche Aktualisierung
 
-### 6. Resource als DataCite XML
+### 6. Resource als DataCite XML (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getResourceAsDataciteXml&id={resource_id}&download={true|false}
 
@@ -141,7 +141,7 @@ Exportiert einen Datensatz als XML-Datei gemäß dem DataCite-Schema (Version 4.
 **Antwort:**
 XML-Datei oder XML-Inhalt
 
-### 7. Resource als ISO XML
+### 7. Resource als ISO XML (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getResourceAsIsoXml&id={resource_id}&download={true|false}
 
@@ -155,7 +155,7 @@ Exportiert einen Datensatz als XML-Datei gemäß dem ISO-Standard.
 **Antwort:**
 XML-Datei oder XML-Inhalt
 
-### 8. Resource als DIF XML
+### 8. Resource als DIF XML (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getResourceAsDifXml&id={resource_id}&download={true|false}
 
