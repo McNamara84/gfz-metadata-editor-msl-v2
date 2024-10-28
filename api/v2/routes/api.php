@@ -10,6 +10,7 @@ return [
     ['GET', '/update/timezones', [new VocabController(), 'updateTimezones']],
     ['GET', '/vocabs/sciencekeywords', [new VocabController(), 'getGcmdScienceKeywords']],
     ['GET', '/vocabs/roles[/{type}]', [new VocabController(), 'getRoles']],
+    ['GET', '/vocabs/relations', [new VocabController(), 'getRelations']],
     ['GET', '/validation/patterns[/{type}]', [new ValidationController(), 'getPattern']],
     ['GET', '/validation/identifiertypes', [new ValidationController(), 'getIdentifierTypes']],
     ['GET', '/dataset/export/{id}/{scheme}[/{download}]', [new DatasetController(), 'exportResource']],

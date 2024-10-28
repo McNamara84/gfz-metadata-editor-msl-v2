@@ -19,6 +19,44 @@ class VocabController
         $this->mslVocabsUrl = $mslVocabsUrl;
     }
 
+    public function getRelations()
+    {
+        global $connection;
+        $stmt = $connection->prepare('SELECT relation_id, name, description FROM Relation');
+
+        if (!$stmt) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Failed to prepare statement: ' . $connection->error]);
+            return;
+        }
+
+        if (!$stmt->execute()) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Failed to execute statement: ' . $stmt->error]);
+            return;
+        }
+
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $relations = [];
+            while ($row = $result->fetch_assoc()) {
+                $relations[] = [
+                    'id' => $row['relation_id'],
+                    'name' => $row['name'],
+                    'description' => $row['description']
+                ];
+            }
+            echo json_encode(['relations' => $relations]);
+        } else {
+            http_response_code(404);
+            echo json_encode(['error' => 'No relations found']);
+        }
+
+        $stmt->close();
+        exit();
+    }
+
     public function fetchAndProcessMslLabs()
     {
         // Daten von der URL abrufen mit User-Agent
