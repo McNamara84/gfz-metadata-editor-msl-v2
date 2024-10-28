@@ -292,7 +292,7 @@ Ruft Keywords aus der Datenbank ab.
 **Antwort:**
 JSON-Array mit Keyword-Objekten
 
-### 20. Relationen abrufen
+### 20. Relationen abrufen (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getRelations
 

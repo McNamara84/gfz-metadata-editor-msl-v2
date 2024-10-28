@@ -201,6 +201,36 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /vocabs/relations:
+    get:
+      tags:
+        - vocabularies
+      summary: Get all relations
+      description: Retrieve a list of all available relations for dataset relationships
+      operationId: getRelations
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RelationsResponse"
+        "404":
+          description: No relations found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "No relations found"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "Database error"
   /validation/patterns/{type}:
     get:
       tags:
@@ -398,6 +428,37 @@ components:
       required:
         - message
         - results
+    RelationsResponse:
+      type: object
+      properties:
+        relations:
+          type: array
+          items:
+            $ref: "#/components/schemas/Relation"
+      required:
+        - relations
+
+    Relation:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the relation (relation_id in database)
+          example: 1
+        name:
+          type: string
+          description: Name of the relation (max 45 characters)
+          example: "IsCitedBy"
+          maxLength: 45
+        description:
+          type: string
+          description: Description of the relation (max 1000 characters)
+          example: "Indicates that the related dataset cites this dataset"
+          maxLength: 1000
+      required:
+        - id
+        - name
+        - description
     MSLLabsUpdateResponse:
       type: object
       properties:
