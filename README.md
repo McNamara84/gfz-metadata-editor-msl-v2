@@ -29,13 +29,13 @@ In der header.html und footer.html werden folgende Abhängikeiten von Drittanbie
   Für die Event Handler in JavaScript und zum Vereinfachen des JavaScript-Codes allgemein.
 - jQuery UI 1.14.0<br>
   Erweitert jQuery um die Autocomplete-Funktion, die wir aktuell für die Affiliation-Felder nutzen.
-- Chosen 1.8.7<br>
+- Chosen 1.8.7<br> (deprecated, zukünftig nicht mehr verwenden)
   Da Bootstrap 5.3 keine einfach bedienbaren Multi-Select-Felder anbietet, wird diese Funktion mit Chosen implementiert. Design-Anpassungen waren notwendendig und werden in der Datei bs5-chosen.css umgesetzt.
-- Tagify 4.31.3<br>
+- Tagify 4.31.5<br>
   Wird für das Feld Thesaurus Keywords, die eingabe von mehreren Affiliations und Free Keywords genutzt.
 - jsTree 3.3.17<br>
   Wird zur Darstellung der Thesauri als hierarchische Baumstruktur verwendet.
-- Swagger UI<br>
+- Swagger UI 5.17.14<br>
   Zur Darstellung der dynamischen und interaktiven API-Dokumentation nach OpenAPI-Standard 3.1.
 
 ## Einstellungen
