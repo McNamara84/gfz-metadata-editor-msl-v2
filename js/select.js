@@ -148,10 +148,20 @@ $(document).ready(function () {
 
   // Populate the relation dropdown field
   $.ajax({
-    url: "api.php",
-    data: { action: "getRelations" },
+    url: "api/v2/vocabs/relations",
+    method: "GET",
     dataType: "json",
-    success: function (data) {
+    beforeSend: function () {
+      var select = $("#inputRelation");
+      select.prop('disabled', true);
+      select.empty().append(
+        $("<option>", {
+          value: "",
+          text: "Loading...",
+        })
+      );
+    },
+    success: function (response) {
       var select = $("#inputRelation");
       select.empty();
 
@@ -162,18 +172,42 @@ $(document).ready(function () {
           text: "Choose...",
         })
       );
-      $.each(data, function (i, relation) {
+
+      if (response && response.relations && response.relations.length > 0) {
+        // Sortiere die Relationen alphabetisch nach Namen
+        response.relations
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .forEach(function (relation) {
+            select.append(
+              $("<option>", {
+                value: relation.id,
+                text: relation.name,
+                title: relation.description
+              })
+            );
+          });
+      } else {
         select.append(
           $("<option>", {
-            value: relation.relation_id,
-            text: relation.name,
+            value: "",
+            text: "No relations available",
           })
         );
-      });
+      }
     },
     error: function (jqXHR, textStatus, errorThrown) {
       console.error("Error loading relations:", textStatus, errorThrown);
+      var select = $("#inputRelation");
+      select.empty().append(
+        $("<option>", {
+          value: "",
+          text: "Error loading relations",
+        })
+      );
     },
+    complete: function () {
+      $("#inputRelation").prop('disabled', false);
+    }
   });
 
   /**
