@@ -923,4 +923,68 @@ class DatasetController
         }
         exit();
     }
+    public function exportAllDownload($vars)
+    {
+        return $this->handleExportAll($vars, true);
+    }
+
+    public function exportAll($vars)
+    {
+        return $this->handleExportAll($vars, false);
+    }
+
+    private function handleExportAll($vars, $download)
+    {
+        $id = intval($vars['id']);
+
+        try {
+            // Hole alle drei XML-Formate
+            $dataciteXml = $this->transformAndSaveOrDownloadXml($id, 'datacite', false);
+            $isoXml = $this->transformAndSaveOrDownloadXml($id, 'iso', false);
+            $difXml = $this->transformAndSaveOrDownloadXml($id, 'dif', false);
+
+            // Entferne XML-Deklarationen aus den einzelnen XMLs
+            $dataciteXml = preg_replace('/<\?xml[^>]+\?>/', '', $dataciteXml);
+            $isoXml = preg_replace('/<\?xml[^>]+\?>/', '', $isoXml);
+            $difXml = preg_replace('/<\?xml[^>]+\?>/', '', $difXml);
+
+            // Erstelle das kombinierte XML
+            $combinedXml = <<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<envelope>
+        $dataciteXml
+
+        $isoXml
+
+        $difXml
+</envelope>
+XML;
+
+            if ($download) {
+                // Stelle sicher, dass keine Ausgabe vor den Headern erfolgt ist
+                if (ob_get_level())
+                    ob_end_clean();
+
+                $filename = "dataset_{$id}_all.xml";
+
+                // Binary Transfer
+                header('Content-Type: application/octet-stream');
+                header('Content-Disposition: attachment; filename="' . $filename . '"');
+                header('Content-Length: ' . strlen($combinedXml));
+                header('Content-Transfer-Encoding: binary');
+                header('Connection: close');
+
+                echo $combinedXml;
+                flush();
+                exit();
+            } else {
+                header('Content-Type: application/xml; charset=utf-8');
+                echo $combinedXml;
+            }
+        } catch (Exception $e) {
+            http_response_code(400);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+        exit();
+    }
 }

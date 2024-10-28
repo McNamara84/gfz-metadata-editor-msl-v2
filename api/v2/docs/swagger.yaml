@@ -357,6 +357,78 @@ paths:
               schema:
                 type: string
                 format: binary
+  /dataset/export/{id}/all:
+    get:
+      tags:
+        - dataset
+      summary: View all metadata formats of a dataset
+      description: View a dataset in all available metadata schemes (DataCite, ISO, and DIF) combined in one XML document
+      operationId: exportAllFormats
+      parameters:
+        - name: id
+          in: path
+          description: ID of the dataset to export
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/xml:
+              schema:
+                type: string
+                format: binary
+              example: |
+                <?xml version="1.0" encoding="UTF-8"?>
+                <envelope>
+                    <datacite>
+                        <!-- DataCite XML content -->
+                    </datacite>
+                    <iso>
+                        <!-- ISO XML content -->
+                    </iso>
+                    <dif>
+                        <!-- DIF XML content -->
+                    </dif>
+                </envelope>
+        "400":
+          description: Invalid ID supplied or transformation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /dataset/export/{id}/all/download:
+    get:
+      tags:
+        - dataset
+      summary: Download all metadata formats of a dataset
+      description: Download a dataset in all available metadata schemes (DataCite, ISO, and DIF) combined in one XML file
+      operationId: exportAllFormatsDownload
+      parameters:
+        - name: id
+          in: path
+          description: ID of the dataset to export
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        "400":
+          description: Invalid ID supplied or transformation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     TimezonesUpdateResponse:

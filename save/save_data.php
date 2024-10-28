@@ -34,7 +34,7 @@ saveFundingReferences($connection, $_POST, $resource_id);
 
 // API aufrufen und Datensatz als Datei mit allen 3 XML-Schemata herunterladen
 $base_url = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/";
-$url = $base_url . "api/v2/dataset/export/" . $resource_id . "/datacite/download";
+$url = $base_url . "api/v2/dataset/export/" . $resource_id . "/all/download";
 header("Location: " . $url);
 ob_end_flush();
 exit();
