@@ -26,18 +26,15 @@
           <button class="btn btn-primary m-1" type="button" disabled>
             <?php echo $translations['load']; ?>
           </button>
-          <!-- Workarround TODO: Button fixes -->
-          <button type="submit" class="btn btn-warning m-1" form="metaForm" id="saveButton">
+          <button type="submit" class="btn btn-warning m-1" form="metaForm" id="saveAs">
             Save
           </button>
+          <!--<button type="submit" class="btn btn-warning m-1" form="metaForm" id="saveButton">
+            Save
+          </button>-->
           <button class="btn btn-success m-1" id="submitButton" disabled>
             <?php echo $translations['submit']; ?>
           </button>
-          <!-- Alis God Mode - Only for debugging! -->
-          <button type="submit" class="btn btn-dark m-1" form="metaForm" id="cheatValidation">
-            Test
-          </button>
-          <!-- Alis God Mode - Ende -->
           <?php if ($showFeedbackLink): ?>
           <button type="button" class="btn btn-warning m-1" id="feedback-btn" data-bs-toggle="modal"
             data-bs-target="#feedbackModal">

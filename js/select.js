@@ -245,12 +245,12 @@ $(document).ready(function () {
   }
 
   // Event listener for changes in the Identifier Type select field
-  $(document).on("change", 'select[name^="rIdentifierType"]', function () {
+  /*$(document).on("change", 'select[name^="rIdentifierType"]', function () {
     updateValidationPattern(this);
-  });
+  });*/
 
   // Event listener for newly added fields
-  $(document).on("click", ".addRelatedWork", function () {
+  /*$(document).on("click", ".addRelatedWork", function () {
     setTimeout(function () {
       $('select[name^="rIdentifierType"]:last').trigger("change");
     }, 100);
@@ -259,7 +259,7 @@ $(document).ready(function () {
   // Execute initially for already existing fields
   $('select[name^="rIdentifierType"]').each(function () {
     updateValidationPattern(this);
-  });
+  });*/
 });
 
 /**
