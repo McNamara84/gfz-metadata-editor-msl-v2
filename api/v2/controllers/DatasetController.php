@@ -867,11 +867,23 @@ class DatasetController
         }
     }
 
+    public function exportResourceDownload($vars)
+    {
+        return $this->handleExport($vars, true);
+    }
+
     public function exportResource($vars)
+    {
+        return $this->handleExport($vars, false);
+    }
+
+    private function handleExport($vars, $download)
     {
         $id = intval($vars['id']);
         $scheme = strtolower($vars['scheme']);
-        $download = isset($vars['download']) && $vars['download'] === 'true';
+
+        // Debug-Ausgabe
+        error_log("Download parameter: " . ($download ? 'true' : 'false'));
 
         // Überprüfen Sie die gültigen Schema-Formate
         $validSchemes = ['datacite', 'iso', 'dif'];
@@ -884,15 +896,31 @@ class DatasetController
         try {
             $result = $this->transformAndSaveOrDownloadXml($id, $scheme, $download);
 
-            if (!$download) {
-                // Wenn kein Download, geben Sie den XML-String zurück
+            if ($download) {
+                // Stelle sicher, dass keine Ausgabe vor den Headern erfolgt ist
+                if (ob_get_level())
+                    ob_end_clean();
+
+                $filename = "dataset_{$id}_{$scheme}.xml";
+
+                // Binary Transfer
+                header('Content-Type: application/octet-stream');
+                header('Content-Disposition: attachment; filename="' . $filename . '"');
+                header('Content-Length: ' . strlen($result));
+                header('Content-Transfer-Encoding: binary');
+                header('Connection: close');
+
+                echo $result;
+                flush();
+                exit();
+            } else {
                 header('Content-Type: application/xml; charset=utf-8');
                 echo $result;
             }
-            // Wenn Download, wurde bereits in der Funktion behandelt
         } catch (Exception $e) {
             http_response_code(400);
             echo json_encode(['error' => $e->getMessage()]);
         }
+        exit();
     }
 }

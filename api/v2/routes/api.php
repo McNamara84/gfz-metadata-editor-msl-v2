@@ -13,6 +13,7 @@ return [
     ['GET', '/vocabs/relations', [new VocabController(), 'getRelations']],
     ['GET', '/validation/patterns[/{type}]', [new ValidationController(), 'getPattern']],
     ['GET', '/validation/identifiertypes', [new ValidationController(), 'getIdentifierTypes']],
-    ['GET', '/dataset/export/{id}/{scheme}[/{download}]', [new DatasetController(), 'exportResource']],
+    ['GET', '/dataset/export/{id}/{scheme}/download', [new DatasetController(), 'exportResourceDownload']],
+['GET', '/dataset/export/{id}/{scheme}', [new DatasetController(), 'exportResource']],
     // TODO: Weitere Endpunkte ergänzen
 ];
