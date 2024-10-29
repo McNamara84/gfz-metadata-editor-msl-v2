@@ -135,8 +135,8 @@ class DatasetController
     {
         $stmt = $connection->prepare("
         SELECT t.*, tt.name as title_type_name
-        FROM title t
-        JOIN title_type tt ON t.Title_Type_fk = tt.title_type_id
+        FROM Title t
+        JOIN Title_Type tt ON t.Title_Type_fk = tt.title_type_id
         WHERE t.Resource_resource_id = ?
     ");
         $stmt->bind_param('i', $resource_id);
@@ -498,8 +498,8 @@ class DatasetController
         $laboratories = [];
         $stmt = $connection->prepare("
         SELECT ol.*
-        FROM originating_laboratory ol
-        JOIN resource_has_originating_laboratory rhol ON ol.originating_laboratory_id = rhol.Originating_Laboratory_originating_laboratory_id
+        FROM Originating_Laboratory ol
+        JOIN Resource_has_Originating_Laboratory rhol ON ol.Originating_Laboratory_id = rhol.Originating_Laboratory_originating_laboratory_id
         WHERE rhol.Resource_resource_id = ?
     ");
         $stmt->bind_param('i', $resource_id);
@@ -528,8 +528,8 @@ class DatasetController
         $affiliations = [];
         $stmt = $connection->prepare("
         SELECT a.*
-        FROM affiliation a
-        JOIN originating_laboratory_has_affiliation olha ON a.affiliation_id = olha.Affiliation_affiliation_id
+        FROM Affiliation a
+        JOIN Originating_Laboratory_has_Affiliation olha ON a.affiliation_id = olha.Affiliation_affiliation_id
         WHERE olha.Originating_Laboratory_originating_laboratory_id = ?
     ");
         $stmt->bind_param('i', $originating_laboratory_id);
@@ -551,7 +551,7 @@ class DatasetController
      */
     function getResourceAsXml($connection, $id)
     {
-        $stmt = $connection->prepare('SELECT * FROM resource WHERE resource_id = ?');
+        $stmt = $connection->prepare('SELECT * FROM Resource WHERE resource_id = ?');
         $stmt->bind_param('i', $id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -572,7 +572,7 @@ class DatasetController
         $xml->addChild('dateEmbargoUntil', htmlspecialchars($resource['dateEmbargoUntil'] ?? ''));
 
         // Rights
-        $rights = $this->getRelatedData($connection, 'rights', 'rights_id', $resource['Rights_rights_id']);
+        $rights = $this->getRelatedData($connection, 'Rights', 'rights_id', $resource['Rights_rights_id']);
         if ($rights) {
             $rightsXml = $xml->addChild('Rights');
             foreach ($rights as $key => $value) {
@@ -581,14 +581,14 @@ class DatasetController
         }
 
         // Resource Type
-        $resourceType = $this->getRelatedData($connection, 'resource_type', 'resource_name_id', $resource['Resource_Type_resource_name_id']);
+        $resourceType = $this->getRelatedData($connection, 'Resource_Type', 'resource_name_id', $resource['Resource_Type_resource_name_id']);
         $resourceTypeXml = $xml->addChild('ResourceType');
         foreach ($resourceType as $key => $value) {
             $resourceTypeXml->addChild($key, htmlspecialchars($value ?? ''));
         }
 
         // Language
-        $language = $this->getRelatedData($connection, 'language', 'language_id', $resource['Language_language_id']);
+        $language = $this->getRelatedData($connection, 'Language', 'language_id', $resource['Language_language_id']);
         $languageXml = $xml->addChild('Language');
         foreach ($language as $key => $value) {
             $languageXml->addChild($key, htmlspecialchars($value ?? ''));
@@ -794,11 +794,19 @@ class DatasetController
         $dom->formatOutput = true;
 
         // XML-Datei speichern
-        $outputDir = __DIR__ . '../../../../xml';
-        if (!is_dir($outputDir)) {
-            mkdir($outputDir, 0777, true);
+        $outputDir = $_SERVER['DOCUMENT_ROOT'] . '/xml';
+        $outputFile = $outputDir . "/resource_$id.xml";
+
+        // Debug-Informationen
+        error_log("Document Root: " . $_SERVER['DOCUMENT_ROOT']);
+        error_log("Verzeichnis: " . $outputDir);
+        error_log("Datei: " . $outputFile);
+
+        // XML-Datei speichern
+        if (!@$dom->save($outputFile)) {
+            error_log("Fehler beim Speichern der XML-Datei: " . error_get_last()['message']);
+            throw new Exception("Konnte XML-Datei nicht speichern");
         }
-        $dom->save("$outputDir/resource_$id.xml");
 
         // DB-Verbindung schließen
         $stmt->close();
@@ -827,9 +835,9 @@ class DatasetController
             throw new Exception("Ungültiges Format.");
         }
 
-        $inputXmlPath = __DIR__ . "../../../../xml/resource_$id.xml";
-        $xsltPath = __DIR__ . "../../../../schemas/XSLT/" . $formatInfo[$format]['xsltFile'];
-        $outputXmlPath = __DIR__ . "../../../../xml/" . $formatInfo[$format]['outputPrefix'] . "_resource_$id.xml";
+        $inputXmlPath = $_SERVER['DOCUMENT_ROOT'] . "/xml/resource_$id.xml";
+        $xsltPath = $_SERVER['DOCUMENT_ROOT'] . "/schemas/XSLT/" . $formatInfo[$format]['xsltFile'];
+        $outputXmlPath = $_SERVER['DOCUMENT_ROOT'] . "/xml/" . $formatInfo[$format]['outputPrefix'] . "_resource_$id.xml";
 
         // FreestyleXML temporär erstellen
         $this->getResourceAsXml($GLOBALS['connection'], $id);
