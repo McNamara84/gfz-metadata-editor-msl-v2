@@ -13,7 +13,7 @@ info:
   license:
     name: MIT
     url: https://raw.githubusercontent.com/McNamara84/gfz-metadata-editor-msl-v2/refs/heads/main/LICENSE.md
-  version: 1.6.0
+  version: 1.7.0
 externalDocs:
   description: Documentation of the API V1 at GitHub
   url: https://github.com/McNamara84/gfz-metadata-editor-msl-v2#api-endpunkte
@@ -26,6 +26,10 @@ tags:
     description: Operations about updating the vocabularies
   - name: vocabularies
     description: Operations related to retrieving vocabularies
+  - name: validation
+    description: Operations to validate data
+  - name: dataset
+    description: Operations for dataset management and export
 paths:
   /update/timezones:
     get:
@@ -41,27 +45,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/TimezonesUpdateResponse"
-              example:
-                message: "Timezones successfully updated"
-                timezones:
-                  - value: "Europe/Berlin"
-                    label: "UTC+02:00 (Europe/Berlin)"
-                  - value: "America/New_York"
-                    label: "UTC-04:00 (America/New_York)"
         "500":
           description: Internal server error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-              example:
-                error: "Error fetching data from timezonedb API."
   /update/vocabs/msl:
     get:
       tags:
         - update
       summary: Update MSL vocabularies
-      description: Update vocabularies for MSL (Materials Science Laboratory)
+      description: Update vocabularies for MSL
       operationId: getMslVocab
       parameters:
         - in: query
@@ -88,19 +83,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  updatedTypes:
-                    type: object
-                    additionalProperties:
-                      type: string
-                example:
-                  message: "Updating vocab for type: all"
-                  updatedTypes:
-                    analogue: "Updated to version 1.5"
-                    geochemistry: "Updated to version 1.4"
+                $ref: "#/components/schemas/VocabularyUpdate"
         "400":
           description: Bad request
           content:
@@ -113,64 +96,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
-  /update/vocabs/msl/{type}:
-    get:
-      tags:
-        - update
-      summary: Update specific MSL vocabulary
-      description: Update a specific vocabulary type for MSL
-      operationId: getMslVocabByType
-      parameters:
-        - in: path
-          name: type
-          required: true
-          schema:
-            type: string
-            enum:
-              [
-                analogue,
-                geochemistry,
-                geologicalage,
-                geologicalsetting,
-                materials,
-                microscopy,
-                paleomagnetism,
-                porefluids,
-                rockphysics,
-              ]
-          description: Type of vocabulary to update
-      responses:
-        "200":
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  updatedTypes:
-                    type: object
-                    additionalProperties:
-                      type: string
-                example:
-                  message: "Updating vocab for type: geochemistry"
-                  updatedTypes:
-                    geochemistry: "Updated to version 1.4"
-        "400":
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        "500":
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-
   /update/vocabs/msl/labs:
     get:
       tags:
@@ -185,24 +110,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/MSLLabsUpdateResponse"
-              example:
-                message: "MSL Labs vocabulary successfully updated"
-                labs:
-                  - id: "lab1"
-                    name: "Laboratory A"
-                    affiliation: "University X"
-                  - id: "lab2"
-                    name: "Laboratory B"
-                    affiliation: "Institute Y"
         "500":
           description: Internal server error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-              example:
-                error: "Error saving JSON file: Permission denied"
-
   /general/alive:
     get:
       tags:
@@ -217,17 +130,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthResponse"
-              example:
-                message: "I'm still alive..."
         "500":
           description: Internal server error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-              example:
-                error: "An error occurred during health check"
-
   /vocabs/sciencekeywords:
     get:
       tags:
@@ -242,37 +150,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/VocabularyTree"
-              example:
-                id: "https://gcmd.earthdata.nasa.gov/kms/concept/1eb0ea0a-312c-4d74-8d42-6f1ad758f999"
-                text: "Science Keywords"
-                language: "en"
-                scheme: "NASA/GCMD Earth Science Keywords"
-                schemeURI: "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords"
-                description: ""
-                children:
-                  - id: "https://gcmd.earthdata.nasa.gov/kms/concept/e9f67a66-e9fc-435c-b720-ae32a2c3d8f5"
-                    text: "EARTH SCIENCE"
-                    language: "en"
-                    scheme: "NASA/GCMD Earth Science Keywords"
-                    schemeURI: "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords"
-                    description: "Any of various sciences that deal with the Earth."
-                    children:
-                      - id: "https://gcmd.earthdata.nasa.gov/kms/concept/c47f6052-634e-40ef-a5ac-13f69f6f4c2a"
-                        text: "ATMOSPHERE"
-                        language: "en"
-                        scheme: "NASA/GCMD Earth Science Keywords"
-                        schemeURI: "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords"
-                        description: "A gaseous envelope gravitationally bound to a celestial body."
-                        children:
         "500":
           description: Internal server error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-              example:
-                error: "An error occurred while fetching Science Keywords"
-
   /vocabs/roles:
     get:
       tags:
@@ -300,29 +183,46 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Role"
-              example:
-                - id: 1
-                  name: "Author"
-                  forInstitutions: 0
-                - id: 2
-                  name: "Editor"
-                  forInstitutions: 1
         "400":
           description: Bad request
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-              example:
-                error: "Invalid roles type specified"
         "404":
           description: No roles found
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /vocabs/relations:
+    get:
+      tags:
+        - vocabularies
+      summary: Get all relations
+      description: Retrieve a list of all available relations for dataset relationships
+      operationId: getRelations
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RelationsResponse"
+        "404":
+          description: No relations found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
               example:
-                error: "No roles found"
+                error: "No relations found"
         "500":
           description: Internal server error
           content:
@@ -330,7 +230,205 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
               example:
-                error: "Database error: Connection failed"
+                error: "Database error"
+  /validation/patterns/{type}:
+    get:
+      tags:
+        - validation
+      summary: Retrieve regex pattern for validation
+      description: Returns the regex pattern for the validation of the specified type.
+      operationId: getPattern
+      parameters:
+        - in: path
+          name: type
+          required: true
+          schema:
+            type: string
+          description: The type for which the validation pattern is to be retrieved.
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PatternResponse"
+        "404":
+          description: Pattern not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /validation/identifiertypes:
+    get:
+      tags:
+        - validation
+      summary: Retrieve all identifier types
+      description: Returns a list of all available identifier types with their validation patterns.
+      operationId: getIdentifierTypes
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IdentifierTypesResponse"
+        "404":
+          description: No identifier types found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /dataset/export/{id}/{scheme}:
+    get:
+      tags:
+        - dataset
+      summary: View dataset as XML
+      description: View a dataset as XML in different metadata schemes
+      operationId: exportDataset
+      parameters:
+        - name: id
+          in: path
+          description: ID of the dataset to export
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: scheme
+          in: path
+          description: Metadata scheme for the export
+          required: true
+          schema:
+            type: string
+            enum:
+              - datacite
+              - iso
+              - dif
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/xml:
+              schema:
+                type: string
+                format: binary
+
+  /dataset/export/{id}/{scheme}/download:
+    get:
+      tags:
+        - dataset
+      summary: Download dataset as XML
+      description: Download a dataset as XML file in different metadata schemes
+      operationId: exportDatasetDownload
+      parameters:
+        - name: id
+          in: path
+          description: ID of the dataset to export
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: scheme
+          in: path
+          description: Metadata scheme for the export
+          required: true
+          schema:
+            type: string
+            enum:
+              - datacite
+              - iso
+              - dif
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+  /dataset/export/{id}/all:
+    get:
+      tags:
+        - dataset
+      summary: View all metadata formats of a dataset
+      description: View a dataset in all available metadata schemes (DataCite, ISO, and DIF) combined in one XML document
+      operationId: exportAllFormats
+      parameters:
+        - name: id
+          in: path
+          description: ID of the dataset to export
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/xml:
+              schema:
+                type: string
+                format: binary
+              example: |
+                <?xml version="1.0" encoding="UTF-8"?>
+                <envelope>
+                    <datacite>
+                        <!-- DataCite XML content -->
+                    </datacite>
+                    <iso>
+                        <!-- ISO XML content -->
+                    </iso>
+                    <dif>
+                        <!-- DIF XML content -->
+                    </dif>
+                </envelope>
+        "400":
+          description: Invalid ID supplied or transformation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /dataset/export/{id}/all/download:
+    get:
+      tags:
+        - dataset
+      summary: Download all metadata formats of a dataset
+      description: Download a dataset in all available metadata schemes (DataCite, ISO, and DIF) combined in one XML file
+      operationId: exportAllFormatsDownload
+      parameters:
+        - name: id
+          in: path
+          description: ID of the dataset to export
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        "400":
+          description: Invalid ID supplied or transformation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     TimezonesUpdateResponse:
@@ -346,7 +444,6 @@ components:
       required:
         - message
         - timezones
-
     Timezone:
       type: object
       properties:
@@ -367,13 +464,48 @@ components:
         message:
           type: string
           example: "Updating vocab for type: all"
-        updatedTypes:
+        results:
           type: object
           additionalProperties:
             type: string
           example:
             analogue: "Updated to version 1.5"
             geochemistry: "Updated to version 1.4"
+            geologicalage: "No data found"
+      required:
+        - message
+        - results
+    RelationsResponse:
+      type: object
+      properties:
+        relations:
+          type: array
+          items:
+            $ref: "#/components/schemas/Relation"
+      required:
+        - relations
+
+    Relation:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the relation (relation_id in database)
+          example: 1
+        name:
+          type: string
+          description: Name of the relation (max 45 characters)
+          example: "IsCitedBy"
+          maxLength: 45
+        description:
+          type: string
+          description: Description of the relation (max 1000 characters)
+          example: "Indicates that the related dataset cites this dataset"
+          maxLength: 1000
+      required:
+        - id
+        - name
+        - description
     MSLLabsUpdateResponse:
       type: object
       properties:
@@ -387,7 +519,6 @@ components:
       required:
         - message
         - labs
-
     MSLLab:
       type: object
       properties:
@@ -407,30 +538,23 @@ components:
         - id
         - name
         - affiliation
-
     Error:
       type: object
       properties:
         error:
           type: string
-          examples:
-            - "An error occurred"
-            - "Fehler beim Abrufen der Daten von GitHub: Could not resolve host: github.com"
-            - "Fehler beim Decodieren der JSON-Daten: Syntax error"
-            - "Error encoding data to JSON: Malformed UTF-8 characters, possibly incorrectly encoded"
-            - "Error saving JSON file: Permission denied"
-            - "Invalid type specified"
-            - "No roles found"
-            - "Database error: Connection failed"
-
+          example: "An error occurred"
     HealthResponse:
       type: object
       properties:
         message:
           type: string
           example: "I'm still alive..."
-
     VocabularyTree:
+      type: array
+      items:
+        $ref: "#/components/schemas/VocabularyNode"
+    VocabularyNode:
       type: object
       properties:
         id:
@@ -448,14 +572,15 @@ components:
         children:
           type: array
           items:
-            $ref: "#/components/schemas/VocabularyTree"
+            $ref: "#/components/schemas/VocabularyNode"
       required:
         - id
         - text
         - language
         - scheme
         - schemeURI
-
+        - description
+        - children
     Role:
       type: object
       properties:
@@ -464,7 +589,7 @@ components:
           example: 1
         name:
           type: string
-          example: "Author"
+          example: "Data Curator"
         forInstitutions:
           type: integer
           description: |
@@ -477,17 +602,39 @@ components:
         - id
         - name
         - forInstitutions
-
-  securitySchemes:
-    msl_auth:
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: https://petstore3.swagger.io/oauth/login.jsp
-          scopes:
-            write:vocabs: modify vocabularies
-            read:vocabs: read vocabularies
-    api_key:
-      type: apiKey
-      name: api_key
-      in: header
+    PatternResponse:
+      type: object
+      properties:
+        pattern:
+          type: string
+          example: "^[a-zA-Z0-9]{10}$"
+      required:
+        - pattern
+    IdentifierTypesResponse:
+      type: object
+      properties:
+        identifierTypes:
+          type: array
+          items:
+            $ref: "#/components/schemas/IdentifierType"
+      required:
+        - identifierTypes
+    IdentifierType:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the identifier type
+          example: "DOI"
+        pattern:
+          type: string
+          description: Regular expression pattern for validation
+          example: "^10\\.\\d{4,9}/[-._;()/:A-Z0-9]+$"
+        description:
+          type: string
+          description: Description of the identifier type
+          example: "Digital Object Identifier"
+      required:
+        - name
+        - pattern
+        - description

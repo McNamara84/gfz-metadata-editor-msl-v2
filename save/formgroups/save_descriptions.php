@@ -6,7 +6,7 @@
  * @param array $postData Die POST-Daten aus dem Formular.
  * @param int $resource_id Die ID der zugehörigen Ressource.
  *
- * @return void
+ * @return bool
  */
 function saveDescriptions($connection, $postData, $resource_id)
 {

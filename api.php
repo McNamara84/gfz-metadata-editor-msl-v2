@@ -12,6 +12,7 @@ use EasyRdf\RdfNamespace;
 include 'settings.php';
 include 'api_functions.php';
 
+/* Deprecated. Use APIv2 instead. */
 // API-Hook für den Abruf des kontrollierten Vokabulars GCMD Science Keywords von der NASA als JSON-String für externe Anwendungen
 // Beispielaufruf: api.php?action=getGcmdScienceKeywords
 if ($_GET['action'] == 'getGcmdScienceKeywords') {
@@ -23,6 +24,7 @@ if ($_GET['action'] == 'getGcmdScienceKeywords') {
     exit();
 }
 
+/* Deprecated. Use APIv2 instead. */
 // API-Hook für den Abruf aller kontrollierten Vocabulare von GitHub und Speicherung in getrennten JSON-Dateien
 // Beispielaufruf: api.php?action=getMslVocab&type=all oder api.php?action=getMslVocab&type=geologicalage
 if (isset($_GET['action']) && $_GET['action'] == 'getMslVocab') {
@@ -68,6 +70,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'getMslVocab') {
     exit();
 }
 
+/* Deprecated. Use APIv2 instead. */
 // API-Hook für den Abruf aller MSL Labs und Speicherung als msl-labs.json
 // Beispielaufruf: api.php?action=getMslLabs
 if (isset($_GET['action']) && $_GET['action'] == 'getMslLabs') {
@@ -458,6 +461,7 @@ if ($_GET['action'] == 'getCrossRefFunders') {
     exit();
 }
 
+/* Deprecated. Use APIv2 instead. */
 // Beispielaufruf: api.php?action=getRoles&type=all
 // API-Hook für Eingabefelder mit Roles
 if ($_GET['action'] == 'getRoles') {
@@ -494,6 +498,7 @@ if ($_GET['action'] == 'getRoles') {
     }
 }
 
+/* Deprecated. Use APIv2 instead. */
 // Beispielaufruf api.php?action=getNasaInstrumentsKeywords
 if ($_GET['action'] == 'getNasaInstrumentsKeywords') {
     $conceptSchemes = [
@@ -590,7 +595,8 @@ if ($_GET['action'] === 'getKeywords') {
     exit;
 }
 
-// Beispielaufruf api.php?action=getes, aktualisiert Timezones
+/* Deprecated. Use APIv2 instead. */
+// Beispielaufruf api.php?action=getTimezones, aktualisiert Timezones
 if ($_GET['action'] == 'getTimezones') {
     // Die URL der TimeZoneDB API, um die Zeitzonendaten abzurufen
     $apiUrl = 'http://api.timezonedb.com/v2.1/list-time-zone?key=' . $apiKeyTimezone . '&format=json';
@@ -639,6 +645,7 @@ if ($_GET['action'] == 'getRelations') {
     exit();
 }
 
+/* Deprecated. Use APIv2 instead. */
 // API-Hook, der einen bestimmten Identifier Type aus der Datenbank zurückgibt, basieren auf dem übergebenen Identifier
 // Beispielaufruf api.php?action=getIdentifierType&identifier=10.1371/journal.pbio.0020449
 if ($_GET['action'] == 'getIdentifierType') {
@@ -710,6 +717,7 @@ function getUniqueDelimiter($pattern)
     throw new Exception("Kein eindeutiger Delimiter gefunden");
 }
 
+/* Deprecated. Use APIv2 instead. */
 // API-Hook, der ein bestimmtes Pattern aus dem pattern-Attribut der Tabelle Identifier_Type zurückgibt, basierend auf dem übergebenen Identifier
 // Beispielaufruf api.php?action=getPattern&type=DOI
 if ($_GET['action'] == 'getPattern') {
@@ -729,6 +737,7 @@ if ($_GET['action'] == 'getPattern') {
     exit();
 }
 
+/* Deprecated. Use APIv2 instead. */
 // API-Hook getIdentifierTypes, der alle Identifier Types aus der Datenbank abruft
 // Beispielaufruf ./api.php?action=getIdentifierTypes
 if ($_GET['action'] == 'getIdentifierTypes') {
@@ -742,12 +751,11 @@ if ($_GET['action'] == 'getIdentifierTypes') {
         }
         echo json_encode($identifierTypes);
     } else {
-        echo 'Keine Identifier Types gefunden';
+        echo 'No identifier types found';
     }
     // Skriptausführung beenden
     exit();
 }
-
 
 // API-Endpunkt für die Rückgabe aller Affiliation-Einträge unter ROR, abgerufen über den Data Dump von ror.org
 // Beispielhafter API-Aufruf: api.php?action=getRorAffiliations

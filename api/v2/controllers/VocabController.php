@@ -1,14 +1,60 @@
 <?php
 // settings.php einbinden damit Variablen verfügbar sind
 require_once __DIR__ . '/../../../settings.php';
+/**
+ * Class VocabController
+ *
+ * This controller provides endpoints for the fetching of vocabulaires with the API.
+ */
 class VocabController
 {
     private $url;
+    private $mslVocabsUrl;
 
     public function __construct()
     {
         global $mslLabsUrl;
+        global $mslVocabsUrl;
         $this->url = $mslLabsUrl;
+        $this->mslVocabsUrl = $mslVocabsUrl;
+    }
+
+    public function getRelations()
+    {
+        global $connection;
+        $stmt = $connection->prepare('SELECT relation_id, name, description FROM Relation');
+
+        if (!$stmt) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Failed to prepare statement: ' . $connection->error]);
+            return;
+        }
+
+        if (!$stmt->execute()) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Failed to execute statement: ' . $stmt->error]);
+            return;
+        }
+
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $relations = [];
+            while ($row = $result->fetch_assoc()) {
+                $relations[] = [
+                    'id' => $row['relation_id'],
+                    'name' => $row['name'],
+                    'description' => $row['description']
+                ];
+            }
+            echo json_encode(['relations' => $relations]);
+        } else {
+            http_response_code(404);
+            echo json_encode(['error' => 'No relations found']);
+        }
+
+        $stmt->close();
+        exit();
     }
 
     public function fetchAndProcessMslLabs()
@@ -63,54 +109,112 @@ class VocabController
         return end($versions);
     }
 
-    private function downloadAndSave($url, $savePath)
+    private function processItem($item, $scheme, $schemeURI)
     {
-        $json = @file_get_contents($url);
-        if ($json === false) {
-            return false;
+        $newItem = [
+            'id' => $item['uri'] ?? '',
+            'text' => $item['label'] ?? $item['value'] ?? '',
+            'language' => 'en',
+            'scheme' => $scheme,
+            'schemeURI' => $schemeURI,
+            'description' => '',
+            'children' => []
+        ];
+
+        if (isset($item['children']) && !empty($item['children'])) {
+            foreach ($item['children'] as $child) {
+                $newItem['children'][] = $this->processItem($child, $scheme, $schemeURI);
+            }
         }
-        // Schlüssel "uri" in JSON-Datei umbenennen in "id"
-        $json = str_replace('"uri":', '"id":', $json);
-        // Schlüssel "vocab_uri" in JSON-Datei umbenennen in "schemeURI"
-        $json = str_replace('"vocab_uri":', '"schemeURI":', $json);
-        // Schlüssel "label" in JSON-Datei umbenennen in "text"
-        $json = str_replace('"label":', '"text":', $json);
-        return file_put_contents($savePath, $json) !== false;
+        return $newItem;
     }
 
     public function getMslVocab($vars)
     {
         $type = $vars['type'] ?? $_GET['type'] ?? 'all';
 
-        $baseUrl = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/';
         $types = ['analogue', 'geochemistry', 'geologicalage', 'geologicalsetting', 'materials', 'microscopy', 'paleomagnetism', 'porefluids', 'rockphysics'];
-        $jsonDir = __DIR__ . '../../../json/';
+        $jsonDir = __DIR__ . '/../../../json/';
+        $combinedJsonFile = $jsonDir . 'msl-vocabularies.json';
 
         if (!file_exists($jsonDir)) {
             mkdir($jsonDir, 0755, true);
         }
 
         $results = [];
+        $combinedData = [];
 
         if ($type == 'all') {
             foreach ($types as $t) {
-                $latestVersion = $this->getLatestVersion($baseUrl, $t);
+                $latestVersion = $this->getLatestVersion($this->mslVocabsUrl, $t);
                 if ($latestVersion) {
-                    $url = "{$baseUrl}{$t}/{$latestVersion}/{$t}_" . str_replace('.', '-', $latestVersion) . ".json";
-                    $savePath = $jsonDir . "{$t}.json";
-                    $success = $this->downloadAndSave($url, $savePath);
-                    $results[$t] = $success ? "Updated to version {$latestVersion}" : "Failed to update";
+                    $url = "{$this->mslVocabsUrl}{$t}/{$latestVersion}/{$t}_" . str_replace('.', '-', $latestVersion) . ".json";
+                    $jsonContent = $this->downloadContent($url);
+                    if ($jsonContent !== false) {
+                        $data = json_decode($jsonContent, true);
+                        if (!empty($data)) {
+                            $schemeURI = $data[0]['vocab_uri'] ?? '';
+                            $scheme = 'EPOS WP16 ' . ucfirst($t);
+                            $newRoot = [
+                                'id' => $schemeURI,
+                                'text' => ucfirst($t),
+                                'language' => 'en',
+                                'scheme' => $scheme,
+                                'schemeURI' => $schemeURI,
+                                'description' => '',
+                                'children' => []
+                            ];
+
+                            foreach ($data as $item) {
+                                $processedItem = $this->processItem($item, $scheme, $schemeURI);
+                                $newRoot['children'][] = $processedItem;
+                            }
+
+                            $combinedData[] = $newRoot;
+                            $results[$t] = "Updated to version {$latestVersion}";
+                        } else {
+                            $results[$t] = "No data found";
+                        }
+                    } else {
+                        $results[$t] = "Failed to update";
+                    }
                 } else {
                     $results[$t] = "No version found";
                 }
             }
         } elseif (in_array($type, $types)) {
-            $latestVersion = $this->getLatestVersion($baseUrl, $type);
+            $latestVersion = $this->getLatestVersion($this->mslVocabsUrl, $type);
             if ($latestVersion) {
-                $url = "{$baseUrl}{$type}/{$latestVersion}/{$type}_" . str_replace('.', '-', $latestVersion) . ".json";
-                $savePath = $jsonDir . "{$type}.json";
-                $success = $this->downloadAndSave($url, $savePath);
-                $results[$type] = $success ? "Updated to version {$latestVersion}" : "Failed to update";
+                $url = "{$this->mslVocabsUrl}{$type}/{$latestVersion}/{$type}_" . str_replace('.', '-', $latestVersion) . ".json";
+                $jsonContent = $this->downloadContent($url);
+                if ($jsonContent !== false) {
+                    $data = json_decode($jsonContent, true);
+                    if (!empty($data)) {
+                        $schemeURI = $data[0]['vocab_uri'] ?? '';
+                        $scheme = 'EPOS WP16 ' . ucfirst($type);
+                        $newRoot = [
+                            'id' => $schemeURI,
+                            'text' => ucfirst($type),
+                            'language' => 'en',
+                            'scheme' => $scheme,
+                            'schemeURI' => $schemeURI,
+                            'description' => '',
+                            'children' => []
+                        ];
+
+                        foreach ($data as $item) {
+                            $processedItem = $this->processItem($item, $scheme, $schemeURI);
+                            $newRoot['children'][] = $processedItem;
+                        }
+
+                        $combinedData[] = $newRoot;
+                        $results[$type] = "Updated to version {$latestVersion}";
+                    } else {
+                        $results[$type] = "No data found";
+                    }
+                } else {
+                    $results[$type] = "Failed to update";
+                }
             } else {
                 $results[$type] = "No version found";
             }
@@ -118,10 +222,29 @@ class VocabController
             $results['error'] = "Invalid type specified";
         }
 
+        // Speichern der kombinierten Daten
+        if (!empty($combinedData)) {
+            file_put_contents($combinedJsonFile, json_encode($combinedData, JSON_PRETTY_PRINT));
+        }
+
         header('Content-Type: application/json');
         echo json_encode([
-            'message' => "Updating vocab for type: $type"
+            'message' => "Updating vocab for type: $type",
+            'results' => $results
         ]);
+    }
+
+
+    private function downloadContent($url)
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        $content = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        return ($httpCode == 200) ? $content : false;
     }
     public function getGcmdScienceKeywords()
     {

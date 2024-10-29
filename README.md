@@ -29,12 +29,14 @@ In der header.html und footer.html werden folgende Abhängikeiten von Drittanbie
   Für die Event Handler in JavaScript und zum Vereinfachen des JavaScript-Codes allgemein.
 - jQuery UI 1.14.0<br>
   Erweitert jQuery um die Autocomplete-Funktion, die wir aktuell für die Affiliation-Felder nutzen.
-- Chosen 1.8.7<br>
+- Chosen 1.8.7<br> (deprecated, zukünftig nicht mehr verwenden)
   Da Bootstrap 5.3 keine einfach bedienbaren Multi-Select-Felder anbietet, wird diese Funktion mit Chosen implementiert. Design-Anpassungen waren notwendendig und werden in der Datei bs5-chosen.css umgesetzt.
-- Tagify 4.31.3<br>
+- Tagify 4.31.5<br>
   Wird für das Feld Thesaurus Keywords, die eingabe von mehreren Affiliations und Free Keywords genutzt.
 - jsTree 3.3.17<br>
   Wird zur Darstellung der Thesauri als hierarchische Baumstruktur verwendet.
+- Swagger UI 5.17.14<br>
+  Zur Darstellung der dynamischen und interaktiven API-Dokumentation nach OpenAPI-Standard 3.1.
 
 ## Einstellungen
 
@@ -125,7 +127,7 @@ Aktualisiert die Auswahloptionen im Funders-Dropdown-Feld.
 **Antwort:**
 Bestätigungsnachricht über erfolgreiche Aktualisierung
 
-### 6. Resource als DataCite XML
+### 6. Resource als DataCite XML (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getResourceAsDataciteXml&id={resource_id}&download={true|false}
 
@@ -139,7 +141,7 @@ Exportiert einen Datensatz als XML-Datei gemäß dem DataCite-Schema (Version 4.
 **Antwort:**
 XML-Datei oder XML-Inhalt
 
-### 7. Resource als ISO XML
+### 7. Resource als ISO XML (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getResourceAsIsoXml&id={resource_id}&download={true|false}
 
@@ -153,7 +155,7 @@ Exportiert einen Datensatz als XML-Datei gemäß dem ISO-Standard.
 **Antwort:**
 XML-Datei oder XML-Inhalt
 
-### 8. Resource als DIF XML
+### 8. Resource als DIF XML (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getResourceAsDifXml&id={resource_id}&download={true|false}
 
@@ -290,7 +292,7 @@ Ruft Keywords aus der Datenbank ab.
 **Antwort:**
 JSON-Array mit Keyword-Objekten
 
-### 20. Relationen abrufen
+### 20. Relationen abrufen (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getRelations
 
@@ -299,7 +301,7 @@ Ruft alle Relationen aus der Datenbank ab.
 **Antwort:**
 JSON-Array mit Relation-Objekten
 
-### 21. Identifier-Typ ermitteln
+### 21. Identifier-Typ ermitteln (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getIdentifierType&identifier={identifier_string}
 
@@ -312,7 +314,7 @@ Ermittelt den Typ eines gegebenen Identifiers.
 **Antwort:**
 JSON-Objekt mit dem ermittelten Identifier-Typ oder einer Fehlermeldung
 
-### 22. Identifier-Pattern abrufen
+### 22. Identifier-Pattern abrufen (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getPattern&type={identifier_type}
 
@@ -325,7 +327,7 @@ Ruft das Regex-Pattern für einen bestimmten Identifier-Typ ab.
 **Antwort:**
 JSON-Objekt mit dem Regex-Pattern oder einer Fehlermeldung
 
-### 23. Alle Identifier-Typen abrufen
+### 23. Alle Identifier-Typen abrufen (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getIdentifierTypes
 
@@ -822,6 +824,31 @@ JSON-Array mit Identifier-Typ-Objekten
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `en` `de`
 
+
+### MSL Keywords
+
+- MSL Keyword
+
+  - In dieses Feld können Schlagwörter zur inhaltlichen Beschreibung des Datensatzes eingefügt werden
+  - Datentyp: Zeichenkette
+  - Vorkommen: 0-n
+  - Das zugehörige Feld in der Datenbank heißt: keyword in der Tabelle Thesaurus_Keywords
+  - Restriktionen: Es gibt die Möglichkeit, entweder die gewünschten Keywords in der Suchleiste einzugeben oder direkt in das Eingabefeld zu tippen. Die Auswahloption steht auch zur Verfügung.
+  - [EPOS-Dokumentation](https://epos-msl.uu.nl/about)
+  - Schema Version: "EPOS Multi-Scale Laboratories (MSL) " 1.3
+  - Beispielwerte: `hydrogeochemistery` `alternating field (AF) demagnetiser`
+
+- hiddenFielder: scheme, schemeURI, valueURI und language
+
+  - hier werden bei Auswahl eines Keywords die zugehörigen versteckten Eingabefeldern wie schemes, schemeURIs, valueURIs und languages gespeichert
+  - Datentyp: Zeichenkette
+  - Vorkommen: 0-1
+  - Die zugehörigen Feldern in der Datenbank heißen: scheme, schemeURI, valueURI und language in der Tabelle Thesaurus_Keywords
+  - Restriktionen: Falls in der Json-Datei die scheme nicht verfügbar ist wird in der Datenbank der eingabefeldname eingetragen `MSLKeywords`, `en` wird in der Tabelle unter language eingetragen, wenn die Sprache in der Json-Datei nicht verfügbar ist 
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/#subject)
+  - Schema Version: "DataCite" 4.5
+  - Beispielwert: `"scheme": "EPOS WP16 Analogue"// "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/"// "id": "https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/software-visual_fortran_compaq"// "language": "en"` `"scheme": "EPOS WP16 Analogue"// "schemeURI": "https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/"// "id": "https:\/\/epos-msl.uu.nl\/voc\/analoguemodelling\/1.3\/software-visual_studio_microsoft"// "language": "en"`
+
 ### Free Keywords
 
 - In dieses Feld kommen freie Schlagwörter, diese sind nicht an einen Thesaurus gebunden.
@@ -986,7 +1013,7 @@ Räumliche und zeitliche Einordnung des Datensatzes. Zur einfacheren Erfassung d
 ## Datenvalidierung
 
 - Folgende Felder müssen zwingend ausgefüllt werden: **Publication Year**, **Title**, **Author Lastname**, **Author Firstname**, **Author Role**, **Author ORCID**, **Contributor ORCID**, **Contributor Role**, **Description Abstract** **Relation** und **Identifier**.❗
-- Die restlichen Felder **DOI**, **Resource Type**, **Version**, **Language of Dataset**, **Title Type**, **Rights**, **Contact Person Position**, **Contact Person Email**, **Contact Person Website**, **Author Affiliation**, **Contact Person Affiliation**, **Contributor Lastname**, **Contributor Firstname**, **Contributor Affiliation**, **Contributor Organisation Name**, **Description Methods**, **Description TechnicalInfo**, **Description Other**, **Thesaurus Keywords** **Identifier Typ** können optional leer bleiben.✅
+- Die restlichen Felder **DOI**, **Resource Type**, **Version**, **Language of Dataset**, **Title Type**, **Rights**, **Contact Person Position**, **Contact Person Email**, **Contact Person Website**, **Author Affiliation**, **Contact Person Affiliation**, **Contributor Lastname**, **Contributor Firstname**, **Contributor Affiliation**, **Contributor Organisation Name**, **Description Methods**, **Description TechnicalInfo**, **Description Other**, **Thesaurus Keywords**, **MSL Keywords** und **Identifier Typ** können optional leer bleiben.✅
 
 ## Datenbankstruktur
 

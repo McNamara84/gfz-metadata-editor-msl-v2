@@ -160,7 +160,7 @@ function createDatabaseStructure($connection)
            FOREIGN KEY (`Affiliation_affiliation_id`)
            REFERENCES `Affiliation` (`affiliation_id`));",
 
-                "CREATE TABLE IF NOT EXISTS `Resource_has_Originating_Laboratory` (
+                "Resource_has_Originating_Laboratory" => "CREATE TABLE IF NOT EXISTS `Resource_has_Originating_Laboratory` (
            `Resource_has_Originating_Laboratory_id` INT NOT NULL AUTO_INCREMENT,
            `Resource_resource_id` INT NOT NULL,
            `Originating_Laboratory_originating_laboratory_id` INT NOT NULL,
@@ -741,7 +741,7 @@ function insertTestDataIntoHelpTables($connection)
                         ["Resource_resource_id" => 1, "Thesaurus_Keywords_thesaurus_keywords_id" => 3],
                         ["Resource_resource_id" => 1, "Thesaurus_Keywords_thesaurus_keywords_id" => 4],
                         ["Resource_resource_id" => 1, "Thesaurus_Keywords_thesaurus_keywords_id" => 5],
-                        ["Resource_resource_id" => 1, "Thesaurus_Keywords_thesaurus_keywords_id" => 6],
+                        ["Resource_resource_id" => 1, "Thesaurus_Keywords_thesaurus_keywords_id" => 6]
                 ],
                 "Resource_has_Free_Keywords" => [
                         ["Resource_resource_id" => 3, "Free_Keywords_free_keywords_id" => 1],

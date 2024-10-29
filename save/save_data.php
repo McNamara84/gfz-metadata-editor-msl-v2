@@ -10,8 +10,9 @@ require_once 'formgroups/save_thesauruskeywords.php';
 require_once 'formgroups/save_spatialtemporalcoverage.php';
 require_once 'formgroups/save_relatedwork.php';
 require_once 'formgroups/save_fundingreferences.php';
-// RESOURCE INFORMATION and RIGHTS
+// RESOURCE INFORMATION and RIGHTS speichern
 $resource_id = saveResourceInformationAndRights($connection, $_POST);
+print $resource_id;
 // AUTHORS
 saveAuthors($connection, $_POST, $resource_id);
 // CONTACT PERSONS
@@ -31,9 +32,9 @@ saveRelatedWork($connection, $_POST, $resource_id);
 // FUNDING REFERENCES
 saveFundingReferences($connection, $_POST, $resource_id);
 
-// api.php?action=getResourcesAsOneFile&id=$resource_id aufrufen und Datensatz als Datei mit allen 3 XML-Schemata herunterladen
-/*$base_url = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/";
-$url = $base_url . "api.php?action=getResourcesAsOneFile&id=" . $resource_id;
-header("Location: " . $url);*/
+// API aufrufen und Datensatz als Datei mit allen 3 XML-Schemata herunterladen
+$base_url = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/";
+$url = $base_url . "api/v2/dataset/export/" . $resource_id . "/all/download";
+header("Location: " . $url);
 ob_end_flush();
 exit();

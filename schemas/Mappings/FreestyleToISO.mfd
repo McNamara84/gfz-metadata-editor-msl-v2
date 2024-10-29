@@ -1,754 +1,1206 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Edited with Altova MapForce 2024 -->
-<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="41">
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="22">
 	<resources/>
-	<component name="defaultmap" uid="1">
+	<component name="defaultmap" uid="1" editable="1" blackbox="0">
 		<properties SelectedLanguage="xslt"/>
 		<structure>
 			<children>
-				<component name="constant" library="core" uid="7" kind="2">
+				<component name="exists" library="core" uid="5" kind="5">
+					<sources>
+						<datapoint pos="0" key="20"/>
+					</sources>
 					<targets>
-						<datapoint pos="0" key="6"/>
+						<datapoint pos="0" key="21"/>
 					</targets>
-					<view ltx="229" lty="-350" rbx="322" rby="-333"/>
+					<view ltx="565" lty="-169" rbx="641" rby="-131"/>
+				</component>
+				<component name="constant" library="core" uid="9" kind="2">
+					<targets>
+						<datapoint pos="0" key="22"/>
+					</targets>
+					<view ltx="454" lty="-108" rbx="516" rby="-91"/>
+					<data>
+						<constant value="doi:" datatype="string"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="8" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="23"/>
+						<datapoint pos="1" key="24"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="25"/>
+					</targets>
+					<view ltx="542" lty="-108" rbx="624" rby="-52"/>
+				</component>
+				<component name="constant" library="core" uid="12" kind="2">
+					<targets>
+						<datapoint pos="0" key="26"/>
+					</targets>
+					<view ltx="272" lty="-28" rbx="389" rby="-11"/>
+					<data>
+						<constant value="http://doi.org/" datatype="string"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="6" kind="4">
+					<sources>
+						<datapoint pos="0" key="30"/>
+						<datapoint pos="1" key="31"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="32"/>
+					</targets>
+					<view ltx="667" lty="-108" rbx="771" rby="-35"/>
+					<data>
+						<comment>
+							<text>Nur wenn befüllt</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="15" kind="2">
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="272" lty="396" rbx="364" rby="413"/>
 					<data>
 						<constant value="Main Title" datatype="string"/>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="9" kind="2">
+				<component name="contains" library="core" uid="14" kind="5">
+					<sources>
+						<datapoint pos="0" key="7"/>
+						<datapoint pos="1" key="8"/>
+					</sources>
 					<targets>
-						<datapoint pos="0" key="12"/>
+						<datapoint pos="0" key="9"/>
 					</targets>
-					<view ltx="200" lty="-297" rbx="322" rby="-280"/>
+					<view ltx="397" lty="359" rbx="495" rby="413"/>
+				</component>
+				<component name="constant" library="core" uid="17" kind="2">
+					<targets>
+						<datapoint pos="0" key="15"/>
+					</targets>
+					<view ltx="243" lty="468" rbx="364" rby="485"/>
 					<data>
 						<constant value="Alternative Title" datatype="string"/>
 					</data>
 				</component>
-				<component name="comment" library="core" uid="11" kind="35">
-					<view ltx="376" lty="-425" rbx="534" rby="-406"/>
-					<data>
-						<comment>
-							<text>Resource Information (fertig)</text>
-						</comment>
-					</data>
-				</component>
-				<component name="contains" library="core" uid="8" kind="5">
+				<component name="exists" library="core" uid="21" kind="5">
 					<sources>
-						<datapoint pos="0" key="11"/>
-						<datapoint pos="1" key="9"/>
+						<datapoint pos="0" key="33"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="10"/>
+						<datapoint pos="0" key="34"/>
 					</targets>
-					<view ltx="338" lty="-317" rbx="436" rby="-263"/>
+					<view ltx="651" lty="375" rbx="727" rby="413"/>
 				</component>
-				<component name="exists" library="core" uid="13" kind="5">
+				<component name="if-else" library="core" uid="22" kind="4">
 					<sources>
-						<datapoint pos="0" key="23"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="24"/>
-					</targets>
-					<view ltx="338" lty="-407" rbx="414" rby="-369"/>
-				</component>
-				<component name="if-else" library="core" uid="4" kind="4">
-					<sources>
-						<datapoint pos="0" key="7"/>
-						<datapoint pos="1" key="13"/>
+						<datapoint pos="0" key="35"/>
+						<datapoint pos="1" key="36"/>
 						<datapoint/>
 					</sources>
-					<targets>
-						<datapoint pos="0" key="14"/>
-					</targets>
-					<view ltx="436" lty="-407" rbx="540" rby="-334"/>
-				</component>
-				<component name="if-else" library="core" uid="15" kind="4">
-					<sources>
-						<datapoint pos="0" key="28"/>
-						<datapoint pos="1" key="30"/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="29"/>
-					</targets>
-					<view ltx="436" lty="-261" rbx="540" rby="-188"/>
-				</component>
-				<component name="contains" library="core" uid="6" kind="5">
-					<sources>
-						<datapoint pos="0" key="3"/>
-						<datapoint pos="1" key="4"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="5"/>
-					</targets>
-					<view ltx="338" lty="-370" rbx="436" rby="-316"/>
-				</component>
-				<component name="constant" library="core" uid="21" kind="2">
 					<targets>
 						<datapoint pos="0" key="37"/>
 					</targets>
-					<view ltx="558" lty="-389" rbx="689" rby="-372"/>
-					<data>
-						<constant value="https://orcid.org/" datatype="string"/>
-					</data>
+					<view ltx="755" lty="378" rbx="859" rby="451"/>
 				</component>
-				<component name="constant" library="core" uid="25" kind="2">
-					<targets>
-						<datapoint pos="0" key="57"/>
-					</targets>
-					<view ltx="887" lty="-368" rbx="935" rby="-351"/>
-					<data>
-						<constant value=", " datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="26" kind="2">
-					<targets>
-						<datapoint pos="0" key="58"/>
-					</targets>
-					<view ltx="900" lty="-271" rbx="1059" rby="-254"/>
-					<data>
-						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="30" kind="2">
-					<targets>
-						<datapoint pos="0" key="65"/>
-					</targets>
-					<view ltx="900" lty="-319" rbx="1059" rby="-302"/>
-					<data>
-						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="31" kind="2">
-					<targets>
-						<datapoint pos="0" key="66"/>
-					</targets>
-					<view ltx="900" lty="-303" rbx="1059" rby="-286"/>
-					<data>
-						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode_information" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="29" kind="2">
-					<targets>
-						<datapoint pos="0" key="63"/>
-					</targets>
-					<view ltx="936" lty="-335" rbx="1059" rby="-318"/>
-					<data>
-						<constant value="pointOfContact" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="28" kind="2">
-					<targets>
-						<datapoint pos="0" key="61"/>
-					</targets>
-					<view ltx="956" lty="-287" rbx="1059" rby="-270"/>
-					<data>
-						<constant value="information" datatype="string"/>
-					</data>
-				</component>
-				<component name="concat" library="core" uid="24" kind="5" growable="1" growablebasename="value">
+				<component name="if-else" library="core" uid="18" kind="4">
 					<sources>
-						<datapoint pos="0" key="56"/>
-						<datapoint pos="1" key="54"/>
-						<datapoint pos="2" key="55"/>
+						<datapoint pos="0" key="18"/>
+						<datapoint pos="1" key="14"/>
+						<datapoint/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="53"/>
+						<datapoint pos="0" key="13"/>
 					</targets>
-					<view ltx="967" lty="-407" rbx="1059" rby="-334"/>
-				</component>
-				<component name="constant" library="core" uid="27" kind="2">
-					<targets>
-						<datapoint pos="0" key="59"/>
-					</targets>
-					<view ltx="900" lty="-255" rbx="1059" rby="-238"/>
-					<data>
-						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode_information" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="34" kind="2">
-					<targets>
-						<datapoint pos="0" key="88"/>
-					</targets>
-					<view ltx="380" lty="-173" rbx="540" rby="-156"/>
-					<data>
-						<constant value="http://www.loc.gov/standards/iso639-2/" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="33" kind="2">
-					<targets>
-						<datapoint pos="0" key="86"/>
-					</targets>
-					<view ltx="478" lty="-189" rbx="540" rby="-172"/>
-					<data>
-						<constant value="eng" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="35" kind="2">
-					<targets>
-						<datapoint pos="0" key="89"/>
-					</targets>
-					<view ltx="478" lty="-157" rbx="540" rby="-140"/>
-					<data>
-						<constant value="eng" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="36" kind="2">
-					<targets>
-						<datapoint pos="0" key="91"/>
-					</targets>
-					<view ltx="381" lty="-141" rbx="540" rby="-124"/>
-					<data>
-						<constant value="http://www.isotc211.org/2005/resources/codeList.xml#MD_CharacterSetCode" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="37" kind="2">
-					<targets>
-						<datapoint pos="0" key="92"/>
-					</targets>
-					<view ltx="478" lty="-125" rbx="541" rby="-108"/>
-					<data>
-						<constant value="utf8" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="44" kind="2">
-					<targets>
-						<datapoint pos="0" key="110"/>
-					</targets>
-					<view ltx="900" lty="-143" rbx="1059" rby="-126"/>
-					<data>
-						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="39" kind="2">
-					<targets>
-						<datapoint pos="0" key="97"/>
-					</targets>
-					<view ltx="897" lty="-223" rbx="1059" rby="-206"/>
-					<data>
-						<constant value="https://www.gfz-potsdam.de/" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="42" kind="2">
-					<targets>
-						<datapoint pos="0" key="107"/>
-					</targets>
-					<view ltx="956" lty="-207" rbx="1059" rby="-190"/>
-					<data>
-						<constant value="information" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="40" kind="2">
-					<targets>
-						<datapoint pos="0" key="99"/>
-					</targets>
-					<view ltx="900" lty="-191" rbx="1059" rby="-174"/>
-					<data>
-						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="41" kind="2">
-					<targets>
-						<datapoint pos="0" key="106"/>
-					</targets>
-					<view ltx="956" lty="-175" rbx="1059" rby="-158"/>
-					<data>
-						<constant value="information" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="38" kind="2">
-					<targets>
-						<datapoint pos="0" key="94"/>
-					</targets>
-					<view ltx="893" lty="-239" rbx="1059" rby="-222"/>
-					<data>
-						<constant value="GFZ German Research Centre for Geosciences" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="43" kind="2">
-					<targets>
-						<datapoint pos="0" key="108"/>
-					</targets>
-					<view ltx="936" lty="-159" rbx="1059" rby="-142"/>
-					<data>
-						<constant value="pointOfContact" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="45" kind="2">
-					<targets>
-						<datapoint pos="0" key="111"/>
-					</targets>
-					<view ltx="936" lty="-127" rbx="1059" rby="-110"/>
-					<data>
-						<constant value="pointOfContact" datatype="string"/>
-					</data>
-				</component>
-				<component name="comment" library="core" uid="32" kind="35">
-					<view ltx="834" lty="-425" rbx="1059" rby="-406"/>
+					<view ltx="520" lty="378" rbx="624" rby="451"/>
 					<data>
 						<comment>
-							<text>Contact Persons (TODO: Affiliation, RorId)</text>
+							<text>Alternative Title?</text>
 						</comment>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="67" kind="2">
-					<targets>
-						<datapoint pos="0" key="117"/>
-					</targets>
-					<view ltx="6" lty="-175" rbx="165" rby="-158"/>
-					<data>
-						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ProgressCode" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="68" kind="2">
-					<targets>
-						<datapoint pos="0" key="131"/>
-					</targets>
-					<view ltx="74" lty="-191" rbx="165" rby="-174"/>
-					<data>
-						<constant value="Complete" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="69" kind="2">
-					<targets>
-						<datapoint pos="0" key="118"/>
-					</targets>
-					<view ltx="74" lty="-159" rbx="165" rby="-142"/>
-					<data>
-						<constant value="Complete" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="71" kind="2">
-					<targets>
-						<datapoint pos="0" key="120"/>
-					</targets>
-					<view ltx="103" lty="-143" rbx="165" rby="-126"/>
-					<data>
-						<constant value="eng" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="74" kind="2">
-					<targets>
-						<datapoint pos="0" key="125"/>
-					</targets>
-					<view ltx="69" lty="-111" rbx="165" rby="-94"/>
-					<data>
-						<constant value="Download" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="72" kind="2">
-					<targets>
-						<datapoint pos="0" key="122"/>
-					</targets>
-					<view lty="-127" rbx="165" rby="-110"/>
-					<data>
-						<constant value="WWW:LINK-1.0-http--link" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="75" kind="2">
-					<targets>
-						<datapoint pos="0" key="126"/>
-					</targets>
-					<view ltx="69" lty="-95" rbx="165" rby="-78"/>
-					<data>
-						<constant value="Download" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="77" kind="2">
-					<targets>
-						<datapoint pos="0" key="132"/>
-					</targets>
-					<view ltx="6" lty="-63" rbx="165" rby="-46"/>
-					<data>
-						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="78" kind="2">
-					<targets>
-						<datapoint pos="0" key="133"/>
-					</targets>
-					<view ltx="70" lty="-79" rbx="165" rby="-62"/>
-					<data>
-						<constant value="download" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="76" kind="2">
-					<targets>
-						<datapoint pos="0" key="128"/>
-					</targets>
-					<view ltx="6" lty="-47" rbx="165" rby="-30"/>
-					<data>
-						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode_download" datatype="string"/>
-					</data>
-				</component>
-				<component name="concat" library="core" uid="22" kind="5" growable="1" growablebasename="value">
+				<component name="if-else" library="core" uid="16" kind="4">
 					<sources>
-						<datapoint pos="0" key="52"/>
-						<datapoint pos="1" key="40"/>
-						<datapoint pos="2" key="41"/>
+						<datapoint pos="0" key="4"/>
+						<datapoint pos="1" key="5"/>
+						<datapoint/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="42"/>
+						<datapoint pos="0" key="6"/>
 					</targets>
-					<view ltx="710" lty="-353" rbx="802" rby="-280"/>
-				</component>
-				<component name="concat" library="core" uid="20" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="34"/>
-						<datapoint pos="1" key="35"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="36"/>
-					</targets>
-					<view ltx="720" lty="-408" rbx="802" rby="-352"/>
-				</component>
-				<component name="comment" library="core" uid="18" kind="35">
-					<view ltx="619" lty="-426" rbx="802" rby="-407"/>
+					<view ltx="520" lty="289" rbx="624" rby="362"/>
 					<data>
 						<comment>
-							<text>Authors (TODO: Affiliation, RorId)</text>
-						</comment>
-					</data>
-				</component>
-				<component name="comment" library="core" uid="14" kind="35">
-					<view ltx="392" lty="-109" rbx="540" rby="-90"/>
-					<data>
-						<comment>
-							<text>Licenses and Rights (fertig)</text>
-						</comment>
-					</data>
-				</component>
-				<component name="if-else" library="core" uid="94" kind="4">
-					<sources>
-						<datapoint pos="0" key="184"/>
-						<datapoint pos="1" key="183"/>
-						<datapoint pos="2" key="181"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="182"/>
-					</targets>
-					<view ltx="1237" lty="-408" rbx="1341" rby="-335"/>
-				</component>
-				<component name="constant" library="core" uid="95" kind="2">
-					<targets>
-						<datapoint pos="0" key="185"/>
-					</targets>
-					<view ltx="1153" lty="-368" rbx="1237" rby="-351"/>
-					<data>
-						<constant value="creation" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="64" kind="2">
-					<targets>
-						<datapoint pos="0" key="115"/>
-					</targets>
-					<view ltx="1153" lty="-353" rbx="1235" rby="-336"/>
-					<data>
-						<constant value="revision" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="63" kind="2">
-					<targets>
-						<datapoint pos="0" key="114"/>
-					</targets>
-					<view ltx="1182" lty="-264" rbx="1341" rby="-247"/>
-					<data>
-						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" datatype="string"/>
-					</data>
-				</component>
-				<component name="comment" library="core" uid="66" kind="35">
-					<view ltx="1235" lty="-425" rbx="1311" rby="-406"/>
-					<data>
-						<comment>
-							<text>Dates (fertig)</text>
+							<text>Main Title?</text>
 						</comment>
 					</data>
 				</component>
 				<component name="constant" library="core" uid="23" kind="2">
 					<targets>
+						<datapoint pos="0" key="40"/>
+					</targets>
+					<view ltx="1585" lty="-169" rbx="1745" rby="-152"/>
+					<data>
+						<constant value="http://www.loc.gov/standards/iso639-1/" datatype="string"/>
+						<comment>
+							<text>Default language CodeList</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="25" kind="2">
+					<targets>
+						<datapoint pos="0" key="41"/>
+					</targets>
+					<view ltx="1585" lty="-108" rbx="1648" rby="-91"/>
+					<data>
+						<constant value="utf8" datatype="string"/>
+						<comment>
+							<text>Default CodeListValue for MD_CharacterSetCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="26" kind="2">
+					<targets>
+						<datapoint pos="0" key="42"/>
+					</targets>
+					<view ltx="1585" lty="-79" rbx="1744" rby="-62"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for MD_ScopeCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="24" kind="2">
+					<targets>
 						<datapoint pos="0" key="43"/>
 					</targets>
-					<view ltx="619" lty="-314" rbx="667" rby="-297"/>
+					<view ltx="1585" lty="-136" rbx="1744" rby="-119"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/codeList.xml#MD_CharacterSetCode" datatype="string"/>
+						<comment>
+							<text>Default CodeList for MD_CharacterSetCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="27" kind="2">
+					<targets>
+						<datapoint pos="0" key="44"/>
+					</targets>
+					<view ltx="1585" lty="-52" rbx="1665" rby="-35"/>
+					<data>
+						<constant value="dataset" datatype="string"/>
+						<comment>
+							<text>Default codeListValue for MD_ScopeCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="28" kind="2">
+					<targets>
+						<datapoint pos="0" key="45"/>
+					</targets>
+					<view ltx="1585" lty="-24" rbx="1751" rby="-7"/>
+					<data>
+						<constant value="GFZ German Research Center for Geosciences" datatype="string"/>
+						<comment>
+							<text>Default organisationName for CI_ResponsibleParty</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="29" kind="2">
+					<targets>
+						<datapoint pos="0" key="57"/>
+					</targets>
+					<view ltx="1585" lty="9" rbx="1747" rby="26"/>
+					<data>
+						<constant value="https://www.gfz-potsdam.de/" datatype="string"/>
+						<comment>
+							<text>Default URL for linkage</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="34" kind="2">
+					<targets>
+						<datapoint pos="0" key="74"/>
+					</targets>
+					<view ltx="1586" lty="170" rbx="1668" rby="187"/>
+					<data>
+						<constant value="revision" datatype="string"/>
+						<comment>
+							<text>Default CI_DateTypeCode and codeListValue</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="35" kind="2">
+					<targets>
+						<datapoint pos="0" key="75"/>
+					</targets>
+					<view ltx="1585" lty="202" rbx="1744" rby="219"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for CI_DateTypeCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="36" kind="2">
+					<targets>
+						<datapoint pos="0" key="76"/>
+					</targets>
+					<view ltx="1585" lty="235" rbx="1744" rby="252"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ProgressCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for MD_ProgressCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="37" kind="2">
+					<targets>
+						<datapoint pos="0" key="77"/>
+					</targets>
+					<view ltx="1586" lty="268" rbx="1677" rby="285"/>
+					<data>
+						<constant value="Complete" datatype="string"/>
+						<comment>
+							<text>Default MD_ProgressCode and codeListValue for MD_ProgressCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="38" kind="2">
+					<targets>
+						<datapoint pos="0" key="78"/>
+					</targets>
+					<view ltx="616" lty="2" rbx="771" rby="19"/>
+					<data>
+						<constant value="http://dx.doi.org/doi:" datatype="string"/>
+					</data>
+				</component>
+				<component name="substring-after" library="core" uid="11" kind="5">
+					<sources>
+						<datapoint pos="0" key="27"/>
+						<datapoint pos="1" key="28"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="29"/>
+					</targets>
+					<view ltx="412" lty="-65" rbx="516" rby="-11"/>
+					<data>
+						<comment>
+							<text>http://doi.org/ entfernen von DOI</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="41" kind="2">
+					<targets>
+						<datapoint pos="0" key="82"/>
+					</targets>
+					<view ltx="1586" lty="300" rbx="1751" rby="317"/>
+					<data>
+						<constant value="WWW:LINK-1.0-http--link" datatype="string"/>
+						<comment>
+							<text>Default characterString for protocol</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="42" kind="2">
+					<targets>
+						<datapoint pos="0" key="83"/>
+					</targets>
+					<view ltx="1586" lty="332" rbx="1682" rby="349"/>
+					<data>
+						<constant value="Download" datatype="string"/>
+						<comment>
+							<text>Default CharacterString for name and description</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="43" kind="2">
+					<targets>
+						<datapoint pos="0" key="84"/>
+					</targets>
+					<view ltx="1682" lty="332" rbx="1777" rby="349"/>
+					<data>
+						<constant value="download" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="44" kind="2">
+					<targets>
+						<datapoint pos="0" key="85"/>
+					</targets>
+					<view ltx="1586" lty="364" rbx="1745" rby="381"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for CI_OnlineFunctionCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="45" kind="2">
+					<targets>
+						<datapoint pos="0" key="86"/>
+					</targets>
+					<view ltx="1585" lty="396" rbx="1744" rby="413"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode_download" datatype="string"/>
+						<comment>
+							<text>Default codeListValue for CI_OnlineFunctionCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="46" kind="2">
+					<targets>
+						<datapoint pos="0" key="98"/>
+					</targets>
+					<view ltx="1585" lty="422" rbx="1744" rby="439"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/codeList.xml#MD_RestrictionCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for MD_RestrictionCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="47" kind="2">
+					<targets>
+						<datapoint pos="0" key="99"/>
+					</targets>
+					<view ltx="1586" lty="452" rbx="1716" rby="469"/>
+					<data>
+						<constant value="otherRestrictions" datatype="string"/>
+						<comment>
+							<text>Default codeListValue for MD_RestrictionCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="40" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="79"/>
+						<datapoint pos="1" key="80"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="81"/>
+					</targets>
+					<view ltx="838" lty="2" rbx="920" rby="58"/>
+				</component>
+				<component name="constant" library="core" uid="50" kind="2">
+					<targets>
+						<datapoint pos="0" key="104"/>
+					</targets>
+					<view ltx="1585" lty="485" rbx="1711" rby="502"/>
+					<data>
+						<constant value="http://orcid.org/" datatype="string"/>
+						<comment>
+							<text>Default ORCID URI</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="53" kind="2">
+					<targets>
+						<datapoint pos="0" key="108"/>
+					</targets>
+					<view ltx="553" lty="516" rbx="601" rby="533"/>
 					<data>
 						<constant value=", " datatype="string"/>
 					</data>
 				</component>
-				<component name="substring-before" library="core" uid="108" kind="5">
+				<component name="constant" library="core" uid="54" kind="2">
+					<targets>
+						<datapoint pos="0" key="113"/>
+					</targets>
+					<view ltx="1585" lty="516" rbx="1744" rby="533"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" datatype="string"/>
+						<comment>
+							<text>Default CodeList for Author Roles</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="55" kind="2">
+					<targets>
+						<datapoint pos="0" key="114"/>
+					</targets>
+					<view ltx="1585" lty="547" rbx="1662" rby="564"/>
+					<data>
+						<constant value="author" datatype="string"/>
+						<comment>
+							<text>Default CodeListValue for Author Role</text>
+						</comment>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="52" kind="5" growable="1" growablebasename="value">
 					<sources>
-						<datapoint pos="0" key="193"/>
-						<datapoint pos="1" key="189"/>
+						<datapoint pos="0" key="109"/>
+						<datapoint pos="1" key="110"/>
+						<datapoint pos="2" key="111"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="112"/>
+					</targets>
+					<view ltx="601" lty="475" rbx="693" rby="548"/>
+				</component>
+				<component name="concat" library="core" uid="49" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="105"/>
+						<datapoint pos="1" key="106"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="107"/>
+					</targets>
+					<view ltx="777" lty="475" rbx="859" rby="531"/>
+				</component>
+				<component name="constant" library="core" uid="62" kind="2">
+					<targets>
+						<datapoint pos="0" key="151"/>
+					</targets>
+					<view ltx="616" lty="710" rbx="664" rby="727"/>
+					<data>
+						<constant value=", " datatype="string"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="61" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="152"/>
+						<datapoint pos="1" key="153"/>
+						<datapoint pos="2" key="154"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="155"/>
+					</targets>
+					<view ltx="689" lty="671" rbx="781" rby="744"/>
+					<data>
+						<comment>
+							<text>Contact Person Lastname, Firstname</text>
+						</comment>
+					</data>
+				</component>
+				<component name="string-length" library="core" uid="64" kind="5">
+					<sources>
+						<datapoint pos="0" key="156"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="157"/>
+					</targets>
+					<view ltx="319" lty="610" rbx="414" rby="648"/>
+				</component>
+				<component name="constant" library="core" uid="65" kind="2">
+					<targets>
+						<datapoint pos="0" key="158"/>
+					</targets>
+					<view ltx="374" lty="671" rbx="414" rby="688"/>
+					<data>
+						<constant value="0" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="greater" library="core" uid="68" kind="5">
+					<sources>
+						<datapoint pos="0" key="159"/>
+						<datapoint pos="1" key="160"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="161"/>
+					</targets>
+					<view ltx="454" lty="634" rbx="518" rby="688"/>
+				</component>
+				<component name="if-else" library="core" uid="66" kind="4">
+					<sources>
+						<datapoint pos="0" key="162"/>
+						<datapoint pos="1" key="163"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="164"/>
+					</targets>
+					<view ltx="636" lty="563" rbx="740" rby="636"/>
+					<data>
+						<comment>
+							<text>Contact Person Position?</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="30" kind="2">
+					<targets>
+						<datapoint pos="0" key="59"/>
+					</targets>
+					<view ltx="1585" lty="41" rbx="1688" rby="58"/>
+					<data>
+						<constant value="information" datatype="string"/>
+						<comment>
+							<text>Default CI_OnLineFunctionCode and codeListValue</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="31" kind="2">
+					<targets>
+						<datapoint pos="0" key="58"/>
+					</targets>
+					<view ltx="1585" lty="74" rbx="1744" rby="91"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for CI_OnLineFunctionCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="70" kind="2">
+					<targets>
+						<datapoint pos="0" key="172"/>
+					</targets>
+					<view ltx="1585" lty="579" rbx="1744" rby="596"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode_information" datatype="string"/>
+						<comment>
+							<text>Default codeListValue for Contact Persons</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="33" kind="2">
+					<targets>
+						<datapoint pos="0" key="67"/>
+					</targets>
+					<view ltx="1586" lty="138" rbx="1745" rby="155"/>
+					<data>
+						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" datatype="string"/>
+						<comment>
+							<text>Default codeList for Roles Contact Organisations</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="32" kind="2">
+					<targets>
+						<datapoint pos="0" key="66"/>
+					</targets>
+					<view ltx="1585" lty="107" rbx="1708" rby="124"/>
+					<data>
+						<constant value="pointOfContact" datatype="string"/>
+						<comment>
+							<text>Default CI_RoleCode an codeListValue for Contact Organisations</text>
+						</comment>
+					</data>
+				</component>
+				<component name="contains" library="core" uid="19" kind="5">
+					<sources>
+						<datapoint pos="0" key="19"/>
+						<datapoint pos="1" key="16"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="17"/>
+					</targets>
+					<view ltx="397" lty="431" rbx="495" rby="485"/>
+				</component>
+				<component name="if-else" library="core" uid="74" kind="4">
+					<sources>
+						<datapoint pos="0" key="185"/>
+						<datapoint pos="1" key="186"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="187"/>
+					</targets>
+					<view ltx="542" lty="774" rbx="646" rby="847"/>
+				</component>
+				<component name="contains" library="core" uid="73" kind="5">
+					<sources>
+						<datapoint pos="0" key="196"/>
+						<datapoint pos="1" key="197"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="190"/>
+					</targets>
+					<view ltx="331" lty="774" rbx="429" rby="828"/>
+				</component>
+				<component name="if-else" library="core" uid="75" kind="4">
+					<sources>
+						<datapoint pos="0" key="195"/>
+						<datapoint pos="1" key="193"/>
+						<datapoint pos="2" key="199"/>
 					</sources>
 					<targets>
 						<datapoint pos="0" key="194"/>
 					</targets>
-					<view ltx="1411" lty="-408" rbx="1525" rby="-354"/>
+					<view ltx="542" lty="846" rbx="646" rby="919"/>
 				</component>
-				<component name="constant" library="core" uid="114" kind="2">
-					<targets>
-						<datapoint pos="0" key="207"/>
-					</targets>
-					<view ltx="1362" lty="-235" rbx="1407" rby="-218"/>
-					<data>
-						<constant value=" " datatype="string"/>
-					</data>
-				</component>
-				<component name="substring-after" library="core" uid="116" kind="5">
+				<component name="contains" library="core" uid="78" kind="5">
 					<sources>
-						<datapoint pos="0" key="215"/>
+						<datapoint pos="0" key="206"/>
 						<datapoint pos="1" key="208"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="205"/>
-					</targets>
-					<view ltx="1411" lty="-249" rbx="1515" rby="-195"/>
-				</component>
-				<component name="comment" library="core" uid="90" kind="35">
-					<view ltx="593" lty="-76" rbx="745" rby="-57"/>
-					<data>
-						<comment>
-							<text>Thesaurus Keywords (fertig)</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="115" kind="2">
-					<targets>
-						<datapoint pos="0" key="211"/>
-					</targets>
-					<view ltx="1359" lty="-251" rbx="1407" rby="-234"/>
-					<data>
-						<constant value="T" datatype="string"/>
-					</data>
-				</component>
-				<component name="concat" library="core" uid="118" kind="5" growable="1" growablebasename="value">
-					<sources>
 						<datapoint pos="0" key="210"/>
-						<datapoint pos="1" key="212"/>
-						<datapoint pos="2" key="206"/>
-						<datapoint pos="3" key="203"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="213"/>
 					</targets>
-					<view ltx="1525" lty="-302" rbx="1617" rby="-212"/>
+					<view ltx="331" lty="932" rbx="429" rby="986"/>
 				</component>
-				<component name="substring-before" library="core" uid="117" kind="5">
+				<component name="if-else" library="core" uid="77" kind="4">
 					<sources>
-						<datapoint pos="0" key="204"/>
-						<datapoint pos="1" key="214"/>
+						<datapoint pos="0" key="212"/>
+						<datapoint pos="1" key="207"/>
+						<datapoint/>
 					</sources>
 					<targets>
 						<datapoint pos="0" key="209"/>
 					</targets>
-					<view ltx="1411" lty="-302" rbx="1525" rby="-248"/>
+					<view ltx="542" lty="932" rbx="646" rby="1005"/>
 				</component>
-				<component name="constant" library="core" uid="104" kind="2">
-					<targets>
-						<datapoint pos="0" key="187"/>
-					</targets>
-					<view ltx="1362" lty="-341" rbx="1407" rby="-324"/>
-					<data>
-						<constant value=" " datatype="string"/>
-					</data>
-				</component>
-				<component name="concat" library="core" uid="112" kind="5" growable="1" growablebasename="value">
+				<component name="if-else" library="core" uid="80" kind="4">
 					<sources>
-						<datapoint pos="0" key="195"/>
-						<datapoint pos="1" key="196"/>
-						<datapoint pos="2" key="197"/>
-						<datapoint pos="3" key="198"/>
+						<datapoint pos="0" key="211"/>
+						<datapoint pos="1" key="203"/>
+						<datapoint/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="199"/>
+						<datapoint pos="0" key="205"/>
 					</targets>
-					<view ltx="1525" lty="-408" rbx="1617" rby="-318"/>
+					<view ltx="542" lty="1004" rbx="646" rby="1077"/>
 				</component>
-				<component name="substring-after" library="core" uid="110" kind="5">
+				<component name="contains" library="core" uid="81" kind="5">
 					<sources>
-						<datapoint pos="0" key="191"/>
-						<datapoint pos="1" key="188"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="192"/>
-					</targets>
-					<view ltx="1411" lty="-355" rbx="1515" rby="-301"/>
-				</component>
-				<component name="if-else" library="core" uid="122" kind="4">
-					<sources>
-						<datapoint pos="0" key="219"/>
-						<datapoint pos="1" key="220"/>
-						<datapoint pos="2" key="221"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="222"/>
-					</targets>
-					<view ltx="1515" lty="-124" rbx="1619" rby="-51"/>
-				</component>
-				<component name="constant" library="core" uid="126" kind="2">
-					<targets>
-						<datapoint pos="0" key="218"/>
-					</targets>
-					<view ltx="1436" lty="-12" rbx="1515" rby="5"/>
-					<data>
-						<constant value="ext-904" datatype="string"/>
-					</data>
-				</component>
-				<component name="not-exists" library="core" uid="124" kind="5">
-					<sources>
-						<datapoint pos="0" key="236"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="237"/>
-					</targets>
-					<view ltx="1438" lty="-196" rbx="1515" rby="-158"/>
-				</component>
-				<component name="not-exists" library="core" uid="125" kind="5">
-					<sources>
-						<datapoint pos="0" key="238"/>
+						<datapoint pos="0" key="217"/>
+						<datapoint pos="1" key="223"/>
 					</sources>
 					<targets>
 						<datapoint pos="0" key="224"/>
 					</targets>
-					<view ltx="1438" lty="-124" rbx="1515" rby="-86"/>
+					<view ltx="331" lty="1089" rbx="429" rby="1143"/>
 				</component>
-				<component name="constant" library="core" uid="113" kind="2">
+				<component name="if-else" library="core" uid="82" kind="4">
+					<sources>
+						<datapoint pos="0" key="226"/>
+						<datapoint pos="1" key="222"/>
+						<datapoint/>
+					</sources>
 					<targets>
-						<datapoint pos="0" key="190"/>
+						<datapoint pos="0" key="218"/>
 					</targets>
-					<view ltx="1359" lty="-325" rbx="1407" rby="-308"/>
+					<view ltx="542" lty="1089" rbx="646" rby="1162"/>
+				</component>
+				<component name="constant" library="core" uid="71" kind="2">
+					<targets>
+						<datapoint pos="0" key="198"/>
+					</targets>
+					<view ltx="151" lty="811" rbx="305" rby="828"/>
 					<data>
-						<constant value="T" datatype="string"/>
+						<constant value="EPOS WP16 Analogue" datatype="string"/>
 					</data>
 				</component>
-				<component name="if-else" library="core" uid="121" kind="4">
+				<component name="contains" library="core" uid="85" kind="5">
 					<sources>
+						<datapoint pos="0" key="238"/>
+						<datapoint pos="1" key="237"/>
+					</sources>
+					<targets>
 						<datapoint pos="0" key="239"/>
-						<datapoint pos="1" key="240"/>
-						<datapoint pos="2" key="241"/>
+					</targets>
+					<view ltx="331" lty="1245" rbx="429" rby="1299"/>
+				</component>
+				<component name="constant" library="core" uid="79" kind="2">
+					<targets>
+						<datapoint pos="0" key="202"/>
+					</targets>
+					<view ltx="151" lty="969" rbx="324" rby="986"/>
+					<data>
+						<constant value="EPOS WP16 Geochemistry" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="84" kind="2">
+					<targets>
+						<datapoint pos="0" key="220"/>
+					</targets>
+					<view ltx="151" lty="1126" rbx="319" rby="1143"/>
+					<data>
+						<constant value="EPOS WP16 Geologicalage" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="87" kind="2">
+					<targets>
+						<datapoint pos="0" key="236"/>
+					</targets>
+					<view ltx="151" lty="1282" rbx="319" rby="1299"/>
+					<data>
+						<constant value="EPOS WP16 Geologicalsetting" datatype="string"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="86" kind="4">
+					<sources>
+						<datapoint pos="0" key="240"/>
+						<datapoint pos="1" key="235"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="241"/>
+					</targets>
+					<view ltx="542" lty="1245" rbx="646" rby="1318"/>
+				</component>
+				<component name="if-else" library="core" uid="88" kind="4">
+					<sources>
+						<datapoint pos="0" key="244"/>
+						<datapoint pos="1" key="243"/>
+						<datapoint/>
 					</sources>
 					<targets>
 						<datapoint pos="0" key="242"/>
 					</targets>
-					<view ltx="1515" lty="-196" rbx="1619" rby="-123"/>
+					<view ltx="542" lty="1317" rbx="646" rby="1390"/>
 				</component>
-				<component name="if-else" library="core" uid="127" kind="4">
+				<component name="contains" library="core" uid="89" kind="5">
 					<sources>
-						<datapoint pos="0" key="228"/>
-						<datapoint pos="1" key="227"/>
-						<datapoint pos="2" key="230"/>
+						<datapoint pos="0" key="254"/>
+						<datapoint pos="1" key="258"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="229"/>
+						<datapoint pos="0" key="251"/>
 					</targets>
-					<view ltx="1515" lty="-52" rbx="1619" rby="21"/>
+					<view ltx="331" lty="1399" rbx="429" rby="1453"/>
 				</component>
-				<component name="comment" library="core" uid="119" kind="35">
-					<view ltx="1411" lty="-426" rbx="1610" rby="-407"/>
-					<data>
-						<comment>
-							<text>Spatial and Temporal Coverage (WIP)</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="120" kind="2">
-					<targets>
-						<datapoint pos="0" key="216"/>
-					</targets>
-					<view ltx="1436" lty="4" rbx="1515" rby="21"/>
-					<data>
-						<constant value="ext-903" datatype="string"/>
-					</data>
-				</component>
-				<component name="comment" library="core" uid="70" kind="35">
-					<view ltx="34" lty="-209" rbx="165" rby="-190"/>
-					<data>
-						<comment>
-							<text>Commons: (TODO: WIP)</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="128" kind="2">
-					<targets>
-						<datapoint pos="0" key="250"/>
-					</targets>
-					<view ltx="15" lty="-31" rbx="165" rby="-14"/>
-					<data>
-						<constant value="http://datacite.org/schema/kernel-4" datatype="string"/>
-					</data>
-				</component>
-				<component name="exists" library="core" uid="92" kind="5">
+				<component name="if-else" library="core" uid="90" kind="4">
 					<sources>
-						<datapoint pos="0" key="186"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="180"/>
-					</targets>
-					<view ltx="1161" lty="-408" rbx="1237" rby="-370"/>
-				</component>
-				<component name="if-else" library="core" uid="93" kind="4">
-					<sources>
-						<datapoint pos="0" key="175"/>
-						<datapoint pos="1" key="176"/>
+						<datapoint pos="0" key="253"/>
+						<datapoint pos="1" key="256"/>
 						<datapoint/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="178"/>
+						<datapoint pos="0" key="257"/>
 					</targets>
-					<view ltx="1237" lty="-336" rbx="1341" rby="-263"/>
+					<view ltx="542" lty="1399" rbx="646" rby="1472"/>
 				</component>
-				<component name="if-else" library="core" uid="10" kind="4">
+				<component name="if-else" library="core" uid="91" kind="4">
 					<sources>
-						<datapoint pos="0" key="17"/>
-						<datapoint pos="1" key="19"/>
+						<datapoint pos="0" key="252"/>
+						<datapoint pos="1" key="250"/>
 						<datapoint/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="18"/>
+						<datapoint pos="0" key="255"/>
 					</targets>
-					<view ltx="436" lty="-336" rbx="540" rby="-263"/>
+					<view ltx="542" lty="1471" rbx="646" rby="1544"/>
 				</component>
-				<component name="comment" library="core" uid="89" kind="35">
-					<view ltx="948" lty="-81" rbx="1059" rby="-62"/>
+				<component name="constant" library="core" uid="92" kind="2">
+					<targets>
+						<datapoint pos="0" key="249"/>
+					</targets>
+					<view ltx="151" lty="1436" rbx="302" rby="1453"/>
 					<data>
-						<comment>
-							<text>Descriptions (fertig)</text>
-						</comment>
+						<constant value="EPOS WP16 Materials" datatype="string"/>
 					</data>
 				</component>
-				<component name="contains" library="core" uid="130" kind="5">
+				<component name="contains" library="core" uid="94" kind="5">
 					<sources>
+						<datapoint pos="0" key="269"/>
+						<datapoint pos="1" key="267"/>
+					</sources>
+					<targets>
 						<datapoint pos="0" key="264"/>
-						<datapoint pos="1" key="265"/>
-					</sources>
+					</targets>
+					<view ltx="331" lty="1553" rbx="429" rby="1607"/>
+				</component>
+				<component name="constant" library="core" uid="96" kind="2">
 					<targets>
 						<datapoint pos="0" key="266"/>
 					</targets>
-					<view ltx="850" lty="-75" rbx="948" rby="-21"/>
-				</component>
-				<component name="constant" library="core" uid="80" kind="2">
-					<targets>
-						<datapoint pos="0" key="152"/>
-					</targets>
-					<view ltx="766" lty="-38" rbx="850" rby="-21"/>
+					<view ltx="151" lty="1590" rbx="313" rby="1607"/>
 					<data>
-						<constant value="Abstract" datatype="string"/>
+						<constant value="EPOS WP16 Microscopy" datatype="string"/>
 					</data>
 				</component>
-				<component name="if-else" library="core" uid="131" kind="4">
+				<component name="if-else" library="core" uid="93" kind="4">
 					<sources>
-						<datapoint pos="0" key="260"/>
-						<datapoint pos="1" key="261"/>
+						<datapoint pos="0" key="265"/>
+						<datapoint pos="1" key="271"/>
 						<datapoint/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="262"/>
+						<datapoint pos="0" key="263"/>
 					</targets>
-					<view ltx="948" lty="-63" rbx="1052" rby="10"/>
+					<view ltx="542" lty="1553" rbx="646" rby="1626"/>
+				</component>
+				<component name="if-else" library="core" uid="95" kind="4">
+					<sources>
+						<datapoint pos="0" key="268"/>
+						<datapoint pos="1" key="270"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="272"/>
+					</targets>
+					<view ltx="542" lty="1625" rbx="646" rby="1698"/>
+				</component>
+				<component name="contains" library="core" uid="100" kind="5">
+					<sources>
+						<datapoint pos="0" key="278"/>
+						<datapoint pos="1" key="285"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="279"/>
+					</targets>
+					<view ltx="331" lty="1698" rbx="429" rby="1752"/>
+				</component>
+				<component name="constant" library="core" uid="97" kind="2">
+					<targets>
+						<datapoint pos="0" key="284"/>
+					</targets>
+					<view ltx="151" lty="1735" rbx="327" rby="1752"/>
+					<data>
+						<constant value="EPOS WP16 Paleomagnetism" datatype="string"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="98" kind="4">
+					<sources>
+						<datapoint pos="0" key="280"/>
+						<datapoint pos="1" key="282"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="277"/>
+					</targets>
+					<view ltx="542" lty="1698" rbx="646" rby="1771"/>
+				</component>
+				<component name="if-else" library="core" uid="99" kind="4">
+					<sources>
+						<datapoint pos="0" key="283"/>
+						<datapoint pos="1" key="286"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="281"/>
+					</targets>
+					<view ltx="542" lty="1770" rbx="646" rby="1843"/>
+				</component>
+				<component name="contains" library="core" uid="104" kind="5">
+					<sources>
+						<datapoint pos="0" key="300"/>
+						<datapoint pos="1" key="295"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="291"/>
+					</targets>
+					<view ltx="331" lty="1845" rbx="429" rby="1899"/>
+				</component>
+				<component name="constant" library="core" uid="102" kind="2">
+					<targets>
+						<datapoint pos="0" key="293"/>
+					</targets>
+					<view ltx="151" lty="1882" rbx="307" rby="1899"/>
+					<data>
+						<constant value="EPOS WP16 Porefluids" datatype="string"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="101" kind="4">
+					<sources>
+						<datapoint pos="0" key="296"/>
+						<datapoint pos="1" key="299"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="298"/>
+					</targets>
+					<view ltx="542" lty="1845" rbx="646" rby="1918"/>
+				</component>
+				<component name="if-else" library="core" uid="103" kind="4">
+					<sources>
+						<datapoint pos="0" key="292"/>
+						<datapoint pos="1" key="294"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="297"/>
+					</targets>
+					<view ltx="542" lty="1917" rbx="646" rby="1990"/>
+				</component>
+				<component name="contains" library="core" uid="108" kind="5">
+					<sources>
+						<datapoint pos="0" key="314"/>
+						<datapoint pos="1" key="309"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="306"/>
+					</targets>
+					<view ltx="331" lty="1991" rbx="429" rby="2045"/>
+				</component>
+				<component name="constant" library="core" uid="105" kind="2">
+					<targets>
+						<datapoint pos="0" key="308"/>
+					</targets>
+					<view ltx="151" lty="2028" rbx="321" rby="2045"/>
+					<data>
+						<constant value="EPOS WP16 Rockphysics" datatype="string"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="106" kind="4">
+					<sources>
+						<datapoint pos="0" key="310"/>
+						<datapoint pos="1" key="313"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="305"/>
+					</targets>
+					<view ltx="542" lty="1991" rbx="646" rby="2064"/>
+				</component>
+				<component name="if-else" library="core" uid="107" kind="4">
+					<sources>
+						<datapoint pos="0" key="307"/>
+						<datapoint pos="1" key="311"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="312"/>
+					</targets>
+					<view ltx="542" lty="2063" rbx="646" rby="2136"/>
+				</component>
+				<component name="contains" library="core" uid="109" kind="5">
+					<sources>
+						<datapoint pos="0" key="328"/>
+						<datapoint pos="1" key="324"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="325"/>
+					</targets>
+					<view ltx="331" lty="2137" rbx="429" rby="2191"/>
+				</component>
+				<component name="if-else" library="core" uid="110" kind="4">
+					<sources>
+						<datapoint pos="0" key="326"/>
+						<datapoint pos="1" key="320"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="319"/>
+					</targets>
+					<view ltx="542" lty="2137" rbx="646" rby="2210"/>
+				</component>
+				<component name="if-else" library="core" uid="111" kind="4">
+					<sources>
+						<datapoint pos="0" key="327"/>
+						<datapoint pos="1" key="323"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="321"/>
+					</targets>
+					<view ltx="542" lty="2209" rbx="646" rby="2282"/>
+				</component>
+				<component name="constant" library="core" uid="112" kind="2">
+					<targets>
+						<datapoint pos="0" key="322"/>
+					</targets>
+					<view ltx="151" lty="2174" rbx="320" rby="2191"/>
+					<data>
+						<constant value="NASA/GCMD Earth Science Keywords" datatype="string"/>
+					</data>
+				</component>
+				<component name="greater" library="core" uid="114" kind="5">
+					<sources>
+						<datapoint pos="0" key="349"/>
+						<datapoint pos="1" key="350"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="351"/>
+					</targets>
+					<view ltx="856" lty="186" rbx="920" rby="240"/>
+				</component>
+				<component name="string-length" library="core" uid="116" kind="5">
+					<sources>
+						<datapoint pos="0" key="347"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="348"/>
+					</targets>
+					<view ltx="727" lty="202" rbx="822" rby="240"/>
+				</component>
+				<component name="constant" library="core" uid="117" kind="2">
+					<targets>
+						<datapoint pos="0" key="346"/>
+					</targets>
+					<view ltx="636" lty="223" rbx="676" rby="240"/>
+					<data>
+						<constant value="0" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="118" kind="4">
+					<sources>
+						<datapoint pos="0" key="352"/>
+						<datapoint pos="1" key="353"/>
+						<datapoint pos="2" key="354"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="355"/>
+					</targets>
+					<view ltx="984" lty="202" rbx="1088" rby="275"/>
+				</component>
+				<component name="if-else" library="core" uid="83" kind="4">
+					<sources>
+						<datapoint pos="0" key="225"/>
+						<datapoint pos="1" key="221"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="219"/>
+					</targets>
+					<view ltx="542" lty="1161" rbx="646" rby="1234"/>
+				</component>
+				<component name="concat" library="core" uid="57" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="132"/>
+						<datapoint pos="1" key="147"/>
+						<datapoint pos="2" key="148"/>
+						<datapoint pos="3" key="149"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="150"/>
+					</targets>
+					<view ltx="777" lty="-483" rbx="869" rby="-393"/>
+					<data>
+						<comment>
+							<text>Um alle vier descriptions zu einem einzelnen abstract-Element zusammenfügen, muss folgender Workaround angewendet werden. Den XSLT-Code nach dem Export austauschen:
+&lt;abstract&gt;
+    &lt;CharacterString&gt;
+        &lt;xsl:for-each select=&quot;*[local-name()=&apos;Descriptions&apos; and namespace-uri()=&apos;&apos;]/*[local-name()=&apos;Description&apos; and namespace-uri()=&apos;&apos;]&quot;&gt;
+            &lt;xsl:if test=&quot;position() &amp;gt; 1&quot;&gt;
+                &lt;!-- Fügt einen Zeilenumbruch zwischen den Beschreibungen hinzu --&gt;
+                &lt;xsl:text&gt;&amp;#xA;&amp;#xA;&lt;/xsl:text&gt;
+            &lt;/xsl:if&gt;
+            &lt;xsl:value-of select=&quot;*[local-name()=&apos;description&apos; and namespace-uri()=&apos;&apos;]&quot;/&gt;
+        &lt;/xsl:for-each&gt;
+    &lt;/CharacterString&gt;
+&lt;/abstract&gt;</text>
+						</comment>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="140" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="426"/>
+						<datapoint pos="1" key="427"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="428"/>
+					</targets>
+					<view ltx="1507" lty="1045" rbx="1589" rby="1101"/>
+					<data>
+						<comment>
+							<text>End DateTime+Timezone</text>
+						</comment>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="138" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="423"/>
+						<datapoint pos="1" key="424"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="425"/>
+					</targets>
+					<view ltx="1507" lty="974" rbx="1589" rby="1030"/>
+					<data>
+						<comment>
+							<text>Start DateTime+Timezone</text>
+						</comment>
+					</data>
+				</component>
+				<component name="exists" library="core" uid="177" kind="5">
+					<sources>
+						<datapoint pos="0" key="474"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="475"/>
+					</targets>
+					<view ltx="1158" lty="737" rbx="1234" rby="775"/>
+				</component>
+				<component name="exists" library="core" uid="178" kind="5">
+					<sources>
+						<datapoint pos="0" key="476"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="477"/>
+					</targets>
+					<view ltx="1158" lty="772" rbx="1234" rby="810"/>
+				</component>
+				<component name="exists" library="core" uid="179" kind="5">
+					<sources>
+						<datapoint pos="0" key="478"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="479"/>
+					</targets>
+					<view ltx="1158" lty="809" rbx="1234" rby="847"/>
+				</component>
+				<component name="exists" library="core" uid="176" kind="5">
+					<sources>
+						<datapoint pos="0" key="480"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="481"/>
+					</targets>
+					<view ltx="1158" lty="700" rbx="1234" rby="738"/>
+				</component>
+				<component name="logical-and" library="core" uid="136" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="482"/>
+						<datapoint pos="1" key="483"/>
+						<datapoint pos="2" key="484"/>
+						<datapoint pos="3" key="485"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="392"/>
+					</targets>
+					<view ltx="1277" lty="737" rbx="1369" rby="827"/>
+					<data>
+						<comment>
+							<text>All 4 coord fields filled -&gt; Box
+Only 2 coord fields filled -&gt; Point</text>
+						</comment>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="181" kind="4">
+					<sources>
+						<datapoint pos="0" key="466"/>
+						<datapoint pos="1" key="465"/>
+						<datapoint pos="2" key="488"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="467"/>
+					</targets>
+					<view ltx="1564" lty="706" rbx="1668" rby="779"/>
+				</component>
+				<component name="if-else" library="core" uid="182" kind="4">
+					<sources>
+						<datapoint pos="0" key="469"/>
+						<datapoint pos="1" key="468"/>
+						<datapoint pos="2" key="489"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="470"/>
+					</targets>
+					<view ltx="1564" lty="778" rbx="1668" rby="851"/>
+				</component>
+				<component name="if-else" library="core" uid="180" kind="4">
+					<sources>
+						<datapoint pos="0" key="462"/>
+						<datapoint pos="1" key="463"/>
+						<datapoint pos="2" key="487"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="464"/>
+					</targets>
+					<view ltx="1564" lty="636" rbx="1668" rby="709"/>
+				</component>
+				<component name="if-else" library="core" uid="183" kind="4">
+					<sources>
+						<datapoint pos="0" key="472"/>
+						<datapoint pos="1" key="486"/>
+						<datapoint pos="2" key="490"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="473"/>
+					</targets>
+					<view ltx="1564" lty="850" rbx="1668" rby="923"/>
 				</component>
 				<component name="gmd" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
-					<view ltx="1868" lty="-25" rbx="2130" rby="525"/>
+					<view ltx="1912" lty="-14" rbx="2245" rby="994"/>
 					<data>
-						<root scrollposition="1606">
+						<root scrollposition="710">
 							<header>
 								<namespaces>
 									<namespace uid="http://www.isotc211.org/2005/gco"/>
@@ -760,131 +1212,143 @@
 								</namespaces>
 							</header>
 							<entry name="FileInstance" ns="5" expanded="1">
-								<file role="outputinstance" name="..\ISO\gmd.xml"/>
 								<entry name="document" ns="5" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="MD_Metadata" ns="1" expanded="1">
-										<entry name="fileIdentifier" ns="1" inpkey="31">
-											<entry name="CharacterString" inpkey="1"/>
+									<entry name="MD_Metadata" ns="1" inpkey="1" expanded="1">
+										<entry name="fileIdentifier" ns="1">
+											<entry name="CharacterString" inpkey="46"/>
 										</entry>
 										<entry name="language" ns="1">
-											<entry name="LanguageCode" ns="1" inpkey="100">
-												<entry name="codeList" ns="2" type="attribute" inpkey="101"/>
-												<entry name="codeListValue" ns="2" type="attribute" inpkey="90"/>
+											<entry name="CharacterString" inpkey="47"/>
+											<entry name="LanguageCode" ns="1">
+												<entry name="codeList" ns="2" type="attribute" inpkey="48"/>
+												<entry name="codeListValue" ns="2" type="attribute" inpkey="49"/>
 											</entry>
+										</entry>
+										<entry name="characterSet" ns="1">
 											<entry name="MD_CharacterSetCode" ns="1">
-												<entry name="codeList" ns="2" type="attribute" inpkey="102"/>
-												<entry name="codeListValue" ns="2" type="attribute" inpkey="93"/>
+												<entry name="codeList" ns="2" type="attribute" inpkey="50"/>
+												<entry name="codeListValue" ns="2" type="attribute" inpkey="51"/>
+											</entry>
+										</entry>
+										<entry name="hierarchyLevel" ns="1">
+											<entry name="MD_ScopeCode" ns="1">
+												<entry name="codeList" ns="2" type="attribute" inpkey="52"/>
+												<entry name="codeListValue" ns="2" type="attribute" inpkey="53"/>
 											</entry>
 										</entry>
 										<entry name="contact" ns="1">
-											<entry name="CI_ResponsibleParty" ns="1">
-												<entry name="organisationName" ns="1" inpkey="95">
-													<entry name="CharacterString" inpkey="96"/>
+											<entry name="CI_ResponsibleParty" ns="1" expanded="1">
+												<entry name="organisationName" ns="1">
+													<entry name="CharacterString" inpkey="54"/>
 												</entry>
 												<entry name="contactInfo" ns="1">
 													<entry name="CI_Contact" ns="1">
 														<entry name="onlineResource" ns="1">
 															<entry name="CI_OnlineResource" ns="1">
 																<entry name="linkage" ns="1">
-																	<entry name="URL" ns="1" inpkey="98"/>
+																	<entry name="URL" ns="1" inpkey="55"/>
 																</entry>
 																<entry name="function" ns="1">
-																	<entry name="CI_OnLineFunctionCode" ns="1" inpkey="103">
-																		<entry name="codeList" ns="2" type="attribute" inpkey="104"/>
-																		<entry name="codeListValue" ns="2" type="attribute" inpkey="105"/>
+																	<entry name="CI_OnLineFunctionCode" ns="1" inpkey="60">
+																		<entry name="codeList" ns="2" type="attribute" inpkey="61"/>
+																		<entry name="codeListValue" ns="2" type="attribute" inpkey="62"/>
 																	</entry>
 																</entry>
 															</entry>
 														</entry>
 													</entry>
 												</entry>
-												<entry name="role" ns="1">
-													<entry name="CI_RoleCode" ns="1" inpkey="109">
-														<entry name="codeList" ns="2" type="attribute" inpkey="134"/>
-														<entry name="codeListValue" ns="2" type="attribute" inpkey="113"/>
+												<entry name="role" ns="1" expanded="1">
+													<entry name="CI_RoleCode" ns="1" inpkey="63" expanded="1">
+														<entry name="codeList" ns="2" type="attribute" inpkey="64"/>
+														<entry name="codeListValue" ns="2" type="attribute" inpkey="65"/>
 													</entry>
 												</entry>
 											</entry>
+										</entry>
+										<entry name="dateStamp" ns="1">
+											<entry name="Date" inpkey="69"/>
 										</entry>
 										<entry name="identificationInfo" ns="1" expanded="1">
 											<entry name="MD_DataIdentification" ns="1" expanded="1">
 												<entry name="citation" ns="1">
 													<entry name="CI_Citation" ns="1">
-														<entry name="title" ns="1" inpkey="20">
-															<entry name="CharacterString" inpkey="15"/>
+														<entry name="title" ns="1">
+															<entry name="CharacterString" inpkey="10"/>
 														</entry>
-														<entry name="alternateTitle" ns="1" inpkey="21">
-															<entry name="CharacterString" inpkey="22"/>
+														<entry name="alternateTitle" ns="1">
+															<entry name="CharacterString" inpkey="56"/>
 														</entry>
-														<entry name="date" ns="1">
-															<entry name="CI_Date" ns="1">
-																<entry name="date" ns="1" inpkey="136"/>
-																<entry name="dateType" ns="1">
-																	<entry name="CI_DateTypeCode" ns="1" inpkey="138">
-																		<entry name="codeList" ns="2" type="attribute" inpkey="139"/>
-																		<entry name="codeListValue" ns="2" type="attribute" inpkey="116"/>
+														<entry name="date" ns="1" expanded="1">
+															<entry name="CI_Date" ns="1" expanded="1">
+																<entry name="date" ns="1" expanded="1">
+																	<entry name="Date" inpkey="70"/>
+																</entry>
+																<entry name="dateType" ns="1" expanded="1">
+																	<entry name="CI_DateTypeCode" ns="1" inpkey="71" expanded="1">
+																		<entry name="codeList" ns="2" type="attribute" inpkey="72"/>
+																		<entry name="codeListValue" ns="2" type="attribute" inpkey="73"/>
 																	</entry>
 																</entry>
 															</entry>
 														</entry>
-														<entry name="identifier" ns="1">
-															<entry name="MD_Identifier" ns="1" inpkey="32">
-																<entry name="code" ns="1">
-																	<entry name="CharacterString" inpkey="33"/>
-																</entry>
-															</entry>
-														</entry>
-														<entry name="citedResponsibleParty" ns="1" inpkey="44">
-															<entry name="href" ns="3" type="attribute" inpkey="39"/>
-															<entry name="CI_ResponsibleParty" ns="1" expanded="1">
+														<entry name="citedResponsibleParty" ns="1" inpkey="115">
+															<entry name="href" ns="3" type="attribute" inpkey="116"/>
+															<entry name="CI_ResponsibleParty" ns="1">
 																<entry name="individualName" ns="1">
-																	<entry name="CharacterString" inpkey="45"/>
+																	<entry name="CharacterString" inpkey="117"/>
 																</entry>
-																<entry name="organisationName" ns="1" inpkey="46" expanded="1">
-																	<entry name="CharacterString" inpkey="47"/>
+																<entry name="organisationName" ns="1">
+																	<entry name="CharacterString" inpkey="118"/>
+																</entry>
+																<entry name="role" ns="1">
+																	<entry name="CI_RoleCode" ns="1" inpkey="119">
+																		<entry name="codeList" ns="2" type="attribute" inpkey="120"/>
+																		<entry name="codeListValue" ns="2" type="attribute" inpkey="121"/>
+																	</entry>
 																</entry>
 															</entry>
 														</entry>
 													</entry>
 												</entry>
-												<entry name="abstract" ns="1">
-													<entry name="CharacterString" inpkey="153"/>
+												<entry name="abstract" ns="1" inpkey="144">
+													<entry name="CharacterString" inpkey="145"/>
 												</entry>
 												<entry name="status" ns="1">
-													<entry name="MD_ProgressCode" ns="1" inpkey="140">
-														<entry name="codeList" ns="2" type="attribute" inpkey="141"/>
-														<entry name="codeListValue" ns="2" type="attribute" inpkey="119"/>
+													<entry name="MD_ProgressCode" ns="1" inpkey="87" expanded="1">
+														<entry name="codeList" ns="2" type="attribute" inpkey="88"/>
+														<entry name="codeListValue" ns="2" type="attribute" inpkey="89"/>
 													</entry>
 												</entry>
 												<entry name="pointOfContact" ns="1">
 													<entry name="CI_ResponsibleParty" ns="1">
-														<entry name="individualName" ns="1" inpkey="73">
-															<entry name="CharacterString" inpkey="74"/>
+														<entry name="individualName" ns="1" inpkey="173">
+															<entry name="CharacterString" inpkey="174"/>
 														</entry>
-														<entry name="organisationName" ns="1" inpkey="75">
-															<entry name="CharacterString" inpkey="76"/>
+														<entry name="organisationName" ns="1">
+															<entry name="CharacterString" inpkey="175"/>
 														</entry>
-														<entry name="positionName" ns="1" inpkey="77">
-															<entry name="CharacterString" inpkey="78"/>
+														<entry name="positionName" ns="1">
+															<entry name="CharacterString" inpkey="176"/>
 														</entry>
 														<entry name="contactInfo" ns="1">
-															<entry name="CI_Contact" ns="1" expanded="1">
+															<entry name="CI_Contact" ns="1">
 																<entry name="address" ns="1">
 																	<entry name="CI_Address" ns="1">
-																		<entry name="electronicMailAddress" ns="1" inpkey="79">
-																			<entry name="CharacterString" inpkey="80"/>
+																		<entry name="electronicMailAddress" ns="1">
+																			<entry name="CharacterString" inpkey="177"/>
 																		</entry>
 																	</entry>
 																</entry>
 																<entry name="onlineResource" ns="1">
 																	<entry name="CI_OnlineResource" ns="1">
-																		<entry name="linkage" ns="1" inpkey="81">
-																			<entry name="URL" ns="1" inpkey="82"/>
+																		<entry name="linkage" ns="1">
+																			<entry name="URL" ns="1" inpkey="178"/>
 																		</entry>
 																		<entry name="function" ns="1">
-																			<entry name="CI_OnLineFunctionCode" ns="1" inpkey="62">
-																				<entry name="codeList" ns="2" type="attribute" inpkey="83"/>
-																				<entry name="codeListValue" ns="2" type="attribute" inpkey="60"/>
+																			<entry name="CI_OnLineFunctionCode" ns="1" inpkey="179">
+																				<entry name="codeList" ns="2" type="attribute" inpkey="180"/>
+																				<entry name="codeListValue" ns="2" type="attribute" inpkey="181"/>
 																			</entry>
 																		</entry>
 																	</entry>
@@ -892,95 +1356,194 @@
 															</entry>
 														</entry>
 														<entry name="role" ns="1">
-															<entry name="CI_RoleCode" ns="1" inpkey="64">
-																<entry name="codeList" ns="2" type="attribute" inpkey="84"/>
-																<entry name="codeListValue" ns="2" type="attribute" inpkey="85"/>
+															<entry name="CI_RoleCode" ns="1" inpkey="182">
+																<entry name="codeList" ns="2" type="attribute" inpkey="183"/>
+																<entry name="codeListValue" ns="2" type="attribute" inpkey="184"/>
 															</entry>
 														</entry>
 													</entry>
 												</entry>
-												<entry name="descriptiveKeywords" ns="1" expanded="1">
-													<entry name="MD_Keywords" ns="1" expanded="1">
-														<entry name="keyword" ns="1" inpkey="172" expanded="1">
-															<entry name="CharacterString" inpkey="173"/>
-															<entry name="CharacterString" clone="1"/>
-														</entry>
-														<entry name="keyword" ns="1" inpkey="267" expanded="1" clone="1">
-															<entry name="CharacterString" inpkey="268"/>
+												<entry name="descriptiveKeywords" ns="1">
+													<entry name="MD_Keywords" ns="1" inpkey="191">
+														<entry name="keyword" ns="1" inpkey="189">
+															<entry name="CharacterString" inpkey="192"/>
 														</entry>
 														<entry name="thesaurusName" ns="1">
 															<entry name="CI_Citation" ns="1">
 																<entry name="title" ns="1">
-																	<entry name="CharacterString" inpkey="174"/>
+																	<entry name="CharacterString" inpkey="201"/>
 																</entry>
+																<entry name="date" ns="1" inpkey="228"/>
 															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="213" clone="1">
+														<entry name="keyword" ns="1" inpkey="216">
+															<entry name="CharacterString" inpkey="215"/>
+														</entry>
+														<entry name="thesaurusName" ns="1" expanded="1">
+															<entry name="CI_Citation" ns="1">
+																<entry name="title" ns="1" inpkey="214"/>
+																<entry name="date" ns="1" inpkey="229"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="230" clone="1">
+														<entry name="keyword" ns="1" inpkey="231">
+															<entry name="CharacterString" inpkey="232"/>
+														</entry>
+														<entry name="thesaurusName" ns="1">
+															<entry name="CI_Citation" ns="1">
+																<entry name="title" ns="1">
+																	<entry name="CharacterString" inpkey="233"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="329"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="247" clone="1">
+														<entry name="keyword" ns="1" inpkey="248">
+															<entry name="CharacterString" inpkey="246"/>
+														</entry>
+														<entry name="thesaurusName" ns="1">
+															<entry name="CI_Citation" ns="1">
+																<entry name="title" ns="1">
+																	<entry name="CharacterString" inpkey="245"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="330"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="260" clone="1">
+														<entry name="keyword" ns="1" inpkey="259">
+															<entry name="CharacterString" inpkey="261"/>
+														</entry>
+														<entry name="thesaurusName" ns="1">
+															<entry name="CI_Citation" ns="1">
+																<entry name="title" ns="1">
+																	<entry name="CharacterString" inpkey="262"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="331" expanded="1"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="276" clone="1">
+														<entry name="keyword" ns="1" inpkey="273">
+															<entry name="CharacterString" inpkey="274"/>
+														</entry>
+														<entry name="thesaurusName" ns="1">
+															<entry name="CI_Citation" ns="1" expanded="1">
+																<entry name="title" ns="1" expanded="1">
+																	<entry name="CharacterString" inpkey="275"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="332"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="289" clone="1">
+														<entry name="keyword" ns="1" inpkey="288">
+															<entry name="CharacterString" inpkey="290"/>
+														</entry>
+														<entry name="thesaurusName" ns="1">
+															<entry name="CI_Citation" ns="1">
+																<entry name="title" ns="1">
+																	<entry name="CharacterString" inpkey="287"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="333"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="303" clone="1">
+														<entry name="keyword" ns="1" inpkey="302">
+															<entry name="CharacterString" inpkey="301"/>
+														</entry>
+														<entry name="thesaurusName" ns="1">
+															<entry name="CI_Citation" ns="1">
+																<entry name="title" ns="1">
+																	<entry name="CharacterString" inpkey="304"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="334"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="317" clone="1">
+														<entry name="keyword" ns="1" inpkey="318">
+															<entry name="CharacterString" inpkey="315"/>
+														</entry>
+														<entry name="thesaurusName" ns="1">
+															<entry name="CI_Citation" ns="1">
+																<entry name="title" ns="1">
+																	<entry name="CharacterString" inpkey="316"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="335"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="336" clone="1">
+														<entry name="keyword" ns="1" inpkey="337">
+															<entry name="CharacterString" inpkey="338"/>
+														</entry>
+														<entry name="thesaurusName" ns="1">
+															<entry name="CI_Citation" ns="1">
+																<entry name="title" ns="1">
+																	<entry name="CharacterString" inpkey="339"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="340"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="341" clone="1">
+														<entry name="keyword" ns="1" inpkey="342">
+															<entry name="CharacterString" inpkey="343"/>
 														</entry>
 													</entry>
 												</entry>
 												<entry name="resourceConstraints" ns="1">
 													<entry name="MD_Constraints" ns="1">
-														<entry name="useLimitation" ns="1" expanded="1">
-															<entry name="CharacterString" inpkey="25"/>
+														<entry name="useLimitation" ns="1">
+															<entry name="CharacterString" inpkey="100"/>
 														</entry>
 													</entry>
 													<entry name="MD_LegalConstraints" ns="1">
-														<entry name="useLimitation" ns="1">
-															<entry name="CharacterString" inpkey="26"/>
+														<entry name="accessConstraints" ns="1">
+															<entry name="MD_RestrictionCode" ns="1">
+																<entry name="codeList" ns="2" type="attribute" inpkey="101"/>
+																<entry name="codeListValue" ns="2" type="attribute" inpkey="102"/>
+															</entry>
 														</entry>
-														<entry name="useConstraints" ns="1">
-															<entry name="MD_RestrictionCode" ns="1" expanded="1"/>
+														<entry name="otherConstraints" ns="1">
+															<entry name="CharacterString" inpkey="103"/>
 														</entry>
 													</entry>
 												</entry>
-												<entry name="aggregationInfo" ns="1">
-													<entry name="MD_AggregateInformation" ns="1">
-														<entry name="aggregateDataSetIdentifier" ns="1">
-															<entry name="RS_Identifier" ns="1">
-																<entry name="code" ns="1" inpkey="251">
-																	<entry name="CharacterString" inpkey="252"/>
-																</entry>
-																<entry name="codeSpace" ns="1" expanded="1">
-																	<entry name="CharacterString" inpkey="253"/>
-																</entry>
-															</entry>
+												<entry name="language" ns="1" inpkey="234"/>
+												<entry name="extent" ns="1" inpkey="395" expanded="1">
+													<entry name="EX_Extent" ns="1" expanded="1">
+														<entry name="description" ns="1" expanded="1">
+															<entry name="CharacterString" inpkey="396"/>
 														</entry>
-														<entry name="associationType" ns="1">
-															<entry name="DS_AssociationTypeCode" ns="1" inpkey="254">
-																<entry name="codeList" ns="2" type="attribute" inpkey="255"/>
-																<entry name="codeListValue" ns="2" type="attribute" inpkey="256"/>
-															</entry>
-														</entry>
-													</entry>
-												</entry>
-												<entry name="language" ns="1" inpkey="121"/>
-												<entry name="extent" ns="1" inpkey="243">
-													<entry name="EX_Extent" ns="1">
-														<entry name="description" ns="1">
-															<entry name="CharacterString" inpkey="244"/>
-														</entry>
-														<entry name="geographicElement" ns="1">
-															<entry name="EX_GeographicBoundingBox" ns="1">
-																<entry name="westBoundLongitude" ns="1" inpkey="245" expanded="1">
-																	<entry name="Decimal" inpkey="246"/>
+														<entry name="geographicElement" ns="1" expanded="1">
+															<entry name="EX_GeographicBoundingBox" ns="1" expanded="1">
+																<entry name="westBoundLongitude" ns="1" expanded="1">
+																	<entry name="Decimal" inpkey="398"/>
 																</entry>
 																<entry name="eastBoundLongitude" ns="1" expanded="1">
-																	<entry name="Decimal" inpkey="225"/>
+																	<entry name="Decimal" inpkey="399"/>
 																</entry>
 																<entry name="southBoundLatitude" ns="1" expanded="1">
-																	<entry name="Decimal" inpkey="247"/>
+																	<entry name="Decimal" inpkey="400"/>
 																</entry>
 																<entry name="northBoundLatitude" ns="1" expanded="1">
-																	<entry name="Decimal" inpkey="248"/>
+																	<entry name="Decimal" inpkey="401"/>
 																</entry>
 															</entry>
 														</entry>
-														<entry name="temporalElement" ns="1">
-															<entry name="EX_TemporalExtent" ns="1">
-																<entry name="extent" ns="1">
-																	<entry name="TimePeriod" ns="4">
-																		<entry name="id" ns="4" type="attribute" inpkey="217"/>
-																		<entry name="beginPosition" ns="4" inpkey="202"/>
-																		<entry name="endPosition" ns="4" inpkey="249"/>
+														<entry name="temporalElement" ns="1" expanded="1">
+															<entry name="EX_TemporalExtent" ns="1" expanded="1">
+																<entry name="extent" ns="1" expanded="1">
+																	<entry name="TimePeriod" ns="4" expanded="1">
+																		<entry name="beginPosition" ns="4" inpkey="418"/>
+																		<entry name="endPosition" ns="4" inpkey="419" expanded="1"/>
 																	</entry>
 																</entry>
 															</entry>
@@ -995,22 +1558,22 @@
 													<entry name="MD_DigitalTransferOptions" ns="1">
 														<entry name="onLine" ns="1">
 															<entry name="CI_OnlineResource" ns="1">
-																<entry name="linkage" ns="1" inpkey="142">
-																	<entry name="URL" ns="1" inpkey="143"/>
+																<entry name="linkage" ns="1">
+																	<entry name="URL" ns="1" inpkey="90"/>
 																</entry>
 																<entry name="protocol" ns="1">
-																	<entry name="CharacterString" inpkey="123"/>
+																	<entry name="CharacterString" inpkey="91"/>
 																</entry>
 																<entry name="name" ns="1">
-																	<entry name="CharacterString" inpkey="144"/>
+																	<entry name="CharacterString" inpkey="92"/>
 																</entry>
 																<entry name="description" ns="1">
-																	<entry name="CharacterString" inpkey="127"/>
+																	<entry name="CharacterString" inpkey="93"/>
 																</entry>
 																<entry name="function" ns="1">
-																	<entry name="CI_OnLineFunctionCode" ns="1" inpkey="145">
-																		<entry name="codeList" ns="2" type="attribute" inpkey="146"/>
-																		<entry name="codeListValue" ns="2" type="attribute" inpkey="147"/>
+																	<entry name="CI_OnLineFunctionCode" ns="1" inpkey="94">
+																		<entry name="codeList" ns="2" type="attribute" inpkey="95"/>
+																		<entry name="codeListValue" ns="2" type="attribute" inpkey="96"/>
 																	</entry>
 																</entry>
 															</entry>
@@ -1023,14 +1586,14 @@
 								</entry>
 							</entry>
 						</root>
-						<document schema="..\ISO\gmd.xsd" instanceroot="{http://www.isotc211.org/2005/gmd}MD_Metadata"/>
+						<document schema="..\ISO\gmd.xsd" instanceroot="{http://www.isotc211.org/2005/gmd}MD_Metadata" outputinstance="..\ISO\gmd.xml"/>
 					</data>
 				</component>
 				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
 					<properties XSLTTargetEncoding="UTF-8"/>
-					<view rbx="200" rby="339"/>
+					<view rbx="188" rby="450"/>
 					<data>
-						<root scrollposition="70">
+						<root scrollposition="77">
 							<header>
 								<namespaces>
 									<namespace/>
@@ -1038,242 +1601,912 @@
 								</namespaces>
 							</header>
 							<entry name="FileInstance" ns="1" expanded="1">
-								<file role="inputinstance" name="..\..\xml\resource_1.xml"/>
-								<file role="outputinstance" name="..\..\xml\resource_1.xml"/>
 								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="Resource" expanded="1">
-										<entry name="doi" outkey="2"/>
-										<entry name="dateCreated" outkey="179"/>
+									<entry name="Resource" outkey="2" expanded="1">
+										<entry name="currentDate" outkey="68"/>
+										<entry name="doi" outkey="38"/>
+										<entry name="dateCreated" outkey="356"/>
 										<entry name="Rights">
-											<entry name="rightsIdentifier" outkey="27"/>
+											<entry name="rightsIdentifier" outkey="97"/>
+										</entry>
+										<entry name="Language">
+											<entry name="code" outkey="39"/>
 										</entry>
 										<entry name="Titles">
 											<entry name="Title" expanded="1">
-												<entry name="text" outkey="16"/>
-												<entry name="type" outkey="8"/>
+												<entry name="text" outkey="11"/>
+												<entry name="type" outkey="12"/>
 											</entry>
 										</entry>
 										<entry name="Authors">
-											<entry name="Author" outkey="48">
-												<entry name="familyname" outkey="49"/>
-												<entry name="givenname" outkey="50"/>
-												<entry name="orcid" outkey="38"/>
-												<entry name="Affiliations" expanded="1">
-													<entry name="Affiliation" expanded="1">
-														<entry name="name" outkey="51"/>
+											<entry name="Author" outkey="122">
+												<entry name="familyname" outkey="123"/>
+												<entry name="givenname" outkey="124"/>
+												<entry name="orcid" outkey="125"/>
+												<entry name="Affiliations">
+													<entry name="Affiliation">
+														<entry name="name" outkey="126"/>
 													</entry>
 												</entry>
 											</entry>
 										</entry>
-										<entry name="Descriptions">
+										<entry name="Descriptions" outkey="146">
 											<entry name="Description">
-												<entry name="type" outkey="263"/>
-												<entry name="description" outkey="154"/>
+												<entry name="description" outkey="140"/>
 											</entry>
 										</entry>
 										<entry name="ContactPersons">
-											<entry name="ContactPerson">
-												<entry name="familyname" outkey="67"/>
-												<entry name="givenname" outkey="68"/>
-												<entry name="position" outkey="69"/>
-												<entry name="email" outkey="70"/>
-												<entry name="website" outkey="71"/>
+											<entry name="ContactPerson" outkey="165">
+												<entry name="familyname" outkey="166"/>
+												<entry name="givenname" outkey="167"/>
+												<entry name="position" outkey="168"/>
+												<entry name="email" outkey="169"/>
+												<entry name="website" outkey="170"/>
 												<entry name="Affiliations">
 													<entry name="Affiliation">
-														<entry name="name" outkey="72"/>
+														<entry name="name" outkey="171"/>
 													</entry>
 												</entry>
 											</entry>
 										</entry>
-										<entry name="RelatedWorks">
-											<entry name="RelatedWork">
-												<entry name="Identifier" outkey="257"/>
-												<entry name="Relation">
-													<entry name="name" outkey="258"/>
-												</entry>
-												<entry name="IdentifierType">
-													<entry name="name" outkey="259"/>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="SpatialTemporalCoverages">
-											<entry name="SpatialTemporalCoverage" outkey="231" expanded="1">
-												<entry name="latitudeMin" outkey="232"/>
-												<entry name="latitudeMax" outkey="233"/>
-												<entry name="longitudeMin" outkey="226"/>
-												<entry name="longitudeMax" outkey="223"/>
-												<entry name="Description" outkey="234"/>
-												<entry name="dateTimeStart" outkey="201"/>
-												<entry name="dateTimeEnd" outkey="235"/>
-												<entry name="timezone" outkey="200"/>
+										<entry name="SpatialTemporalCoverages" expanded="1">
+											<entry name="SpatialTemporalCoverage" outkey="402" expanded="1">
+												<entry name="latitudeMin" outkey="403"/>
+												<entry name="latitudeMax" outkey="404"/>
+												<entry name="longitudeMin" outkey="405"/>
+												<entry name="longitudeMax" outkey="406"/>
+												<entry name="Description" outkey="407"/>
+												<entry name="dateTimeStart" outkey="420"/>
+												<entry name="dateTimeEnd" outkey="421"/>
+												<entry name="timezone" outkey="422"/>
 											</entry>
 										</entry>
 										<entry name="ThesaurusKeywords">
-											<entry name="Keyword" expanded="1">
-												<entry name="keyword" outkey="170"/>
-												<entry name="scheme" outkey="171"/>
+											<entry name="Keyword">
+												<entry name="keyword" outkey="188"/>
+												<entry name="scheme" outkey="200"/>
+												<entry name="language" outkey="227"/>
 											</entry>
 										</entry>
-										<entry name="FreeKeywords" expanded="1">
-											<entry name="Keyword" outkey="269" expanded="1">
-												<entry name="free_keyword" outkey="270"/>
+										<entry name="FreeKeywords" outkey="344">
+											<entry name="Keyword">
+												<entry name="free_keyword" outkey="345"/>
 											</entry>
 										</entry>
 									</entry>
 								</entry>
 							</entry>
 						</root>
-						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource"/>
+						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
 					</data>
 				</component>
 			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="2">
+						<edges>
+							<edge vertexkey="1"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="9">
+						<edges>
+							<edge vertexkey="4"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="11">
+						<edges>
+							<edge vertexkey="5"/>
+							<edge vertexkey="14"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="12">
+						<edges>
+							<edge vertexkey="7"/>
+							<edge vertexkey="19"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="8"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="10"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="15">
+						<edges>
+							<edge vertexkey="16"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="17">
+						<edges>
+							<edge vertexkey="18"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="38">
+						<edges>
+							<edge vertexkey="20"/>
+							<edge vertexkey="27"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="22">
+						<edges>
+							<edge vertexkey="23"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="29">
+						<edges>
+							<edge vertexkey="24"/>
+							<edge vertexkey="80"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="26">
+						<edges>
+							<edge vertexkey="28"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="21">
+						<edges>
+							<edge vertexkey="30"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="25">
+						<edges>
+							<edge vertexkey="31"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="13">
+						<edges>
+							<edge vertexkey="33"/>
+							<edge vertexkey="36"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="34">
+						<edges>
+							<edge vertexkey="35"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="32">
+						<edges>
+							<edge vertexkey="46"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="39">
+						<edges>
+							<edge vertexkey="47"/>
+							<edge vertexkey="49"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="40">
+						<edges>
+							<edge vertexkey="48"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="43">
+						<edges>
+							<edge vertexkey="50"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="41">
+						<edges>
+							<edge vertexkey="51"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="42">
+						<edges>
+							<edge vertexkey="52"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="44">
+						<edges>
+							<edge vertexkey="53"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="45">
+						<edges>
+							<edge vertexkey="54"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="57">
+						<edges>
+							<edge vertexkey="55"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="37">
+						<edges>
+							<edge vertexkey="56"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="59">
+						<edges>
+							<edge vertexkey="60"/>
+							<edge vertexkey="62"/>
+							<edge vertexkey="179"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="58">
+						<edges>
+							<edge vertexkey="61"/>
+							<edge vertexkey="180"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="66">
+						<edges>
+							<edge vertexkey="63"/>
+							<edge vertexkey="65"/>
+							<edge vertexkey="182"/>
+							<edge vertexkey="184"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="67">
+						<edges>
+							<edge vertexkey="64"/>
+							<edge vertexkey="183"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="68">
+						<edges>
+							<edge vertexkey="69"/>
+							<edge vertexkey="228"/>
+							<edge vertexkey="229"/>
+							<edge vertexkey="329"/>
+							<edge vertexkey="330"/>
+							<edge vertexkey="331"/>
+							<edge vertexkey="332"/>
+							<edge vertexkey="333"/>
+							<edge vertexkey="334"/>
+							<edge vertexkey="335"/>
+							<edge vertexkey="340"/>
+							<edge vertexkey="354"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="355">
+						<edges>
+							<edge vertexkey="70"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="74">
+						<edges>
+							<edge vertexkey="71"/>
+							<edge vertexkey="73"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="75">
+						<edges>
+							<edge vertexkey="72"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="78">
+						<edges>
+							<edge vertexkey="79"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="77">
+						<edges>
+							<edge vertexkey="87"/>
+							<edge vertexkey="89"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="76">
+						<edges>
+							<edge vertexkey="88"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="81">
+						<edges>
+							<edge vertexkey="90"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="82">
+						<edges>
+							<edge vertexkey="91"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="83">
+						<edges>
+							<edge vertexkey="92"/>
+							<edge vertexkey="93"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="84">
+						<edges>
+							<edge vertexkey="94"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="85">
+						<edges>
+							<edge vertexkey="95"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="86">
+						<edges>
+							<edge vertexkey="96"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="97">
+						<edges>
+							<edge vertexkey="100"/>
+							<edge vertexkey="103"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="98">
+						<edges>
+							<edge vertexkey="101"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="99">
+						<edges>
+							<edge vertexkey="102"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="104">
+						<edges>
+							<edge vertexkey="105"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="125">
+						<edges>
+							<edge vertexkey="106"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="123">
+						<edges>
+							<edge vertexkey="109"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="108">
+						<edges>
+							<edge vertexkey="110"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="124">
+						<edges>
+							<edge vertexkey="111"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="122">
+						<edges>
+							<edge vertexkey="115"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="107">
+						<edges>
+							<edge vertexkey="116"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="112">
+						<edges>
+							<edge vertexkey="117"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="126">
+						<edges>
+							<edge vertexkey="118"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="114">
+						<edges>
+							<edge vertexkey="119"/>
+							<edge vertexkey="121"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="113">
+						<edges>
+							<edge vertexkey="120"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="140">
+						<edges>
+							<edge vertexkey="132"/>
+							<edge vertexkey="147"/>
+							<edge vertexkey="148"/>
+							<edge vertexkey="149"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="146">
+						<edges>
+							<edge vertexkey="144"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="150">
+						<edges>
+							<edge vertexkey="145"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="166">
+						<edges>
+							<edge vertexkey="152"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="151">
+						<edges>
+							<edge vertexkey="153"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="167">
+						<edges>
+							<edge vertexkey="154"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="168">
+						<edges>
+							<edge vertexkey="156"/>
+							<edge vertexkey="163"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="157">
+						<edges>
+							<edge vertexkey="159"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="158">
+						<edges>
+							<edge vertexkey="160"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="161">
+						<edges>
+							<edge vertexkey="162"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="165">
+						<edges>
+							<edge vertexkey="173"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="155">
+						<edges>
+							<edge vertexkey="174"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="171">
+						<edges>
+							<edge vertexkey="175"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="164">
+						<edges>
+							<edge vertexkey="176"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="169">
+						<edges>
+							<edge vertexkey="177"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="170">
+						<edges>
+							<edge vertexkey="178"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="172">
+						<edges>
+							<edge vertexkey="181"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="190">
+						<edges>
+							<edge vertexkey="185"/>
+							<edge vertexkey="195"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="188">
+						<edges>
+							<edge vertexkey="186"/>
+							<edge vertexkey="207"/>
+							<edge vertexkey="222"/>
+							<edge vertexkey="235"/>
+							<edge vertexkey="256"/>
+							<edge vertexkey="271"/>
+							<edge vertexkey="282"/>
+							<edge vertexkey="299"/>
+							<edge vertexkey="313"/>
+							<edge vertexkey="320"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="187">
+						<edges>
+							<edge vertexkey="189"/>
+							<edge vertexkey="191"/>
+							<edge vertexkey="192"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="198">
+						<edges>
+							<edge vertexkey="193"/>
+							<edge vertexkey="197"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="200">
+						<edges>
+							<edge vertexkey="196"/>
+							<edge vertexkey="199"/>
+							<edge vertexkey="206"/>
+							<edge vertexkey="217"/>
+							<edge vertexkey="238"/>
+							<edge vertexkey="254"/>
+							<edge vertexkey="269"/>
+							<edge vertexkey="278"/>
+							<edge vertexkey="300"/>
+							<edge vertexkey="314"/>
+							<edge vertexkey="328"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="194">
+						<edges>
+							<edge vertexkey="201"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="202">
+						<edges>
+							<edge vertexkey="203"/>
+							<edge vertexkey="208"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="210">
+						<edges>
+							<edge vertexkey="211"/>
+							<edge vertexkey="212"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="209">
+						<edges>
+							<edge vertexkey="213"/>
+							<edge vertexkey="215"/>
+							<edge vertexkey="216"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="205">
+						<edges>
+							<edge vertexkey="214"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="220">
+						<edges>
+							<edge vertexkey="221"/>
+							<edge vertexkey="223"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="224">
+						<edges>
+							<edge vertexkey="225"/>
+							<edge vertexkey="226"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="218">
+						<edges>
+							<edge vertexkey="230"/>
+							<edge vertexkey="231"/>
+							<edge vertexkey="232"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="219">
+						<edges>
+							<edge vertexkey="233"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="227">
+						<edges>
+							<edge vertexkey="234"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="236">
+						<edges>
+							<edge vertexkey="237"/>
+							<edge vertexkey="243"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="239">
+						<edges>
+							<edge vertexkey="240"/>
+							<edge vertexkey="244"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="242">
+						<edges>
+							<edge vertexkey="245"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="241">
+						<edges>
+							<edge vertexkey="246"/>
+							<edge vertexkey="247"/>
+							<edge vertexkey="248"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="249">
+						<edges>
+							<edge vertexkey="250"/>
+							<edge vertexkey="258"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="251">
+						<edges>
+							<edge vertexkey="252"/>
+							<edge vertexkey="253"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="257">
+						<edges>
+							<edge vertexkey="259"/>
+							<edge vertexkey="260"/>
+							<edge vertexkey="261"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="255">
+						<edges>
+							<edge vertexkey="262"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="264">
+						<edges>
+							<edge vertexkey="265"/>
+							<edge vertexkey="268"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="266">
+						<edges>
+							<edge vertexkey="267"/>
+							<edge vertexkey="270"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="263">
+						<edges>
+							<edge vertexkey="273"/>
+							<edge vertexkey="274"/>
+							<edge vertexkey="276"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="272">
+						<edges>
+							<edge vertexkey="275"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="279">
+						<edges>
+							<edge vertexkey="280"/>
+							<edge vertexkey="283"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="284">
+						<edges>
+							<edge vertexkey="285"/>
+							<edge vertexkey="286"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="281">
+						<edges>
+							<edge vertexkey="287"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="277">
+						<edges>
+							<edge vertexkey="288"/>
+							<edge vertexkey="289"/>
+							<edge vertexkey="290"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="291">
+						<edges>
+							<edge vertexkey="292"/>
+							<edge vertexkey="296"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="293">
+						<edges>
+							<edge vertexkey="294"/>
+							<edge vertexkey="295"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="298">
+						<edges>
+							<edge vertexkey="301"/>
+							<edge vertexkey="302"/>
+							<edge vertexkey="303"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="297">
+						<edges>
+							<edge vertexkey="304"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="306">
+						<edges>
+							<edge vertexkey="307"/>
+							<edge vertexkey="310"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="308">
+						<edges>
+							<edge vertexkey="309"/>
+							<edge vertexkey="311"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="305">
+						<edges>
+							<edge vertexkey="315"/>
+							<edge vertexkey="317"/>
+							<edge vertexkey="318"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="312">
+						<edges>
+							<edge vertexkey="316"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="322">
+						<edges>
+							<edge vertexkey="323"/>
+							<edge vertexkey="324"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="325">
+						<edges>
+							<edge vertexkey="326"/>
+							<edge vertexkey="327"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="319">
+						<edges>
+							<edge vertexkey="336"/>
+							<edge vertexkey="337"/>
+							<edge vertexkey="338"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="321">
+						<edges>
+							<edge vertexkey="339"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="344">
+						<edges>
+							<edge vertexkey="341"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="345">
+						<edges>
+							<edge vertexkey="342"/>
+							<edge vertexkey="343"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="346">
+						<edges>
+							<edge vertexkey="347"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="356">
+						<edges>
+							<edge vertexkey="349"/>
+							<edge vertexkey="353"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="348">
+						<edges>
+							<edge vertexkey="350"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="351">
+						<edges>
+							<edge vertexkey="352"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="402">
+						<edges>
+							<edge vertexkey="395"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="407">
+						<edges>
+							<edge vertexkey="396"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="470">
+						<edges>
+							<edge vertexkey="398"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="473">
+						<edges>
+							<edge vertexkey="399"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="464">
+						<edges>
+							<edge vertexkey="400"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="467">
+						<edges>
+							<edge vertexkey="401"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="425">
+						<edges>
+							<edge vertexkey="418"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="428">
+						<edges>
+							<edge vertexkey="419"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="420">
+						<edges>
+							<edge vertexkey="423"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="422">
+						<edges>
+							<edge vertexkey="424"/>
+							<edge vertexkey="427"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="421">
+						<edges>
+							<edge vertexkey="426"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="392">
+						<edges>
+							<edge vertexkey="462"/>
+							<edge vertexkey="466"/>
+							<edge vertexkey="469"/>
+							<edge vertexkey="472"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="403">
+						<edges>
+							<edge vertexkey="463"/>
+							<edge vertexkey="480"/>
+							<edge vertexkey="487"/>
+							<edge vertexkey="488"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="404">
+						<edges>
+							<edge vertexkey="465"/>
+							<edge vertexkey="474"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="405">
+						<edges>
+							<edge vertexkey="468"/>
+							<edge vertexkey="476"/>
+							<edge vertexkey="489"/>
+							<edge vertexkey="490"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="406">
+						<edges>
+							<edge vertexkey="478"/>
+							<edge vertexkey="486"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="481">
+						<edges>
+							<edge vertexkey="482"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="475">
+						<edges>
+							<edge vertexkey="483"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="477">
+						<edges>
+							<edge vertexkey="484"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="479">
+						<edges>
+							<edge vertexkey="485"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
 		</structure>
-		<connections>
-			<edge from="29" to="1"/>
-			<edge from="8" to="3"/>
-			<edge from="6" to="4"/>
-			<edge from="5" to="7"/>
-			<edge from="12" to="9"/>
-			<edge from="8" to="11"/>
-			<edge from="16" to="13"/>
-			<edge from="14" to="15"/>
-			<edge from="10" to="17"/>
-			<edge from="16" to="19"/>
-			<edge from="5" to="20"/>
-			<edge from="10" to="21"/>
-			<edge from="18" to="22"/>
-			<edge from="2" to="23"/>
-			<edge from="27" to="25"/>
-			<edge from="27" to="26"/>
-			<edge from="24" to="28"/>
-			<edge from="2" to="30"/>
-			<edge from="24" to="31"/>
-			<edge from="24" to="32"/>
-			<edge from="29" to="33"/>
-			<edge from="37" to="34"/>
-			<edge from="38" to="35"/>
-			<edge from="36" to="39"/>
-			<edge from="43" to="40"/>
-			<edge from="50" to="41"/>
-			<edge from="48" to="44"/>
-			<edge from="42" to="45"/>
-			<edge from="51" to="46"/>
-			<edge from="51" to="47"/>
-			<edge from="49" to="52"/>
-			<edge from="57" to="54"/>
-			<edge from="68" to="55"/>
-			<edge from="67" to="56"/>
-			<edge from="59" to="60"/>
-			<edge from="61" to="62"/>
-			<edge from="63" to="64"/>
-			<edge from="67" to="73"/>
-			<edge from="53" to="74"/>
-			<edge from="72" to="75"/>
-			<edge from="72" to="76"/>
-			<edge from="69" to="77"/>
-			<edge from="69" to="78"/>
-			<edge from="70" to="79"/>
-			<edge from="70" to="80"/>
-			<edge from="71" to="81"/>
-			<edge from="71" to="82"/>
-			<edge from="58" to="83"/>
-			<edge from="65" to="84"/>
-			<edge from="66" to="85"/>
-			<edge from="89" to="90"/>
-			<edge from="92" to="93"/>
-			<edge from="94" to="95"/>
-			<edge from="94" to="96"/>
-			<edge from="97" to="98"/>
-			<edge from="86" to="100"/>
-			<edge from="88" to="101"/>
-			<edge from="91" to="102"/>
-			<edge from="107" to="103"/>
-			<edge from="99" to="104"/>
-			<edge from="106" to="105"/>
-			<edge from="108" to="109"/>
-			<edge from="111" to="113"/>
-			<edge from="182" to="116"/>
-			<edge from="118" to="119"/>
-			<edge from="120" to="121"/>
-			<edge from="122" to="123"/>
-			<edge from="126" to="127"/>
-			<edge from="110" to="134"/>
-			<edge from="178" to="136"/>
-			<edge from="182" to="138"/>
-			<edge from="114" to="139"/>
-			<edge from="131" to="140"/>
-			<edge from="117" to="141"/>
-			<edge from="2" to="142"/>
-			<edge from="2" to="143"/>
-			<edge from="125" to="144"/>
-			<edge from="133" to="145"/>
-			<edge from="132" to="146"/>
-			<edge from="128" to="147"/>
-			<edge from="262" to="153"/>
-			<edge from="170" to="172"/>
-			<edge from="170" to="173"/>
-			<edge from="171" to="174"/>
-			<edge from="180" to="175"/>
-			<edge from="179" to="176"/>
-			<edge from="115" to="181"/>
-			<edge from="185" to="183"/>
-			<edge from="180" to="184"/>
-			<edge from="179" to="186"/>
-			<edge from="187" to="188"/>
-			<edge from="187" to="189"/>
-			<edge from="201" to="191"/>
-			<edge from="201" to="193"/>
-			<edge from="194" to="195"/>
-			<edge from="190" to="196"/>
-			<edge from="192" to="197"/>
-			<edge from="200" to="198"/>
-			<edge from="199" to="202"/>
-			<edge from="200" to="203"/>
-			<edge from="235" to="204"/>
-			<edge from="205" to="206"/>
-			<edge from="207" to="208"/>
-			<edge from="209" to="210"/>
-			<edge from="211" to="212"/>
-			<edge from="207" to="214"/>
-			<edge from="235" to="215"/>
-			<edge from="229" to="217"/>
-			<edge from="224" to="219"/>
-			<edge from="223" to="220"/>
-			<edge from="226" to="221"/>
-			<edge from="222" to="225"/>
-			<edge from="218" to="227"/>
-			<edge from="237" to="228"/>
-			<edge from="216" to="230"/>
-			<edge from="233" to="236"/>
-			<edge from="223" to="238"/>
-			<edge from="237" to="239"/>
-			<edge from="233" to="240"/>
-			<edge from="232" to="241"/>
-			<edge from="231" to="243"/>
-			<edge from="234" to="244"/>
-			<edge from="226" to="245"/>
-			<edge from="226" to="246"/>
-			<edge from="232" to="247"/>
-			<edge from="242" to="248"/>
-			<edge from="213" to="249"/>
-			<edge from="257" to="251"/>
-			<edge from="257" to="252"/>
-			<edge from="259" to="253"/>
-			<edge from="258" to="254"/>
-			<edge from="250" to="255"/>
-			<edge from="258" to="256"/>
-			<edge from="266" to="260"/>
-			<edge from="154" to="261"/>
-			<edge from="263" to="264"/>
-			<edge from="152" to="265"/>
-			<edge from="269" to="267"/>
-			<edge from="270" to="268"/>
-		</connections>
-	</component>
-	<component name="Zeilenumbruch" library="user" uid="83" inline="1">
-		<structure>
-			<children/>
-		</structure>
-		<connections/>
 	</component>
 </mapping>

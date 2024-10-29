@@ -26,18 +26,15 @@
           <button class="btn btn-primary m-1" type="button" disabled>
             <?php echo $translations['load']; ?>
           </button>
-          <!-- Workarround TODO: Button fixes -->
-          <button type="submit" class="btn btn-warning m-1" form="metaForm" id="saveButton">
+          <button type="submit" class="btn btn-warning m-1" form="metaForm" id="saveAs">
             Save
           </button>
+          <!--<button type="submit" class="btn btn-warning m-1" form="metaForm" id="saveButton">
+            Save
+          </button>-->
           <button class="btn btn-success m-1" id="submitButton" disabled>
             <?php echo $translations['submit']; ?>
           </button>
-          <!-- Alis God Mode - Only for debugging! -->
-          <button type="submit" class="btn btn-dark m-1" form="metaForm" id="cheatValidation">
-            Test
-          </button>
-          <!-- Alis God Mode - Ende -->
           <?php if ($showFeedbackLink): ?>
           <button type="button" class="btn btn-warning m-1" id="feedback-btn" data-bs-toggle="modal"
             data-bs-target="#feedbackModal">
@@ -87,13 +84,15 @@
 <script src="js/map.js"></script>
 <!-- Titel Verkleinerungsfunktion einbinden -->
 <script src="js/restitle.js"></script>
+<!-- Contributor Pflichtfelder überprüfungsfunktion einbinden -->
+<script src="js/checkMandatoryFields.js"></script>
 <!-- Bootstrap 5 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="js/select.js"></script>
 <!--Tagify-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.31.3/tagify.min.js"
-  integrity="sha512-YrKVSda1sKH9vnfrtO2Dzkv1CHmsnQsPTIBv9IDdu7bqiHAvmTf02zxHv3t+d2hcIWTgJHi+6X6Oy21MVyWNwA=="
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.31.5/tagify.min.js"
+  integrity="sha512-8sidTjqd5F2zja6kq4RRqJkm1FL/wDfd/QBCXKeOMtqiJhC91dHwwPIlrvCchQJdkLGGKLE55NcxQGo2tMgdJA=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!--jsTree-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.17/jstree.min.js"

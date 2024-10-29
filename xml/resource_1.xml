@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <Resource>
+  <currentDate>2024-10-25</currentDate>
   <doi>http://doi.org/10.1029/2023JB028411</doi>
-  <version>1</version>
+  <version/>
   <year>2024</year>
   <dateCreated>2024-06-05</dateCreated>
   <dateEmbargoUntil>2024-06-15</dateEmbargoUntil>
@@ -66,8 +67,6 @@
           <Affiliation>
             <affiliation_id>1</affiliation_id>
             <name>GFZ German Research Centre for Geosciences</name>
-            <city/>
-            <country/>
             <rorId>04z8jg394</rorId>
           </Affiliation>
         </Affiliations>
@@ -85,8 +84,6 @@
           <Affiliation>
             <affiliation_id>1</affiliation_id>
             <name>GFZ German Research Centre for Geosciences</name>
-            <city/>
-            <country/>
             <rorId>04z8jg394</rorId>
           </Affiliation>
         </Affiliations>
@@ -109,8 +106,6 @@
         <Affiliation>
           <affiliation_id>1</affiliation_id>
           <name>GFZ German Research Centre for Geosciences</name>
-          <city/>
-          <country/>
           <rorId>04z8jg394</rorId>
         </Affiliation>
       </Affiliations>
@@ -135,8 +130,8 @@
       <longitudeMin>-70.8163</longitudeMin>
       <longitudeMax>-69.498</longitudeMax>
       <Description>Eine geologisch aktive Region in den Alpen, gepr&#xE4;gt durch die Kollision der eurasischen und afrikanischen Kontinentalplatten, die zur Bildung hoher Gebirgsketten f&#xFC;hrt.</Description>
-      <dateTimeStart>2000-07-23 12:22:55</dateTimeStart>
-      <dateTimeEnd>2001-07-23 12:22:55</dateTimeEnd>
+      <dateTimeStart>2000-07-23T12:22:55</dateTimeStart>
+      <dateTimeEnd>2001-07-23T12:22:55</dateTimeEnd>
       <timezone>+05:00</timezone>
     </SpatialTemporalCoverage>
   </SpatialTemporalCoverages>
@@ -194,4 +189,17 @@
       <grantname>Grants database</grantname>
     </FundingReference>
   </FundingReferences>
+  <OriginatingLaboratories>
+    <OriginatingLaboratory>
+      <laboratoryname>Fragmentation Lab (Ludwig-Maximilians-University Munich, Germany)</laboratoryname>
+      <labId>9cd562c216daa82792972a074a222c52</labId>
+      <Affiliations>
+        <Affiliation>
+          <affiliation_id>3</affiliation_id>
+          <name>University of Applied Sciences Potsdam</name>
+          <rorId>012m9bp23</rorId>
+        </Affiliation>
+      </Affiliations>
+    </OriginatingLaboratory>
+  </OriginatingLaboratories>
 </Resource>

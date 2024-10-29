@@ -92,16 +92,10 @@
                                         data-help-section-id="tsc-temporal"></i></span>
                             </div>
                         </div>
-                        <!--Add/Remove Button-->
-                        <div
-                            class="col-2 col-sm-2 col-md-1 col-lg-1 p-1 d-flex justify-content-center align-items-center">
-                            <button type="button" class="btn btn-danger tscDeleteButton" data-action="delete-tsc-row"
-                                style="width: 36px; margin-right:5px">
-                                -
-                            </button>
-                            <button type="button" class="btn btn-primary tscAddButton" data-action="add-tsc-row"
-                                style="width: 36px">
-                                <?php echo $translations['add']; ?>
+                        <!--Add Button-->
+                        <div class="col-2 col-sm-1 col-md-1 col-lg-1 p-1 d-flex justify-content-center align-items-center">
+                            <button type="button" class="btn btn-primary addtsc" id="tscAddButton" style="width: 36px">
+                              <?php echo $translations['add']; ?>
                             </button>
                         </div>
                     </div>

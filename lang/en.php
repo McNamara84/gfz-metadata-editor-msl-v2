@@ -1,7 +1,7 @@
 <?php
 $translations = [
     // Allgemeines
-    'logotitle' => 'Metadata Editor 1.6',
+    'logotitle' => 'Metadata Editor 1.7',
     'choose' => 'Choose...',
     'valid' => 'Valid',
     'PleaseChoose_invalid' => 'Please choose',
@@ -75,48 +75,8 @@ $translations = [
     'd_other' => 'Other',
     'd_other_tooltip' => 'Please enter other information..',
 
-    // Form Group General
-    'grl' => 'General',
-    'grl_Material' => 'Material',
-    'grl_geo_age' => 'Geological age',
-    'grl_Pore_fluid' => 'Pore fluid',
-    'grl_geo_setting' => 'Geological setting',
-
-    // Form Group Analogue modelling of geological processes
-    'AMOGP' => 'Analogue modelling of geological processes',
-    'AMOGP_M_S' => 'Modeled structure',
-    'AMOGP_M_G_F' => 'Modeled geomorphological feature',
-    'AMOGP_Apparatus' => 'Apparatus',
-    'AMOGP_A_E' => 'Ancillary Equipment',
-    'AMOGP_M_P' => 'measured property',
-    'AMOGP_Software' => 'Software',
-
-    // Form Group Geochemistry
-    'Geochemistry' => 'Geochemistry',
-    'Geochemistry_A_T' => 'Analysis technique',
-    'Geochemistry_M_P' => 'Measured property',
-
-    // Form Group Microsocopy And Tomography
-    'MATomography' => 'Microsocopy and tomography',
-    'MATomography_A' => 'Apparatus',
-    'MATomography_A_E' => 'Ancillary equipment',
-    'MATomography_A_T' => 'Analysis technique',
-    'MATomography_A_F' => 'Analyzed feature',
-    'MATomography_I_P' => 'Inferred parameter',
-
-    // Form Group Paleomagnetism
-    'PALTIS' => 'Paleomagnetism',
-    'PALTIS_A' => 'Apparatus',
-    'PALTIS_E_C' => 'Environment control',
-    'PALTIS_M_P' => 'Measured property',
-    'PALTIS_I_B' => 'Inferred behavior',
-
-    // Form Group Rock and melt physics
-    'RAMP' => 'Rock and melt physics',
-    'RAMP_A' => 'Apparatus',
-    'RAMP_A_E' => 'Ancillary equipment',
-    'RAMP_M_P' => 'Measured property',
-    'RAMP_I_D_B' => 'Inferred deformation behavior',
+    // Form Group MSL-Keywords
+    'mslKeywords' => 'MSL Keywords',
 
     //Formgroup thesaurusKeywords
     'thesaurusKeywords' => 'Thesaurus Keywords',
