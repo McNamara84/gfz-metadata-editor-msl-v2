@@ -18,7 +18,7 @@ class SaveOriginatingLaboratoryTest extends TestCase
         }
         $this->connection = $connection;
 
-        $dbname = 'geobrains-msl-test';
+        $dbname = 'mde2-msl-test';
         if ($this->connection->select_db($dbname) === false) {
             $this->markTestSkipped("Testdatenbank '$dbname' ist nicht verfügbar. Bitte überprüfen Sie die Datenbankverbindung.");
         }
