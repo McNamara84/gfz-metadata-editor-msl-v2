@@ -2,6 +2,8 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 require_once __DIR__ . '/controllers/GeneralController.php';
 require_once __DIR__ . '/controllers/VocabController.php';
+require_once __DIR__ . '/controllers/DatasetController.php';
+require_once __DIR__ . '/controllers/ValidationController.php';
 
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
@@ -17,20 +19,30 @@ $dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r) use ($rout
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
 
+// Debug logging
+error_log("Original URI: " . $uri);
+
 // Strip query string (?foo=bar) and decode URI
 if (false !== $pos = strpos($uri, '?')) {
     $uri = substr($uri, 0, $pos);
 }
 $uri = rawurldecode($uri);
 
-// Remove base path
-$basePath = '/mde-msl/api/v2';
-$uri = substr($uri, strlen($basePath));
+// Vereinfachte URI-Verarbeitung
+if (preg_match('#^/mde-msl/api/v2(.*)#', $uri, $matches)) {
+    // Lokale Entwicklungsumgebung
+    $uri = $matches[1];
+} elseif (preg_match('#^/api/v2(.*)#', $uri, $matches)) {
+    // Produktionsserver
+    $uri = $matches[1];
+}
 
 // Ensure the URI starts with a /
 if (empty($uri) || $uri[0] !== '/') {
     $uri = '/' . $uri;
 }
+
+error_log("Processed URI: " . $uri);
 
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
 switch ($routeInfo[0]) {
