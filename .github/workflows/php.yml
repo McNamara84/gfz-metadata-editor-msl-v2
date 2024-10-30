@@ -51,24 +51,6 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    - name: Create settings.php
-      env:
-        DB_HOST: ${{ secrets.DB_HOST }}
-        DB_USER: ${{ secrets.DB_USER }}
-        DB_PASS: ${{ secrets.DB_PASS }}
-        DB_NAME: ${{ secrets.DB_NAME }}
-      run: |
-        cat << EOF > settings.php
-        function connectDb()
-          {
-          $host = getenv('DB_HOST') ?: '127.0.0.1';
-          $username = getenv('DB_USER') ?: 'test_user';
-          $password = getenv('DB_PASS') ?: 'test_password';
-          $database = getenv('DB_NAME') ?: 'test_database';
-          $conn = new mysqli($host, $username, $password, $database);
-          return $conn;
-          }
-        EOF
     - name: Wait for MySQL to be ready
       run: |
         for i in {30..0}; do
@@ -82,12 +64,50 @@ jobs:
           echo >&2 'MySQL did not start in time.'
           exit 1
         fi
-    
-    # Berechtigungen setzen
-    - name: Set execute permissions for PHPUnit
-      run: chmod +x ./vendor/bin/phpunit
 
-    # Tests ausführen
+    - name: Create settings.php
+      run: |
+        cat << EOF > settings.php
+        <?php
+        function connectDb() {
+            \$host = '127.0.0.1';
+            \$username = 'test_user';
+            \$password = 'test_password';
+            \$database = 'test_database';
+            \$conn = new mysqli(\$host, \$username, \$password, \$database);
+            return \$conn;
+        }
+
+        function getApiKey() {
+            \$apiKeyGoogleMaps = 'test_api_key';
+            // API-Key als JSON zurückgeben
+            echo json_encode(['apiKey' => \$apiKeyGoogleMaps]);
+        }
+
+        // Prüfen, ob die Datei direkt aufgerufen wird
+        if (basename(__FILE__) == basename(\$_SERVER['PHP_SELF'])) {
+            if (\$_SERVER['REQUEST_METHOD'] === 'GET') {
+                getApiKey();
+            }
+        }
+
+        \$connection = connectDb();
+
+        \$apiKeyTimezone = 'test_timezone_api_key';
+        \$maxTitles = 2;
+        \$mslLabsUrl = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/labs/labnames.json';
+
+        \$showFeedbackLink = true;
+        \$smtpHost = 'smtp.test.de';
+        \$smtpPort = 465;
+        \$smtpUser = 'test_user';
+        \$smtpPassword = 'test_password';
+        \$smtpSender = 'test_sender@test.com';
+        \$feedbackAdress = 'feedback@test.com';
+        EOF
+
+    - name: Run install.php to initialize the database
+      run: php install.php
+
     - name: Run PHPUnit tests
-      run: ./vendor/bin/phpunit --configuration phpunit.xml
-
+      run: php ./vendor/bin/phpunit --configuration phpunit.xml
