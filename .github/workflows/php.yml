@@ -36,6 +36,10 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
+    
+    # Berechtigungen setzen
+    - name: Set execute permissions for PHPUnit
+      run: chmod +x ./vendor/bin/phpunit
 
     # Tests ausführen
     - name: Run PHPUnit tests
