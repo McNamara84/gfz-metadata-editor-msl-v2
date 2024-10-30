@@ -11,8 +11,22 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root_password
+          MYSQL_DATABASE: test_database
+          MYSQL_USER: test_user
+          MYSQL_PASSWORD: test_password
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "mysqladmin ping --silent"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 3
 
     steps:
     - uses: actions/checkout@v4
@@ -36,6 +50,38 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
+
+    - name: Create settings.php
+      env:
+        DB_HOST: ${{ secrets.DB_HOST }}
+        DB_USER: ${{ secrets.DB_USER }}
+        DB_PASS: ${{ secrets.DB_PASS }}
+        DB_NAME: ${{ secrets.DB_NAME }}
+      run: |
+        cat << EOF > settings.php
+        function connectDb()
+          {
+          $host = getenv('DB_HOST') ?: '127.0.0.1';
+          $username = getenv('DB_USER') ?: 'test_user';
+          $password = getenv('DB_PASS') ?: 'test_password';
+          $database = getenv('DB_NAME') ?: 'test_database';
+          $conn = new mysqli($host, $username, $password, $database);
+          return $conn;
+          }
+        EOF
+    - name: Wait for MySQL to be ready
+      run: |
+        for i in {30..0}; do
+          if mysqladmin ping -h127.0.0.1 --silent; then
+            break
+          fi
+          echo 'Waiting for MySQL...'
+          sleep 1
+        done
+        if [ "$i" = 0 ]; then
+          echo >&2 'MySQL did not start in time.'
+          exit 1
+        fi
     
     # Berechtigungen setzen
     - name: Set execute permissions for PHPUnit
