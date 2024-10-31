@@ -88,7 +88,7 @@ function createDatabaseStructure($connection)
                 "Rights" => "CREATE TABLE IF NOT EXISTS `Rights` (
             `rights_id` INT NOT NULL AUTO_INCREMENT,
             `text` VARCHAR(100) NOT NULL,
-            `rightsIdentifier` VARCHAR(10) NULL,
+            `rightsIdentifier` VARCHAR(20) NULL,
             `rightsURI` VARCHAR(256) NULL,
             `forSoftware` SMALLINT,
             PRIMARY KEY (`rights_id`));",
