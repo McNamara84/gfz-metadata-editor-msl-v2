@@ -17,10 +17,14 @@ class SaveFreekeywordsTest extends TestCase
             $connection = connectDb();
         }
         $this->connection = $connection;
-
+        // Überprüfen, ob die Testdatenbank verfügbar ist
         $dbname = 'mde2-msl-test';
         if ($this->connection->select_db($dbname) === false) {
-            $this->markTestSkipped("Testdatenbank '$dbname' ist nicht verfügbar. Bitte überprüfen Sie die Datenbankverbindung.");
+            // Testdatenbank erstellen
+            $connection->query("CREATE DATABASE " . $dbname);
+            $connection->select_db($dbname);
+            // install.php ausführen
+            require 'install.php';
         }
     }
 
@@ -190,12 +194,14 @@ class SaveFreekeywordsTest extends TestCase
         $resource_id = saveResourceInformationAndRights($this->connection, $resourceData);
 
         $postData = [
-            "freekeywords" => [json_encode([
-                ["value" => "ExistingCurated1"],
-                ["value" => "ExistingUncurated1"],
-                ["value" => "NewKeyword1"],
-                ["value" => "NewKeyword2"]
-            ])]
+            "freekeywords" => [
+                json_encode([
+                    ["value" => "ExistingCurated1"],
+                    ["value" => "ExistingUncurated1"],
+                    ["value" => "NewKeyword1"],
+                    ["value" => "NewKeyword2"]
+                ])
+            ]
         ];
 
         saveFreeKeywords($this->connection, $postData, $resource_id);

@@ -30,10 +30,14 @@ class SaveAuthorsTest extends TestCase
             $connection = connectDb();
         }
         $this->connection = $connection;
-
+        // Überprüfen, ob die Testdatenbank verfügbar ist
         $dbname = 'mde2-msl-test';
         if ($this->connection->select_db($dbname) === false) {
-            $this->markTestSkipped("Testdatenbank '$dbname' ist nicht verfügbar. Bitte überprüfen Sie die Datenbankverbindung.");
+            // Testdatenbank erstellen
+            $connection->query("CREATE DATABASE " . $dbname);
+            $connection->select_db($dbname);
+            // install.php ausführen
+            require 'install.php';
         }
     }
 
