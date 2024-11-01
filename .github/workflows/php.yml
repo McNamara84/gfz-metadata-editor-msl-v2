@@ -17,7 +17,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: root_password
-          MYSQL_DATABASE: test_database
+          MYSQL_DATABASE: mde2-msl-test
           MYSQL_USER: test_user
           MYSQL_PASSWORD: test_password
         ports:
@@ -81,7 +81,7 @@ jobs:
             \$host = '127.0.0.1';
             \$username = 'test_user';
             \$password = 'test_password';
-            \$database = 'test_database';
+            \$database = 'mde2-msl-test';
             \$conn = new mysqli(\$host, \$username, \$password, \$database);
             return \$conn;
         }
