@@ -59,9 +59,19 @@ class SaveFundingreferencesTest extends TestCase
             "title" => ["Test Complete Funding Reference"],
             "titleType" => [1]
         ];
+
+        // Debug: Prüfen der Datenbankverbindung
+        fwrite(STDERR, "Database connection state: " . ($this->connection->ping() ? "connected" : "disconnected") . "\n");
+
         $resource_id = saveResourceInformationAndRights($this->connection, $resourceData);
-        // Debugging-Ausgabe für $resource_id
-        fwrite(STDERR, "Resource ID: " . var_export($resource_id, true) . "\n");
+        fwrite(STDERR, "Created resource_id: " . $resource_id . "\n");
+
+        // Verify resource exists
+        $stmt = $this->connection->prepare("SELECT * FROM Resource WHERE resource_id = ?");
+        $stmt->bind_param("i", $resource_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        fwrite(STDERR, "Resource exists in database: " . ($result->num_rows > 0 ? "yes" : "no") . "\n");
 
         $postData = [
             "funder" => ["Gordon and Betty Moore Foundation"],
@@ -70,16 +80,18 @@ class SaveFundingreferencesTest extends TestCase
             "grantName" => ["Socioenvironmental Monitoring of the Amazon Basin and Xingu"]
         ];
 
-        saveFundingReferences($this->connection, $postData, $resource_id);
+        // Debug: Prüfen der PostData
+        fwrite(STDERR, "PostData: " . print_r($postData, true) . "\n");
+
+        $result = saveFundingReferences($this->connection, $postData, $resource_id);
+        fwrite(STDERR, "saveFundingReferences result: " . ($result ? "true" : "false") . "\n");
 
         // Check if the Funding Reference was saved correctly
         $stmt = $this->connection->prepare("SELECT * FROM Funding_Reference WHERE funder = ?");
         $stmt->bind_param("s", $postData["funder"][0]);
         $stmt->execute();
         $fundingReference = $stmt->get_result()->fetch_assoc();
-
-        // Debugging-Ausgabe für $fundingReference
-        fwrite(STDERR, "Funding Reference: " . var_export($fundingReference, true) . "\n");
+        fwrite(STDERR, "Funding Reference data: " . print_r($fundingReference, true) . "\n");
 
         $this->assertNotNull($fundingReference, "Die Funding Reference sollte gespeichert worden sein.");
 
@@ -91,13 +103,20 @@ class SaveFundingreferencesTest extends TestCase
         $this->assertEquals($postData["grantNummer"][0], $fundingReference["grantnumber"]);
         $this->assertEquals($postData["grantName"][0], $fundingReference["grantname"]);
 
-        $stmt = $this->connection->prepare("SELECT * FROM Resource_has_Funding_Reference WHERE Resource_resource_id = ? AND Funding_Reference_funding_reference_id = ?");
-        $stmt->bind_param("ii", $resource_id, $fundingReference["funding_reference_id"]);
-        $stmt->execute();
-        $relation = $stmt->get_result()->fetch_assoc();
-
-        // Debugging-Ausgabe für $relation
-        fwrite(STDERR, "Relation: " . var_export($relation, true) . "\n");
+        if ($fundingReference) {
+            // Check linking table
+            $stmt = $this->connection->prepare("SELECT * FROM Resource_has_Funding_Reference 
+            WHERE Resource_resource_id = ? AND Funding_Reference_funding_reference_id = ?");
+            $stmt->bind_param("ii", $resource_id, $fundingReference['funding_reference_id']);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            fwrite(STDERR, "Link exists: " . ($result->num_rows > 0 ? "yes" : "no") . "\n");
+            if ($result->num_rows === 0) {
+                // Check for SQL errors
+                fwrite(STDERR, "Last SQL Error: " . $this->connection->error . "\n");
+            }
+            $relation = $result->fetch_assoc();
+        }
 
         $this->assertNotNull($relation, "Die Verknüpfung zwischen Resource und Funding Reference sollte existieren.");
     }
