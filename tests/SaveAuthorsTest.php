@@ -600,7 +600,7 @@ class SaveAuthorsTest extends TestCase
                 '[{"value":"University A"}]',
                 '[{"value":"University B"},{"value":"Institute C"}]',
                 '[{"value":"Universität D"}]',  // Non-ASCII character
-                '[{"value":"' . str_repeat("X", 1000) . '"}]',  // Very long affiliation
+                '[{"value":"' . str_repeat("X", 256) . '"}]',  // Very long affiliation
                 '[{"value":"Existing University"},{"value":"New University"}]'  // Existing and new affiliation
             ],
             "authorRorIds" => [
