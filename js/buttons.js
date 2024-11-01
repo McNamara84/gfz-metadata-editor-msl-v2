@@ -332,6 +332,8 @@ $(document).ready(function () {
 
     // Neue AuthorLine zum DOM hinzufügen
     fundingreferenceGroup.append(newFundingReferenceRow);
+    // Hilfe-Buttons in geclonter Zeile entfernen
+    deleteHelpButtonFromClonedRows(newFundingReferenceRow);
 
     // Event-Handler für RemoveButton
     newFundingReferenceRow.on("click", ".removeButton", function () {
@@ -377,6 +379,8 @@ $(document).ready(function () {
 
     // Neue LaboratoryLine zum DOM hinzufügen
     laboratoryGroup.append(newOriginatingLaboratoryRow);
+    // Hilfe-Buttons in geklonter Zeile entfernen
+    deleteHelpButtonFromClonedRows(newOriginatingLaboratoryRow);
 
     // Tagify für die neue Zeile initialisieren
     initializeTagify(newOriginatingLaboratoryRow, labData);
