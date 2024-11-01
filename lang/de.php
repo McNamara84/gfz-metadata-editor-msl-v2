@@ -34,7 +34,7 @@ $translations = [
     'lastname_invalid' => 'Bitte geben Sie einen Nachnamen an.',
     'firstname_invalid' => 'Bitte geben Sie einen Vornamen an.',
     'authorORCID' => 'ORCID',
-    'authorORCID_invalid' => 'Geben Sie eine gültige ORCID im Format xxxx-xxxx-xxxx-xxxx ein.',
+    'ORCID_invalid' => 'Geben Sie eine gültige ORCID ein (XXXX-XXXX-XXXX-XXX(X))',
     'affiliation_invalid' => 'Bitte geben Sie eine Zugehörigkeit an.',
 
     // Form Group Contactpersons
@@ -60,7 +60,6 @@ $translations = [
     'Organisation' => 'Organisationsname',
     'Organisation_invalid' => 'Bitte geben Sie einen gültigen Organisationsname an.',
     'contributors_ORCID' => 'Mitwirkende ORCID',
-    'contributors_ORCID_invalid' => 'Geben Sie eine gültige ORCID ein (XXXX-XXXX-XXXX-XXX(X))',
     'contributorsPersonZeile' => 'Mitwirkende Person(en)',
     'contributorsInstitutionZeile' => 'Mitwirkende Institution(en)',
 
