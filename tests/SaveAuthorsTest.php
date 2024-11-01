@@ -20,8 +20,8 @@ class SaveAuthorsTest extends TestCase
     /**
      * Setzt die Testumgebung auf.
      * 
-     * Stellt eine Verbindung zur Testdatenbank her und überspringt den Test,
-     * falls die Datenbank nicht verfügbar ist.
+     * Stellt eine Verbindung zur Testdatenbank her und erstellt
+     * die Datenbank falls sie nicht verfügbar ist.
      */
     protected function setUp(): void
     {
