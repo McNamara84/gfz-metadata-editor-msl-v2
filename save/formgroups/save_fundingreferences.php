@@ -94,12 +94,20 @@ function extractLastTenDigits($funderId)
  * @param int $resource_id Die ID der Ressource.
  * @param int $funding_reference_id Die ID der Funding Reference.
  *
- * @return void
+ * @return bool
  */
 function linkResourceToFundingReference($connection, $resource_id, $funding_reference_id)
 {
     $stmt = $connection->prepare("INSERT INTO Resource_has_Funding_Reference (`Resource_resource_id`, `Funding_Reference_funding_reference_id`) VALUES (?, ?)");
+    if (!$stmt) {
+        error_log("Prepare failed in linkResourceToFundingReference: " . $connection->error);
+        return false;
+    }
     $stmt->bind_param("ii", $resource_id, $funding_reference_id);
-    $stmt->execute();
+    if (!$stmt->execute()) {
+        error_log("Execute failed in linkResourceToFundingReference: " . $stmt->error);
+        return false;
+    }
     $stmt->close();
+    return true;
 }
