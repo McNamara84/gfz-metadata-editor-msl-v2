@@ -116,7 +116,7 @@ function createDatabaseStructure($connection)
                 "Affiliation" => "CREATE TABLE IF NOT EXISTS `Affiliation` (
             `affiliation_id` INT NOT NULL AUTO_INCREMENT,
             `name` VARCHAR(265) NOT NULL,
-            `rorId` VARCHAR(9) NULL,
+            `rorId` VARCHAR(25) NULL,
             PRIMARY KEY (`affiliation_id`));",
 
                 "Title_Type" => "CREATE TABLE IF NOT EXISTS `Title_Type` (
