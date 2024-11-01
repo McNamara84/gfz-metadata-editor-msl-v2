@@ -280,14 +280,20 @@ function createDatabaseStructure($connection)
             PRIMARY KEY (`funding_reference_id`));",
 
                 "Resource_has_Funding_Reference" => "CREATE TABLE IF NOT EXISTS `Resource_has_Funding_Reference` (
-            `Resource_has_Funding_Reference_id` INT NOT NULL AUTO_INCREMENT,
-            `Resource_resource_id` INT NOT NULL,
-            `Funding_Reference_funding_reference_id` INT NOT NULL,
-            PRIMARY KEY (`Resource_has_Funding_Reference_id`),
-            FOREIGN KEY (`Resource_resource_id`)
-            REFERENCES `Resource` (`resource_id`),
-            FOREIGN KEY (`Funding_Reference_funding_reference_id`)
-            REFERENCES `Funding_Reference` (`funding_reference_id`));",
+           `Resource_has_Funding_Reference_id` INT NOT NULL AUTO_INCREMENT,
+           `Resource_resource_id` INT NOT NULL,
+           `Funding_Reference_funding_reference_id` INT NOT NULL,
+           PRIMARY KEY (`Resource_has_Funding_Reference_id`),
+           CONSTRAINT `fk_resource_funding`
+           FOREIGN KEY (`Resource_resource_id`)
+           REFERENCES `Resource` (`resource_id`)
+           ON DELETE CASCADE
+           ON UPDATE CASCADE,
+           CONSTRAINT `fk_funding_reference`
+           FOREIGN KEY (`Funding_Reference_funding_reference_id`)
+           REFERENCES `Funding_Reference` (`funding_reference_id`)
+           ON DELETE CASCADE
+           ON UPDATE CASCADE);",
 
                 "Resource_has_Author" => "CREATE TABLE IF NOT EXISTS `Resource_has_Author` (
             `Resource_has_Author_id` INT NOT NULL AUTO_INCREMENT,

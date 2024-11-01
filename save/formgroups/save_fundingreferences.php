@@ -107,33 +107,42 @@ function extractLastTenDigits($funderId)
  */
 function linkResourceToFundingReference($connection, $resource_id, $funding_reference_id)
 {
-    // Debug-Ausgaben
-    fwrite(STDERR, "Attempting to link resource_id: $resource_id with funding_reference_id: $funding_reference_id\n");
+    fwrite(STDERR, "Attempting to link: resource_id=$resource_id, funding_reference_id=$funding_reference_id\n");
 
-    // Prüfen ob die IDs gültig sind
-    if (!$resource_id || !$funding_reference_id) {
-        fwrite(STDERR, "Invalid IDs: resource_id or funding_reference_id is empty\n");
+    // Verify both IDs exist in their respective tables
+    $resourceCheck = $connection->prepare("SELECT 1 FROM Resource WHERE resource_id = ?");
+    $resourceCheck->bind_param("i", $resource_id);
+    $resourceCheck->execute();
+    $resourceExists = $resourceCheck->get_result()->num_rows > 0;
+    fwrite(STDERR, "Resource exists: " . ($resourceExists ? "yes" : "no") . "\n");
+
+    $fundingCheck = $connection->prepare("SELECT 1 FROM Funding_Reference WHERE funding_reference_id = ?");
+    $fundingCheck->bind_param("i", $funding_reference_id);
+    $fundingCheck->execute();
+    $fundingExists = $fundingCheck->get_result()->num_rows > 0;
+    fwrite(STDERR, "Funding Reference exists: " . ($fundingExists ? "yes" : "no") . "\n");
+
+    if (!$resourceExists || !$fundingExists) {
+        fwrite(STDERR, "One or both IDs do not exist in their tables\n");
         return false;
     }
 
-    $stmt = $connection->prepare("INSERT INTO Resource_has_Funding_Reference (Resource_resource_id, Funding_Reference_funding_reference_id) VALUES (?, ?)");
+    $stmt = $connection->prepare("INSERT INTO Resource_has_Funding_Reference 
+        (Resource_resource_id, Funding_Reference_funding_reference_id) VALUES (?, ?)");
+
     if (!$stmt) {
-        fwrite(STDERR, "Prepare failed in linkResourceToFundingReference: " . $connection->error . "\n");
+        fwrite(STDERR, "Prepare failed: " . $connection->error . "\n");
         return false;
     }
 
     $stmt->bind_param("ii", $resource_id, $funding_reference_id);
 
-    if (!$stmt->execute()) {
-        fwrite(STDERR, "Execute failed in linkResourceToFundingReference: " . $stmt->error . "\n");
-        $stmt->close();
-        return false;
+    $result = $stmt->execute();
+    if (!$result) {
+        fwrite(STDERR, "Execute failed: " . $stmt->error . "\n");
     }
 
-    $affectedRows = $stmt->affected_rows;
-    fwrite(STDERR, "Affected rows after insert: $affectedRows\n");
-
     $stmt->close();
-    return $affectedRows > 0;
+    return $result;
 }
 
