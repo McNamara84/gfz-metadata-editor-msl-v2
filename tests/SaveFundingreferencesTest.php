@@ -12,6 +12,9 @@ class SaveFundingreferencesTest extends TestCase
 
     protected function setUp(): void
     {
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
         global $connection;
         if (!$connection) {
             $connection = connectDb();
