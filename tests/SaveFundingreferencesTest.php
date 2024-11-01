@@ -60,6 +60,8 @@ class SaveFundingreferencesTest extends TestCase
             "titleType" => [1]
         ];
         $resource_id = saveResourceInformationAndRights($this->connection, $resourceData);
+        // Debugging-Ausgabe für $resource_id
+        fwrite(STDERR, "Resource ID: " . var_export($resource_id, true) . "\n");
 
         $postData = [
             "funder" => ["Gordon and Betty Moore Foundation"],
@@ -76,6 +78,9 @@ class SaveFundingreferencesTest extends TestCase
         $stmt->execute();
         $fundingReference = $stmt->get_result()->fetch_assoc();
 
+        // Debugging-Ausgabe für $fundingReference
+        fwrite(STDERR, "Funding Reference: " . var_export($fundingReference, true) . "\n");
+
         $this->assertNotNull($fundingReference, "Die Funding Reference sollte gespeichert worden sein.");
 
         // Extrahiere die letzten 10 Ziffern der erwarteten FunderId
@@ -86,11 +91,13 @@ class SaveFundingreferencesTest extends TestCase
         $this->assertEquals($postData["grantNummer"][0], $fundingReference["grantnumber"]);
         $this->assertEquals($postData["grantName"][0], $fundingReference["grantname"]);
 
-        // Check if the relation to the resource was created
         $stmt = $this->connection->prepare("SELECT * FROM Resource_has_Funding_Reference WHERE Resource_resource_id = ? AND Funding_Reference_funding_reference_id = ?");
         $stmt->bind_param("ii", $resource_id, $fundingReference["funding_reference_id"]);
         $stmt->execute();
         $relation = $stmt->get_result()->fetch_assoc();
+
+        // Debugging-Ausgabe für $relation
+        fwrite(STDERR, "Relation: " . var_export($relation, true) . "\n");
 
         $this->assertNotNull($relation, "Die Verknüpfung zwischen Resource und Funding Reference sollte existieren.");
     }
