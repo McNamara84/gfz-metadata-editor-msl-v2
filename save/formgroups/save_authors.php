@@ -106,11 +106,11 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
 
     foreach ($affiliations_array as $index => $affiliation_name) {
         $rorId = $rorIds_array[$index] ?? null;
-        $rorId = str_replace("https://ror.org/", "", $rorId);
+        $rorId = $rorId ? str_replace("https://ror.org/", "", $rorId) : null;
 
-        // Prüfen, ob die Affiliation bereits existiert
-        $stmt = $connection->prepare("SELECT affiliation_id FROM Affiliation WHERE name = ?");
-        $stmt->bind_param("s", $affiliation_name);
+        // Prüfen, ob die Affiliation bereits existiert (berücksichtige sowohl Name als auch ROR-ID)
+        $stmt = $connection->prepare("SELECT affiliation_id FROM Affiliation WHERE name = ? OR (rorId = ? AND ? IS NOT NULL)");
+        $stmt->bind_param("sss", $affiliation_name, $rorId, $rorId);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -118,12 +118,11 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
             $row = $result->fetch_assoc();
             $affiliation_id = $row['affiliation_id'];
 
-            // Aktualisiere die ROR-ID, falls nötig
-            if (!empty($rorId)) {
-                $stmt = $connection->prepare("UPDATE Affiliation SET rorId = ? WHERE affiliation_id = ?");
-                $stmt->bind_param("si", $rorId, $affiliation_id);
-                $stmt->execute();
-            }
+            // Aktualisiere den Namen und/oder die ROR-ID, falls nötig
+            $updateStmt = $connection->prepare("UPDATE Affiliation SET name = ?, rorId = COALESCE(?, rorId) WHERE affiliation_id = ?");
+            $updateStmt->bind_param("ssi", $affiliation_name, $rorId, $affiliation_id);
+            $updateStmt->execute();
+            $updateStmt->close();
         } else {
             // Neue Affiliation einfügen
             $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?)");
@@ -133,7 +132,7 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
         }
         $stmt->close();
 
-        // Verknüpfung zwischen Autor und Affiliation erstellen, falls sie noch nicht existiert
+        // Verknüpfung zwischen Autor und Affiliation erstellen
         $stmt = $connection->prepare("INSERT IGNORE INTO Author_has_Affiliation (Author_author_id, Affiliation_affiliation_id) VALUES (?, ?)");
         $stmt->bind_param("ii", $author_id, $affiliation_id);
         $stmt->execute();
