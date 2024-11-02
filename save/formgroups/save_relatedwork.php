@@ -2,8 +2,8 @@
 /**
  * Speichert die Related Work Informationen in der Datenbank.
  *
- * Diese Funktion verarbeitet die Eingabedaten für Related Work,
- * speichert sie in der Datenbank und erstellt die Verknüpfung zur Ressource.
+ * Diese Funktion verarbeitet die Eingabedaten für Related Work, wenn alle Felder einer Zeile
+ * ausgefüllt wurden und speichert sie in der Datenbank und erstellt die Verknüpfung zur Ressource.
  *
  * @param mysqli $connection Die Datenbankverbindung.
  * @param array $postData Die POST-Daten aus dem Formular.
@@ -26,6 +26,11 @@ function saveRelatedWork($connection, $postData, $resource_id)
         $len = count($rIdentifier);
 
         for ($i = 0; $i < $len; $i++) {
+            // Überspringe leere Identifier oder wenn keine Relation ausgewählt wurde
+            if (empty($rIdentifier[$i]) || empty($relation[$i])) {
+                continue;
+            }
+
             $relation_id = getRelationId($connection, $relation[$i]);
             $identifier_type_id = getIdentifierTypeId($connection, $rIdentifierType[$i]);
 
