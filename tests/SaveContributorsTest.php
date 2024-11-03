@@ -45,6 +45,12 @@ class SaveContributorsTest extends TestCase
         $this->connection->query("DELETE FROM Resource_has_Contributor_Person");
         $this->connection->query("DELETE FROM Resource_has_Contributor_Institution");
         $this->connection->query("DELETE FROM Resource_has_Author");
+        $this->connection->query("DELETE FROM Author_has_Affiliation");
+        $this->connection->query("DELETE FROM Contact_Person_has_Affiliation");
+        $this->connection->query("DELETE FROM Contributor_Person_has_Affiliation");
+        $this->connection->query("DELETE FROM Contributor_Institution_has_Affiliation");
+        $this->connection->query("DELETE FROM Originating_Laboratory_has_Affiliation");
+        $this->connection->query("DELETE FROM Affiliation");
         $this->connection->query("DELETE FROM Title");
         $this->connection->query("DELETE FROM Description");
         $this->connection->query("DELETE FROM Spatial_Temporal_Coverage");
