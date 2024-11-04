@@ -10,6 +10,7 @@ $translations = [
     'affiliation' => 'Zugehörigkeit(en)',
     'role_label' => 'Rolle(n)',
     'add' => '+',
+    'no_javascript_alert' => 'JavaScript ist deaktiviert. Bitte aktivieren Sie JavaScript, um dieses Formular zu verwenden.',
 
     // Form Group Resource Information
     'resourceInformation' => 'Informationen zur Ressource',
