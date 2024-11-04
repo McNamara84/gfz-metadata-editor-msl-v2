@@ -2,7 +2,7 @@
 ///////////////////////////////////////////////////////////////////
 // Description: French language file for the metadata editor     //
 // Authors: Matan Israel, Holger Ehrmann                         //
-// Version: 1.7                                                  //
+// Version: 1.8                                                  //
 // License: CC BY 4.0                                            //
 ///////////////////////////////////////////////////////////////////
 
@@ -17,6 +17,7 @@ $translations = [
     'affiliation' => 'Affiliation(s)',
     'role_label' => 'Rôle(s)',
     'add' => '+',
+    'no_javascript_alert' => 'JavaScript est désactivé. Veuillez activer JavaScript pour utiliser ce formulaire.',
 
     // Groupe de formulaire Informations sur la ressource
     'resourceInformation' => 'Informations sur la ressource',
