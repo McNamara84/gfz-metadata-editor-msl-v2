@@ -2,13 +2,16 @@
 /**
  * Entry point for API version 2.
  *
- * This script initializes the routing for the API, processes incoming HTTP requests,
+ * Initializes routing for the API, processes incoming HTTP requests,
  * and dispatches them to the appropriate controllers based on the URI and HTTP method.
  */
 
 // Define the API version.
-$version = 'v2'; // Add this line to define the version.
+$version = 'v2';
 
+/**
+ * Include necessary dependencies and controller classes.
+ */
 require_once __DIR__ . '/../../vendor/autoload.php';
 require_once __DIR__ . '/controllers/GeneralController.php';
 require_once __DIR__ . '/controllers/VocabController.php';
@@ -45,7 +48,9 @@ $dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r) use ($rout
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
 
-// Debug logging: Log the original URI.
+/**
+ * Log the original URI for debugging purposes.
+ */
 error_log("Original URI: " . $uri);
 
 /**
@@ -84,7 +89,9 @@ if (empty($uri) || $uri[0] !== '/') {
     $uri = '/' . $uri;
 }
 
-// Debug logging: Log the processed URI.
+/**
+ * Log the processed URI for debugging purposes.
+ */
 error_log("Processed URI: " . $uri);
 
 /**
