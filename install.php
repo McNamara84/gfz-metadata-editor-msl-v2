@@ -88,7 +88,7 @@ function createDatabaseStructure($connection)
                 "Rights" => "CREATE TABLE IF NOT EXISTS `Rights` (
             `rights_id` INT NOT NULL AUTO_INCREMENT,
             `text` VARCHAR(100) NOT NULL,
-            `rightsIdentifier` VARCHAR(10) NULL,
+            `rightsIdentifier` VARCHAR(20) NULL,
             `rightsURI` VARCHAR(256) NULL,
             `forSoftware` SMALLINT,
             PRIMARY KEY (`rights_id`));",
@@ -116,7 +116,7 @@ function createDatabaseStructure($connection)
                 "Affiliation" => "CREATE TABLE IF NOT EXISTS `Affiliation` (
             `affiliation_id` INT NOT NULL AUTO_INCREMENT,
             `name` VARCHAR(265) NOT NULL,
-            `rorId` VARCHAR(9) NULL,
+            `rorId` VARCHAR(25) NULL,
             PRIMARY KEY (`affiliation_id`));",
 
                 "Title_Type" => "CREATE TABLE IF NOT EXISTS `Title_Type` (
@@ -246,7 +246,7 @@ function createDatabaseStructure($connection)
             `identifier_type_id` INT NOT NULL AUTO_INCREMENT,
             `name` VARCHAR(45) NOT NULL,
             `description` TEXT(1000) NULL,
-            `pattern` VARCHAR(99),
+            `pattern` VARCHAR(256),
             PRIMARY KEY (`identifier_type_id`));",
 
                 "Related_Work" => "CREATE TABLE IF NOT EXISTS `Related_Work` (
@@ -280,14 +280,20 @@ function createDatabaseStructure($connection)
             PRIMARY KEY (`funding_reference_id`));",
 
                 "Resource_has_Funding_Reference" => "CREATE TABLE IF NOT EXISTS `Resource_has_Funding_Reference` (
-            `Resource_has_Funding_Reference_id` INT NOT NULL AUTO_INCREMENT,
-            `Resource_resource_id` INT NOT NULL,
-            `Funding_Reference_funding_reference_id` INT NOT NULL,
-            PRIMARY KEY (`Resource_has_Funding_Reference_id`),
-            FOREIGN KEY (`Resource_resource_id`)
-            REFERENCES `Resource` (`resource_id`),
-            FOREIGN KEY (`Funding_Reference_funding_reference_id`)
-            REFERENCES `Funding_Reference` (`funding_reference_id`));",
+           `Resource_has_Funding_Reference_id` INT NOT NULL AUTO_INCREMENT,
+           `Resource_resource_id` INT NOT NULL,
+           `Funding_Reference_funding_reference_id` INT NOT NULL,
+           PRIMARY KEY (`Resource_has_Funding_Reference_id`),
+           CONSTRAINT `fk_resource_funding`
+           FOREIGN KEY (`Resource_resource_id`)
+           REFERENCES `Resource` (`resource_id`)
+           ON DELETE CASCADE
+           ON UPDATE CASCADE,
+           CONSTRAINT `fk_funding_reference`
+           FOREIGN KEY (`Funding_Reference_funding_reference_id`)
+           REFERENCES `Funding_Reference` (`funding_reference_id`)
+           ON DELETE CASCADE
+           ON UPDATE CASCADE);",
 
                 "Resource_has_Author" => "CREATE TABLE IF NOT EXISTS `Resource_has_Author` (
             `Resource_has_Author_id` INT NOT NULL AUTO_INCREMENT,

@@ -15,6 +15,11 @@
  */
 function saveFundingReferences($connection, $postData, $resource_id)
 {
+    if (!$resource_id) {
+        error_log("Invalid resource_id provided");
+        return false;
+    }
+
     if (
         isset($postData['funder'], $postData['funderId'], $postData['grantNummer'], $postData['grantName']) &&
         is_array($postData['funder']) && is_array($postData['funderId']) &&
@@ -29,22 +34,26 @@ function saveFundingReferences($connection, $postData, $resource_id)
         $saveSuccessful = false;
 
         for ($i = 0; $i < $len; $i++) {
-            // Überprüfe, ob das Pflichtfeld 'funder' ausgefüllt ist
             if (empty($funder[$i])) {
-                continue;  // Überspringe diesen Eintrag, wenn das Pflichtfeld leer ist
+                continue;
             }
 
-            // Extrahiere die letzten 10 Stellen der CrossRef Funder ID, falls vorhanden
             $funderIdString = !empty($funderId[$i]) ? extractLastTenDigits($funderId[$i]) : null;
             $funderidTyp = !empty($funderIdString) ? "Crossref Funder ID" : null;
 
-            error_log("Original FunderId: " . $funderId[$i]);
-            error_log("Extracted FunderId: " . $funderIdString);
+            error_log("Processing funding reference for funder: " . $funder[$i]);
 
             $funding_reference_id = insertFundingReference($connection, $funder[$i], $funderIdString, $funderidTyp, $grantNummer[$i], $grantName[$i]);
+
             if ($funding_reference_id) {
-                linkResourceToFundingReference($connection, $resource_id, $funding_reference_id);
-                $saveSuccessful = true;
+                error_log("Successfully inserted funding reference with ID: " . $funding_reference_id);
+                $linkResult = linkResourceToFundingReference($connection, $resource_id, $funding_reference_id);
+                if ($linkResult) {
+                    $saveSuccessful = true;
+                    error_log("Successfully linked resource to funding reference");
+                } else {
+                    error_log("Failed to link resource to funding reference");
+                }
             } else {
                 error_log("Failed to insert Funding Reference");
             }
@@ -94,12 +103,72 @@ function extractLastTenDigits($funderId)
  * @param int $resource_id Die ID der Ressource.
  * @param int $funding_reference_id Die ID der Funding Reference.
  *
- * @return void
+ * @return bool
  */
 function linkResourceToFundingReference($connection, $resource_id, $funding_reference_id)
 {
-    $stmt = $connection->prepare("INSERT INTO Resource_has_Funding_Reference (`Resource_resource_id`, `Funding_Reference_funding_reference_id`) VALUES (?, ?)");
+    fwrite(STDERR, "\n=== Linking Resource to Funding Reference ===\n");
+    fwrite(STDERR, "Resource ID: $resource_id\n");
+    fwrite(STDERR, "Funding Reference ID: $funding_reference_id\n");
+
+    // Überprüfen, ob die IDs gültig sind
+    if (!$resource_id || !$funding_reference_id) {
+        fwrite(STDERR, "ERROR: Invalid IDs provided\n");
+        return false;
+    }
+
+    // Überprüfen, ob die Resource existiert
+    $resourceCheck = $connection->prepare("SELECT resource_id FROM Resource WHERE resource_id = ?");
+    $resourceCheck->bind_param("i", $resource_id);
+    $resourceCheck->execute();
+    if ($resourceCheck->get_result()->num_rows === 0) {
+        fwrite(STDERR, "ERROR: Resource does not exist\n");
+        return false;
+    }
+
+    // Überprüfen, ob die Funding Reference existiert
+    $fundingCheck = $connection->prepare("SELECT funding_reference_id FROM Funding_Reference WHERE funding_reference_id = ?");
+    $fundingCheck->bind_param("i", $funding_reference_id);
+    $fundingCheck->execute();
+    if ($fundingCheck->get_result()->num_rows === 0) {
+        fwrite(STDERR, "ERROR: Funding Reference does not exist\n");
+        return false;
+    }
+
+    // Überprüfen, ob die Verknüpfung bereits existiert
+    $existingCheck = $connection->prepare(
+        "SELECT 1 FROM Resource_has_Funding_Reference 
+         WHERE Resource_resource_id = ? AND Funding_Reference_funding_reference_id = ?"
+    );
+    $existingCheck->bind_param("ii", $resource_id, $funding_reference_id);
+    $existingCheck->execute();
+    if ($existingCheck->get_result()->num_rows > 0) {
+        fwrite(STDERR, "NOTE: Link already exists\n");
+        return true;
+    }
+
+    // Verknüpfung erstellen
+    $stmt = $connection->prepare(
+        "INSERT INTO Resource_has_Funding_Reference 
+         (Resource_resource_id, Funding_Reference_funding_reference_id) 
+         VALUES (?, ?)"
+    );
+
+    if (!$stmt) {
+        fwrite(STDERR, "ERROR: Prepare failed: " . $connection->error . "\n");
+        return false;
+    }
+
     $stmt->bind_param("ii", $resource_id, $funding_reference_id);
-    $stmt->execute();
+
+    $success = $stmt->execute();
+    if (!$success) {
+        fwrite(STDERR, "ERROR: Execute failed: " . $stmt->error . "\n");
+        $stmt->close();
+        return false;
+    }
+
+    fwrite(STDERR, "SUCCESS: Link created successfully\n");
     $stmt->close();
+    return true;
 }

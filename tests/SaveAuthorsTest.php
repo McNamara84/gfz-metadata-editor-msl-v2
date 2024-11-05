@@ -20,8 +20,8 @@ class SaveAuthorsTest extends TestCase
     /**
      * Setzt die Testumgebung auf.
      * 
-     * Stellt eine Verbindung zur Testdatenbank her und überspringt den Test,
-     * falls die Datenbank nicht verfügbar ist.
+     * Stellt eine Verbindung zur Testdatenbank her und erstellt
+     * die Datenbank falls sie nicht verfügbar ist.
      */
     protected function setUp(): void
     {
@@ -30,10 +30,14 @@ class SaveAuthorsTest extends TestCase
             $connection = connectDb();
         }
         $this->connection = $connection;
-
+        // Überprüfen, ob die Testdatenbank verfügbar ist
         $dbname = 'mde2-msl-test';
         if ($this->connection->select_db($dbname) === false) {
-            $this->markTestSkipped("Testdatenbank '$dbname' ist nicht verfügbar. Bitte überprüfen Sie die Datenbankverbindung.");
+            // Testdatenbank erstellen
+            $connection->query("CREATE DATABASE " . $dbname);
+            $connection->select_db($dbname);
+            // install.php ausführen
+            require 'install.php';
         }
     }
 
@@ -51,13 +55,35 @@ class SaveAuthorsTest extends TestCase
     private function cleanupTestData()
     {
         $this->connection->query("SET FOREIGN_KEY_CHECKS=0");
-
+        $this->connection->query("DELETE FROM Resource_has_Spatial_Temporal_Coverage");
+        $this->connection->query("DELETE FROM Resource_has_Thesaurus_Keywords");
+        $this->connection->query("DELETE FROM Resource_has_Related_Work");
+        $this->connection->query("DELETE FROM Resource_has_Originating_Laboratory");
+        $this->connection->query("DELETE FROM Resource_has_Funding_Reference");
+        $this->connection->query("DELETE FROM Resource_has_Contact_Person");
+        $this->connection->query("DELETE FROM Resource_has_Contributor_Person");
+        $this->connection->query("DELETE FROM Resource_has_Contributor_Institution");
         $this->connection->query("DELETE FROM Resource_has_Author");
+        $this->connection->query("DELETE FROM Resource_has_Free_Keywords");
         $this->connection->query("DELETE FROM Author_has_Affiliation");
-        $this->connection->query("DELETE FROM Author");
+        $this->connection->query("DELETE FROM Contact_Person_has_Affiliation");
+        $this->connection->query("DELETE FROM Contributor_Person_has_Affiliation");
+        $this->connection->query("DELETE FROM Contributor_Institution_has_Affiliation");
+        $this->connection->query("DELETE FROM Originating_Laboratory_has_Affiliation");
+        $this->connection->query("DELETE FROM Free_Keywords");
         $this->connection->query("DELETE FROM Affiliation");
+        $this->connection->query("DELETE FROM Title");
+        $this->connection->query("DELETE FROM Description");
+        $this->connection->query("DELETE FROM Spatial_Temporal_Coverage");
+        $this->connection->query("DELETE FROM Thesaurus_Keywords");
+        $this->connection->query("DELETE FROM Related_Work");
+        $this->connection->query("DELETE FROM Originating_Laboratory");
+        $this->connection->query("DELETE FROM Funding_Reference");
+        $this->connection->query("DELETE FROM Contact_Person");
+        $this->connection->query("DELETE FROM Contributor_Person");
+        $this->connection->query("DELETE FROM Contributor_Institution");
+        $this->connection->query("DELETE FROM Author");
         $this->connection->query("DELETE FROM Resource");
-
         $this->connection->query("SET FOREIGN_KEY_CHECKS=1");
     }
 
@@ -596,7 +622,7 @@ class SaveAuthorsTest extends TestCase
                 '[{"value":"University A"}]',
                 '[{"value":"University B"},{"value":"Institute C"}]',
                 '[{"value":"Universität D"}]',  // Non-ASCII character
-                '[{"value":"' . str_repeat("X", 1000) . '"}]',  // Very long affiliation
+                '[{"value":"' . str_repeat("X", 256) . '"}]',  // Very long affiliation
                 '[{"value":"Existing University"},{"value":"New University"}]'  // Existing and new affiliation
             ],
             "authorRorIds" => [

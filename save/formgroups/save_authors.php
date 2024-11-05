@@ -104,36 +104,86 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
     $affiliations_array = parseAffiliationData($affiliation_data);
     $rorIds_array = parseAffiliationData($rorId_data);
 
+    // Debug-Ausgaben
+    fwrite(STDERR, "\nProcessing affiliations for author_id: $author_id\n");
+    fwrite(STDERR, "Affiliations: " . print_r($affiliations_array, true) . "\n");
+    fwrite(STDERR, "ROR IDs: " . print_r($rorIds_array, true) . "\n");
+
     foreach ($affiliations_array as $index => $affiliation_name) {
-        $rorId = $rorIds_array[$index] ?? null;
-        $rorId = str_replace("https://ror.org/", "", $rorId);
+        if (empty($affiliation_name)) {
+            continue;
+        }
 
-        // Prüfen, ob die Affiliation bereits existiert
-        $stmt = $connection->prepare("SELECT affiliation_id FROM Affiliation WHERE name = ?");
-        $stmt->bind_param("s", $affiliation_name);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $rorId = isset($rorIds_array[$index]) ? str_replace("https://ror.org/", "", $rorIds_array[$index]) : null;
 
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $affiliation_id = $row['affiliation_id'];
+        // Suche nach existierender Affiliation
+        $affiliation_id = null;
 
-            // Aktualisiere die ROR-ID, falls nötig
-            if (!empty($rorId)) {
-                $stmt = $connection->prepare("UPDATE Affiliation SET rorId = ? WHERE affiliation_id = ?");
-                $stmt->bind_param("si", $rorId, $affiliation_id);
+        // Erste Priorität: Exakte Übereinstimmung von Name und ROR-ID
+        if ($rorId) {
+            $stmt = $connection->prepare("SELECT affiliation_id FROM Affiliation WHERE name = ? AND rorId = ?");
+            $stmt->bind_param("ss", $affiliation_name, $rorId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $affiliation_id = $row['affiliation_id'];
+            }
+            $stmt->close();
+        }
+
+        // Zweite Priorität: Übereinstimmung der ROR-ID
+        if (!$affiliation_id && $rorId) {
+            $stmt = $connection->prepare("SELECT affiliation_id FROM Affiliation WHERE rorId = ?");
+            $stmt->bind_param("s", $rorId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $affiliation_id = $row['affiliation_id'];
+
+                // Update den Namen, falls er sich geändert hat
+                $stmt = $connection->prepare("UPDATE Affiliation SET name = ? WHERE affiliation_id = ?");
+                $stmt->bind_param("si", $affiliation_name, $affiliation_id);
                 $stmt->execute();
             }
-        } else {
-            // Neue Affiliation einfügen
+            $stmt->close();
+        }
+
+        // Dritte Priorität: Übereinstimmung des Namens
+        if (!$affiliation_id) {
+            $stmt = $connection->prepare("SELECT affiliation_id FROM Affiliation WHERE name = ? AND (rorId IS NULL OR rorId = '')");
+            $stmt->bind_param("s", $affiliation_name);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $affiliation_id = $row['affiliation_id'];
+
+                // Update die ROR-ID, falls eine neue vorhanden ist
+                if ($rorId) {
+                    $stmt = $connection->prepare("UPDATE Affiliation SET rorId = ? WHERE affiliation_id = ?");
+                    $stmt->bind_param("si", $rorId, $affiliation_id);
+                    $stmt->execute();
+                }
+            }
+            $stmt->close();
+        }
+
+        // Wenn keine existierende Affiliation gefunden wurde, erstelle eine neue
+        if (!$affiliation_id) {
             $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?)");
             $stmt->bind_param("ss", $affiliation_name, $rorId);
             $stmt->execute();
             $affiliation_id = $stmt->insert_id;
-        }
-        $stmt->close();
+            $stmt->close();
 
-        // Verknüpfung zwischen Autor und Affiliation erstellen, falls sie noch nicht existiert
+            fwrite(STDERR, "Created new affiliation with ID: $affiliation_id\n");
+        } else {
+            fwrite(STDERR, "Using existing affiliation with ID: $affiliation_id\n");
+        }
+
+        // Verknüpfe Autor mit Affiliation
         $stmt = $connection->prepare("INSERT IGNORE INTO Author_has_Affiliation (Author_author_id, Affiliation_affiliation_id) VALUES (?, ?)");
         $stmt->bind_param("ii", $author_id, $affiliation_id);
         $stmt->execute();

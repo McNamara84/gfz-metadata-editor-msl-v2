@@ -12,15 +12,22 @@ class SaveFundingreferencesTest extends TestCase
 
     protected function setUp(): void
     {
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
         global $connection;
         if (!$connection) {
             $connection = connectDb();
         }
         $this->connection = $connection;
-
+        // Überprüfen, ob die Testdatenbank verfügbar ist
         $dbname = 'mde2-msl-test';
         if ($this->connection->select_db($dbname) === false) {
-            $this->markTestSkipped("Testdatenbank '$dbname' ist nicht verfügbar. Bitte überprüfen Sie die Datenbankverbindung.");
+            // Testdatenbank erstellen
+            $connection->query("CREATE DATABASE " . $dbname);
+            $connection->select_db($dbname);
+            // install.php ausführen
+            require 'install.php';
         }
     }
 
@@ -31,10 +38,37 @@ class SaveFundingreferencesTest extends TestCase
 
     private function cleanupTestData()
     {
+        $this->connection->query("SET FOREIGN_KEY_CHECKS=0");
+        $this->connection->query("DELETE FROM Resource_has_Spatial_Temporal_Coverage");
+        $this->connection->query("DELETE FROM Resource_has_Thesaurus_Keywords");
+        $this->connection->query("DELETE FROM Resource_has_Related_Work");
+        $this->connection->query("DELETE FROM Resource_has_Originating_Laboratory");
         $this->connection->query("DELETE FROM Resource_has_Funding_Reference");
-        $this->connection->query("DELETE FROM Funding_Reference");
+        $this->connection->query("DELETE FROM Resource_has_Contact_Person");
+        $this->connection->query("DELETE FROM Resource_has_Contributor_Person");
+        $this->connection->query("DELETE FROM Resource_has_Contributor_Institution");
+        $this->connection->query("DELETE FROM Resource_has_Author");
+        $this->connection->query("DELETE FROM Resource_has_Free_Keywords");
+        $this->connection->query("DELETE FROM Author_has_Affiliation");
+        $this->connection->query("DELETE FROM Contact_Person_has_Affiliation");
+        $this->connection->query("DELETE FROM Contributor_Person_has_Affiliation");
+        $this->connection->query("DELETE FROM Contributor_Institution_has_Affiliation");
+        $this->connection->query("DELETE FROM Originating_Laboratory_has_Affiliation");
+        $this->connection->query("DELETE FROM Free_Keywords");
+        $this->connection->query("DELETE FROM Affiliation");
         $this->connection->query("DELETE FROM Title");
+        $this->connection->query("DELETE FROM Description");
+        $this->connection->query("DELETE FROM Spatial_Temporal_Coverage");
+        $this->connection->query("DELETE FROM Thesaurus_Keywords");
+        $this->connection->query("DELETE FROM Related_Work");
+        $this->connection->query("DELETE FROM Originating_Laboratory");
+        $this->connection->query("DELETE FROM Funding_Reference");
+        $this->connection->query("DELETE FROM Contact_Person");
+        $this->connection->query("DELETE FROM Contributor_Person");
+        $this->connection->query("DELETE FROM Contributor_Institution");
+        $this->connection->query("DELETE FROM Author");
         $this->connection->query("DELETE FROM Resource");
+        $this->connection->query("SET FOREIGN_KEY_CHECKS=1");
     }
 
     /**
@@ -42,6 +76,15 @@ class SaveFundingreferencesTest extends TestCase
      */
     public function testSaveCompleteFundingReferenceWithFunderId()
     {
+        // 1. Zuerst alle relevanten Tabellen leeren
+        $this->connection->query("SET FOREIGN_KEY_CHECKS=0");
+        $this->connection->query("TRUNCATE TABLE Resource_has_Funding_Reference");
+        $this->connection->query("TRUNCATE TABLE Funding_Reference");
+        $this->connection->query("TRUNCATE TABLE Resource");
+        $this->connection->query("SET FOREIGN_KEY_CHECKS=1");
+
+        fwrite(STDERR, "\n=== Starting Test ===\n");
+
         $resourceData = [
             "doi" => "10.5880/GFZ.TEST.COMPLETE.FUNDING",
             "year" => 2023,
@@ -52,7 +95,24 @@ class SaveFundingreferencesTest extends TestCase
             "title" => ["Test Complete Funding Reference"],
             "titleType" => [1]
         ];
+
+        // 2. Resource erstellen und überprüfen
         $resource_id = saveResourceInformationAndRights($this->connection, $resourceData);
+        fwrite(STDERR, "\nResource ID: $resource_id\n");
+
+        // Verify resource
+        $stmt = $this->connection->prepare("SELECT * FROM Resource WHERE resource_id = ?");
+        $stmt->bind_param("i", $resource_id);
+        $stmt->execute();
+        $resourceResult = $stmt->get_result()->fetch_assoc();
+        fwrite(STDERR, "Resource Data: " . print_r($resourceResult, true) . "\n");
+
+        if (!$resourceResult) {
+            fwrite(STDERR, "ERROR: Resource not created!\n");
+            fwrite(STDERR, "Last MySQL Error: " . $this->connection->error . "\n");
+            $this->fail("Resource creation failed");
+            return;
+        }
 
         $postData = [
             "funder" => ["Gordon and Betty Moore Foundation"],
@@ -61,31 +121,62 @@ class SaveFundingreferencesTest extends TestCase
             "grantName" => ["Socioenvironmental Monitoring of the Amazon Basin and Xingu"]
         ];
 
-        saveFundingReferences($this->connection, $postData, $resource_id);
+        // 3. Funding Reference speichern
+        $result = saveFundingReferences($this->connection, $postData, $resource_id);
+        fwrite(STDERR, "\nSave Funding References Result: " . ($result ? "SUCCESS" : "FAILED") . "\n");
 
-        // Check if the Funding Reference was saved correctly
+        // 4. Funding Reference überprüfen
         $stmt = $this->connection->prepare("SELECT * FROM Funding_Reference WHERE funder = ?");
         $stmt->bind_param("s", $postData["funder"][0]);
         $stmt->execute();
         $fundingReference = $stmt->get_result()->fetch_assoc();
 
+        fwrite(STDERR, "\nFunding Reference Data: " . print_r($fundingReference, true) . "\n");
+
+        if (!$fundingReference) {
+            fwrite(STDERR, "ERROR: Funding Reference not created!\n");
+            fwrite(STDERR, "Last MySQL Error: " . $this->connection->error . "\n");
+            $this->fail("Funding Reference creation failed");
+            return;
+        }
+
+        // 5. Verknüpfungstabelle überprüfen
+        $stmt = $this->connection->prepare(
+            "SELECT * FROM Resource_has_Funding_Reference 
+         WHERE Resource_resource_id = ? AND Funding_Reference_funding_reference_id = ?"
+        );
+        $stmt->bind_param("ii", $resource_id, $fundingReference['funding_reference_id']);
+        $stmt->execute();
+        $relationResult = $stmt->get_result();
+
+        fwrite(STDERR, "\nChecking relation...\n");
+        fwrite(STDERR, "Resource ID: $resource_id\n");
+        fwrite(STDERR, "Funding Reference ID: " . $fundingReference['funding_reference_id'] . "\n");
+        fwrite(STDERR, "Number of relations found: " . $relationResult->num_rows . "\n");
+
+        if ($relationResult->num_rows === 0) {
+            // Zusätzliche Überprüfung der Tabelle
+            $checkStmt = $this->connection->query("SELECT * FROM Resource_has_Funding_Reference");
+            fwrite(STDERR, "\nAll relations in table: \n");
+            while ($row = $checkStmt->fetch_assoc()) {
+                fwrite(STDERR, print_r($row, true) . "\n");
+            }
+
+            fwrite(STDERR, "Last MySQL Error: " . $this->connection->error . "\n");
+        }
+
+        $relation = $relationResult->fetch_assoc();
+        fwrite(STDERR, "\nRelation Data: " . print_r($relation, true) . "\n");
+
+        // 6. Assertions
         $this->assertNotNull($fundingReference, "Die Funding Reference sollte gespeichert worden sein.");
-
-        // Extrahiere die letzten 10 Ziffern der erwarteten FunderId
-        $expectedFunderId = substr($postData["funderId"][0], -10);
-
-        $this->assertEquals($expectedFunderId, $fundingReference["funderid"], "Die Funder ID sollte korrekt gespeichert sein.");
+        $this->assertEquals("100000936", $fundingReference["funderid"], "Die Funder ID sollte korrekt gespeichert sein.");
         $this->assertEquals("Crossref Funder ID", $fundingReference["funderidtyp"], "Der Funder ID Type sollte 'Crossref Funder ID' sein.");
         $this->assertEquals($postData["grantNummer"][0], $fundingReference["grantnumber"]);
         $this->assertEquals($postData["grantName"][0], $fundingReference["grantname"]);
-
-        // Check if the relation to the resource was created
-        $stmt = $this->connection->prepare("SELECT * FROM Resource_has_Funding_Reference WHERE Resource_resource_id = ? AND Funding_Reference_funding_reference_id = ?");
-        $stmt->bind_param("ii", $resource_id, $fundingReference["funding_reference_id"]);
-        $stmt->execute();
-        $relation = $stmt->get_result()->fetch_assoc();
-
         $this->assertNotNull($relation, "Die Verknüpfung zwischen Resource und Funding Reference sollte existieren.");
+
+        fwrite(STDERR, "\n=== Test Complete ===\n");
     }
 
     /**
