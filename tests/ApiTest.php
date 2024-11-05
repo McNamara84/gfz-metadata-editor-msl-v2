@@ -1,15 +1,41 @@
 <?php
 namespace Tests;
+
 use PHPUnit\Framework\TestCase;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
+/**
+ * Class ApiTest
+ *
+ * This class contains unit tests for the API endpoints.
+ * It uses GuzzleHttp to send HTTP requests and PHPUnit for assertions.
+ */
 class ApiTest extends TestCase
 {
+    /**
+     * @var Client $client The HTTP client used to make requests to the API.
+     */
     private $client;
+
+    /**
+     * @var string $baseUri The base URI of the API.
+     */
     private $baseUri;
+
+    /**
+     * @var string $projectPath The project path relative to the server root.
+     */
     private $projectPath;
 
+    /**
+     * Sets up the test environment before each test method is executed.
+     *
+     * Initializes the HTTP client and determines the base URI and project path
+     * based on the environment (development or production).
+     *
+     * @return void
+     */
     protected function setUp(): void
     {
         // Get project root directory (2 levels up from tests directory)
@@ -30,10 +56,17 @@ class ApiTest extends TestCase
         $this->client = new Client([
             'base_uri' => $this->baseUri,
             'timeout' => 5.0,
-            'verify' => false
+            'verify' => false,
         ]);
     }
 
+    /**
+     * Constructs the full API URL for a given endpoint.
+     *
+     * @param string $endpoint The API endpoint (e.g., 'general/alive').
+     *
+     * @return string The full API URL including the project path.
+     */
     private function getApiUrl($endpoint): string
     {
         $path = trim($this->projectPath . '/api/v2/' . ltrim($endpoint, '/'), '/');
@@ -41,7 +74,14 @@ class ApiTest extends TestCase
     }
 
     /**
-     * @test
+     * Tests that the health check endpoint returns the expected alive message.
+     *
+     * Sends a GET request to the 'general/alive' endpoint and asserts that the
+     * response status code is 200 and the message in the response body is correct.
+     *
+     * @return void
+     *
+     * @throws GuzzleException If an error occurs during the HTTP request.
      */
     public function healthCheckShouldReturnAliveMessage()
     {
@@ -50,10 +90,11 @@ class ApiTest extends TestCase
 
         $response = $this->client->get($endpointUrl);
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(200, $response->getStatusCode(), 'Expected status code 200.');
+
         $data = json_decode($response->getBody(), true);
 
-        $this->assertArrayHasKey('message', $data);
-        $this->assertEquals("I'm still alive...", $data['message']);
+        $this->assertArrayHasKey('message', $data, 'Response body should contain a "message" key.');
+        $this->assertEquals("I'm still alive...", $data['message'], 'Expected message does not match.');
     }
 }
