@@ -96,7 +96,6 @@ class ComposerStaticInitefe149a1afac895f65c61fc673b16ea7
     );
 
     public static $classMap = array (
-        'ApiTest' => __DIR__ . '/../..' . '/tests/ApiTest.php',
         'ComposerAutoloaderInit386a05f6676643b8b2eb49288e20d079' => __DIR__ . '/..' . '/phpunit/phpunit/build/scripts/phar-set-timestamps/vendor/composer/autoload_real.php',
         'ComposerAutoloaderInitefe149a1afac895f65c61fc673b16ea7' => __DIR__ . '/..' . '/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
@@ -2797,6 +2796,7 @@ class ComposerStaticInitefe149a1afac895f65c61fc673b16ea7
         'Seld\\PharUtils\\Linter' => __DIR__ . '/..' . '/phpunit/phpunit/build/scripts/phar-set-timestamps/vendor/seld/phar-utils/src/Linter.php',
         'Seld\\PharUtils\\Timestamps' => __DIR__ . '/..' . '/phpunit/phpunit/build/scripts/phar-set-timestamps/vendor/seld/phar-utils/src/Timestamps.php',
         'Test' => __DIR__ . '/..' . '/phpunit/phpunit/tests/end-to-end/regression/5157/tests/Test.php',
+        'Tests\\ApiTest' => __DIR__ . '/../..' . '/tests/ApiTest.php',
         'Tests\\SaveAuthorsTest' => __DIR__ . '/../..' . '/tests/SaveAuthorsTest.php',
         'Tests\\SaveContactpersonsTest' => __DIR__ . '/../..' . '/tests/SaveContactpersonsTest.php',
         'Tests\\SaveContributorsTest' => __DIR__ . '/../..' . '/tests/SaveContributorsTest.php',

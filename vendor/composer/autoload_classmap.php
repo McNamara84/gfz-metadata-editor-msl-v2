@@ -6,7 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'ApiTest' => $baseDir . '/tests/ApiTest.php',
     'ComposerAutoloaderInit386a05f6676643b8b2eb49288e20d079' => $vendorDir . '/phpunit/phpunit/build/scripts/phar-set-timestamps/vendor/composer/autoload_real.php',
     'ComposerAutoloaderInitefe149a1afac895f65c61fc673b16ea7' => $vendorDir . '/composer/autoload_real.php',
     'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',
@@ -2707,6 +2706,7 @@ return array(
     'Seld\\PharUtils\\Linter' => $vendorDir . '/phpunit/phpunit/build/scripts/phar-set-timestamps/vendor/seld/phar-utils/src/Linter.php',
     'Seld\\PharUtils\\Timestamps' => $vendorDir . '/phpunit/phpunit/build/scripts/phar-set-timestamps/vendor/seld/phar-utils/src/Timestamps.php',
     'Test' => $vendorDir . '/phpunit/phpunit/tests/end-to-end/regression/5157/tests/Test.php',
+    'Tests\\ApiTest' => $baseDir . '/tests/ApiTest.php',
     'Tests\\SaveAuthorsTest' => $baseDir . '/tests/SaveAuthorsTest.php',
     'Tests\\SaveContactpersonsTest' => $baseDir . '/tests/SaveContactpersonsTest.php',
     'Tests\\SaveContributorsTest' => $baseDir . '/tests/SaveContributorsTest.php',
