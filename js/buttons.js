@@ -192,20 +192,23 @@ $(document).ready(function () {
     newContributorRow.find("#inputContributorAffiliation").attr("id", "inputContributorAffiliation" + uniqueSuffix);
     newContributorRow.find("#hiddenContributorRorId").attr("id", "hiddenContributorRorId" + uniqueSuffix);
 
+    // Roles-Feld eine neue ID geben
+    newContributorRow.find("#inputContributorsPerRole").attr("id", "inputContributorsPerRole" + uniqueSuffix);
+
     // altes TagifyElement in der neuen Zeile entfernen (wird weiter unten in autocompleteAffiliation wieder intitialisiert)
     newContributorRow.find(".tagify").remove();
 
     // Plus Button mit Minus Button ersetzen
     newContributorRow.find(".addContributorPerson").replaceWith(removeButton);
 
-    firstContributorRow.find("select").chosen();
-    newContributorRow.find("select").chosen();
-
     // Neue AuthorLine zum DOM hinzufügen
     contributorGroup.append(newContributorRow);
 
     // Tagify auf neues AuthorAffiliations Feld anwenden
     autocompleteAffiliations("inputContributorAffiliation" + uniqueSuffix, "hiddenContributorRorId" + uniqueSuffix);
+
+    // Tagify für das neue Roles-Feld initialisieren
+    setupRolesDropdown("person", "#inputContributorsPerRole" + uniqueSuffix);
 
     // Event-Handler für RemoveButton
     newContributorRow.on("click", ".removeButton", function () {
@@ -237,20 +240,25 @@ $(document).ready(function () {
     newContributorRow.find("#inputOrganisationAffiliation").attr("id", "inputOrganisationAffiliation" + uniqueSuffix);
     newContributorRow.find("#hiddenOrganisationRorId").attr("id", "hiddenOrganisationRorId" + uniqueSuffix);
 
+    // Roles-Feld eine neue ID geben
+    newContributorRow.find("#inputContributorOrgaRole").attr("id", "inputContributorOrgaRole" + uniqueSuffix);
+
     // altes TagifyElement in der neuen Zeile entfernen (wird weiter unten in autocompleteAffiliation wieder intitialisiert)
     newContributorRow.find(".tagify").remove();
 
     // Plus Button mit Minus Button ersetzen
     newContributorRow.find(".addContributor").replaceWith(removeButton);
 
-    firstContributorRow.find("select").chosen();
-    newContributorRow.find("select").chosen();
 
     // Neue AuthorLine zum DOM hinzufügen
     contributorGroup.append(newContributorRow);
 
     // Tagify auf neues AuthorAffiliations Feld anwenden
     autocompleteAffiliations("inputOrganisationAffiliation" + uniqueSuffix, "hiddenOrganisationRorId" + uniqueSuffix);
+
+    // Tagify für das neue Roles-Feld initialisieren
+    setupRolesDropdown("institution", "#inputContributorOrgaRole" + uniqueSuffix);
+
 
     // Event-Handler für RemoveButton
     newContributorRow.on("click", ".removeButton", function () {

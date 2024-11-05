@@ -21,7 +21,7 @@ $(document).ready(function () {
   });
 
   // Initialize Chosen plugin for role selection fields
-  $(".chosen-select").chosen({});
+  // $(".chosen-select").chosen({});
 
   /**
    * Populates the select field with ID inputRights with options created via an API call.
@@ -62,27 +62,6 @@ $(document).ready(function () {
       $("#inputRights").trigger("change");
     });
   }
-
-  /**
-   * Populates the roles dropdown based on the role type.
-   * @param {string} roletype - The type of role ("person", "institution", or "both").
-   * @param {string} id - The ID selector of the dropdown to populate.
-   */
-  function setupRolesDropdown(roletype, id) {
-    $.getJSON("./api.php?action=getRoles&type=" + roletype, function (data) {
-      $.each(data, function (key, val) {
-        $(id).append("<option>" + val.name + "</option>");
-      });
-      $(".chosen-select").trigger("chosen:updated");
-    });
-  }
-
-  // Call the function to display specific roles for certain fields
-  setupRolesDropdown("person", "#inputRoleAuthor");
-  setupRolesDropdown("person", "#inputContributorsPerRole");
-  setupRolesDropdown("institution", "#inputContributorOrgaRole");
-  setupRolesDropdown("both", "#inputContributorsPerRole");
-  setupRolesDropdown("both", "#inputContributorOrgaRole");
 
   // Initialize the license dropdown
   setupLicenseDropdown(false);

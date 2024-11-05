@@ -48,15 +48,14 @@
 
         <!--Eingabefeld Contributor Person Role(s)-->
         <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
-          <div class="form-floating">
-            <select data-placeholder="<?php echo $translations['role_label']; ?>" class="form-select chosen-select"
-              id="inputContributorsPerRole" name="cbPersonRoles[]" multiple="multiple">
-            </select>
+          <div class="input-group has-validation">
+            <input name="cbPersonRoles[]" id="inputContributorsPerRole"
+              class="form-control tagify--custom-dropdown input-with-help input-right-no-round-corners"
+              placeholder="<?php echo $translations['role_label']; ?>"/>
             <div class="invalid-feedback">
               <?php echo $translations['PleaseChoose_invalid']; ?>
             </div>
           </div>
-
         </div>
 
         <!--Eingabefeld Contributor ORCID-->
@@ -132,11 +131,10 @@
 
         <!-- Eingabefeld Organisation Role(s)-->
         <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
-          <div class="form-floating">
-            <select data-placeholder="<?php echo $translations['role_label']; ?>" class="form-select chosen-select"
-              class="form-control input-with-help input-right-no-round-corners" id="inputContributorOrgaRole"
-              name="cbOrganisationRoles[]" multiple="multiple">
-            </select>
+          <div class="input-group has-validation">
+            <input name="cbOrganisationRoles[]" id="inputContributorOrgaRole"
+              class="form-control tagify--custom-dropdown input-with-help input-right-no-round-corners"
+              placeholder="<?php echo $translations['role_label']; ?>"/>
             <div class="invalid-feedback">
               <?php echo $translations['PleaseChoose_invalid']; ?>
             </div>
