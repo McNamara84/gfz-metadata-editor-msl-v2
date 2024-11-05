@@ -8,7 +8,7 @@
 
 $translations = [
     // Général
-    'logotitle' => 'Éditeur de métadonnées 1.7',
+    'logotitle' => 'Éditeur de métadonnées 1.8',
     'choose' => 'Choisissez...',
     'valid' => 'Valide',
     'PleaseChoose_invalid' => 'Veuillez choisir',
@@ -42,7 +42,7 @@ $translations = [
     'lastname_invalid' => 'Veuillez fournir un nom de famille.',
     'firstname_invalid' => 'Veuillez fournir un prénom.',
     'authorORCID' => 'ORCID',
-    'authorORCID_invalid' => 'Entrez un ORCID valide au format xxxx-xxxx-xxxx-xxxx',
+    'ORCID_invalid' => 'Veuillez entrer un ORCID valide (XXXX-XXXX-XXXX-XXX(X))',
     'affiliation_invalid' => 'Veuillez fournir une affiliation.',
 
     // Groupe de formulaire Personnes de contact
@@ -66,8 +66,7 @@ $translations = [
     'contributors_firstname_invalid' => 'Veuillez fournir le prénom du contributeur. Seules les lettres sont autorisées.',
     'Organisation' => 'Nom de l\'organisation',
     'Organisation_invalid' => 'Veuillez entrer un nom d\'organisation valide.',
-    'contributors_ORCID' => 'ORCID du contributeur',
-    'contributors_ORCID_invalid' => 'Veuillez entrer un ORCID valide (XXXX-XXXX-XXXX-XXX(X))',
+    'contributors_ORCID' => 'ORCID du contributeur', 
     'contributorsPersonZeile' => 'Personne(s) contributrice(s)',
     'contributorsInstitutionZeile' => 'Institution(s) contributrice(s)',
 

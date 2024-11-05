@@ -1,7 +1,7 @@
 <?php
 $translations = [
     // Allgemeines
-    'logotitle' => 'Metadata Editor 1.7',
+    'logotitle' => 'Metadata Editor 1.8',
     'choose' => 'Choose...',
     'valid' => 'Valid',
     'PleaseChoose_invalid' => 'Please choose',
@@ -35,7 +35,7 @@ $translations = [
     'lastname_invalid' => 'Please provide a lastname.',
     'firstname_invalid' => 'Please provide a firstname.',
     'authorORCID' => 'ORCID',
-    'authorORCID_invalid' => 'Enter a valid ORCID in the format xxxx-xxxx-xxxx-xxxx',
+    'ORCID_invalid' => 'Please enter a valid ORCID (XXXX-XXXX-XXXX-XXX(X))',
     'affiliation_invalid' => 'Please provide an affiliation.',
 
     // Form Group Contactpersons
@@ -49,7 +49,7 @@ $translations = [
     'website' => 'Website',
     'website_invalid' => 'Please provide a valid URL.',
 
-    // From Group Contributors
+    // From Group Originating Laboratory
     'originatingLaboratoryLabel' => 'Originating Laboratory',
     'originatingLaboratoryName' => 'Name of the originating laboratory',
     'originatingLaboratoryAffiliation' => 'Affiliation of the originating laboratory',
@@ -61,7 +61,6 @@ $translations = [
     'Organisation' => 'Organisation name',
     'Organisation_invalid' => 'Please enter a valid organization name.',
     'contributors_ORCID' => 'Contributor ORCID',
-    'contributors_ORCID_invalid' => 'Please enter a valid ORCID (XXXX-XXXX-XXXX-XXX(X))',
     'contributorsPersonZeile' => 'Contributing Person(s)',
     'contributorsInstitutionZeile' => 'Contributing Institution(s)',
 

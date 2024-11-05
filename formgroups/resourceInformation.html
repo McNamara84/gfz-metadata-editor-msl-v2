@@ -84,7 +84,7 @@
           <div class="col-12 col-sm-6 col-md-6 col-lg-2 p-1">
             <div class="input-group has-validation">
               <div class="form-floating">
-                <input type="text" inputmode="numeric" class="form-control" name="year" pattern="^[1-2]{1}[0-9]{3}$"
+                <input type="text" inputmode="numeric" class="form-control input-with-help input-right-no-round-corners" name="year" pattern="^[1-2]{1}[0-9]{3}$"
                   required id="inputPublicationYear" />
                 <label for="inputPublicationYear">
                   <?php echo $translations['publicationYear']; ?>
@@ -92,6 +92,10 @@
                 <div class="invalid-feedback">
                   <?php echo $translations['publicationYear_invalid']; ?>
                 </div>
+              </div>
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                    data-help-section-id="publication-year"></i></span>
               </div>
             </div>
           </div>
@@ -169,7 +173,7 @@
             <div class="input-group has-validation">
               <div class="form-floating">
                 <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputTitle"
-                  name="title[]" pattern="^[a-zA-ZäöüÄÖÜß 0-9]+$" required />
+                  name="title[]" pattern="^[a-zA-ZäöüÄÖÜß 0-9 .\-_()\!?]+$" required />
                 <label for="inputTitle">
                   <?php echo $translations['title']; ?>
                 </label>

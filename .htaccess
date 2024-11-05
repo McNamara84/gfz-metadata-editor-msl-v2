@@ -1,14 +1,16 @@
 <IfModule mod_rewrite.c>
+    # Enable the RewriteEngine module, which allows URL rewriting
     RewriteEngine On
-    RewriteBase /mde-msl/
 
-    # Wenn die Datei oder das Verzeichnis nicht existiert, leite weiter
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
+    # If the requested filename exists as a file (-f) or directory (-d), skip the next rule
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
 
-    # Für API-Anfragen
+    # For API requests: rewrite URLs starting with 'api/' to 'api/index.php'
     RewriteRule ^api/(.*)$ api/index.php [QSA,L]
 
-    # Für alle anderen Anfragen (falls nötig)
+    # For all other requests (if needed), rewrite to 'index.php'
+    # Uncomment the following line if you want all other routes to point to 'index.php'
     # RewriteRule ^(.*)$ index.php [QSA,L]
 </IfModule>
