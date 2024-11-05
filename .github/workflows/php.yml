@@ -38,6 +38,9 @@ jobs:
         extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, zip
         coverage: xdebug
 
+    - name: Update Composer dependencies
+      run: composer update --no-interaction --no-progress
+
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
