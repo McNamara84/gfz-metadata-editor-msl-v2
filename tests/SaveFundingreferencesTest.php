@@ -83,8 +83,6 @@ class SaveFundingreferencesTest extends TestCase
         $this->connection->query("TRUNCATE TABLE Resource");
         $this->connection->query("SET FOREIGN_KEY_CHECKS=1");
 
-        fwrite(STDERR, "\n=== Starting Test ===\n");
-
         $resourceData = [
             "doi" => "10.5880/GFZ.TEST.COMPLETE.FUNDING",
             "year" => 2023,
@@ -98,18 +96,14 @@ class SaveFundingreferencesTest extends TestCase
 
         // 2. Resource erstellen und überprüfen
         $resource_id = saveResourceInformationAndRights($this->connection, $resourceData);
-        fwrite(STDERR, "\nResource ID: $resource_id\n");
 
         // Verify resource
         $stmt = $this->connection->prepare("SELECT * FROM Resource WHERE resource_id = ?");
         $stmt->bind_param("i", $resource_id);
         $stmt->execute();
         $resourceResult = $stmt->get_result()->fetch_assoc();
-        fwrite(STDERR, "Resource Data: " . print_r($resourceResult, true) . "\n");
 
         if (!$resourceResult) {
-            fwrite(STDERR, "ERROR: Resource not created!\n");
-            fwrite(STDERR, "Last MySQL Error: " . $this->connection->error . "\n");
             $this->fail("Resource creation failed");
             return;
         }
@@ -123,7 +117,6 @@ class SaveFundingreferencesTest extends TestCase
 
         // 3. Funding Reference speichern
         $result = saveFundingReferences($this->connection, $postData, $resource_id);
-        fwrite(STDERR, "\nSave Funding References Result: " . ($result ? "SUCCESS" : "FAILED") . "\n");
 
         // 4. Funding Reference überprüfen
         $stmt = $this->connection->prepare("SELECT * FROM Funding_Reference WHERE funder = ?");
@@ -131,11 +124,7 @@ class SaveFundingreferencesTest extends TestCase
         $stmt->execute();
         $fundingReference = $stmt->get_result()->fetch_assoc();
 
-        fwrite(STDERR, "\nFunding Reference Data: " . print_r($fundingReference, true) . "\n");
-
         if (!$fundingReference) {
-            fwrite(STDERR, "ERROR: Funding Reference not created!\n");
-            fwrite(STDERR, "Last MySQL Error: " . $this->connection->error . "\n");
             $this->fail("Funding Reference creation failed");
             return;
         }
@@ -149,24 +138,12 @@ class SaveFundingreferencesTest extends TestCase
         $stmt->execute();
         $relationResult = $stmt->get_result();
 
-        fwrite(STDERR, "\nChecking relation...\n");
-        fwrite(STDERR, "Resource ID: $resource_id\n");
-        fwrite(STDERR, "Funding Reference ID: " . $fundingReference['funding_reference_id'] . "\n");
-        fwrite(STDERR, "Number of relations found: " . $relationResult->num_rows . "\n");
-
         if ($relationResult->num_rows === 0) {
             // Zusätzliche Überprüfung der Tabelle
             $checkStmt = $this->connection->query("SELECT * FROM Resource_has_Funding_Reference");
-            fwrite(STDERR, "\nAll relations in table: \n");
-            while ($row = $checkStmt->fetch_assoc()) {
-                fwrite(STDERR, print_r($row, true) . "\n");
-            }
-
-            fwrite(STDERR, "Last MySQL Error: " . $this->connection->error . "\n");
         }
 
         $relation = $relationResult->fetch_assoc();
-        fwrite(STDERR, "\nRelation Data: " . print_r($relation, true) . "\n");
 
         // 6. Assertions
         $this->assertNotNull($fundingReference, "Die Funding Reference sollte gespeichert worden sein.");
@@ -175,8 +152,6 @@ class SaveFundingreferencesTest extends TestCase
         $this->assertEquals($postData["grantNummer"][0], $fundingReference["grantnumber"]);
         $this->assertEquals($postData["grantName"][0], $fundingReference["grantname"]);
         $this->assertNotNull($relation, "Die Verknüpfung zwischen Resource und Funding Reference sollte existieren.");
-
-        fwrite(STDERR, "\n=== Test Complete ===\n");
     }
 
     /**

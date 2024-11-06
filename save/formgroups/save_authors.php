@@ -104,11 +104,6 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
     $affiliations_array = parseAffiliationData($affiliation_data);
     $rorIds_array = parseAffiliationData($rorId_data);
 
-    // Debug-Ausgaben
-    fwrite(STDERR, "\nProcessing affiliations for author_id: $author_id\n");
-    fwrite(STDERR, "Affiliations: " . print_r($affiliations_array, true) . "\n");
-    fwrite(STDERR, "ROR IDs: " . print_r($rorIds_array, true) . "\n");
-
     foreach ($affiliations_array as $index => $affiliation_name) {
         if (empty($affiliation_name)) {
             continue;
@@ -177,11 +172,6 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
             $stmt->execute();
             $affiliation_id = $stmt->insert_id;
             $stmt->close();
-
-            fwrite(STDERR, "Created new affiliation with ID: $affiliation_id\n");
-        } else {
-            fwrite(STDERR, "Using existing affiliation with ID: $affiliation_id\n");
-        }
 
         // Verknüpfe Autor mit Affiliation
         $stmt = $connection->prepare("INSERT IGNORE INTO Author_has_Affiliation (Author_author_id, Affiliation_affiliation_id) VALUES (?, ?)");
