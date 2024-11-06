@@ -173,37 +173,38 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
             $affiliation_id = $stmt->insert_id;
             $stmt->close();
 
-        // Verknüpfe Autor mit Affiliation
-        $stmt = $connection->prepare("INSERT IGNORE INTO Author_has_Affiliation (Author_author_id, Affiliation_affiliation_id) VALUES (?, ?)");
-        $stmt->bind_param("ii", $author_id, $affiliation_id);
-        $stmt->execute();
-        $stmt->close();
-    }
-}
-
-/**
- * Parst die Affiliationsdaten.
- *
- * @param string $data Die zu parsenden Daten.
- * @return array Die geparsten Daten als Array.
- */
-function parseAffiliationData($data)
-{
-    if (empty($data)) {
-        return [];
-    }
-
-    $decoded = json_decode($data, true);
-
-    if (json_last_error() === JSON_ERROR_NONE) {
-        if (is_array($decoded)) {
-            return array_map(function ($item) {
-                return is_array($item) && isset($item['value']) ? trim($item['value']) : trim($item);
-            }, $decoded);
-        } else {
-            return [trim($decoded)];
+            // Verknüpfe Autor mit Affiliation
+            $stmt = $connection->prepare("INSERT IGNORE INTO Author_has_Affiliation (Author_author_id, Affiliation_affiliation_id) VALUES (?, ?)");
+            $stmt->bind_param("ii", $author_id, $affiliation_id);
+            $stmt->execute();
+            $stmt->close();
         }
-    } else {
-        return [trim($data)];
+    }
+
+    /**
+     * Parst die Affiliationsdaten.
+     *
+     * @param string $data Die zu parsenden Daten.
+     * @return array Die geparsten Daten als Array.
+     */
+    function parseAffiliationData($data)
+    {
+        if (empty($data)) {
+            return [];
+        }
+
+        $decoded = json_decode($data, true);
+
+        if (json_last_error() === JSON_ERROR_NONE) {
+            if (is_array($decoded)) {
+                return array_map(function ($item) {
+                    return is_array($item) && isset($item['value']) ? trim($item['value']) : trim($item);
+                }, $decoded);
+            } else {
+                return [trim($decoded)];
+            }
+        } else {
+            return [trim($data)];
+        }
     }
 }
