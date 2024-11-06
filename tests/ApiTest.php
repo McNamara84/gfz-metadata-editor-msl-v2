@@ -83,18 +83,27 @@ class ApiTest extends TestCase
      *
      * @throws GuzzleException If an error occurs during the HTTP request.
      */
-    public function testHealthCheckShouldReturnAliveMessage()
+    public function testHealthCheckShouldReturnAliveMessage(): void
     {
         $endpointUrl = $this->getApiUrl('general/alive');
         echo "\nTesting endpoint: {$endpointUrl}";
 
-        $response = $this->client->get($endpointUrl);
+        try {
+            $response = $this->client->get($endpointUrl);
 
-        $this->assertEquals(200, $response->getStatusCode(), 'Expected status code 200.');
+            echo "\nResponse: " . $response->getBody();
 
-        $data = json_decode($response->getBody(), true);
+            $this->assertEquals(200, $response->getStatusCode(), 'Expected status code 200.');
 
-        $this->assertArrayHasKey('message', $data, 'Response body should contain a "message" key.');
-        $this->assertEquals("I'm still alive...", $data['message'], 'Expected message does not match.');
+            $data = json_decode($response->getBody(), true);
+
+            $this->assertArrayHasKey('message', $data, 'Response body should contain a "message" key.');
+            $this->assertEquals("I'm still alive...", $data['message'], 'Expected message does not match.');
+        } catch (GuzzleException $e) {
+            if ($e instanceof \GuzzleHttp\Exception\ClientException) {
+                echo "\nResponse body: " . $e->getResponse()->getBody();
+            }
+            $this->fail('API request failed: ' . $e->getMessage() . "\nEndpoint: " . $endpointUrl);
+        }
     }
 }
