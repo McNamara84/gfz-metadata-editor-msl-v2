@@ -44,64 +44,48 @@ class ApiTest extends TestCase
         // Get project folder name
         $this->projectPath = basename($projectRoot);
 
-        // Construct local development URL
-        $this->baseUri = "http://localhost";
+        // Get base URI from environment variable or use default
+        $this->baseUri = getenv('API_BASE_URL') ?: 'http://localhost:8000';
 
-        // For production testing, override with environment variable if set
-        if (getenv('API_BASE_URL')) {
-            $this->baseUri = rtrim(getenv('API_BASE_URL'), '/');
-            $this->projectPath = '';  // No project subfolder needed in production
-        }
+        // Log the base URI for debugging
+        echo "\nUsing base URI: " . $this->baseUri;
 
         $this->client = new Client([
             'base_uri' => $this->baseUri,
             'timeout' => 5.0,
             'verify' => false,
+            'http_errors' => false // Prevents throwing exceptions on 4xx/5xx responses
         ]);
     }
 
-    /**
-     * Constructs the full API URL for a given endpoint.
-     *
-     * @param string $endpoint The API endpoint (e.g., 'general/alive').
-     *
-     * @return string The full API URL including the project path.
-     */
     private function getApiUrl($endpoint): string
     {
+        // In CI environment, we don't need the project path
+        if (getenv('API_BASE_URL')) {
+            return '/api/v2/' . ltrim($endpoint, '/');
+        }
+
+        // For local development
         $path = trim($this->projectPath . '/api/v2/' . ltrim($endpoint, '/'), '/');
         return "/{$path}";
     }
 
-    /**
-     * Tests that the health check endpoint returns the expected alive message.
-     *
-     * Sends a GET request to the 'general/alive' endpoint and asserts that the
-     * response status code is 200 and the message in the response body is correct.
-     *
-     * @return void
-     *
-     * @throws GuzzleException If an error occurs during the HTTP request.
-     */
     public function testHealthCheckShouldReturnAliveMessage(): void
     {
         $endpointUrl = $this->getApiUrl('general/alive');
-        echo "\nTesting endpoint: {$endpointUrl}";
+        echo "\nTesting endpoint: " . $this->baseUri . $endpointUrl;
 
         try {
-            $options = [
-                'debug' => true,
-                'verify' => false,
-                'http_errors' => false // Prevents Guzzle from throwing exceptions on 4xx/5xx
-            ];
-
-            $response = $this->client->get($endpointUrl, $options);
+            $response = $this->client->get($endpointUrl);
 
             echo "\nResponse Status: " . $response->getStatusCode();
-            echo "\nResponse Headers: " . json_encode($response->getHeaders());
             echo "\nResponse Body: " . $response->getBody();
 
-            $this->assertEquals(200, $response->getStatusCode(), 'Expected status code 200.');
+            $this->assertEquals(
+                200,
+                $response->getStatusCode(),
+                'Expected status code 200. Response: ' . $response->getBody()
+            );
 
             $data = json_decode($response->getBody(), true);
             if (json_last_error() !== JSON_ERROR_NONE) {

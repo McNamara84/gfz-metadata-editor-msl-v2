@@ -128,8 +128,16 @@ jobs:
         echo "Server log contents:"
         cat server.log
 
+    - name: List processes
+      run: |
+        echo "PHP processes:"
+        ps aux | grep php
+        echo "Listening ports:"
+        netstat -tulpn | grep LISTEN || true
+
     - name: Run PHPUnit tests
       run: |
+        export API_BASE_URL=http://localhost:8000
         php vendor/bin/phpunit --configuration phpunit.xml --debug
         echo "Server log after tests:"
         cat server.log
