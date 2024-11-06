@@ -344,6 +344,9 @@ $(document).ready(function () {
 
     setUpAutocompleteFunder();
   });
+
+  //TODO: Intitalisierung von Tagify auslagern, ähnlich wie bei affiliations?
+  
   var labData;
 
   $.getJSON("json/msl-labs.json", function (data) {
