@@ -124,9 +124,13 @@ jobs:
       run: |
         sleep 5
         echo "Testing API endpoint directly:"
-        curl -v http://localhost:8000/api/v2/general/alive || true
+        curl -v http://localhost:8000/api/v2/general/alive
+        echo ""
         echo "Server log contents:"
         cat server.log
+        echo ""
+        echo "Directory structure:"
+        ls -R api/
 
     - name: List processes
       run: |
@@ -139,7 +143,8 @@ jobs:
       run: |
         export API_BASE_URL=http://localhost:8000
         php vendor/bin/phpunit --configuration phpunit.xml --debug
-        echo "Server log after tests:"
+        echo ""
+        echo "Final server log contents:"
         cat server.log
 
     - name: List directory structure
