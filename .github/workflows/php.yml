@@ -116,15 +116,35 @@ jobs:
       run: php install.php
 
     - name: Start PHP built-in web server
-      run: php -S localhost:8000 tests/server.php &
+      run: |
+        php -S localhost:8000 tests/server.php > server.log 2>&1 &
+        echo $! > server.pid
       
-    - name: Wait for web server
+    - name: Wait for web server and test connection
       run: |
         sleep 5
-        curl http://localhost:8000/api/v2/general/alive || true
+        curl -v http://localhost:8000/api/v2/general/alive || true
+        cat server.log
 
     - name: Run PHPUnit tests
       run: |
-        export API_BASE_URL=http://localhost:8000
-        chmod +x vendor/bin/phpunit
-        vendor/bin/phpunit --configuration phpunit.xml
+        php vendor/bin/phpunit --configuration phpunit.xml -v
+        cat server.log
+
+    - name: List directory structure
+      run: |
+        echo "Project root:"
+        ls -la
+        echo "\nAPI directory:"
+        ls -la api/
+        echo "\nAPI v2 directory:"
+        ls -la api/v2/
+
+    - name: Check file permissions
+      run: |
+        chmod -R 755 .
+        chmod -R 644 api/v2/controllers/*.php
+        chmod 755 api/v2/controllers
+        
+    - name: Stop PHP server
+      run: kill $(cat server.pid)

@@ -89,21 +89,36 @@ class ApiTest extends TestCase
         echo "\nTesting endpoint: {$endpointUrl}";
 
         try {
-            $response = $this->client->get($endpointUrl);
+            $options = [
+                'debug' => true,
+                'verify' => false,
+                'http_errors' => false // Prevents Guzzle from throwing exceptions on 4xx/5xx
+            ];
 
-            echo "\nResponse: " . $response->getBody();
+            $response = $this->client->get($endpointUrl, $options);
+
+            echo "\nResponse Status: " . $response->getStatusCode();
+            echo "\nResponse Headers: " . json_encode($response->getHeaders());
+            echo "\nResponse Body: " . $response->getBody();
 
             $this->assertEquals(200, $response->getStatusCode(), 'Expected status code 200.');
 
             $data = json_decode($response->getBody(), true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                $this->fail('Failed to parse JSON response: ' . json_last_error_msg());
+            }
 
             $this->assertArrayHasKey('message', $data, 'Response body should contain a "message" key.');
             $this->assertEquals("I'm still alive...", $data['message'], 'Expected message does not match.');
-        } catch (GuzzleException $e) {
-            if ($e instanceof \GuzzleHttp\Exception\ClientException) {
-                echo "\nResponse body: " . $e->getResponse()->getBody();
+        } catch (Exception $e) {
+            echo "\nException: " . get_class($e);
+            echo "\nMessage: " . $e->getMessage();
+            if ($e instanceof \GuzzleHttp\Exception\RequestException && $e->hasResponse()) {
+                $response = $e->getResponse();
+                echo "\nResponse Status: " . $response->getStatusCode();
+                echo "\nResponse Body: " . $response->getBody();
             }
-            $this->fail('API request failed: ' . $e->getMessage() . "\nEndpoint: " . $endpointUrl);
+            throw $e;
         }
     }
 }
