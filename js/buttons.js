@@ -403,27 +403,23 @@ $(document).ready(function () {
 
     var tagifyName = new Tagify(inputName, {
       whitelist: data.map((item) => item.name),
-      enforceWhitelist: false,
+      enforceWhitelist: true,
       maxTags: 1,
       dropdown: {
-        enabled: 1,
-        maxItems: 5,
-        position: "text",
+        maxItems: 20,
         closeOnSelect: true,
         highlightFirst: true,
       },
-      delimiters: null,
+     delimiters: null,
       mode: "select",
     });
 
     var tagifyAffiliation = new Tagify(inputAffiliation, {
       whitelist: data.map((item) => item.affiliation),
-      enforceWhitelist: false,
+      enforceWhitelist: true,
       maxTags: 1,
       dropdown: {
-        enabled: 1,
-        maxItems: 5,
-        position: "text",
+        maxItems: 20,
         closeOnSelect: true,
         highlightFirst: true,
       },
