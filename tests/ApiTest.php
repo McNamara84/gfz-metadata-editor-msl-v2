@@ -83,7 +83,7 @@ class ApiTest extends TestCase
      *
      * @throws GuzzleException If an error occurs during the HTTP request.
      */
-    public function healthCheckShouldReturnAliveMessage()
+    public function testHealthCheckShouldReturnAliveMessage()
     {
         $endpointUrl = $this->getApiUrl('general/alive');
         echo "\nTesting endpoint: {$endpointUrl}";
