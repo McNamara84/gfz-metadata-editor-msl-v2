@@ -123,12 +123,15 @@ jobs:
     - name: Wait for web server and test connection
       run: |
         sleep 5
+        echo "Testing API endpoint directly:"
         curl -v http://localhost:8000/api/v2/general/alive || true
+        echo "Server log contents:"
         cat server.log
 
     - name: Run PHPUnit tests
       run: |
-        php vendor/bin/phpunit --configuration phpunit.xml -v
+        php vendor/bin/phpunit --configuration phpunit.xml --debug
+        echo "Server log after tests:"
         cat server.log
 
     - name: List directory structure
@@ -148,3 +151,4 @@ jobs:
         
     - name: Stop PHP server
       run: kill $(cat server.pid)
+      if: always()
