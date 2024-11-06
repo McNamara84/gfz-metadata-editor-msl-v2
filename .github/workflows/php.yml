@@ -116,10 +116,12 @@ jobs:
       run: php install.php
 
     - name: Start PHP built-in web server
-      run: php -S localhost:8000 &
+      run: php -S localhost:8000 tests/server.php &
       
     - name: Wait for web server
-      run: sleep 5
+      run: |
+        sleep 5
+        curl http://localhost:8000/api/v2/general/alive || true
 
     - name: Run PHPUnit tests
       run: |
