@@ -124,4 +124,5 @@ jobs:
     - name: Run PHPUnit tests
       run: |
         export API_BASE_URL=http://localhost:8000
+        chmod +x vendor/bin/phpunit
         vendor/bin/phpunit --configuration phpunit.xml
