@@ -180,31 +180,31 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
             $stmt->close();
         }
     }
+}
 
-    /**
-     * Parst die Affiliationsdaten.
-     *
-     * @param string $data Die zu parsenden Daten.
-     * @return array Die geparsten Daten als Array.
-     */
-    function parseAffiliationData($data)
-    {
-        if (empty($data)) {
-            return [];
-        }
+/**
+ * Parst die Affiliationsdaten.
+ *
+ * @param string $data Die zu parsenden Daten.
+ * @return array Die geparsten Daten als Array.
+ */
+function parseAffiliationData($data)
+{
+    if (empty($data)) {
+        return [];
+    }
 
-        $decoded = json_decode($data, true);
+    $decoded = json_decode($data, true);
 
-        if (json_last_error() === JSON_ERROR_NONE) {
-            if (is_array($decoded)) {
-                return array_map(function ($item) {
-                    return is_array($item) && isset($item['value']) ? trim($item['value']) : trim($item);
-                }, $decoded);
-            } else {
-                return [trim($decoded)];
-            }
+    if (json_last_error() === JSON_ERROR_NONE) {
+        if (is_array($decoded)) {
+            return array_map(function ($item) {
+                return is_array($item) && isset($item['value']) ? trim($item['value']) : trim($item);
+            }, $decoded);
         } else {
-            return [trim($data)];
+            return [trim($decoded)];
         }
+    } else {
+        return [trim($data)];
     }
 }

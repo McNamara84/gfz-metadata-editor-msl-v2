@@ -44,8 +44,6 @@ jobs:
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
-    # Removed the composer cache step as it's causing issues
-
     - name: Install dependencies
       run: |
         composer install --prefer-dist --no-progress --no-suggest
