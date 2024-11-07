@@ -43,13 +43,6 @@ $(document).ready(function () {
       $("#inputRights").empty().append(allOptions.clone());
     }
   });
-  // Autocomplete mit Tagify für Labs
-  var labData;
-  $.getJSON("json/msl-labs.json", function (data) {
-    labData = data;
-    var firstRow = $("#laboratoryGroup .row").first();
-    initializeTagify(firstRow, data);
-  });
   setupAutocomplete("#inputAuthorAffiliation", "#hiddenAuthorRorId");
   setupAutocomplete("#inputCPAffiliation", "#hiddenCPRorId");
 });
