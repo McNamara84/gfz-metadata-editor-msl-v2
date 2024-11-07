@@ -265,7 +265,7 @@ Aktualisiert die NASA/GCMD Earth Platforms Keywords.
 **Antwort:**
 Bestätigungsnachricht über erfolgreiche Aktualisierung
 
-### 18. Lizenzen abrufen
+### 18. Lizenzen abrufen (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getLicenses&resourcetype={license_type}
 
