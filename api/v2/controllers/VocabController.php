@@ -380,5 +380,50 @@ class VocabController
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
+    private function getLicensesByType($forSoftwareOnly = false)
+    {
+        try {
+            $sql = $forSoftwareOnly
+                ? 'SELECT * FROM Rights WHERE forSoftware = 1'
+                : 'SELECT * FROM Rights';
 
+            $result = $GLOBALS['connection']->query($sql);
+
+            if (!$result) {
+                throw new Exception("Datenbankabfrage fehlgeschlagen");
+            }
+
+            $licenses = [];
+            while ($row = $result->fetch_assoc()) {
+                $licenses[] = $row;
+            }
+
+            if (empty($licenses)) {
+                http_response_code(404);
+                echo json_encode([
+                    'error' => $forSoftwareOnly
+                        ? 'Keine Softwarelizenzen gefunden'
+                        : 'Keine Lizenzen gefunden'
+                ]);
+                return;
+            }
+
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($licenses);
+
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function getAllLicenses()
+    {
+        $this->getLicensesByType(false);
+    }
+
+    public function getSoftwareLicenses()
+    {
+        $this->getLicensesByType(true);
+    }
 }
