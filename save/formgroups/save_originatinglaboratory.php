@@ -24,9 +24,6 @@ function saveOriginatingLaboratories($connection, $postData, $resource_id)
             $labId = $postData['LabId'][$i];
             $affiliation = json_decode($postData['laboratoryAffiliation'][$i], true)[0]['value'] ?? null;
             $rorId = json_decode($postData['laboratoryRorIds'][$i], true)[0]['value'] ?? null;
-
-            error_log("Processing lab: $labName, Affiliation: $affiliation, ROR ID: $rorId");
-
             if (!empty($labName)) {
                 $lab_id = saveOrUpdateOriginatingLaboratory($connection, $labName, $labId);
                 linkResourceToOriginatingLaboratory($connection, $resource_id, $lab_id);
