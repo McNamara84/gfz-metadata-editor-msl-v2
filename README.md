@@ -36,7 +36,7 @@ In der header.html und footer.html werden folgende Abhängikeiten von Drittanbie
   Wird für das Feld Thesaurus Keywords, die eingabe von mehreren Affiliations und Free Keywords genutzt.
 - jsTree 3.3.17<br>
   Wird zur Darstellung der Thesauri als hierarchische Baumstruktur verwendet.
-- Swagger UI 5.17.14<br>
+- Swagger UI 5.18.1<br>
   Zur Darstellung der dynamischen und interaktiven API-Dokumentation nach OpenAPI-Standard 3.1.
 
 ## Einstellungen
