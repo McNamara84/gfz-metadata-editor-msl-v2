@@ -189,10 +189,6 @@ function saveContributorPersonAffiliation($connection, $contributor_person_id, $
  */
 function saveContributorPersonRoles($connection, $contributor_person_id, $roles, $valid_roles)
 {
-    error_log("Saving roles for contributor_person_id: $contributor_person_id");
-    error_log("Roles to save: " . print_r($roles, true));
-    error_log("Valid roles: " . print_r($valid_roles, true));
-
     if (!is_array($roles)) {
         $roles = [$roles];
     }
