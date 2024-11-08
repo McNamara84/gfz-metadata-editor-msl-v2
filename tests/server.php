@@ -35,7 +35,11 @@ if (preg_match('#^/api(/v2)?/#', $_SERVER['REQUEST_URI'])) {
         $_SERVER['REQUEST_URI'] = '/api/v2' . substr($_SERVER['REQUEST_URI'], 4);
     }
 
+    // Debug: Log the modified URI
     error_log("Modified REQUEST_URI: " . $_SERVER['REQUEST_URI']);
+
+    // Set SCRIPT_NAME explicitly for routing
+    $_SERVER['SCRIPT_NAME'] = '/api/v2/index.php';
 
     try {
         // Special handling for the health check endpoint
@@ -45,11 +49,12 @@ if (preg_match('#^/api(/v2)?/#', $_SERVER['REQUEST_URI'])) {
         }
 
         // Include the API entry point
-        require $rootDir . '/api/index.php';
+        require $rootDir . '/api/v2/index.php';
     } catch (Throwable $e) {
         error_log("Error handling API request: " . $e->getMessage());
+        error_log("Stack trace: " . $e->getTraceAsString());
         http_response_code(500);
-        echo json_encode(['error' => 'Internal Server Error']);
+        echo json_encode(['error' => 'Internal Server Error: ' . $e->getMessage()]);
     }
     exit;
 }

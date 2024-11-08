@@ -103,8 +103,9 @@ error_log("Processed URI: " . $uri);
  *
  * @var array $routeInfo Information about the matched route.
  */
+error_log("Final URI for routing: " . $uri);
+error_log("HTTP Method: " . $httpMethod);
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
-//Debgging for routes
 error_log("Route Info: " . print_r($routeInfo, true));
 switch ($routeInfo[0]) {
     case Dispatcher::NOT_FOUND:
