@@ -87,8 +87,36 @@ error_log("Final URI for routing: " . $uri);
 error_log("HTTP Method: " . $httpMethod);
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
 error_log("Route Info: " . print_r($routeInfo, true));
-
-// Rest des Switch-Statements bleibt unverändert
 switch ($routeInfo[0]) {
-    // ... rest of the code ...
+    case Dispatcher::NOT_FOUND:
+        /**
+         * Handle the case where no matching route was found.
+         */
+        http_response_code(404);
+        echo json_encode(['error' => 'Not Found']);
+        break;
+    case Dispatcher::METHOD_NOT_ALLOWED:
+        /**
+         * Handle the case where the HTTP method is not allowed for the matched route.
+         */
+        http_response_code(405);
+        echo json_encode(['error' => 'Method Not Allowed']);
+        break;
+    case Dispatcher::FOUND:
+        /**
+         * Handle the case where a matching route was found.
+         *
+         * @var mixed $handler The handler for the route, which can be a callable or an array specifying a controller and method.
+         * @var array $vars    The variables extracted from the URI.
+         */
+        $handler = $routeInfo[1];
+        $vars = $routeInfo[2];
+        if (is_array($handler) && is_object($handler[0])) {
+            // If the handler is an array with a controller object and method name.
+            $handler[0]->{$handler[1]}($vars);
+        } else {
+            // If the handler is a callable function.
+            call_user_func($handler, $vars);
+        }
+        break;
 }
