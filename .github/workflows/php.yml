@@ -134,6 +134,9 @@ jobs:
           cat /var/log/php_errors.log
         fi
 
+    - name: Set PHPUnit permissions
+      run: chmod +x vendor/bin/phpunit
+
     - name: Run PHPUnit tests
       env:
         API_BASE_URL: http://localhost:8000
