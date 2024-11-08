@@ -402,8 +402,8 @@ class VocabController
                 http_response_code(404);
                 echo json_encode([
                     'error' => $forSoftwareOnly
-                        ? 'Keine Softwarelizenzen gefunden'
-                        : 'Keine Lizenzen gefunden'
+                        ? 'No software licenses found'
+                        : 'No licenses found'
                 ]);
                 return;
             }
