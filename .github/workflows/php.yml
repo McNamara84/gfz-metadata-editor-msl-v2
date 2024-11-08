@@ -136,6 +136,7 @@ jobs:
       env:
         API_BASE_URL: http://localhost:8000
       run: |
+        chmod +x vendor/bin/phpunit
         vendor/bin/phpunit --configuration phpunit.xml --debug
         echo "\nFinal server log contents:"
         cat server.log
