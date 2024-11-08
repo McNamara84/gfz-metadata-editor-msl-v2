@@ -275,7 +275,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/License"
+                  $ref: "#/components/schemas/SoftwareLicense"
         "404":
           description: No software licenses found
           content:
@@ -501,6 +501,32 @@ components:
         forSoftware:
           type: integer
           enum: [0, 1]
+          default: 0
+      example:
+        rights_id: 1
+        name: "Creative Commons Attribution 4.0 International"
+        url: "https://creativecommons.org/licenses/by/4.0/"
+        forSoftware: 0
+
+    SoftwareLicense:
+      type: object
+      properties:
+        rights_id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        url:
+          type: string
+        forSoftware:
+          type: integer
+          enum: [1]
+          default: 1
+      example:
+        rights_id: 2
+        name: "MIT License"
+        url: "https://opensource.org/licenses/MIT"
+        forSoftware: 1
     TimezonesUpdateResponse:
       type: object
       properties:
