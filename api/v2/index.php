@@ -29,8 +29,16 @@ use FastRoute\RouteCollector;
 $routes = require __DIR__ . '/routes/api.php';
 
 //Debugging routes
-error_log("Requested URI: " . $_SERVER['REQUEST_URI']);
-error_log("Available routes: " . print_r($routes, true));
+// Detaillierte Debug-Informationen
+error_log("Debug Information:");
+error_log("1. Original REQUEST_URI: " . $_SERVER['REQUEST_URI']);
+error_log("2. SCRIPT_NAME: " . $_SERVER['SCRIPT_NAME']);
+error_log("3. Script Directory: " . $scriptDir);
+error_log("4. URI after processing: " . $uri);
+error_log("5. Available routes:");
+foreach ($routes as $route) {
+    error_log("   Method: " . $route[0] . ", Path: " . $route[1]);
+}
 
 /**
  * Initialize the FastRoute dispatcher with the loaded routes.

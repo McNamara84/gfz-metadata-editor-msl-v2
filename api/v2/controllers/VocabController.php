@@ -419,11 +419,27 @@ class VocabController
 
     public function getAllLicenses()
     {
-        $this->getLicensesByType(false);
+        error_log("getAllLicenses called");
+        try {
+            error_log("Database connection status: " . ($GLOBALS['connection']->ping() ? "connected" : "not connected"));
+            $this->getLicensesByType(false);
+        } catch (Exception $e) {
+            error_log("Error in getAllLicenses: " . $e->getMessage());
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
     }
 
     public function getSoftwareLicenses()
     {
-        $this->getLicensesByType(true);
+        error_log("getSoftwareLicenses called");
+        try {
+            error_log("Database connection status: " . ($GLOBALS['connection']->ping() ? "connected" : "not connected"));
+            $this->getLicensesByType(true);
+        } catch (Exception $e) {
+            error_log("Error in getSoftwareLicenses: " . $e->getMessage());
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
     }
 }

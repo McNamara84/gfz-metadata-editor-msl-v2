@@ -141,6 +141,14 @@ jobs:
         echo "\nFinal server log contents:"
         cat server.log
 
+    - name: Check logs after tests
+      if: always()
+      run: |
+        echo "PHP Error Log:"
+        sudo cat /var/log/apache2/error.log || true
+        echo "\nServer Log:"
+        cat server.log || true
+
     - name: List directory structure and check permissions
       run: |
         echo "Project root:"
