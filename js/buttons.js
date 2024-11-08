@@ -204,7 +204,7 @@ $(document).ready(function () {
     autocompleteAffiliations("inputContributorAffiliation" + uniqueSuffix, "hiddenContributorRorId" + uniqueSuffix);
 
     // Tagify für das neue Roles-Feld initialisieren
-    setupRolesDropdown("person", "#inputContributorsPerRole" + uniqueSuffix);
+    setupRolesDropdown(["person", "both"], "#inputContributorsPerRole" + uniqueSuffix);
 
     // Event-Handler für RemoveButton
     newContributorRow.on("click", ".removeButton", function () {
@@ -250,7 +250,7 @@ $(document).ready(function () {
     autocompleteAffiliations("inputOrganisationAffiliation" + uniqueSuffix, "hiddenOrganisationRorId" + uniqueSuffix);
 
     // Tagify für das neue Roles-Feld initialisieren
-    setupRolesDropdown("institution", "#inputContributorOrgaRole" + uniqueSuffix);
+    setupRolesDropdown(["institution", "both"], "#inputContributorOrgaRole" + uniqueSuffix);
 
 
     // Event-Handler für RemoveButton
