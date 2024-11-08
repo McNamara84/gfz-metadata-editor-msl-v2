@@ -157,27 +157,3 @@ jobs:
         
         # Kill PHP server
         kill $(cat server.pid)
-
-    - name: Check logs after tests
-      if: always()
-      run: |
-        echo "PHP Error Log:"
-        sudo cat /var/log/apache2/error.log || true
-        echo "\nServer Log:"
-        cat server.log || true
-
-    - name: List directory structure and check permissions
-      run: |
-        echo "Project root:"
-        ls -la
-        echo "\nAPI directory:"
-        ls -la api/
-        echo "\nAPI v2 directory:"
-        ls -la api/v2/
-        chmod -R 755 .
-        chmod -R 644 api/v2/controllers/*.php
-        chmod 755 api/v2/controllers
-
-    - name: Stop PHP server
-      run: kill $(cat server.pid)
-      if: always()
