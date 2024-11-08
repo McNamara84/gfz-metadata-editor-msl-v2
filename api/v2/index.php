@@ -1,7 +1,4 @@
 <?php
-error_log("Requested URI: " . $_SERVER['REQUEST_URI']);
-error_log("Looking for route: " . $uri);
-error_log("Available routes: " . print_r($routes, true));
 /**
  * Entry point for API version 2.
  *
@@ -30,6 +27,10 @@ use FastRoute\RouteCollector;
  * @var array $routes An array of routes defined for the API.
  */
 $routes = require __DIR__ . '/routes/api.php';
+
+//Debugging routes
+error_log("Requested URI: " . $_SERVER['REQUEST_URI']);
+error_log("Available routes: " . print_r($routes, true));
 
 /**
  * Initialize the FastRoute dispatcher with the loaded routes.
@@ -103,7 +104,8 @@ error_log("Processed URI: " . $uri);
  * @var array $routeInfo Information about the matched route.
  */
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
-
+//Debgging for routes
+error_log("Route Info: " . print_r($routeInfo, true));
 switch ($routeInfo[0]) {
     case Dispatcher::NOT_FOUND:
         /**
