@@ -5,67 +5,57 @@ use PHPUnit\Framework\TestCase;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
-/**
- * Class ApiTest
- *
- * This class contains unit tests for the API endpoints.
- * It uses GuzzleHttp to send HTTP requests and PHPUnit for assertions.
- */
 class ApiTest extends TestCase
 {
-    /**
-     * @var Client $client The HTTP client used to make requests to the API.
-     */
     private $client;
-
-    /**
-     * @var string $baseUri The base URI of the API.
-     */
     private $baseUri;
-
-    /**
-     * @var string $projectPath The project path relative to the server root.
-     */
     private $projectPath;
+    private $connection;
 
-    /**
-     * Sets up the test environment before each test method is executed.
-     *
-     * Initializes the HTTP client and determines the base URI and project path
-     * based on the environment (development or production).
-     *
-     * @return void
-     */
     protected function setUp(): void
     {
-        // Get project root directory (2 levels up from tests directory)
-        $projectRoot = dirname(__DIR__);
+        // Datenbankverbindung herstellen
+        require_once __DIR__ . '/../settings.php';
+        global $connection;
+        if (!$connection) {
+            $connection = connectDb();
+        }
+        $this->connection = $connection;
 
-        // Get project folder name
-        $this->projectPath = basename($projectRoot);
+        // Überprüfen, ob die Testdatenbank verfügbar ist
+        $dbname = 'mde2-msl-test';
+        if ($this->connection->select_db($dbname) === false) {
+            // Testdatenbank erstellen
+            $connection->query("CREATE DATABASE " . $dbname);
+            $connection->select_db($dbname);
+            // install.php ausführen
+            require __DIR__ . '/../install.php';
+        }
 
-        // Get base URI from environment variable or use default
+        // HTTP Client Setup
+        $this->projectPath = basename(dirname(__DIR__));
         $this->baseUri = getenv('API_BASE_URL') ?: 'http://localhost:8000';
-
-        // Log the base URI for debugging
         echo "\nUsing base URI: " . $this->baseUri;
 
         $this->client = new Client([
             'base_uri' => $this->baseUri,
             'timeout' => 5.0,
             'verify' => false,
-            'http_errors' => false // Prevents throwing exceptions on 4xx/5xx responses
+            'http_errors' => false
         ]);
+    }
+
+    protected function tearDown(): void
+    {
+        // Datenbank-Cleanup ist hier nicht nötig, da die Lizenzen zu den Stammdaten gehören
+        // und nicht zwischen den Tests geändert werden
     }
 
     private function getApiUrl($endpoint): string
     {
-        // In CI environment, we don't need the project path
         if (getenv('API_BASE_URL')) {
             return '/api/v2/' . ltrim($endpoint, '/');
         }
-
-        // For local development
         $path = trim($this->projectPath . '/api/v2/' . ltrim($endpoint, '/'), '/');
         return "/{$path}";
     }
@@ -112,12 +102,10 @@ class ApiTest extends TestCase
         echo "\nTesting endpoint: " . $this->baseUri . $endpointUrl;
 
         try {
-            // Debug-Information vor dem Request
             echo "\nSending GET request to: " . $endpointUrl;
 
             $response = $this->client->get($endpointUrl);
 
-            // Ausführlichere Response-Information
             echo "\nResponse Status: " . $response->getStatusCode();
             echo "\nResponse Headers: " . json_encode($response->getHeaders());
             echo "\nResponse Body: " . $response->getBody();
@@ -129,16 +117,20 @@ class ApiTest extends TestCase
                 "\nEndpoint: " . $endpointUrl
             );
 
-            // Rest des Tests bleibt gleich...
+            $data = json_decode($response->getBody(), true);
+            $this->assertIsArray($data, 'Response should be an array');
+            $this->assertNotEmpty($data, 'Response should not be empty');
+
+            // Prüfen der Struktur des ersten Elements
+            $firstLicense = $data[0];
+            $this->assertArrayHasKey('rightsIdentifier', $firstLicense);
+            $this->assertArrayHasKey('text', $firstLicense);
         } catch (Exception $e) {
             echo "\nException occurred while testing " . $endpointUrl;
-            $this->handleTestException($e);
+            throw $e;
         }
     }
 
-    /**
-     * Tests the endpoint that returns software licenses
-     */
     public function testGetSoftwareLicensesShouldReturnSoftwareLicenseList(): void
     {
         $endpointUrl = $this->getApiUrl('vocabs/licenses/software');
@@ -157,40 +149,20 @@ class ApiTest extends TestCase
             );
 
             $data = json_decode($response->getBody(), true);
-            if (json_last_error() !== JSON_ERROR_NONE) {
-                $this->fail('Failed to parse JSON response: ' . json_last_error_msg());
-            }
+            $this->assertIsArray($data, 'Response should be an array');
+            $this->assertNotEmpty($data, 'Response should not be empty');
 
-            $this->assertIsArray($data, 'Response should be an array of software licenses');
-
-            // Test structure of first license if array is not empty
-            if (!empty($data)) {
-                $firstLicense = $data[0];
-                $this->assertArrayHasKey('rightsIdentifier', $firstLicense, 'License should have rightsIdentifier');
-                $this->assertArrayHasKey('text', $firstLicense, 'License should have text');
-
-                // Optional URL field
-                if (isset($firstLicense['url'])) {
-                    $this->assertIsString($firstLicense['url'], 'URL should be a string if present');
-                }
+            // Prüfen ob alle zurückgegebenen Lizenzen forSoftware=1 haben
+            foreach ($data as $license) {
+                $this->assertArrayHasKey('forSoftware', $license);
+                $this->assertEquals(
+                    '1',
+                    $license['forSoftware'],
+                    'All returned licenses should have forSoftware=1'
+                );
             }
         } catch (Exception $e) {
-            $this->handleTestException($e);
+            throw $e;
         }
-    }
-
-    /**
-     * Helper method to handle test exceptions
-     */
-    private function handleTestException($e): void
-    {
-        echo "\nException: " . get_class($e);
-        echo "\nMessage: " . $e->getMessage();
-        if ($e instanceof \GuzzleHttp\Exception\RequestException && $e->hasResponse()) {
-            $response = $e->getResponse();
-            echo "\nResponse Status: " . $response->getStatusCode();
-            echo "\nResponse Body: " . $response->getBody();
-        }
-        throw $e;
     }
 }
