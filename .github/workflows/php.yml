@@ -35,21 +35,19 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.2'
+        extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, zip
+        coverage: xdebug
+
+    - name: Update Composer dependencies
+      run: composer update --no-interaction --no-progress
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v3
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
-
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      run: |
+        composer install --prefer-dist --no-progress --no-suggest
+        composer dump-autoload -o
 
     - name: Wait for MySQL to be ready
       run: |
@@ -88,11 +86,9 @@ jobs:
 
         function getApiKey() {
             \$apiKeyGoogleMaps = 'test_api_key';
-            // API-Key als JSON zurückgeben
             echo json_encode(['apiKey' => \$apiKeyGoogleMaps]);
         }
 
-        // Prüfen, ob die Datei direkt aufgerufen wird
         if (basename(__FILE__) == basename(\$_SERVER['PHP_SELF'])) {
             if (\$_SERVER['REQUEST_METHOD'] === 'GET') {
                 getApiKey();
@@ -117,5 +113,41 @@ jobs:
     - name: Run install.php to initialize the database
       run: php install.php
 
+    - name: Start PHP built-in web server
+      run: |
+        # Start PHP server with error logging
+        php -S localhost:8000 -t . tests/server.php 2>&1 > server.log &
+        echo $! > server.pid
+        sleep 5  # Wait for server to start
+        
+        # Test initial connection
+        echo "Testing initial API endpoints:"
+        curl -v http://localhost:8000/api/v2/general/alive
+        echo "\nTesting licenses endpoint:"
+        curl -v http://localhost:8000/api/v2/vocabs/licenses/all
+        
+        # Show initial logs
+        echo "\nInitial server log contents:"
+        cat server.log
+        echo "\nPHP error log:"
+        if [ -f /var/log/php_errors.log ]; then
+          cat /var/log/php_errors.log
+        fi
+
+    - name: Set PHPUnit permissions
+      run: chmod +x vendor/bin/phpunit
+
     - name: Run PHPUnit tests
-      run: php ./vendor/bin/phpunit --configuration phpunit.xml
+      env:
+        API_BASE_URL: http://localhost:8000
+      run: |
+        # Run tests
+        vendor/bin/phpunit --configuration phpunit.xml --debug
+        
+        # Show final logs
+        echo "\nFinal Server Log:"
+        cat server.log
+
+    - name: Stop PHP server
+      if: always()
+      run: kill $(cat server.pid)

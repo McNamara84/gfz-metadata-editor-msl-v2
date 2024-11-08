@@ -380,5 +380,66 @@ class VocabController
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
+    private function getLicensesByType($forSoftwareOnly = false)
+    {
+        try {
+            $sql = $forSoftwareOnly
+                ? 'SELECT * FROM Rights WHERE forSoftware = 1'
+                : 'SELECT * FROM Rights';
 
+            $result = $GLOBALS['connection']->query($sql);
+
+            if (!$result) {
+                throw new Exception("Datenbankabfrage fehlgeschlagen");
+            }
+
+            $licenses = [];
+            while ($row = $result->fetch_assoc()) {
+                $licenses[] = $row;
+            }
+
+            if (empty($licenses)) {
+                http_response_code(404);
+                echo json_encode([
+                    'error' => $forSoftwareOnly
+                        ? 'No software licenses found'
+                        : 'No licenses found'
+                ]);
+                return;
+            }
+
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($licenses);
+
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function getAllLicenses()
+    {
+        error_log("getAllLicenses called");
+        try {
+            error_log("Database connection status: " . ($GLOBALS['connection']->ping() ? "connected" : "not connected"));
+            $this->getLicensesByType(false);
+        } catch (Exception $e) {
+            error_log("Error in getAllLicenses: " . $e->getMessage());
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function getSoftwareLicenses()
+    {
+        error_log("getSoftwareLicenses called");
+        try {
+            error_log("Database connection status: " . ($GLOBALS['connection']->ping() ? "connected" : "not connected"));
+            $this->getLicensesByType(true);
+        } catch (Exception $e) {
+            error_log("Error in getSoftwareLicenses: " . $e->getMessage());
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
 }

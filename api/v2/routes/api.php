@@ -17,5 +17,7 @@ return [
     ['GET', '/dataset/export/{id}/all', [new DatasetController(), 'exportAll']],
     ['GET', '/dataset/export/{id}/{scheme}/download', [new DatasetController(), 'exportResourceDownload']],
     ['GET', '/dataset/export/{id}/{scheme}', [new DatasetController(), 'exportResource']],
+    ['GET', '/vocabs/licenses/all', [new VocabController(), 'getAllLicenses']],
+    ['GET', '/vocabs/licenses/software', [new VocabController(), 'getSoftwareLicenses']],
     // TODO: Weitere Endpunkte ergänzen
 ];

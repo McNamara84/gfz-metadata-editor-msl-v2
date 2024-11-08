@@ -107,13 +107,8 @@ function extractLastTenDigits($funderId)
  */
 function linkResourceToFundingReference($connection, $resource_id, $funding_reference_id)
 {
-    fwrite(STDERR, "\n=== Linking Resource to Funding Reference ===\n");
-    fwrite(STDERR, "Resource ID: $resource_id\n");
-    fwrite(STDERR, "Funding Reference ID: $funding_reference_id\n");
-
     // Überprüfen, ob die IDs gültig sind
     if (!$resource_id || !$funding_reference_id) {
-        fwrite(STDERR, "ERROR: Invalid IDs provided\n");
         return false;
     }
 
@@ -122,7 +117,6 @@ function linkResourceToFundingReference($connection, $resource_id, $funding_refe
     $resourceCheck->bind_param("i", $resource_id);
     $resourceCheck->execute();
     if ($resourceCheck->get_result()->num_rows === 0) {
-        fwrite(STDERR, "ERROR: Resource does not exist\n");
         return false;
     }
 
@@ -131,7 +125,6 @@ function linkResourceToFundingReference($connection, $resource_id, $funding_refe
     $fundingCheck->bind_param("i", $funding_reference_id);
     $fundingCheck->execute();
     if ($fundingCheck->get_result()->num_rows === 0) {
-        fwrite(STDERR, "ERROR: Funding Reference does not exist\n");
         return false;
     }
 
@@ -143,7 +136,6 @@ function linkResourceToFundingReference($connection, $resource_id, $funding_refe
     $existingCheck->bind_param("ii", $resource_id, $funding_reference_id);
     $existingCheck->execute();
     if ($existingCheck->get_result()->num_rows > 0) {
-        fwrite(STDERR, "NOTE: Link already exists\n");
         return true;
     }
 
@@ -155,7 +147,6 @@ function linkResourceToFundingReference($connection, $resource_id, $funding_refe
     );
 
     if (!$stmt) {
-        fwrite(STDERR, "ERROR: Prepare failed: " . $connection->error . "\n");
         return false;
     }
 
@@ -163,12 +154,10 @@ function linkResourceToFundingReference($connection, $resource_id, $funding_refe
 
     $success = $stmt->execute();
     if (!$success) {
-        fwrite(STDERR, "ERROR: Execute failed: " . $stmt->error . "\n");
         $stmt->close();
         return false;
     }
-
-    fwrite(STDERR, "SUCCESS: Link created successfully\n");
+    
     $stmt->close();
     return true;
 }

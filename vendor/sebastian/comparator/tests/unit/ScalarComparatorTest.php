@@ -123,6 +123,70 @@ final class ScalarComparatorTest extends TestCase
         ];
     }
 
+    /**
+     * @return non-empty-list<array{0: string, 1: string, 2: string}>
+     */
+    public static function assertEqualsFailsWithDiffProvider(): array
+    {
+        return [
+            [
+                "
+--- Expected
++++ Actual
+@@ @@
+-'string'
++'other string'
+",
+                'string',
+                'other string',
+            ],
+            [
+                "
+--- Expected
++++ Actual
+@@ @@
+-''
++'other string'
+",
+                '',
+                'other string',
+            ],
+            [
+                "
+--- Expected
++++ Actual
+@@ @@
+-'...string which will be cut HERE some trailer'
++'...string which will be cut XYZ some trailer'
+",
+                'too too too long string which will be cut HERE some trailer',
+                'too too too long string which will be cut XYZ some trailer',
+            ],
+            [
+                "
+--- Expected
++++ Actual
+@@ @@
+-'short start until HERE some llooooooooonnng llo...'
++'short start until XYZ some llooooooooonnng llo...'
+",
+                'short start until HERE some llooooooooonnng llooooooooonnng llooooooooonnng llooooooooonnng trailer',
+                'short start until XYZ some llooooooooonnng llooooooooonnng llooooooooonnng llooooooooonnng trailer',
+            ],
+            [
+                "
+--- Expected
++++ Actual
+@@ @@
+-'...string which will be cut HERE some llooooooooonnng llo...'
++'...string which will be cut XYZ some llooooooooonnng llo...'
+",
+                'too too too long string which will be cut HERE some llooooooooonnng llooooooooonnng llooooooooonnng llooooooooonnng trailer',
+                'too too too long string which will be cut XYZ some llooooooooonnng llooooooooonnng llooooooooonnng llooooooooonnng trailer',
+            ],
+        ];
+    }
+
     #[DataProvider('acceptsSucceedsProvider')]
     public function testAcceptsSucceeds(mixed $expected, mixed $actual): void
     {
@@ -159,5 +223,17 @@ final class ScalarComparatorTest extends TestCase
         $this->expectExceptionMessage($message);
 
         (new ScalarComparator)->assertEquals($expected, $actual);
+    }
+
+    #[DataProvider('assertEqualsFailsWithDiffProvider')]
+    public function testAssertEqualsFailsWithDiff(string $expectedDiff, string $expected, string $actual): void
+    {
+        try {
+            (new ScalarComparator)->assertEquals($expected, $actual);
+            $this->fail('Expected ComparisonFailure not thrown');
+        } catch (ComparisonFailure $e) {
+            $this->assertEquals('Failed asserting that two strings are equal.', $e->getMessage());
+            $this->assertEquals($expectedDiff, $e->getDiff());
+        }
     }
 }
