@@ -173,14 +173,13 @@ $(document).ready(function () {
     var contributorGroup = $("#contributorsGroup");
     // Die erste Kontributorenzeile, die als Vorlage dient
     var firstContributorRow = contributorGroup.children().first();
-    firstContributorRow.find("select").chosen("destroy");
 
     // Klonen der Vorlage
     var newContributorRow = firstContributorRow.clone();
 
     // Zurücksetzen der Werte und Validierungsfeedbacks im geklonten Element
     newContributorRow.find("input").val("").removeClass("is-invalid is-valid");
-    newContributorRow.find("select").val("").removeClass("is-invalid is-valid");
+    newContributorRow.find(".tagify").remove();
     newContributorRow.find(".invalid-feedback, .valid-feedback").hide();
     // Hilfe-Buttons entfernen
     deleteHelpButtonFromClonedRows(newContributorRow);
@@ -192,20 +191,20 @@ $(document).ready(function () {
     newContributorRow.find("#inputContributorAffiliation").attr("id", "inputContributorAffiliation" + uniqueSuffix);
     newContributorRow.find("#hiddenContributorRorId").attr("id", "hiddenContributorRorId" + uniqueSuffix);
 
-    // altes TagifyElement in der neuen Zeile entfernen (wird weiter unten in autocompleteAffiliation wieder intitialisiert)
-    newContributorRow.find(".tagify").remove();
+    // Roles-Feld eine neue ID geben
+    newContributorRow.find("#inputContributorsPerRole").attr("id", "inputContributorsPerRole" + uniqueSuffix);
 
     // Plus Button mit Minus Button ersetzen
     newContributorRow.find(".addContributorPerson").replaceWith(removeButton);
-
-    firstContributorRow.find("select").chosen();
-    newContributorRow.find("select").chosen();
 
     // Neue AuthorLine zum DOM hinzufügen
     contributorGroup.append(newContributorRow);
 
     // Tagify auf neues AuthorAffiliations Feld anwenden
     autocompleteAffiliations("inputContributorAffiliation" + uniqueSuffix, "hiddenContributorRorId" + uniqueSuffix);
+
+    // Tagify für das neue Roles-Feld initialisieren
+    setupRolesDropdown(["person", "both"], "#inputContributorsPerRole" + uniqueSuffix);
 
     // Event-Handler für RemoveButton
     newContributorRow.on("click", ".removeButton", function () {
@@ -217,14 +216,13 @@ $(document).ready(function () {
     var contributorGroup = $("#contributorOrganisationGroup");
     // Die erste Kontributorenzeile, die als Vorlage dient
     var firstContributorRow = contributorGroup.children().first();
-    firstContributorRow.find("select").chosen("destroy");
 
     // Klonen der Vorlage
     var newContributorRow = firstContributorRow.clone();
 
     // Zurücksetzen der Werte und Validierungsfeedbacks im geklonten Element
     newContributorRow.find("input").val("").removeClass("is-invalid is-valid");
-    newContributorRow.find("select").val("").removeClass("is-invalid is-valid");
+    newContributorRow.find(".tagify").remove();;
     newContributorRow.find(".invalid-feedback, .valid-feedback").hide();
 
     // Hilfe-Buttons entfernen
@@ -237,20 +235,23 @@ $(document).ready(function () {
     newContributorRow.find("#inputOrganisationAffiliation").attr("id", "inputOrganisationAffiliation" + uniqueSuffix);
     newContributorRow.find("#hiddenOrganisationRorId").attr("id", "hiddenOrganisationRorId" + uniqueSuffix);
 
-    // altes TagifyElement in der neuen Zeile entfernen (wird weiter unten in autocompleteAffiliation wieder intitialisiert)
-    newContributorRow.find(".tagify").remove();
+    // Roles-Feld eine neue ID geben
+    newContributorRow.find("#inputContributorOrgaRole").attr("id", "inputContributorOrgaRole" + uniqueSuffix);
+
 
     // Plus Button mit Minus Button ersetzen
     newContributorRow.find(".addContributor").replaceWith(removeButton);
 
-    firstContributorRow.find("select").chosen();
-    newContributorRow.find("select").chosen();
 
     // Neue AuthorLine zum DOM hinzufügen
     contributorGroup.append(newContributorRow);
 
     // Tagify auf neues AuthorAffiliations Feld anwenden
     autocompleteAffiliations("inputOrganisationAffiliation" + uniqueSuffix, "hiddenOrganisationRorId" + uniqueSuffix);
+
+    // Tagify für das neue Roles-Feld initialisieren
+    setupRolesDropdown(["institution", "both"], "#inputContributorOrgaRole" + uniqueSuffix);
+
 
     // Event-Handler für RemoveButton
     newContributorRow.on("click", ".removeButton", function () {
