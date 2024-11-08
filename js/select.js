@@ -48,16 +48,6 @@ $(document).ready(function () {
         $("#inputRights").append(option);
       });
 
-      // Add default option CC-BY-4.0 if not present in the database
-      if (!defaultOptionSet) {
-        var defaultOption = $("<option>", {
-          value: "CC-BY-4.0",
-          text: "Creative Commons Attribution 4.0 International (CC-BY-4.0)",
-          selected: true,
-        });
-        $("#inputRights").prepend(defaultOption);
-      }
-
       // Trigger change event to ensure any listeners are notified
       $("#inputRights").trigger("change");
     }).fail(function (jqXHR, textStatus, errorThrown) {
