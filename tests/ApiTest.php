@@ -105,4 +105,102 @@ class ApiTest extends TestCase
             throw $e;
         }
     }
+
+    public function testGetAllLicensesShouldReturnLicenseList(): void
+    {
+        $endpointUrl = $this->getApiUrl('vocabs/licenses/all');
+        echo "\nTesting endpoint: " . $this->baseUri . $endpointUrl;
+
+        try {
+            $response = $this->client->get($endpointUrl);
+
+            echo "\nResponse Status: " . $response->getStatusCode();
+            echo "\nResponse Body: " . $response->getBody();
+
+            $this->assertEquals(
+                200,
+                $response->getStatusCode(),
+                'Expected status code 200. Response: ' . $response->getBody()
+            );
+
+            $data = json_decode($response->getBody(), true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                $this->fail('Failed to parse JSON response: ' . json_last_error_msg());
+            }
+
+            $this->assertIsArray($data, 'Response should be an array of licenses');
+
+            // Test structure of first license if array is not empty
+            if (!empty($data)) {
+                $firstLicense = $data[0];
+                $this->assertArrayHasKey('rightsIdentifier', $firstLicense, 'License should have rightsIdentifier');
+                $this->assertArrayHasKey('text', $firstLicense, 'License should have text');
+
+                // Optional URL field
+                if (isset($firstLicense['url'])) {
+                    $this->assertIsString($firstLicense['url'], 'URL should be a string if present');
+                }
+            }
+        } catch (Exception $e) {
+            $this->handleTestException($e);
+        }
+    }
+
+    /**
+     * Tests the endpoint that returns software licenses
+     */
+    public function testGetSoftwareLicensesShouldReturnSoftwareLicenseList(): void
+    {
+        $endpointUrl = $this->getApiUrl('vocabs/licenses/software');
+        echo "\nTesting endpoint: " . $this->baseUri . $endpointUrl;
+
+        try {
+            $response = $this->client->get($endpointUrl);
+
+            echo "\nResponse Status: " . $response->getStatusCode();
+            echo "\nResponse Body: " . $response->getBody();
+
+            $this->assertEquals(
+                200,
+                $response->getStatusCode(),
+                'Expected status code 200. Response: ' . $response->getBody()
+            );
+
+            $data = json_decode($response->getBody(), true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                $this->fail('Failed to parse JSON response: ' . json_last_error_msg());
+            }
+
+            $this->assertIsArray($data, 'Response should be an array of software licenses');
+
+            // Test structure of first license if array is not empty
+            if (!empty($data)) {
+                $firstLicense = $data[0];
+                $this->assertArrayHasKey('rightsIdentifier', $firstLicense, 'License should have rightsIdentifier');
+                $this->assertArrayHasKey('text', $firstLicense, 'License should have text');
+
+                // Optional URL field
+                if (isset($firstLicense['url'])) {
+                    $this->assertIsString($firstLicense['url'], 'URL should be a string if present');
+                }
+            }
+        } catch (Exception $e) {
+            $this->handleTestException($e);
+        }
+    }
+
+    /**
+     * Helper method to handle test exceptions
+     */
+    private function handleTestException($e): void
+    {
+        echo "\nException: " . get_class($e);
+        echo "\nMessage: " . $e->getMessage();
+        if ($e instanceof \GuzzleHttp\Exception\RequestException && $e->hasResponse()) {
+            $response = $e->getResponse();
+            echo "\nResponse Status: " . $response->getStatusCode();
+            echo "\nResponse Body: " . $response->getBody();
+        }
+        throw $e;
+    }
 }
