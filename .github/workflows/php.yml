@@ -115,17 +115,19 @@ jobs:
 
     - name: Start PHP built-in web server
       run: |
-        php -S localhost:8000 tests/server.php > server.log 2>&1 &
+        # Start PHP server with error logging
+        php -S localhost:8000 -t . tests/server.php 2>&1 > server.log &
         echo $! > server.pid
         sleep 5  # Wait for server to start
-      
-    - name: Test server connection and API endpoints
-      run: |
-        echo "Testing API endpoints:"
+        
+        # Test initial connection
+        echo "Testing initial API endpoints:"
         curl -v http://localhost:8000/api/v2/general/alive
         echo "\nTesting licenses endpoint:"
         curl -v http://localhost:8000/api/v2/vocabs/licenses/all
-        echo "\nServer log contents:"
+        
+        # Show initial logs
+        echo "\nInitial server log contents:"
         cat server.log
         echo "\nPHP error log:"
         if [ -f /var/log/php_errors.log ]; then
@@ -136,24 +138,13 @@ jobs:
       env:
         API_BASE_URL: http://localhost:8000
       run: |
-        # Start PHP server with error logging
-        php -S localhost:8000 -t . tests/server.php 2>&1 > server.log &
-        echo $! > server.pid
-        sleep 2
-
-        # Test einzelne Endpunkte direkt
-        echo "Testing endpoints directly:"
-        curl -v http://localhost:8000/api/v2/general/alive
-        echo "\n---\n"
-        curl -v http://localhost:8000/api/v2/vocabs/licenses/all
-        echo "\n---\n"
-        
         # Run tests
         vendor/bin/phpunit --configuration phpunit.xml --debug
         
-        # Show logs
-        echo "\nServer Log:"
+        # Show final logs
+        echo "\nFinal Server Log:"
         cat server.log
-        
-        # Kill PHP server
-        kill $(cat server.pid)
+
+    - name: Stop PHP server
+      if: always()
+      run: kill $(cat server.pid)
