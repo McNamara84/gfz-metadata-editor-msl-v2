@@ -18,105 +18,88 @@ require_once __DIR__ . '/controllers/ValidationController.php';
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
 
+// Debug-Ausgaben für den Request
+error_log("REQUEST_URI: " . $_SERVER['REQUEST_URI']);
+error_log("SCRIPT_NAME: " . $_SERVER['SCRIPT_NAME']);
+error_log("PHP_SELF: " . $_SERVER['PHP_SELF']);
+
 /**
  * Load the API routes from the routes configuration file.
  */
 $routes = require __DIR__ . '/routes/api.php';
 
-/**
- * Retrieve the HTTP method and URI from the server variables.
- */
-$httpMethod = $_SERVER['REQUEST_METHOD'];
-$uri = $_SERVER['REQUEST_URI'];
+// Debug-Ausgabe für geladene Routen
+error_log("Loaded routes:");
+foreach ($routes as $route) {
+    error_log("Route: " . $route[0] . " " . $route[1]);
+}
 
 /**
- * Log the original URI for debugging purposes.
+ * Process the URI
  */
+$uri = $_SERVER['REQUEST_URI'];
 error_log("Original URI: " . $uri);
 
-/**
- * Strip the query string from the URI and decode it.
- */
+// Strip query string and decode
 if (false !== $pos = strpos($uri, '?')) {
     $uri = substr($uri, 0, $pos);
 }
 $uri = rawurldecode($uri);
 
-/**
- * Dynamically determine the base path of the script.
- */
-$scriptName = $_SERVER['SCRIPT_NAME'];
-$scriptDir = str_replace('\\', '/', dirname($scriptName));
-$scriptDir .= '/' . $version;
-
-// Debug-Ausgaben NACH der Definition der Variablen
-error_log("Requested URI: " . $_SERVER['REQUEST_URI']);
-error_log("Script Directory: " . $scriptDir);
-error_log("Available routes: " . print_r($routes, true));
-
-/**
- * Remove the base path from the URI to get the relative path.
- */
-if (substr($uri, 0, strlen($scriptDir)) === $scriptDir) {
-    $uri = substr($uri, strlen($scriptDir));
+// Extract the path after /api/v2/
+if (preg_match('#^.*?/api/v2(/.*)?$#', $uri, $matches)) {
+    $uri = $matches[1] ?? '/';
+} else {
+    $uri = '/';
 }
 
-/**
- * Ensure that the URI starts with a '/'.
- */
-if (empty($uri) || $uri[0] !== '/') {
-    $uri = '/' . $uri;
-}
+error_log("Processed URI for routing: " . $uri);
 
 /**
- * Log the processed URI for debugging purposes.
- */
-error_log("Processed URI: " . $uri);
-
-/**
- * Initialize the FastRoute dispatcher with the loaded routes.
+ * Initialize the FastRoute dispatcher
  */
 $dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r) use ($routes) {
     foreach ($routes as $route) {
+        error_log("Adding route: " . $route[0] . " " . $route[1]);
         $r->addRoute($route[0], $route[1], $route[2]);
     }
 });
 
-// Debug-Informationen vor dem Dispatching
-error_log("Final URI for routing: " . $uri);
-error_log("HTTP Method: " . $httpMethod);
+$httpMethod = $_SERVER['REQUEST_METHOD'];
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
-error_log("Route Info: " . print_r($routeInfo, true));
+
+error_log("Route dispatch result: " . print_r($routeInfo, true));
+
 switch ($routeInfo[0]) {
     case Dispatcher::NOT_FOUND:
-        /**
-         * Handle the case where no matching route was found.
-         */
+        error_log("Route not found for URI: " . $uri);
         http_response_code(404);
         echo json_encode(['error' => 'Not Found']);
         break;
+
     case Dispatcher::METHOD_NOT_ALLOWED:
-        /**
-         * Handle the case where the HTTP method is not allowed for the matched route.
-         */
+        error_log("Method not allowed: " . $httpMethod . " for URI: " . $uri);
         http_response_code(405);
         echo json_encode(['error' => 'Method Not Allowed']);
         break;
+
     case Dispatcher::FOUND:
-        /**
-         * Handle the case where a matching route was found.
-         *
-         * @var mixed $handler The handler for the route, which can be a callable or an array specifying a controller and method.
-         * @var array $vars    The variables extracted from the URI.
-         */
+        error_log("Route found for URI: " . $uri);
         $handler = $routeInfo[1];
         $vars = $routeInfo[2];
-        if (is_array($handler) && is_object($handler[0])) {
-            // If the handler is an array with a controller object and method name.
-            $handler[0]->{$handler[1]}($vars);
-        } else {
-            // If the handler is a callable function.
-            call_user_func($handler, $vars);
+
+        try {
+            if (is_array($handler) && is_object($handler[0])) {
+                error_log("Executing controller method: " . get_class($handler[0]) . "::" . $handler[1]);
+                $handler[0]->{$handler[1]}($vars);
+            } else {
+                error_log("Executing callable handler");
+                call_user_func($handler, $vars);
+            }
+        } catch (Exception $e) {
+            error_log("Error executing handler: " . $e->getMessage());
+            http_response_code(500);
+            echo json_encode(['error' => 'Internal Server Error']);
         }
         break;
 }

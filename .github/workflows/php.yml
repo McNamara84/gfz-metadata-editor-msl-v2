@@ -136,10 +136,27 @@ jobs:
       env:
         API_BASE_URL: http://localhost:8000
       run: |
-        chmod +x vendor/bin/phpunit
+        # Start PHP server with error logging
+        php -S localhost:8000 -t . tests/server.php 2>&1 > server.log &
+        echo $! > server.pid
+        sleep 2
+
+        # Test einzelne Endpunkte direkt
+        echo "Testing endpoints directly:"
+        curl -v http://localhost:8000/api/v2/general/alive
+        echo "\n---\n"
+        curl -v http://localhost:8000/api/v2/vocabs/licenses/all
+        echo "\n---\n"
+        
+        # Run tests
         vendor/bin/phpunit --configuration phpunit.xml --debug
-        echo "\nFinal server log contents:"
+        
+        # Show logs
+        echo "\nServer Log:"
         cat server.log
+        
+        # Kill PHP server
+        kill $(cat server.pid)
 
     - name: Check logs after tests
       if: always()
