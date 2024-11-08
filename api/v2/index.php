@@ -1,4 +1,7 @@
 <?php
+error_log("Requested URI: " . $_SERVER['REQUEST_URI']);
+error_log("Looking for route: " . $uri);
+error_log("Available routes: " . print_r($routes, true));
 /**
  * Entry point for API version 2.
  *

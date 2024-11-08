@@ -117,35 +117,30 @@ jobs:
       run: |
         php -S localhost:8000 tests/server.php > server.log 2>&1 &
         echo $! > server.pid
+        sleep 5  # Wait for server to start
       
-    - name: Wait for web server and test connection
+    - name: Test server connection and API endpoints
       run: |
-        sleep 5
-        echo "Testing API endpoint directly:"
+        echo "Testing API endpoints:"
         curl -v http://localhost:8000/api/v2/general/alive
-        echo ""
-        echo "Server log contents:"
+        echo "\nTesting licenses endpoint:"
+        curl -v http://localhost:8000/api/v2/vocabs/licenses/all
+        echo "\nServer log contents:"
         cat server.log
-        echo ""
-        echo "Directory structure:"
-        ls -R api/
-
-    - name: List processes
-      run: |
-        echo "PHP processes:"
-        ps aux | grep php
-        echo "Listening ports:"
-        netstat -tulpn | grep LISTEN || true
+        echo "\nPHP error log:"
+        if [ -f /var/log/php_errors.log ]; then
+          cat /var/log/php_errors.log
+        fi
 
     - name: Run PHPUnit tests
+      env:
+        API_BASE_URL: http://localhost:8000
       run: |
-        export API_BASE_URL=http://localhost:8000
-        php vendor/bin/phpunit --configuration phpunit.xml --debug
-        echo ""
-        echo "Final server log contents:"
+        vendor/bin/phpunit --configuration phpunit.xml --debug
+        echo "\nFinal server log contents:"
         cat server.log
 
-    - name: List directory structure
+    - name: List directory structure and check permissions
       run: |
         echo "Project root:"
         ls -la
@@ -153,13 +148,10 @@ jobs:
         ls -la api/
         echo "\nAPI v2 directory:"
         ls -la api/v2/
-
-    - name: Check file permissions
-      run: |
         chmod -R 755 .
         chmod -R 644 api/v2/controllers/*.php
         chmod 755 api/v2/controllers
-        
+
     - name: Stop PHP server
       run: kill $(cat server.pid)
       if: always()
