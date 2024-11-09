@@ -15,6 +15,7 @@ Dieser Metadaten-Editor entstand im Rahmen eines studentischen Kooperationsproje
 9. Alle Dateien dieses Repositories in den Ordner "htdocs"-Ordner des Webservers kopieren.
 10. install.php über den Browser aufrufen. Die Datenbank-Tabellen werden automatisch erstellt.
 11. Der Metadateneditor ist nun über localhost/verzeichnisname im Browser erreichbar.
+12. Einstellungen in `settings.php` anpassen (siehe [Abschnitt Einstellungen](#einstellungen))
 
 Bei Problemen mit der Installation, hinterlasse gerne einen Eintrag im Issue Board dieses Repositories!
 
@@ -43,15 +44,16 @@ In der header.html und footer.html werden folgende Abhängikeiten von Drittanbie
 
 In der Datei `settings.php` können, neben den Zugangsdaten für die Datenbank, auch andere Einstellungen angepasst werden:
 
-- `$maxTitles:` Legt die max. Anzahl an Titeln fest, die Nutzende im Editor eingeben können, fest.
-- `$mslLabsUrl:` URL zur JSON-Datei mit der aktuellen Liste an Laboratorien.
-- `$showFeedbackLink:` true-> Feedback-Funktion eingeschaltet, false-> Feedback-Funktion ausgeschaltet
-- `$smtpHost:`URL zum SMTP-Mailserver
-- `$smtpPort:` Port des Mailservers
-- `$smtpUser:` Nutzername des Postfachs zum Versenden der Mails
-- `$smtpPassword:` Password des Postfach
-- `$smtpSender:` Name des Absenders in den Feedback Mails
-- `$feedbackAdress:` Adresse an die das Feedback gesendet wird
+- `$maxTitles`: Legt die max. Anzahl an Titeln fest, die Nutzende im Editor eingeben können, fest.
+- `$mslLabsUrl`: URL zur JSON-Datei mit der aktuellen Liste an Laboratorien.
+- `$showFeedbackLink`: true-> Feedback-Funktion eingeschaltet, false-> Feedback-Funktion ausgeschaltet
+- `$smtpHost`: URL zum SMTP-Mailserver
+- `$smtpPort`: Port des Mailservers
+- `$smtpUser`: Nutzername des Postfachs zum Versenden der Mails
+- `$smtpPassword`: Password des Postfach
+- `$smtpSender` Name des Absenders in den Feedback Mails
+- `$feedbackAdress`: Adresse an die das Feedback gesendet wird
+- `$xmlSubmitAdress`: Adresse an die diefertige XML-Datei gesendet wird
 
 # API-Dokumentation
 
