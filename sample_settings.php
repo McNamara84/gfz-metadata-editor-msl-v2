@@ -43,3 +43,5 @@ $smtpPassword = 'xxxxxxxxxxxx';
 $smtpSender = 'xxxxxxxxxxxx';
 // Zieladresse für Feedback
 $feedbackAdress = 'xxxxxxxx@xxxxxxxx';
+// Zieladresse für XML-Submit
+$xmlSubmitAdress = 'xxxxxxxx@xxxxxxxx';
