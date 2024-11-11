@@ -31,7 +31,7 @@ In der header.html und footer.html werden folgende Abhängikeiten von Drittanbie
   Für die Event Handler in JavaScript und zum Vereinfachen des JavaScript-Codes allgemein.
 - jQuery UI 1.14.1<br>
   Erweitert jQuery um die Autocomplete-Funktion, die wir aktuell für die Affiliation-Felder nutzen.
-- Tagify 4.31.1<br>
+- Tagify 4.32.0<br>
   Wird für das Feld Thesaurus Keywords, die eingabe von mehreren Affiliations und Free Keywords genutzt.
 - jsTree 3.3.17<br>
   Wird zur Darstellung der Thesauri als hierarchische Baumstruktur verwendet.
