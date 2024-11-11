@@ -1,65 +1,133 @@
+/**
+ * Form handling module for dataset submission
+ * Handles both local saving and email submission of datasets
+ * 
+ */
+
 document.addEventListener('DOMContentLoaded', function () {
+  /**
+   * Main form element containing the dataset metadata
+   * @type {HTMLFormElement}
+   */
   const form = document.getElementById('metaForm');
-  const saveButton = document.getElementById('saveAs');
 
-  // Remove disabled attribute from save button
-  saveButton.disabled = false;
+  /**
+   * Button elements for different submission types
+   * @type {Object}
+   */
+  const buttons = {
+    save: document.getElementById('saveAs'),
+    submit: document.getElementById('submitButton')
+  };
 
-  // Add click event listener to save button
-  saveButton.addEventListener('click', function (e) {
-    e.preventDefault(); // Prevent immediate form submission
+  // Enable buttons
+  buttons.save.disabled = false;
+  buttons.submit.disabled = false;
 
-    // Remove any existing alert messages
+  // Add event listeners
+  buttons.save.addEventListener('click', e => handleFormSubmission(e, 'save'));
+  buttons.submit.addEventListener('click', e => handleFormSubmission(e, 'submit'));
+
+  /**
+   * Main form submission handler
+   * @param {Event} e - Click event object
+   * @param {string} action - Type of submission ('save' or 'submit')
+   */
+  function handleFormSubmission(e, action) {
+    e.preventDefault();
+    clearAlerts();
+    resetValidation();
+
+    if (!form.checkValidity()) {
+      handleInvalidForm();
+    } else {
+      handleValidForm(action);
+    }
+  }
+
+  /**
+   * Clears all existing alerts from the page
+   */
+  function clearAlerts() {
     const existingAlerts = document.querySelectorAll('.alert');
     existingAlerts.forEach(alert => alert.remove());
+  }
 
-    // Remove existing validation classes
+  /**
+   * Resets form validation state
+   */
+  function resetValidation() {
     form.classList.remove('was-validated');
+  }
 
-    // Trigger HTML5 form validation
-    if (!form.checkValidity()) {
-      // Add Bootstrap's was-validated class to show validation feedback
-      form.classList.add('was-validated');
+  /**
+   * Handles form validation errors
+   */
+  function handleInvalidForm() {
+    form.classList.add('was-validated');
+    const firstInvalid = form.querySelector(':invalid');
 
-      // Find first invalid input and scroll to it
-      const firstInvalid = form.querySelector(':invalid');
-      if (firstInvalid) {
-        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        firstInvalid.focus();
+    if (firstInvalid) {
+      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      firstInvalid.focus();
+      showAlert('danger', 'Please check your inputs!', 'Some required fields are not filled correctly.');
+    }
+  }
 
-        // Create and show error message
-        const alertMessage = document.createElement('div');
-        alertMessage.className = 'alert alert-danger alert-dismissible fade show';
-        alertMessage.setAttribute('role', 'alert');
-        alertMessage.innerHTML = `
-          <strong>Please check your inputs!</strong> Some required fields are not filled correctly.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        `;
-
-        // Insert alert at the top of the main content
-        const mainContent = document.querySelector('main');
-        mainContent.insertBefore(alertMessage, mainContent.firstChild);
-
-        // Remove alert after 5 seconds
-        setTimeout(() => alertMessage.remove(), 5000);
-      }
-    } else {
-      // If form is valid, show success message and submit
-      const successAlert = document.createElement('div');
-      successAlert.className = 'alert alert-success alert-dismissible fade show';
-      successAlert.setAttribute('role', 'alert');
-      successAlert.innerHTML = `
-        <strong>Success!</strong> Dataset is being submitted.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      `;
-
-      const mainContent = document.querySelector('main');
-      mainContent.insertBefore(successAlert, mainContent.firstChild);
-
-      // Submit the form after a brief delay to show the success message
+  /**
+   * Handles successful form validation
+   * @param {string} action - Type of submission ('save' or 'submit')
+   */
+  function handleValidForm(action) {
+    if (action === 'save') {
+      showAlert('success', 'Success!', 'Dataset is being saved.');
       setTimeout(() => {
         form.submit();
       }, 1000);
+    } else {
+      showAlert('info', 'Processing...', 'Dataset is being submitted via email.');
+      submitViaAjax();
     }
-  });
+  }
+
+  /**
+   * Submits form data via AJAX for email submission
+   */
+  function submitViaAjax() {
+    $.ajax({
+      url: 'send_xml_file.php',
+      type: 'POST',
+      data: $(form).serialize(),
+      success: function (response) {
+        clearAlerts();
+        showAlert('success', 'Success!', 'Dataset has been submitted via email.');
+      },
+      error: function (xhr, status, error) {
+        clearAlerts();
+        showAlert('danger', 'Error!', `Failed to submit dataset: ${error}`);
+      }
+    });
+  }
+
+  /**
+   * Creates and shows an alert message
+   * @param {string} type - Alert type (success, danger, info)
+   * @param {string} title - Alert title
+   * @param {string} message - Alert message
+   */
+  function showAlert(type, title, message) {
+    const alertElement = document.createElement('div');
+    alertElement.className = `alert alert-${type} alert-dismissible fade show`;
+    alertElement.setAttribute('role', 'alert');
+    alertElement.innerHTML = `
+      <strong>${title}</strong> ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+
+    const mainContent = document.querySelector('main');
+    mainContent.insertBefore(alertElement, mainContent.firstChild);
+
+    // Auto-remove alert after 5 seconds
+    setTimeout(() => alertElement.remove(), 5000);
+  }
 });
