@@ -26,10 +26,11 @@
           <button class="btn btn-primary m-1" type="button" disabled>
             <?php echo $translations['load']; ?>
           </button>
-          <button type="button" class="btn btn-warning m-1" id="saveAs">
+          <button type="submit" class="btn btn-warning m-1" form="metaForm" id="saveAs" data-action="save">
             Save
           </button>
-          <button type="button" class="btn btn-success m-1" id="submitButton">
+          <button type="submit" class="btn btn-success m-1" form="metaForm" id="submitButton" data-action="submit"
+            disabled>
             <?php echo $translations['submit']; ?>
           </button>
           <?php if ($showFeedbackLink): ?>

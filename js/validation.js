@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('metaForm');
 
   /**
-   * Button elements for different submission types
+   * Submit buttons for different actions
    * @type {Object}
    */
   const buttons = {
@@ -24,17 +24,18 @@ document.addEventListener('DOMContentLoaded', function () {
   buttons.save.disabled = false;
   buttons.submit.disabled = false;
 
-  // Add event listeners
-  buttons.save.addEventListener('click', e => handleFormSubmission(e, 'save'));
-  buttons.submit.addEventListener('click', e => handleFormSubmission(e, 'submit'));
-
   /**
-   * Main form submission handler
-   * @param {Event} e - Click event object
-   * @param {string} action - Type of submission ('save' or 'submit')
+   * Form submit event handler
+   * Determines action based on clicked button
+   * @param {Event} e - Submit event object
    */
-  function handleFormSubmission(e, action) {
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
+
+    // Determine which button was clicked
+    const clickedButton = document.activeElement;
+    const action = clickedButton.dataset.action;
+
     clearAlerts();
     resetValidation();
 
@@ -43,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       handleValidForm(action);
     }
-  }
+  });
 
   /**
    * Clears all existing alerts from the page
@@ -82,9 +83,26 @@ document.addEventListener('DOMContentLoaded', function () {
     if (action === 'save') {
       showAlert('success', 'Success!', 'Dataset is being saved.');
       setTimeout(() => {
-        form.submit();
+        const formData = new FormData(form);
+        formData.append('action', 'save');
+
+        // Create a hidden form and submit it
+        const hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'save/save_data.php';
+
+        for (const [key, value] of formData.entries()) {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = value;
+          hiddenForm.appendChild(input);
+        }
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
       }, 1000);
-    } else {
+    } else if (action === 'submit') {
       showAlert('info', 'Processing...', 'Dataset is being submitted via email.');
       submitViaAjax();
     }
