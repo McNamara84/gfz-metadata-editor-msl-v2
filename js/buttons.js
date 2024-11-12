@@ -54,7 +54,7 @@ $(document).ready(function () {
     // Referenz auf den Button speichern
     var $addTitleBtn = $(this);
 
-    if (titlesNumber <= maxTitles) {
+    if (titlesNumber < maxTitles) {
       // Vorbereitung der neuen Titelzeile durch Klonen und Zurücksetzen der Eingabefelder
       var newTitleRow = $addTitleBtn.closest(".row").clone();
       // Hilfe-Buttons entfernen
@@ -98,7 +98,7 @@ $(document).ready(function () {
       titlesNumber++;
 
       // Wenn die maximale Anzahl an Titeln erreicht ist, Button addTitle deaktivieren
-      if (titlesNumber === maxTitles) {
+      if (titlesNumber == maxTitles) {
         $addTitleBtn.prop("disabled", true);
       }
     } else {
