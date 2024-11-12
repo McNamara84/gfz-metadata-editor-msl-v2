@@ -794,18 +794,31 @@ class DatasetController
         $dom->formatOutput = true;
 
         // XML-Datei speichern
-        $outputDir = $_SERVER['DOCUMENT_ROOT'] . '/xml';
+        $baseDir = realpath(dirname(dirname(dirname(__DIR__))));
+        $outputDir = $baseDir . '/xml';
+
+        // Debug-Ausgaben
+        error_log("Base Directory: " . $baseDir);
+        error_log("Output Directory: " . $outputDir);
+
+        // Verzeichnis erstellen falls nicht vorhanden
+        if (!file_exists($outputDir)) {
+            if (!mkdir($outputDir, 0777, true)) {
+                error_log("Fehler beim Erstellen des Verzeichnisses: " . error_get_last()['message']);
+                throw new Exception("Konnte XML-Verzeichnis nicht erstellen");
+            }
+        }
+
+        // Berechtigungen setzen
+        chmod($outputDir, 0777);
+
+        // Beim Speichern der XML-Datei
         $outputFile = $outputDir . "/resource_$id.xml";
+        error_log("Versuche Datei zu speichern: " . $outputFile);
 
-        // Debug-Informationen
-        error_log("Document Root: " . $_SERVER['DOCUMENT_ROOT']);
-        error_log("Verzeichnis: " . $outputDir);
-        error_log("Datei: " . $outputFile);
-
-        // XML-Datei speichern
         if (!@$dom->save($outputFile)) {
-            error_log("Fehler beim Speichern der XML-Datei: " . error_get_last()['message']);
-            throw new Exception("Konnte XML-Datei nicht speichern");
+            error_log("Fehler beim Speichern: " . error_get_last()['message']);
+            throw new Exception("Konnte XML-Datei nicht speichern: " . error_get_last()['message']);
         }
 
         // DB-Verbindung schließen
@@ -816,6 +829,8 @@ class DatasetController
 
     function transformAndSaveOrDownloadXml($id, $format, $download = false)
     {
+        $baseDir = realpath(dirname(dirname(dirname(__DIR__))));
+
         $formatInfo = [
             'dif' => [
                 'xsltFile' => 'MappingMapToDif.xslt',
@@ -835,9 +850,15 @@ class DatasetController
             throw new Exception("Ungültiges Format.");
         }
 
-        $inputXmlPath = $_SERVER['DOCUMENT_ROOT'] . "/xml/resource_$id.xml";
-        $xsltPath = $_SERVER['DOCUMENT_ROOT'] . "/schemas/XSLT/" . $formatInfo[$format]['xsltFile'];
-        $outputXmlPath = $_SERVER['DOCUMENT_ROOT'] . "/xml/" . $formatInfo[$format]['outputPrefix'] . "_resource_$id.xml";
+        $inputXmlPath = $baseDir . "/xml/resource_$id.xml";
+        $xsltPath = $baseDir . "/schemas/XSLT/" . $formatInfo[$format]['xsltFile'];
+        $outputXmlPath = $baseDir . "/xml/" . $formatInfo[$format]['outputPrefix'] . "_resource_$id.xml";
+
+        // Debug-Ausgaben
+        error_log("Base Directory: " . $baseDir);
+        error_log("Input XML Path: " . $inputXmlPath);
+        error_log("XSLT Path: " . $xsltPath);
+        error_log("Output XML Path: " . $outputXmlPath);
 
         // FreestyleXML temporär erstellen
         $this->getResourceAsXml($GLOBALS['connection'], $id);
