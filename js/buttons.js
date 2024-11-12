@@ -48,6 +48,8 @@ $(document).ready(function () {
   // Optionen aus dem ersten Select-Element für die Titelzeile kopieren
   var optionTitleTypeHTML = $("#titleType").html();
   var titlesNumber = 1;
+  // Variable für den Haupttiteltyp
+  var mainTitleType = "";
   $("#addTitle").click(function () {
     // Referenz auf den Button speichern
     var $addTitleBtn = $(this);
@@ -58,35 +60,45 @@ $(document).ready(function () {
       // Hilfe-Buttons entfernen
       deleteHelpButtonFromClonedRows(newTitleRow);
       $(newTitleRow).find("input").val("");
-      $(newTitleRow).find("select").html(optionTitleTypeHTML).val("");
-      if (titlesNumber < maxTitles) {
-        // Hinzufügen eines Löschbuttons für jede neue Titelzeile
-        var removeBtn = $("<button/>", {
-          text: "-",
-          type: "button",
-          class: "btn btn-danger removeTitle",
-          click: function () {
-            $(this).closest(".row").remove();
-            titlesNumber--;
 
-            // Reaktivieren des Hinzufüge-Buttons
-            if (titlesNumber < maxTitles) {
-              $addTitleBtn.prop("disabled", false);
-              $addTitleBtn.attr("data-bs-original-title");
-              deleteHelpButtonFromClonedRows(newTitleRow);
-            }
-          },
-        }).css("width", "36px");
-
-        // Ersetzen des Hinzufügen-Buttons durch den Löschbutton im geklonten Element
-        $(newTitleRow).find(".addTitle").replaceWith(removeBtn);
-
-        // Hinzufügen der neuen Titelzeile zum DOM
-        $addTitleBtn.closest(".row").parent().append(newTitleRow);
-        titlesNumber++;
+      // Haupttiteltyp speichern (nur beim ersten Hinzufügen)
+      if (titlesNumber === 1) {
+        mainTitleType = $(newTitleRow).find("select").val(); // Haupttiteltyp erfassen
       }
+
+      // Optionen für den Titeltyp setzen und Haupttiteltyp entfernen
+      var $select = $(newTitleRow).find("select");
+      $select.html(optionTitleTypeHTML);
+      $select.find("option[value='" + mainTitleType + "']").remove(); // Haupttiteltyp entfernen
+      $select.val(""); // Auswahl zurücksetzen
+
+      // Hinzufügen des Löschbuttons
+      var removeBtn = $("<button/>", {
+        text: "-",
+        type: "button",
+        class: "btn btn-danger removeTitle",
+      }).css("width", "36px");
+
+      // Event-Handler für den Löschbutton
+      removeBtn.click(function () {
+        $(this).closest(".row").remove();
+        titlesNumber--;
+
+        // Reaktivieren des Hinzufüge-Buttons
+        if (titlesNumber < maxTitles) {
+          $addTitleBtn.prop("disabled", false);
+        }
+      });
+
+      // Ersetzen des Hinzufügen-Buttons durch den Löschbutton im geklonten Element
+      $(newTitleRow).find(".addTitle").replaceWith(removeBtn);
+
+      // Hinzufügen der neuen Titelzeile zum DOM
+      $addTitleBtn.closest(".row").parent().append(newTitleRow);
+      titlesNumber++;
+
       // Wenn die maximale Anzahl an Titeln erreicht ist, Button addTitle deaktivieren
-      if (titlesNumber == maxTitles) {
+      if (titlesNumber === maxTitles) {
         $addTitleBtn.prop("disabled", true);
       }
     } else {
@@ -347,7 +359,7 @@ $(document).ready(function () {
   });
 
   //TODO: Intitalisierung von Tagify auslagern, ähnlich wie bei affiliations?
-  
+
   var labData;
 
   $.getJSON("json/msl-labs.json", function (data) {
@@ -414,7 +426,7 @@ $(document).ready(function () {
         closeOnSelect: true,
         highlightFirst: true,
       },
-     delimiters: null,
+      delimiters: null,
       mode: "select",
     });
 
