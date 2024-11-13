@@ -1,22 +1,22 @@
 <?php
 /**
- * Speichert die Autoreninformationen in der Datenbank.
+ * Saves author information in the database.
  *
- * Diese Funktion verarbeitet die Eingabedaten für Autoren, speichert sie in der Datenbank
- * und erstellt zugehörige Einträge für Affiliationen.
+ * This function processes input data for authors, saves it in the database,
+ * and creates corresponding entries for affiliations.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param array $postData Die POST-Daten aus dem Formular. Erwartet werden folgende Schlüssel:
- *                        - familynames: array
- *                        - givennames: array
- *                        - orcids: array
- *                        - affiliation: array
- *                        - authorRorIds: array
- * @param int $resource_id Die ID der zugehörigen Ressource.
+ * @param mysqli $connection The database connection.
+ * @param array  $postData   The POST data from the form. Expected keys are:
+ *                           - familynames: array
+ *                           - givennames: array
+ *                           - orcids: array
+ *                           - affiliation: array
+ *                           - authorRorIds: array
+ * @param int    $resource_id The ID of the associated resource.
  *
  * @return void
  *
- * @throws mysqli_sql_exception Wenn ein Datenbankfehler auftritt.
+ * @throws mysqli_sql_exception If a database error occurs.
  */
 function saveAuthors($connection, $postData, $resource_id)
 {
@@ -39,35 +39,35 @@ function saveAuthors($connection, $postData, $resource_id)
             $affiliation_data = isset($affiliations[$i]) ? $affiliations[$i] : '';
             $rorId_data = isset($rorIds[$i]) ? $rorIds[$i] : '';
 
-            // Überspringe Autoren ohne Nachnamen
+            // Skip authors without family names
             if (empty($familyname)) {
                 continue;
             }
 
-            // Überprüfe, ob eine ROR-ID ohne Affiliation vorliegt
+            // Check if there is a ROR ID without an affiliation
             $rorIdArray = parseAffiliationData($rorId_data);
             $affiliationArray = parseAffiliationData($affiliation_data);
             if (!empty($rorIdArray) && empty($affiliationArray)) {
-                continue; // Überspringe diesen Autor
+                continue; // Skip this author
             }
 
-            // Prüfen, ob der Autor bereits existiert
+            // Check if the author already exists
             $stmt = $connection->prepare("SELECT author_id FROM Author WHERE orcid = ?");
             $stmt->bind_param("s", $orcid);
             $stmt->execute();
             $result = $stmt->get_result();
 
             if ($result->num_rows > 0) {
-                // Autor existiert bereits, hole die ID
+                // Author already exists, get the ID
                 $row = $result->fetch_assoc();
                 $author_id = $row['author_id'];
 
-                // Aktualisiere die Autorendaten
+                // Update the author's data
                 $stmt = $connection->prepare("UPDATE Author SET familyname = ?, givenname = ? WHERE author_id = ?");
                 $stmt->bind_param("ssi", $familyname, $givenname, $author_id);
                 $stmt->execute();
             } else {
-                // Neuen Autor einfügen
+                // Insert new author
                 $stmt = $connection->prepare("INSERT INTO Author (familyname, givenname, orcid) VALUES (?, ?, ?)");
                 $stmt->bind_param("sss", $familyname, $givenname, $orcid);
                 $stmt->execute();
@@ -75,13 +75,13 @@ function saveAuthors($connection, $postData, $resource_id)
             }
             $stmt->close();
 
-            // Resource_has_author Eintrag
+            // Insert into Resource_has_Author
             $stmt = $connection->prepare("INSERT IGNORE INTO Resource_has_Author (Resource_resource_id, Author_author_id) VALUES (?, ?)");
             $stmt->bind_param("ii", $resource_id, $author_id);
             $stmt->execute();
             $stmt->close();
 
-            // Immer Affiliationen speichern, unabhängig davon, ob der Autor neu ist oder bereits existiert
+            // Always save affiliations, regardless of whether the author is new or already exists
             if (!empty($affiliation_data)) {
                 saveAuthorAffiliations($connection, $author_id, $affiliation_data, $rorId_data);
             }
@@ -90,12 +90,12 @@ function saveAuthors($connection, $postData, $resource_id)
 }
 
 /**
- * Speichert die Affiliationen eines Autors.
+ * Saves the affiliations of an author.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param int $author_id Die ID des Autors.
- * @param string $affiliation_data Die Affiliationsdaten als JSON-String.
- * @param string $rorId_data Die ROR-ID-Daten als JSON-String.
+ * @param mysqli $connection       The database connection.
+ * @param int    $author_id        The ID of the author.
+ * @param string $affiliation_data The affiliation data as a JSON string.
+ * @param string $rorId_data       The ROR ID data as a JSON string.
  *
  * @return void
  */
@@ -111,10 +111,10 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
 
         $rorId = isset($rorIds_array[$index]) ? str_replace("https://ror.org/", "", $rorIds_array[$index]) : null;
 
-        // Suche nach existierender Affiliation
+        // Search for existing affiliation
         $affiliation_id = null;
 
-        // Erste Priorität: Exakte Übereinstimmung von Name und ROR-ID
+        // First priority: Exact match of name and ROR ID
         if ($rorId) {
             $stmt = $connection->prepare("SELECT affiliation_id FROM Affiliation WHERE name = ? AND rorId = ?");
             $stmt->bind_param("ss", $affiliation_name, $rorId);
@@ -127,7 +127,7 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
             $stmt->close();
         }
 
-        // Zweite Priorität: Übereinstimmung der ROR-ID
+        // Second priority: Match of ROR ID
         if (!$affiliation_id && $rorId) {
             $stmt = $connection->prepare("SELECT affiliation_id FROM Affiliation WHERE rorId = ?");
             $stmt->bind_param("s", $rorId);
@@ -137,7 +137,7 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
                 $row = $result->fetch_assoc();
                 $affiliation_id = $row['affiliation_id'];
 
-                // Update den Namen, falls er sich geändert hat
+                // Update the name if it has changed
                 $stmt = $connection->prepare("UPDATE Affiliation SET name = ? WHERE affiliation_id = ?");
                 $stmt->bind_param("si", $affiliation_name, $affiliation_id);
                 $stmt->execute();
@@ -145,7 +145,7 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
             $stmt->close();
         }
 
-        // Dritte Priorität: Übereinstimmung des Namens
+        // Third priority: Match of name
         if (!$affiliation_id) {
             $stmt = $connection->prepare("SELECT affiliation_id FROM Affiliation WHERE name = ? AND (rorId IS NULL OR rorId = '')");
             $stmt->bind_param("s", $affiliation_name);
@@ -155,7 +155,7 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
                 $row = $result->fetch_assoc();
                 $affiliation_id = $row['affiliation_id'];
 
-                // Update die ROR-ID, falls eine neue vorhanden ist
+                // Update the ROR ID if a new one is available
                 if ($rorId) {
                     $stmt = $connection->prepare("UPDATE Affiliation SET rorId = ? WHERE affiliation_id = ?");
                     $stmt->bind_param("si", $rorId, $affiliation_id);
@@ -165,7 +165,7 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
             $stmt->close();
         }
 
-        // Wenn keine existierende Affiliation gefunden wurde, erstelle eine neue
+        // If no existing affiliation was found, create a new one
         if (!$affiliation_id) {
             $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?)");
             $stmt->bind_param("ss", $affiliation_name, $rorId);
@@ -173,7 +173,7 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
             $affiliation_id = $stmt->insert_id;
             $stmt->close();
 
-            // Verknüpfe Autor mit Affiliation
+            // Link author with affiliation
             $stmt = $connection->prepare("INSERT IGNORE INTO Author_has_Affiliation (Author_author_id, Affiliation_affiliation_id) VALUES (?, ?)");
             $stmt->bind_param("ii", $author_id, $affiliation_id);
             $stmt->execute();
@@ -183,10 +183,11 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
 }
 
 /**
- * Parst die Affiliationsdaten.
+ * Parses affiliation data.
  *
- * @param string $data Die zu parsenden Daten.
- * @return array Die geparsten Daten als Array.
+ * @param string $data The data to parse.
+ *
+ * @return array The parsed data as an array.
  */
 function parseAffiliationData($data)
 {
