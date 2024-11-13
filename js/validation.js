@@ -116,13 +116,18 @@ document.addEventListener('DOMContentLoaded', function () {
       url: 'send_xml_file.php',
       type: 'POST',
       data: $(form).serialize(),
+      dataType: 'json',
       success: function (response) {
         clearAlerts();
-        showAlert('success', 'Success!', 'Dataset has been submitted via email.');
+        if (response.success) {
+          showAlert('success', 'Success!', response.message);
+        } else {
+          showAlert('danger', 'Error!', response.message);
+        }
       },
       error: function (xhr, status, error) {
         clearAlerts();
-        showAlert('danger', 'Error!', `Failed to submit dataset: ${error}`);
+        showAlert('danger', 'Error!', 'Failed to submit dataset: ' + error);
       }
     });
   }
