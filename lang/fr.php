@@ -147,8 +147,13 @@ $translations = [
 
     // Test
     'feedbackButton' => 'Commentaires',
-    'feedbackLabel' => 'Envoyer des commentaires',
-    'feedbackQuestion1' => 'Qu\'aimez-vous dans le nouvel éditeur de métadonnées ?',
-    'feedbackQuestion2' => 'Qu\'aimez-vous moins dans le nouvel éditeur de métadonnées ?',
+    'feedbackLabel' => 'Commentaires de l\'utilisateur',
+    'feedbackQuestion1' => 'Quelles sont les fonctions du nouvel éditeur de métadonnées que vous trouvez particulièrement utiles ?',
+    'feedbackQuestion2' => 'Y a-t-il une modification particulière du design ou de l\'interface utilisateur qui vous plaît ?',
+    'feedbackQuestion3' => 'Qu\'est-ce que vous trouvez positif dans la facilité d\'utilisation du nouvel éditeur ?',
+    'feedbackQuestion4' => 'Quelles sont les fonctions du nouvel éditeur que vous trouvez difficiles à utiliser ?',
+    'feedbackQuestion5' => 'Y a-t-il des aspects de l\'interface utilisateur que vous trouvez peu clairs ou gênants ?',
+    'feedbackQuestion6' => 'Certaines fonctions vous semblent-elles manquer dans le nouvel éditeur de métadonnées ?',
+    'feedbackQuestion7' => 'Y a-t-il une amélioration spécifique que vous souhaiteriez ?',
     'feedbackSendButton' => 'Envoyer les commentaires',
 ];
