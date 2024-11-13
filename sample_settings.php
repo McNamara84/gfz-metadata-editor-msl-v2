@@ -1,6 +1,5 @@
 <?php
 /**
- * settings.php
  *
  * Contains database connection settings, API keys, and application configuration variables.
  *
