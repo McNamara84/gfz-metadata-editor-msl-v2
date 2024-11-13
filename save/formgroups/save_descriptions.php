@@ -1,12 +1,12 @@
 <?php
 /**
- * Speichert die Beschreibungen einer Ressource in der Datenbank.
+ * Saves the descriptions of a resource in the database.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param array $postData Die POST-Daten aus dem Formular.
- * @param int $resource_id Die ID der zugehörigen Ressource.
+ * @param mysqli $connection  The database connection.
+ * @param array  $postData    The POST data from the form.
+ * @param int    $resource_id The ID of the associated resource.
  *
- * @return bool
+ * @return bool Returns true if descriptions are saved successfully; false if the abstract is missing.
  */
 function saveDescriptions($connection, $postData, $resource_id)
 {
@@ -17,10 +17,12 @@ function saveDescriptions($connection, $postData, $resource_id)
         'Other' => 'descriptionOther'
     ];
 
+    // Ensure that the 'Abstract' description is provided
     if (!isset($postData['descriptionAbstract']) || empty($postData['descriptionAbstract'])) {
         return false;
     }
 
+    // Iterate over each description type and insert if present
     foreach ($descriptionTypes as $type => $postKey) {
         if (isset($postData[$postKey]) && !empty($postData[$postKey])) {
             insertDescription($connection, $type, $postData[$postKey], $resource_id);
@@ -31,12 +33,12 @@ function saveDescriptions($connection, $postData, $resource_id)
 }
 
 /**
- * Fügt eine einzelne Beschreibung in die Datenbank ein.
+ * Inserts a single description into the database.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param string $type Der Typ der Beschreibung.
- * @param string $description Der Inhalt der Beschreibung.
- * @param int $resource_id Die ID der zugehörigen Ressource.
+ * @param mysqli $connection  The database connection.
+ * @param string $type        The type of the description.
+ * @param string $description The content of the description.
+ * @param int    $resource_id The ID of the associated resource.
  *
  * @return void
  */
