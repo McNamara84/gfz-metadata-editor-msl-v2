@@ -789,19 +789,19 @@ class DatasetController
             }
         }
 
-        // XML hübsch formatieren
+        // XML formating
         $dom = dom_import_simplexml($xml)->ownerDocument;
         $dom->formatOutput = true;
 
-        // XML-Datei speichern
+        // Generate path
         $baseDir = realpath(dirname(dirname(dirname(__DIR__))));
         $outputDir = $baseDir . '/xml';
 
-        // Debug-Ausgaben
+        // Only for Debugging!
         error_log("Base Directory: " . $baseDir);
         error_log("Output Directory: " . $outputDir);
 
-        // Verzeichnis erstellen falls nicht vorhanden
+        // Generate folder if not exists
         if (!file_exists($outputDir)) {
             if (!mkdir($outputDir, 0777, true)) {
                 error_log("Fehler beim Erstellen des Verzeichnisses: " . error_get_last()['message']);
@@ -809,10 +809,10 @@ class DatasetController
             }
         }
 
-        // Berechtigungen setzen
+        // Set permissions
         chmod($outputDir, 0777);
 
-        // Beim Speichern der XML-Datei
+        // Save XML to file
         $outputFile = $outputDir . "/resource_$id.xml";
         error_log("Versuche Datei zu speichern: " . $outputFile);
 
@@ -827,6 +827,17 @@ class DatasetController
         return $xml->asXML();
     }
 
+    /**
+     * Transforms an XML resource using an XSLT stylesheet and either saves or downloads the result.
+     *
+     * @param int    $id       The identifier of the resource.
+     * @param string $format   The format to which the XML should be transformed ('dif', 'iso', 'datacite').
+     * @param bool   $download Optional. If true, the transformed XML will be downloaded; if false, it will be returned as a string. Default is false.
+     *
+     * @throws Exception If the format is invalid, required files are missing, or the XSLT transformation fails.
+     *
+     * @return string|null The transformed XML as a string if $download is false; null if the XML is downloaded.
+     */
     function transformAndSaveOrDownloadXml($id, $format, $download = false)
     {
         $baseDir = realpath(dirname(dirname(dirname(__DIR__))));
@@ -847,74 +858,93 @@ class DatasetController
         ];
 
         if (!isset($formatInfo[$format])) {
-            throw new Exception("Ungültiges Format.");
+            throw new Exception("Invalid format.");
         }
 
         $inputXmlPath = $baseDir . "/xml/resource_$id.xml";
         $xsltPath = $baseDir . "/schemas/XSLT/" . $formatInfo[$format]['xsltFile'];
         $outputXmlPath = $baseDir . "/xml/" . $formatInfo[$format]['outputPrefix'] . "_resource_$id.xml";
 
-        // Debug-Ausgaben
+        // Debug output
         error_log("Base Directory: " . $baseDir);
         error_log("Input XML Path: " . $inputXmlPath);
         error_log("XSLT Path: " . $xsltPath);
         error_log("Output XML Path: " . $outputXmlPath);
 
-        // FreestyleXML temporär erstellen
+        // Temporarily create FreestyleXML
         $this->getResourceAsXml($GLOBALS['connection'], $id);
 
-        // Überprüfen, ob die Eingabe-XML und XSLT-Datei existieren
+        // Check if the input XML and XSLT files exist
         if (!file_exists($inputXmlPath) || !file_exists($xsltPath)) {
-            throw new Exception("Erforderliche Dateien fehlen.");
+            throw new Exception("Required files are missing.");
         }
 
-        // XML-Dokument und XSLT-Dokument laden
+        // Load XML document and XSLT stylesheet
         $xml = new DOMDocument;
         $xml->load($inputXmlPath);
         $xsl = new DOMDocument;
         $xsl->load($xsltPath);
 
-        // XSLT-Prozessor erstellen, konfigurieren und Transformation durchführen
+        // Create XSLT processor, configure it, and perform the transformation
         $proc = new XSLTProcessor;
         $proc->importStyleSheet($xsl);
         $newXml = $proc->transformToXML($xml);
 
         if ($newXml === false) {
-            throw new Exception("Fehler bei der XSLT-Transformation.");
+            throw new Exception("Error during XSLT transformation.");
         }
 
         if ($download) {
-            // Header für den Download setzen und Datei ausgeben
+            // Set headers for download and output the file
             header('Content-Type: application/xml');
             header('Content-Disposition: attachment; filename="' . basename($outputXmlPath) . '"');
             header('Content-Length: ' . strlen($newXml));
             echo $newXml;
             exit();
         } else {
-            // XML-String zurückgeben
+            // Return the XML string
             return $newXml;
         }
     }
 
+    /**
+     * Exports a resource in the specified metadata scheme and initiates a file download.
+     *
+     * @param array $vars An associative array containing 'id' and 'scheme'.
+     * @return void
+     */
     public function exportResourceDownload($vars)
     {
         return $this->handleExport($vars, true);
     }
 
+    /**
+     * Exports a resource in the specified metadata scheme and outputs it directly.
+     *
+     * @param array $vars An associative array containing 'id' and 'scheme'.
+     * @return void
+     */
     public function exportResource($vars)
     {
         return $this->handleExport($vars, false);
     }
 
+    /**
+     * Handles the export of a resource, either by downloading it or outputting it directly.
+     *
+     * @param array $vars     An associative array containing 'id' and 'scheme'.
+     * @param bool  $download If true, the resource will be downloaded; if false, it will be output directly.
+     * @return void
+     */
     private function handleExport($vars, $download)
     {
         $id = intval($vars['id']);
         $scheme = strtolower($vars['scheme']);
 
-        // Debug-Ausgabe
+        // Debug output
         error_log("Download parameter: " . ($download ? 'true' : 'false'));
 
-        // Überprüfen Sie die gültigen Schema-Formate
+        // Check for valid schema formats
         $validSchemes = ['datacite', 'iso', 'dif'];
         if (!in_array($scheme, $validSchemes)) {
             http_response_code(400);
@@ -926,7 +956,7 @@ class DatasetController
             $result = $this->transformAndSaveOrDownloadXml($id, $scheme, $download);
 
             if ($download) {
-                // Stelle sicher, dass keine Ausgabe vor den Headern erfolgt ist
+                // Ensure no output has been sent before headers
                 if (ob_get_level())
                     ob_end_clean();
 
@@ -952,45 +982,65 @@ class DatasetController
         }
         exit();
     }
+
+    /**
+     * Exports all metadata schemes for a resource and initiates a file download.
+     *
+     * @param array $vars An associative array containing 'id'.
+     * @return void
+     */
     public function exportAllDownload($vars)
     {
         return $this->handleExportAll($vars, true);
     }
 
+    /**
+     * Exports all metadata schemes for a resource and outputs them directly.
+     *
+     * @param array $vars An associative array containing 'id'.
+     * @return void
+     */
     public function exportAll($vars)
     {
         return $this->handleExportAll($vars, false);
     }
 
+    /**
+     * Handles the export of all metadata schemes for a resource, either by downloading or outputting directly.
+     *
+     * @param array $vars     An associative array containing 'id'.
+     * @param bool  $download If true, the combined XML will be downloaded; if false, it will be output directly.
+     * @return void
+     */
     private function handleExportAll($vars, $download)
     {
         $id = intval($vars['id']);
 
         try {
-            // Hole alle drei XML-Formate
+            // Retrieve all three XML formats
             $dataciteXml = $this->transformAndSaveOrDownloadXml($id, 'datacite', false);
             $isoXml = $this->transformAndSaveOrDownloadXml($id, 'iso', false);
             $difXml = $this->transformAndSaveOrDownloadXml($id, 'dif', false);
 
-            // Entferne XML-Deklarationen aus den einzelnen XMLs
+            // Remove XML declarations from individual XMLs
             $dataciteXml = preg_replace('/<\?xml[^>]+\?>/', '', $dataciteXml);
             $isoXml = preg_replace('/<\?xml[^>]+\?>/', '', $isoXml);
             $difXml = preg_replace('/<\?xml[^>]+\?>/', '', $difXml);
 
-            // Erstelle das kombinierte XML
+            // Create the combined XML
             $combinedXml = <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
 <envelope>
-        $dataciteXml
+    $dataciteXml
 
-        $isoXml
+    $isoXml
 
-        $difXml
+    $difXml
 </envelope>
 XML;
 
             if ($download) {
-                // Stelle sicher, dass keine Ausgabe vor den Headern erfolgt ist
+                // Ensure no output has been sent before headers
                 if (ob_get_level())
                     ob_end_clean();
 
