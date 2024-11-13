@@ -1,17 +1,17 @@
 <?php
 /**
- * Speichert die Spatial Temporal Coverage (STC) Informationen in der Datenbank.
+ * Saves the Spatial Temporal Coverage (STC) information into the database.
  *
- * Diese Funktion verarbeitet die Eingabedaten für die räumlich-zeitliche Abdeckung,
- * speichert sie in der Datenbank und erstellt die Verknüpfung zur Ressource.
+ * This function processes the input data for spatial-temporal coverage,
+ * saves it into the database, and creates the linkage to the resource.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param array $postData Die POST-Daten aus dem Formular.
- * @param int $resource_id Die ID der zugehörigen Ressource.
+ * @param mysqli $connection  The database connection.
+ * @param array  $postData    The POST data from the form.
+ * @param int    $resource_id The ID of the associated resource.
  *
- * @return boolean Gibt true zurück, wenn die Speicherung erfolgreich war, ansonsten false.
+ * @return bool Returns true if the saving was successful, otherwise false.
  *
- * @throws mysqli_sql_exception Wenn ein Datenbankfehler auftritt.
+ * @throws mysqli_sql_exception If a database error occurs.
  */
 function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
 {
@@ -28,7 +28,7 @@ function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
         'tscTimezone'
     ];
 
-    // Überprüfen, ob alle erforderlichen Felder vorhanden sind
+    // Check if all required fields are present
     foreach ($requiredFields as $field) {
         if (!isset($postData[$field]) || !is_array($postData[$field])) {
             error_log("Missing or invalid STC field: $field");
@@ -40,7 +40,7 @@ function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
     $allSuccessful = true;
 
     for ($i = 0; $i < $len; $i++) {
-        // Überprüfen, ob die Koordinaten gültig sind
+        // Check if the coordinates are valid
         if (empty($postData['tscLatitudeMin'][$i]) && empty($postData['tscLatitudeMax'][$i])) {
             error_log("Both Latitude Min and Max are empty for entry $i");
             return false;
@@ -50,13 +50,13 @@ function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
             return false;
         }
 
-        // Überprüfen, ob mindestens Latitude Min und Longitude Min vorhanden sind
+        // Check if at least Latitude Min and Longitude Min are present
         if (empty($postData['tscLatitudeMin'][$i]) || empty($postData['tscLongitudeMin'][$i])) {
             error_log("Latitude Min or Longitude Min is missing for entry $i");
             return false;
         }
 
-        // Überprüfen, ob Enddatum und Enduhrzeit vorhanden sind, aber Startdatum oder Startuhrzeit fehlen
+        // Check if end date and end time are provided but start date or start time are missing
         if (
             (!empty($postData['tscDateEnd'][$i]) || !empty($postData['tscTimeEnd'][$i])) &&
             (empty($postData['tscDateStart'][$i]) || empty($postData['tscTimeStart'][$i]))
@@ -76,7 +76,7 @@ function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
             'timezone' => $postData['tscTimezone'][$i]
         ];
 
-        // Entferne leere Strings
+        // Remove empty strings by converting them to null
         $stcData = array_map(function ($value) {
             return $value === '' ? null : $value;
         }, $stcData);
@@ -93,12 +93,12 @@ function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
 }
 
 /**
- * Fügt einen einzelnen Spatial Temporal Coverage Eintrag in die Datenbank ein.
+ * Inserts a single Spatial Temporal Coverage entry into the database.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param array $stcData Die Daten für den STC-Eintrag.
+ * @param mysqli $connection The database connection.
+ * @param array  $stcData    The data for the STC entry.
  *
- * @return int|null Die ID des eingefügten STC-Eintrags oder null bei einem Fehler.
+ * @return int|null The ID of the inserted STC entry, or null on failure.
  */
 function insertSpatialTemporalCoverage($connection, $stcData)
 {
@@ -130,11 +130,11 @@ function insertSpatialTemporalCoverage($connection, $stcData)
 }
 
 /**
- * Verknüpft eine Ressource mit einem Spatial Temporal Coverage Eintrag.
+ * Links a resource to a Spatial Temporal Coverage entry.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param int $resource_id Die ID der Ressource.
- * @param int $stc_id Die ID des STC-Eintrags.
+ * @param mysqli $connection  The database connection.
+ * @param int    $resource_id The ID of the resource.
+ * @param int    $stc_id      The ID of the STC entry.
  *
  * @return void
  */
