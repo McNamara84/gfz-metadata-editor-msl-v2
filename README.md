@@ -9,13 +9,12 @@ Dieser Metadaten-Editor entstand im Rahmen eines studentischen Kooperationsproje
 3. Apache und MySQL starten nicht vergessen.
 4. Datenbank "mde" in MySQL (z. B. mittels phpMyAdmin) erstellen.
 5. Inhalt der Datei sample_settings.php in neue Datei `settings.php` kopieren und Einstellungen für Datenbankverbindung anpassen.
-6. Pfad /mde-msl/ in Datei `.htaccess` anpassen an eigenen Installationspfad. Sollte die Anwendung im Hauptverzeichnis installiert werden, reicht der Schrägstrich ("/").
-7. Für die automatisch generierten Zeitzonen-Auswahl einen kostenlosen API Key unter https://timezonedb.com/ erstellen und ebenfalls in der neu erstellen settings.php eintragen
-8. Google Maps JS API Key erstellen und ebenfalls in die Datei settings.php einfügen.
-9. Alle Dateien dieses Repositories in den Ordner "htdocs"-Ordner des Webservers kopieren.
-10. install.php über den Browser aufrufen. Die Datenbank-Tabellen werden automatisch erstellt.
-11. Der Metadateneditor ist nun über localhost/verzeichnisname im Browser erreichbar.
-12. Einstellungen in `settings.php` anpassen (siehe [Abschnitt Einstellungen](#einstellungen))
+6. Für die automatisch generierten Zeitzonen-Auswahl einen kostenlosen API Key unter https://timezonedb.com/ erstellen und ebenfalls in der neu erstellen settings.php eintragen
+7. Google Maps JS API Key erstellen und ebenfalls in die Datei settings.php einfügen.
+8. Alle Dateien dieses Repositories in den Ordner "htdocs"-Ordner des Webservers kopieren.
+9. install.php über den Browser aufrufen. Die Datenbank-Tabellen werden automatisch erstellt.
+10. Der Metadateneditor ist nun über localhost/verzeichnisname im Browser erreichbar.
+11. Einstellungen in `settings.php` anpassen (siehe [Abschnitt Einstellungen](#einstellungen))
 
 Bei Problemen mit der Installation, hinterlasse gerne einen Eintrag im Issue Board dieses Repositories!
 
