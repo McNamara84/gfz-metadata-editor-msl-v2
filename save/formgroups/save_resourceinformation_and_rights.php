@@ -29,12 +29,13 @@ function saveResourceInformationAndRights($connection, $postData)
     }
 
     // Assign form data to PHP variables
-    $doi = $postData["doi"] ?? null;
+    // Konvertiere leere Strings zu NULL für die DOI
+    $doi = isset($postData["doi"]) ? (trim($postData["doi"]) === '' ? null : trim($postData["doi"])) : null;
     $year = (int) $postData["year"];
     $dateCreated = $postData["dateCreated"];
-    $dateEmbargoUntil = $postData["dateEmbargo"] ?? null;
+    $dateEmbargoUntil = isset($postData["dateEmbargo"]) && trim($postData["dateEmbargo"]) !== '' ? $postData["dateEmbargo"] : null;
     $resourceType = (int) $postData["resourcetype"];
-    $version = isset($postData["version"]) && $postData["version"] !== '' ? (float) $postData["version"] : null;
+    $version = isset($postData["version"]) && trim($postData["version"]) !== '' ? (float) $postData["version"] : null;
     $language = (int) $postData["language"];
     $rights = (int) $postData["Rights"];
 
