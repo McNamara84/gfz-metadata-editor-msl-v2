@@ -1,17 +1,17 @@
 <?php
 /**
- * Speichert die Funding Reference Informationen in der Datenbank.
+ * Saves the funding reference information into the database.
  *
- * Diese Funktion verarbeitet die Eingabedaten für Funding References,
- * speichert sie in der Datenbank und erstellt die Verknüpfung zur Ressource.
+ * This function processes the input data for funding references,
+ * saves them into the database, and creates the linkage to the resource.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param array $postData Die POST-Daten aus dem Formular.
- * @param int $resource_id Die ID der zugehörigen Ressource.
+ * @param mysqli $connection  The database connection.
+ * @param array  $postData    The POST data from the form.
+ * @param int    $resource_id The ID of the associated resource.
  *
- * @return boolean Gibt true zurück, wenn die Speicherung erfolgreich war, ansonsten false.
+ * @return bool Returns true if the saving was successful, otherwise false.
  *
- * @throws mysqli_sql_exception Wenn ein Datenbankfehler auftritt.
+ * @throws mysqli_sql_exception If a database error occurs.
  */
 function saveFundingReferences($connection, $postData, $resource_id)
 {
@@ -27,7 +27,7 @@ function saveFundingReferences($connection, $postData, $resource_id)
     ) {
         $funder = $postData['funder'];
         $funderId = $postData['funderId'];
-        $grantNummer = $postData['grantNummer'];
+        $grantNumber = $postData['grantNummer'];
         $grantName = $postData['grantName'];
         $len = count($funder);
 
@@ -39,11 +39,18 @@ function saveFundingReferences($connection, $postData, $resource_id)
             }
 
             $funderIdString = !empty($funderId[$i]) ? extractLastTenDigits($funderId[$i]) : null;
-            $funderidTyp = !empty($funderIdString) ? "Crossref Funder ID" : null;
+            $funderIdType = !empty($funderIdString) ? "Crossref Funder ID" : null;
 
             error_log("Processing funding reference for funder: " . $funder[$i]);
 
-            $funding_reference_id = insertFundingReference($connection, $funder[$i], $funderIdString, $funderidTyp, $grantNummer[$i], $grantName[$i]);
+            $funding_reference_id = insertFundingReference(
+                $connection,
+                $funder[$i],
+                $funderIdString,
+                $funderIdType,
+                $grantNumber[$i],
+                $grantName[$i]
+            );
 
             if ($funding_reference_id) {
                 error_log("Successfully inserted funding reference with ID: " . $funding_reference_id);
@@ -66,15 +73,29 @@ function saveFundingReferences($connection, $postData, $resource_id)
     }
 }
 
-function insertFundingReference($connection, $funder, $funderId, $funderidTyp, $grantNummer, $grantName)
+/**
+ * Inserts a funding reference into the database.
+ *
+ * @param mysqli      $connection    The database connection.
+ * @param string      $funder        The funder's name.
+ * @param string|null $funderId      The funder's ID.
+ * @param string|null $funderIdType  The type of the funder's ID.
+ * @param string|null $grantNumber   The grant number.
+ * @param string|null $grantName     The grant name.
+ *
+ * @return int|null Returns the funding reference ID if insertion was successful, otherwise null.
+ */
+function insertFundingReference($connection, $funder, $funderId, $funderIdType, $grantNumber, $grantName)
 {
-    $stmt = $connection->prepare("INSERT INTO Funding_Reference (`funder`, `funderid`, `funderidtyp`, `grantnumber`, `grantname`) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $connection->prepare(
+        "INSERT INTO Funding_Reference (`funder`, `funderid`, `funderidtyp`, `grantnumber`, `grantname`) VALUES (?, ?, ?, ?, ?)"
+    );
     if (!$stmt) {
         error_log("Prepare failed: " . $connection->error);
         return null;
     }
 
-    $stmt->bind_param("sssss", $funder, $funderId, $funderidTyp, $grantNummer, $grantName);
+    $stmt->bind_param("sssss", $funder, $funderId, $funderIdType, $grantNumber, $grantName);
 
     if ($stmt->execute()) {
         $funding_reference_id = $stmt->insert_id;
@@ -87,32 +108,39 @@ function insertFundingReference($connection, $funder, $funderId, $funderidTyp, $
     }
 }
 
+/**
+ * Extracts the last ten digits from a given funder ID.
+ *
+ * @param string $funderId The funder ID.
+ *
+ * @return string The last ten digits of the numeric part of the funder ID.
+ */
 function extractLastTenDigits($funderId)
 {
-    // Entferne alle nicht-numerischen Zeichen
+    // Remove all non-numeric characters
     $numericOnly = preg_replace('/[^0-9]/', '', $funderId);
 
-    // Extrahiere die letzten 10 Ziffern
+    // Extract the last 10 digits
     return substr($numericOnly, -10);
 }
 
 /**
- * Verknüpft eine Ressource mit einer Funding Reference.
+ * Links a resource to a funding reference.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param int $resource_id Die ID der Ressource.
- * @param int $funding_reference_id Die ID der Funding Reference.
+ * @param mysqli $connection          The database connection.
+ * @param int    $resource_id         The ID of the resource.
+ * @param int    $funding_reference_id The ID of the funding reference.
  *
- * @return bool
+ * @return bool Returns true if the linking was successful, otherwise false.
  */
 function linkResourceToFundingReference($connection, $resource_id, $funding_reference_id)
 {
-    // Überprüfen, ob die IDs gültig sind
+    // Check if the IDs are valid
     if (!$resource_id || !$funding_reference_id) {
         return false;
     }
 
-    // Überprüfen, ob die Resource existiert
+    // Check if the resource exists
     $resourceCheck = $connection->prepare("SELECT resource_id FROM Resource WHERE resource_id = ?");
     $resourceCheck->bind_param("i", $resource_id);
     $resourceCheck->execute();
@@ -120,7 +148,7 @@ function linkResourceToFundingReference($connection, $resource_id, $funding_refe
         return false;
     }
 
-    // Überprüfen, ob die Funding Reference existiert
+    // Check if the funding reference exists
     $fundingCheck = $connection->prepare("SELECT funding_reference_id FROM Funding_Reference WHERE funding_reference_id = ?");
     $fundingCheck->bind_param("i", $funding_reference_id);
     $fundingCheck->execute();
@@ -128,7 +156,7 @@ function linkResourceToFundingReference($connection, $resource_id, $funding_refe
         return false;
     }
 
-    // Überprüfen, ob die Verknüpfung bereits existiert
+    // Check if the linkage already exists
     $existingCheck = $connection->prepare(
         "SELECT 1 FROM Resource_has_Funding_Reference 
          WHERE Resource_resource_id = ? AND Funding_Reference_funding_reference_id = ?"
@@ -139,7 +167,7 @@ function linkResourceToFundingReference($connection, $resource_id, $funding_refe
         return true;
     }
 
-    // Verknüpfung erstellen
+    // Create the linkage
     $stmt = $connection->prepare(
         "INSERT INTO Resource_has_Funding_Reference 
          (Resource_resource_id, Funding_Reference_funding_reference_id) 
@@ -157,7 +185,7 @@ function linkResourceToFundingReference($connection, $resource_id, $funding_refe
         $stmt->close();
         return false;
     }
-    
+
     $stmt->close();
     return true;
 }

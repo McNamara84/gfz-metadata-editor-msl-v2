@@ -1,45 +1,69 @@
 <?php
+/**
+ *
+ * Contains database connection settings, API keys, and application configuration variables.
+ *
+ */
 
+/**
+ * Establishes a connection to the database.
+ *
+ * @return mysqli The MySQLi connection object.
+ */
 function connectDb()
 {
     $host = "localhost";
-    $username = "DB_NUTZER";
-    $password = "DB_PASSWORT";
-    $database = "DB_NAME";
+    $username = "your_database_username";
+    $password = "your_database_password";
+    $database = "your_database_name";
     $conn = new mysqli($host, $username, $password, $database);
     return $conn;
 }
 
+/**
+ * Outputs the Google Maps API key in JSON format.
+ *
+ * @return void
+ */
 function getApiKey()
 {
     // Google Maps API Key
-    $apiKeyGoogleMaps = 'xxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxx';
-    // API-Key als JSON zurückgeben
+    $apiKeyGoogleMaps = 'your_google_maps_api_key';
+    // Return API key as JSON
     echo json_encode(['apiKey' => $apiKeyGoogleMaps]);
 }
 
-// Prüfe, ob die Datei direkt über eine HTTP-Anfrage aufgerufen wird
+// Check if the file is accessed directly via an HTTP request
 if (basename(__FILE__) == basename($_SERVER['PHP_SELF'])) {
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         getApiKey();
     }
 }
 
+// Establish the database connection
 $connection = connectDb();
 
-// API Key für https://timezonedb.com/
-$apiKeyTimezone = 'xxxxxxxxxxxx';
-// maximale Anzahl der eingebbaren Titel
+// API Key for https://timezonedb.com/
+$apiKeyTimezone = 'your_timezone_api_key';
+
+// Maximum number of titles that can be entered
 $maxTitles = 2;
-// URL zur Quelle mit sämtlichen Laboren für MSL
+
+// URL to the source with all laboratories for MSL
 $mslLabsUrl = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/labs/labnames.json';
-// Anzeige des Feedback-Links (true für Anzeige, false für keine Anzeige)
+
+// Display the feedback link (true to display, false to hide)
 $showFeedbackLink = true;
-// Einstellungen für Mailversand mit SMTP
-$smtpHost = 'xxxxxx';
+
+// Settings for sending mail with SMTP
+$smtpHost = 'your_smtp_host';
 $smtpPort = 465;
-$smtpUser = 'xxxxxxxxxxx';
-$smtpPassword = 'xxxxxxxxxxxx';
-$smtpSender = 'xxxxxxxxxxxx';
-// Zieladresse für Feedback
-$feedbackAdress = 'xxxxxxxx@xxxxxxxx';
+$smtpUser = 'your_smtp_username';
+$smtpPassword = 'your_smtp_password';
+$smtpSender = 'your_smtp_sender_email';
+
+// Target address for feedback
+$feedbackAddress = 'feedback@example.com';
+
+// Target address for XML submit
+$xmlSubmitAddress = 'xmlsubmit@example.com';

@@ -1,12 +1,29 @@
 <?php
+/**
+ * install.php
+ *
+ * This script initializes the database by dropping existing tables, creating the necessary database structure,
+ * and inserting test data into both main and helper tables.
+ *
+ */
+
+// Check if 'settings.php' exists
 if (!file_exists("settings.php")) {
         die("Fehler: Die Datei 'settings.php' wurde nicht gefunden. Bitte stellen Sie sicher, dass diese Datei korrekt befüllt wurde. Ein Beispiel entnehmen Sie der Datei sample_settings.php.");
 }
 include("settings.php");
+
+// Check if the database connection is established
 if (!isset($connection) || !$connection) {
         die("Fehler: Die Datenbankverbindung konnte nicht hergestellt werden. Bitte überprüfen Sie die Einstellungen in 'settings.php' und die Erreichbarkeit der Datenbank.");
 }
-// Funktion zum Löschen aller Tabellen erstellen
+
+/**
+ * Drops all existing tables in the database.
+ *
+ * @param mysqli $connection The MySQLi connection object.
+ * @return void
+ */
 function dropTables($connection)
 {
         $tables = [
@@ -50,7 +67,7 @@ function dropTables($connection)
                 'Resource_has_Funding_Reference'
         ];
 
-        // Deaktiviere Fremdschlüsselprüfung, um Tabellen trotz Abhängigkeiten löschen zu können
+        // Disable foreign key checks to allow dropping tables with dependencies
         mysqli_query($connection, "SET FOREIGN_KEY_CHECKS = 0;");
 
         foreach ($tables as $table) {
@@ -58,12 +75,16 @@ function dropTables($connection)
                 mysqli_query($connection, $sql);
         }
 
-        // Aktiviere Fremdschlüsselprüfung wieder
+        // Re-enable foreign key checks
         mysqli_query($connection, "SET FOREIGN_KEY_CHECKS = 1;");
 }
 
-
-// Funktion zum Anlegen der Datenbankstruktur
+/**
+ * Creates the database structure by executing SQL CREATE TABLE statements.
+ *
+ * @param mysqli $connection The MySQLi connection object.
+ * @return void
+ */
 function createDatabaseStructure($connection)
 {
         $tables = [
@@ -415,10 +436,15 @@ function createDatabaseStructure($connection)
         echo "Die Tabellen wurden erfolgreich erstellt.";
 }
 
-// Funktion zum Einfügen von Testdaten in die Haupttabellen
+/**
+ * Inserts test data into the main tables of the database.
+ *
+ * @param mysqli $connection The MySQLi connection object.
+ * @return void
+ */
 function insertTestDataIntoMainTables($connection)
 {
-        // Testdaten für Haupttabellen
+        // Test data for main tables
         $mainTableData = [
                 "Rights" => [
                         ["text" => "Creative Commons Attribution 4.0 International", "rightsIdentifier" => "CC-BY-4.0", "rightsURI" => "https://creativecommons.org/licenses/by/4.0/legalcode", "forSoftware" => "0"],
@@ -672,7 +698,12 @@ function insertTestDataIntoMainTables($connection)
         }
 }
 
-// Funktion zum Einfügen von Testdaten in die Hilfstabellen
+/**
+ * Inserts test data into the helper tables of the database.
+ *
+ * @param mysqli $connection The MySQLi connection object.
+ * @return void
+ */
 function insertTestDataIntoHelpTables($connection)
 {
         $helpTableData = [
@@ -780,11 +811,13 @@ function insertTestDataIntoHelpTables($connection)
         }
 }
 
-// Nur für Tests!!!
+// Only for debugging!
 dropTables($connection);
 
 createDatabaseStructure($connection);
 insertTestDataIntoMainTables($connection);
 insertTestDataIntoHelpTables($connection);
+
+// Close the database connection
 mysqli_close($connection);
 exit();

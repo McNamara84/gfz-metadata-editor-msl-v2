@@ -1,16 +1,36 @@
 <?php
-// settings.php einbinden damit Variablen verfügbar sind
+/**
+ * VocabController.php
+ *
+ * This controller provides endpoints for fetching vocabularies via the API.
+ *
+ */
+
+// Include settings.php so that variables are available
 require_once __DIR__ . '/../../../settings.php';
+
 /**
  * Class VocabController
  *
- * This controller provides endpoints for the fetching of vocabulaires with the API.
+ * Handles vocabulary-related API requests.
  */
 class VocabController
 {
+    /**
+     * @var string The URL for MSL Labs data.
+     */
     private $url;
+
+    /**
+     * @var string The base URL for MSL vocabularies.
+     */
     private $mslVocabsUrl;
 
+    /**
+     * VocabController constructor.
+     *
+     * Initializes URLs using global variables.
+     */
     public function __construct()
     {
         global $mslLabsUrl;
@@ -19,6 +39,11 @@ class VocabController
         $this->mslVocabsUrl = $mslVocabsUrl;
     }
 
+    /**
+     * Retrieves relation data from the database and returns it as JSON.
+     *
+     * @return void
+     */
     public function getRelations()
     {
         global $connection;
@@ -57,9 +82,15 @@ class VocabController
         exit();
     }
 
+    /**
+     * Fetches MSL Labs data from a remote URL, processes it, and returns the necessary fields.
+     *
+     * @return array Processed MSL Labs data.
+     * @throws Exception If fetching or decoding the data fails.
+     */
     public function fetchAndProcessMslLabs()
     {
-        // Daten von der URL abrufen mit User-Agent
+        // Fetch data from the URL with a custom User-Agent
         $opts = [
             'http' => [
                 'method' => 'GET',
@@ -70,20 +101,20 @@ class VocabController
         $jsonData = file_get_contents($this->url, false, $context);
 
         if ($jsonData === false) {
-            throw new Exception('Fehler beim Abrufen der Daten von GitHub: ' . error_get_last()['message']);
+            throw new Exception('Error fetching data from GitHub: ' . error_get_last()['message']);
         }
 
-        // Zeichenkodierung korrigieren
+        // Correct character encoding
         $jsonData = mb_convert_encoding($jsonData, 'UTF-8', mb_detect_encoding($jsonData, 'UTF-8, ISO-8859-1', true));
 
-        // JSON-Daten decodieren
+        // Decode JSON data
         $labs = json_decode($jsonData, true);
 
         if ($labs === null) {
-            throw new Exception('Fehler beim Decodieren der JSON-Daten: ' . json_last_error_msg());
+            throw new Exception('Error decoding JSON data: ' . json_last_error_msg());
         }
 
-        // Daten verarbeiten und nur benötigte Felder behalten
+        // Process data and retain only necessary fields
         $processedLabs = array_map(function ($lab) {
             return [
                 'id' => $lab['id'],
@@ -94,6 +125,14 @@ class VocabController
 
         return $processedLabs;
     }
+
+    /**
+     * Retrieves the latest version number for a given vocabulary type.
+     *
+     * @param string $baseUrl The base URL for vocabularies.
+     * @param string $type    The vocabulary type.
+     * @return string|false The latest version string or false if not found.
+     */
     private function getLatestVersion($baseUrl, $type)
     {
         $versions = [];
@@ -109,6 +148,14 @@ class VocabController
         return end($versions);
     }
 
+    /**
+     * Processes an individual item from the vocabulary data.
+     *
+     * @param array  $item      The item to process.
+     * @param string $scheme    The scheme name.
+     * @param string $schemeURI The scheme URI.
+     * @return array The processed item.
+     */
     private function processItem($item, $scheme, $schemeURI)
     {
         $newItem = [
@@ -129,11 +176,27 @@ class VocabController
         return $newItem;
     }
 
+    /**
+     * Retrieves MSL vocabulary data for a specified type and saves it as JSON.
+     *
+     * @param array $vars An associative array of parameters.
+     * @return void
+     */
     public function getMslVocab($vars)
     {
         $type = $vars['type'] ?? $_GET['type'] ?? 'all';
 
-        $types = ['analogue', 'geochemistry', 'geologicalage', 'geologicalsetting', 'materials', 'microscopy', 'paleomagnetism', 'porefluids', 'rockphysics'];
+        $types = [
+            'analogue',
+            'geochemistry',
+            'geologicalage',
+            'geologicalsetting',
+            'materials',
+            'microscopy',
+            'paleomagnetism',
+            'porefluids',
+            'rockphysics'
+        ];
         $jsonDir = __DIR__ . '/../../../json/';
         $combinedJsonFile = $jsonDir . 'msl-vocabularies.json';
 
@@ -222,7 +285,7 @@ class VocabController
             $results['error'] = "Invalid type specified";
         }
 
-        // Speichern der kombinierten Daten
+        // Save the combined data
         if (!empty($combinedData)) {
             file_put_contents($combinedJsonFile, json_encode($combinedData, JSON_PRETTY_PRINT));
         }
@@ -234,7 +297,12 @@ class VocabController
         ]);
     }
 
-
+    /**
+     * Downloads content from a given URL.
+     *
+     * @param string $url The URL to download content from.
+     * @return string|false The content if successful, or false on failure.
+     */
     private function downloadContent($url)
     {
         $ch = curl_init($url);
@@ -246,6 +314,12 @@ class VocabController
 
         return ($httpCode == 200) ? $content : false;
     }
+
+    /**
+     * Retrieves GCMD Science Keywords from a local JSON file and returns them as JSON.
+     *
+     * @return void
+     */
     public function getGcmdScienceKeywords()
     {
         try {
@@ -264,6 +338,12 @@ class VocabController
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
+
+    /**
+     * Updates the MSL Labs vocabulary by fetching and processing data, then saving it as JSON.
+     *
+     * @return void
+     */
     public function updateMslLabs()
     {
         try {
@@ -287,12 +367,19 @@ class VocabController
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
+
+    /**
+     * Retrieves roles from the database based on the specified type and returns them as JSON.
+     *
+     * @param array $vars An associative array of parameters.
+     * @return void
+     */
     public function getRoles($vars)
     {
         global $connection;
         $type = $vars['type'] ?? $_GET['type'] ?? 'all';
 
-        // SQL-Abfrage basierend auf dem Typ
+        // SQL query based on the type
         if ($type == 'all') {
             $sql = 'SELECT * FROM Role';
         } elseif ($type == 'person') {
@@ -327,27 +414,32 @@ class VocabController
         }
     }
 
+    /**
+     * Updates timezone data by fetching it from an external API and saving it as JSON.
+     *
+     * @return void
+     */
     public function updateTimezones()
     {
         global $apiKeyTimezone;
 
         try {
-            // Die URL der TimeZoneDB API, um die Zeitzonendaten abzurufen
+            // The TimeZoneDB API URL to fetch timezone data
             $apiUrl = 'http://api.timezonedb.com/v2.1/list-time-zone?key=' . urlencode($apiKeyTimezone) . '&format=json';
 
-            // Daten von der externen API abrufen
+            // Fetch data from the external API
             $response = file_get_contents($apiUrl);
             if ($response === FALSE) {
-                throw new Exception('Error fetching data from timezonedb API.');
+                throw new Exception('Error fetching data from TimeZoneDB API.');
             }
 
-            // Antwort in ein Array dekodieren
+            // Decode response into an array
             $data = json_decode($response, true);
             if ($data['status'] != 'OK') {
                 throw new Exception('Error occurred: ' . $data['message']);
             }
 
-            // Zeitzonen formatieren, UTC+X (Zone)
+            // Format timezones as UTC+X (Zone)
             $formattedTimezones = [];
             foreach ($data['zones'] as $zone) {
                 $offsetHours = floor($zone['gmtOffset'] / 3600);
@@ -359,7 +451,7 @@ class VocabController
                 ];
             }
 
-            // Daten als JSON-String auf Server zwischenspeichern
+            // Cache data as a JSON string on the server
             $jsonDir = __DIR__ . '/../../../json/';
             if (!file_exists($jsonDir)) {
                 mkdir($jsonDir, 0755, true);
@@ -380,6 +472,13 @@ class VocabController
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
+
+    /**
+     * Retrieves licenses from the database, filtered by type, and returns them as JSON.
+     *
+     * @param bool $forSoftwareOnly If true, retrieves licenses only for software; otherwise, retrieves all licenses.
+     * @return void
+     */
     private function getLicensesByType($forSoftwareOnly = false)
     {
         try {
@@ -390,7 +489,7 @@ class VocabController
             $result = $GLOBALS['connection']->query($sql);
 
             if (!$result) {
-                throw new Exception("Datenbankabfrage fehlgeschlagen");
+                throw new Exception("Database query failed");
             }
 
             $licenses = [];
@@ -417,6 +516,11 @@ class VocabController
         }
     }
 
+    /**
+     * Retrieves all licenses and returns them as JSON.
+     *
+     * @return void
+     */
     public function getAllLicenses()
     {
         error_log("getAllLicenses called");
@@ -430,6 +534,11 @@ class VocabController
         }
     }
 
+    /**
+     * Retrieves software licenses and returns them as JSON.
+     *
+     * @return void
+     */
     public function getSoftwareLicenses()
     {
         error_log("getSoftwareLicenses called");

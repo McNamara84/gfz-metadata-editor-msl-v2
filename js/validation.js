@@ -1,65 +1,160 @@
+/**
+ * Form handling module for dataset submission
+ * Handles both local saving and email submission of datasets
+ *
+ */
+
 document.addEventListener('DOMContentLoaded', function () {
+  /**
+   * Main form element containing the dataset metadata
+   * @type {HTMLFormElement}
+   */
   const form = document.getElementById('metaForm');
-  const saveButton = document.getElementById('saveAs');
 
-  // Remove disabled attribute from save button
-  saveButton.disabled = false;
+  /**
+   * Modal for notifications
+   * @type {bootstrap.Modal}
+   */
+  const notificationModal = new bootstrap.Modal(document.getElementById('notificationModal'));
 
-  // Add click event listener to save button
-  saveButton.addEventListener('click', function (e) {
-    e.preventDefault(); // Prevent immediate form submission
+  /**
+   * Submit buttons for different actions
+   * @type {Object}
+   */
+  const buttons = {
+    save: document.getElementById('saveAs'),
+    submit: document.getElementById('submitButton')
+  };
 
-    // Remove any existing alert messages
-    const existingAlerts = document.querySelectorAll('.alert');
-    existingAlerts.forEach(alert => alert.remove());
+  // Enable buttons
+  buttons.save.disabled = false;
+  buttons.submit.disabled = false;
 
-    // Remove existing validation classes
-    form.classList.remove('was-validated');
+  /**
+   * Form submit event handler
+   * Determines action based on clicked button
+   * @param {Event} e - Submit event object
+   */
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-    // Trigger HTML5 form validation
+    // Determine which button was clicked
+    const clickedButton = document.activeElement;
+    const action = clickedButton.dataset.action;
+
     if (!form.checkValidity()) {
-      // Add Bootstrap's was-validated class to show validation feedback
-      form.classList.add('was-validated');
-
-      // Find first invalid input and scroll to it
-      const firstInvalid = form.querySelector(':invalid');
-      if (firstInvalid) {
-        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        firstInvalid.focus();
-
-        // Create and show error message
-        const alertMessage = document.createElement('div');
-        alertMessage.className = 'alert alert-danger alert-dismissible fade show';
-        alertMessage.setAttribute('role', 'alert');
-        alertMessage.innerHTML = `
-          <strong>Please check your inputs!</strong> Some required fields are not filled correctly.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        `;
-
-        // Insert alert at the top of the main content
-        const mainContent = document.querySelector('main');
-        mainContent.insertBefore(alertMessage, mainContent.firstChild);
-
-        // Remove alert after 5 seconds
-        setTimeout(() => alertMessage.remove(), 5000);
-      }
+      handleInvalidForm();
     } else {
-      // If form is valid, show success message and submit
-      const successAlert = document.createElement('div');
-      successAlert.className = 'alert alert-success alert-dismissible fade show';
-      successAlert.setAttribute('role', 'alert');
-      successAlert.innerHTML = `
-        <strong>Success!</strong> Dataset is being submitted.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      `;
-
-      const mainContent = document.querySelector('main');
-      mainContent.insertBefore(successAlert, mainContent.firstChild);
-
-      // Submit the form after a brief delay to show the success message
-      setTimeout(() => {
-        form.submit();
-      }, 1000);
+      handleValidForm(action);
     }
   });
+
+  /**
+   * Handles form validation errors
+   */
+  function handleInvalidForm() {
+    form.classList.add('was-validated');
+    const firstInvalid = form.querySelector(':invalid');
+
+    if (firstInvalid) {
+      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      firstInvalid.focus();
+      showNotification('danger', 'Validation Error', 'Please check your inputs! Some required fields are not filled correctly.');
+    }
+  }
+
+  /**
+   * Handles successful form validation
+   * @param {string} action - Type of submission ('save' or 'submit')
+   */
+  function handleValidForm(action) {
+    if (action === 'save') {
+      showNotification('info', 'Processing...', 'Dataset is being saved.');
+      setTimeout(() => {
+        const formData = new FormData(form);
+        formData.append('action', 'save');
+
+        // Create a hidden form and submit it
+        const hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'save/save_data.php';
+
+        for (const [key, value] of formData.entries()) {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = value;
+          hiddenForm.appendChild(input);
+        }
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+      }, 1000);
+      showNotification('success', 'Success!', 'Dataset saved successfully. The XML file download will start automatically.');
+    } else if (action === 'submit') {
+      showNotification('info', 'Processing...', 'Dataset is being submitted.');
+      submitViaAjax();
+    }
+  }
+
+  /**
+   * Submits form data via AJAX for email submission
+   */
+  function submitViaAjax() {
+    $.ajax({
+      url: 'send_xml_file.php',
+      type: 'POST',
+      data: $(form).serialize(),
+      dataType: 'json',
+      success: function (response) {
+        if (response.success) {
+          showNotification('success', 'Success!', response.message);
+        } else {
+          showNotification('danger', 'Error!', response.message);
+          console.error('Error details:', response.debug);
+        }
+      },
+      error: function (xhr, status, error) {
+        let errorMessage = 'Failed to submit dataset';
+        try {
+          const response = JSON.parse(xhr.responseText);
+          errorMessage = response.message || errorMessage;
+          console.error('Error details:', response.debug);
+        } catch (e) {
+          errorMessage += ': ' + error;
+          console.error('Response:', xhr.responseText);
+        }
+        showNotification('danger', 'Error!', errorMessage);
+      }
+    });
+  }
+
+  /**
+   * Shows a notification in the modal
+   * @param {string} type - Notification type (success, danger, info)
+   * @param {string} title - Modal title
+   * @param {string} message - Notification message
+   */
+  function showNotification(type, title, message) {
+    const modalTitle = document.getElementById('notificationModalLabel');
+    const modalBody = document.getElementById('notificationModalBody');
+
+    // Set modal content
+    modalTitle.textContent = title;
+    modalBody.innerHTML = `
+      <div class="alert alert-${type} mb-0">
+        ${message}
+      </div>
+    `;
+
+    // Show modal
+    notificationModal.show();
+
+    // Auto-hide for success messages after 3 seconds
+    if (type === 'success') {
+      setTimeout(() => {
+        notificationModal.hide();
+      }, 3000);
+    }
+  }
 });

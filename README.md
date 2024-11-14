@@ -9,12 +9,12 @@ Dieser Metadaten-Editor entstand im Rahmen eines studentischen Kooperationsproje
 3. Apache und MySQL starten nicht vergessen.
 4. Datenbank "mde" in MySQL (z. B. mittels phpMyAdmin) erstellen.
 5. Inhalt der Datei sample_settings.php in neue Datei `settings.php` kopieren und Einstellungen für Datenbankverbindung anpassen.
-6. Pfad /mde-msl/ in Datei `.htaccess` anpassen an eigenen Installationspfad. Sollte die Anwendung im Hauptverzeichnis installiert werden, reicht der Schrägstrich ("/").
-7. Für die automatisch generierten Zeitzonen-Auswahl einen kostenlosen API Key unter https://timezonedb.com/ erstellen und ebenfalls in der neu erstellen settings.php eintragen
-8. Google Maps JS API Key erstellen und ebenfalls in die Datei settings.php einfügen.
-9. Alle Dateien dieses Repositories in den Ordner "htdocs"-Ordner des Webservers kopieren.
-10. install.php über den Browser aufrufen. Die Datenbank-Tabellen werden automatisch erstellt.
-11. Der Metadateneditor ist nun über localhost/verzeichnisname im Browser erreichbar.
+6. Für die automatisch generierten Zeitzonen-Auswahl einen kostenlosen API Key unter https://timezonedb.com/ erstellen und ebenfalls in der neu erstellen settings.php eintragen
+7. Google Maps JS API Key erstellen und ebenfalls in die Datei settings.php einfügen.
+8. Alle Dateien dieses Repositories in den Ordner "htdocs"-Ordner des Webservers kopieren.
+9. install.php über den Browser aufrufen. Die Datenbank-Tabellen werden automatisch erstellt.
+10. Der Metadateneditor ist nun über localhost/verzeichnisname im Browser erreichbar.
+11. Einstellungen in `settings.php` anpassen (siehe [Abschnitt Einstellungen](#einstellungen))
 
 Bei Problemen mit der Installation, hinterlasse gerne einen Eintrag im Issue Board dieses Repositories!
 
@@ -28,11 +28,9 @@ In der header.html und footer.html werden folgende Abhängikeiten von Drittanbie
   Für die Icons in der oberen rechten Ecke des Editors (Dark Mode Switch, Language Switch)
 - jQuery 3.7.1<br>
   Für die Event Handler in JavaScript und zum Vereinfachen des JavaScript-Codes allgemein.
-- jQuery UI 1.14.0<br>
+- jQuery UI 1.14.1<br>
   Erweitert jQuery um die Autocomplete-Funktion, die wir aktuell für die Affiliation-Felder nutzen.
-- Chosen 1.8.7<br> (deprecated, zukünftig nicht mehr verwenden)
-  Da Bootstrap 5.3 keine einfach bedienbaren Multi-Select-Felder anbietet, wird diese Funktion mit Chosen implementiert. Design-Anpassungen waren notwendendig und werden in der Datei bs5-chosen.css umgesetzt.
-- Tagify 4.31.5<br>
+- Tagify 4.32.0<br>
   Wird für das Feld Thesaurus Keywords, die eingabe von mehreren Affiliations und Free Keywords genutzt.
 - jsTree 3.3.17<br>
   Wird zur Darstellung der Thesauri als hierarchische Baumstruktur verwendet.
@@ -43,15 +41,16 @@ In der header.html und footer.html werden folgende Abhängikeiten von Drittanbie
 
 In der Datei `settings.php` können, neben den Zugangsdaten für die Datenbank, auch andere Einstellungen angepasst werden:
 
-- `$maxTitles:` Legt die max. Anzahl an Titeln fest, die Nutzende im Editor eingeben können, fest.
-- `$mslLabsUrl:` URL zur JSON-Datei mit der aktuellen Liste an Laboratorien.
-- `$showFeedbackLink:` true-> Feedback-Funktion eingeschaltet, false-> Feedback-Funktion ausgeschaltet
-- `$smtpHost:`URL zum SMTP-Mailserver
-- `$smtpPort:` Port des Mailservers
-- `$smtpUser:` Nutzername des Postfachs zum Versenden der Mails
-- `$smtpPassword:` Password des Postfach
-- `$smtpSender:` Name des Absenders in den Feedback Mails
-- `$feedbackAdress:` Adresse an die das Feedback gesendet wird
+- `$maxTitles`: Legt die max. Anzahl an Titeln fest, die Nutzende im Editor eingeben können, fest.
+- `$mslLabsUrl`: URL zur JSON-Datei mit der aktuellen Liste an Laboratorien.
+- `$showFeedbackLink`: true-> Feedback-Funktion eingeschaltet, false-> Feedback-Funktion ausgeschaltet
+- `$smtpHost`: URL zum SMTP-Mailserver
+- `$smtpPort`: Port des Mailservers
+- `$smtpUser`: Nutzername des Postfachs zum Versenden der Mails
+- `$smtpPassword`: Password des Postfach
+- `$smtpSender` Name des Absenders in den Feedback Mails
+- `$feedbackAdress`: Adresse an die das Feedback gesendet wird
+- `$xmlSubmitAdress`: Adresse an die diefertige XML-Datei gesendet wird
 
 # API-Dokumentation
 
