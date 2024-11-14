@@ -2,8 +2,13 @@ $(document).ready(function () {
   // Feedback versenden
   $("#sendFeedback").click(function (event) {
     event.preventDefault();
-    var feedbackTextPositiv = $("#feedbackTextPositiv").val();
-    var feedbackTextNegativ = $("#feedbackTextNegativ").val();
+    var feedbackQuestion1 = $("#feedbackQuestion1").val();
+    var feedbackQuestion2 = $("#feedbackQuestion2").val();
+    var feedbackQuestion3 = $("#feedbackQuestion3").val();
+    var feedbackQuestion4 = $("#feedbackQuestion4").val();
+    var feedbackQuestion5 = $("#feedbackQuestion5").val();
+    var feedbackQuestion6 = $("#feedbackQuestion6").val();
+    var feedbackQuestion7 = $("#feedbackQuestion7").val();
 
     // Button ändern, wenn Senden in Arbeit
     $("#sendFeedback").prop("disabled", true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...');
@@ -12,8 +17,13 @@ $(document).ready(function () {
       url: "send_feedback_mail.php",
       type: "POST",
       data: {
-        feedbackTextPositiv: feedbackTextPositiv,
-        feedbackTextNegativ: feedbackTextNegativ,
+        feedbackQuestion1: feedbackQuestion1,
+        feedbackQuestion2: feedbackQuestion2,
+        feedbackQuestion3: feedbackQuestion3,
+        feedbackQuestion4: feedbackQuestion4,
+        feedbackQuestion5: feedbackQuestion5,
+        feedbackQuestion6: feedbackQuestion6,
+        feedbackQuestion7: feedbackQuestion7,
       },
       success: function (response) {
         // Erfolgsmeldung zeigen
