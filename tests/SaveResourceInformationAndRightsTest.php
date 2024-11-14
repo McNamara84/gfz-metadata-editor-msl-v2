@@ -29,7 +29,7 @@ class SaveResourceInformationAndRightsTest extends TestCase
         }
         $this->connection = $connection;
         // Überprüfen, ob die Testdatenbank verfügbar ist
-        $dbname = 'geobrains-msl-test';
+        $dbname = 'mde2-msl-test';
         if ($this->connection->select_db($dbname) === false) {
             // Testdatenbank erstellen
             $connection->query("CREATE DATABASE " . $dbname);
