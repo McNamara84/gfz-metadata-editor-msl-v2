@@ -1,7 +1,7 @@
 /**
  * Form handling module for dataset submission
  * Handles both local saving and email submission of datasets
- * 
+ *
  */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', function () {
    * @type {HTMLFormElement}
    */
   const form = document.getElementById('metaForm');
+
+  /**
+   * Modal for notifications
+   * @type {bootstrap.Modal}
+   */
+  const notificationModal = new bootstrap.Modal(document.getElementById('notificationModal'));
 
   /**
    * Submit buttons for different actions
@@ -36,30 +42,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const clickedButton = document.activeElement;
     const action = clickedButton.dataset.action;
 
-    clearAlerts();
-    resetValidation();
-
     if (!form.checkValidity()) {
       handleInvalidForm();
     } else {
       handleValidForm(action);
     }
   });
-
-  /**
-   * Clears all existing alerts from the page
-   */
-  function clearAlerts() {
-    const existingAlerts = document.querySelectorAll('.alert');
-    existingAlerts.forEach(alert => alert.remove());
-  }
-
-  /**
-   * Resets form validation state
-   */
-  function resetValidation() {
-    form.classList.remove('was-validated');
-  }
 
   /**
    * Handles form validation errors
@@ -71,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (firstInvalid) {
       firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
       firstInvalid.focus();
-      showAlert('danger', 'Please check your inputs!', 'Some required fields are not filled correctly.');
+      showNotification('danger', 'Validation Error', 'Please check your inputs! Some required fields are not filled correctly.');
     }
   }
 
@@ -81,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
    */
   function handleValidForm(action) {
     if (action === 'save') {
-      showAlert('success', 'Success!', 'Dataset is being saved.');
+      showNotification('info', 'Processing...', 'Dataset is being saved.');
       setTimeout(() => {
         const formData = new FormData(form);
         formData.append('action', 'save');
@@ -103,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
         hiddenForm.submit();
       }, 1000);
     } else if (action === 'submit') {
-      showAlert('info', 'Processing...', 'Dataset is being submitted via email.');
+      showNotification('info', 'Processing...', 'Dataset is being submitted.');
       submitViaAjax();
     }
   }
@@ -118,39 +106,54 @@ document.addEventListener('DOMContentLoaded', function () {
       data: $(form).serialize(),
       dataType: 'json',
       success: function (response) {
-        clearAlerts();
         if (response.success) {
-          showAlert('success', 'Success!', response.message);
+          showNotification('success', 'Success!', response.message);
         } else {
-          showAlert('danger', 'Error!', response.message);
+          showNotification('danger', 'Error!', response.message);
+          console.error('Error details:', response.debug);
         }
       },
       error: function (xhr, status, error) {
-        clearAlerts();
-        showAlert('danger', 'Error!', 'Failed to submit dataset: ' + error);
+        let errorMessage = 'Failed to submit dataset';
+        try {
+          const response = JSON.parse(xhr.responseText);
+          errorMessage = response.message || errorMessage;
+          console.error('Error details:', response.debug);
+        } catch (e) {
+          errorMessage += ': ' + error;
+          console.error('Response:', xhr.responseText);
+        }
+        showNotification('danger', 'Error!', errorMessage);
       }
     });
   }
 
   /**
-   * Creates and shows an alert message
-   * @param {string} type - Alert type (success, danger, info)
-   * @param {string} title - Alert title
-   * @param {string} message - Alert message
+   * Shows a notification in the modal
+   * @param {string} type - Notification type (success, danger, info)
+   * @param {string} title - Modal title
+   * @param {string} message - Notification message
    */
-  function showAlert(type, title, message) {
-    const alertElement = document.createElement('div');
-    alertElement.className = `alert alert-${type} alert-dismissible fade show`;
-    alertElement.setAttribute('role', 'alert');
-    alertElement.innerHTML = `
-      <strong>${title}</strong> ${message}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  function showNotification(type, title, message) {
+    const modalTitle = document.getElementById('notificationModalLabel');
+    const modalBody = document.getElementById('notificationModalBody');
+
+    // Set modal content
+    modalTitle.textContent = title;
+    modalBody.innerHTML = `
+      <div class="alert alert-${type} mb-0">
+        ${message}
+      </div>
     `;
 
-    const mainContent = document.querySelector('main');
-    mainContent.insertBefore(alertElement, mainContent.firstChild);
+    // Show modal
+    notificationModal.show();
 
-    // Auto-remove alert after 5 seconds
-    setTimeout(() => alertElement.remove(), 5000);
+    // Auto-hide for success messages after 3 seconds
+    if (type === 'success') {
+      setTimeout(() => {
+        notificationModal.hide();
+      }, 3000);
+    }
   }
 });
