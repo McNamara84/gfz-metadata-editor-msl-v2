@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.appendChild(hiddenForm);
         hiddenForm.submit();
       }, 1000);
+      showNotification('success', 'Success!', 'Dataset saved successfully. The XML file download will start automatically.');
     } else if (action === 'submit') {
       showNotification('info', 'Processing...', 'Dataset is being submitted.');
       submitViaAjax();
