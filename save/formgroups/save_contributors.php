@@ -1,10 +1,10 @@
 <?php
 /**
- * Speichert die Contributor-Informationen in der Datenbank.
+ * Saves the contributor information into the database.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param array $postData Die POST-Daten aus dem Formular.
- * @param int $resource_id Die ID der zugehörigen Ressource.
+ * @param mysqli $connection  The database connection.
+ * @param array  $postData    The POST data from the form.
+ * @param int    $resource_id The ID of the associated resource.
  *
  * @return void
  */
@@ -13,7 +13,7 @@ function saveContributors($connection, $postData, $resource_id)
     $valid_roles = getValidRoles($connection);
     saveContributorPersons($connection, $postData, $resource_id, $valid_roles);
 
-    // Nur Institutionen speichern, wenn entsprechende Daten vorhanden sind
+    // Only save institutions if corresponding data is available
     if (
         isset($postData['cbOrganisationName']) &&
         is_array($postData['cbOrganisationName']) &&
@@ -24,10 +24,10 @@ function saveContributors($connection, $postData, $resource_id)
 }
 
 /**
- * Holt die gültigen Rollen aus der Datenbank.
+ * Retrieves valid roles from the database.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @return array Ein Array mit Rollennamen als Schlüssel und Rollen-IDs als Werte.
+ * @param mysqli $connection The database connection.
+ * @return array An array with role names as keys and role IDs as values.
  */
 function getValidRoles($connection)
 {
@@ -43,12 +43,12 @@ function getValidRoles($connection)
 }
 
 /**
- * Speichert die Contributor Personen in der Datenbank.
+ * Saves the contributor persons into the database.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param array $postData Die POST-Daten aus dem Formular.
- * @param int $resource_id Die ID der zugehörigen Ressource.
- * @param array $valid_roles Ein Array mit gültigen Rollen.
+ * @param mysqli $connection  The database connection.
+ * @param array  $postData    The POST data from the form.
+ * @param int    $resource_id The ID of the associated resource.
+ * @param array  $valid_roles An array of valid roles.
  *
  * @return void
  */
@@ -68,15 +68,15 @@ function saveContributorPersons($connection, $postData, $resource_id, $valid_rol
 
         $len = count($cbPersonLastnames);
         for ($i = 0; $i < $len; $i++) {
-            // Überprüfen, ob der Nachname vorhanden ist
+            // Check if the last name is provided
             if (empty(trim($cbPersonLastnames[$i]))) {
-                continue; // Überspringe diesen Datensatz, wenn der Nachname fehlt
+                continue; // Skip this record if the last name is missing
             }
 
             $contributor_person_id = saveOrUpdateContributorPerson($connection, $cbPersonLastnames[$i], $cbPersonFirstnames[$i], $cbORCIDs[$i]);
             linkResourceToContributorPerson($connection, $resource_id, $contributor_person_id);
 
-            // Nur nicht-leere Affiliationen verarbeiten
+            // Only process non-empty affiliations
             $affiliations = parseAffiliationData($cbAffiliations[$i]);
             if (!empty($affiliations)) {
                 saveContributorPersonAffiliation($connection, $contributor_person_id, $cbAffiliations[$i], $cbRorIds[$i] ?? null);
@@ -88,14 +88,14 @@ function saveContributorPersons($connection, $postData, $resource_id, $valid_rol
 }
 
 /**
- * Speichert oder aktualisiert eine Contributor Person in der Datenbank.
+ * Saves or updates a contributor person in the database.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param string $lastname Der Nachname der Person.
- * @param string $firstname Der Vorname der Person.
- * @param string $orcid Die ORCID der Person.
+ * @param mysqli $connection The database connection.
+ * @param string $lastname   The last name of the person.
+ * @param string $firstname  The first name of the person.
+ * @param string $orcid      The ORCID of the person.
  *
- * @return int Die ID der gespeicherten oder aktualisierten Contributor Person.
+ * @return int The ID of the saved or updated contributor person.
  */
 function saveOrUpdateContributorPerson($connection, $lastname, $firstname, $orcid)
 {
@@ -121,11 +121,11 @@ function saveOrUpdateContributorPerson($connection, $lastname, $firstname, $orci
 }
 
 /**
- * Verknüpft eine Resource mit einer Contributor Person.
+ * Links a resource with a contributor person.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param int $resource_id Die ID der Resource.
- * @param int $contributor_person_id Die ID der Contributor Person.
+ * @param mysqli $connection            The database connection.
+ * @param int    $resource_id           The ID of the resource.
+ * @param int    $contributor_person_id The ID of the contributor person.
  *
  * @return void
  */
@@ -138,12 +138,12 @@ function linkResourceToContributorPerson($connection, $resource_id, $contributor
 }
 
 /**
- * Speichert die Affiliation einer Contributor Person.
+ * Saves the affiliation of a contributor person.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param int $contributor_person_id Die ID der Contributor Person.
- * @param string $affiliation_data Die Affiliationsdaten.
- * @param string|null $rorId_data Die ROR-ID-Daten.
+ * @param mysqli      $connection            The database connection.
+ * @param int         $contributor_person_id The ID of the contributor person.
+ * @param string      $affiliation_name      The affiliation name.
+ * @param string|null $rorId                 The ROR ID data.
  *
  * @return void
  */
@@ -154,7 +154,7 @@ function saveContributorPersonAffiliation($connection, $contributor_person_id, $
 
     foreach ($affiliations as $index => $affiliation_name) {
         if (empty($affiliation_name)) {
-            continue; // Überspringe leere Affiliationen
+            continue; // Skip empty affiliations
         }
 
         $rorId = isset($rorIds[$index]) ? str_replace("https://ror.org/", "", $rorIds[$index]) : null;
@@ -178,12 +178,12 @@ function saveContributorPersonAffiliation($connection, $contributor_person_id, $
 }
 
 /**
- * Speichert die Rollen einer Contributor Person.
+ * Saves roles of a Contributor Person.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param int $contributor_person_id Die ID der Contributor Person.
- * @param array|string $roles Die Rollen der Person.
- * @param array $valid_roles Ein Array mit gültigen Rollen.
+ * @param mysqli $connection            The database connection.
+ * @param int $contributor_person_id    The ID of the contributor person.
+ * @param array|string $roles           The roles of the person.
+ * @param array $valid_roles            Array with valid roles.
  *
  * @return void
  */
@@ -193,7 +193,7 @@ function saveContributorPersonRoles($connection, $contributor_person_id, $roles,
         $roles = [$roles];
     }
 
-    // Lösche bestehende Rollen
+    // Delete extisting roles
     $stmt = $connection->prepare("DELETE FROM Contributor_Person_has_Role WHERE Contributor_Person_contributor_person_id = ?");
     $stmt->bind_param("i", $contributor_person_id);
     $stmt->execute();
@@ -215,12 +215,12 @@ function saveContributorPersonRoles($connection, $contributor_person_id, $roles,
 }
 
 /**
- * Speichert die Contributor Institutionen in der Datenbank.
+ * Saves the contributor institutions into the database.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param array $postData Die POST-Daten aus dem Formular.
- * @param int $resource_id Die ID der zugehörigen Ressource.
- * @param array $valid_roles Ein Array mit gültigen Rollen.
+ * @param mysqli $connection    The database connection.
+ * @param array $postData       The POST data from the form.
+ * @param int $resource_id      The ID of the resource.
+ * @param array $valid_roles    Array of valid roles.
  *
  * @return void
  */
@@ -252,12 +252,12 @@ function saveContributorInstitutions($connection, $postData, $resource_id, $vali
 }
 
 /**
- * Speichert oder aktualisiert eine Contributor Institution in der Datenbank.
+ * Saves or updates a Contributor Institution in the database.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param string $name Der Name der Institution.
+ * @param mysqli $connection    The Database Connection.
+ * @param string $name          The Name of the Contributor Institution.
  *
- * @return int Die ID der gespeicherten oder aktualisierten Contributor Institution.
+ * @return int                  The ID of the saved or updated Contributor Institution.
  */
 function saveOrUpdateContributorInstitution($connection, $name)
 {
@@ -281,11 +281,11 @@ function saveOrUpdateContributorInstitution($connection, $name)
 }
 
 /**
- * Verknüpft eine Resource mit einer Contributor Institution.
+ * Links a Resource with a Contributor Institution.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param int $resource_id Die ID der Resource.
- * @param int $contributor_institution_id Die ID der Contributor Institution.
+ * @param mysqli $connection                The Database Connection.
+ * @param int $resource_id                  The ID of the Resource.
+ * @param int $contributor_institution_id   The ID of the Contributor Institution.
  *
  * @return void
  */
@@ -298,12 +298,12 @@ function linkResourceToContributorInstitution($connection, $resource_id, $contri
 }
 
 /**
- * Speichert die Affiliation einer Contributor Institution.
+ * Saves the Affiliation of a Contributor Institution.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param int $contributor_institution_id Die ID der Contributor Institution.
- * @param string $affiliation_data Die Affiliationsdaten.
- * @param string|null $rorId_data Die ROR-ID-Daten.
+ * @param mysqli $connection                The Database Connection.
+ * @param int $contributor_institution_id   The ID of the Contributor Institution.
+ * @param string $affiliation_data          The Affiliation Data.
+ * @param string|null $rorId_data           The ROR ID Data.
  *
  * @return void
  */
@@ -337,12 +337,12 @@ function saveContributorInstitutionAffiliation($connection, $contributor_institu
 }
 
 /**
- * Speichert die Rollen einer Contributor Institution.
+ * Saves roles of a Contributor Institution.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param int $contributor_institution_id Die ID der Contributor Institution.
- * @param array|string $roles Die Rollen der Institution.
- * @param array $valid_roles Ein Array mit gültigen Rollen.
+ * @param mysqli $connection                The database connection.
+ * @param int $contributor_institution_id   The ID of the contributor institution.
+ * @param array|string $roles               The roles of the institution.
+ * @param array $valid_roles                Array with valid roles.
  *
  * @return void
  */
