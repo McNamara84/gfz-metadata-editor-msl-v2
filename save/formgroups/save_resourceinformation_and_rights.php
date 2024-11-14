@@ -29,8 +29,8 @@ function saveResourceInformationAndRights($connection, $postData)
     }
 
     // Assign form data to PHP variables
-    // Konvertiere leere Strings zu NULL für die DOI
-    $doi = isset($postData["doi"]) ? (trim($postData["doi"]) === '' ? null : trim($postData["doi"])) : null;
+    // Behandle DOI: null bleibt null, leerer String bleibt leerer String
+    $doi = isset($postData["doi"]) ? $postData["doi"] : null;
     $year = (int) $postData["year"];
     $dateCreated = $postData["dateCreated"];
     $dateEmbargoUntil = isset($postData["dateEmbargo"]) && trim($postData["dateEmbargo"]) !== '' ? $postData["dateEmbargo"] : null;
@@ -40,7 +40,7 @@ function saveResourceInformationAndRights($connection, $postData)
     $rights = (int) $postData["Rights"];
 
     // Check if a record with the same DOI already exists
-    if ($doi !== null) {
+    if ($doi !== null && $doi !== '') {
         $stmt = $connection->prepare("SELECT COUNT(*) FROM Resource WHERE doi = ?");
         $stmt->bind_param("s", $doi);
         $stmt->execute();
