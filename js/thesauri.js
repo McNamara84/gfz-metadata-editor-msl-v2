@@ -1,11 +1,21 @@
 $(document).ready(function () {
-    // Konfigurationen für die verschiedenen Keyword-Eingabefelder
+/**
+ * Configuration array for keyword input fields.
+ * Each object in the array defines the settings for a specific keyword input and associated components.
+ *
+ * @type {Array<Object>}
+ * @property {string} inputId - The ID of the input element where keywords will be entered.
+ * @property {string} jsonFile - The path to the JSON file containing the thesaurus.
+ * @property {string} jsTreeId - The ID of the jsTree element associated with this input field.
+ * @property {string} searchInputId - The ID of the search input field for the corresponding jsTree-modal.
+ */
     var keywordConfigurations = [
+        // GCMD Science Keywords
         {
-            inputId: '#inputScienceKeywords',  // ID des Eingabefelds
-            jsonFile: 'json/gcmdScienceKeywords.json',  // Pfad zur JSON-Datei mit den Daten
-            jsTreeId: '#jstreeScience',   // ID des jsTrees
-            searchInputId: '#searchInputScience'  // ID des Suchfeldes für diesen Baum
+            inputId: '#inputScienceKeywords',  
+            jsonFile: 'json/gcmdScienceKeywords.json',
+            jsTreeId: '#jstreeScience',   
+            searchInputId: '#searchInputScience'  
         },
         // MSL-Keywords
         {
@@ -52,7 +62,14 @@ $(document).ready(function () {
                 }
             }
 
-            // Verarbeite Knoten für die Baumstruktur
+            /**
+            * Processes nodes for a tree structure, adding tooltips and original metadata.
+            * This function recursively processes a list of nodes, updating each node with additional attributes 
+            * such as tooltips and metadata for schemes, URIs, and language settings.
+            *
+            * @param {Array<Object>} nodes - The array of nodes to process. Each node represents a tree item.
+            * @returns {Array<Object>} The processed nodes with added attributes for tooltips and metadata.
+ */
             function processNodes(nodes) {
                 return nodes.map(function (node) {
                     if (node.children) {
@@ -132,7 +149,47 @@ $(document).ready(function () {
             $(config.searchInputId).on("input", function () {
                 $(config.jsTreeId).jstree(true).search($(this).val());
             });
+            //Wenn ein Knoten in jsTree ausgewählt wird, füge Tag hinzu
+            $(config.jsTreeId).on("select_node.jstree", function (e, data) {
+                var fullPath = data.instance.get_path(data.node, " > ");
+                var existingTags = tagify.value.map((tag) => tag.value);
 
+                if (!existingTags.includes(fullPath)) {
+                    tagify.addTags([fullPath]);
+                }
+            });
+
+            // //Wenn ein Knoten in jsTree abgewählt wird, entferne Tag
+            $(config.jsTreeId).on("deselect_node.jstree", function (e, data) {
+                var fullPath = data.instance.get_path(data.node, " > ");
+                tagify.removeTag(fullPath);
+            });
+
+            // Wenn ein Tag hinzugefügt wird, wähle entsprechenden Knoten in jsTree aus
+            tagify.on('add', function (e) {
+                var tagText = e.detail.data.value;
+                var jsTree = $(config.jsTreeId).jstree(true);
+                var node = findNodeByPath(jsTree, tagText);
+                if (node) {
+                    jsTree.select_node(node.id);
+                }
+            });
+
+            //wenn Tag entfernt wird, wird auch der Knoten abgewählt
+            tagify.on('remove', function (e) {
+                var tagText = e.detail.data.value;
+                var jsTree = $(config.jsTreeId).jstree(true);
+                var node = findNodeByPath(jsTree, tagText);
+                if (node) {
+                    jsTree.deselect_node(node.id);
+                }
+            });
+
+            function findNodeByPath(jsTree, path) {
+                return jsTree.get_json("#", { flat: true }).find(function (n) {
+                    return jsTree.get_path(n, " > ") === path;
+                });
+            }
             // Knoten auswählen und als Tag hinzufügen
             $(config.jsTreeId).on("select_node.jstree", function (e, data) {
                 var fullPath = data.instance.get_path(data.node, " > ");
