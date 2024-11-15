@@ -1,6 +1,14 @@
-# Projektbeschreibung
+# Description
 
-Dieser Metadaten-Editor entstand im Rahmen eines studentischen Kooperationsprojekt zwischen Fachhochschule Potsdam und dem GeoForschungsZentrum Potsdam. Der Editor speichert Metadaten zu Forschungsdatensätzen in validen XML-Dateien nach dem DataCite, dem ISO- und dem DIF-Schema.
+This metadata editor is based on a student cooperation project between the University of Applied Sciences Potsdam and the GeoForschungsZentrum Potsdam. The editor saves metadata for research datasets in valid XML files according to the DataCite, ISO and DIF schema.
+
+## Main Features
+- Simple mapping of entered data using XSLT.
+- Modular, customizable front end.
+- Multilingualism through the use of language files.
+- Always up-to-date controlled vocabularies through regular automatic updates.
+- Easy input of authors using ORCID.
+- Easy submitting of metadata to data curators.
 
 ## Installation
 
