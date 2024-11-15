@@ -82,7 +82,7 @@ $translations = [
     'd_other_tooltip' => 'Veuillez entrer d\'autres informations...',
 
     // Form Group MSL-Keywords
-    'mslKeywords' => 'Mots clés MSL',
+    'mslKeywords' => 'EPOS Multi-Scale Laboratories Keywords',
 
     // Groupe de formulaire Dates
     'dates' => 'Dates',
@@ -92,7 +92,7 @@ $translations = [
     'embargo_invalid' => 'Veuillez entrer une date valide !',
 
     // Groupe de formulaire Mots-clés du thésaurus
-    'thesaurusKeywords' => 'Mots-clés du thésaurus',
+    'thesaurusKeywords' => 'GCMD Science Keywords',
     'thesaurus' => 'Thésaurus',
     'scienceKeywords' => 'Mots-clés scientifiques NASA GCMD',
     'instruments' => 'Instruments NASA GCMD',
