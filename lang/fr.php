@@ -156,4 +156,5 @@ $translations = [
     'feedbackQuestion6' => 'Certaines fonctions vous semblent-elles manquer dans le nouvel éditeur de métadonnées ?',
     'feedbackQuestion7' => 'Y a-t-il une amélioration spécifique que vous souhaiteriez ?',
     'feedbackSendButton' => 'Envoyer les commentaires',
+    'thankYouMessage' => 'Merci pour vos commentaires!',
 ];

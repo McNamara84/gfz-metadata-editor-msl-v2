@@ -30,7 +30,7 @@ function sendFeedbackMail($feedbackQuestion1, $feedbackQuestion2, $feedbackQuest
             . "\n\nWhich functions of the new editor do you find difficult to use?:\n" . $feedbackQuestion4
             . "\n\nAre there any aspects of the user interface that you find confusing or annoying?:\n" . $feedbackQuestion5
             . "\n\nDo you miss certain functions in the new metadata editor?:\n" . $feedbackQuestion6
-            . "\n\nIs Is there a specific improvement you would like to see?:\n" . $feedbackQuestion7;
+            . "\n\nIs there a specific improvement you would like to see?:\n" . $feedbackQuestion7;
 
         $mail->send();
         echo 'Feedback erfolgreich gesendet.';

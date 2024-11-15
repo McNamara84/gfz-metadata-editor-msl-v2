@@ -2,44 +2,30 @@ $(document).ready(function () {
   // Feedback versenden
   $("#sendFeedback").click(function (event) {
     event.preventDefault();
-    var feedbackQuestion1 = $("#feedbackQuestion1").val();
-    var feedbackQuestion2 = $("#feedbackQuestion2").val();
-    var feedbackQuestion3 = $("#feedbackQuestion3").val();
-    var feedbackQuestion4 = $("#feedbackQuestion4").val();
-    var feedbackQuestion5 = $("#feedbackQuestion5").val();
-    var feedbackQuestion6 = $("#feedbackQuestion6").val();
-    var feedbackQuestion7 = $("#feedbackQuestion7").val();
+    var feedbackForm = $("#feedbackForm");
+    var feedbackData = feedbackForm.serialize();
 
     // Button ändern, wenn Senden in Arbeit
-    $("#sendFeedback").prop("disabled", true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...');
+    $("#sendFeedback")
+      .prop("disabled", true)
+      .html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...');
 
     $.ajax({
       url: "send_feedback_mail.php",
       type: "POST",
-      data: {
-        feedbackQuestion1: feedbackQuestion1,
-        feedbackQuestion2: feedbackQuestion2,
-        feedbackQuestion3: feedbackQuestion3,
-        feedbackQuestion4: feedbackQuestion4,
-        feedbackQuestion5: feedbackQuestion5,
-        feedbackQuestion6: feedbackQuestion6,
-        feedbackQuestion7: feedbackQuestion7,
-      },
+      data: feedbackData,
       success: function (response) {
-        // Erfolgsmeldung zeigen
+        // Formular ausblenden
+        feedbackForm.hide();
+
+        // Erfolgsmeldung und Danke-Nachricht anzeigen
+        $("#thankYouMessage").show();
         $("#feedbackStatus").html('<div class="alert alert-success">Feedback sent successfully!</div>');
 
-        // Modal schließen nach 2 Sekunden
+        // Modal schließen nach 3 Sekunden
         setTimeout(function () {
           $("#feedbackModal").modal("hide");
-
-          // Statusmeldung zurücksetzen
-          $("#feedbackModal").on("hidden.bs.modal", function () {
-            $("#feedbackForm")[0].reset();
-            $("#feedbackStatus").html("");
-            $("#sendFeedback").prop("disabled", false).html("Send");
-          });
-        }, 2000);
+        }, 3000);
       },
       error: function (xhr, status, error) {
         // Fehlermeldung zeigen
@@ -47,7 +33,26 @@ $(document).ready(function () {
         // Senden-Button aktivieren
         $("#sendFeedback").prop("disabled", false).html("Senden");
       },
+      complete: function () {
+        // Modal zurücksetzen, wenn es geschlossen wird
+        $("#feedbackModal").on("hidden.bs.modal", function () {
+          feedbackForm[0].reset();
+          feedbackForm.show();
+          $("#thankYouMessage").hide();
+          $("#feedbackStatus").html("");
+          $("#sendFeedback").prop("disabled", false).html("Senden");
+        });
+      }
     });
+  });
+
+  // Optional: Formular zurücksetzen, wenn das Modal geöffnet wird
+  $('#feedbackModal').on('show.bs.modal', function () {
+    $("#feedbackForm")[0].reset();
+    $("#feedbackForm").show();
+    $("#thankYouMessage").hide();
+    $("#feedbackStatus").html("");
+    $("#sendFeedback").prop("disabled", false).html("Senden");
   });
   // Tooltip initialisieren
   $('[data-bs-toggle="tooltip"]').tooltip();

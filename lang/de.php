@@ -150,4 +150,5 @@ $translations = [
     'feedbackQuestion6' => 'Fehlen Ihnen bestimmte Funktionen im neuen Metadateneditor?',
     'feedbackQuestion7' => 'Gibt es eine spezifische Verbesserung, die Sie sich wünschen würden?',
     'feedbackSendButton' => 'Feedback übermitteln',
+    'thankYouMessage' => 'Vielen Dank für Ihr Feedback!',
 ];
