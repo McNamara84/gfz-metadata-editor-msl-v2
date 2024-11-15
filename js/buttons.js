@@ -1,12 +1,19 @@
 $(document).ready(function () {
-  // Feedback versenden
+  /**
+   * Event handler for the "Send Feedback" button click.
+   * Collects feedback data and sends it via AJAX to the server.
+   */
   $("#sendFeedback").click(function (event) {
     event.preventDefault();
     var feedbackTextPositiv = $("#feedbackTextPositiv").val();
     var feedbackTextNegativ = $("#feedbackTextNegativ").val();
 
-    // Button ändern, wenn Senden in Arbeit
-    $("#sendFeedback").prop("disabled", true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...');
+    // Disable the button and show a loading spinner
+    $("#sendFeedback")
+      .prop("disabled", true)
+      .html(
+        '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...'
+      );
 
     $.ajax({
       url: "send_feedback_mail.php",
@@ -16,14 +23,16 @@ $(document).ready(function () {
         feedbackTextNegativ: feedbackTextNegativ,
       },
       success: function (response) {
-        // Erfolgsmeldung zeigen
-        $("#feedbackStatus").html('<div class="alert alert-success">Feedback sent successfully!</div>');
+        // Display success message
+        $("#feedbackStatus").html(
+          '<div class="alert alert-success">Feedback sent successfully!</div>'
+        );
 
-        // Modal schließen nach 2 Sekunden
+        // Close the modal after 2 seconds
         setTimeout(function () {
           $("#feedbackModal").modal("hide");
 
-          // Statusmeldung zurücksetzen
+          // Reset form and status message when modal is hidden
           $("#feedbackModal").on("hidden.bs.modal", function () {
             $("#feedbackForm")[0].reset();
             $("#feedbackStatus").html("");
@@ -32,35 +41,45 @@ $(document).ready(function () {
         }, 2000);
       },
       error: function (xhr, status, error) {
-        // Fehlermeldung zeigen
-        $("#feedbackStatus").html('<div class="alert alert-danger">Error when sending feedback: ' + error + "</div>");
-        // Senden-Button aktivieren
-        $("#sendFeedback").prop("disabled", false).html("Senden");
+        // Display error message
+        $("#feedbackStatus").html(
+          '<div class="alert alert-danger">Error when sending feedback: ' + error + "</div>"
+        );
+        // Enable the send button
+        $("#sendFeedback").prop("disabled", false).html("Send");
       },
     });
   });
-  // Tooltip initialisieren
+
+  // Initialize tooltips
   $('[data-bs-toggle="tooltip"]').tooltip();
 
   //////////////////////////// ADD AND REMOVE BUTTONS ///////////////////////////////////////////////////////////////
-  //Remove  Button anlegen, der in Formgroups Authors, Contact Persons, Contributors genutzt wird
-  var removeButton = '<button type="button" class="btn btn-danger removeButton" style="width: 36px">-</button>';
-  // Optionen aus dem ersten Select-Element für die Titelzeile kopieren
+
+  // Variable for the remove button used in author, contact person, and contributor form groups
+  var removeButton =
+    '<button type="button" class="btn btn-danger removeButton" style="width: 36px">-</button>';
+
+  // Copy options from the first select element for the title row
   var optionTitleTypeHTML = $("#titleType").html();
   var titlesNumber = 1;
+
+  /**
+   * Event handler for the "Add Title" button click.
+   * Adds a new title row up to the maximum allowed titles.
+   */
   $("#addTitle").click(function () {
-    // Referenz auf den Button speichern
     var $addTitleBtn = $(this);
 
     if (titlesNumber <= maxTitles) {
-      // Vorbereitung der neuen Titelzeile durch Klonen und Zurücksetzen der Eingabefelder
+      // Prepare the new title row by cloning and resetting input fields
       var newTitleRow = $addTitleBtn.closest(".row").clone();
-      // Hilfe-Buttons entfernen
+      // Remove help buttons
       deleteHelpButtonFromClonedRows(newTitleRow);
       $(newTitleRow).find("input").val("");
       $(newTitleRow).find("select").html(optionTitleTypeHTML).val("");
       if (titlesNumber < maxTitles) {
-        // Hinzufügen eines Löschbuttons für jede neue Titelzeile
+        // Add a remove button for each new title row
         var removeBtn = $("<button/>", {
           text: "-",
           type: "button",
@@ -69,7 +88,7 @@ $(document).ready(function () {
             $(this).closest(".row").remove();
             titlesNumber--;
 
-            // Reaktivieren des Hinzufüge-Buttons
+            // Reactivate the add button if below max titles
             if (titlesNumber < maxTitles) {
               $addTitleBtn.prop("disabled", false);
               $addTitleBtn.attr("data-bs-original-title");
@@ -78,71 +97,84 @@ $(document).ready(function () {
           },
         }).css("width", "36px");
 
-        // Ersetzen des Hinzufügen-Buttons durch den Löschbutton im geklonten Element
+        // Replace the add button with the remove button in the cloned element
         $(newTitleRow).find(".addTitle").replaceWith(removeBtn);
 
-        // Hinzufügen der neuen Titelzeile zum DOM
+        // Add the new title row to the DOM
         $addTitleBtn.closest(".row").parent().append(newTitleRow);
         titlesNumber++;
       }
-      // Wenn die maximale Anzahl an Titeln erreicht ist, Button addTitle deaktivieren
+      // Disable the add button if the maximum number of titles is reached
       if (titlesNumber == maxTitles) {
         $addTitleBtn.prop("disabled", true);
       }
     } else {
-      console.log("Maximale Anzahl an Titeln erreicht: " + maxTitles);
+      console.log("Maximum number of titles reached: " + maxTitles);
     }
   });
 
+  /**
+   * Event handler for the "Add Author" button click.
+   * Clones the first author row, resets input fields, and appends it to the author group.
+   */
   $("#addAuthor").click(function () {
     var authorGroup = $("#authorGroup");
-    // Erste Zeile, die später als Vorlage dient
+    // First row to be used as a template
     var firstAuthorLine = authorGroup.children().first();
 
-    // Klonen der Vorlage
+    // Clone the template
     var newAuthorRow = firstAuthorLine.clone();
 
-    // Einträge in den input-Fields löschen und valid/invalid feedback entfernen:
+    // Clear input fields and remove validation feedback
     newAuthorRow.find("input").val("").removeClass("is-invalid is-valid");
     newAuthorRow.find(".invalid-feedback, .valid-feedback").hide();
 
-    // Eindeutige IDs für geklonte Input Elemente einführen:
+    // Generate unique IDs for cloned input elements
     var uniqueSuffix = new Date().getTime();
-    newAuthorRow.find("#inputAuthorAffiliation").attr("id", "inputAuthorAffiliation" + uniqueSuffix);
+    newAuthorRow
+      .find("#inputAuthorAffiliation")
+      .attr("id", "inputAuthorAffiliation" + uniqueSuffix);
     newAuthorRow.find("#hiddenAuthorRorId").attr("id", "hiddenAuthorRorId" + uniqueSuffix);
 
-    // altes TagifyElement in der neuen Zeile entfernen (wird weiter unten in autocompleteAffiliation wieder intitialisiert)
+    // Remove old Tagify elements (will be re-initialized in autocompleteAffiliation)
     newAuthorRow.find(".tagify").remove();
 
-    // Plus Button mit Minus Button ersetzen
+    // Replace the add button with the remove button
     newAuthorRow.find(".addAuthor").replaceWith(removeButton);
 
-    // Hilfe-Buttons entfernen
+    // Remove help buttons
     deleteHelpButtonFromClonedRows(newAuthorRow);
 
-    // Neue AuthorLine zum DOM hinzufügen
+    // Append the new author row to the DOM
     authorGroup.append(newAuthorRow);
 
-    // Tagify auf neues AuthorAffiliations Feld anwenden
-    autocompleteAffiliations("inputAuthorAffiliation" + uniqueSuffix, "hiddenAuthorRorId" + uniqueSuffix);
+    // Apply Tagify to the new Author Affiliations field
+    autocompleteAffiliations(
+      "inputAuthorAffiliation" + uniqueSuffix,
+      "hiddenAuthorRorId" + uniqueSuffix,
+      affiliationsData
+    );
 
-    // Event-Handler für RemoveButton
+    // Event handler for the remove button
     newAuthorRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
     });
   });
 
-  // Bei Klick auf Button mit ID addCP die Zeile mit dem Attribut contact-person-row klonen, TODO: Code-Doppelungen vermeiden und in Funktion auslagern
+  /**
+   * Event handler for the "Add Contact Person" button click.
+   * Clones the first contact person row, resets input fields, and appends it to the contact persons group.
+   */
   $("#addCP").click(function () {
     var CPGroup = $("#contactpersonsGroup");
 
-    // Erste Zeile, die später als Vorlage dient
+    // First row to be used as a template
     var firstCPLine = CPGroup.children().first();
 
-    // Klonen der Vorlage
+    // Clone the template
     var newCPRow = firstCPLine.clone();
 
-    // Einträge in den input-Fields löschen und valid/invalid feedback entfernen:
+    // Clear input fields and remove validation feedback
     newCPRow.find("input").val("").removeClass("is-invalid is-valid");
     newCPRow.find(".invalid-feedback, .valid-feedback").hide();
 
@@ -150,227 +182,275 @@ $(document).ready(function () {
     newCPRow.find("#inputCPAffiliation").attr("id", "inputCPAffiliation" + uniqueSuffix);
     newCPRow.find("#hiddenCPRorId").attr("id", "hiddenCPRorId" + uniqueSuffix);
 
-    // altes TagifyElement in der neuen Zeile entfernen (wird weiter unten in autocompleteAffiliation wieder intitialisiert)
+    // Remove old Tagify elements (will be re-initialized in autocompleteAffiliation)
     newCPRow.find(".tagify").remove();
 
-    // Plus Button mit Minus Button ersetzen
+    // Replace the add button with the remove button
     newCPRow.find(".addCP").replaceWith(removeButton);
 
-    // Hilfe-Buttons entfernen
+    // Remove help buttons
     deleteHelpButtonFromClonedRows(newCPRow);
 
     CPGroup.append(newCPRow);
 
-    //Autocomplete im Feld Affiliation in allen Zeilen ermöglichen:
-    autocompleteAffiliations("inputCPAffiliation" + uniqueSuffix, "hiddenCPRorId" + uniqueSuffix);
+    // Apply autocomplete to the Affiliation field
+    autocompleteAffiliations(
+      "inputCPAffiliation" + uniqueSuffix,
+      "hiddenCPRorId" + uniqueSuffix
+    );
 
+    // Event handler for the remove button
     newCPRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
     });
   });
 
+  /**
+   * Event handler for the "Add Contributor Person" button click.
+   * Clones the first contributor person row, resets input fields, and appends it to the contributors group.
+   */
   $("#addContributorPerson").click(function () {
     var contributorGroup = $("#contributorsGroup");
-    // Die erste Kontributorenzeile, die als Vorlage dient
+    // The first contributor row used as a template
     var firstContributorRow = contributorGroup.children().first();
 
-    // Klonen der Vorlage
+    // Clone the template
     var newContributorRow = firstContributorRow.clone();
 
-    // Zurücksetzen der Werte und Validierungsfeedbacks im geklonten Element
+    // Reset values and validation feedback in the cloned element
     newContributorRow.find("input").val("").removeClass("is-invalid is-valid");
     newContributorRow.find(".tagify").remove();
     newContributorRow.find(".invalid-feedback, .valid-feedback").hide();
-    // Hilfe-Buttons entfernen
+
+    // Remove help buttons
     deleteHelpButtonFromClonedRows(newContributorRow);
 
-    // Überschrift ausblenden für geklonte Zeile(n)
+    // Hide labels in cloned row(s)
     newContributorRow.find("label.row-label").hide();
 
     var uniqueSuffix = new Date().getTime();
-    newContributorRow.find("#inputContributorAffiliation").attr("id", "inputContributorAffiliation" + uniqueSuffix);
-    newContributorRow.find("#hiddenContributorRorId").attr("id", "hiddenContributorRorId" + uniqueSuffix);
+    newContributorRow
+      .find("#inputContributorAffiliation")
+      .attr("id", "inputContributorAffiliation" + uniqueSuffix);
+    newContributorRow
+      .find("#hiddenContributorRorId")
+      .attr("id", "hiddenContributorRorId" + uniqueSuffix);
 
-    // Roles-Feld eine neue ID geben
-    newContributorRow.find("#inputContributorsPerRole").attr("id", "inputContributorsPerRole" + uniqueSuffix);
+    // Assign new ID to the Roles field
+    newContributorRow
+      .find("#inputContributorsPerRole")
+      .attr("id", "inputContributorsPerRole" + uniqueSuffix);
 
-    // Plus Button mit Minus Button ersetzen
+    // Replace the add button with the remove button
     newContributorRow.find(".addContributorPerson").replaceWith(removeButton);
 
-    // Neue AuthorLine zum DOM hinzufügen
+    // Append the new contributor row to the DOM
     contributorGroup.append(newContributorRow);
 
-    // Tagify auf neues AuthorAffiliations Feld anwenden
-    autocompleteAffiliations("inputContributorAffiliation" + uniqueSuffix, "hiddenContributorRorId" + uniqueSuffix);
+    // Apply Tagify to the new Contributor Affiliations field
+    autocompleteAffiliations(
+      "inputContributorAffiliation" + uniqueSuffix,
+      "hiddenContributorRorId" + uniqueSuffix
+    );
 
-    // Tagify für das neue Roles-Feld initialisieren
+    // Initialize Tagify for the new Roles field
     setupRolesDropdown(["person", "both"], "#inputContributorsPerRole" + uniqueSuffix);
 
-    // Event-Handler für RemoveButton
+    // Event handler for the remove button
     newContributorRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
     });
   });
 
+  /**
+   * Event handler for the "Add Contributor Organization" button click.
+   * Clones the first contributor organization row, resets input fields, and appends it to the contributor organization group.
+   */
   $("#addContributor").click(function () {
     var contributorGroup = $("#contributorOrganisationGroup");
-    // Die erste Kontributorenzeile, die als Vorlage dient
+    // The first contributor row used as a template
     var firstContributorRow = contributorGroup.children().first();
 
-    // Klonen der Vorlage
+    // Clone the template
     var newContributorRow = firstContributorRow.clone();
 
-    // Zurücksetzen der Werte und Validierungsfeedbacks im geklonten Element
+    // Reset values and validation feedback in the cloned element
     newContributorRow.find("input").val("").removeClass("is-invalid is-valid");
-    newContributorRow.find(".tagify").remove();;
+    newContributorRow.find(".tagify").remove();
     newContributorRow.find(".invalid-feedback, .valid-feedback").hide();
 
-    // Hilfe-Buttons entfernen
+    // Remove help buttons
     deleteHelpButtonFromClonedRows(newContributorRow);
 
-    // Überschrift ausblenden für geklonte Zeile(n)
+    // Hide labels in cloned row(s)
     newContributorRow.find("label.row-label").hide();
 
     var uniqueSuffix = new Date().getTime();
-    newContributorRow.find("#inputOrganisationAffiliation").attr("id", "inputOrganisationAffiliation" + uniqueSuffix);
-    newContributorRow.find("#hiddenOrganisationRorId").attr("id", "hiddenOrganisationRorId" + uniqueSuffix);
+    newContributorRow
+      .find("#inputOrganisationAffiliation")
+      .attr("id", "inputOrganisationAffiliation" + uniqueSuffix);
+    newContributorRow
+      .find("#hiddenOrganisationRorId")
+      .attr("id", "hiddenOrganisationRorId" + uniqueSuffix);
 
-    // Roles-Feld eine neue ID geben
-    newContributorRow.find("#inputContributorOrgaRole").attr("id", "inputContributorOrgaRole" + uniqueSuffix);
+    // Assign new ID to the Roles field
+    newContributorRow
+      .find("#inputContributorOrgaRole")
+      .attr("id", "inputContributorOrgaRole" + uniqueSuffix);
 
-
-    // Plus Button mit Minus Button ersetzen
+    // Replace the add button with the remove button
     newContributorRow.find(".addContributor").replaceWith(removeButton);
 
-
-    // Neue AuthorLine zum DOM hinzufügen
+    // Append the new contributor row to the DOM
     contributorGroup.append(newContributorRow);
 
-    // Tagify auf neues AuthorAffiliations Feld anwenden
-    autocompleteAffiliations("inputOrganisationAffiliation" + uniqueSuffix, "hiddenOrganisationRorId" + uniqueSuffix);
+    // Apply Tagify to the new Organization Affiliations field
+    autocompleteAffiliations(
+      "inputOrganisationAffiliation" + uniqueSuffix,
+      "hiddenOrganisationRorId" + uniqueSuffix
+    );
 
-    // Tagify für das neue Roles-Feld initialisieren
+    // Initialize Tagify for the new Roles field
     setupRolesDropdown(["institution", "both"], "#inputContributorOrgaRole" + uniqueSuffix);
 
-
-    // Event-Handler für RemoveButton
+    // Event handler for the remove button
     newContributorRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
     });
   });
 
+  /**
+   * Event handler for the "Add TSC" button click.
+   * Clones the first TSC row, resets input fields, and appends it to the TSC group.
+   */
   $("#tscAddButton").click(function () {
     var tscGroup = $("#tscGroup");
-    // Die erste TSCzeile, die als Vorlage dient
+    // The first TSC line used as a template
     var firsttscLine = tscGroup.children().first();
-    // Klonen der Vorlage
+
+    // Clone the template
     var newtscLine = firsttscLine.clone();
-    // Zurücksetzen der Werte und Validierungsfeedbacks im geklonten Element
+
+    // Reset values and validation feedback in the cloned element
     newtscLine.find("input").val("").removeClass("is-invalid is-valid");
     newtscLine.find("select").val("").removeClass("is-invalid is-valid");
     newtscLine.find(".invalid-feedback, .valid-feedback").hide();
-    // Hilfe-Buttons entfernen
+
+    // Remove help buttons
     deleteHelpButtonFromClonedRows(newtscLine);
 
-    // Inkrementieren des Attributs tsc-row-id um 1 in newtscLine
+    // Increment the tsc-row-id attribute by 1 in the new line
     var newtscLineId = parseInt(newtscLine.attr("tsc-row-id")) + 1;
     newtscLine.attr("tsc-row-id", newtscLineId);
 
-
-    // Plus Button mit Minus Button ersetzen
+    // Replace the add button with the remove button
     newtscLine.find("#tscAddButton").replaceWith(removeButton);
 
-    // Neue tscLine zum DOM hinzufügen
+    // Append the new TSC line to the DOM
     tscGroup.append(newtscLine);
 
-    // Event-Handler für RemoveButton
+    // Event handler for the remove button
     newtscLine.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
     });
   });
 
+  /**
+   * Event handler for the "Add Related Work" button click.
+   * Clones the first related work row, resets input fields, and appends it to the related work group.
+   */
   $("#addRelatedWork").click(function () {
     var relatedworkGroup = $("#relatedworkGroup");
-    // Erste Zeile, die später als Vorlage dient
+    // First row used as a template
     var firstRelatedWorkLine = relatedworkGroup.children().first();
 
-    // Klonen der Vorlage
+    // Clone the template
     var newRelatedWorkRow = firstRelatedWorkLine.clone();
 
-    // Einträge in den input-Fields löschen und valid/invalid feedback entfernen:
+    // Clear input fields and remove validation feedback
     newRelatedWorkRow.find("input").val("").removeClass("is-invalid");
     newRelatedWorkRow.find(".invalid-feedback").hide();
 
-    //Hilfebuttons in geklonter Zeile löschen
+    // Remove help buttons in cloned row
     deleteHelpButtonFromClonedRows(newRelatedWorkRow);
 
-    // Plus Button mit Minus Button ersetzen
+    // Replace the add button with the remove button
     newRelatedWorkRow.find("#addRelatedWork").replaceWith(removeButton);
 
-    // Neue RelatedWorkLine zum DOM hinzufügen
+    // Append the new related work row to the DOM
     relatedworkGroup.append(newRelatedWorkRow);
 
-    // Event-Handler für RemoveButton
+    // Event handler for the remove button
     newRelatedWorkRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
     });
   });
 
+  /**
+   * Event handler for the "Add Funding Reference" button click.
+   * Clones the first funding reference row, resets input fields, and appends it to the funding reference group.
+   */
   $("#addFundingReference").click(function () {
     var fundingreferenceGroup = $("#fundingreferenceGroup");
-    // Erste Zeile, die später als Vorlage dient
+    // First row used as a template
     var firstFundingReferenceLine = fundingreferenceGroup.children().first();
 
-    // Klonen der Vorlage
+    // Clone the template
     var newFundingReferenceRow = firstFundingReferenceLine.clone();
 
-    // Einträge in den input-Fields löschen und valid/invalid feedback entfernen:
+    // Clear input fields and remove validation feedback
     newFundingReferenceRow.find("input").val("").removeClass("is-invalid");
     newFundingReferenceRow.find(".invalid-feedback").hide();
 
-    // Plus Button mit Minus Button ersetzen
+    // Replace the add button with the remove button
     newFundingReferenceRow.find(".addFundingReference").replaceWith(removeButton);
 
-    // Neue AuthorLine zum DOM hinzufügen
+    // Append the new funding reference row to the DOM
     fundingreferenceGroup.append(newFundingReferenceRow);
-    // Hilfe-Buttons in geclonter Zeile entfernen
+
+    // Remove help buttons in cloned row
     deleteHelpButtonFromClonedRows(newFundingReferenceRow);
 
-    // Event-Handler für RemoveButton
+    // Event handler for the remove button
     newFundingReferenceRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
     });
-    // Autocomplete für das neue Eingabefeld initialisieren
+
+    // Initialize autocomplete for the new input field
     setUpAutocompleteFunder(newFundingReferenceRow.find(".inputFunder"));
 
     setUpAutocompleteFunder();
   });
 
-  //TODO: Intitalisierung von Tagify auslagern, ähnlich wie bei affiliations?
-  
   var labData;
 
+  // Load lab data from JSON and initialize Tagify on the first laboratory row
   $.getJSON("json/msl-labs.json", function (data) {
     labData = data;
     var firstRow = $("#laboratoryGroup .row").first();
     initializeTagify(firstRow, data);
   });
+
   var rowCounter = 1;
 
+  /**
+   * Event handler for the "Add Laboratory" button click.
+   * Clones the first laboratory row, resets input fields, updates IDs, and appends it to the laboratory group.
+   */
   $("#addLaboratory").click(function () {
     var laboratoryGroup = $("#laboratoryGroup");
     var firstOriginatingLaboratoryLine = laboratoryGroup.children().first();
 
     var newOriginatingLaboratoryRow = firstOriginatingLaboratoryLine.clone();
 
-    // Einträge in den input-Fields löschen und valid/invalid feedback entfernen:
+    // Clear input fields and remove validation feedback
     newOriginatingLaboratoryRow.find("input").val("").removeClass("is-invalid is-valid");
     newOriginatingLaboratoryRow.find(".invalid-feedback, .valid-feedback").hide();
 
-    // Alte Tagify-Elemente entfernen
+    // Remove old Tagify elements
     newOriginatingLaboratoryRow.find(".tagify").remove();
 
-    // IDs aktualisieren
+    // Update IDs
     rowCounter++;
     newOriginatingLaboratoryRow.find("[id]").each(function () {
       var oldId = $(this).attr("id");
@@ -378,29 +458,43 @@ $(document).ready(function () {
       $(this).attr("id", newId);
     });
 
-    // Plus Button mit Minus Button ersetzen
+    // Replace the add button with the remove button
     newOriginatingLaboratoryRow.find(".addLaboratory").replaceWith(removeButton);
 
-    // Neue LaboratoryLine zum DOM hinzufügen
+    // Append the new laboratory row to the DOM
     laboratoryGroup.append(newOriginatingLaboratoryRow);
-    // Hilfe-Buttons in geklonter Zeile entfernen
+
+    // Remove help buttons in cloned row
     deleteHelpButtonFromClonedRows(newOriginatingLaboratoryRow);
 
-    // Tagify für die neue Zeile initialisieren
+    // Initialize Tagify for the new row
     initializeTagify(newOriginatingLaboratoryRow, labData);
 
-    // Event-Handler für RemoveButton
+    // Event handler for the remove button
     newOriginatingLaboratoryRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
     });
   });
 
+  /**
+   * Initializes Tagify on the laboratory name and affiliation fields.
+   *
+   * @param {jQuery} row - The row element containing the input fields.
+   * @param {Object[]} data - The lab data array used for autocompletion.
+   * @returns {Object} - An object containing the Tagify instances for name and affiliation fields.
+   */
   function initializeTagify(row, data) {
     var inputName = row.find('input[name="laboratoryName[]"]')[0];
     var inputAffiliation = row.find('input[name="laboratoryAffiliation[]"]')[0];
     var hiddenRorId = row.find('input[name="laboratoryRorIds[]"]')[0];
     var hiddenLabId = row.find('input[name="LabId[]"]')[0];
 
+    /**
+     * Finds a lab object by its name.
+     *
+     * @param {string} name - The name of the lab to find.
+     * @returns {Object|undefined} - The lab object if found, otherwise undefined.
+     */
     function findLabByName(name) {
       return data.find((lab) => lab.name === name);
     }
@@ -414,7 +508,7 @@ $(document).ready(function () {
         closeOnSelect: true,
         highlightFirst: true,
       },
-     delimiters: null,
+      delimiters: null,
       mode: "select",
     });
 
@@ -479,46 +573,72 @@ $(document).ready(function () {
 
   /////////////////////////////// HELP BUTTONS /////////////////////////////////////////////////////////////////
 
-  function deleteHelpButtonFromClonedRows(row, roundCornersClass = "input-right-with-round-corners") {
+  /**
+   * Removes help buttons from cloned rows and adjusts CSS classes for input elements.
+   *
+   * @param {jQuery} row - The cloned row from which to remove help buttons.
+   * @param {string} [roundCornersClass="input-right-with-round-corners"] - The CSS class to add to input elements.
+   */
+  function deleteHelpButtonFromClonedRows(
+    row,
+    roundCornersClass = "input-right-with-round-corners"
+  ) {
     row.find("span.input-group-text:has(i.bi-question-circle-fill)").each(function () {
       $(this).remove();
     });
 
-    row.find(".input-with-help").removeClass("input-right-no-round-corners").addClass(roundCornersClass);
+    row
+      .find(".input-with-help")
+      .removeClass("input-right-no-round-corners")
+      .addClass(roundCornersClass);
   }
 
   let hoverCount = 0;
   let timer = null;
 
+  /**
+   * Resets the hover count to zero.
+   */
   function resetHoverCount() {
     hoverCount = 0;
   }
 
+  /**
+   * Event handler for hover over help buttons.
+   * Tracks hover events and opens an Easter egg if hovered over 30 times within 1 second intervals.
+   */
   $("#buttonHelp, #bd-theme").hover(function () {
     hoverCount++;
 
     if (hoverCount === 30) {
-      window.open("doc/egg.html", "Egg", "width=650,height=450,scrollbars=no,resizable=no,location=no");
+      window.open(
+        "doc/egg.html",
+        "Egg",
+        "width=650,height=450,scrollbars=no,resizable=no,location=no"
+      );
       resetHoverCount();
     }
 
     clearTimeout(timer);
-    timer = setTimeout(resetHoverCount, 1000); // Setze den Timer auf 1 Sekunde (1000 ms)
+    timer = setTimeout(resetHoverCount, 1000); // Set timer to reset hover count after 1 second
   });
 
-  //
-  // Prüfen, ob Einstellung bereits gespeichert wurde
+  // Check if the input group text visibility setting is saved
   if (localStorage.getItem("inputGroupTextVisible") === "false") {
     $(".input-group-text").hide();
   }
 
-  // Event-Handler zum Einblenden der Elemente
+  /**
+   * Event handler to show help elements when the "Help On" button is clicked.
+   */
   $("#buttonHelpOn").click(function () {
     $(".input-group-text").show();
     localStorage.setItem("inputGroupTextVisible", "true");
   });
 
-  // Event-Handler zum Ausblenden der Elemente
+  /**
+   * Event handler to hide help elements when the "Help Off" button is clicked.
+   */
   $("#buttonHelpOff").click(function () {
     $(".input-group-text").hide();
     localStorage.setItem("inputGroupTextVisible", "false");
@@ -526,29 +646,38 @@ $(document).ready(function () {
 
   //////////////////////////////// LANGUAGE BUTTONS ///////////////////////////////////////////////////////////
 
-  // Funktion zum Setzen der Sprache in localStorage und neu laden der Seite
+  /**
+   * Sets the language preference in localStorage and reloads the page with the selected language.
+   *
+   * @param {string} language - The language code to set (e.g., 'en', 'de').
+   */
   function setLanguage(language) {
     localStorage.setItem("userLanguage", language);
     window.location.href = "?lang=" + language;
   }
 
-  // Funktion zum automatischen Setzen der Sprache basierend auf Browsereinstellungen
+  /**
+   * Automatically sets the language based on the browser's language settings.
+   */
   function setAutoLanguage() {
     var userLang = navigator.language || navigator.userLanguage;
     userLang = userLang.substring(0, 2);
     if (userLang !== "en" && userLang !== "de") {
-      userLang = "en"; // Standard auf Englisch, wenn die Sprache nicht unterstützt wird
+      userLang = "en"; // Default to English if the language is not supported
     }
     localStorage.setItem("userLanguage", userLang);
     window.location.href = "?lang=" + userLang;
   }
 
-  // Überprüfen, ob eine Sprache in localStorage gesetzt ist, wenn nicht, auf Englisch setzen
+  // Check if a language is set in localStorage; if not, default to English
   if (!localStorage.getItem("userLanguage")) {
     localStorage.setItem("userLanguage", "en");
   }
 
-  // Event-Handler für Klicks auf die Sprach-Auswahl-Buttons
+  /**
+   * Event handler for clicks on language selection buttons.
+   * Sets the language or auto-detects it based on browser settings.
+   */
   $("[data-bs-language-value]").click(function (event) {
     event.preventDefault();
     var language = $(this).data("bs-language-value");
@@ -559,6 +688,9 @@ $(document).ready(function () {
     }
   });
 
+  // Initialize tooltips
   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-  const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
+  const tooltipList = [...tooltipTriggerList].map(
+    (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+  );
 });

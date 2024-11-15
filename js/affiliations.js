@@ -5,7 +5,8 @@ var affiliationsData = [];
  * Loads affiliations data from a JSON file and initializes Tagify for specified input fields.
  */
 $.getJSON("json/affiliations.json", function (data) {
-  affiliationsData = data;
+  // Globale Variable mit den Daten befüllen
+  window.affiliationsData = data;  // Explizit global verfügbar machen
 
   // Initialize Tagify for existing input fields when the document is ready
   $(document).ready(function () {
