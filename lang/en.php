@@ -76,10 +76,10 @@ $translations = [
     'd_other_tooltip' => 'Please enter other information..',
 
     // Form Group MSL-Keywords
-    'mslKeywords' => 'MSL Keywords',
+    'mslKeywords' => 'EPOS Multi-Scale Laboratories Keywords',
 
     //Formgroup thesaurusKeywords
-    'thesaurusKeywords' => 'Thesaurus Keywords',
+    'thesaurusKeywords' => 'GCMD Science Keywords',
     'thesaurus' => 'Thesaurus',
     'scienceKeywords' => 'NASA GCMD Science Keywords',
     'instruments' => 'NASA GCMD Instruments',
