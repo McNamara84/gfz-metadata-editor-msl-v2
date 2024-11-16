@@ -250,7 +250,8 @@ $(document).ready(function () {
     // Apply Tagify to the new Contributor Affiliations field
     autocompleteAffiliations(
       "inputContributorAffiliation" + uniqueSuffix,
-      "hiddenContributorRorId" + uniqueSuffix
+      "hiddenContributorRorId" + uniqueSuffix,
+      affiliationsData
     );
 
     // Initialize Tagify for the new Roles field
