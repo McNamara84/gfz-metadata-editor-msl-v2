@@ -48,6 +48,15 @@ $(document).ready(function () {
 });
 
 /**
+ * Checks if an affiliation is current based on end date
+ * @param {Object} affiliation - The affiliation object from ORCID API
+ * @returns {boolean} - True if the affiliation is current, false otherwise
+ */
+function isCurrentAffiliation(affiliation) {
+  return !affiliation?.['end-date']?.year;
+}
+
+/**
  * Event handler for Author ORCID input fields.
  * Automatically fills in author's last name, first name, and affiliations based on their ORCID.
  * 
@@ -85,26 +94,18 @@ $('#authorGroup').on('blur', 'input[name="orcids[]"]', function () {
     })
       .then(response => response.json())
       .then(data => {
-        // Fill in names
         const familyName = data.person?.name?.['family-name']?.value || '';
         const givenName = data.person?.name?.['given-names']?.value || '';
         row.find('input[name="familynames[]"]').val(familyName);
         row.find('input[name="givennames[]"]').val(givenName);
 
-        // Collect affiliations and ROR IDs using Sets to ensure uniqueness
+        // Collect affiliations and ROR IDs
         const affiliationSet = new Set();
         const rorIds = new Set();
 
-        /**
-         * Process an affiliation entry from ORCID data
-         * Extracts organization name and ROR ID if available
-         * @param {Object} affiliation - The affiliation object from ORCID API
-         * @param {Object} affiliation.organization - Organization details
-         * @param {string} affiliation.organization.name - Organization name
-         * @param {Object} affiliation.organization.disambiguated-organization - Organization identifier details
-         */
+        // Process an affiliation entry from ORCID data
         const processAffiliation = (affiliation) => {
-          if (affiliation?.organization) {
+          if (affiliation?.organization && isCurrentAffiliation(affiliation)) {
             const orgName = affiliation.organization.name;
             const disambiguated = affiliation.organization['disambiguated-organization'];
             if (disambiguated &&
@@ -205,13 +206,9 @@ $('#contributorsGroup').on('blur', 'input[name="cbORCID[]"]', function () {
         const affiliationSet = new Set();
         const rorIds = new Set();
 
-        /**
-         * Process an affiliation entry from ORCID data
-         * Extracts organization name and ROR ID if available
-         * @param {Object} affiliation - The affiliation object from ORCID API
-         */
+        // Process an affiliation entry from ORCID data
         const processAffiliation = (affiliation) => {
-          if (affiliation?.organization) {
+          if (affiliation?.organization && isCurrentAffiliation(affiliation)) {
             const orgName = affiliation.organization.name;
             const disambiguated = affiliation.organization['disambiguated-organization'];
             if (disambiguated &&
