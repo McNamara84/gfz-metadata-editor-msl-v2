@@ -91,6 +91,26 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /update/vocabs/gcmd:
+    get:
+      tags:
+        - update
+      summary: Update GCMD vocabularies
+      description: Updates all GCMD vocabularies (Science Keywords, Instruments, and Platforms) from NASA's GCMD repository
+      operationId: updateGcmdVocabs
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GcmdVocabularyUpdate"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
   /general/alive:
     get:
       tags:
@@ -555,7 +575,6 @@ components:
             $ref: "#/components/schemas/Relation"
       required:
         - relations
-
     Relation:
       type: object
       properties:
@@ -615,6 +634,32 @@ components:
         error:
           type: string
           example: "An error occurred"
+    GcmdVocabularyUpdate:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "GCMD vocabularies update completed"
+        results:
+          type: object
+          properties:
+            instruments:
+              type: string
+              example: "Updated successfully"
+            sciencekeywords:
+              type: string
+              example: "Updated successfully"
+            platforms:
+              type: string
+              example: "Updated successfully"
+        timestamp:
+          type: string
+          format: date-time
+          example: "2024-11-17 10:51:38"
+      required:
+        - message
+        - results
+        - timestamp
     HealthResponse:
       type: object
       properties:
