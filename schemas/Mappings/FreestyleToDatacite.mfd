@@ -358,30 +358,6 @@
 						</comment>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="45" kind="2">
-					<targets>
-						<datapoint pos="0" key="101"/>
-					</targets>
-					<view ltx="1493" lty="118" rbx="1558" rby="135"/>
-					<data>
-						<constant value="ROR" datatype="string"/>
-						<comment>
-							<text>Default affiliationIdentifierScheme</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="46" kind="2">
-					<targets>
-						<datapoint pos="0" key="102"/>
-					</targets>
-					<view ltx="1493" lty="151" rbx="1609" rby="168"/>
-					<data>
-						<constant value="https://ror.org" datatype="string"/>
-						<comment>
-							<text>Default schemeURI for Affiliations</text>
-						</comment>
-					</data>
-				</component>
 				<component name="concat" library="core" uid="58" kind="5" growable="1" growablebasename="value">
 					<sources>
 						<datapoint pos="0" key="148"/>
@@ -631,18 +607,6 @@
 						<constant value="https://www.crossref.org/services/funder-registry/" datatype="string"/>
 						<comment>
 							<text>Default schemeURI for FunderIdScheme</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="81" kind="2">
-					<targets>
-						<datapoint pos="0" key="270"/>
-					</targets>
-					<view ltx="1493" lty="-191" rbx="1625" rby="-174"/>
-					<data>
-						<constant value="GFZ Data Services" datatype="string"/>
-						<comment>
-							<text>Deafult publisher at GFZ</text>
 						</comment>
 					</data>
 				</component>
@@ -897,7 +861,7 @@
 					<properties XSLTTargetEncoding="UTF-8"/>
 					<view rbx="200" rby="356"/>
 					<data>
-						<root scrollposition="70">
+						<root scrollposition="1">
 							<header>
 								<namespaces>
 									<namespace/>
@@ -1027,8 +991,8 @@
 												<entry name="language" outkey="450"/>
 											</entry>
 										</entry>
-										<entry name="FreeKeywords" expanded="1">
-											<entry name="Keyword" expanded="1">
+										<entry name="FreeKeywords">
+											<entry name="Keyword">
 												<entry name="free_keyword" outkey="451"/>
 											</entry>
 										</entry>
@@ -1060,11 +1024,59 @@
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
 					</data>
 				</component>
+				<component name="constant" library="core" uid="45" kind="2">
+					<targets>
+						<datapoint pos="0" key="101"/>
+					</targets>
+					<view ltx="1493" lty="118" rbx="1558" rby="135"/>
+					<data>
+						<constant value="ROR" datatype="string"/>
+						<comment>
+							<text>Default affiliationIdentifierScheme</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="46" kind="2">
+					<targets>
+						<datapoint pos="0" key="102"/>
+					</targets>
+					<view ltx="1493" lty="151" rbx="1609" rby="168"/>
+					<data>
+						<constant value="https://ror.org" datatype="string"/>
+						<comment>
+							<text>Default schemeURI for Affiliations</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="81" kind="2">
+					<targets>
+						<datapoint pos="0" key="270"/>
+					</targets>
+					<view ltx="1493" lty="-225" rbx="1625" rby="-208"/>
+					<data>
+						<constant value="GFZ Data Services" datatype="string"/>
+						<comment>
+							<text>Deafult publisher at GFZ</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="172" kind="2">
+					<targets>
+						<datapoint pos="0" key="460"/>
+					</targets>
+					<view ltx="1493" lty="-191" rbx="1645" rby="-174"/>
+					<data>
+						<constant value="https://ror.org/04z8jg394" datatype="string"/>
+						<comment>
+							<text>Default publisher ROR ID for GFZ</text>
+						</comment>
+					</data>
+				</component>
 				<component name="DataCiteSchema45" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1775" lty="4" rbx="2163" rby="832"/>
 					<data>
-						<root>
+						<root scrollposition="1">
 							<header>
 								<namespaces>
 									<namespace/>
@@ -1104,13 +1116,16 @@
 											</entry>
 										</entry>
 										<entry name="publisher" ns="1" inpkey="271">
+											<entry name="publisherIdentifier" type="attribute" inpkey="461"/>
+											<entry name="publisherIdentifierScheme" type="attribute" inpkey="462"/>
+											<entry name="schemeURI" type="attribute" inpkey="463"/>
 											<entry name="lang" ns="2" type="attribute" inpkey="272"/>
 										</entry>
 										<entry name="publicationYear" ns="1" inpkey="22"/>
 										<entry name="resourceType" ns="1" inpkey="26">
 											<entry name="resourceTypeGeneral" type="attribute" inpkey="27"/>
 										</entry>
-										<entry name="subjects" ns="1" expanded="1">
+										<entry name="subjects" ns="1">
 											<entry name="subject" ns="1" inpkey="452"/>
 											<entry name="subject" ns="1" inpkey="453" clone="1"/>
 											<entry name="subject" ns="1" inpkey="454" clone="1">
@@ -1487,6 +1502,7 @@
 							<edge vertexkey="137"/>
 							<edge vertexkey="171"/>
 							<edge vertexkey="205"/>
+							<edge vertexkey="462"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="102">
@@ -1496,6 +1512,7 @@
 							<edge vertexkey="138"/>
 							<edge vertexkey="172"/>
 							<edge vertexkey="206"/>
+							<edge vertexkey="463"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="69">
@@ -2038,6 +2055,11 @@
 					<vertex vertexkey="451">
 						<edges>
 							<edge vertexkey="459"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="460">
+						<edges>
+							<edge vertexkey="461"/>
 						</edges>
 					</vertex>
 				</vertices>
