@@ -1145,7 +1145,7 @@
                             },
                             {
                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/f9361dd3-16ab-46f0-bbcc-27c07dd6f4ac",
-                                "text": "AA",
+                                "text": "AA-Particle",
                                 "language": "en",
                                 "scheme": "NASA/GCMD Instruments",
                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
@@ -1511,7 +1511,7 @@
                                 "language": "en",
                                 "scheme": "NASA/GCMD Instruments",
                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
-                                "description": "",
+                                "description": "FLUXGATE MAGNETOMETERS are measuring meter instruments that\nmeasure the Earth's magnetic field intensity using multiple\ngates or connections on the complete circuit for current to flow\nthrough.",
                                 "children": []
                             },
                             {
@@ -1530,15 +1530,6 @@
                                 "scheme": "NASA/GCMD Instruments",
                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
                                 "description": "The Wide Band Data instrumentation (WBD) on the Cluster-II spacecraft is part\nof the WEC consortium of wave experiments and consists of a digital wideband\nreceiver which can provide electric or magnetic field waveforms over a wide\nrange of frequencies up to 577 kHz.\n\nThe wideband technique involves transmitting band-limited waveforms directly to\nthe ground using a high-rate data link. The primary advantage of this approach\nis that continuous waveforms are available for detailed high-resolution\nfrequency-time analysis. \n\nThe instrument processes signals from one of four sensors which can be chosen\nvia command. The four selectable inputs consist of two electric antennas (Ey,\nEz) provided by the EFW investigation, and two magnetic search coils (Bx , By )\nprovided by the STAFF investigation. Primarily, WBD will utilise the electric\nantennas.\n\nThe input frequency range of the wideband receiver can be shifted by a\nfrequency converter to any one of four ranges (0, 125 ,250, or 500 kHz), where\nthe conversion frequency determines the lower edge of the frequency range to be\nreceived.\n\nThe bandwidth of the WBD instrument's output waveform is determined by one of\nthree bandpass filters (9.5, 19, or 77 kHz) selected in combination with a\ngiven output mode. The output waveform is sampled by an 8-bit\nanalogue-to-digital converter which provides the sampling resolution and data\noutput rates listed in Table 33. For sample rates where the bit rate exceeds\nthe spacecraft telemetry data rate (220 kbit/s), the digitised wideband data\nare buffered by the format generator and read out at a reduced average bit rate\nof 220 kbits/sec. The format generator organises the digitised waveform data\ninto a 1096-byte output frame, which includes appropriate timing and status\ninformation.\n\nThe WBD instrument utilises two separate telemetry acquisition modes for\ntransferring frames of digitised data to the spacecraft data handling system.\nThe primary mode (TDA 8) supports real-time acquisition of WBD data by the NASA\nDSN. The second data mode (TDA 5.2) supports burst data acquisition through the\nWEC DWP onto an onboard Solid State Recorder. In this second mode, DWP reduces\nthe WBD data rate (and bandwidth) by a factor of 3 via digital filtering.\n\nThe WBD instruments were designed and built at The University of Iowa through\nfunding provided by NASA's Goddard Space Flight Center. \nSee:\nhttp://www-pw.physics.uiowa.edu/plasma-wave/istp/cluster/\n\n\nGroup: Instrument_Details\n   Entry_ID: WBD\n   Group: Instrument_Identification\n      Instrument_Category: Solar/Space Observing Instruments\n      Instrument_Class: Magnetic Field/Electric Field Instruments\n      Short_Name: WBD\n      Long_Name: Wide Band Data Instrument\n   End_Group\n   Group: Associated_Platforms\n      Short_Name: CLUSTER-II\n   End_Group\n   Online_Resource: http://www-pw.physics.uiowa.edu/plasma-wave/istp/cluster/\n   Sample_Image: http://sci.esa.int/science-e-media/img/36/hires_36662.JPG\n   Group: Instrument_Logistics\n      Data_Rate: 73 kbps\n      Instrument_Start_Date: 2000-07-16\n      Instrument_Owner: University of Iowa\n   End_Group\nEnd_Group",
-                                "children": []
-                            },
-                            {
-                                "id": "https://gcmd.earthdata.nasa.gov/kms/concept/22020da0-c608-4c34-80b5-fd85eb6a1ba7",
-                                "text": "FLUXGATE MAGNETOMETERS",
-                                "language": "en",
-                                "scheme": "NASA/GCMD Instruments",
-                                "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
-                                "description": "FLUXGATE MAGNETOMETERS are measuring meter instruments that\nmeasure the Earth's magnetic field intensity using multiple\ngates or connections on the complete circuit for current to flow\nthrough.\n\n\nGroup: Instrument_Details\n   Entry_ID: FLUXGATE MAGNETOMETERS\n   Group: Instrument_Identification\n      Instrument_Category: Solar/Space Observing Instruments\n      Instrument_Class: Magnetic Field/Electric Field Instruments\n      Short_Name: FLUXGATE MAGNETOMETERS\n   End_Group\nEnd_Group",
                                 "children": []
                             },
                             {
@@ -4038,7 +4029,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Instruments",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
-                                                "description": "NASA has selected a new space-based instrument as an innovative and cost-effective approach to maintaining the 40-year data record of the balance between the solar radiation entering Earth\u2019s atmosphere and the amount absorbed, reflected, and emitted. This radiation balance is a key factor in determining our climate: if Earth absorbs more heat than it emits, it warms up; if it emits more than it absorbs, it cools down.\n\nThe new instrument, named Libera, is NASA\u2019s first mission selected in response to the 2017 National Academies\u2019 Earth Science Decadal Survey. The project\u2019s principal investigator is Peter Pilewskie of the University of Colorado Laboratory for Atmospheric and Space Physics in Boulder, Colorado.\n\n\u201cThis highly innovative instrument introduces a number of new technologies such as advanced detectors that will improve the data we collect while maintaining continuity of these important radiation budget measurements,\u201d said Sandra Cauffman, acting director of the Earth Science Division at NASA Headquarters in Washington.\n\nLibera will measure solar radiation with wavelengths between 0.3 and 5 microns reflected by the Earth system and infrared radiation with wavelengths between 5 and 50 microns emitted from the Earth system as it exits the top of the atmosphere. The sensor will also measure the total radiation leaving the Earth system at all wavelengths from 0.3 to 100 microns. An innovative additional \u201csplit shortwave\u201d channel measuring radiation between 0.7 and 5 microns has been added to enable new Earth radiation budget science.",
+                                                "description": "The Libera radiometer has four broadband channels that measure integrated shortwave (0.3\u20135 \u03bcm), longwave (5\u201350 \u03bcm), total (0.3\u2013100+ \u03bcm), and split-shortwave (0.7\u20135 \u03bcm) radiance over 24 km nadir footprint.",
                                                 "children": []
                                             },
                                             {
@@ -5561,7 +5552,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Instruments",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
-                                                "description": "",
+                                                "description": "The MISR instrument consists of nine pushbroom cameras. It is capable of global coverage every nine days, and flies in a 705-km descending polar orbit. The cameras are arranged with one camera pointing toward the nadir (designated An), one bank of four cameras pointing in the forward direction (designated Af, Bf, Cf, and Df in order of increasing off-nadir angle), and one bank of four cameras pointing in the aftward direction (using the same convention but designated Aa, Ba, Ca, and Da). Images are acquired with nominal view angles, relative to the surface reference ellipsoid, of 0, 26.1, 45.6, 60.0, and 70.5 degrees for An, Af/Aa, Bf/Ba, Cf/Ca, and Df/Da,respectively. Each camera uses four Charge-Coupled Device (CCD) line arrays in a single focal plane. The line arrays consist of 1504 photoactive pixels and each line is filtered to provide one of four spectral bands. The spectral band shapes are nominally gaussian, centered at 443, 555, 670, and 865 nm.",
                                                 "children": []
                                             },
                                             {
@@ -5994,6 +5985,15 @@
                                                 "scheme": "NASA/GCMD Instruments",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
                                                 "description": "The TIRS-2 instrument is a two-band thermal imaging sensor with a push broom sensor (like OLI-2). Its focal plane has long arrays of photosensitive detectors.\n\nThere is a four-element refractive telescope that focuses an f/1.64 beam of thermal radiation onto a focal plane that is cryogenically cooled. TIRS-2 has a 15-degree field-of-view to match the 185 km across-track swath of OLI-2. The TIRS-2 focal plane holds three modules with quantum-well-infrared-photodetector (QWIP) arrays arranged in an alternating pattern along the focal plane centerline.\n\nSpectral filters cover each focal plane module to create TIRS-2\u2019s two specified bandwidths. Each QWIP array is 640 detectors long cross-track allowing for overlap between the arrays to produce an effective linear array of 1850 pixels spanning across the 185 km (115 mi) ground swath.\n\nThe field-of-view is flipped between nadir (Earth) and both an internal blackbody and a deep space view used for on-orbit radiometric calibration using a mirror controlled by a scene select mechanism. This allows the view to be changed without changing the nominal Earth-viewing attitude of the Landsat 9 spacecraft.\n\n\n\nA two-stage mechanical cryocooler cools TIRS-2\u2019s focal plane. This permits the QWIP detectors to function at their required temperature of 43 K (-382\u00b0 F/ -230\u00b0 C).\n\nThere are two radiators mounted to the side of the TIRS-2 instrument structure. One dissipates heat from the cryocooler and the other passively maintains a constant TIRS-2 telescope temperature of 185 K (-127\u00b0 F/ -88\u00b0 C).",
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "https://gcmd.earthdata.nasa.gov/kms/concept/103176cc-2353-47cf-b03e-e608e713716b",
+                                                "text": "GVHRR",
+                                                "language": "en",
+                                                "scheme": "NASA/GCMD Instruments",
+                                                "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
+                                                "description": "The Geosynchronous Very High Resolution Radiometer (GVHRR) experiment provided both day and night cloudcover data for determining cloud motions, tropical and extratropical storm life cycles, and mesoscale phenomena. They were also used for cloud climatology studies. The GVHRR had one infrared channel (10.5 to 12.5 micrometers) and one visible channel (0.55 to 0.75 micrometers). The instantaneous field of view was 3.0E-4 rad for the infrared channel (10.8-km resolution at subsatellite point) and 1.5E-4 rad for the visible channel (5.4-km resolution at subsatellite point). The dynamic range for the infrared channel was from 0 to 340 deg K and 1 to 100% albedo for the visible channel. The infrared channel had a noise equivalent temperature difference of 1.5 deg K at 200 deg K and 0.5 deg K at 300 deg K. Data from this experiment were used to determine surface temperatures and horizontal wind vectors based on cloud motions derived from sequential images formed by both channels of the GVHRR. The experiment became inoperable on August 15, 1974.",
                                                 "children": []
                                             }
                                         ]
@@ -10119,6 +10119,15 @@
                                         "scheme": "NASA/GCMD Instruments",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
                                         "description": "",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "https://gcmd.earthdata.nasa.gov/kms/concept/67d4cdd7-cfa6-440e-82f9-423098d0b11c",
+                                        "text": "Libera Wide Field of View Camera",
+                                        "language": "en",
+                                        "scheme": "NASA/GCMD Instruments",
+                                        "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
+                                        "description": "The Libera Wide Field of View Camera (WFC) is a monochromatic camera operating at 555nm over a 123-degree field of view that will continuously observe the entire Earth disk from low-earth orbit. The WFC provides a unique capability for scene identification and Angular Distribution Model (ADM) generation that supports the interpretation of the Libera radiometer measurements and complements similar measurements from the VIIRS instrument that will fly on JPSS-4 with Libera.",
                                         "children": []
                                     }
                                 ]
@@ -14824,6 +14833,51 @@
                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
                                 "description": "The Trace Gas GRoup (TGGR) is deploying a network of low-cost gas sensors based on a design from the Hannigan Lab at the University of Colorado Boulder. The INSTEP monitors measure a variety of trace gases (CH4, HCHO, CO, CO2, NO2, O3) and will be placed around the San Francisco Bay and Los Angeles areas. Red markers refer to a monitor placed on its own; blue dots indicate monitors co-located with remote sensing instruments for validation purposes. INSTEP will allow the Trace Gas GRoup (TGGR) to better characterize wildfire plumes at ground level.",
                                 "children": []
+                            },
+                            {
+                                "id": "https://gcmd.earthdata.nasa.gov/kms/concept/53a3754e-12ee-45dc-8766-f422726e0a2a",
+                                "text": "LI-7000",
+                                "language": "en",
+                                "scheme": "NASA/GCMD Instruments",
+                                "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
+                                "description": "The LI-7000 is a high speed precision differential infrared gasanalyzer designed for applications requiring high data outputspeeds. A unique, user-cleanable optical cell allows simultaneousmeasurements of CO 2 and H 2 O concentrations in differential andabsolute modes, even when the reference gas concentration isunknown. Data are output via fully linearized Digital-to-Analog-Converters (DACs) with an update rate of 600 Hz, with the RS-232port at speeds up to 50 Hz, or with the USB port at up to 50 Hz.",
+                                "children": []
+                            },
+                            {
+                                "id": "https://gcmd.earthdata.nasa.gov/kms/concept/0db57d66-2c66-4416-964a-2eaccd439882",
+                                "text": "MIRO MGA",
+                                "language": "en",
+                                "scheme": "NASA/GCMD Instruments",
+                                "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
+                                "description": "The MGA1-MGA5 series are analyzers focused on specific applications such as high-precision monitoring of NO2 or measurement of fluxes of CH4 and N2O using the eddy-covariance technique. These analyzers offer the highest possible precision.",
+                                "children": []
+                            },
+                            {
+                                "id": "https://gcmd.earthdata.nasa.gov/kms/concept/d54d6377-3399-4bdb-a3f4-c14ddf526244",
+                                "text": "OPALS",
+                                "language": "en",
+                                "scheme": "NASA/GCMD Instruments",
+                                "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
+                                "description": "Instrumentation: Open-Path Ammonia Laser Spectrometer (OPALS)\nOPALS\n- open-path avoids adsorption hystereses, phase partitioning\n- fast (1 Hz), sensitive (60 pptv Hz-0.5), \u00b1(20% + 0.1 ppbv) accuracy\n- wavelength modulation spectroscopy\n- Herriott cell w/ 4.5\u201d Al mirrors\n- builds upon QCL-based tower/mobile-lab NH3 sensors and open-\npath VCSEL hygrometer for NSF G-V\n- reference cell for linelocking during icing/hydrometeors",
+                                "children": []
+                            },
+                            {
+                                "id": "https://gcmd.earthdata.nasa.gov/kms/concept/1f5dbf4f-1ec8-47da-bb3a-0714f851ed2a",
+                                "text": "AOP",
+                                "language": "en",
+                                "scheme": "NASA/GCMD Instruments",
+                                "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
+                                "description": "The Aerosol Optical Properties (AOP) suite of instruments consists of a cavity ringdown spectrometer (CRD) and a photoacoustic spectrometer (PAS) that measure aerosol extinction and absorption at multiple wavelengths across the visible spectrum. In addition to bulk extinction and absorption the AOP suite includes channels both up and downstream of thermodenuders and humidification to determine aerosol volatility and hygroscopicity. An optical particle counter (UHSAS) is also typically included in the AOP suite.",
+                                "children": []
+                            },
+                            {
+                                "id": "https://gcmd.earthdata.nasa.gov/kms/concept/8cb92cc6-917b-4ed5-b26e-ccf2274787c5",
+                                "text": "LI-850",
+                                "language": "en",
+                                "scheme": "NASA/GCMD Instruments",
+                                "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
+                                "description": "The LI-830 and LI-850 gas analyzers both measure CO2 in air at concentrations from 0 to 20,000 ppm. The instruments differ in that the LI-850 measures water vapor in air, but the LI-830 does not. As a consequence of the water vapor measurement, the LI-850 is able to measure CO2 concentrations with greater accuracy than the LI-830. Regardless of this difference, operating both instruments is essentially the same. This document provides basic operating instructions for the analyzers.",
+                                "children": []
                             }
                         ]
                     },
@@ -15496,6 +15550,15 @@
                                 "scheme": "NASA/GCMD Instruments",
                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
                                 "description": "An instrument for on-line continuous measurement of the water-soluble organic carbon (WSOC) component of aerosol particles is described and results from an urban site in St. Louis are presented. A Particle-into-Liquid Sampler impacts ambient particles, grown to large water droplets, onto a plate and then washes them into a flow of purified water. The resulting liquid is filtered and the carbon content quantified by a Total Organic Carbon analyzer providing continuous six-minute integral measurements with a detection limit of 0.1 \u03bcg C/m3. Summer and fall measurements of WSOC and organic carbon (OC) indicated WSOC/OC ratio typically ranged from 0.40 to 0.80. A diurnal variation in WSOC/OC that correlated with ozone was observed over extended periods in June; however, other periods in August had no correlation. The results suggested that WSOC was composed of a complex mixture of compounds that may contain a significant fraction from secondary organic aerosol formation.",
+                                "children": []
+                            },
+                            {
+                                "id": "https://gcmd.earthdata.nasa.gov/kms/concept/1962da5c-d5f1-44c0-9aa9-e14370671fc8",
+                                "text": "SM Network",
+                                "language": "en",
+                                "scheme": "NASA/GCMD Instruments",
+                                "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
+                                "description": "To ensure accurate transformation of satellite data into near-surface PM mass concentrations, the MAIA project uses surface PM measurements as \u201cground truth\u201d references. Where available, data are collected from existing PM monitoring networks operated by government agencies, research groups, and other entities. In PTAs with limited surface PM measurements, the MAIA project has strategically deployed additional PM monitors to enhance spatial coverage.",
                                 "children": []
                             }
                         ]
@@ -18143,7 +18206,7 @@
                                 "language": "en",
                                 "scheme": "NASA/GCMD Instruments",
                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/instruments",
-                                "description": "The SBE 45 MicroTSG Thermosalinograph is an externally powered,\nhigh-accuracy instrument, designed for shipboard determination\nof sea surface (pumped-water) conductivity and\ntemperature. Salinity and sound velocity can also be\ncomputed. The MicroTSG is constructed of plastic and titanium to\nensure long life with minimum maintenance.\n\nAdditional information available at\n\"http://www.seabird.com/products/spec_sheets/45data.htm\"\n\n[Summary provided by Sea-Bird Electronics]",
+                                "description": "Thermosalinograph is an automated Sea Surface Temperature and Salinity measurement system making measurements on board a ship using a water intake. A conductivity cell and a thermistor cell provide conductivity and temperature measurements. Salinity is derived from conductivity and temperature.",
                                 "children": []
                             },
                             {

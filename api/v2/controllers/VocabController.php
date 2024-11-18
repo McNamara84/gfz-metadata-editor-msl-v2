@@ -1,4 +1,5 @@
 <?php
+use EasyRdf\Graph;
 /**
  * VocabController.php
  *
@@ -541,6 +542,175 @@ class VocabController
             error_log("Error in getSoftwareLicenses: " . $e->getMessage());
             http_response_code(500);
             echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
+    private function fetchRdfData($conceptScheme, $pageNum, $pageSize)
+    {
+        $url = "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/{$conceptScheme}?format=rdf&page_num={$pageNum}&page_size={$pageSize}";
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($httpCode !== 200) {
+            throw new Exception("Error fetching thesaurus keywords. HTTP status code: {$httpCode}");
+        }
+
+        return $response;
+    }
+
+    private function buildHierarchy($graph, $conceptScheme, $schemeName)
+    {
+        $hierarchy = [];
+        $concepts = $graph->allOfType('skos:Concept');
+        $conceptMap = [];
+
+        $schemeURI = "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/{$conceptScheme}";
+
+        foreach ($concepts as $concept) {
+            $uri = $concept->getUri();
+            $label = $concept->getLiteral('skos:prefLabel') ? $concept->getLiteral('skos:prefLabel')->getValue() : '';
+            $lang = $concept->getLiteral('skos:prefLabel') ? $concept->getLiteral('skos:prefLabel')->getLang() : '';
+            $description = $concept->getLiteral('skos:definition', 'en') ? $concept->getLiteral('skos:definition', 'en')->getValue() : '';
+
+            $conceptMap[$uri] = [
+                'id' => $uri,
+                'text' => $label,
+                'language' => $lang,
+                'scheme' => $schemeName,
+                'schemeURI' => $schemeURI,
+                'description' => $description,
+                'children' => []
+            ];
+        }
+
+        foreach ($concepts as $concept) {
+            $uri = $concept->getUri();
+            $broader = $concept->getResource('skos:broader');
+            if ($broader) {
+                $broaderUri = $broader->getUri();
+                if (isset($conceptMap[$broaderUri])) {
+                    $conceptMap[$broaderUri]['children'][] = &$conceptMap[$uri];
+                }
+            } else {
+                $hierarchy[] = &$conceptMap[$uri];
+            }
+        }
+
+        return $hierarchy;
+    }
+
+    private function processGcmdKeywords($conceptScheme, $schemeName, $outputFile)
+    {
+        $pageNum = 1;
+        $pageSize = 2000;
+        $graph = new Graph();
+
+        while (true) {
+            try {
+                $data = $this->fetchRdfData($conceptScheme, $pageNum, $pageSize);
+                $tempGraph = new Graph();
+                $tempGraph->parse($data, 'rdf');
+
+                foreach ($tempGraph->resources() as $resource) {
+                    foreach ($tempGraph->properties($resource) as $property) {
+                        foreach ($tempGraph->all($resource, $property) as $value) {
+                            $graph->add($resource, $property, $value);
+                        }
+                    }
+                }
+
+                if (strpos($data, '<skos:Concept') === false) {
+                    break;
+                }
+                $pageNum++;
+            } catch (Exception $e) {
+                if ($pageNum == 1) {
+                    throw $e;
+                }
+                break;
+            }
+        }
+
+        $hierarchicalData = $this->buildHierarchy($graph, $conceptScheme, $schemeName);
+        file_put_contents($outputFile, json_encode($hierarchicalData, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+
+        return true;
+    }
+
+    /**
+     * Updates all GCMD vocabularies (Science Keywords, Instruments, and Platforms)
+     *
+     * @return void
+     */
+    public function updateGcmdVocabs()
+    {
+        // Temporär Error Reporting anpassen
+        $originalErrorReporting = error_reporting();
+        error_reporting(E_ALL & ~E_DEPRECATED);
+
+        try {
+            $jsonDir = __DIR__ . '/../../../json/';
+            if (!file_exists($jsonDir)) {
+                mkdir($jsonDir, 0755, true);
+            }
+
+            $conceptSchemes = [
+                [
+                    'scheme' => 'instruments',
+                    'name' => 'NASA/GCMD Instruments',
+                    'output' => $jsonDir . 'gcmdInstrumentsKeywords.json'
+                ],
+                [
+                    'scheme' => 'sciencekeywords',
+                    'name' => 'NASA/GCMD Earth Science Keywords',
+                    'output' => $jsonDir . 'gcmdScienceKeywords.json'
+                ],
+                [
+                    'scheme' => 'platforms',
+                    'name' => 'NASA/GCMD Earth Platforms Keywords',
+                    'output' => $jsonDir . 'gcmdPlatformsKeywords.json'
+                ]
+            ];
+
+            $results = [];
+            foreach ($conceptSchemes as $scheme) {
+                try {
+                    $success = $this->processGcmdKeywords(
+                        $scheme['scheme'],
+                        $scheme['name'],
+                        $scheme['output']
+                    );
+                    $results[$scheme['scheme']] = $success ? 'Updated successfully' : 'Update failed';
+                } catch (Exception $e) {
+                    $results[$scheme['scheme']] = 'Error: ' . $e->getMessage();
+                }
+            }
+
+            // Error Reporting zurücksetzen
+            error_reporting($originalErrorReporting);
+
+            header('Content-Type: application/json');
+            echo json_encode([
+                'message' => 'GCMD vocabularies update completed',
+                'results' => $results,
+                'timestamp' => date('Y-m-d H:i:s')
+            ]);
+
+        } catch (Exception $e) {
+            // Error Reporting zurücksetzen
+            error_reporting($originalErrorReporting);
+
+            http_response_code(500);
+            echo json_encode([
+                'error' => $e->getMessage()
+            ]);
         }
     }
 }

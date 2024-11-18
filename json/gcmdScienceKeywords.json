@@ -613,7 +613,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "Refers to a measurement of the total amount of nitrogen dioxide (NO2) present in a vertical column of the atmosphere, where data points affected by clouds have been removed or \"screened out\" to provide a more accurate representation of the overall NO2 concentration in a given area; essentially, it is a satellite-based measurement of atmospheric NO2 that only considers clear sky observations, eliminating the influence of clouds on the data.",
                                                 "children": []
                                             },
                                             {
@@ -622,7 +622,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "Refers to a measurement of an amount of nitrogen dioxide (NO2) present in a vertical column of the atmosphere, where data points affected by clouds have been removed or \"screened out\" to provide a more accurate representation of the overall NO2 concentration in a given area; essentially, it is a satellite-based measurement of atmospheric NO2 that only considers clear sky observations, eliminating the influence of clouds on the data.",
                                                 "children": []
                                             },
                                             {
@@ -1808,7 +1808,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "A type of air pollution that consists of extremely small particles that are 2.5 micrometers or less in diameter. These particles are so small that thousands of them could fit in the period at the end of a sentence. PM2.5 is a mixture of dust, soot, organic chemicals, and metals that can come from a variety of sources, including cars, trucks, factories, and wood burning.",
                                         "children": []
                                     },
                                     {
@@ -1817,7 +1817,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "A type of air pollution that is made up of particles that are less than 1 micron in size. PM1 is particularly dangerous because of its small size, which allows it to penetrate lung tissue and enter the bloodstream.",
                                         "children": []
                                     },
                                     {
@@ -1826,7 +1826,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "PM10 describes inhalable particles, with diameters that are generally 10 micrometers and smaller.",
                                         "children": []
                                     }
                                 ]
@@ -1927,7 +1927,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "A small mass of air (whirlwind) that spins rapidly about an almost\r\nvertical axis and forms a funnel cloud that contacts the ground; appears\r\nas a pendant from a cumulonimbus cloud and is potentially the most\r\ndestructive of all weather systems.",
+                                        "description": "A small mass of air (whirlwind) that spins rapidly about an almost\nvertical axis and forms a funnel cloud that contacts the ground; appears\nas a pendant from a cumulonimbus cloud and is potentially the most\ndestructive of all weather systems.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/8fd6e7bc-df59-4637-b1e7-d6715fb3e8af",
@@ -3280,7 +3280,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "A type of air pollution that consists of extremely small particles that are 2.5 micrometers or less in diameter. These particles are so small that thousands of them could fit in the period at the end of a sentence. PM2.5 is a mixture of dust, soot, organic chemicals, and metals that can come from a variety of sources, including cars, trucks, factories, and wood burning.",
                                                 "children": []
                                             },
                                             {
@@ -3289,7 +3289,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "A type of air pollution that is made up of particles that are less than 1 micron in size. PM1 is particularly dangerous because of its small size, which allows it to penetrate lung tissue and enter the bloodstream.",
                                                 "children": []
                                             },
                                             {
@@ -3298,7 +3298,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "PM10 describes inhalable particles, with diameters that are generally 10 micrometers and smaller.",
                                                 "children": []
                                             }
                                         ]
@@ -4726,7 +4726,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Also known as noctilucent or \u201cnight shining\u201d clouds, form between 76 to 85 kilometers (47 to 53 miles) above the Earth\u2019s surface, near the boundary of the mesosphere and thermosphere, a region known as the mesopause. At these altitudes, water vapor can freeze into clouds of ice crystals. When the Sun is below the horizon and the ground is in darkness, these high clouds may still be illuminated, lending them their ethereal, \u201cnight shining\u201d qualities.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/0a7f50ce-4968-46c8-86a6-23ea13c1830c",
@@ -4754,7 +4754,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "High-altitude clouds that form in the winter stratosphere and play a key role in the depletion of the ozone layer.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/9d3d400c-ded2-4b3c-8d0c-5a76e25be033",
@@ -4773,7 +4773,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "High-level clouds that form in the troposphere, the lowest layer of Earth's atmosphere, and are made up of ice crystals or supercooled water droplets.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/bf271f69-3294-44d6-bfa8-a8f54468ca30",
@@ -4798,7 +4798,7 @@
                                                         "language": "en",
                                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                        "description": "",
+                                                        "description": "A cloud that produces a billowing wave pattern. They occur when there is a strong vertical shear between two air streams, causing winds to blow faster at the upper level than at the lower levels.",
                                                         "children": []
                                                     },
                                                     {
@@ -4847,7 +4847,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Mid-level clouds that form in the middle of the troposphere, the lowest part of the Earth's atmosphere. The clouds are made up of water droplets, ice crystals, or a combination of both, depending on the temperature and altitude.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/01021105-60ed-479a-a35b-faa73e286264",
@@ -4923,7 +4923,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Refers to clouds and related systems that are formed by convection, which is simply the process of warmer air rising since it is less dense than the surrounding atmosphere.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/4074eb32-a3de-494f-a722-2deeaab76b33",
@@ -5118,7 +5118,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Low-level clouds that form in the troposphere, the lowest layer of Earth's atmosphere, below 6,500 feet and normally consist of liquid water droplets or even supercooled droplets, except during cold winter storms when ice crystals (and snow) comprise much of the clouds.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/3375096a-7782-42e8-97d2-0febf63893e0",
@@ -5126,7 +5126,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "Low-level clumps or patches of cloud varying in color from bright white to dark grey. They are the most common clouds on earth recognized by their well-defined bases, with some parts often darker than others. They usually have gaps between them, but they can also be joined together.",
                                                 "children": [
                                                     {
                                                         "id": "https://gcmd.earthdata.nasa.gov/kms/concept/b1d51b72-97d0-484c-b251-220f219965c2",
@@ -5143,7 +5143,7 @@
                                                         "language": "en",
                                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                        "description": "",
+                                                        "description": "A cloud type that has a cumuliform \"lump\" at its base.",
                                                         "children": [
                                                             {
                                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/53378c8d-0324-4473-8bbd-231aed830d26",
@@ -5189,7 +5189,7 @@
                                                         "language": "en",
                                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                        "description": "",
+                                                        "description": "A layer composed of large and often grey elements, arranged in a system of nearly parallel lines. A double system of undulations is sometimes visible in the form of transverse lines that cross the main system. The elements then appear to be arranged in \u201crank and file\u201d. Stratocumulus undulatus occurs in the species stratiformis.",
                                                         "children": [
                                                             {
                                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/53ade6b0-1b8c-4766-b9c1-4d40d1f69482",
@@ -6009,7 +6009,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The ice edge is the demarcation at any given time between open water and\r\nthe sea (can also refer to river and lake ice) whether fast or drifting.",
+                                        "description": "The ice edge is the demarcation at any given time between open water and\nthe sea (can also refer to river and lake ice) whether fast or drifting.",
                                         "children": []
                                     },
                                     {
@@ -6054,7 +6054,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Floe refers to any relatively flat piece of ice 20 m or more across. Floes\r\nare subdivided according to horizontal extent: small, medium, big, vast,\r\ngiant.",
+                                        "description": "Floe refers to any relatively flat piece of ice 20 m or more across. Floes\nare subdivided according to horizontal extent: small, medium, big, vast,\ngiant.",
                                         "children": []
                                     },
                                     {
@@ -6072,7 +6072,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The small-scale variation in the relief of the terrain surface (in this\r\ncase the surface of the ice). Remote sensing instruments, such as radar\r\nand microwave sensors, have been able to detect the degree of roughness of\r\nsea, lake, and river ice.",
+                                        "description": "The small-scale variation in the relief of the terrain surface (in this\ncase the surface of the ice). Remote sensing instruments, such as radar\nand microwave sensors, have been able to detect the degree of roughness of\nsea, lake, and river ice.",
                                         "children": []
                                     },
                                     {
@@ -6090,7 +6090,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Ice Types is a general term applied to sea, river, and lake ice to\r\ndescribe attributes such as age, stage of development or growth, or\r\nsurface feature.",
+                                        "description": "Ice Types is a general term applied to sea, river, and lake ice to\ndescribe attributes such as age, stage of development or growth, or\nsurface feature.",
                                         "children": []
                                     },
                                     {
@@ -6117,7 +6117,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pack ice refers to high concentrations of sea ice. When concentrations are\r\n60% or less, then the term drift ice is used.",
+                                        "description": "Pack ice refers to high concentrations of sea ice. When concentrations are\n60% or less, then the term drift ice is used.",
                                         "children": []
                                     },
                                     {
@@ -6126,7 +6126,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Any non-linear shaped opening enclosed by ice. May contain brash ice and/or\r\nbe covered with new ice, nilas or young ice; sub-mariners refer to these\r\nas skylights. Polynyas are important in the study of the energy budget of\r\nthe polar ocean and local and regional climatology.",
+                                        "description": "Any non-linear shaped opening enclosed by ice. May contain brash ice and/or\nbe covered with new ice, nilas or young ice; sub-mariners refer to these\nas skylights. Polynyas are important in the study of the energy budget of\nthe polar ocean and local and regional climatology.",
                                         "children": []
                                     },
                                     {
@@ -6144,7 +6144,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The age of the sea ice is usually a distinction between first-year\r\nand multiyear ice. Multiyear sea ice is usually thicker, has more ridges,\r\nand can be more of a hinderance to ship travel than first-year ice.\r\nMicrowave remote sensing studies have shown that first-year sea ice has a\r\nhigher emissivity at the 1.55 cm wavelength than multiyear ice, thus\r\nmaking it possible to distinguish between different ice ages from\r\nsatellites. Ice age can also be qualitatively determined using visible,\r\ninfrared and radar wavelengths from satellites.",
+                                        "description": "The age of the sea ice is usually a distinction between first-year\nand multiyear ice. Multiyear sea ice is usually thicker, has more ridges,\nand can be more of a hinderance to ship travel than first-year ice.\nMicrowave remote sensing studies have shown that first-year sea ice has a\nhigher emissivity at the 1.55 cm wavelength than multiyear ice, thus\nmaking it possible to distinguish between different ice ages from\nsatellites. Ice age can also be qualitatively determined using visible,\ninfrared and radar wavelengths from satellites.",
                                         "children": []
                                     },
                                     {
@@ -6181,7 +6181,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The ratio of the area of the water surface covered by ice as a fraction of\r\nthe whole area. Sea ice concentration has been monitored by polar\r\norbiting satellites at all wavelengths.",
+                                        "description": "The ratio of the area of the water surface covered by ice as a fraction of\nthe whole area. Sea ice concentration has been monitored by polar\norbiting satellites at all wavelengths.",
                                         "children": []
                                     },
                                     {
@@ -6335,7 +6335,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "A nonmetallic element, with chemical symbol C, found combined with\nother elements in all organic matter and in a pure state as diamond or\ngraphite.",
+                                        "description": "A nonmetallic element, with chemical symbol C, found combined with other elements in all organic matter and in a pure state as diamond or graphite.",
                                         "children": []
                                     },
                                     {
@@ -8697,7 +8697,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "A phenomena wherein sea level rises above the normal tide level when\r\nhurricanes or tropical storms move from the ocean along or across a\r\ncoastal region. This sea level rise can consists of three components, the\r\nfirst of which results from low barometric pressure, i.e. the so-called\r\ninverse barometer effect, where lower atmospheric pressure on the surface\r\nof the water allows it to rise. The second component is wind set-up where\r\nthe winds drag surface",
+                                        "description": "A phenomena wherein sea level rises above the normal tide level when\nhurricanes or tropical storms move from the ocean along or across a\ncoastal region. This sea level rise can consists of three components, the\nfirst of which results from low barometric pressure, i.e. the so-called\ninverse barometer effect, where lower atmospheric pressure on the surface\nof the water allows it to rise. The second component is wind set-up where\nthe winds drag surface",
                                         "children": []
                                     },
                                     {
@@ -9105,7 +9105,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Related to the act, process, or season of catching a species of fish or a group\nof species in marine and non-marine environments, excludes fish farming,\r\nhatcheries, and other aquaculture.",
+                                        "description": "Related to the act, process, or season of catching a species of fish or a group of species in marine and non-marine environments, excludes fish farming, hatcheries, and other aquaculture.",
                                         "children": []
                                     }
                                 ]
@@ -9133,7 +9133,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "In the oceans, a mixing process through which a component of seawater (e.g. salt) is transferred from a zone of higher concentration to a zone of lesser concentration.",
                                         "children": []
                                     },
                                     {
@@ -9438,6 +9438,15 @@
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
                                         "description": "An area of habitat connecting wildlife populations separated by human\nactivities or structures.",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "https://gcmd.earthdata.nasa.gov/kms/concept/1ed2e238-e6dc-4a9f-a264-d52d567480f7",
+                                        "text": "NIGHTTIME LIGHTS",
+                                        "language": "en",
+                                        "scheme": "NASA/GCMD Earth Science Keywords",
+                                        "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
+                                        "description": "Remote sensing of nighttime light emissions offers a unique perspective for investigations into human behaviors. The Visible Infrared Imaging Radiometer Suite (VIIRS) instruments aboard the joint NASA/NOAA Suomi National Polar-orbiting Partnership (Suomi NPP) and NOAA-20 platforms provide global daily measurements of nocturnal visible and near-infrared (NIR) light that are suitable for Earth system science and applications studies. Nighttime lights data are used for estimating population, assessing electrification of remote areas, monitoring disasters and conflict, and understanding biological impacts of increased light pollution.",
                                         "children": []
                                     }
                                 ]
@@ -9755,7 +9764,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "A type of air pollution that consists of extremely small particles that are 2.5 micrometers or less in diameter. These particles are so small that thousands of them could fit in the period at the end of a sentence. PM2.5 is a mixture of dust, soot, organic chemicals, and metals that can come from a variety of sources, including cars, trucks, factories, and wood burning.",
                                                 "children": []
                                             },
                                             {
@@ -9764,7 +9773,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "A type of air pollution that is made up of particles that are less than 1 micron in size. PM1 is particularly dangerous because of its small size, which allows it to penetrate lung tissue and enter the bloodstream.",
                                                 "children": []
                                             },
                                             {
@@ -9773,7 +9782,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "PM10 describes inhalable particles, with diameters that are generally 10 micrometers and smaller.",
                                                 "children": []
                                             }
                                         ]
@@ -11206,15 +11215,6 @@
                                                 "children": []
                                             }
                                         ]
-                                    },
-                                    {
-                                        "id": "https://gcmd.earthdata.nasa.gov/kms/concept/4add3005-9151-4b8d-a0bc-14c3908ef3a9",
-                                        "text": "RECLAMATION/REVEGETATION/RESTORATION",
-                                        "language": "en",
-                                        "scheme": "NASA/GCMD Earth Science Keywords",
-                                        "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pertaining to the recovery of land altered in the mining/drilling/processing of natural resources.",
-                                        "children": []
                                     },
                                     {
                                         "id": "https://gcmd.earthdata.nasa.gov/kms/concept/96bbae63-81c1-43b4-90f0-52731e2b52ca",
@@ -12737,7 +12737,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Coastal processes refers to the action of natural forces (e.g. erosion,\r\ndeposition, tectonic uplift) on the shoreline, and the nearshore seabed.  Some\r\nexamples of landforms resulting from these processes are wave-cut cliffs,\r\nbeaches, and wave-cut benches.",
+                                        "description": "Coastal processes refers to the action of natural forces (e.g. erosion,\ndeposition, tectonic uplift) on the shoreline, and the nearshore seabed.  Some\nexamples of landforms resulting from these processes are wave-cut cliffs,\nbeaches, and wave-cut benches.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/6e3135e9-6be6-4995-a5df-022f6a0cf45b",
@@ -13128,7 +13128,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "\"Tectonic landforms\" are structural landforms of regional extent. These\r\nlandforms make up extensive landscapes whose topography is strongly influenced\r\nby the structure of underlying rocks that have undergone (or are undergoing)\r\nsome degree of deformation (and possible associated metamorphism and igneous\r\nintrusion). Landscapes developed on orogenic belts, uplifts, domes, basins, and\nshields can all be thought of as tectonic landforms. \"Tectonic processes\" are\r\nlarge-scale geologic processes that develop these landforms and include\r\nmountain \r\nbuilding and crustal rifting.",
+                                        "description": "\"Tectonic landforms\" are structural landforms of regional extent. These\nlandforms make up extensive landscapes whose topography is strongly influenced\nby the structure of underlying rocks that have undergone (or are undergoing)\nsome degree of deformation (and possible associated metamorphism and igneous\nintrusion). Landscapes developed on orogenic belts, uplifts, domes, basins, and\nshields can all be thought of as tectonic landforms. \"Tectonic processes\" are\nlarge-scale geologic processes that develop these landforms and include\nmountain \nbuilding and crustal rifting.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/5d9d1d85-b402-4f84-ab5c-03a49fc68c25",
@@ -13282,7 +13282,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Landforms created by the processes of wind erosion or deposition of wind\r\nweathered surface materials. These include landforms with some of the following\ngeomorphic features: sand dunes, deflation hollows, and desert pavement.\r\nAlternative spelling \"aeolian landforms.\"",
+                                        "description": "Landforms created by the processes of wind erosion or deposition of wind\nweathered surface materials. These include landforms with some of the following\ngeomorphic features: sand dunes, deflation hollows, and desert pavement.\nAlternative spelling \"aeolian landforms.\"",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/e43473a1-4392-48e3-9e56-8a4dcad8d7a2",
@@ -15502,7 +15502,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The entry of water into soil. Also, the infiltration flux is the volume of\r\nwater entering a specified cross-sectional area of soil per unit time [L t-1].",
+                                        "description": "The entry of water into soil. Also, the infiltration flux is the volume of\nwater entering a specified cross-sectional area of soil per unit time [L t-1].",
                                         "children": []
                                     },
                                     {
@@ -15511,7 +15511,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The relation between the fluxes of heat into and out of a soil and the\r\nheat stored by the soil.",
+                                        "description": "The relation between the fluxes of heat into and out of a soil and the\nheat stored by the soil.",
                                         "children": []
                                     },
                                     {
@@ -15610,7 +15610,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "(i) The wearing away of the land surface by rain or irrigation water, wind,\r\nice, or other natural or anthropogenic agents that abrade, detach and remove\r\ngeologic parent material or soil from one point on the earth's surface and\r\ndeposit it elsewhere, including such processes as gravitational creep and\r\nso-called tillage erosion; (ii) The detachment and movement of soil or rock by\r\nwater, wind, ice, or gravity.",
+                                        "description": "(i) The wearing away of the land surface by rain or irrigation water, wind,\nice, or other natural or anthropogenic agents that abrade, detach and remove\ngeologic parent material or soil from one point on the earth's surface and\ndeposit it elsewhere, including such processes as gravitational creep and\nso-called tillage erosion; (ii) The detachment and movement of soil or rock by\nwater, wind, ice, or gravity.",
                                         "children": []
                                     },
                                     {
@@ -15637,7 +15637,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The branch of soil science that deals with the chemical constitution,\r\nchemical properties, and chemical reactions of soils.",
+                                        "description": "The branch of soil science that deals with the chemical constitution,\nchemical properties, and chemical reactions of soils.",
                                         "children": []
                                     },
                                     {
@@ -15665,15 +15665,6 @@
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
                                         "description": "A measure of the ability of a soil to transfer heat (through a unit\nthickness, across a unit area for a unit difference in temperature).",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "https://gcmd.earthdata.nasa.gov/kms/concept/356a10e1-c81d-44c7-9706-31f7f2642586",
-                                        "text": "RECLAMATION/REVEGETATION/RESTORATION",
-                                        "language": "en",
-                                        "scheme": "NASA/GCMD Earth Science Keywords",
-                                        "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "RESTORATION: The processes by which an area is treated in  an attempt\nto restore original conditions.  RECLAIMATION: The process of reconverting\nland to other  forms of productive uses.  REVEGETATION: Reestablishment\nof vegetation which may take  place naturally or be induced by humans\nthrough seeding or transplanting.",
                                         "children": []
                                     },
                                     {
@@ -15745,7 +15736,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "A plant nutrient usually found in relatively small amounts(<100 mg\r\nkg-1) in plants.  These are usually B, Cl, Cu, Fe, Mn, Mo, Ni, Co, and\r\nZn.  In environmental applications it is those elements exclusive of the eight\r\nabundant rock-forming elements: oxygen, aluminum, silicon, iron, calcium,\r\nsodium, potassium, and magnesium.",
+                                        "description": "A plant nutrient usually found in relatively small amounts(<100 mg\nkg-1) in plants.  These are usually B, Cl, Cu, Fe, Mn, Mo, Ni, Co, and\nZn.  In environmental applications it is those elements exclusive of the eight\nabundant rock-forming elements: oxygen, aluminum, silicon, iron, calcium,\nsodium, potassium, and magnesium.",
                                         "children": []
                                     },
                                     {
@@ -15763,7 +15754,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "A measure of the readiness with which a liquid, such as water, flows through\r\na solid, such as soil, in response to a given  potential gradient.",
+                                        "description": "A measure of the readiness with which a liquid, such as water, flows through a solid, such as soil, in response to a given  potential gradient.",
                                         "children": []
                                     },
                                     {
@@ -15799,7 +15790,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The relative proportions of the various soil separates in a soil, as\r\ndescribed by the percent clay, sand, and silt.",
+                                        "description": "The relative proportions of the various soil separates in a soil, as\ndescribed by the percent clay, sand, and silt.",
                                         "children": []
                                     },
                                     {
@@ -15817,7 +15808,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Those metals which have densities >5.0 Mg m-3. In soils these include the\r\nelements Cd, Co, Cr, Cu, Fe, Hg, Mn, Mo, Ni, Pb, and Zn.",
+                                        "description": "Those metals which have densities >5.0 Mg m-3. In soils these include the elements Cd, Co, Cr, Cu, Fe, Hg, Mn, Mo, Ni, Pb, and Zn.",
                                         "children": []
                                     },
                                     {
@@ -15925,7 +15916,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The distance in inches that plant roots extend into the soil. Knowing the\r\naverage root depth for the plants in each watering zone is important to\r\ndetermine an efficient watering schedule. Shallow roots require more frequent\r\nwatering than deep roots, which can draw water from a larger soil profile. \r\nAverage root depths vary with plant type. Trees will have root depths of 24\r\ninches or more. Xeriscape plants will have root depths around 10 inches. Shrubs\nand perennials will have roots of 8 inches or more. Grass can have deep roots\r\n(greater than 6 inches, depending on region). Annuals and bedding plants have\r\nthe shallowest roots at 4-5 inches.",
+                                        "description": "The distance in inches that plant roots extend into the soil. Knowing the\naverage root depth for the plants in each watering zone is important to\ndetermine an efficient watering schedule. Shallow roots require more frequent\nwatering than deep roots, which can draw water from a larger soil profile. \nAverage root depths vary with plant type. Trees will have root depths of 24\ninches or more. Xeriscape plants will have root depths around 10 inches. Shrubs\nand perennials will have roots of 8 inches or more. Grass can have deep roots\n(greater than 6 inches, depending on region). Annuals and bedding plants have\nthe shallowest roots at 4-5 inches.",
                                         "children": []
                                     },
                                     {
@@ -16100,7 +16091,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Afforestation: \"the establishment of trees on an area that has lacked forest\r\ncover for a very long time or has never been forested. \"\r\nReforestation: \" the natural or artificial restocking (i.e., planting, seeding)\nof an area with forest trees. Also called forest regeneration. \"",
+                                        "description": "Afforestation: \"the establishment of trees on an area that has lacked forest\ncover for a very long time or has never been forested. \"\nReforestation: \" the natural or artificial restocking (i.e., planting, seeding)\nof an area with forest trees. Also called forest regeneration. \"",
                                         "children": []
                                     },
                                     {
@@ -16209,7 +16200,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The artificial augmentation of the amount of water available to\ncrops/plants, either by spraying water directly on to the plants or making\nit available to their root systems through a series of surface channels or\nditches.",
+                                        "description": "The artificial augmentation of the amount of water available to crops/plants, either by spraying water directly on to the plants or making it available to their root systems through a series of surface channels or ditches.",
                                         "children": []
                                     },
                                     {
@@ -16374,7 +16365,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Related to the act, process, or season of taking fish or other sea\nanimals; includes marine and non-marine environments, excludes fish\nfarming, hatcheries, and other aquaculture.",
+                                        "description": "Related to the act, process, or season of taking fish or other sea animals; includes marine and non-marine environments, excludes fish farming, hatcheries, and other aquaculture.",
                                         "children": []
                                     },
                                     {
@@ -16558,7 +16549,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "A plant nutrient usually found in relatively small amounts(<100 mg\r\nkg-1) in plants.  These are usually B, Cl, Cu, Fe, Mn, Mo, Ni, Co, and\r\nZn.  In environmental applications it is those elements exclusive of the eight\r\nabundant rock-forming elements: oxygen, aluminum, silicon, iron, calcium,\r\nsodium, potassium, and magnesium.",
+                                        "description": "A plant nutrient usually found in relatively small amounts(<100 mg\nkg-1) in plants.  These are usually B, Cl, Cu, Fe, Mn, Mo, Ni, Co, and\nZn.  In environmental applications it is those elements exclusive of the eight\nabundant rock-forming elements: oxygen, aluminum, silicon, iron, calcium,\nsodium, potassium, and magnesium.",
                                         "children": []
                                     },
                                     {
@@ -16567,7 +16558,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Measure of any form of Nitrogen, a macronutrient, in the soil, such\r\nas biomass nitrogen, ammonium, nitrate, etc...",
+                                        "description": "Measure of any form of Nitrogen, a macronutrient, in the soil, such\nas biomass nitrogen, ammonium, nitrate, etc...",
                                         "children": []
                                     },
                                     {
@@ -16594,7 +16585,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Measure of any form of Phosphorus (such as Phosphate), a macronutrient, in\r\nthe soil.",
+                                        "description": "Measure of any form of Phosphorus (such as Phosphate), a macronutrient, in\nthe soil.",
                                         "children": []
                                     },
                                     {
@@ -16612,7 +16603,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "RESTORATION: The processes by which an area is treated in  an attempt\r\nto restore original conditions.  RECLAIMATION: The process of reconverting\r\nland to other  forms of productive uses.  REVEGETATION: Reestablishment\r\nof vegetation which may take  place naturally or be induced by humans\r\nthrough seeding or transplanting.",
+                                        "description": "RESTORATION: The processes by which an area is treated in  an attempt\nto restore original conditions.  RECLAIMATION: The process of reconverting\nland to other  forms of productive uses.  REVEGETATION: Reestablishment\nof vegetation which may take  place naturally or be induced by humans\nthrough seeding or transplanting.",
                                         "children": []
                                     },
                                     {
@@ -16639,7 +16630,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The branch of soil science that deals with the chemical constitution,\r\nchemical properties, and chemical reactions of soils.",
+                                        "description": "The branch of soil science that deals with the chemical constitution,\nchemical properties, and chemical reactions of soils.",
                                         "children": []
                                     },
                                     {
@@ -16702,7 +16693,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The soil atmosphere; the gaseous phase of the soil, being that volume not\r\noccupied by solid or liquid.",
+                                        "description": "The soil atmosphere; the gaseous phase of the soil, being that volume not\noccupied by solid or liquid.",
                                         "children": []
                                     },
                                     {
@@ -16711,7 +16702,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The relation between the fluxes of heat into and out of a soil and the\r\nheat stored by the soil.",
+                                        "description": "The relation between the fluxes of heat into and out of a soil and the\nheat stored by the soil.",
                                         "children": []
                                     },
                                     {
@@ -16738,7 +16729,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Soil Water Content: The water lost from soil upon drying to constant\r\nmass at 105 degrees Celcius; expressed either as the mass of water per\r\nunit mass of drysoil or as the volume of water per unit bulk volume of\r\nsoil. For GCMD purpose, this also includes all measurements related to\r\nsoil water, such as capcity, potential, and pressure, etc...",
+                                        "description": "Soil Water Content: The water lost from soil upon drying to constant\nmass at 105 degrees Celcius; expressed either as the mass of water per\nunit mass of drysoil or as the volume of water per unit bulk volume of\nsoil. For GCMD purpose, this also includes all measurements related to\nsoil water, such as capcity, potential, and pressure, etc...",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/09e712bf-7389-4980-8115-af4282469eb8",
@@ -16894,7 +16885,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The wearing away of the land surface by rain or irrigation water, wind,\r\nice, or other natural or anthropogenic agents that abrade, detach and remove\r\ngeologic parent material or soil from one point on the earth's surface and\r\ndeposit it elsewhere, including such processes as gravitational creep and\r\nso-called tillage erosion; The detachment and movement of soil or rock by\r\nwater, wind, ice, or gravity.",
+                                        "description": "The wearing away of the land surface by rain or irrigation water, wind,\nice, or other natural or anthropogenic agents that abrade, detach and remove\ngeologic parent material or soil from one point on the earth's surface and\ndeposit it elsewhere, including such processes as gravitational creep and\nso-called tillage erosion; The detachment and movement of soil or rock by\nwater, wind, ice, or gravity.",
                                         "children": []
                                     },
                                     {
@@ -16903,7 +16894,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Those metals which have densities >5.0 Mg m-3. In soils these include the\r\nelements Cd, Co, Cr, Cu, Fe, Hg, Mn, Mo, Ni, Pb, and Zn.",
+                                        "description": "Those metals which have densities >5.0 Mg m-3. In soils these include the elements Cd, Co, Cr, Cu, Fe, Hg, Mn, Mo, Ni, Pb, and Zn.",
                                         "children": []
                                     },
                                     {
@@ -16912,7 +16903,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The entry of water into soil. Also, the infiltration flux is the volume of\r\nwater entering a specified cross-sectional area of soil per unit time [L t-1].",
+                                        "description": "The entry of water into soil. Also, the infiltration flux is the volume of\nwater entering a specified cross-sectional area of soil per unit time [L t-1].",
                                         "children": []
                                     },
                                     {
@@ -16939,7 +16930,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "he distance in inches that plant roots extend into the soil. Knowing the\r\naverage root depth for the plants in each watering zone is important to\r\ndetermine an efficient watering schedule. Shallow roots require more frequent\r\nwatering than deep roots, which can draw water from a larger soil profile. \r\nAverage root depths vary with plant type. Trees will have root depths of 24\r\ninches or more. Xeriscape plants will have root depths around 10 inches. Shrubs\nand perennials will have roots of 8 inches or more. Grass can have deep roots\r\n(greater than 6 inches, depending on region). Annuals and bedding plants have\r\nthe shallowest roots at 4-5 inches.",
+                                        "description": "he distance in inches that plant roots extend into the soil. Knowing the\naverage root depth for the plants in each watering zone is important to\ndetermine an efficient watering schedule. Shallow roots require more frequent\nwatering than deep roots, which can draw water from a larger soil profile. \nAverage root depths vary with plant type. Trees will have root depths of 24\ninches or more. Xeriscape plants will have root depths around 10 inches. Shrubs\nand perennials will have roots of 8 inches or more. Grass can have deep roots\n(greater than 6 inches, depending on region). Annuals and bedding plants have\nthe shallowest roots at 4-5 inches.",
                                         "children": []
                                     },
                                     {
@@ -19588,7 +19579,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Afforestation is the establishment of trees on an area that has lacked forest\r\ncover for a very long time or has never been forested. Reforestation is the\r\nnatural or artificial restocking (i.e., planting, seeding) of an area with\r\nforest trees. Also called forest regeneration.",
+                                        "description": "Afforestation is the establishment of trees on an area that has lacked forest\ncover for a very long time or has never been forested. Reforestation is the\nnatural or artificial restocking (i.e., planting, seeding) of an area with\nforest trees. Also called forest regeneration.",
                                         "children": []
                                     },
                                     {
@@ -19898,6 +19889,15 @@
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
                                                 "description": "An index of plant \u201cgreenness\u201d or photosynthetic activity, and is one of the most commonly used vegetation indices.",
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "https://gcmd.earthdata.nasa.gov/kms/concept/f094049b-fd89-4d01-b37f-7372b50c3309",
+                                                "text": "PLANT AREA INDEX (PAI)",
+                                                "language": "en",
+                                                "scheme": "NASA/GCMD Earth Science Keywords",
+                                                "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
+                                                "description": "Plant area index (PAI) is the amount of plant area (m^2) per unit ground surface area (m^2).",
                                                 "children": []
                                             }
                                         ]
@@ -22028,7 +22028,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Refer to characteristics such as thermal conductivity, specific heat, thermal expansion, and transition temperatures of materials, which are crucial for energy transport and thermal transitions in food packaging applications.",
                                         "children": []
                                     },
                                     {
@@ -22167,6 +22167,15 @@
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
                                         "description": "Motion along the radial beam.",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "https://gcmd.earthdata.nasa.gov/kms/concept/dd515127-58a3-4636-8a17-6dde6372a6ac",
+                                        "text": "STOKES PARAMETER",
+                                        "language": "en",
+                                        "scheme": "NASA/GCMD Earth Science Keywords",
+                                        "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
+                                        "description": "The Stokes parameters are a set of values that describe the polarization state of electromagnetic radiation.",
                                         "children": []
                                     }
                                 ]
@@ -22591,7 +22600,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pertaining to the reduction of a glacier due to melting and/or\r\nevaporation.",
+                                        "description": "Pertaining to the reduction of a glacier due to melting and/or\nevaporation.",
                                         "children": []
                                     },
                                     {
@@ -22600,7 +22609,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "A mass of land ice, formed by the further recrystallization of firn, flowing\r\ncontinuously from higher to lower elevations.",
+                                        "description": "A mass of land ice, formed by the further recrystallization of firn, flowing\ncontinuously from higher to lower elevations.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/d8e2bcae-7781-41b6-8d2d-7c82ae61be47",
@@ -22783,7 +22792,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Rounded, well-bonded snow that is older han one year (from NSIDC glossary). A\r\npermeable aggregate of small ice grains with densities greater than 0.55 up to\r\n0.82 where begins glacial ice.",
+                                        "description": "Rounded, well-bonded snow that is older han one year (from NSIDC glossary). A\npermeable aggregate of small ice grains with densities greater than 0.55 up to\n0.82 where begins glacial ice.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/a30b2871-4cdc-418a-b00c-969b50008726",
@@ -22820,7 +22829,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Mass balance describes the net gain or loss of snow and ice through a given\r\nyear. It is usually expressed in terms of water gain or loss.",
+                                        "description": "Mass balance describes the net gain or loss of snow and ice through a given\nyear. It is usually expressed in terms of water gain or loss.",
                                         "children": []
                                     },
                                     {
@@ -22847,7 +22856,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pertaining to the measured height of large thick, glaciers, with an area of\r\nat least 50,000 sq. km, covering a continuous stretch of land and growing\r\nin all directions.",
+                                        "description": "Pertaining to the measured height of large thick, glaciers, with an area of\nat least 50,000 sq. km, covering a continuous stretch of land and growing\nin all directions.",
                                         "children": []
                                     },
                                     {
@@ -22956,7 +22965,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Any non-linear shaped opening enclosed by ice. May contain brash ice and/or\r\nbe covered with new ice, nilas or young ice; sub-mariners refer to these\r\nas skylights. Polynyas are important in the study of the energy budget of\r\nthe polar ocean and local and regional climatology.",
+                                        "description": "Any non-linear shaped opening enclosed by ice. May contain brash ice and/or\nbe covered with new ice, nilas or young ice; sub-mariners refer to these\nas skylights. Polynyas are important in the study of the energy budget of\nthe polar ocean and local and regional climatology.",
                                         "children": []
                                     },
                                     {
@@ -23019,7 +23028,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pertains to the measurement of the surface height of the sea ice. In\r\nparticular, sea ice elevation is measured by the radar altimeter on board the\r\nNASA IceSat satellite.",
+                                        "description": "Pertains to the measurement of the surface height of the sea ice. In\nparticular, sea ice elevation is measured by the radar altimeter on board the\nNASA IceSat satellite.",
                                         "children": []
                                     },
                                     {
@@ -23092,7 +23101,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The ice edge is the demarcation at any given time between open water and\r\nthe sea (can also refer to river and lake ice) whether fast or drifting.",
+                                        "description": "The ice edge is the demarcation at any given time between open water and\nthe sea (can also refer to river and lake ice) whether fast or drifting.",
                                         "children": []
                                     },
                                     {
@@ -23101,7 +23110,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Floe refers to any relatively flat piece of ice 20 m or more across. Floes\r\nare subdivided according to horizontal extent: small, medium, big, vast,\r\ngiant.",
+                                        "description": "Floe refers to any relatively flat piece of ice 20 m or more across. Floes\nare subdivided according to horizontal extent: small, medium, big, vast,\ngiant.",
                                         "children": []
                                     },
                                     {
@@ -23119,7 +23128,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The small-scale variation in the relief of the terrain surface (in this\r\ncase the surface of the ice). Remote sensing instruments, such as radar\r\nand microwave sensors, have been able to detect the degree of roughness of\r\nsea, lake, and river ice.",
+                                        "description": "The small-scale variation in the relief of the terrain surface (in this\ncase the surface of the ice). Remote sensing instruments, such as radar\nand microwave sensors, have been able to detect the degree of roughness of\nsea, lake, and river ice.",
                                         "children": []
                                     },
                                     {
@@ -23128,7 +23137,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Ice Types is a general term applied to sea, river, and lake ice to\r\ndescribe attributes such as age, stage of development or growth, or\r\nsurface feature.",
+                                        "description": "Ice Types is a general term applied to sea, river, and lake ice to\ndescribe attributes such as age, stage of development or growth, or\nsurface feature.",
                                         "children": []
                                     },
                                     {
@@ -23137,7 +23146,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pack ice refers to high concentrations of sea ice. When concentrations are\r\n60% or less, then the term drift ice is used.",
+                                        "description": "Pack ice refers to high concentrations of sea ice. When concentrations are\n60% or less, then the term drift ice is used.",
                                         "children": []
                                     },
                                     {
@@ -23192,7 +23201,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Isotopes are a form of an element with a certain number of neutrons, for\r\nexample carbon exists in three isotopes: C12, C13, and C14. Some isotopes are\r\nnaturally unstable and spontaneously decay at a fixed rate; other isotopes are\r\nstable.",
+                                        "description": "Isotopes are a form of an element with a certain number of neutrons, for\nexample carbon exists in three isotopes: C12, C13, and C14. Some isotopes are\nnaturally unstable and spontaneously decay at a fixed rate; other isotopes are\nstable.",
                                         "children": []
                                     },
                                     {
@@ -23236,7 +23245,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "An overflow of an expanse of water that submerges land.",
                                                 "children": []
                                             },
                                             {
@@ -23245,7 +23254,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "Sea ice advection is the movement of sea ice and is a function of the following factors: atmosphere-ice and ice-ocean momentum stress and sea surface gradient.",
                                                 "children": []
                                             },
                                             {
@@ -23254,7 +23263,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "In the oceans, a mixing process through which a component of seawater (e.g. salt) is transferred from a zone of higher concentration to a zone of lesser concentration.",
                                                 "children": []
                                             },
                                             {
@@ -23330,6 +23339,15 @@
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
                                         "description": "A pond of water on the surface of sea ice, commonly occurring in the Arctic in spring.",
                                         "children": []
+                                    },
+                                    {
+                                        "id": "https://gcmd.earthdata.nasa.gov/kms/concept/d8bb5d3c-c1ab-4ee2-82ec-f1c44af6bba4",
+                                        "text": "FAST ICE",
+                                        "language": "en",
+                                        "scheme": "NASA/GCMD Earth Science Keywords",
+                                        "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
+                                        "description": "Ice that is anchored to the shore or ocean bottom, typically over shallow ocean shelves at continental margins. Fast ice does not move with the winds or currents. Also known as landfast ice.",
+                                        "children": []
                                     }
                                 ]
                             },
@@ -23341,15 +23359,6 @@
                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
                                 "description": "Soil within which the moisture has predominantly changed to ice, the unfrozen\r\nportion being in vapor phase. \r\nIce within the soil bonds (adfreezes) adjacent soil particles and renders\r\nfrozen ground very hard. Permanently frozen ground is called permafrost. Dry\r\nfrozen ground is relatively loose and crumbly because of the lack of bonding\r\nice. Frozen ground is sometimes inadvisedly called frost or ground frost.",
                                 "children": [
-                                    {
-                                        "id": "https://gcmd.earthdata.nasa.gov/kms/concept/097a0fad-d822-49ad-bd12-232e9ea7cb30",
-                                        "text": "PERIGLACIAL PROCESSES",
-                                        "language": "en",
-                                        "scheme": "NASA/GCMD Earth Science Keywords",
-                                        "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Of, or pertaining to, the outer perimeter of a glacier, particularly to the\r\nfringe areas surrounding the great continental glaciers of the geologic ice\r\nages.  Thus, periglacial weathering is said to have produced certain\r\ncharacteristic\r\nland forms.",
-                                        "children": []
-                                    },
                                     {
                                         "id": "https://gcmd.earthdata.nasa.gov/kms/concept/c82f3480-545f-4491-83f1-0477369ddcd8",
                                         "text": "PERMAFROST",
@@ -23384,7 +23393,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Active layer, also called frost zone or mollisol, is part of the soil included\r\nwith the suprapermafrost layer (i.e., existing above permafrost) that usually\r\nfreezes in winter and thaws in summer. \r\nIts bottom surface is the frost table, beneath which may lie permafrost or\r\ntalik. The depth of the active layer varies anywhere from a few inches to\r\nseveral feet.",
+                                        "description": "Active layer, also called frost zone or mollisol, is part of the soil included\nwith the suprapermafrost layer (i.e., existing above permafrost) that usually\nfreezes in winter and thaws in summer. \nIts bottom surface is the frost table, beneath which may lie permafrost or\ntalik. The depth of the active layer varies anywhere from a few inches to\nseveral feet.",
                                         "children": []
                                     },
                                     {
@@ -23393,7 +23402,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Soil formed in either mineral or organic materials having permafrost either\r\nwithin 1 m below the surface or, if the soil is strongly cryoturbated, with 2 m\nbelow the surface, and having a mean annual ground temperature below 0 deg C.",
+                                        "description": "Soil formed in either mineral or organic materials having permafrost either\nwithin 1 m below the surface or, if the soil is strongly cryoturbated, with 2 m\nbelow the surface, and having a mean annual ground temperature below 0 deg C.",
                                         "children": []
                                     },
                                     {
@@ -23420,7 +23429,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Talik, also called tabetisol, is a Russian term applied to permanently unfrozen\nground in regions of permafrost. <p>\r\nThis usually applies to a layer that lies above the permafrost but below the\r\nactive layer, that is, when the permafrost table is deeper than the depth\r\nreached by winter freezing from the surface. Talik is also found within and\r\nbeneath permafrost; when it occurs beneath the permafrost it is equivalent to\r\nsubgelisol.",
+                                        "description": "Talik, also called tabetisol, is a Russian term applied to permanently unfrozen\nground in regions of permafrost. <p>\nThis usually applies to a layer that lies above the permafrost but below the\nactive layer, that is, when the permafrost table is deeper than the depth\nreached by winter freezing from the surface. Talik is also found within and\nbeneath permafrost; when it occurs beneath the permafrost it is equivalent to\nsubgelisol.",
                                         "children": []
                                     },
                                     {
@@ -23756,7 +23765,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "The horizontal transfer of air mass properties that can impact snowmelt, snowpack, and temperature.",
                                                 "children": []
                                             },
                                             {
@@ -23765,7 +23774,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "In the oceans, a mixing process through which a component of seawater (e.g. salt) is transferred from a zone of higher concentration to a zone of lesser concentration.",
                                                 "children": []
                                             },
                                             {
@@ -23869,7 +23878,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pertaining to the measurement and analysis of ancient tree rings to\r\ndetermine environmental conditions during that tree's lifetime and\r\nextrapolate that to climatic conditions. The study of tree rings related to\npast climate conditions is called dendroclimatology. Variations in tree ring\nwidths from year to year are recognized as an important source of chronological\nand climatic information. The width of a tree ring is a function of many\nvariables including tree species, age, availability of stored food within the\ntree, soil nutrients, and climatic factors such as precipitation, sunshine\ntemperature, winds and humidity.",
+                                        "description": "Pertaining to the measurement and analysis of ancient tree rings to\ndetermine environmental conditions during that tree's lifetime and\nextrapolate that to climatic conditions. The study of tree rings related to\npast climate conditions is called dendroclimatology. Variations in tree ring\nwidths from year to year are recognized as an important source of chronological\nand climatic information. The width of a tree ring is a function of many\nvariables including tree species, age, availability of stored food within the\ntree, soil nutrients, and climatic factors such as precipitation, sunshine\ntemperature, winds and humidity.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/902e9bf8-85d4-431b-aa15-e0d7abe0f17c",
@@ -23960,7 +23969,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Paleomagnetism is the study of natural remnant magnetization of the Earth's\r\nmaterials in order to determine the itensity and direction of the Earth's\r\nmagnetic field in the geologic past. Variations in the Earth's magnetic field\r\ncan be used as a means of stratigraphic correlation. Major reversals of the\r\nEarth's magnetic field are well known and the record of these reversals in\r\nsediments can be used as time markers or chronostratigraphic horizons.",
+                                        "description": "Paleomagnetism is the study of natural remnant magnetization of the Earth's\nmaterials in order to determine the itensity and direction of the Earth's\nmagnetic field in the geologic past. Variations in the Earth's magnetic field\ncan be used as a means of stratigraphic correlation. Major reversals of the\nEarth's magnetic field are well known and the record of these reversals in\nsediments can be used as time markers or chronostratigraphic horizons.",
                                         "children": []
                                     },
                                     {
@@ -23996,7 +24005,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "A set of deposited sedimentary beds that reflects the depositional\r\nenvironment of those beds and the geologic history of a region. \r\nA stratigraphic sequence is a chronologic succession of sedimentary rocks from\nolder below to younger above without interruption.",
+                                        "description": "A set of deposited sedimentary beds that reflects the depositional\nenvironment of those beds and the geologic history of a region. \nA stratigraphic sequence is a chronologic succession of sedimentary rocks from\nolder below to younger above without interruption.",
                                         "children": []
                                     },
                                     {
@@ -24051,7 +24060,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Volcanic deposits (including volcanic ash, debris, etc.) are found within ice\ncore\r\nrecords. Volcanoes can produce large quantities of particles and leave a record\nin the ice. Scanning electron micrographs of the particles from a particularly\nlarge dust peak in an ice core may reveal that it is from a known volcano and\nallow a firm date to be placed on that section of core. For prehistoric times,\nthe dust record is a key tool for reconstructing a history of volcanic\nactivity.",
+                                        "description": "Volcanic deposits (including volcanic ash, debris, etc.) are found within ice\ncore\nrecords. Volcanoes can produce large quantities of particles and leave a record\nin the ice. Scanning electron micrographs of the particles from a particularly\nlarge dust peak in an ice core may reveal that it is from a known volcano and\nallow a firm date to be placed on that section of core. For prehistoric times,\nthe dust record is a key tool for reconstructing a history of volcanic\nactivity.",
                                         "children": []
                                     },
                                     {
@@ -24124,24 +24133,6 @@
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
                                         "description": "The major ions, sodium (Na+), calcium (Ca2+), and chloride (Cl\u2212), deposited in central Antarctica and preserved in ice cores originate from both marine and continental sources. They provide important proxy records, helping to reconstruct past climatic processes.",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "https://gcmd.earthdata.nasa.gov/kms/concept/7b9fb947-97cd-4354-a799-f14a81564132",
-                                        "text": "CALCIUM",
-                                        "language": "en",
-                                        "scheme": "NASA/GCMD Earth Science Keywords",
-                                        "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The major ions, sodium (Na+), calcium (Ca2+), and chloride (Cl\u2212), deposited in central Antarctica and preserved in ice cores originate from both marine and continental sources. They provide important proxy records, helping to reconstruct past climatic processes.",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "https://gcmd.earthdata.nasa.gov/kms/concept/cf32d0f2-31f5-450d-9f1d-8aa38fd526dc",
-                                        "text": "IRON",
-                                        "language": "en",
-                                        "scheme": "NASA/GCMD Earth Science Keywords",
-                                        "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "The important active and passive role of mineral dust aerosol in the climate and the global carbon cycle over the last glacial/interglacial cycles has been recognized. However, little data on the most important aeolian dust-derived biological micronutrient, iron (Fe), has so far been available from ice-cores from Greenland or Antarctica. Furthermore, Fe deposition reconstructions derived from the palaeoproxies particulate dust and calcium differ significantly from the Fe flux data available. The ability to measure high temporal resolution Fe data in polar ice-cores is crucial for the study of the timing and magnitude of relationships between geochemical events and biological responses in the open ocean. This work adapts an existing flow injection analysis (FIA) methodology for low-level trace Fe determinations with an existing glaciochemical analysis system, continuous flow analysis (CFA) of ice-cores. Fe-induced oxidation of N,N'-dimethyl-p-pheylenediamine (DPD) is used to quantify the biologically more important and easily leachable Fe fraction released in a controlled digestion step at pH ~1.0. The developed method was successfully applied to the determination of labile Fe in ice-core samples collected from the Antarctic Byrd ice-core and the Greenland Ice-Core Project (GRIP) ice-core.",
                                         "children": []
                                     },
                                     {
@@ -24278,7 +24269,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "A set of deposited sedimentary beds that reflects the depositional\r\nenvironment of those beds and the geologic history of a region. \r\nA stratigraphic sequence is a chronologic succession of sedimentary rocks from\r\nolder below to younger above without interruption.",
+                                        "description": "A set of deposited sedimentary beds that reflects the depositional\nenvironment of those beds and the geologic history of a region. \nA stratigraphic sequence is a chronologic succession of sedimentary rocks from\nolder below to younger above without interruption.",
                                         "children": []
                                     },
                                     {
@@ -24287,7 +24278,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Radiocarbon refers to radioactive carbon especially carbon-14, but also\r\ncarbon-10 and carbon-12. Carbon-14 is a heavy radioactive isotope of Carbon\r\nhaving a mass of 14 and a half-life of 5730 +/-40 years. Carbon-14 is useful in\ndating organic materials during the last 50,000 years.",
+                                        "description": "Radiocarbon refers to radioactive carbon especially carbon-14, but also\ncarbon-10 and carbon-12. Carbon-14 is a heavy radioactive isotope of Carbon\nhaving a mass of 14 and a half-life of 5730 +/-40 years. Carbon-14 is useful in\ndating organic materials during the last 50,000 years.",
                                         "children": []
                                     },
                                     {
@@ -24314,7 +24305,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Microfossils are fossils too small to be seen without the aid of a microscope,\r\ne.g., a foraminifer or ostracode. It may be the remains of microscopic\r\norganisms or a part of a larger orgnaism.",
+                                        "description": "Microfossils are fossils too small to be seen without the aid of a microscope,\ne.g., a foraminifer or ostracode. It may be the remains of microscopic\norganisms or a part of a larger orgnaism.",
                                         "children": []
                                     },
                                     {
@@ -24332,7 +24323,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Macrofossils are fossils large enough to be studied without the aid of a\r\nmicroscope. Macrofossils can indicate the range of plant or animal species in\r\nthe past.",
+                                        "description": "Macrofossils are fossils large enough to be studied without the aid of a\nmicroscope. Macrofossils can indicate the range of plant or animal species in\nthe past.",
                                         "children": []
                                     },
                                     {
@@ -24350,7 +24341,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pertaining to the measurement of isotopic (excluding oxygen) signatures\r\nin ocean/lake sediments to determine past climatic conditions, and apply\r\nthose findings to the Earth's climate at the time period in question.\r\nCarbon isotope analysis is very important in extracting paleoclimatic\nsignatures from corals and from benthic forams.",
+                                        "description": "Pertaining to the measurement of isotopic (excluding oxygen) signatures\nin ocean/lake sediments to determine past climatic conditions, and apply\nthose findings to the Earth's climate at the time period in question.\nCarbon isotope analysis is very important in extracting paleoclimatic\nsignatures from corals and from benthic forams.",
                                         "children": []
                                     },
                                     {
@@ -24368,7 +24359,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Paleomagnetism is the study of natural remnant magnetization of the Earth's\r\nmaterials in order to determine the itensity and direction of the Earth's\r\nmagnetic field in the geologic past. Variations in the Earth's magnetic field\r\ncan be used as a means of stratigraphic correlation. Major reversals of the\r\nEarth's magnetic field are well known and the record of these reversals in\r\nsediments can be used as time markers or chronostratigraphic horizons.",
+                                        "description": "Paleomagnetism is the study of natural remnant magnetization of the Earth's\nmaterials in order to determine the itensity and direction of the Earth's\nmagnetic field in the geologic past. Variations in the Earth's magnetic field\ncan be used as a means of stratigraphic correlation. Major reversals of the\nEarth's magnetic field are well known and the record of these reversals in\nsediments can be used as time markers or chronostratigraphic horizons.",
                                         "children": []
                                     },
                                     {
@@ -26245,15 +26236,6 @@
                                                 "children": []
                                             },
                                             {
-                                                "id": "https://gcmd.earthdata.nasa.gov/kms/concept/1b6e67ff-351f-490c-bb43-646ac71f52ea",
-                                                "text": "HARMFUL ALGAL BLOOMS (HABs)",
-                                                "language": "en",
-                                                "scheme": "NASA/GCMD Earth Science Keywords",
-                                                "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "Occurs when colonies of algae\u2014simple photosynthetic organisms that live in the sea and freshwater\u2014grow out of control while producing toxic or harmful effects on people, fish, shellfish, marine mammals, and birds. The human illnesses caused by HABs, though rare, can be debilitating or even fatal. HABs have been reported in every U.S. coastal state, and their occurrence may be on the rise. HABs are a national concern because they affect not only the health of people and marine ecosystems, but also the 'health' of local and regional economies.",
-                                                "children": []
-                                            },
-                                            {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/207da091-2cd5-49a7-950e-91a164e02637",
                                                 "text": "SEWAGE OVERFLOWS",
                                                 "language": "en",
@@ -27214,7 +27196,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pertaining to the measuerment of a large mass of snow, ice, soil, rock,\r\nfalling rapidly from heights far above a lowland area.",
+                                        "description": "Pertaining to the measuerment of a large mass of snow, ice, soil, rock,\nfalling rapidly from heights far above a lowland area.",
                                         "children": []
                                     },
                                     {
@@ -27223,7 +27205,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pertaining to the characteristics of the layer of ice crystals that\r\nforms between the ground and snow cover by sublimation.  It's also\r\nreferred to as sugar snow.",
+                                        "description": "Pertaining to the characteristics of the layer of ice crystals that\nforms between the ground and snow cover by sublimation.  It's also\nreferred to as sugar snow.",
                                         "children": []
                                     },
                                     {
@@ -27268,7 +27250,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pertaining to the ratio between the volume of snow, and the amount of\r\nmeltwater derived from that volume of snow.",
+                                        "description": "Pertaining to the ratio between the volume of snow, and the amount of\nmeltwater derived from that volume of snow.",
                                         "children": []
                                     },
                                     {
@@ -27295,7 +27277,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pertaining to the measurement, and analysis to ice formation on inland\r\nbodies of salt or fresh water.",
+                                        "description": "Pertaining to the measurement, and analysis to ice formation on inland\nbodies of salt or fresh water.",
                                         "children": []
                                     },
                                     {
@@ -27322,7 +27304,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pertaining to the measurement, rates, geographical extent of freezing,\r\nand melting of snow and ice cover.",
+                                        "description": "Pertaining to the measurement, rates, geographical extent of freezing,\nand melting of snow and ice cover.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/6d245dca-41b5-474d-972f-221822111731",
@@ -27368,7 +27350,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pertaining to the rate at which ice formations (glaciers, ice sheets, etc.)\r\nare moving.",
+                                        "description": "Pertaining to the rate at which ice formations (glaciers, ice sheets, etc.)\nare moving.",
                                         "children": []
                                     },
                                     {
@@ -27377,7 +27359,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pertaining to the measurement, geographic extent, and seasonality of\r\nfrost.",
+                                        "description": "Pertaining to the measurement, geographic extent, and seasonality of\nfrost.",
                                         "children": []
                                     },
                                     {
@@ -27486,7 +27468,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "A mass of land ice, formed by the further recrystallization of firn, flowing\r\ncontinuously from higher to lower elevations.",
+                                        "description": "A mass of land ice, formed by the further recrystallization of firn, flowing\ncontinuously from higher to lower elevations.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/84fff9f2-4dad-4ff8-9d10-cacd6a1864fb",
@@ -27613,7 +27595,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pertaining to the measured height of large thick, glaciers, with an area of\r\nat least 50,000 sq. km, covering a continuous stretch of land and growing\r\nin all directions.",
+                                        "description": "Pertaining to the measured height of large thick, glaciers, with an area of\nat least 50,000 sq. km, covering a continuous stretch of land and growing\nin all directions.",
                                         "children": []
                                     },
                                     {
@@ -27631,7 +27613,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Pertaining to the reduction of a glacier due to melting and/or\r\nevaporation.",
+                                        "description": "Pertaining to the reduction of a glacier due to melting and/or\nevaporation.",
                                         "children": []
                                     },
                                     {
@@ -27640,7 +27622,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Rounded, well-bonded snow that is older han one year. A permeable aggregate of\r\nsmall ice grains with densities greater than 0.55 up to 0.82 where begins\r\nglacial ice. (Glossary of glacier terms/Northeastern Illinois University)",
+                                        "description": "Rounded, well-bonded snow that is older han one year. A permeable aggregate of\nsmall ice grains with densities greater than 0.55 up to 0.82 where begins\nglacial ice. (Glossary of glacier terms/Northeastern Illinois University)",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/2ba27dc1-e2e6-4ce5-be05-fb4e4dd5ab54",
@@ -27659,7 +27641,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "In general, facies are the set of all characteristics of a sedimetary rock that\nindicates its particular environment of deposition and which distinguish it\r\nfrom other facies in the same rock. Glacial facies refer to the characteristic\r\nnature of glacial ice and/or the processes by which the ice formed and\r\nprocesses by which  rock debris from the bed is entrained into the ice.",
+                                        "description": "In general, facies are the set of all characteristics of a sedimetary rock that\nindicates its particular environment of deposition and which distinguish it\nfrom other facies in the same rock. Glacial facies refer to the characteristic\nnature of glacial ice and/or the processes by which the ice formed and\nprocesses by which  rock debris from the bed is entrained into the ice.",
                                         "children": []
                                     },
                                     {
@@ -27668,7 +27650,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Mass balance describes the net gain or loss of snow and ice through a given\r\nyear. It is usually expressed in terms of water gain or loss.",
+                                        "description": "Mass balance describes the net gain or loss of snow and ice through a given\nyear. It is usually expressed in terms of water gain or loss.",
                                         "children": []
                                     },
                                     {
@@ -28227,7 +28209,7 @@
                                 "language": "en",
                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                "description": "",
+                                "description": "The properties of solar energetic particles, which are high-energy particles produced by the Sun. They can be emitted during solar flares or coronal mass ejections and can be a source of radiation that reaches the Earth. Events involving solar particles have varying occurrence times, magnitudes, durations, and compositions. The peak radiation lasts hours and can last anywhere from a few days to a week. Only a tiny percentage of directed solar flares and coronal mass ejections strike the Earth. Several operational problems with spacecraft may have been caused by certain key occurrences connected to previous solar cycles.",
                                 "children": [
                                     {
                                         "id": "https://gcmd.earthdata.nasa.gov/kms/concept/fd42b8e3-b76c-4888-aeb7-e6486beb4b69",
@@ -28853,7 +28835,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Information about condition of clouds.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/2111d240-315c-411b-8114-7ef9e89317e5",
@@ -28861,7 +28843,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "Refers to amount (increased or decreased) of cloud fraction, which is the measurement used to determine how much of the Earth is covered by clouds. The measurement is important because clouds play a large role in regulating the amount of energy that reaches the Earth from the sun as well as the amount of energy that the Earth reflects and emits back into space.",
                                                 "children": []
                                             }
                                         ]
@@ -28898,7 +28880,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "Refers to a frequency and intensity of a heat wave and cold wave. A heat wave is a period of abnormally hot weather generally lasting more than two days. Heat waves can occur with or without high humidity. They have potential to cover a large area, exposing a high number of people to hazardous heat. A cold wave is a weather event involving a cooling of the air, or the invasion of very cold air, over a large area. It is marked by a drop of average temperature well below the averages of a region. Cold waves can have negative impacts on people, crops, properties, and services. They can be preceded or accompanied by significant winter weather events, such as blizzards or ice storms. And they can feel even colder during periods of high winds.",
                                                 "children": []
                                             },
                                             {
@@ -28907,7 +28889,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "Refers to the start and intensity of a monsoon. A monsoon is a name for seasonal winds. It was first applied to the winds over the Arabian Sea, which blow for six months from northeast and for six months from southwest, but it has been extended to similar winds in other parts of the world. Even in Europe the prevailing west to northwest winds of summer have been called the \"European monsoon.\" The primary cause is the much greater annual variation of temperature over large land areas compared with neighboring ocean surfaces, causing an excess of pressure over the continents in winter and a deficit in summer, but other factors such as the relief features of the land have a considerable effect. The monsoons are strongest on the southern and eastern sides of Asia, the largest landmass, but monsoons also occur on the coasts of tropical regions wherever the planetary circulation is not strong enough to inhibit them. They have been described in Spain, northern Australia, Africa except the Mediterranean, Texas, and the western coasts of the United States and Chile. In India the term is popularly applied chiefly to the southwest monsoon and, by extension, to the rains which it brings.",
                                                 "children": []
                                             },
                                             {
@@ -28916,7 +28898,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "Refers to the frequency and intensity of tropical or extratropical cyclones. The term tropical cyclone (TC) encompasses hurricanes of the Western Hemisphere and their typhoon and cyclone equivalents elsewhere. At maturity, the TC is one of the most intense and feared storms in the world; winds exceeding 90 m s\u22121 (175 knots; kt) have been measured, and both its rains and storm surge can cause great loss of life and damage. The term extratropical cyclone refers to any cyclonic-scale storm that is not a tropical cyclone, usually referring only to the migratory frontal cyclones of middle and high latitudes.",
                                                 "children": []
                                             }
                                         ]
@@ -28981,7 +28963,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "Refers to the variation in the amount of precipitation that falls naturally in a certain area.",
                                                 "children": []
                                             },
                                             {
@@ -28990,7 +28972,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "The trend in precipitation amounts, rates, and frequency over a given time period.",
                                                 "children": []
                                             },
                                             {
@@ -29156,7 +29138,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "North Atlantic Oscillation (NAO) has a significant impact on surrounding winter weather and climate. However, the causes of its occasional reversal between early and late winter remain unclear. This study proposes a mechanism for the mid-winter reversal of NAO from the perspective of local midlatitude air-sea interaction. Strong sea surface temperature (SST) tripole events, which are defined by empirical orthogonal function of winter-mean interannual North Atlantic SST anomalies, are primarily induced by NAO in early winter and peak in January. In late winter, the persistent SST tripole exerts active feedback on atmosphere through diabatic heat and transient eddy forcing. The resulting atmospheric circulation anomalies exhibit an almost reversed NAO pattern in February, which forms a wavetrain originating above the Gulf Stream and propagating to the Middle East and weakens the former SST tripole. Consequently, significant reversals of air temperature anomalies occur in Europe and the Caspian Sea area between February and December.",
                                                 "children": []
                                             },
                                             {
@@ -29165,7 +29147,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "North Atlantic Oscillation (NAO) has a significant impact on surrounding winter weather and climate. However, the causes of its occasional reversal between early and late winter remain unclear. This study proposes a mechanism for the mid-winter reversal of NAO from the perspective of local midlatitude air-sea interaction. Strong sea surface temperature (SST) tripole events, which are defined by empirical orthogonal function of winter-mean interannual North Atlantic SST anomalies, are primarily induced by NAO in early winter and peak in January. In late winter, the persistent SST tripole exerts active feedback on atmosphere through diabatic heat and transient eddy forcing. The resulting atmospheric circulation anomalies exhibit an almost reversed NAO pattern in February, which forms a wavetrain originating above the Gulf Stream and propagating to the Middle East and weakens the former SST tripole. Consequently, significant reversals of air temperature anomalies occur in Europe and the Caspian Sea area between February and December.",
                                                 "children": []
                                             },
                                             {
@@ -29185,7 +29167,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Refers to set of parameters that describe changing temperature over time.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/3d997f01-8987-4fb1-a32e-d88d51f0a2c4",
@@ -29193,7 +29175,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "Refers to the highest daytime temperature reported for a given location during a given period.",
                                                 "children": []
                                             },
                                             {
@@ -29202,7 +29184,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "Refers to highest low nighttime temperature attained at a specific location during a specified period.",
                                                 "children": []
                                             },
                                             {
@@ -29211,7 +29193,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "The temperature range occurring within a short time span at a given location.",
                                                 "children": []
                                             },
                                             {
@@ -29220,7 +29202,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "The rate as which temperature changes over time.",
                                                 "children": []
                                             },
                                             {
@@ -29229,7 +29211,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "Refers to temperature anomalies in the troposphere. A temperature anomaly means a departure from a reference value or long-term average. A positive anomaly indicates that the observed temperature was warmer than the reference value, while a negative anomaly indicates that the observed temperature was cooler than the reference value.",
                                                 "children": []
                                             },
                                             {
@@ -29238,7 +29220,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "Refers to temperature anomalies in the stratosphere. A temperature anomaly means a departure from a reference value or long-term average. A positive anomaly indicates that the observed temperature was warmer than the reference value, while a negative anomaly indicates that the observed temperature was cooler than the reference value.",
                                                 "children": []
                                             }
                                         ]
@@ -29249,7 +29231,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Are simple diagnostic quantities that are used to characterize an aspect of temperature based on a time series of air temperature (minimum, average and maximum; daily values).",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/c7fa79e4-67a1-45da-b393-a1b89d54a1a5",
@@ -29311,7 +29293,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "A new index that is called as the temperature concentration index (TCI) was developed in the present study to investigate the concentration of temperature in Iran based on the two known inspiring patterns of Gibbs\u2013Martin (Am Sociol Rev 27:667\u2013677, 1962) and Oliver (Prof Geogr 32:300\u2013309, 1980). The developed index was classified based on three methods, including the Oliver\u2019 classification (1980), the coefficient of variation of temperature data, and coefficient of variation of TCI values. The results show that all the three classification methods represent almost similar classes for the TCI.",
                                                 "children": []
                                             },
                                             {
@@ -29331,7 +29313,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Indices that leverage state-of-the-art ocean models as well as satellite and in situ data to improve upon historically available upwelling indices. Upwelling drives the biological productivity of the system by bringing nutrients to surface waters.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/74ad118c-2f18-40fb-a26e-092390f52c20",
@@ -29442,7 +29424,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Refers to an environmental vulnerability index for Fiji. Development of a vulnerability index for the environment which could be calculated on the scale of entire states for the purpose of ranking them and providing a single-figure expression of their relative environmental vulnerabilities. This work was done in response to a call made in the Barbados Plan of Action, the Alliance of Small Island States (AOSIS) and an increasing awareness that small island developing states face disadvantages to their development associated with their remoteness, small size, dispersion, economic conditions, and limited natural resources. In the past vulnerability indices have been developed which describe the risks associated with economic and social conditions, climate change, sea-level rise, natural disasters and anthropogenic impacts. Most of these indices describe the vulnerability of human systems; there have been very limited attempts to describe effects on the environment. Human systems and the environment are dependent on one another so that risks to the environment of a state will eventually translate into risks to humans. This is the first attempt to construct an index that focuses on the vulnerability of the environment. An Environmental Vulnerability Index (the EVI) was constructed, based on a theoretical framework that identified three aspects of vulnerability: risks to the environment (natural and anthropogenic), the innate ability of the environment to cope with the risks (resilience) and ecosystem integrity (the health or condition of the environment as a result of past impacts). These three aspects correspond to three sub-indices, the REI, IRI and EDI, which are the Risk Exposure sub-Index, Intrinsic Resilience sub-Index and Environmental Degradation sub- Index respectively. The EVI was calculated as a weighted average of scores allocated in the range of 0-7 derived from a total of 57 indicators. A preliminary EVI was calculated for three countries, Australia, Fiji and Tuvalu. The preliminary EVI value for Tuvalu was the highest of the three countries indicating that its environment is the most vulnerable. The score obtained for Fiji was intermediate in value, and that for Australia was the lowest, though the difference between Fiji and Australia was relatively smaller than that between Fiji and Tuvalu. There were similar levels of risk in each of the countries, the most degradation in Australia and the least intrinsic resilience in Tuvalu. These results, though promising are only preliminary because the EVI requires refinement and there was insufficient time to collect all of the required data from all of the countries and because there were some inconsistencies in the quality of the data. We expect that each of these problems can be overcome. The EVI developed here will require further refinement before it becomes fully operational. The results show that it is possible to obtain a single figure measure of vulnerability and that data which were previously thought to be difficult to obtain can be obtained. The methodology selected in the computation of the index can produce results which could have operational usefulness for ranking countries according to their environmental vulnerabilities. It is envisaged that the EVI would be recalculated every 5 years to provide updates on the vulnerability status of countries. This index highlights the need for governments to upgrade their collection and collation of environmental statistics. In addition, the breakdown of results into meteorological, geological, anthropogenic, and other categories of risk highlights areas of concern for environmental action.",
                                         "children": []
                                     },
                                     {
@@ -29451,7 +29433,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Refers to an environmental vulnerability index for Tuvalu. Development of a vulnerability index for the environment which could be calculated on the scale of entire states for the purpose of ranking them and providing a single-figure expression of their relative environmental vulnerabilities. This work was done in response to a call made in the Barbados Plan of Action, the Alliance of Small Island States (AOSIS) and an increasing awareness that small island developing states face disadvantages to their development associated with their remoteness, small size, dispersion, economic conditions, and limited natural resources. In the past vulnerability indices have been developed which describe the risks associated with economic and social conditions, climate change, sea-level rise, natural disasters and anthropogenic impacts. Most of these indices describe the vulnerability of human systems; there have been very limited attempts to describe effects on the environment. Human systems and the environment are dependent on one another so that risks to the environment of a state will eventually translate into risks to humans. This is the first attempt to construct an index that focuses on the vulnerability of the environment. An Environmental Vulnerability Index (the EVI) was constructed, based on a theoretical framework that identified three aspects of vulnerability: risks to the environment (natural and anthropogenic), the innate ability of the environment to cope with the risks (resilience) and ecosystem integrity (the health or condition of the environment as a result of past impacts). These three aspects correspond to three sub-indices, the REI, IRI and EDI, which are the Risk Exposure sub-Index, Intrinsic Resilience sub-Index and Environmental Degradation sub- Index respectively. The EVI was calculated as a weighted average of scores allocated in the range of 0-7 derived from a total of 57 indicators. A preliminary EVI was calculated for three countries, Australia, Fiji and Tuvalu. The preliminary EVI value for Tuvalu was the highest of the three countries indicating that its environment is the most vulnerable. The score obtained for Fiji was intermediate in value, and that for Australia was the lowest, though the difference between Fiji and Australia was relatively smaller than that between Fiji and Tuvalu. There were similar levels of risk in each of the countries, the most degradation in Australia and the least intrinsic resilience in Tuvalu. These results, though promising are only preliminary because the EVI requires refinement and there was insufficient time to collect all of the required data from all of the countries and because there were some inconsistencies in the quality of the data. We expect that each of these problems can be overcome. The EVI developed here will require further refinement before it becomes fully operational. The results show that it is possible to obtain a single figure measure of vulnerability and that data which were previously thought to be difficult to obtain can be obtained. The methodology selected in the computation of the index can produce results which could have operational usefulness for ranking countries according to their environmental vulnerabilities. It is envisaged that the EVI would be recalculated every 5 years to provide updates on the vulnerability status of countries. This index highlights the need for governments to upgrade their collection and collation of environmental statistics. In addition, the breakdown of results into meteorological, geological, anthropogenic, and other categories of risk highlights areas of concern for environmental action.",
                                         "children": []
                                     },
                                     {
@@ -29460,7 +29442,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Refers to an environmental vulnerability index for Samoa. Development of a vulnerability index for the environment which could be calculated on the scale of entire states for the purpose of ranking them and providing a single-figure expression of their relative environmental vulnerabilities. This work was done in response to a call made in the Barbados Plan of Action, the Alliance of Small Island States (AOSIS) and an increasing awareness that small island developing states face disadvantages to their development associated with their remoteness, small size, dispersion, economic conditions, and limited natural resources. In the past vulnerability indices have been developed which describe the risks associated with economic and social conditions, climate change, sea-level rise, natural disasters and anthropogenic impacts. Most of these indices describe the vulnerability of human systems; there have been very limited attempts to describe effects on the environment. Human systems and the environment are dependent on one another so that risks to the environment of a state will eventually translate into risks to humans. This is the first attempt to construct an index that focuses on the vulnerability of the environment. An Environmental Vulnerability Index (the EVI) was constructed, based on a theoretical framework that identified three aspects of vulnerability: risks to the environment (natural and anthropogenic), the innate ability of the environment to cope with the risks (resilience) and ecosystem integrity (the health or condition of the environment as a result of past impacts). These three aspects correspond to three sub-indices, the REI, IRI and EDI, which are the Risk Exposure sub-Index, Intrinsic Resilience sub-Index and Environmental Degradation sub- Index respectively. The EVI was calculated as a weighted average of scores allocated in the range of 0-7 derived from a total of 57 indicators. A preliminary EVI was calculated for three countries, Australia, Fiji and Tuvalu. The preliminary EVI value for Tuvalu was the highest of the three countries indicating that its environment is the most vulnerable. The score obtained for Fiji was intermediate in value, and that for Australia was the lowest, though the difference between Fiji and Australia was relatively smaller than that between Fiji and Tuvalu. There were similar levels of risk in each of the countries, the most degradation in Australia and the least intrinsic resilience in Tuvalu. These results, though promising are only preliminary because the EVI requires refinement and there was insufficient time to collect all of the required data from all of the countries and because there were some inconsistencies in the quality of the data. We expect that each of these problems can be overcome. The EVI developed here will require further refinement before it becomes fully operational. The results show that it is possible to obtain a single figure measure of vulnerability and that data which were previously thought to be difficult to obtain can be obtained. The methodology selected in the computation of the index can produce results which could have operational usefulness for ranking countries according to their environmental vulnerabilities. It is envisaged that the EVI would be recalculated every 5 years to provide updates on the vulnerability status of countries. This index highlights the need for governments to upgrade their collection and collation of environmental statistics. In addition, the breakdown of results into meteorological, geological, anthropogenic, and other categories of risk highlights areas of concern for environmental action.",
                                         "children": []
                                     }
                                 ]
@@ -29471,7 +29453,7 @@
                                 "language": "en",
                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                "description": "",
+                                "description": "A set of parameters including topography and the heat-island effect that describe the changing climate on the land surface and agriculture lands.",
                                 "children": [
                                     {
                                         "id": "https://gcmd.earthdata.nasa.gov/kms/concept/32e1b1ec-fa69-47b5-b0d6-d71948e3997a",
@@ -29579,7 +29561,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "A growing season is the period of the year when crops and other plants grow successfully. The length of the growing season in any given region refers to the number of days when plant growth takes place. The growing season often determines which crops can be grown in an area, as some crops require long growing seasons, while others mature rapidly. Growing season length is limited by many different factors. Depending on the region and the climate, the growing season is influenced by air temperatures, frost days, rainfall, or daylight hours.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/f5824b8f-c3e7-4e56-96e8-cf4b5adefbf8",
@@ -29587,7 +29569,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "Refers to the time of year when crops are harvested depends on the type of crop and the location.",
                                                 "children": []
                                             },
                                             {
@@ -29596,7 +29578,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "The freeze date is the date of the minimum temperature being 32 degrees Fahrenheit or below. The \"frost\" date is the date of the minimum temperature being 36 degrees Fahrenheit or below. Note: Frost is also dependent on moisture, so this \"frost\" date is just an estimate.",
                                                 "children": []
                                             },
                                             {
@@ -29725,7 +29707,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Refers to freshwater ice or floating freshwater ice, is ice that forms on the surface of freshwater bodies when the surface water temperature falls just below 0\u02daC. Lake and river ice play a key role in the physical, biological, and chemical processes of cold region freshwater. The presence of freshwater ice also has economic implications ranging from transportation (ice-road duration, open-water shipping season) to the occurrence and severity of ice-jam flooding that often causes serious damage to infrastructure and property.",
                                         "children": []
                                     },
                                     {
@@ -29734,7 +29716,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "The process by which ice melts and breaks apart in lakes and rivers. Ice breakup in lakes and rivers has been watched carefully by people living in cold climates, allowing us to observe progressive earlier breakup associated with climate warming. Ice breakup is important to people because it indicates that waterways blocked by ice will soon be navigable, allowing transport of goods, hunting, recreation, and other activities of economic and social importance.",
                                         "children": []
                                     },
                                     {
@@ -29752,7 +29734,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Refers decrease in snow cover. Researchers found snow cover is declining in nearly twice as many grids as it advances. Arctic areas are showing heavy snow cover loss. Along with the general snow decline, there is also a shift in snow coverage. Snow is coming earlier and going away earlier. Snow cover is trending more in November and declining from February to late spring and early summer.",
                                         "children": []
                                     },
                                     {
@@ -29770,7 +29752,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Refers to the melt of permafrost. A thawing permafrost layer can lead to severe impacts on people and the environment. For instance, as ice-filled permafrost thaws, it can turn into a muddy slurry that cannot support the weight of the soil and vegetation above it. Infrastructure such as roads, buildings, and pipes could be damaged as permafrost thaws.",
                                         "children": []
                                     }
                                 ]
@@ -29789,7 +29771,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Refers to the decline and increase of the birth rate. Birth rate, also known as natality, is the total number of live human births per 1,000 population for a given period divided by the length of the period in years.",
                                         "children": []
                                     },
                                     {
@@ -29798,7 +29780,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "A measure of how successful reproduction is in a given breeding season. It can be used to assess the health of a population and can be an early indicator of environmental changes or population status.",
                                         "children": []
                                     },
                                     {
@@ -29816,7 +29798,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Refers to the variability of the canopy temperature, which is an integrative trait that reflects the plant water status or the resultant equilibrium between the root water uptake and shoot transpiration.",
                                         "children": []
                                     },
                                     {
@@ -29900,7 +29882,7 @@
                                 "language": "en",
                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                "description": "",
+                                "description": "A set of parameters that describe the changing climate with a focus on the cryosphere, which can include ice sheets, ice shelves, glaciers, snow cover, permafrost (frozen ground), sea ice, and river and lake ice. The cryosphere exerts an important influence on Earth\u2019s climate, owing to its high surface reflectivity (albedo). This property gives it the ability to reflect a large fraction of solar radiation back into space and influences how much solar energy is absorbed by land and oceans. Ice on land, in the form of ice sheets and glaciers, plays a further important role in the Earth system through its ability to store vast amounts of water away from the oceans for long periods of time. Any change in the ice volume stored on land, as ice sheets and glaciers grow or shrink, has a direct impact on global mean sea level. As the climate changes, the cryosphere changes with it and, through feedback processes, these changes have an influence on the climate. For example, the increased melting of snow and ice caused by a warming planet enables more solar energy to be absorbed by land or water, which in turn leads to more warming. This is also known as the snow- or ice-albedo feedback.",
                                 "children": [
                                     {
                                         "id": "https://gcmd.earthdata.nasa.gov/kms/concept/bb8c48bc-a36e-4f7e-afda-3244b058bc9c",
@@ -29909,15 +29891,6 @@
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
                                         "description": "Pertaining to the measuerment of a large mass of snow, ice, soil, rock, falling rapidly from heights far above a lowland area.",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "https://gcmd.earthdata.nasa.gov/kms/concept/82f49e65-c032-4f74-b5c2-a3f8058b7a71",
-                                        "text": "DEPTH HOAR",
-                                        "language": "en",
-                                        "scheme": "NASA/GCMD Earth Science Keywords",
-                                        "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "Depth hoar - Large-grained, faceted, cup-shaped crystals near the ground. Depth hoar is caused by large temperature gradients within the snowpack, usually in the early winter by large temperature differences between the warm ground and the cold snow surface.",
                                         "children": []
                                     },
                                     {
@@ -29935,7 +29908,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "Refers to the measurement of glaciers including geodetic mass balance, hydrological mass balance, velocity, melting, shape/volume, and monitoring using remote sensing.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/83bd640d-cd05-49a8-9ec7-aab60820b126",
@@ -30137,7 +30110,7 @@
                                 "language": "en",
                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                "description": "",
+                                "description": "A set of parameters that describe the changing climate with a focus on the paleoclimate, which can include marine sediments, ice cores, tree rings, pollen diatoms, microbiota, charcoal, and BIFs.",
                                 "children": [
                                     {
                                         "id": "https://gcmd.earthdata.nasa.gov/kms/concept/4bd6aafb-9240-4006-ada3-4b6a0501b612",
@@ -30154,7 +30127,7 @@
                                         "language": "en",
                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                        "description": "",
+                                        "description": "The scientific study of the distribution of living organisms, biological records describe the presence, abundance, associations, and changes, both in time and space, of wildlife.",
                                         "children": [
                                             {
                                                 "id": "https://gcmd.earthdata.nasa.gov/kms/concept/625ac4b3-a126-4c98-a061-3a780b942280",
@@ -30180,7 +30153,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "A measure of the number of individuals of each species.",
                                                 "children": []
                                             },
                                             {
@@ -30250,7 +30223,7 @@
                                                                 "language": "en",
                                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                                "description": "",
+                                                                "description": "The variation of carbon atoms with a different number of neutrons in their nucleus.",
                                                                 "children": []
                                                             },
                                                             {
@@ -30259,7 +30232,7 @@
                                                                 "language": "en",
                                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                                "description": "",
+                                                                "description": "The different forms of oxygen atoms that have the same number of protons but different numbers of neutrons in their nuclei. They can be used to determine the geological origin of ancient glass materials.",
                                                                 "children": []
                                                             },
                                                             {
@@ -30268,7 +30241,7 @@
                                                                 "language": "en",
                                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                                "description": "",
+                                                                "description": "A variant of a hydrogen atom with a different number of neutrons in its nucleus.",
                                                                 "children": []
                                                             }
                                                         ]
@@ -30335,7 +30308,7 @@
                                                         "language": "en",
                                                         "scheme": "NASA/GCMD Earth Science Keywords",
                                                         "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                        "description": "",
+                                                        "description": "The date of when a fire impacted trees or vegetation. The most often used evidence of past fire is fire scars. Although fire scars may seem easy to recognize, they can be confused with scars resulting from other causes. If the origin of a scar is in question, it should not be used. Fire scars always form at the base of the tree, usually in a triangular shape.",
                                                         "children": []
                                                     },
                                                     {
@@ -30960,7 +30933,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "The solar cycle is a nearly periodic change in the Sun's activity between the time where we can observe the most and least number of sunspots, and generally lasts around 11 years. Sometimes the surface of the Sun is very active with lots of sunspots, while other times it is quieter with only a few or even none.",
                                                 "children": []
                                             },
                                             {
@@ -30969,7 +30942,7 @@
                                                 "language": "en",
                                                 "scheme": "NASA/GCMD Earth Science Keywords",
                                                 "schemeURI": "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/sciencekeywords",
-                                                "description": "",
+                                                "description": "Refers to the intensity of energy emitted by the Sun, which can be harnessed for various applications such as solar sails, solar thermal propulsion, and electric power generation. The flux decreases as the distance from the Sun increases, following the inverse square law.",
                                                 "children": []
                                             }
                                         ]
