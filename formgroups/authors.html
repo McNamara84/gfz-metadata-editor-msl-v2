@@ -7,39 +7,7 @@
   <div class="card-body">
     <div id="authorGroup">
       <div class="row" data-creator-row>
-        <!--Eingabefeld Lastname Author-->
-        <div class="col-6 col-sm-6 col-md-4 col-lg-2 p-1">
-          <div class="input-group has-validation">
-            <div class="form-floating">
-              <input type="text" class="form-control" id="inputFamilyname" name="familynames[]"
-                pattern="^[a-zA-ZäöüÄÖÜß \-]*$" required />
-              <label for="inputFamilyname">
-                <?php echo $translations['lastname']; ?>
-              </label>
-              <div class="invalid-feedback">
-                <?php echo $translations['lastname_invalid']; ?>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!--Eingabefeld Firstname Author-->
-        <div class="col-6 col-sm-6 col-md-4 col-lg-2 p-1">
-          <div class="input-group has-validation">
-            <div class="form-floating">
-              <input type="text" class="form-control" id="inputGivenname" name="givennames[]"
-                pattern="^[a-zA-ZäöüÄÖÜß \-]*$" required />
-              <label for="inputGivenname">
-                <?php echo $translations['firstname']; ?>
-              </label>
-              <div class="invalid-feedback">
-                <?php echo $translations['firstname_invalid']; ?>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!--Eingabefeld ORCID Author-->
+        <!-- Input field ORCID Author -->
         <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
@@ -58,20 +26,48 @@
             </div>
           </div>
         </div>
-
-        <!--Eingabefeld Affiliation Author-->
+        <!-- Input field Lastname Author -->
+        <div class="col-6 col-sm-6 col-md-4 col-lg-2 p-1">
+          <div class="input-group has-validation">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="inputFamilyname" name="familynames[]"
+                pattern="^[a-zA-ZäöüÄÖÜß \-]*$" required />
+              <label for="inputFamilyname">
+                <?php echo $translations['lastname']; ?>
+              </label>
+              <div class="invalid-feedback">
+                <?php echo $translations['lastname_invalid']; ?>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Input field Firstname Author -->
+        <div class="col-6 col-sm-6 col-md-4 col-lg-2 p-1">
+          <div class="input-group has-validation">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="inputGivenname" name="givennames[]"
+                pattern="^[a-zA-ZäöüÄÖÜß \-.]*$" required />
+              <label for="inputGivenname">
+                <?php echo $translations['firstname']; ?>
+              </label>
+              <div class="invalid-feedback">
+                <?php echo $translations['firstname_invalid']; ?>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Input field Affiliation Author-->
         <div class="col-10 col-sm-11 col-md-11 col-lg-5 p-1">
           <div class="input-group has-validation">
             <input type="text" class="form-control input-with-help input-right-no-round-corners"
               id="inputAuthorAffiliation" name="affiliation[]"
               placeholder="<?php echo $translations['affiliation']; ?>" />
             <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                  data-help-section-id="affiliation"></i></span>
-            <input type="hidden" id="hiddenAuthorRorId" name="authorRorIds[]"/>
+                data-help-section-id="affiliation"></i></span>
+            <input type="hidden" id="hiddenAuthorRorId" name="authorRorIds[]" />
           </div>
         </div>
-
-        <!--Button "add Author"-->
+        <!-- Button "add Author" -->
         <div class="col-2 col-sm-1 col-md-1 col-lg-1 p-1 d-flex justify-content-center align-items-center">
           <div class="align-items-center">
             <button type="button" class="btn btn-primary addAuthor" id="addAuthor" style="width: 36px">
@@ -79,7 +75,6 @@
             </button>
           </div>
         </div>
-
       </div>
     </div>
   </div>

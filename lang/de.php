@@ -60,7 +60,7 @@ $translations = [
     'contributors_firstname_invalid' => 'Bitte geben Sie den Vornamen der/des Mitwirkenden ein. Es sind nur Buchstaben erlaubt.',
     'Organisation' => 'Organisationsname',
     'Organisation_invalid' => 'Bitte geben Sie einen gültigen Organisationsname an.',
-    'contributors_ORCID' => 'Mitwirkende ORCID',
+    'contributors_ORCID' => 'ORCID',
     'contributorsPersonZeile' => 'Mitwirkende Person(en)',
     'contributorsInstitutionZeile' => 'Mitwirkende Institution(en)',
 
