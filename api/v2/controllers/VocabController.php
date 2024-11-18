@@ -545,6 +545,15 @@ class VocabController
         }
     }
 
+    /**
+     * Fetches RDF data from NASA GCMD API with pagination support
+     *
+     * @param string $conceptScheme The concept scheme to fetch (instruments, sciencekeywords, platforms)
+     * @param int $pageNum The page number for pagination
+     * @param int $pageSize The number of items per page
+     * @return string The raw RDF data response
+     * @throws Exception If the HTTP request fails
+     */
     private function fetchRdfData($conceptScheme, $pageNum, $pageSize)
     {
         $url = "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/{$conceptScheme}?format=rdf&page_num={$pageNum}&page_size={$pageSize}";
@@ -565,6 +574,33 @@ class VocabController
         return $response;
     }
 
+    /**
+     * Recursively sorts children nodes alphabetically by their text property
+     *
+     * @param array &$nodes Reference to the array of nodes to sort
+     * @return void
+     */
+    private function sortChildrenRecursively(&$nodes)
+    {
+        foreach ($nodes as &$node) {
+            if (!empty($node['children'])) {
+                usort($node['children'], function ($a, $b) {
+                    return strcasecmp($a['text'], $b['text']);
+                });
+                $this->sortChildrenRecursively($node['children']);
+            }
+        }
+    }
+
+    /**
+     * Builds a hierarchical structure from RDF graph data
+     * Filters out "NOT APPLICABLE" entries and includes alternative labels
+     *
+     * @param Graph $graph The RDF graph object containing concept data
+     * @param string $conceptScheme The concept scheme identifier
+     * @param string $schemeName The human-readable name of the scheme
+     * @return array The hierarchical structure of concepts
+     */
     private function buildHierarchy($graph, $conceptScheme, $schemeName)
     {
         $hierarchy = [];
@@ -573,11 +609,30 @@ class VocabController
 
         $schemeURI = "https://gcmd.earthdata.nasa.gov/kms/concepts/concept_scheme/{$conceptScheme}";
 
+        // Create concept map without "NOT APPLICABLE" entries
         foreach ($concepts as $concept) {
             $uri = $concept->getUri();
             $label = $concept->getLiteral('skos:prefLabel') ? $concept->getLiteral('skos:prefLabel')->getValue() : '';
+
+            // Skip concepts with "NOT APPLICABLE" label
+            if ($label === 'NOT APPLICABLE') {
+                continue;
+            }
+
             $lang = $concept->getLiteral('skos:prefLabel') ? $concept->getLiteral('skos:prefLabel')->getLang() : '';
-            $description = $concept->getLiteral('skos:definition', 'en') ? $concept->getLiteral('skos:definition', 'en')->getValue() : '';
+            $description = $concept->getLiteral('skos:definition', 'en') ?
+                $concept->getLiteral('skos:definition', 'en')->getValue() : '';
+
+            // Add optional alternative labels
+            $altLabels = [];
+            foreach ($concept->allResources('skos:altLabel') as $altLabel) {
+                $altLabels[] = $altLabel->getValue();
+            }
+
+            // Append alternative labels to description if present
+            if (!empty($altLabels)) {
+                $description .= "\nAlternative labels: " . implode(', ', $altLabels);
+            }
 
             $conceptMap[$uri] = [
                 'id' => $uri,
@@ -590,22 +645,52 @@ class VocabController
             ];
         }
 
+        // Build hierarchy
         foreach ($concepts as $concept) {
             $uri = $concept->getUri();
+
+            // Skip if concept is not in map (was "NOT APPLICABLE")
+            if (!isset($conceptMap[$uri])) {
+                continue;
+            }
+
             $broader = $concept->getResource('skos:broader');
             if ($broader) {
                 $broaderUri = $broader->getUri();
+                // Check if parent concept exists
                 if (isset($conceptMap[$broaderUri])) {
                     $conceptMap[$broaderUri]['children'][] = &$conceptMap[$uri];
+                } else {
+                    // If parent concept was "NOT APPLICABLE",
+                    // add this concept to root level
+                    $hierarchy[] = &$conceptMap[$uri];
                 }
             } else {
                 $hierarchy[] = &$conceptMap[$uri];
             }
         }
 
+        // Sort concepts alphabetically
+        usort($hierarchy, function ($a, $b) {
+            return strcasecmp($a['text'], $b['text']);
+        });
+
+        // Sort children recursively
+        $this->sortChildrenRecursively($hierarchy);
+
         return $hierarchy;
     }
 
+    /**
+     * Processes GCMD keywords for a specific concept scheme
+     * Fetches data paginated, builds hierarchy, and saves to JSON file
+     *
+     * @param string $conceptScheme The concept scheme to process
+     * @param string $schemeName The name of the scheme
+     * @param string $outputFile The path to the output JSON file
+     * @return bool True if successful, false otherwise
+     * @throws Exception If data fetching or processing fails
+     */
     private function processGcmdKeywords($conceptScheme, $schemeName, $outputFile)
     {
         $pageNum = 1;
@@ -646,12 +731,14 @@ class VocabController
 
     /**
      * Updates all GCMD vocabularies (Science Keywords, Instruments, and Platforms)
+     * Downloads latest versions from NASA's GCMD repository and saves them as JSON files
      *
      * @return void
+     * @throws Exception If the update process fails
      */
     public function updateGcmdVocabs()
     {
-        // Temporär Error Reporting anpassen
+        // Temporarily adjust error reporting
         $originalErrorReporting = error_reporting();
         error_reporting(E_ALL & ~E_DEPRECATED);
 
@@ -693,7 +780,7 @@ class VocabController
                 }
             }
 
-            // Error Reporting zurücksetzen
+            // Reset error reporting
             error_reporting($originalErrorReporting);
 
             header('Content-Type: application/json');
@@ -704,7 +791,7 @@ class VocabController
             ]);
 
         } catch (Exception $e) {
-            // Error Reporting zurücksetzen
+            // Reset error reporting
             error_reporting($originalErrorReporting);
 
             http_response_code(500);
