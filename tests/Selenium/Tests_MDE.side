@@ -2233,13 +2233,9 @@
     "name": "Default Suite",
     "persistSession": false,
     "parallel": false,
-    "timeout": 300,
+    "timeout": 30000,
     "tests": ["21e2027f-6eeb-4a2c-b733-1ec31431ed4a", "0535f978-2aad-42ee-8e61-4355ea992c55", "93fb5119-337c-47ac-874c-47162131f059", "1737c436-a33a-47ed-a7b7-0daa80928273", "e42ac07b-e969-497c-9dc7-848a7d9f59c4", "7020eb46-3b5b-445c-b76a-a56a142f9874"]
   }],
   "urls": ["http://127.0.0.1:8000/"],
-  "plugins": [],
-  "configuration": {
-    "timeout": 30000,
-    "pageLoadTimeout": 30000
-  }
+  "plugins": []
 }
