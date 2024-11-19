@@ -36,14 +36,21 @@ jobs:
         extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, zip
         coverage: xdebug
 
-    - name: Install Chrome
+    - name: Install Chrome and Dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y chromium-browser chromium-chromedriver
+        sudo apt-get install -y chromium-browser chromium-chromedriver xvfb
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
 
     - name: Install Selenium IDE CLI
       run: |
         npm install -g selenium-side-runner
+        npm install -g chromedriver
+        npm install -g selenium-webdriver
 
     - name: Update Composer dependencies
       run: composer update --no-interaction --no-progress
@@ -119,15 +126,34 @@ jobs:
 
     - name: Start PHP server
       run: |
-        php -S localhost:8000 -t . tests/server.php > server.log 2>&1 &
+        php -S 127.0.0.1:8000 -t . &
         echo $! > php-server.pid
-        sleep 5
+        # Wait for the server to be ready
+        for i in {1..10}; do
+          if curl -s http://127.0.0.1:8000 > /dev/null; then
+            echo "PHP server is up!"
+            break
+          fi
+          echo "Waiting for PHP server... attempt $i"
+          sleep 2
+        done
+
+    - name: Start Xvfb
+      run: |
+        Xvfb :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+        echo "export DISPLAY=:99.0" >> ~/.bashrc
+        source ~/.bashrc
 
     - name: Run Selenium tests
       run: |
+        # Verify server is accessible
+        curl -v http://127.0.0.1:8000
+        
+        # Run Selenium tests
         selenium-side-runner \
-          --server http://localhost:8000 \
-          --base-url http://localhost:8000 \
+          --server http://127.0.0.1:8000 \
+          --base-url http://127.0.0.1:8000 \
+          --headless \
           tests/Selenium/Tests_MDE.side
 
     - name: Stop PHP server
@@ -139,4 +165,6 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: server-logs
-        path: server.log
+        path: |
+          server.log
+          /var/log/apache2/*
