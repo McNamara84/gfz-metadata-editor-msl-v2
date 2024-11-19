@@ -25,16 +25,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 3
-      
-      chrome:
-        image: selenium/standalone-chrome:latest
-        env:
-          DISPLAY: :99
-        ports:
-          - 4444:4444
-        options: >-
-          --shm-size="2g"
-          --add-host=host.docker.internal:host-gateway
 
     steps:
     - uses: actions/checkout@v4
@@ -64,20 +54,6 @@ jobs:
         composer install --prefer-dist --no-progress --no-suggest
         composer dump-autoload -o
 
-    - name: Wait for MySQL
-      run: |
-        for i in {30..0}; do
-          if mysqladmin ping -h127.0.0.1 --silent; then
-            break
-          fi
-          echo 'Waiting for MySQL...'
-          sleep 1
-        done
-        if [ "$i" = 0 ]; then
-          echo >&2 'MySQL did not start in time.'
-          exit 1
-        fi
-
     - name: Set up database
       run: |
         mysql -h127.0.0.1 -uroot -proot_password -e "
@@ -86,7 +62,7 @@ jobs:
           FLUSH PRIVILEGES;
         "
 
-    - name: Create settings.php and run install
+    - name: Create settings.php
       run: |
         cat << EOF > settings.php
         <?php
@@ -125,52 +101,70 @@ jobs:
         \$feedbackAdress = 'feedback@test.com';
         EOF
 
-        php install.php
+    - name: Run install.php
+      run: php install.php
+
+    - name: Create Docker network
+      run: docker network create test-network
+
+    - name: Start Selenium container
+      run: |
+        docker run -d --network test-network \
+          --name selenium \
+          -p 4444:4444 \
+          -p 7900:7900 \
+          --shm-size="2g" \
+          selenium/standalone-chrome:latest
 
     - name: Start PHP server
       run: |
-        php -S 0.0.0.0:8000 -t . > php-server.log 2>&1 &
-        echo $! > php-server.pid
-        
-        # Wait for PHP server to be ready
+        docker run -d --network test-network \
+          --name php-app \
+          -v ${{ github.workspace }}:/var/www/html \
+          -p 8000:8000 \
+          php:8.2-cli \
+          php -S 0.0.0.0:8000 -t /var/www/html
+
+    - name: Wait for services
+      run: |
+        # Wait for Selenium
         timeout=30
-        until curl -s http://localhost:8000 > /dev/null || [ $timeout -eq 0 ]; do
-          echo "Waiting for PHP server... ($timeout seconds left)"
-          (( timeout-- ))
+        until curl -s http://localhost:4444/wd/hub/status > /dev/null; do
+          if [ $timeout -eq 0 ]; then
+            echo "Selenium failed to start"
+            exit 1
+          fi
+          echo "Waiting for Selenium... ($timeout seconds left)"
+          timeout=$((timeout-1))
           sleep 1
         done
-        
-        if [ $timeout -eq 0 ]; then
-          echo "PHP server failed to start"
-          cat php-server.log
-          exit 1
-        fi
-        
-        echo "PHP server is running"
-        curl -v http://localhost:8000
+
+        # Wait for PHP
+        timeout=30
+        until curl -s http://localhost:8000 > /dev/null; do
+          if [ $timeout -eq 0 ]; then
+            echo "PHP server failed to start"
+            exit 1
+          fi
+          echo "Waiting for PHP server... ($timeout seconds left)"
+          timeout=$((timeout-1))
+          sleep 1
+        done
 
     - name: Run Selenium tests
       run: |
-        # Check if servers are accessible
-        echo "Testing PHP server:"
-        curl -v http://localhost:8000
-        
-        echo "Testing Selenium server:"
-        curl -v http://localhost:4444/wd/hub/status
-        
-        # Run tests
         selenium-side-runner \
           --browser chrome \
           --server http://localhost:4444/wd/hub \
-          --base-url http://localhost:8000 \
+          --base-url http://php-app:8000 \
           tests/Selenium/Tests_MDE.side
 
-    - name: Stop PHP server
+    - name: Cleanup
       if: always()
       run: |
-        if [ -f php-server.pid ]; then
-          kill $(cat php-server.pid) || true
-        fi
+        docker stop selenium php-app || true
+        docker rm selenium php-app || true
+        docker network rm test-network || true
 
     - name: Upload logs
       if: always()
