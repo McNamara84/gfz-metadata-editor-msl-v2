@@ -102,7 +102,7 @@ Aktualisiert die Liste der Zeitzonen für das Feld `Timezones` in der Gruppe `Sp
 **Antwort:**
 Bestätigungsnachricht über erfolgreiche Aktualisierung
 
-### 3. NASA Science Keywords
+### 3. NASA Science Keywords (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getNasaScienceKeywords
 
@@ -177,7 +177,7 @@ Exportiert einen Datensatz als XML-Datei gemäß dem DIF-Format.
 **Antwort:**
 XML-Datei oder XML-Inhalt
 
-### 9. Alle Ressourcen als eine XML-Datei
+### 9. Alle Ressourcen als eine XML-Datei (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getResourcesAsOneFile&id={resource_id}
 
@@ -254,7 +254,7 @@ Ruft Rollen aus der Datenbank ab.
 **Antwort:**
 JSON-Array mit Rollen-Objekten
 
-### 16. NASA Instruments Keywords aktualisieren
+### 16. NASA Instruments Keywords aktualisieren (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getNasaInstrumentsKeywords
 
@@ -263,7 +263,7 @@ Aktualisiert die NASA/GCMD Instruments Keywords.
 **Antwort:**
 Bestätigungsnachricht über erfolgreiche Aktualisierung
 
-### 17. NASA Platforms Keywords aktualisieren
+### 17. NASA Platforms Keywords aktualisieren (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getNasaPlatformsKeywords
 

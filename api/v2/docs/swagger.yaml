@@ -1,33 +1,43 @@
-openapi: 3.1.0
+openapi: 3.1.1
 info:
   title: Metadata Editor 2 - MSL Edition
   description: |-
-    This is the Metadata Editor API V2 from GFZ Data Services based on the OpenAPI 3.1 specification. You can find the new version on our [test server](https://mde2.cats4future.de).
+    This is the Metadata Editor API V2 from GFZ Data Services. The API allows management and retrieval of metadata for scientific datasets.
 
     Some useful links:
     - [The MDE2-MSL repository](https://github.com/McNamara84/gfz-metadata-editor-msl-v2)
     - [Test Server](https://mde2.cats4future.de)
+
+    ### Binary Data
+    Some endpoints return binary data (XML files) for download. These responses use the `application/octet-stream` content type.
+
+    ### Security Note
+    This API is publicly accessible and does not require authentication. However, rate limiting may apply.
   termsOfService: https://github.com/McNamara84/gfz-metadata-editor-msl-v2
   contact:
+    name: Holger Ehrmann
     email: ehrmann@gfz-potsdam.de
+    url: https://mde2.cats4future.de
   license:
     name: MIT
     url: https://raw.githubusercontent.com/McNamara84/gfz-metadata-editor-msl-v2/refs/heads/main/LICENSE.md
-  version: 1.8.0
+  version: 1.8.1
 externalDocs:
   description: Documentation of the API V1 at GitHub
   url: https://github.com/McNamara84/gfz-metadata-editor-msl-v2#api-endpunkte
 servers:
   - url: https://mde2.cats4future.de/api/v2
+    description: Test server
+security: []
 tags:
   - name: general
     description: General operations for health checks and version
   - name: update
-    description: Operations about updating the vocabularies
+    description: Operations for updating the vocabularies
   - name: vocabularies
-    description: Operations related to retrieving vocabularies
+    description: Operations for retrieving vocabularies
   - name: validation
-    description: Operations to validate data
+    description: Operations for data validation
   - name: dataset
     description: Operations for dataset management and export
 paths:
@@ -56,27 +66,10 @@ paths:
       tags:
         - update
       summary: Update MSL vocabularies
-      description: Update vocabularies for MSL
+      description: |-
+        Updates all MSL vocabularies (materials, porefluids, and rockphysics) from the source repository. 
+        Synonyms from the source are stored as comma-separated strings in the description field.
       operationId: getMslVocab
-      parameters:
-        - in: query
-          name: type
-          schema:
-            type: string
-            enum:
-              [
-                all,
-                analogue,
-                geochemistry,
-                geologicalage,
-                geologicalsetting,
-                materials,
-                microscopy,
-                paleomagnetism,
-                porefluids,
-                rockphysics,
-              ]
-          description: Type of vocabulary to update. If not provided, defaults to 'all'.
       responses:
         "200":
           description: Successful operation
@@ -84,12 +77,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/VocabularyUpdate"
-        "400":
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
         "500":
           description: Internal server error
           content:
@@ -101,7 +88,7 @@ paths:
       tags:
         - update
       summary: Update MSL Labs vocabulary
-      description: Fetch and update the MSL Labs vocabulary from the GitHub repository. The response includes the updated labs with their IDs.
+      description: Fetch and update the MSL Labs vocabulary from the GitHub repository.
       operationId: updateMslLabs
       responses:
         "200":
@@ -110,6 +97,26 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/MSLLabsUpdateResponse"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /update/vocabs/gcmd:
+    get:
+      tags:
+        - update
+      summary: Update GCMD vocabularies (Science Keywords, Instruments, and Platforms)
+      description: Updates all GCMD vocabularies (Science Keywords, Instruments, and Platforms) from NASA's GCMD repository
+      operationId: updateGcmdVocabs
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GcmdVocabularyUpdate"
         "500":
           description: Internal server error
           content:
@@ -140,8 +147,8 @@ paths:
     get:
       tags:
         - vocabularies
-      summary: Get GCMD Science Keywords
-      description: Retrieve the controlled vocabulary of GCMD Science Keywords from NASA as a JSON string
+      summary: Get GCMD Science Keywords (for third party use)
+      description: Retrieve the controlled vocabulary of GCMD Science Keywords from NASA (already prepared for use with jsTree)
       operationId: getGcmdScienceKeywords
       responses:
         "200":
@@ -161,19 +168,16 @@ paths:
       tags:
         - vocabularies
       summary: Retrieve roles based on type
-      description: Get a list of roles filtered by type (`all`, `person`, `institution`, or `both`).
+      description: Get a list of roles filtered by type
       operationId: getRoles
       parameters:
-        - in: query
-          name: type
+        - name: type
+          in: query
+          description: Type of roles to retrieve
           schema:
             type: string
-            enum:
-              - all
-              - person
-              - institution
-              - both
-          description: Type of roles to retrieve. Defaults to 'all' if not specified.
+            enum: [all, person, institution, both]
+            default: all
       responses:
         "200":
           description: Successful operation
@@ -184,13 +188,7 @@ paths:
                 items:
                   $ref: "#/components/schemas/Role"
         "400":
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        "404":
-          description: No roles found
+          description: Invalid role type provided
           content:
             application/json:
               schema:
@@ -206,7 +204,7 @@ paths:
       tags:
         - vocabularies
       summary: Get all relations
-      description: Retrieve a list of all available relations for dataset relationships
+      description: Retrieve all available relations for dataset relationships
       operationId: getRelations
       responses:
         "200":
@@ -221,22 +219,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-              example:
-                error: "No relations found"
         "500":
           description: Internal server error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-              example:
-                error: "Database error"
   /vocabs/licenses/all:
     get:
       tags:
         - vocabularies
       summary: Get all licenses
-      description: Returns a list of all available licenses
+      description: Returns all available licenses
       operationId: getAllLicenses
       responses:
         "200":
@@ -259,13 +253,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
   /vocabs/licenses/software:
     get:
       tags:
         - vocabularies
       summary: Get software licenses
-      description: Returns a list of licenses specifically for software
+      description: Returns licenses specifically for software
       operationId: getSoftwareLicenses
       responses:
         "200":
@@ -293,15 +286,15 @@ paths:
       tags:
         - validation
       summary: Retrieve regex pattern for validation
-      description: Returns the regex pattern for the validation of the specified type.
+      description: Returns the regex pattern for validating the specified type
       operationId: getPattern
       parameters:
-        - in: path
-          name: type
+        - name: type
+          in: path
           required: true
           schema:
             type: string
-          description: The type for which the validation pattern is to be retrieved.
+          description: The type for which to retrieve the validation pattern
       responses:
         "200":
           description: Successful operation
@@ -326,7 +319,7 @@ paths:
       tags:
         - validation
       summary: Retrieve all identifier types
-      description: Returns a list of all available identifier types with their validation patterns.
+      description: Returns all available identifier types with their validation patterns
       operationId: getIdentifierTypes
       responses:
         "200":
@@ -352,26 +345,23 @@ paths:
       tags:
         - dataset
       summary: View dataset as XML
-      description: View a dataset as XML in different metadata schemes
+      description: View a dataset as XML in the specified metadata scheme
       operationId: exportDataset
       parameters:
         - name: id
           in: path
-          description: ID of the dataset to export
+          description: Dataset ID to export
           required: true
           schema:
             type: integer
             format: int64
         - name: scheme
           in: path
-          description: Metadata scheme for the export
+          description: Metadata scheme for export
           required: true
           schema:
             type: string
-            enum:
-              - datacite
-              - iso
-              - dif
+            enum: [datacite, iso, dif]
       responses:
         "200":
           description: Successful operation
@@ -380,32 +370,41 @@ paths:
               schema:
                 type: string
                 format: binary
-
+                description: XML content of the dataset
+        "400":
+          description: Invalid ID or scheme provided
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Dataset not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
   /dataset/export/{id}/{scheme}/download:
     get:
       tags:
         - dataset
       summary: Download dataset as XML
-      description: Download a dataset as XML file in different metadata schemes
+      description: Download a dataset as XML file in the specified metadata scheme
       operationId: exportDatasetDownload
       parameters:
         - name: id
           in: path
-          description: ID of the dataset to export
+          description: Dataset ID to export
           required: true
           schema:
             type: integer
             format: int64
         - name: scheme
           in: path
-          description: Metadata scheme for the export
+          description: Metadata scheme for export
           required: true
           schema:
             type: string
-            enum:
-              - datacite
-              - iso
-              - dif
+            enum: [datacite, iso, dif]
       responses:
         "200":
           description: Successful operation
@@ -414,17 +413,30 @@ paths:
               schema:
                 type: string
                 format: binary
+                description: XML file for download
+        "400":
+          description: Invalid ID or scheme provided
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Dataset not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
   /dataset/export/{id}/all:
     get:
       tags:
         - dataset
-      summary: View all metadata formats of a dataset
-      description: View a dataset in all available metadata schemes (DataCite, ISO, and DIF) combined in one XML document
+      summary: View all metadata formats
+      description: View dataset in all available metadata schemes combined in one XML document
       operationId: exportAllFormats
       parameters:
         - name: id
           in: path
-          description: ID of the dataset to export
+          description: Dataset ID to export
           required: true
           schema:
             type: integer
@@ -437,37 +449,30 @@ paths:
               schema:
                 type: string
                 format: binary
-              example: |
-                <?xml version="1.0" encoding="UTF-8"?>
-                <envelope>
-                    <datacite>
-                        <!-- DataCite XML content -->
-                    </datacite>
-                    <iso>
-                        <!-- ISO XML content -->
-                    </iso>
-                    <dif>
-                        <!-- DIF XML content -->
-                    </dif>
-                </envelope>
+                description: Combined XML content
         "400":
-          description: Invalid ID supplied or transformation error
+          description: Invalid ID provided
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+        "404":
+          description: Dataset not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
   /dataset/export/{id}/all/download:
     get:
       tags:
         - dataset
-      summary: Download all metadata formats of a dataset
-      description: Download a dataset in all available metadata schemes (DataCite, ISO, and DIF) combined in one XML file
+      summary: Download all metadata formats
+      description: Download dataset in all available metadata schemes as a single XML file
       operationId: exportAllFormatsDownload
       parameters:
         - name: id
           in: path
-          description: ID of the dataset to export
+          description: Dataset ID to export
           required: true
           schema:
             type: integer
@@ -480,8 +485,15 @@ paths:
               schema:
                 type: string
                 format: binary
+                description: Combined XML file for download
         "400":
-          description: Invalid ID supplied or transformation error
+          description: Invalid ID provided
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Dataset not found
           content:
             application/json:
               schema:
@@ -494,47 +506,63 @@ components:
         rights_id:
           type: integer
           format: int64
+          description: Unique identifier for the license
+          example: 1
         name:
           type: string
+          description: Full name of the license
+          example: "Creative Commons Attribution 4.0 International"
         url:
           type: string
+          format: uri
+          description: URL to the license text
+          example: "https://creativecommons.org/licenses/by/4.0/"
         forSoftware:
           type: integer
           enum: [0, 1]
           default: 0
-      example:
-        rights_id: 1
-        name: "Creative Commons Attribution 4.0 International"
-        url: "https://creativecommons.org/licenses/by/4.0/"
-        forSoftware: 0
-
+          description: Indicates if license is suitable for software (1) or not (0)
+      required:
+        - rights_id
+        - name
+        - url
     SoftwareLicense:
       type: object
       properties:
         rights_id:
           type: integer
           format: int64
+          description: Unique identifier for the software license
+          example: 2
         name:
           type: string
+          description: Full name of the software license
+          example: "MIT License"
         url:
           type: string
+          format: uri
+          description: URL to the license text
+          example: "https://opensource.org/licenses/MIT"
         forSoftware:
           type: integer
           enum: [1]
           default: 1
-      example:
-        rights_id: 2
-        name: "MIT License"
-        url: "https://opensource.org/licenses/MIT"
-        forSoftware: 1
+          description: Always 1 for software licenses
+      required:
+        - rights_id
+        - name
+        - url
+        - forSoftware
     TimezonesUpdateResponse:
       type: object
       properties:
         message:
           type: string
+          description: Status message of the update operation
           example: "Timezones successfully updated"
         timezones:
           type: array
+          description: List of updated timezones
           items:
             $ref: "#/components/schemas/Timezone"
       required:
@@ -559,45 +587,48 @@ components:
       properties:
         message:
           type: string
-          example: "Updating vocab for type: all"
-        results:
-          type: object
-          additionalProperties:
-            type: string
-          example:
-            analogue: "Updated to version 1.5"
-            geochemistry: "Updated to version 1.4"
-            geologicalage: "No data found"
+          description: Status message of the update operation
+          example: "Successfully updated MSL vocabularies"
+        version:
+          type: string
+          description: Version of the updated vocabulary
+          example: "1.3"
+        timestamp:
+          type: string
+          format: date-time
+          description: Time of the update
+          example: "2024-11-16T20:30:22Z"
       required:
         - message
-        - results
+        - version
+        - timestamp
     RelationsResponse:
       type: object
       properties:
         relations:
           type: array
+          description: List of available relations
           items:
             $ref: "#/components/schemas/Relation"
       required:
         - relations
-
     Relation:
       type: object
       properties:
         id:
           type: integer
-          description: Unique identifier of the relation (relation_id in database)
+          description: Unique identifier of the relation
           example: 1
         name:
           type: string
-          description: Name of the relation (max 45 characters)
-          example: "IsCitedBy"
           maxLength: 45
+          description: Name of the relation
+          example: "IsCitedBy"
         description:
           type: string
-          description: Description of the relation (max 1000 characters)
-          example: "Indicates that the related dataset cites this dataset"
           maxLength: 1000
+          description: Description of the relation
+          example: "Indicates that B cites A"
       required:
         - id
         - name
@@ -607,9 +638,11 @@ components:
       properties:
         message:
           type: string
+          description: Status message of the update operation
           example: "MSL Labs vocabulary successfully updated"
         labs:
           type: array
+          description: List of updated labs
           items:
             $ref: "#/components/schemas/MSLLab"
       required:
@@ -639,15 +672,51 @@ components:
       properties:
         error:
           type: string
+          description: Error message
           example: "An error occurred"
+      required:
+        - error
+    GcmdVocabularyUpdate:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Status message of the update operation
+          example: "GCMD vocabularies update completed"
+        results:
+          type: object
+          description: Results for each vocabulary type
+          properties:
+            instruments:
+              type: string
+              example: "Updated successfully"
+            sciencekeywords:
+              type: string
+              example: "Updated successfully"
+            platforms:
+              type: string
+              example: "Updated successfully"
+        timestamp:
+          type: string
+          format: date-time
+          description: Time of the update
+          example: "2024-11-17T10:51:38Z"
+      required:
+        - message
+        - results
+        - timestamp
     HealthResponse:
       type: object
       properties:
         message:
           type: string
+          description: Health status message
           example: "I'm still alive..."
+      required:
+        - message
     VocabularyTree:
       type: array
+      description: Hierarchical structure of vocabulary terms
       items:
         $ref: "#/components/schemas/VocabularyNode"
     VocabularyNode:
@@ -655,18 +724,26 @@ components:
       properties:
         id:
           type: string
+          description: Unique identifier for the term
         text:
           type: string
+          description: Display text of the term
         language:
           type: string
+          description: Language code of the term
         scheme:
           type: string
+          description: Name of the vocabulary scheme
         schemeURI:
           type: string
+          format: uri
+          description: URI of the vocabulary scheme
         description:
           type: string
+          description: Description or synonyms (comma-separated)
         children:
           type: array
+          description: Child terms in the hierarchy
           items:
             $ref: "#/components/schemas/VocabularyNode"
       required:
@@ -682,17 +759,20 @@ components:
       properties:
         id:
           type: integer
+          description: Unique identifier of the role
           example: 1
         name:
           type: string
+          description: Name of the role
           example: "Data Curator"
         forInstitutions:
           type: integer
           description: |
-            Indicates the type of institution:
-            - `0`: for persons
-            - `1`: for institutions
-            - `2`: for both
+            Role type indicator:
+            * `0` - for persons only
+            * `1` - for institutions only
+            * `2` - for both persons and institutions
+          enum: [0, 1, 2]
           example: 0
       required:
         - id
@@ -703,6 +783,7 @@ components:
       properties:
         pattern:
           type: string
+          description: Regular expression pattern for validation
           example: "^[a-zA-Z0-9]{10}$"
       required:
         - pattern
@@ -711,6 +792,7 @@ components:
       properties:
         identifierTypes:
           type: array
+          description: List of identifier types
           items:
             $ref: "#/components/schemas/IdentifierType"
       required:

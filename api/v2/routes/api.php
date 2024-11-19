@@ -17,8 +17,9 @@ return [
 
     // Vocabulary update endpoints
     ['GET', '/update/vocabs/msl/labs', [new VocabController(), 'updateMslLabs']],
-    ['GET', '/update/vocabs/msl[/{type}]', [new VocabController(), 'getMslVocab']],
+    ['GET', '/update/vocabs/msl', [new VocabController(), 'getMslVocab']],
     ['GET', '/update/timezones', [new VocabController(), 'updateTimezones']],
+    ['GET', '/update/vocabs/gcmd', [new VocabController(), 'updateGcmdVocabs']],
 
     // Vocabulary retrieval endpoints
     ['GET', '/vocabs/sciencekeywords', [new VocabController(), 'getGcmdScienceKeywords']],
