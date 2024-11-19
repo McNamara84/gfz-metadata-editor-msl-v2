@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Edited with Altova MapForce 2024 -->
+<!-- Edited with Altova MapForce 2025 -->
 <mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="22">
 	<resources/>
 	<component name="defaultmap" uid="1" editable="1" blackbox="0">
@@ -10,7 +10,7 @@
 					<targets>
 						<datapoint pos="0" key="12"/>
 					</targets>
-					<view ltx="374" lty="-90" rbx="491" rby="-73"/>
+					<view ltx="374" lty="-90" rbx="478" rby="-73"/>
 					<data>
 						<constant value="http://doi.org/" datatype="string"/>
 					</data>
@@ -22,7 +22,7 @@
 					<targets>
 						<datapoint pos="0" key="18"/>
 					</targets>
-					<view ltx="414" lty="-33" rbx="509" rby="5"/>
+					<view ltx="414" lty="-33" rbx="498" rby="4"/>
 				</component>
 				<component name="if-else" library="core" uid="12" kind="4">
 					<sources>
@@ -33,7 +33,7 @@
 					<targets>
 						<datapoint pos="0" key="15"/>
 					</targets>
-					<view ltx="685" lty="-8" rbx="789" rby="65"/>
+					<view ltx="685" lty="-8" rbx="776" rby="60"/>
 					<data>
 						<comment>
 							<text>Wurde version befüllt?</text>
@@ -44,7 +44,7 @@
 					<targets>
 						<datapoint pos="0" key="25"/>
 					</targets>
-					<view ltx="1493" lty="-124" rbx="1574" rby="-107"/>
+					<view ltx="1493" lty="-124" rbx="1565" rby="-107"/>
 					<data>
 						<constant value="Dataset" datatype="string"/>
 						<comment>
@@ -61,7 +61,7 @@
 					<targets>
 						<datapoint pos="0" key="45"/>
 					</targets>
-					<view ltx="526" lty="118" rbx="630" rby="191"/>
+					<view ltx="526" lty="118" rbx="617" rby="186"/>
 					<data>
 						<comment>
 							<text>Wenn TitleType MainTitle, dann nur Sprachkürzel einfügen</text>
@@ -76,7 +76,7 @@
 					<targets>
 						<datapoint pos="0" key="47"/>
 					</targets>
-					<view ltx="374" lty="170" rbx="472" rby="224"/>
+					<view ltx="374" lty="170" rbx="458" rby="222"/>
 				</component>
 				<component name="if-else" library="core" uid="22" kind="4">
 					<sources>
@@ -87,7 +87,7 @@
 					<targets>
 						<datapoint pos="0" key="50"/>
 					</targets>
-					<view ltx="733" lty="207" rbx="837" rby="280"/>
+					<view ltx="733" lty="207" rbx="824" rby="275"/>
 					<data>
 						<comment>
 							<text>Wenn TitleType nicht MainTitle, TitleType ohne Leerzeichen übernehmen</text>
@@ -98,7 +98,7 @@
 					<targets>
 						<datapoint pos="0" key="36"/>
 					</targets>
-					<view ltx="259" lty="207" rbx="351" rby="224"/>
+					<view ltx="259" lty="207" rbx="343" rby="224"/>
 					<data>
 						<constant value="Main Title" datatype="string"/>
 					</data>
@@ -107,7 +107,7 @@
 					<targets>
 						<datapoint pos="0" key="67"/>
 					</targets>
-					<view ltx="1493" lty="-57" rbx="1561" rby="-40"/>
+					<view ltx="1493" lty="-57" rbx="1557" rby="-40"/>
 					<data>
 						<constant value="SPDX" datatype="string"/>
 						<comment>
@@ -119,7 +119,7 @@
 					<targets>
 						<datapoint pos="0" key="68"/>
 					</targets>
-					<view ltx="1493" lty="-22" rbx="1642" rby="-5"/>
+					<view ltx="1493" lty="-22" rbx="1623" rby="-5"/>
 					<data>
 						<constant value="https://spdx.org/licenses/" datatype="string"/>
 						<comment>
@@ -135,7 +135,7 @@
 					<targets>
 						<datapoint pos="0" key="11"/>
 					</targets>
-					<view ltx="504" lty="-127" rbx="608" rby="-73"/>
+					<view ltx="504" lty="-127" rbx="595" rby="-75"/>
 					<data>
 						<comment>
 							<text>Abschneiden des URIs von der DOI</text>
@@ -146,7 +146,7 @@
 					<targets>
 						<datapoint pos="0" key="7"/>
 					</targets>
-					<view ltx="1493" lty="-157" rbx="1555" rby="-140"/>
+					<view ltx="1493" lty="-157" rbx="1550" rby="-140"/>
 					<data>
 						<constant value="DOI" datatype="string"/>
 						<comment>
@@ -163,7 +163,7 @@
 					<targets>
 						<datapoint pos="0" key="89"/>
 					</targets>
-					<view ltx="474" lty="349" rbx="566" rby="422"/>
+					<view ltx="474" lty="349" rbx="554" rby="417"/>
 					<data>
 						<comment>
 							<text>Connecting Authors Lastname and Firstname</text>
@@ -174,7 +174,7 @@
 					<targets>
 						<datapoint pos="0" key="110"/>
 					</targets>
-					<view ltx="1492" lty="185" rbx="1609" rby="202"/>
+					<view ltx="1492" lty="185" rbx="1596" rby="202"/>
 					<data>
 						<constant value="ContactPerson" datatype="string"/>
 						<comment>
@@ -190,7 +190,7 @@
 					<targets>
 						<datapoint pos="0" key="100"/>
 					</targets>
-					<view ltx="781" lty="317" rbx="863" rby="373"/>
+					<view ltx="781" lty="317" rbx="853" rby="369"/>
 					<data>
 						<comment>
 							<text>RorID vervollständigen mit URI</text>
@@ -201,7 +201,7 @@
 					<targets>
 						<datapoint pos="0" key="128"/>
 					</targets>
-					<view ltx="1493" lty="226" rbx="1561" rby="243"/>
+					<view ltx="1493" lty="226" rbx="1554" rby="243"/>
 					<data>
 						<constant value="labid" datatype="string"/>
 						<comment>
@@ -217,7 +217,7 @@
 					<targets>
 						<datapoint pos="0" key="109"/>
 					</targets>
-					<view ltx="781" lty="389" rbx="863" rby="445"/>
+					<view ltx="781" lty="389" rbx="853" rby="441"/>
 					<data>
 						<comment>
 							<text>RorID vervollständigen mit URI</text>
@@ -233,7 +233,7 @@
 					<targets>
 						<datapoint pos="0" key="104"/>
 					</targets>
-					<view ltx="474" lty="441" rbx="566" rby="514"/>
+					<view ltx="474" lty="441" rbx="554" rby="509"/>
 					<data>
 						<comment>
 							<text>Connecting Contact Persons Lastname and Firstname</text>
@@ -244,7 +244,7 @@
 					<targets>
 						<datapoint pos="0" key="69"/>
 					</targets>
-					<view ltx="415" lty="389" rbx="463" rby="406"/>
+					<view ltx="415" lty="389" rbx="459" rby="406"/>
 					<data>
 						<constant value=", " datatype="string"/>
 					</data>
@@ -258,7 +258,7 @@
 					<targets>
 						<datapoint pos="0" key="147"/>
 					</targets>
-					<view ltx="474" lty="528" rbx="566" rby="601"/>
+					<view ltx="474" lty="528" rbx="554" rby="596"/>
 					<data>
 						<comment>
 							<text>Connecting Contributor Persons Lastname and Firstname</text>
@@ -269,7 +269,7 @@
 					<targets>
 						<datapoint pos="0" key="72"/>
 					</targets>
-					<view ltx="1493" lty="82" rbx="1624" rby="99"/>
+					<view ltx="1493" lty="82" rbx="1608" rby="99"/>
 					<data>
 						<constant value="https://orcid.org/" datatype="string"/>
 						<comment>
@@ -285,7 +285,7 @@
 					<targets>
 						<datapoint pos="0" key="127"/>
 					</targets>
-					<view ltx="781" lty="458" rbx="863" rby="514"/>
+					<view ltx="781" lty="458" rbx="853" rby="510"/>
 					<data>
 						<comment>
 							<text>RorID vervollständigen mit URI</text>
@@ -296,7 +296,7 @@
 					<targets>
 						<datapoint pos="0" key="70"/>
 					</targets>
-					<view ltx="1493" lty="14" rbx="1579" rby="31"/>
+					<view ltx="1493" lty="14" rbx="1570" rby="31"/>
 					<data>
 						<constant value="Personal" datatype="string"/>
 						<comment>
@@ -312,7 +312,7 @@
 					<targets>
 						<datapoint pos="0" key="42"/>
 					</targets>
-					<view ltx="474" lty="226" rbx="588" rby="280"/>
+					<view ltx="474" lty="226" rbx="574" rby="278"/>
 				</component>
 				<component name="substring-after" library="core" uid="26" kind="5">
 					<sources>
@@ -322,7 +322,7 @@
 					<targets>
 						<datapoint pos="0" key="56"/>
 					</targets>
-					<view ltx="474" lty="279" rbx="578" rby="333"/>
+					<view ltx="474" lty="279" rbx="565" rby="331"/>
 				</component>
 				<component name="concat" library="core" uid="31" kind="5" growable="1" growablebasename="value">
 					<sources>
@@ -332,13 +332,13 @@
 					<targets>
 						<datapoint pos="0" key="53"/>
 					</targets>
-					<view ltx="626" lty="241" rbx="708" rby="297"/>
+					<view ltx="626" lty="241" rbx="698" rby="293"/>
 				</component>
 				<component name="constant" library="core" uid="51" kind="2">
 					<targets>
 						<datapoint pos="0" key="129"/>
 					</targets>
-					<view ltx="1493" lty="263" rbx="1630" rby="280"/>
+					<view ltx="1493" lty="263" rbx="1613" rby="280"/>
 					<data>
 						<constant value="HostingInstitution" datatype="string"/>
 						<comment>
@@ -350,7 +350,7 @@
 					<targets>
 						<datapoint pos="0" key="71"/>
 					</targets>
-					<view ltx="1493" lty="48" rbx="1569" rby="65"/>
+					<view ltx="1493" lty="48" rbx="1563" rby="65"/>
 					<data>
 						<constant value="ORCID" datatype="string"/>
 						<comment>
@@ -366,7 +366,7 @@
 					<targets>
 						<datapoint pos="0" key="149"/>
 					</targets>
-					<view ltx="782" lty="528" rbx="864" rby="584"/>
+					<view ltx="782" lty="528" rbx="854" rby="580"/>
 					<data>
 						<comment>
 							<text>RorID vervollständigen mit URI</text>
@@ -377,7 +377,7 @@
 					<targets>
 						<datapoint pos="0" key="90"/>
 					</targets>
-					<view ltx="626" lty="338" rbx="746" rby="355"/>
+					<view ltx="626" lty="338" rbx="733" rby="355"/>
 					<data>
 						<constant value="https://ror.org/" datatype="string"/>
 					</data>
@@ -390,7 +390,7 @@
 					<targets>
 						<datapoint pos="0" key="200"/>
 					</targets>
-					<view ltx="782" lty="600" rbx="864" rby="656"/>
+					<view ltx="782" lty="600" rbx="854" rby="652"/>
 					<data>
 						<comment>
 							<text>RorID vervollständigen mit URI</text>
@@ -405,7 +405,7 @@
 					<targets>
 						<datapoint pos="0" key="189"/>
 					</targets>
-					<view ltx="474" lty="808" rbx="578" rby="862"/>
+					<view ltx="474" lty="808" rbx="565" rby="860"/>
 				</component>
 				<component name="substring-after" library="core" uid="68" kind="5">
 					<sources>
@@ -415,7 +415,7 @@
 					<targets>
 						<datapoint pos="0" key="211"/>
 					</targets>
-					<view ltx="475" lty="913" rbx="579" rby="967"/>
+					<view ltx="475" lty="913" rbx="566" rby="965"/>
 				</component>
 				<component name="substring-before" library="core" uid="67" kind="5">
 					<sources>
@@ -425,7 +425,7 @@
 					<targets>
 						<datapoint pos="0" key="214"/>
 					</targets>
-					<view ltx="475" lty="860" rbx="589" rby="914"/>
+					<view ltx="475" lty="860" rbx="575" rby="912"/>
 				</component>
 				<component name="concat" library="core" uid="69" kind="5" growable="1" growablebasename="value">
 					<sources>
@@ -435,7 +435,7 @@
 					<targets>
 						<datapoint pos="0" key="213"/>
 					</targets>
-					<view ltx="633" lty="875" rbx="715" rby="931"/>
+					<view ltx="633" lty="875" rbx="705" rby="927"/>
 				</component>
 				<component name="substring-before" library="core" uid="59" kind="5">
 					<sources>
@@ -445,7 +445,7 @@
 					<targets>
 						<datapoint pos="0" key="152"/>
 					</targets>
-					<view ltx="474" lty="649" rbx="588" rby="703"/>
+					<view ltx="474" lty="649" rbx="574" rby="701"/>
 				</component>
 				<component name="contains" library="core" uid="72" kind="5">
 					<sources>
@@ -455,7 +455,7 @@
 					<targets>
 						<datapoint pos="0" key="222"/>
 					</targets>
-					<view ltx="907" lty="824" rbx="1005" rby="878"/>
+					<view ltx="907" lty="824" rbx="991" rby="876"/>
 				</component>
 				<component name="if-else" library="core" uid="70" kind="4">
 					<sources>
@@ -466,7 +466,7 @@
 					<targets>
 						<datapoint pos="0" key="226"/>
 					</targets>
-					<view ltx="1102" lty="779" rbx="1206" rby="852"/>
+					<view ltx="1102" lty="779" rbx="1193" rby="847"/>
 				</component>
 				<component name="concat" library="core" uid="61" kind="5" growable="1" growablebasename="value">
 					<sources>
@@ -476,7 +476,7 @@
 					<targets>
 						<datapoint pos="0" key="158"/>
 					</targets>
-					<view ltx="632" lty="664" rbx="714" rby="720"/>
+					<view ltx="632" lty="664" rbx="704" rby="716"/>
 				</component>
 				<component name="if-else" library="core" uid="74" kind="4">
 					<sources>
@@ -487,7 +487,7 @@
 					<targets>
 						<datapoint pos="0" key="233"/>
 					</targets>
-					<view ltx="1102" lty="640" rbx="1206" rby="713"/>
+					<view ltx="1102" lty="640" rbx="1193" rby="708"/>
 				</component>
 				<component name="contains" library="core" uid="73" kind="5">
 					<sources>
@@ -497,7 +497,7 @@
 					<targets>
 						<datapoint pos="0" key="235"/>
 					</targets>
-					<view ltx="907" lty="685" rbx="1005" rby="739"/>
+					<view ltx="907" lty="685" rbx="991" rby="737"/>
 				</component>
 				<component name="contains" library="core" uid="76" kind="5">
 					<sources>
@@ -507,7 +507,7 @@
 					<targets>
 						<datapoint pos="0" key="237"/>
 					</targets>
-					<view ltx="907" lty="755" rbx="1005" rby="809"/>
+					<view ltx="907" lty="755" rbx="991" rby="807"/>
 				</component>
 				<component name="substring-after" library="core" uid="60" kind="5">
 					<sources>
@@ -517,7 +517,7 @@
 					<targets>
 						<datapoint pos="0" key="154"/>
 					</targets>
-					<view ltx="474" lty="702" rbx="578" rby="756"/>
+					<view ltx="474" lty="702" rbx="565" rby="754"/>
 				</component>
 				<component name="substring-before" library="core" uid="65" kind="5">
 					<sources>
@@ -527,27 +527,16 @@
 					<targets>
 						<datapoint pos="0" key="185"/>
 					</targets>
-					<view ltx="474" lty="755" rbx="588" rby="809"/>
+					<view ltx="474" lty="755" rbx="574" rby="807"/>
 				</component>
 				<component name="constant" library="core" uid="29" kind="2">
 					<targets>
 						<datapoint pos="0" key="38"/>
 					</targets>
-					<view ltx="399" lty="316" rbx="444" rby="333"/>
+					<view ltx="399" lty="316" rbx="441" rby="333"/>
 					<data>
 						<constant value=" " datatype="string"/>
 					</data>
-				</component>
-				<component name="if-else" library="core" uid="75" kind="4">
-					<sources>
-						<datapoint pos="0" key="238"/>
-						<datapoint pos="1" key="242"/>
-						<datapoint pos="2" key="243"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="241"/>
-					</targets>
-					<view ltx="1102" lty="710" rbx="1206" rby="783"/>
 				</component>
 				<component name="concat" library="core" uid="63" kind="5" growable="1" growablebasename="value">
 					<sources>
@@ -557,13 +546,13 @@
 					<targets>
 						<datapoint pos="0" key="184"/>
 					</targets>
-					<view ltx="632" lty="770" rbx="714" rby="826"/>
+					<view ltx="632" lty="770" rbx="704" rby="822"/>
 				</component>
 				<component name="constant" library="core" uid="62" kind="2">
 					<targets>
 						<datapoint pos="0" key="181"/>
 					</targets>
-					<view ltx="1490" lty="298" rbx="1609" rby="315"/>
+					<view ltx="1490" lty="298" rbx="1594" rby="315"/>
 					<data>
 						<constant value="Organizational" datatype="string"/>
 						<comment>
@@ -575,7 +564,7 @@
 					<targets>
 						<datapoint pos="0" key="244"/>
 					</targets>
-					<view ltx="1492" lty="338" rbx="1645" rby="355"/>
+					<view ltx="1492" lty="338" rbx="1626" rby="355"/>
 					<data>
 						<constant value="http://dx.doi.org/10.13039/" datatype="string"/>
 						<comment>
@@ -591,7 +580,7 @@
 					<targets>
 						<datapoint pos="0" key="253"/>
 					</targets>
-					<view ltx="1083" lty="323" rbx="1165" rby="379"/>
+					<view ltx="1083" lty="323" rbx="1155" rby="375"/>
 					<data>
 						<comment>
 							<text>FunderIdUri + FunderId</text>
@@ -602,7 +591,7 @@
 					<targets>
 						<datapoint pos="0" key="261"/>
 					</targets>
-					<view ltx="1493" lty="374" rbx="1652" rby="391"/>
+					<view ltx="1493" lty="374" rbx="1630" rby="391"/>
 					<data>
 						<constant value="https://www.crossref.org/services/funder-registry/" datatype="string"/>
 						<comment>
@@ -614,7 +603,7 @@
 					<targets>
 						<datapoint pos="0" key="63"/>
 					</targets>
-					<view ltx="1493" lty="-90" rbx="1548" rby="-73"/>
+					<view ltx="1493" lty="-90" rbx="1544" rby="-73"/>
 					<data>
 						<constant value="en" datatype="string"/>
 						<comment>
@@ -630,169 +619,13 @@
 					<targets>
 						<datapoint pos="0" key="21"/>
 					</targets>
-					<view ltx="593" lty="-33" rbx="657" rby="21"/>
-				</component>
-				<component name="string-length" library="core" uid="145" kind="5">
-					<sources>
-						<datapoint pos="0" key="381"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="382"/>
-					</targets>
-					<view ltx="-26" lty="527" rbx="69" rby="565"/>
-				</component>
-				<component name="constant" library="core" uid="17" kind="2">
-					<targets>
-						<datapoint pos="0" key="16"/>
-					</targets>
-					<view ltx="526" lty="4" rbx="566" rby="21"/>
-					<data>
-						<constant value="0" datatype="decimal"/>
-					</data>
-				</component>
-				<component name="greater" library="core" uid="147" kind="5">
-					<sources>
-						<datapoint pos="0" key="383"/>
-						<datapoint pos="1" key="384"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="385"/>
-					</targets>
-					<view ltx="69" lty="458" rbx="133" rby="512"/>
-				</component>
-				<component name="greater" library="core" uid="149" kind="5">
-					<sources>
-						<datapoint pos="0" key="386"/>
-						<datapoint pos="1" key="387"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="388"/>
-					</targets>
-					<view ltx="69" lty="527" rbx="133" rby="581"/>
-				</component>
-				<component name="string-length" library="core" uid="143" kind="5">
-					<sources>
-						<datapoint pos="0" key="391"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="392"/>
-					</targets>
-					<view ltx="-26" lty="458" rbx="69" rby="496"/>
-				</component>
-				<component name="if-else" library="core" uid="152" kind="4">
-					<sources>
-						<datapoint pos="0" key="393"/>
-						<datapoint pos="1" key="401"/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="402"/>
-					</targets>
-					<view ltx="288" lty="389" rbx="392" rby="462"/>
-				</component>
-				<component name="if-else" library="core" uid="156" kind="4">
-					<sources>
-						<datapoint pos="0" key="398"/>
-						<datapoint pos="1" key="403"/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="404"/>
-					</targets>
-					<view ltx="288" lty="461" rbx="392" rby="534"/>
-				</component>
-				<component name="if-else" library="core" uid="157" kind="4">
-					<sources>
-						<datapoint pos="0" key="399"/>
-						<datapoint pos="1" key="405"/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="406"/>
-					</targets>
-					<view ltx="288" lty="533" rbx="392" rby="606"/>
-				</component>
-				<component name="equal" library="core" uid="160" kind="5">
-					<sources>
-						<datapoint pos="0" key="409"/>
-						<datapoint pos="1" key="410"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="411"/>
-					</targets>
-					<view lty="600" rbx="56" rby="654"/>
-				</component>
-				<component name="equal" library="core" uid="161" kind="5">
-					<sources>
-						<datapoint pos="0" key="413"/>
-						<datapoint pos="1" key="415"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="414"/>
-					</targets>
-					<view lty="653" rbx="56" rby="707"/>
-				</component>
-				<component name="if-else" library="core" uid="158" kind="4">
-					<sources>
-						<datapoint pos="0" key="400"/>
-						<datapoint pos="1" key="407"/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="408"/>
-					</targets>
-					<view ltx="288" lty="605" rbx="392" rby="678"/>
-				</component>
-				<component name="logical-and" library="core" uid="151" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="389"/>
-						<datapoint pos="1" key="390"/>
-						<datapoint pos="2" key="412"/>
-						<datapoint pos="3" key="422"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="394"/>
-					</targets>
-					<view ltx="160" lty="492" rbx="252" rby="582"/>
-				</component>
-				<component name="if-else" library="core" uid="162" kind="4">
-					<sources>
-						<datapoint pos="0" key="418"/>
-						<datapoint/>
-						<datapoint pos="2" key="423"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="416"/>
-					</targets>
-					<view ltx="288" lty="685" rbx="392" rby="758"/>
-				</component>
-				<component name="if-else" library="core" uid="163" kind="4">
-					<sources>
-						<datapoint pos="0" key="419"/>
-						<datapoint/>
-						<datapoint pos="2" key="424"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="425"/>
-					</targets>
-					<view ltx="288" lty="757" rbx="392" rby="830"/>
-				</component>
-				<component name="concat" library="core" uid="165" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="426"/>
-						<datapoint pos="1" key="427"/>
-						<datapoint pos="2" key="428"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="429"/>
-					</targets>
-					<view ltx="1124" lty="911" rbx="1216" rby="984"/>
+					<view ltx="593" lty="-33" rbx="651" rby="19"/>
 				</component>
 				<component name="constant" library="core" uid="166" kind="2">
 					<targets>
 						<datapoint pos="0" key="430"/>
 					</targets>
-					<view ltx="1064" lty="950" rbx="1110" rby="967"/>
+					<view ltx="1064" lty="950" rbx="1108" rby="967"/>
 					<data>
 						<constant value="/" datatype="string"/>
 					</data>
@@ -801,7 +634,7 @@
 					<targets>
 						<datapoint pos="0" key="431"/>
 					</targets>
-					<view ltx="1493" lty="441" rbx="1575" rby="458"/>
+					<view ltx="1493" lty="441" rbx="1567" rby="458"/>
 					<data>
 						<constant value="Created" datatype="string"/>
 						<comment>
@@ -813,7 +646,7 @@
 					<targets>
 						<datapoint pos="0" key="436"/>
 					</targets>
-					<view ltx="1492" lty="405" rbx="1582" rby="422"/>
+					<view ltx="1492" lty="405" rbx="1573" rby="422"/>
 					<data>
 						<constant value="Collected" datatype="string"/>
 						<comment>
@@ -825,7 +658,7 @@
 					<targets>
 						<datapoint pos="0" key="443"/>
 					</targets>
-					<view ltx="1494" lty="476" rbx="1582" rby="493"/>
+					<view ltx="1494" lty="476" rbx="1574" rby="493"/>
 					<data>
 						<constant value="Available" datatype="string"/>
 						<comment>
@@ -837,7 +670,7 @@
 					<targets>
 						<datapoint pos="0" key="444"/>
 					</targets>
-					<view ltx="1494" lty="511" rbx="1563" rby="528"/>
+					<view ltx="1494" lty="511" rbx="1556" rby="528"/>
 					<data>
 						<constant value="EPOS" datatype="string"/>
 						<comment>
@@ -845,190 +678,11 @@
 						</comment>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="171" kind="2">
-					<targets>
-						<datapoint pos="0" key="445"/>
-					</targets>
-					<view ltx="1494" lty="546" rbx="1647" rby="563"/>
-					<data>
-						<constant value="multi-scale laboratories" datatype="string"/>
-						<comment>
-							<text>Default value for subjects in MSL projects</text>
-						</comment>
-					</data>
-				</component>
-				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
-					<properties XSLTTargetEncoding="UTF-8"/>
-					<view rbx="200" rby="356"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="Resource" outkey="3" expanded="1">
-										<entry name="doi" outkey="8"/>
-										<entry name="version" outkey="4"/>
-										<entry name="year" outkey="23"/>
-										<entry name="dateCreated" outkey="432"/>
-										<entry name="dateEmbargoUntil" outkey="433"/>
-										<entry name="Rights">
-											<entry name="text" outkey="64"/>
-											<entry name="rightsIdentifier" outkey="65"/>
-											<entry name="rightsURI" outkey="66"/>
-										</entry>
-										<entry name="ResourceType">
-											<entry name="resource_type_general" outkey="24"/>
-										</entry>
-										<entry name="Language">
-											<entry name="code" outkey="29"/>
-										</entry>
-										<entry name="Titles" outkey="33">
-											<entry name="Title" expanded="1">
-												<entry name="text" outkey="34"/>
-												<entry name="type" outkey="35"/>
-											</entry>
-										</entry>
-										<entry name="Authors" outkey="91">
-											<entry name="Author" outkey="92" expanded="1">
-												<entry name="familyname" outkey="93"/>
-												<entry name="givenname" outkey="94"/>
-												<entry name="orcid" outkey="95"/>
-												<entry name="Affiliations" expanded="1">
-													<entry name="Affiliation" expanded="1">
-														<entry name="name" outkey="96"/>
-														<entry name="rorId" outkey="97"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="Descriptions">
-											<entry name="Description" outkey="227">
-												<entry name="type" outkey="228"/>
-												<entry name="description" outkey="229"/>
-											</entry>
-										</entry>
-										<entry name="Contributors">
-											<entry name="Persons">
-												<entry name="Person" outkey="173">
-													<entry name="familyname" outkey="174"/>
-													<entry name="givenname" outkey="175"/>
-													<entry name="orcid" outkey="176"/>
-													<entry name="Affiliations">
-														<entry name="Affiliation">
-															<entry name="name" outkey="177"/>
-															<entry name="rorId" outkey="178"/>
-														</entry>
-													</entry>
-													<entry name="Roles" expanded="1">
-														<entry name="Role" expanded="1">
-															<entry name="name" outkey="179"/>
-														</entry>
-													</entry>
-												</entry>
-											</entry>
-											<entry name="Institutions">
-												<entry name="Institution" outkey="191" expanded="1">
-													<entry name="name" outkey="192"/>
-													<entry name="Affiliations">
-														<entry name="Affiliation">
-															<entry name="name" outkey="201"/>
-															<entry name="rorId" outkey="202"/>
-														</entry>
-													</entry>
-													<entry name="Roles" expanded="1">
-														<entry name="Role" expanded="1">
-															<entry name="name" outkey="193"/>
-														</entry>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="ContactPersons">
-											<entry name="ContactPerson" outkey="120" expanded="1">
-												<entry name="familyname" outkey="121"/>
-												<entry name="givenname" outkey="122"/>
-												<entry name="Affiliations" expanded="1">
-													<entry name="Affiliation" expanded="1">
-														<entry name="name" outkey="123"/>
-														<entry name="rorId" outkey="124"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="RelatedWorks" outkey="262">
-											<entry name="RelatedWork">
-												<entry name="Identifier" outkey="263"/>
-												<entry name="Relation">
-													<entry name="name" outkey="264"/>
-												</entry>
-												<entry name="IdentifierType">
-													<entry name="name" outkey="265"/>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="SpatialTemporalCoverages">
-											<entry name="SpatialTemporalCoverage">
-												<entry name="latitudeMin" outkey="276"/>
-												<entry name="latitudeMax" outkey="306"/>
-												<entry name="longitudeMin" outkey="311"/>
-												<entry name="longitudeMax" outkey="316"/>
-												<entry name="Description" outkey="360"/>
-												<entry name="dateTimeStart" outkey="434"/>
-												<entry name="dateTimeEnd" outkey="435"/>
-											</entry>
-										</entry>
-										<entry name="ThesaurusKeywords">
-											<entry name="Keyword">
-												<entry name="keyword" outkey="446"/>
-												<entry name="scheme" outkey="447"/>
-												<entry name="schemeURI" outkey="448"/>
-												<entry name="valueURI" outkey="449"/>
-												<entry name="language" outkey="450"/>
-											</entry>
-										</entry>
-										<entry name="FreeKeywords">
-											<entry name="Keyword">
-												<entry name="free_keyword" outkey="451"/>
-											</entry>
-										</entry>
-										<entry name="FundingReferences">
-											<entry name="FundingReference" outkey="245">
-												<entry name="funder" outkey="246"/>
-												<entry name="funderid" outkey="247"/>
-												<entry name="funderidtyp" outkey="248"/>
-												<entry name="grantnumber" outkey="249"/>
-												<entry name="grantname" outkey="250"/>
-											</entry>
-										</entry>
-										<entry name="OriginatingLaboratories">
-											<entry name="OriginatingLaboratory" outkey="139">
-												<entry name="laboratoryname" outkey="140"/>
-												<entry name="labId" outkey="141"/>
-												<entry name="Affiliations" expanded="1">
-													<entry name="Affiliation" expanded="1">
-														<entry name="name" outkey="180"/>
-														<entry name="rorId" outkey="143"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
-					</data>
-				</component>
 				<component name="constant" library="core" uid="45" kind="2">
 					<targets>
 						<datapoint pos="0" key="101"/>
 					</targets>
-					<view ltx="1493" lty="118" rbx="1558" rby="135"/>
+					<view ltx="1493" lty="118" rbx="1553" rby="135"/>
 					<data>
 						<constant value="ROR" datatype="string"/>
 						<comment>
@@ -1040,7 +694,7 @@
 					<targets>
 						<datapoint pos="0" key="102"/>
 					</targets>
-					<view ltx="1493" lty="151" rbx="1609" rby="168"/>
+					<view ltx="1493" lty="151" rbx="1595" rby="168"/>
 					<data>
 						<constant value="https://ror.org" datatype="string"/>
 						<comment>
@@ -1052,7 +706,7 @@
 					<targets>
 						<datapoint pos="0" key="270"/>
 					</targets>
-					<view ltx="1493" lty="-225" rbx="1625" rby="-208"/>
+					<view ltx="1493" lty="-225" rbx="1611" rby="-208"/>
 					<data>
 						<constant value="GFZ Data Services" datatype="string"/>
 						<comment>
@@ -1064,7 +718,7 @@
 					<targets>
 						<datapoint pos="0" key="460"/>
 					</targets>
-					<view ltx="1493" lty="-191" rbx="1645" rby="-174"/>
+					<view ltx="1493" lty="-191" rbx="1627" rby="-174"/>
 					<data>
 						<constant value="https://ror.org/04z8jg394" datatype="string"/>
 						<comment>
@@ -1072,11 +726,129 @@
 						</comment>
 					</data>
 				</component>
+				<component name="if-else" library="core" uid="75" kind="4">
+					<sources>
+						<datapoint pos="0" key="238"/>
+						<datapoint pos="1" key="242"/>
+						<datapoint pos="2" key="243"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="241"/>
+					</targets>
+					<view ltx="1102" lty="710" rbx="1193" rby="778"/>
+				</component>
+				<component name="constant" library="core" uid="171" kind="2">
+					<targets>
+						<datapoint pos="0" key="445"/>
+					</targets>
+					<view ltx="1494" lty="546" rbx="1628" rby="563"/>
+					<data>
+						<constant value="multi-scale laboratories" datatype="string"/>
+						<comment>
+							<text>Default value for subjects in MSL projects</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="17" kind="2">
+					<targets>
+						<datapoint pos="0" key="16"/>
+					</targets>
+					<view ltx="526" lty="4" rbx="563" rby="21"/>
+					<data>
+						<constant value="0" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="157" kind="4">
+					<sources>
+						<datapoint pos="0" key="399"/>
+						<datapoint pos="1" key="405"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="406"/>
+					</targets>
+					<view ltx="288" lty="533" rbx="379" rby="601"/>
+				</component>
+				<component name="if-else" library="core" uid="156" kind="4">
+					<sources>
+						<datapoint pos="0" key="398"/>
+						<datapoint pos="1" key="403"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="404"/>
+					</targets>
+					<view ltx="288" lty="461" rbx="379" rby="529"/>
+				</component>
+				<component name="if-else" library="core" uid="152" kind="4">
+					<sources>
+						<datapoint pos="0" key="393"/>
+						<datapoint pos="1" key="401"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="402"/>
+					</targets>
+					<view ltx="288" lty="389" rbx="379" rby="457"/>
+				</component>
+				<component name="concat" library="core" uid="165" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="426"/>
+						<datapoint pos="1" key="427"/>
+						<datapoint pos="2" key="428"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="429"/>
+					</targets>
+					<view ltx="1124" lty="911" rbx="1204" rby="979"/>
+				</component>
+				<component name="if-else" library="core" uid="158" kind="4">
+					<sources>
+						<datapoint pos="0" key="400"/>
+						<datapoint pos="1" key="407"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="408"/>
+					</targets>
+					<view ltx="288" lty="605" rbx="379" rby="673"/>
+				</component>
+				<component name="exists" library="core" uid="208" kind="5">
+					<sources>
+						<datapoint pos="0" key="481"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="482"/>
+					</targets>
+					<view ltx="1325" lty="929" rbx="1390" rby="966"/>
+				</component>
+				<component name="if-else" library="core" uid="163" kind="4">
+					<sources>
+						<datapoint pos="0" key="419"/>
+						<datapoint/>
+						<datapoint pos="2" key="424"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="425"/>
+					</targets>
+					<view ltx="288" lty="757" rbx="379" rby="825"/>
+				</component>
+				<component name="if-else" library="core" uid="162" kind="4">
+					<sources>
+						<datapoint pos="0" key="418"/>
+						<datapoint/>
+						<datapoint pos="2" key="423"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="416"/>
+					</targets>
+					<view ltx="288" lty="685" rbx="379" rby="753"/>
+				</component>
 				<component name="DataCiteSchema45" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1775" lty="4" rbx="2163" rby="832"/>
 					<data>
-						<root scrollposition="1">
+						<root>
 							<header>
 								<namespaces>
 									<namespace/>
@@ -1189,7 +961,7 @@
 												</entry>
 											</entry>
 										</entry>
-										<entry name="dates" ns="1">
+										<entry name="dates" ns="1" expanded="1">
 											<entry name="date" ns="1" inpkey="437">
 												<entry name="dateType" type="attribute" inpkey="438"/>
 											</entry>
@@ -1224,14 +996,14 @@
 												<entry name="#text" inpkey="219"/>
 											</entry>
 										</entry>
-										<entry name="geoLocations" ns="1">
-											<entry name="geoLocation" ns="1">
-												<entry name="geoLocationPlace" ns="1" inpkey="359"/>
-												<entry name="geoLocationPoint" ns="1">
+										<entry name="geoLocations" ns="1" expanded="1">
+											<entry name="geoLocation" ns="1" inpkey="491" expanded="1">
+												<entry name="geoLocationPlace" ns="1" inpkey="359" expanded="1"/>
+												<entry name="geoLocationPoint" ns="1" inpkey="468" expanded="1">
 													<entry name="pointLongitude" ns="1" inpkey="420"/>
 													<entry name="pointLatitude" ns="1" inpkey="421"/>
 												</entry>
-												<entry name="geoLocationBox" ns="1">
+												<entry name="geoLocationBox" ns="1" inpkey="469" expanded="1">
 													<entry name="westBoundLongitude" ns="1" inpkey="312"/>
 													<entry name="eastBoundLongitude" ns="1" inpkey="350"/>
 													<entry name="southBoundLatitude" ns="1" inpkey="295"/>
@@ -1255,6 +1027,213 @@
 							</entry>
 						</root>
 						<document schema="..\DataCite\DataCiteSchema45.xsd" instanceroot="{http://datacite.org/schema/kernel-4}resource" inputinstance="..\DataCite\DataCiteExample45.xml" outputinstance="..\DataCite\DataCiteExample45.xml"/>
+					</data>
+				</component>
+				<component name="spatial_temporal_coverage..." library="core" uid="206" kind="3">
+					<sources>
+						<datapoint pos="0" key="483"/>
+						<datapoint pos="1" key="484"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="485"/>
+						<datapoint pos="1" key="486"/>
+					</targets>
+					<view ltx="1418" lty="842" rbx="1568" rby="894"/>
+				</component>
+				<component name="exists" library="core" uid="211" kind="5">
+					<sources>
+						<datapoint pos="0" key="487"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="488"/>
+					</targets>
+					<view ltx="-28" lty="492" rbx="37" rby="529"/>
+				</component>
+				<component name="exists" library="core" uid="213" kind="5">
+					<sources>
+						<datapoint pos="0" key="489"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="490"/>
+					</targets>
+					<view ltx="-26" lty="558" rbx="39" rby="595"/>
+				</component>
+				<component name="logical-and" library="core" uid="151" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="389"/>
+						<datapoint pos="1" key="390"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="394"/>
+					</targets>
+					<view ltx="160" lty="492" rbx="235" rby="544"/>
+				</component>
+				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view rbx="193" rby="417"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Resource" outkey="3" expanded="1">
+										<entry name="doi" outkey="8"/>
+										<entry name="version" outkey="4"/>
+										<entry name="year" outkey="23"/>
+										<entry name="dateCreated" outkey="432"/>
+										<entry name="dateEmbargoUntil" outkey="433"/>
+										<entry name="Rights">
+											<entry name="text" outkey="64"/>
+											<entry name="rightsIdentifier" outkey="65"/>
+											<entry name="rightsURI" outkey="66"/>
+										</entry>
+										<entry name="ResourceType">
+											<entry name="resource_type_general" outkey="24"/>
+										</entry>
+										<entry name="Language">
+											<entry name="code" outkey="29"/>
+										</entry>
+										<entry name="Titles" outkey="33">
+											<entry name="Title" expanded="1">
+												<entry name="text" outkey="34"/>
+												<entry name="type" outkey="35"/>
+											</entry>
+										</entry>
+										<entry name="Authors" outkey="91">
+											<entry name="Author" outkey="92" expanded="1">
+												<entry name="familyname" outkey="93"/>
+												<entry name="givenname" outkey="94"/>
+												<entry name="orcid" outkey="95"/>
+												<entry name="Affiliations" expanded="1">
+													<entry name="Affiliation" expanded="1">
+														<entry name="name" outkey="96"/>
+														<entry name="rorId" outkey="97"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="Descriptions">
+											<entry name="Description" outkey="227">
+												<entry name="type" outkey="228"/>
+												<entry name="description" outkey="229"/>
+											</entry>
+										</entry>
+										<entry name="Contributors">
+											<entry name="Persons">
+												<entry name="Person" outkey="173">
+													<entry name="familyname" outkey="174"/>
+													<entry name="givenname" outkey="175"/>
+													<entry name="orcid" outkey="176"/>
+													<entry name="Affiliations">
+														<entry name="Affiliation">
+															<entry name="name" outkey="177"/>
+															<entry name="rorId" outkey="178"/>
+														</entry>
+													</entry>
+													<entry name="Roles" expanded="1">
+														<entry name="Role" expanded="1">
+															<entry name="name" outkey="179"/>
+														</entry>
+													</entry>
+												</entry>
+											</entry>
+											<entry name="Institutions" expanded="1">
+												<entry name="Institution" outkey="191" expanded="1">
+													<entry name="name" outkey="192"/>
+													<entry name="Affiliations">
+														<entry name="Affiliation">
+															<entry name="name" outkey="201"/>
+															<entry name="rorId" outkey="202"/>
+														</entry>
+													</entry>
+													<entry name="Roles" expanded="1">
+														<entry name="Role" expanded="1">
+															<entry name="name" outkey="193"/>
+														</entry>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="ContactPersons">
+											<entry name="ContactPerson" outkey="120" expanded="1">
+												<entry name="familyname" outkey="121"/>
+												<entry name="givenname" outkey="122"/>
+												<entry name="Affiliations" expanded="1">
+													<entry name="Affiliation" expanded="1">
+														<entry name="name" outkey="123"/>
+														<entry name="rorId" outkey="124"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="RelatedWorks" outkey="262">
+											<entry name="RelatedWork">
+												<entry name="Identifier" outkey="263"/>
+												<entry name="Relation">
+													<entry name="name" outkey="264"/>
+												</entry>
+												<entry name="IdentifierType">
+													<entry name="name" outkey="265"/>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="SpatialTemporalCoverages" expanded="1">
+											<entry name="SpatialTemporalCoverage" outkey="492" expanded="1">
+												<entry name="spatial_temporal_coverage_id" outkey="480"/>
+												<entry name="latitudeMin" outkey="276"/>
+												<entry name="latitudeMax" outkey="306"/>
+												<entry name="longitudeMin" outkey="311"/>
+												<entry name="longitudeMax" outkey="316"/>
+												<entry name="Description" outkey="360"/>
+												<entry name="dateTimeStart" outkey="434"/>
+												<entry name="dateTimeEnd" outkey="435"/>
+											</entry>
+										</entry>
+										<entry name="ThesaurusKeywords">
+											<entry name="Keyword">
+												<entry name="keyword" outkey="446"/>
+												<entry name="scheme" outkey="447"/>
+												<entry name="schemeURI" outkey="448"/>
+												<entry name="valueURI" outkey="449"/>
+												<entry name="language" outkey="450"/>
+											</entry>
+										</entry>
+										<entry name="FreeKeywords">
+											<entry name="Keyword">
+												<entry name="free_keyword" outkey="451"/>
+											</entry>
+										</entry>
+										<entry name="FundingReferences">
+											<entry name="FundingReference" outkey="245">
+												<entry name="funder" outkey="246"/>
+												<entry name="funderid" outkey="247"/>
+												<entry name="funderidtyp" outkey="248"/>
+												<entry name="grantnumber" outkey="249"/>
+												<entry name="grantname" outkey="250"/>
+											</entry>
+										</entry>
+										<entry name="OriginatingLaboratories">
+											<entry name="OriginatingLaboratory" outkey="139">
+												<entry name="laboratoryname" outkey="140"/>
+												<entry name="labId" outkey="141"/>
+												<entry name="Affiliations" expanded="1">
+													<entry name="Affiliation" expanded="1">
+														<entry name="name" outkey="180"/>
+														<entry name="rorId" outkey="143"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\resource_1.xml" outputinstance="..\..\xml\resource_1.xml"/>
 					</data>
 				</component>
 			</children>
@@ -1310,8 +1289,6 @@
 					<vertex vertexkey="16">
 						<edges>
 							<edge vertexkey="20"/>
-							<edge vertexkey="384"/>
-							<edge vertexkey="387"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="23">
@@ -1894,40 +1871,14 @@
 							<edge vertexkey="359"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="306">
-						<edges>
-							<edge vertexkey="381"/>
-							<edge vertexkey="403"/>
-							<edge vertexkey="409"/>
-							<edge vertexkey="410"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="392">
-						<edges>
-							<edge vertexkey="383"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="382">
-						<edges>
-							<edge vertexkey="386"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="385">
+					<vertex vertexkey="488">
 						<edges>
 							<edge vertexkey="389"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="388">
+					<vertex vertexkey="490">
 						<edges>
 							<edge vertexkey="390"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="316">
-						<edges>
-							<edge vertexkey="391"/>
-							<edge vertexkey="407"/>
-							<edge vertexkey="413"/>
-							<edge vertexkey="415"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="394">
@@ -1946,15 +1897,23 @@
 							<edge vertexkey="423"/>
 						</edges>
 					</vertex>
+					<vertex vertexkey="306">
+						<edges>
+							<edge vertexkey="403"/>
+							<edge vertexkey="481"/>
+							<edge vertexkey="487"/>
+						</edges>
+					</vertex>
 					<vertex vertexkey="311">
 						<edges>
 							<edge vertexkey="405"/>
 							<edge vertexkey="424"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="411">
+					<vertex vertexkey="316">
 						<edges>
-							<edge vertexkey="412"/>
+							<edge vertexkey="407"/>
+							<edge vertexkey="489"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="425">
@@ -1965,11 +1924,6 @@
 					<vertex vertexkey="416">
 						<edges>
 							<edge vertexkey="421"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="414">
-						<edges>
-							<edge vertexkey="422"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="434">
@@ -2060,6 +2014,31 @@
 					<vertex vertexkey="460">
 						<edges>
 							<edge vertexkey="461"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="486">
+						<edges>
+							<edge vertexkey="468"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="485">
+						<edges>
+							<edge vertexkey="469"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="480">
+						<edges>
+							<edge vertexkey="483"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="482">
+						<edges>
+							<edge vertexkey="484"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="492">
+						<edges>
+							<edge vertexkey="491"/>
 						</edges>
 					</vertex>
 				</vertices>
