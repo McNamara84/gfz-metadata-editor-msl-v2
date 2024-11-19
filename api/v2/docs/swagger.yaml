@@ -107,7 +107,7 @@ paths:
     get:
       tags:
         - update
-      summary: Update GCMD vocabularies
+      summary: Update GCMD vocabularies (Science Keywords, Instruments, and Platforms)
       description: Updates all GCMD vocabularies (Science Keywords, Instruments, and Platforms) from NASA's GCMD repository
       operationId: updateGcmdVocabs
       responses:
@@ -147,8 +147,8 @@ paths:
     get:
       tags:
         - vocabularies
-      summary: Get GCMD Science Keywords
-      description: Retrieve the controlled vocabulary of GCMD Science Keywords from NASA
+      summary: Get GCMD Science Keywords (for third party use)
+      description: Retrieve the controlled vocabulary of GCMD Science Keywords from NASA (already prepared for use with jsTree)
       operationId: getGcmdScienceKeywords
       responses:
         "200":
