@@ -2,7 +2,7 @@
   "id": "22f86976-3aab-4320-8921-ac16b024c9f6",
   "version": "2.0",
   "name": "Tests_MDE",
-  "url": "http://localhost/",
+  "url": "http://127.0.0.1:8000/",
   "tests": [{
     "id": "21e2027f-6eeb-4a2c-b733-1ec31431ed4a",
     "name": "HilfebuttonsRessourceInformation",
@@ -10,7 +10,7 @@
       "id": "54d2e494-c6fc-4802-8cb2-829726b5cd40",
       "comment": "",
       "command": "open",
-      "target": "MDE-MSL/gfz-metadata-editor-msl-v2/",
+      "target": "/",
       "targets": [],
       "value": ""
     }, {
@@ -198,7 +198,7 @@
       "id": "1a8b360a-affe-4c01-8b09-adc854ac5100",
       "comment": "",
       "command": "open",
-      "target": "MDE-MSL/gfz-metadata-editor-msl-v2/",
+      "target": "/",
       "targets": [],
       "value": ""
     }, {
@@ -230,7 +230,7 @@
       "id": "1605c797-9579-4c25-918f-92886d6b2e22",
       "comment": "",
       "command": "open",
-      "target": "MDE-MSL/gfz-metadata-editor-msl-v2/",
+      "target": "/",
       "targets": [],
       "value": ""
     }, {
@@ -554,7 +554,7 @@
       "id": "76cf6088-4394-48fb-bd15-96762d5c2719",
       "comment": "",
       "command": "open",
-      "target": "MDE-MSL/gfz-metadata-editor-msl-v2/",
+      "target": "/",
       "targets": [],
       "value": ""
     }, {
@@ -1930,7 +1930,7 @@
       "id": "fd0777d4-18c3-4cbf-8392-201ae4ead119",
       "comment": "",
       "command": "open",
-      "target": "MDE-MSL/gfz-metadata-editor-msl-v2/",
+      "target": "/",
       "targets": [],
       "value": ""
     }, {
@@ -2080,7 +2080,7 @@
       "id": "61e17bd7-9fb5-4140-9933-15e39700320e",
       "comment": "",
       "command": "open",
-      "target": "MDE-MSL/gfz-metadata-editor-msl-v2/",
+      "target": "/",
       "targets": [],
       "value": ""
     }, {
@@ -2236,6 +2236,6 @@
     "timeout": 300,
     "tests": ["21e2027f-6eeb-4a2c-b733-1ec31431ed4a", "0535f978-2aad-42ee-8e61-4355ea992c55", "93fb5119-337c-47ac-874c-47162131f059", "1737c436-a33a-47ed-a7b7-0daa80928273", "e42ac07b-e969-497c-9dc7-848a7d9f59c4", "7020eb46-3b5b-445c-b76a-a56a142f9874"]
   }],
-  "urls": ["http://localhost/"],
+  "urls": ["http://127.0.0.1:8000/"],
   "plugins": []
 }
