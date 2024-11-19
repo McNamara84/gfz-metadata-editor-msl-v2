@@ -74,7 +74,7 @@ jobs:
           FLUSH PRIVILEGES;
         "
 
-    - name: Create settings.php
+    - name: Create settings.php and install
       run: |
         cat << EOF > settings.php
         <?php
@@ -113,19 +113,17 @@ jobs:
         \$feedbackAdress = 'feedback@test.com';
         EOF
 
-    - name: Run install.php
-      run: php install.php
+        php install.php
 
     - name: Start PHP server
       run: |
-        # Start PHP server
         php -S 0.0.0.0:8000 -t . > php-server.log 2>&1 &
         echo $! > php-server.pid
         
-        # Wait for PHP server to be ready
+        # Wait for PHP server
         max_attempts=30
         attempt=1
-        echo "Waiting for PHP server to be ready..."
+        echo "Waiting for PHP server..."
         while [ $attempt -le $max_attempts ]; do
           if curl -s http://localhost:8000 > /dev/null; then
             echo "PHP server is ready!"
@@ -145,41 +143,31 @@ jobs:
     - name: Wait for Selenium
       run: |
         echo "Waiting for Selenium..."
-        timeout=30
-        while [ $timeout -gt 0 ]; do
+        max_attempts=30
+        attempt=1
+        while [ $attempt -le $max_attempts ]; do
           if curl -sSL "http://localhost:4444/wd/hub/status" | grep -q "ready.*true"; then
             echo "Selenium is ready"
             break
           fi
-          echo "Waiting... ($timeout seconds left)"
+          echo "Attempt $attempt of $max_attempts"
           sleep 1
-          timeout=$((timeout-1))
+          attempt=$((attempt + 1))
         done
         
-        if [ $timeout -eq 0 ]; then
+        if [ $attempt -gt $max_attempts ]; then
           echo "Selenium failed to start"
           exit 1
         fi
 
     - name: Run Selenium tests
       run: |
-        # Create selenium config file
-        cat << EOF > selenium.json
-        {
-          "capabilities": {
-            "browserName": "chrome",
-            "goog:chromeOptions": {
-              "args": ["--no-sandbox", "--headless", "--disable-gpu", "--disable-dev-shm-usage"]
-            }
-          }
-        }
-        EOF
-        
         selenium-side-runner \
-          -c selenium.json \
-          --server http://localhost:4444/wd/hub \
+          --browser chrome \
+          --server http://localhost:4444 \
           --base-url http://localhost:8000 \
-          --timeout 30000 \
+          --debug \
+          --output-directory=./test-output \
           tests/Selenium/Tests_MDE.side
 
     - name: Show logs on failure
@@ -189,6 +177,8 @@ jobs:
         cat php-server.log || true
         echo "Selenium container logs:"
         docker logs $(docker ps -qf "name=selenium") || true
+        echo "Test output:"
+        cat ./test-output/* || true
 
     - name: Stop PHP server
       if: always()
@@ -201,7 +191,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v3
       with:
-        name: logs
+        name: logs-and-results
         path: |
           *.log
-          selenium.json
+          test-output/
