@@ -26,12 +26,15 @@ jobs:
           --health-timeout 5s
           --health-retries 3
       
-      selenium:
+      chrome:
         image: selenium/standalone-chrome:latest
+        env:
+          DISPLAY: :99
         ports:
           - 4444:4444
         options: >-
           --shm-size="2g"
+          --add-host=host.docker.internal:host-gateway
 
     steps:
     - uses: actions/checkout@v4
@@ -83,7 +86,7 @@ jobs:
           FLUSH PRIVILEGES;
         "
 
-    - name: Create settings.php
+    - name: Create settings.php and run install
       run: |
         cat << EOF > settings.php
         <?php
@@ -122,74 +125,54 @@ jobs:
         \$feedbackAdress = 'feedback@test.com';
         EOF
 
-    - name: Run install.php
-      run: php install.php
+        php install.php
 
     - name: Start PHP server
-      id: start-php
       run: |
-        # Start PHP server and store PID
-        nohup php -S 0.0.0.0:8000 -t . > php-server.log 2>&1 &
-        PHP_PID=$!
-        echo "PHP_PID=$PHP_PID" >> $GITHUB_ENV
+        php -S 0.0.0.0:8000 -t . > php-server.log 2>&1 &
+        echo $! > php-server.pid
         
-        # Wait for server to start and be accessible
-        echo "Waiting for PHP server to start..."
-        for i in {1..30}; do
-          if curl -s http://localhost:8000 > /dev/null; then
-            echo "PHP server is running on PID $PHP_PID"
-            echo "php_pid=$PHP_PID" >> $GITHUB_OUTPUT
-            break
-          fi
-          sleep 1
-          if [ $i -eq 30 ]; then
-            echo "PHP server failed to start"
-            cat php-server.log
-            exit 1
-          fi
-        done
-
-    - name: Wait for Selenium
-      run: |
-        for i in {1..30}; do
-          if curl -s http://localhost:4444/wd/hub/status > /dev/null; then
-            echo "Selenium is up!"
-            break
-          fi
-          if [ $i -eq 30 ]; then
-            echo "Selenium failed to start"
-            exit 1
-          fi
-          echo "Waiting for Selenium... ($i/30)"
+        # Wait for PHP server to be ready
+        timeout=30
+        until curl -s http://localhost:8000 > /dev/null || [ $timeout -eq 0 ]; do
+          echo "Waiting for PHP server... ($timeout seconds left)"
+          (( timeout-- ))
           sleep 1
         done
+        
+        if [ $timeout -eq 0 ]; then
+          echo "PHP server failed to start"
+          cat php-server.log
+          exit 1
+        fi
+        
+        echo "PHP server is running"
+        curl -v http://localhost:8000
 
     - name: Run Selenium tests
       run: |
-        export NODE_TLS_REJECT_UNAUTHORIZED=0
+        # Check if servers are accessible
+        echo "Testing PHP server:"
+        curl -v http://localhost:8000
+        
+        echo "Testing Selenium server:"
+        curl -v http://localhost:4444/wd/hub/status
+        
+        # Run tests
         selenium-side-runner \
           --browser chrome \
           --server http://localhost:4444/wd/hub \
-          --base-url http://host.docker.internal:8000 \
+          --base-url http://localhost:8000 \
           tests/Selenium/Tests_MDE.side
 
     - name: Stop PHP server
       if: always()
       run: |
-        if [ ! -z "${{ env.PHP_PID }}" ]; then
-          echo "Stopping PHP server with PID ${{ env.PHP_PID }}"
-          kill ${{ env.PHP_PID }} || true
-        else
-          echo "No PHP PID found"
+        if [ -f php-server.pid ]; then
+          kill $(cat php-server.pid) || true
         fi
 
-    - name: Show PHP server log
-      if: always()
-      run: |
-        echo "PHP Server Log:"
-        cat php-server.log || true
-
-    - name: Upload artifacts
+    - name: Upload logs
       if: always()
       uses: actions/upload-artifact@v3
       with:
