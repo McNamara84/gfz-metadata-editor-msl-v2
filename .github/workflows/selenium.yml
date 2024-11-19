@@ -156,30 +156,22 @@ jobs:
 
     - name: Start ChromeDriver
       run: |
-        chromedriver --port=4444 &
-        echo $! > chromedriver.pid
-        sleep 5
-
+          chromedriver --port=4444 &
+          echo $! > chromedriver.pid
+          sleep 5
+  
     - name: Run Selenium tests
       env:
         DISPLAY: :99.0
       run: |
         selenium-side-runner \
-          -c selenium-config.json \
+          --browser chrome \
+          --server http://localhost:4444 \
           --base-url http://127.0.0.1:8000 \
           tests/Selenium/Tests_MDE.side
-
+  
     - name: Stop services
       if: always()
       run: |
         kill $(cat php-server.pid)
         kill $(cat chromedriver.pid)
-
-    - name: Upload artifacts
-      if: always()
-      uses: actions/upload-artifact@v3
-      with:
-        name: logs
-        path: |
-          *.log
-          /var/log/apache2/*
