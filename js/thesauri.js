@@ -97,9 +97,8 @@ $(document).ready(function () {
                     if (node.children) {
                         node.children = processNodes(node.children);
                     }
-                    // Set description as tooltip, fallback to text if description is not available
                     node.a_attr = {
-                        title: node.description || node.text
+                        title: node.description
                     };
                     node.original = {
                         scheme: node.scheme || "",
