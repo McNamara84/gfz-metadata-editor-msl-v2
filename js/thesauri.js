@@ -87,17 +87,17 @@ $(document).ready(function () {
             }
 
             /**
-             * Recursively processes nodes, adding tooltips and metadata for hierarchical data visualization of thesaurus.
-             *
-             * @param {Array<Object>} nodes - Array of nodes to process.
-             * @returns {Array<Object>} Processed nodes with added attributes.
-             */
+            * Recursively processes nodes, adding tooltips and metadata for hierarchical data visualization of thesaurus.
+            *
+            * @param {Array<Object>} nodes - Array of nodes to process.
+            * @returns {Array<Object>} Processed nodes with added attributes.
+            */
             function processNodes(nodes) {
                 return nodes.map(function (node) {
                     if (node.children) {
                         node.children = processNodes(node.children);
                     }
-                    // Tooltip containing term description for every node
+                    // Set description as tooltip, fallback to text if description is not available
                     node.a_attr = {
                         title: node.description || node.text
                     };
