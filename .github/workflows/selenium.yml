@@ -1,0 +1,142 @@
+name: Selenium Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  selenium:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root_password
+          MYSQL_DATABASE: mde2-msl-test
+          MYSQL_USER: test_user
+          MYSQL_PASSWORD: test_password
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "mysqladmin ping --silent"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 3
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, zip
+        coverage: xdebug
+
+    - name: Install Chrome
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y chromium-browser chromium-chromedriver
+
+    - name: Install Selenium IDE CLI
+      run: |
+        npm install -g selenium-side-runner
+
+    - name: Update Composer dependencies
+      run: composer update --no-interaction --no-progress
+
+    - name: Install dependencies
+      run: |
+        composer install --prefer-dist --no-progress --no-suggest
+        composer dump-autoload -o
+
+    - name: Wait for MySQL
+      run: |
+        for i in {30..0}; do
+          if mysqladmin ping -h127.0.0.1 --silent; then
+            break
+          fi
+          echo 'Waiting for MySQL...'
+          sleep 1
+        done
+        if [ "$i" = 0 ]; then
+          echo >&2 'MySQL did not start in time.'
+          exit 1
+        fi
+
+    - name: Set up database
+      run: |
+        mysql -h127.0.0.1 -uroot -proot_password -e "
+          CREATE USER IF NOT EXISTS 'test_user'@'%' IDENTIFIED BY 'test_password';
+          GRANT ALL PRIVILEGES ON *.* TO 'test_user'@'%';
+          FLUSH PRIVILEGES;
+        "
+
+    - name: Create settings.php
+      run: |
+        cat << EOF > settings.php
+        <?php
+        function connectDb() {
+            \$host = '127.0.0.1';
+            \$username = 'test_user';
+            \$password = 'test_password';
+            \$database = 'mde2-msl-test';
+            \$conn = new mysqli(\$host, \$username, \$password, \$database);
+            return \$conn;
+        }
+
+        function getApiKey() {
+            \$apiKeyGoogleMaps = 'test_api_key';
+            echo json_encode(['apiKey' => \$apiKeyGoogleMaps]);
+        }
+
+        if (basename(__FILE__) == basename(\$_SERVER['PHP_SELF'])) {
+            if (\$_SERVER['REQUEST_METHOD'] === 'GET') {
+                getApiKey();
+            }
+        }
+
+        \$connection = connectDb();
+
+        \$apiKeyTimezone = 'test_timezone_api_key';
+        \$maxTitles = 2;
+        \$mslLabsUrl = 'https://raw.githubusercontent.com/UtrechtUniversity/msl_vocabularies/main/vocabularies/labs/labnames.json';
+
+        \$showFeedbackLink = true;
+        \$smtpHost = 'smtp.test.de';
+        \$smtpPort = 465;
+        \$smtpUser = 'test_user';
+        \$smtpPassword = 'test_password';
+        \$smtpSender = 'test_sender@test.com';
+        \$feedbackAdress = 'feedback@test.com';
+        EOF
+
+    - name: Run install.php
+      run: php install.php
+
+    - name: Start PHP server
+      run: |
+        php -S localhost:8000 -t . tests/server.php > server.log 2>&1 &
+        echo $! > php-server.pid
+        sleep 5
+
+    - name: Run Selenium tests
+      run: |
+        selenium-side-runner \
+          --server http://localhost:8000 \
+          --base-url http://localhost:8000 \
+          tests/Selenium/Tests_MDE.side
+
+    - name: Stop PHP server
+      if: always()
+      run: kill $(cat php-server.pid)
+
+    - name: Upload server logs
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: server-logs
+        path: server.log
