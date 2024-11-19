@@ -49,6 +49,9 @@ jobs:
         docker run -d \
           --network test-network \
           --name selenium \
+          -e SE_NODE_MAX_SESSIONS=1 \
+          -e SE_NODE_OVERRIDE_MAX_SESSIONS=true \
+          -e SE_VNC_NO_PASSWORD=1 \
           -p 4444:4444 \
           -p 7900:7900 \
           --shm-size="2g" \
@@ -79,6 +82,9 @@ jobs:
       run: |
         cat << EOF > settings.php
         <?php
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
+        
         function connectDb() {
             \$host = '127.0.0.1';
             \$username = 'test_user';
@@ -123,58 +129,67 @@ jobs:
           --name php-app \
           -v ${{ github.workspace }}:/var/www/html \
           -p 8000:8000 \
+          -e PHP_INI_SCAN_DIR=/var/www/html \
           php:8.2-cli \
-          php -S 0.0.0.0:8000 -t /var/www/html
+          php -S 0.0.0.0:8000 -t /var/www/html -d display_errors=1 -d error_reporting=E_ALL
 
-    - name: Wait for services
+    - name: Create PHP info page
       run: |
-        # Wait for PHP
-        echo "Waiting for PHP..."
-        timeout=30
-        until curl -s http://localhost:8000 > /dev/null; do
-          if [ $timeout -eq 0 ]; then
-            echo "PHP failed to start"
-            docker logs php-app
-            exit 1
-          fi
-          echo "Waiting... ($timeout seconds left)"
-          sleep 1
-          timeout=$((timeout-1))
-        done
+        echo "<?php phpinfo(); ?>" > info.php
+        echo "<?php error_log('Debug: Loading application...'); ?>" > debug.php
+
+    - name: Wait for services and verify
+      run: |
+        # Create test output directory
+        mkdir -p test-output
         
-        # Wait for Selenium
-        echo "Waiting for Selenium..."
-        timeout=30
-        until curl -s http://localhost:4444/wd/hub/status | grep -q "ready.*true"; do
-          if [ $timeout -eq 0 ]; then
-            echo "Selenium failed to start"
-            docker logs selenium
-            exit 1
-          fi
-          echo "Waiting... ($timeout seconds left)"
-          sleep 1
-          timeout=$((timeout-1))
-        done
+        # Test PHP server
+        echo "Testing PHP server..."
+        curl -v http://localhost:8000/info.php > test-output/php-info.html
+        curl -v http://localhost:8000/debug.php
+        curl -v http://localhost:8000/ > test-output/index.html
+        
+        # Test Selenium
+        echo "Testing Selenium..."
+        curl -v http://localhost:4444/wd/hub/status > test-output/selenium-status.json
+        
+        # Show network info
+        echo "Docker network info:"
+        docker network inspect test-network
+        
+        # Show running containers
+        echo "Running containers:"
+        docker ps
+        
+        # Show PHP logs
+        echo "PHP container logs:"
+        docker logs php-app
 
     - name: Run Selenium tests
       run: |
-        mkdir -p test-output
-        
         selenium-side-runner \
           --browser chrome \
           --server http://localhost:4444/wd/hub \
           --base-url http://php-app:8000 \
-          --output-directory=./test-output \
+          --timeout-pageLoad 30000 \
+          --timeout-script 30000 \
+          --timeout-element 30000 \
           tests/Selenium/Tests_MDE.side
 
-    - name: Show logs on failure
+    - name: Show debug info on failure
       if: failure()
       run: |
         echo "PHP container logs:"
         docker logs php-app
         echo "Selenium container logs:"
         docker logs selenium
-        echo "Test output:"
+        echo "Network status:"
+        docker network inspect test-network
+        echo "Container status:"
+        docker ps -a
+        echo "Directory contents:"
+        ls -la
+        echo "Test output contents:"
         ls -la test-output/
         cat test-output/* || true
 
@@ -186,6 +201,7 @@ jobs:
         path: |
           test-output/
           *.log
+          *.php
 
     - name: Cleanup
       if: always()
