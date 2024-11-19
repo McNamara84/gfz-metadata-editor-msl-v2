@@ -2223,7 +2223,7 @@
       "id": "08c11caa-99ba-40f2-94fd-3108d53a7386",
       "comment": "",
       "command": "executeScript",
-      "target": "window.myURL = \"MDE-MSL/gfz-metadata-editor-msl-v2\";",
+      "target": "/",
       "targets": [],
       "value": ""
     }]

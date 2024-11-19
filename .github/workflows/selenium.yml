@@ -26,18 +26,6 @@ jobs:
           --health-timeout 5s
           --health-retries 3
 
-      selenium:
-        image: selenium/standalone-chrome:latest
-        ports:
-          - 4444:4444
-          - 7900:7900
-        options: >-
-          --shm-size="2g"
-          --health-cmd="/opt/bin/check-grid.sh --host 0.0.0.0 --port 4444"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
-
     steps:
     - uses: actions/checkout@v4
 
@@ -52,6 +40,19 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '16'
+
+    - name: Create test network
+      run: docker network create test-network
+
+    - name: Start Selenium container
+      run: |
+        docker run -d \
+          --network test-network \
+          --name selenium \
+          -p 4444:4444 \
+          -p 7900:7900 \
+          --shm-size="2g" \
+          selenium/standalone-chrome:latest
 
     - name: Install Selenium Dependencies
       run: |
@@ -115,77 +116,67 @@ jobs:
 
         php install.php
 
-    - name: Start PHP server
+    - name: Start PHP container
       run: |
-        php -S 0.0.0.0:8000 -t . > php-server.log 2>&1 &
-        echo $! > php-server.pid
-        
-        # Wait for PHP server
-        max_attempts=30
-        attempt=1
-        echo "Waiting for PHP server..."
-        while [ $attempt -le $max_attempts ]; do
-          if curl -s http://localhost:8000 > /dev/null; then
-            echo "PHP server is ready!"
-            break
-          fi
-          echo "Attempt $attempt of $max_attempts"
-          sleep 1
-          attempt=$((attempt + 1))
-        done
-        
-        if [ $attempt -gt $max_attempts ]; then
-          echo "PHP server failed to start"
-          cat php-server.log
-          exit 1
-        fi
+        docker run -d \
+          --network test-network \
+          --name php-app \
+          -v ${{ github.workspace }}:/var/www/html \
+          -p 8000:8000 \
+          php:8.2-cli \
+          php -S 0.0.0.0:8000 -t /var/www/html
 
-    - name: Wait for Selenium
+    - name: Wait for services
       run: |
-        echo "Waiting for Selenium..."
-        max_attempts=30
-        attempt=1
-        while [ $attempt -le $max_attempts ]; do
-          if curl -sSL "http://localhost:4444/wd/hub/status" | grep -q "ready.*true"; then
-            echo "Selenium is ready"
-            break
+        # Wait for PHP
+        echo "Waiting for PHP..."
+        timeout=30
+        until curl -s http://localhost:8000 > /dev/null; do
+          if [ $timeout -eq 0 ]; then
+            echo "PHP failed to start"
+            docker logs php-app
+            exit 1
           fi
-          echo "Attempt $attempt of $max_attempts"
+          echo "Waiting... ($timeout seconds left)"
           sleep 1
-          attempt=$((attempt + 1))
+          timeout=$((timeout-1))
         done
         
-        if [ $attempt -gt $max_attempts ]; then
-          echo "Selenium failed to start"
-          exit 1
-        fi
+        # Wait for Selenium
+        echo "Waiting for Selenium..."
+        timeout=30
+        until curl -s http://localhost:4444/wd/hub/status | grep -q "ready.*true"; do
+          if [ $timeout -eq 0 ]; then
+            echo "Selenium failed to start"
+            docker logs selenium
+            exit 1
+          fi
+          echo "Waiting... ($timeout seconds left)"
+          sleep 1
+          timeout=$((timeout-1))
+        done
 
     - name: Run Selenium tests
       run: |
+        mkdir -p test-output
+        
         selenium-side-runner \
           --browser chrome \
-          --server http://localhost:4444 \
-          --base-url http://localhost:8000 \
-          --debug \
+          --server http://localhost:4444/wd/hub \
+          --base-url http://php-app:8000 \
           --output-directory=./test-output \
           tests/Selenium/Tests_MDE.side
 
     - name: Show logs on failure
       if: failure()
       run: |
-        echo "PHP Server Log:"
-        cat php-server.log || true
+        echo "PHP container logs:"
+        docker logs php-app
         echo "Selenium container logs:"
-        docker logs $(docker ps -qf "name=selenium") || true
+        docker logs selenium
         echo "Test output:"
-        cat ./test-output/* || true
-
-    - name: Stop PHP server
-      if: always()
-      run: |
-        if [ -f php-server.pid ]; then
-          kill $(cat php-server.pid) || true
-        fi
+        ls -la test-output/
+        cat test-output/* || true
 
     - name: Upload artifacts
       if: always()
@@ -193,5 +184,12 @@ jobs:
       with:
         name: logs-and-results
         path: |
-          *.log
           test-output/
+          *.log
+
+    - name: Cleanup
+      if: always()
+      run: |
+        docker stop php-app selenium || true
+        docker rm php-app selenium || true
+        docker network rm test-network || true
