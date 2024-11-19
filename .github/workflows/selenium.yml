@@ -26,6 +26,18 @@ jobs:
           --health-timeout 5s
           --health-retries 3
 
+      selenium:
+        image: selenium/standalone-chrome:latest
+        ports:
+          - 4444:4444
+          - 7900:7900
+        options: >-
+          --shm-size="2g"
+          --health-cmd="/opt/bin/check-grid.sh --host 0.0.0.0 --port 4444"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
     steps:
     - uses: actions/checkout@v4
 
@@ -36,11 +48,6 @@ jobs:
         extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, zip
         coverage: xdebug
 
-    - name: Setup Chrome and ChromeDriver
-      uses: browser-actions/setup-chrome@latest
-      with:
-        chrome-version: stable
-
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
@@ -49,7 +56,7 @@ jobs:
     - name: Install Selenium Dependencies
       run: |
         npm install -g selenium-side-runner@3.17.0
-        npm install -g chromedriver
+        npm install -g selenium-webdriver
 
     - name: Update Composer dependencies
       run: composer update --no-interaction --no-progress
@@ -109,16 +116,10 @@ jobs:
     - name: Run install.php
       run: php install.php
 
-    - name: Setup Display
-      run: |
-        sudo apt-get install -y xvfb
-        export DISPLAY=:99
-        Xvfb :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
-        sleep 3
-
     - name: Start PHP server
       run: |
-        php -S 127.0.0.1:8000 -t . > php-server.log 2>&1 &
+        # Start PHP server
+        php -S 0.0.0.0:8000 -t . > php-server.log 2>&1 &
         echo $! > php-server.pid
         
         # Wait for PHP server to be ready
@@ -126,7 +127,7 @@ jobs:
         attempt=1
         echo "Waiting for PHP server to be ready..."
         while [ $attempt -le $max_attempts ]; do
-          if curl -s http://127.0.0.1:8000 > /dev/null; then
+          if curl -s http://localhost:8000 > /dev/null; then
             echo "PHP server is ready!"
             break
           fi
@@ -141,42 +142,60 @@ jobs:
           exit 1
         fi
 
-    - name: Start ChromeDriver
+    - name: Wait for Selenium
       run: |
-        chromedriver --port=4444 --whitelisted-ips="" --url-base=/wd/hub &
-        echo $! > chromedriver.pid
+        echo "Waiting for Selenium..."
+        timeout=30
+        while [ $timeout -gt 0 ]; do
+          if curl -sSL "http://localhost:4444/wd/hub/status" | grep -q "ready.*true"; then
+            echo "Selenium is ready"
+            break
+          fi
+          echo "Waiting... ($timeout seconds left)"
+          sleep 1
+          timeout=$((timeout-1))
+        done
         
-        # Wait for ChromeDriver
-        sleep 5
+        if [ $timeout -eq 0 ]; then
+          echo "Selenium failed to start"
+          exit 1
+        fi
 
     - name: Run Selenium tests
       run: |
-        # Set timeout and retry settings
-        export SELENIUM_TIMEOUT=30000
-        export SELENIUM_IMPLICIT_WAIT=30000
+        # Create selenium config file
+        cat << EOF > selenium.json
+        {
+          "capabilities": {
+            "browserName": "chrome",
+            "goog:chromeOptions": {
+              "args": ["--no-sandbox", "--headless", "--disable-gpu", "--disable-dev-shm-usage"]
+            }
+          }
+        }
+        EOF
         
         selenium-side-runner \
-          --capability "chromeOptions.args=[--headless,--no-sandbox,--disable-dev-shm-usage]" \
+          -c selenium.json \
           --server http://localhost:4444/wd/hub \
-          --base-url http://127.0.0.1:8000 \
-          --timeout-pageLoad 30000 \
-          --timeout-script 30000 \
-          --timeout-element 30000 \
+          --base-url http://localhost:8000 \
+          --timeout 30000 \
           tests/Selenium/Tests_MDE.side
 
     - name: Show logs on failure
       if: failure()
       run: |
         echo "PHP Server Log:"
-        cat php-server.log
-        echo "Chrome Driver Log:"
-        cat chromedriver.log || true
+        cat php-server.log || true
+        echo "Selenium container logs:"
+        docker logs $(docker ps -qf "name=selenium") || true
 
-    - name: Stop services
+    - name: Stop PHP server
       if: always()
       run: |
-        kill $(cat php-server.pid) || true
-        kill $(cat chromedriver.pid) || true
+        if [ -f php-server.pid ]; then
+          kill $(cat php-server.pid) || true
+        fi
 
     - name: Upload artifacts
       if: always()
@@ -185,4 +204,4 @@ jobs:
         name: logs
         path: |
           *.log
-          /var/log/apache2/*
+          selenium.json
