@@ -128,21 +128,26 @@ jobs:
       run: php install.php
 
     - name: Start PHP server
+      id: start-php
       run: |
-        php -S 0.0.0.0:8000 -t . &
-        echo $! > php-server.pid
-        sleep 5
+        # Start PHP server and store PID
+        nohup php -S 0.0.0.0:8000 -t . > php-server.log 2>&1 &
+        PHP_PID=$!
+        echo "PHP_PID=$PHP_PID" >> $GITHUB_ENV
         
-        # Test if server is accessible
-        curl http://localhost:8000
-        if [ $? -ne 0 ]; then
-          echo "PHP server is not accessible"
-          exit 1
-        fi
+        # Wait for server to start
+        echo "Waiting for PHP server to start..."
+        for i in {1..30}; do
+          if curl -s http://localhost:8000 > /dev/null; then
+            echo "PHP server is running on PID $PHP_PID"
+            echo "php_pid=$PHP_PID" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          sleep 1
+        done
         
-        # Show server status
-        ps aux | grep php
-        netstat -tulpn | grep LISTEN
+        echo "PHP server failed to start"
+        exit 1
 
     - name: Wait for Selenium
       run: |
@@ -166,7 +171,19 @@ jobs:
 
     - name: Stop PHP server
       if: always()
-      run: kill $(cat php-server.pid)
+      run: |
+        if [ ! -z "${{ env.PHP_PID }}" ]; then
+          echo "Stopping PHP server with PID ${{ env.PHP_PID }}"
+          kill ${{ env.PHP_PID }} || true
+        else
+          echo "No PHP PID found"
+        fi
+
+    - name: Show PHP server log
+      if: always()
+      run: |
+        echo "PHP Server Log:"
+        cat php-server.log || true
 
     - name: Upload artifacts
       if: always()
