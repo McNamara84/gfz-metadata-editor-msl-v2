@@ -30,7 +30,10 @@ jobs:
         image: selenium/standalone-chrome:latest
         ports:
           - 4444:4444
-        options: --shm-size="2g"
+          - 7900:7900
+        options: >-
+          --shm-size="2g"
+          --network="host"
 
     steps:
     - uses: actions/checkout@v4
@@ -126,17 +129,39 @@ jobs:
 
     - name: Start PHP server
       run: |
-        php -S 127.0.0.1:8000 -t . &
+        php -S 0.0.0.0:8000 -t . &
         echo $! > php-server.pid
         sleep 5
-        curl http://127.0.0.1:8000 || (cat php-server.pid && exit 1)
+        
+        # Test if server is accessible
+        curl http://localhost:8000
+        if [ $? -ne 0 ]; then
+          echo "PHP server is not accessible"
+          exit 1
+        fi
+        
+        # Show server status
+        ps aux | grep php
+        netstat -tulpn | grep LISTEN
+
+    - name: Wait for Selenium
+      run: |
+        for i in {1..30}; do
+          if curl -s http://localhost:4444/wd/hub/status > /dev/null; then
+            echo "Selenium is up!"
+            break
+          fi
+          echo "Waiting for Selenium... ($i/30)"
+          sleep 1
+        done
 
     - name: Run Selenium tests
       run: |
+        export NODE_TLS_REJECT_UNAUTHORIZED=0
         selenium-side-runner \
           --browser chrome \
           --server http://localhost:4444/wd/hub \
-          --base-url http://127.0.0.1:8000 \
+          --base-url http://localhost:8000 \
           tests/Selenium/Tests_MDE.side
 
     - name: Stop PHP server
