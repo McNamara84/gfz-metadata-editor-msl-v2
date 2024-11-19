@@ -14,7 +14,7 @@
               <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputAuthorORCID"
                 name="orcids[]" pattern="^[0-9]{4}-[0-9]{4}-[0-9]{4}-([0-9]{4}|[0-9]{3}X)$" required />
               <label for="inputAuthorORCID">
-                <?php echo $translations['authorORCID']; ?>
+                <?php echo $translations['authorORCID']; ?><span class="text-danger">*</span>
               </label>
               <div class="invalid-feedback">
                 <?php echo $translations['ORCID_invalid']; ?>
@@ -33,7 +33,7 @@
               <input type="text" class="form-control" id="inputFamilyname" name="familynames[]"
                 pattern="^[a-zA-ZäöüÄÖÜß \-]*$" required />
               <label for="inputFamilyname">
-                <?php echo $translations['lastname']; ?>
+                <?php echo $translations['lastname']; ?><span class="text-danger">*</span>
               </label>
               <div class="invalid-feedback">
                 <?php echo $translations['lastname_invalid']; ?>
@@ -48,7 +48,7 @@
               <input type="text" class="form-control" id="inputGivenname" name="givennames[]"
                 pattern="^[a-zA-ZäöüÄÖÜß \-.]*$" required />
               <label for="inputGivenname">
-                <?php echo $translations['firstname']; ?>
+                <?php echo $translations['firstname']; ?><span class="text-danger">*</span>
               </label>
               <div class="invalid-feedback">
                 <?php echo $translations['firstname_invalid']; ?>
