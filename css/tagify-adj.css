@@ -10,7 +10,7 @@
     min-height: 3.5em !important;
 }
 
-/* Für Umbruch von Tags in neue Zeilen und gefüllte Tags */
+/* For wrapping tags in new lines and filled tags */
 .tagify {
     flex-wrap: wrap;
     --tag-inset-shadow-size: 200em;
@@ -18,11 +18,11 @@
     --placeholder-color-focus: rgba(var(--bs-body-color-rgb), .65) !important;
 }
 
-/* Verhindert das "wachsen" des Hilfe-Buttons bei anzeige von invalid-feedback */
+/* Prevents the help button from "growing" when invalid-feedback is displayed */
 .input-group .input-group-append .input-group-text {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    height: calc(3.5rem + calc(var(--bs-border-width) * 2)); /* Selbe Höhe wie form-floating */
+    height: calc(3.5rem + calc(var(--bs-border-width) * 2)); /* Same height as class form-floating */
 }
 
 .input-right-no-round-corners {
