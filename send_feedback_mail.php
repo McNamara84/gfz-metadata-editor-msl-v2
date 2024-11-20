@@ -4,6 +4,19 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 include 'settings.php';
 
+/**
+ * Sends a feedback email containing positive and negative feedback.
+ *
+ * @param string $feedbackQuestion1 The first Question of feedback.
+ * @param string $feedbackQuestion2 The second Question of feedback.
+ * @param string $feedbackQuestion3 The third Question of feedback.
+ * @param string $feedbackQuestion4 The fourth Question of feedback.
+ * @param string $feedbackQuestion5 The fifth Question of feedback.
+ * @param string $feedbackQuestion6 The sixth Question of feedback.
+ * @param string $feedbackQuestion7 The seventh Question of feedback.
+ *
+ * @return void
+ */
 function sendFeedbackMail($feedbackQuestion1, $feedbackQuestion2, $feedbackQuestion3, $feedbackQuestion4, $feedbackQuestion5, $feedbackQuestion6, $feedbackQuestion7)
 {
     global $smtpHost, $smtpPort, $smtpUser, $smtpPassword, $smtpSender, $feedbackAdress;
