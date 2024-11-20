@@ -84,7 +84,7 @@ jobs:
         <?php
         error_reporting(E_ALL);
         ini_set('display_errors', 1);
-        
+
         function connectDb() {
             \$host = '127.0.0.1';
             \$username = 'test_user';
@@ -138,39 +138,55 @@ jobs:
         echo "<?php phpinfo(); ?>" > info.php
         echo "<?php error_log('Debug: Loading application...'); ?>" > debug.php
 
+    - name: Wait for PHP application to be ready
+      run: |
+        for i in {1..30}; do
+          if curl -s http://localhost:8000/ > /dev/null; then
+            echo "PHP application is ready."
+            break
+          fi
+          echo "Waiting for PHP application..."
+          sleep 2
+        done
+
     - name: Wait for services and verify
       run: |
         # Create test output directory
         mkdir -p test-output
-        
+
         # Test PHP server
         echo "Testing PHP server..."
         curl -v http://localhost:8000/info.php > test-output/php-info.html
         curl -v http://localhost:8000/debug.php
         curl -v http://localhost:8000/ > test-output/index.html
-        
+
         # Test Selenium
         echo "Testing Selenium..."
         curl -v http://localhost:4444/wd/hub/status > test-output/selenium-status.json
-        
+
         # Show network info
         echo "Docker network info:"
         docker network inspect test-network
-        
+
         # Show running containers
         echo "Running containers:"
         docker ps
-        
+
         # Show PHP logs
         echo "PHP container logs:"
         docker logs php-app
+
+    - name: Test connectivity from Selenium container
+      run: |
+        echo "Testing connectivity from Selenium container to PHP application..."
+        docker exec selenium curl -v http://php-app:8000/ || true
 
     - name: Run Selenium tests
       run: |
         selenium-side-runner \
           --browser chrome \
           --server http://localhost:4444/wd/hub \
-          --base-url http://localhost:8000 \
+          --base-url http://php-app:8000 \
           --timeout-pageLoad 30000 \
           --timeout-script 30000 \
           --timeout-element 30000 \
