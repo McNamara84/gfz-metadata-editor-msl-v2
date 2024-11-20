@@ -1,0 +1,36 @@
+.tagify__dropdown__item {
+    font-size: 0.7rem;
+    white-space: normal;
+    height: min-content;
+}
+
+.tagify__input {
+    margin: 1px 5px 5px 5px !important;
+    font-size: 0.8rem;
+    min-height: 3.5em !important;
+}
+
+/* Für Umbruch von Tags in neue Zeilen und gefüllte Tags */
+.tagify {
+    flex-wrap: wrap;
+    --tag-inset-shadow-size: 200em;
+    --placeholder-color: rgba(var(--bs-body-color-rgb), .65) !important;
+    --placeholder-color-focus: rgba(var(--bs-body-color-rgb), .65) !important;
+}
+
+/* Verhindert das "wachsen" des Hilfe-Buttons bei anzeige von invalid-feedback */
+.input-group .input-group-append .input-group-text {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    height: calc(3.5rem + calc(var(--bs-border-width) * 2)); /* Selbe Höhe wie form-floating */
+}
+
+.input-right-no-round-corners {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.input-right-with-round-corners {
+    border-top-right-radius: 0.375rem !important;
+    border-bottom-right-radius: 0.375rem !important;
+}
