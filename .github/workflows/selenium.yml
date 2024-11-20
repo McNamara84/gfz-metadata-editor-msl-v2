@@ -170,7 +170,7 @@ jobs:
         selenium-side-runner \
           --browser chrome \
           --server http://localhost:4444/wd/hub \
-          --base-url http://php-app:8000 \
+          --base-url http://localhost:8000 \
           --timeout-pageLoad 30000 \
           --timeout-script 30000 \
           --timeout-element 30000 \
