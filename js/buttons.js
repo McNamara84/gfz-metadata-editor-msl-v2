@@ -60,76 +60,102 @@ $(document).ready(function () {
   //////////////////////////// ADD AND REMOVE BUTTONS ///////////////////////////////////////////////////////////////
   //Remove  Button anlegen, der in Formgroups Authors, Contact Persons, Contributors genutzt wird
   var removeButton = '<button type="button" class="btn btn-danger removeButton" style="width: 36px">-</button>';
+  /**
+ * HTML markup for the title type options, copied from the initial dropdown.
+ * @type {string}
+ */
   var optionTitleTypeHTML = $("#titleType").html();
+
+  /**
+   * Counter for the number of titles currently added.
+   * @type {number}
+   */
   var titlesNumber = 1;
-  // Variable für den Haupttiteltyp
+
+  /**
+   * Stores the main title type, which is set for the first title row.
+   * @type {string}
+   */
   var mainTitleType = "";
+
+  /**
+   * Click event handler for the "Add Title" button.
+   * Adds a new title row if the maximum number of titles has not been reached.
+   */
   $("#addTitle").click(function () {
-    // Referenz auf den Button speichern
+    /**
+     * Reference to the "Add Title" button.
+     * @type {jQuery}
+     */
     var $addTitleBtn = $(this);
 
+    // Check if the current number of titles is below the allowed maximum.
     if (titlesNumber < maxTitles) {
-      // Vorbereitung der neuen Titelzeile durch Klonen und Zurücksetzen der Eingabefelder
+      // Clone the existing title row and reset its input fields.
       var newTitleRow = $addTitleBtn.closest(".row").clone();
-      // Hilfe-Buttons entfernen
+
+      // Remove help buttons from the cloned row.
       deleteHelpButtonFromClonedRows(newTitleRow);
       $(newTitleRow).find("input").val("");
 
-      // Adjust classes for layout of new row
+      // Adjust the column layout classes for the cloned row.
       newTitleRow.find(".col-12.col-sm-12.col-md-11.col-lg-11")
         .removeClass("col-md-11 col-lg-11")
         .addClass("col-md-8 col-lg-8");
 
-      // Sichtbarkeit des Dropdowns steuern
+      // Control the visibility of the title type dropdown.
       if (titlesNumber === 0) {
-        // Beim ersten Titel, Dropdown ausblenden
+        // Show the dropdown for the first title.
         $("#titleTypeContainer").show();
       } else {
-        // Bei weiteren Titeln, Dropdown sichtbar machen
+        // Ensure the dropdown is visible for subsequent titles.
         $(newTitleRow).find("#titleTypeContainer").show();
       }
 
+      // Capture the main title type for the first row.
       if (titlesNumber === 1) {
-        mainTitleType = $(newTitleRow).find("select").val(); // Haupttiteltyp erfassen
+        mainTitleType = $(newTitleRow).find("select").val();
       }
 
-      // Optionen für den Titeltyp setzen und Haupttiteltyp entfernen
+      // Populate the title type dropdown with options and remove the main title type.
       var $select = $(newTitleRow).find("select");
       $select.html(optionTitleTypeHTML);
-      $select.find("option[value='" + mainTitleType + "']").remove(); // Haupttiteltyp entfernen
-      $select.val(""); // Auswahl zurücksetzen
+      $select.find("option[value='" + mainTitleType + "']").remove(); // Remove the main title type
+      $select.val(""); // Reset the dropdown selection
 
-      // Hinzufügen des Löschbuttons
+      // Create a remove button for the new row.
       var removeBtn = $("<button/>", {
         text: "-",
         type: "button",
         class: "btn btn-danger removeTitle",
       }).css("width", "36px");
 
-      // Event-Handler für den Löschbutton
+      // Event handler for the remove button.
       removeBtn.click(function () {
+        // Remove the current row and decrement the titles counter.
         $(this).closest(".row").remove();
         titlesNumber--;
 
-        // Reaktivieren des Hinzufüge-Buttons
+        // Enable the "Add Title" button if below the maximum limit.
         if (titlesNumber < maxTitles) {
           $addTitleBtn.prop("disabled", false);
         }
       });
 
-      // Ersetzen des Hinzufügen-Buttons durch den Löschbutton im geklonten Element
+      // Replace the "Add Title" button in the cloned row with the remove button.
       $(newTitleRow).find(".addTitle").replaceWith(removeBtn);
 
-      // Hinzufügen der neuen Titelzeile zum DOM
+      // Append the new title row to the DOM.
       $addTitleBtn.closest(".row").parent().append(newTitleRow);
       titlesNumber++;
 
-      // Wenn die maximale Anzahl an Titeln erreicht ist, Button addTitle deaktivieren
-      if (titlesNumber == maxTitles) {
+      // Disable the "Add Title" button if the maximum number of titles is reached.
+      if (titlesNumber === maxTitles) {
         $addTitleBtn.prop("disabled", true);
       }
     } else {
-      console.log("Maximale Anzahl an Titeln erreicht: " + maxTitles);
+      // Log a message if the maximum number of titles is reached.
+      console.log("Maximum number of titles reached: " + maxTitles);
     }
   });
 
