@@ -69,9 +69,11 @@
             <input name="cbPersonRoles[]" id="inputContributorsPerRole"
               class="form-control tagify--custom-dropdown input-with-help input-right-no-round-corners"
               placeholder="<?php echo $translations['role_label']; ?>" />
-            <div class="invalid-feedback">
-              <?php echo $translations['PleaseChoose_invalid']; ?>
-            </div>
+              <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                data-help-section-id="CPer_roles"></i></span>
+                <div class="invalid-feedback">
+                  <?php echo $translations['PleaseChoose_invalid']; ?>
+                </div>
           </div>
         </div>
         <!--Eingabefeld Contributor Affiliation-->
@@ -125,6 +127,8 @@
             <input name="cbOrganisationRoles[]" id="inputContributorOrgaRole"
               class="form-control tagify--custom-dropdown input-with-help input-right-no-round-corners"
               placeholder="<?php echo $translations['role_label']; ?>" />
+              <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                data-help-section-id="organisation_roles"></i></span>
             <div class="invalid-feedback">
               <?php echo $translations['PleaseChoose_invalid']; ?>
             </div>

@@ -37,6 +37,7 @@ function autocompleteAffiliations(inputFieldId, hiddenFieldId, data) {
   // Initialize Tagify on the input element with specified options
   var tagify = new Tagify(inputElement[0], {
     enforceWhitelist: false,
+    duplicates: false,
     whitelist: data.map((item) => item.name),
     dropdown: {
       maxItems: 20,
@@ -45,7 +46,7 @@ function autocompleteAffiliations(inputFieldId, hiddenFieldId, data) {
       closeOnSelect: true,
     },
     editTags: false,
-    keepInvalidTags: true,
+    keepInvalidTags: false,
     autoComplete: {
       enabled: true,
     },
