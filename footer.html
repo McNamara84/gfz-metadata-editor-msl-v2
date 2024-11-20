@@ -13,6 +13,23 @@
     </div>
   </div>
 </div>
+<!-- Notification Modal -->
+<div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="notificationModalLabel">Notification</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="notificationModalBody">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Fixed Footer für die Buttons -->
 <footer class="footer mt-auto py-0 fixed-bottom">
   <div class="container">
@@ -26,13 +43,11 @@
           <button class="btn btn-primary m-1" type="button" disabled>
             <?php echo $translations['load']; ?>
           </button>
-          <button type="submit" class="btn btn-warning m-1" form="metaForm" id="saveAs">
+          <button type="submit" class="btn btn-warning m-1" form="metaForm" id="saveAs" data-action="save">
             Save
           </button>
-          <!--<button type="submit" class="btn btn-warning m-1" form="metaForm" id="saveButton">
-            Save
-          </button>-->
-          <button class="btn btn-success m-1" id="submitButton" disabled>
+          <button type="submit" class="btn btn-success m-1" form="metaForm" id="submitButton" data-action="submit"
+            disabled>
             <?php echo $translations['submit']; ?>
           </button>
           <?php if ($showFeedbackLink): ?>
@@ -54,11 +69,10 @@
   integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- jQuery UI -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.0/jquery-ui.min.js"
-  integrity="sha512-MlEyuwT6VkRXExjj8CdBKNgd+e2H+aYZOCUaCrt9KRk6MlZDOs91V1yK22rwm8aCIsb5Ec1euL8f0g58RKT/Pg=="
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"
+  integrity="sha512-MSOo1aY+3pXCOCdGAYoBZ6YGI0aragoQsg1mKKBHXCYPIWxamwOE7Drh+N5CPgGI5SA9IEKJiPjdfqWFWmZtRA=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- JavaScript-Dateien -->
-<!--<script src="./keywords/jstree.js"></script>-->
 <!-- Funktionen der Buttons -->
 <script src="js/buttons.js"></script>
 <!-- Thesauri laden -->
@@ -77,8 +91,6 @@
 <script src="js/darkmode.js"></script>
 <!-- JS-Datei für Hilfe-PopUps einbinden -->
 <script src="js/help.js"></script>
-<!-- XML-JS eingebunden -->
-<script src="js/saveXml.js"></script>
 <!-- JS-Karten-Funktionen einbinden -->
 <script src="js/map.js"></script>
 <!-- Titel Verkleinerungsfunktion einbinden -->
@@ -88,11 +100,11 @@
 <!-- Bootstrap 5 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <!-- select-Funktionen laden -->
+<!-- select-Funktionen laden -->
 <script src="js/select.js"></script>
 <!--Tagify-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.31.5/tagify.min.js"
-  integrity="sha512-8sidTjqd5F2zja6kq4RRqJkm1FL/wDfd/QBCXKeOMtqiJhC91dHwwPIlrvCchQJdkLGGKLE55NcxQGo2tMgdJA=="
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.32.0/tagify.min.js"
+  integrity="sha512-BE8EEVDOUToh9jodaafmFRj6igYDWVw4Qkh7VmTQL5UOk/VdMyFsDIq6J7pG3m6nWaTPf+ZVYvu9+M6BiZ5nnQ=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!--jsTree-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.17/jstree.min.js"

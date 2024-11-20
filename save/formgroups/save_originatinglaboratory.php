@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Speichert die Originating Laboratories in der Datenbank.
+ * Saves the originating laboratories in the database.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param array $postData Die POST-Daten aus dem Formular.
- * @param int $resource_id Die ID der zugehörigen Ressource.
+ * @param mysqli $connection  The database connection.
+ * @param array  $postData    The POST data from the form.
+ * @param int    $resource_id The ID of the associated resource.
  *
  * @return void
  */
@@ -37,15 +37,14 @@ function saveOriginatingLaboratories($connection, $postData, $resource_id)
     }
 }
 
-
 /**
- * Speichert oder aktualisiert ein Originating Laboratory in der Datenbank.
+ * Saves or updates an originating laboratory in the database.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param string $labName Der Name des Labors.
- * @param string $labId Die ID des Labors.
+ * @param mysqli $connection The database connection.
+ * @param string $labName    The name of the laboratory.
+ * @param string $labId      The ID of the laboratory.
  *
- * @return int Die ID des gespeicherten oder aktualisierten Originating Laboratory.
+ * @return int The ID of the saved or updated originating laboratory.
  */
 function saveOrUpdateOriginatingLaboratory($connection, $labName, $labId)
 {
@@ -59,6 +58,15 @@ function saveOrUpdateOriginatingLaboratory($connection, $labName, $labId)
     return $lab_id;
 }
 
+/**
+ * Saves an affiliation into the database.
+ *
+ * @param mysqli      $connection       The database connection.
+ * @param string      $affiliation_name The name of the affiliation.
+ * @param string|null $rorId            The ROR ID of the affiliation.
+ *
+ * @return int The ID of the saved affiliation.
+ */
 function saveAffiliation($connection, $affiliation_name, $rorId)
 {
     $rorId = $rorId ? str_replace("https://ror.org/", "", $rorId) : null;
@@ -73,13 +81,12 @@ function saveAffiliation($connection, $affiliation_name, $rorId)
     return $affiliation_id;
 }
 
-
 /**
- * Verknüpft eine Resource mit einem Originating Laboratory.
+ * Links a resource to an originating laboratory.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param int $resource_id Die ID der Resource.
- * @param int $lab_id Die ID des Originating Laboratory.
+ * @param mysqli $connection  The database connection.
+ * @param int    $resource_id The ID of the resource.
+ * @param int    $lab_id      The ID of the originating laboratory.
  *
  * @return void
  */
@@ -91,6 +98,15 @@ function linkResourceToOriginatingLaboratory($connection, $resource_id, $lab_id)
     $stmt->close();
 }
 
+/**
+ * Links an originating laboratory to an affiliation.
+ *
+ * @param mysqli $connection    The database connection.
+ * @param int    $lab_id        The ID of the originating laboratory.
+ * @param int    $affiliation_id The ID of the affiliation.
+ *
+ * @return void
+ */
 function linkLaboratoryToAffiliation($connection, $lab_id, $affiliation_id)
 {
     $stmt = $connection->prepare("INSERT IGNORE INTO Originating_Laboratory_has_Affiliation 
@@ -102,12 +118,12 @@ function linkLaboratoryToAffiliation($connection, $lab_id, $affiliation_id)
 }
 
 /**
- * Speichert die Affiliation eines Originating Laboratory.
+ * Saves the affiliation of an originating laboratory.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param int $lab_id Die ID des Originating Laboratory.
- * @param string $affiliation_name Der Name der Affiliation.
- * @param string|null $rorId Die ROR-ID der Affiliation.
+ * @param mysqli      $connection       The database connection.
+ * @param int         $lab_id           The ID of the originating laboratory.
+ * @param string      $affiliation_name The name of the affiliation.
+ * @param string|null $rorId            The ROR ID of the affiliation.
  *
  * @return void
  */
@@ -117,7 +133,7 @@ function saveOriginatingLaboratoryAffiliation($connection, $lab_id, $affiliation
 
     $rorId = $rorId ? str_replace("https://ror.org/", "", $rorId) : null;
 
-    // Überprüfen, ob die Affiliation bereits existiert
+    // Check if the affiliation already exists
     $stmt = $connection->prepare("SELECT affiliation_id FROM Affiliation WHERE name = ?");
     $stmt->bind_param("s", $affiliation_name);
     $stmt->execute();

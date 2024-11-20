@@ -5,13 +5,13 @@
         </b>
     </div>
 
-    <div class="card-body">
+    <div class="card-body reduce-padding">
         <!--Eingabefeld-->
-        <div class="input-group has-validation">
+        <div class="input-group has-validation input-margin-top-bottom">
             <div class="form-floating">
                 <div class="input-group has-validation">
-                    <input type="text" class="form-control input-with-help input-rigt-no-round-corners"
-                        id="inputMSLKeywords" name="MSLKeywords" />
+                    <input type="text" class="form-control input-with-help input-rigt-no-round-corners thesaurus-tagify"
+                        id="inputMSLKeywords" name="MSLKeywords" placeholder="<?php echo $translations['thesaurusLabel']; ?>"/>
                     <span class="input-group-text"><i class="bi bi-question-circle-fill"
                             data-help-section-id="mslkeywords"></i>
                     </span>
@@ -21,7 +21,7 @@
             <div class="col-auto p-2">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#MSLKeywordsModal"
                     id="MSLKeywords">
-                    <?php echo $translations['thesaurus']; ?>
+                    <i class="bi bi-diagram-3"></i>
                 </button>
 
             </div>
@@ -38,13 +38,13 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="MSLKeywordsModalLabel"> MSL Keywords</h5>
+                <h5 class="modal-title" id="MSLKeywordsModalLabel"> EPOS Multi-Scale Laboratories Keywords </h5>
                 <span class="input-group-text"><i class="bi bi-question-circle-fill"
                         data-help-section-id="modalHelp"></i></span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div id="MSLKeywordsModalThesaurus">
+                <div id="MSLKeywordsModalThesaurus"> 
                     <input type="text" class="form-control mb-3" id="searchInputMSLKeywords"
                         placeholder="Search for Keyword">
                     <div id="jstreeMSLKeywords"></div>

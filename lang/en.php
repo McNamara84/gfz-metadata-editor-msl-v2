@@ -15,6 +15,7 @@ $translations = [
     // Form Group Resource Information
     'resourceInformation' => 'Resource Information',
     'doi' => 'DOI',
+    'doi_valid'=>'A new DOI will be registered',
     'doi_invalid' => 'Please use format 10.ORGANISATION/ID (i.e.: 10.57757/IUGG23-3081) or leave empty',
     'publicationYear' => 'Publication Year',
     'publicationYear_invalid' => 'Please provide a valid year (4 digits).',
@@ -60,7 +61,7 @@ $translations = [
     'contributors_firstname_invalid' => 'Please provide the first name of the contributor. Only letters are allowed.',
     'Organisation' => 'Organisation name',
     'Organisation_invalid' => 'Please enter a valid organization name.',
-    'contributors_ORCID' => 'Contributor ORCID',
+    'contributors_ORCID' => 'ORCID',
     'contributorsPersonZeile' => 'Contributing Person(s)',
     'contributorsInstitutionZeile' => 'Contributing Institution(s)',
 
@@ -76,10 +77,10 @@ $translations = [
     'd_other_tooltip' => 'Please enter other information..',
 
     // Form Group MSL-Keywords
-    'mslKeywords' => 'MSL Keywords',
+    'mslKeywords' => 'EPOS Multi-Scale Laboratories Keywords',
 
     //Formgroup thesaurusKeywords
-    'thesaurusKeywords' => 'Thesaurus Keywords',
+    'thesaurusKeywords' => 'GCMD Science Keywords',
     'thesaurus' => 'Thesaurus',
     'scienceKeywords' => 'NASA GCMD Science Keywords',
     'instruments' => 'NASA GCMD Instruments',

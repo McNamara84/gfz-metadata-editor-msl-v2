@@ -1,14 +1,43 @@
 <?php
-// settings.php einbinden damit Variablen verfügbar sind
+/**
+ *
+ * This controller handles validation-related API requests, such as retrieving patterns for identifier types.
+ *
+ */
+
+// Include settings.php so that variables are available
 require_once __DIR__ . '/../../../settings.php';
+
+/**
+ * Class ValidationController
+ *
+ * Handles validation-related requests for the API.
+ */
 class ValidationController
 {
+    /**
+     * @var mysqli The database connection object.
+     */
     private $connection;
+
+    /**
+     * ValidationController constructor.
+     *
+     * Initializes the database connection.
+     */
     public function __construct()
     {
         global $connection;
         $this->connection = $connection;
     }
+
+    /**
+     * Retrieves the regex pattern for a specified identifier type.
+     *
+     * @param array $vars An associative array containing request parameters.
+     *
+     * @return void
+     */
     public function getPattern($vars)
     {
         $type = $vars['type'] ?? null;
@@ -44,6 +73,11 @@ class ValidationController
         exit();
     }
 
+    /**
+     * Retrieves all identifier types along with their patterns and descriptions.
+     *
+     * @return void
+     */
     public function getIdentifierTypes()
     {
         $stmt = $this->connection->prepare('SELECT name, pattern, description FROM Identifier_Type');

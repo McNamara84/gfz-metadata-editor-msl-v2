@@ -1,22 +1,30 @@
-# Projektbeschreibung
+# Description
 
-Dieser Metadaten-Editor entstand im Rahmen eines studentischen Kooperationsprojekt zwischen Fachhochschule Potsdam und dem GeoForschungsZentrum Potsdam. Der Editor speichert Metadaten zu Forschungsdatensätzen in validen XML-Dateien nach dem DataCite, dem ISO- und dem DIF-Schema.
+This metadata editor is based on a student cooperation project between the University of Applied Sciences Potsdam and the GeoForschungsZentrum Potsdam. The editor saves metadata for research datasets in valid XML files according to the DataCite, ISO and DIF schema.
+
+## Main Features
+- Simple mapping of entered data using XSLT.
+- Modular, customizable front end.
+- Multilingualism through the use of language files.
+- Always up-to-date controlled vocabularies through regular automatic updates.
+- Easy input of authors and contributors using ORCID preload.
+- Submitting of metadata directly to data curators.
 
 ## Installation
 
-1. Sicherstellen einer Entwicklungsumgebung mit PHP >8.2 sowie eines MySQL-Servers.
-2. XSL- und ZIP-Extension für PHP muss vorhanden und aktiviert sein.
-3. Apache und MySQL starten nicht vergessen.
-4. Datenbank "mde" in MySQL (z. B. mittels phpMyAdmin) erstellen.
-5. Inhalt der Datei sample_settings.php in neue Datei `settings.php` kopieren und Einstellungen für Datenbankverbindung anpassen.
-6. Pfad /mde-msl/ in Datei `.htaccess` anpassen an eigenen Installationspfad. Sollte die Anwendung im Hauptverzeichnis installiert werden, reicht der Schrägstrich ("/").
-7. Für die automatisch generierten Zeitzonen-Auswahl einen kostenlosen API Key unter https://timezonedb.com/ erstellen und ebenfalls in der neu erstellen settings.php eintragen
-8. Google Maps JS API Key erstellen und ebenfalls in die Datei settings.php einfügen.
-9. Alle Dateien dieses Repositories in den Ordner "htdocs"-Ordner des Webservers kopieren.
-10. install.php über den Browser aufrufen. Die Datenbank-Tabellen werden automatisch erstellt.
-11. Der Metadateneditor ist nun über localhost/verzeichnisname im Browser erreichbar.
+1. Ensure a development environment with PHP >8.2 and a MySQL or MariaDB server.
+2. The XSL and ZIP extensions for PHP must be installed and enabled.
+3. Don't forget to start Apache and MySQL.
+4. Create a new empty sql database in (e.g. using phpMyAdmin) an copy the name of the database.
+5. Copy the content of the file `sample_settings.php` into a new file `settings.php` and adjust the settings for the database connection.
+6. For the automatically generated time zone selection, create a free API key at [timezonedb.com](https://timezonedb.com/) and enter it into the newly created `settings.php`.
+7. Create a Google Maps JS API key and paste it into the `settings.php` file as well.
+8. Copy all files from this repository into the `htdocs` or `www` folder of your web server.
+9. Access `install.php` via the browser. The database tables will be created automatically in your database.
+10. The metadata editor is now accessible in the browser via `localhost/directoryname`.
+11. Adjust settings in `settings.php` (see [Settings Section](#einstellungen)).
 
-Bei Problemen mit der Installation, hinterlasse gerne einen Eintrag im Issue Board dieses Repositories!
+If you encounter problems with the installation, feel free to leave an entry in the feedback form or in [our issue board on GitHub](https://github.com/McNamara84/gfz-metadata-editor-msl-v2/issues)!
 
 ## Abhängigkeiten
 
@@ -28,30 +36,29 @@ In der header.html und footer.html werden folgende Abhängikeiten von Drittanbie
   Für die Icons in der oberen rechten Ecke des Editors (Dark Mode Switch, Language Switch)
 - jQuery 3.7.1<br>
   Für die Event Handler in JavaScript und zum Vereinfachen des JavaScript-Codes allgemein.
-- jQuery UI 1.14.0<br>
+- jQuery UI 1.14.1<br>
   Erweitert jQuery um die Autocomplete-Funktion, die wir aktuell für die Affiliation-Felder nutzen.
-- Chosen 1.8.7<br> (deprecated, zukünftig nicht mehr verwenden)
-  Da Bootstrap 5.3 keine einfach bedienbaren Multi-Select-Felder anbietet, wird diese Funktion mit Chosen implementiert. Design-Anpassungen waren notwendendig und werden in der Datei bs5-chosen.css umgesetzt.
-- Tagify 4.31.5<br>
+- Tagify 4.32.0<br>
   Wird für das Feld Thesaurus Keywords, die eingabe von mehreren Affiliations und Free Keywords genutzt.
 - jsTree 3.3.17<br>
   Wird zur Darstellung der Thesauri als hierarchische Baumstruktur verwendet.
-- Swagger UI 5.18.1<br>
+- Swagger UI 5.18.2<br>
   Zur Darstellung der dynamischen und interaktiven API-Dokumentation nach OpenAPI-Standard 3.1.
 
 ## Einstellungen
 
 In der Datei `settings.php` können, neben den Zugangsdaten für die Datenbank, auch andere Einstellungen angepasst werden:
 
-- `$maxTitles:` Legt die max. Anzahl an Titeln fest, die Nutzende im Editor eingeben können, fest.
-- `$mslLabsUrl:` URL zur JSON-Datei mit der aktuellen Liste an Laboratorien.
-- `$showFeedbackLink:` true-> Feedback-Funktion eingeschaltet, false-> Feedback-Funktion ausgeschaltet
-- `$smtpHost:`URL zum SMTP-Mailserver
-- `$smtpPort:` Port des Mailservers
-- `$smtpUser:` Nutzername des Postfachs zum Versenden der Mails
-- `$smtpPassword:` Password des Postfach
-- `$smtpSender:` Name des Absenders in den Feedback Mails
-- `$feedbackAdress:` Adresse an die das Feedback gesendet wird
+- `$maxTitles`: Legt die max. Anzahl an Titeln fest, die Nutzende im Editor eingeben können, fest.
+- `$mslLabsUrl`: URL zur JSON-Datei mit der aktuellen Liste an Laboratorien.
+- `$showFeedbackLink`: true-> Feedback-Funktion eingeschaltet, false-> Feedback-Funktion ausgeschaltet
+- `$smtpHost`: URL zum SMTP-Mailserver
+- `$smtpPort`: Port des Mailservers
+- `$smtpUser`: Nutzername des Postfachs zum Versenden der Mails
+- `$smtpPassword`: Password des Postfach
+- `$smtpSender` Name des Absenders in den Feedback Mails
+- `$feedbackAdress`: Adresse an die das Feedback gesendet wird
+- `$xmlSubmitAdress`: Adresse an die diefertige XML-Datei gesendet wird
 
 # API-Dokumentation
 
@@ -95,7 +102,7 @@ Aktualisiert die Liste der Zeitzonen für das Feld `Timezones` in der Gruppe `Sp
 **Antwort:**
 Bestätigungsnachricht über erfolgreiche Aktualisierung
 
-### 3. NASA Science Keywords
+### 3. NASA Science Keywords (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getNasaScienceKeywords
 
@@ -170,7 +177,7 @@ Exportiert einen Datensatz als XML-Datei gemäß dem DIF-Format.
 **Antwort:**
 XML-Datei oder XML-Inhalt
 
-### 9. Alle Ressourcen als eine XML-Datei
+### 9. Alle Ressourcen als eine XML-Datei (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getResourcesAsOneFile&id={resource_id}
 
@@ -247,7 +254,7 @@ Ruft Rollen aus der Datenbank ab.
 **Antwort:**
 JSON-Array mit Rollen-Objekten
 
-### 16. NASA Instruments Keywords aktualisieren
+### 16. NASA Instruments Keywords aktualisieren (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getNasaInstrumentsKeywords
 
@@ -256,7 +263,7 @@ Aktualisiert die NASA/GCMD Instruments Keywords.
 **Antwort:**
 Bestätigungsnachricht über erfolgreiche Aktualisierung
 
-### 17. NASA Platforms Keywords aktualisieren
+### 17. NASA Platforms Keywords aktualisieren (deprecated, neue Version in [APIv2](https://mde2.cats4future.de/api/v2/docs/index.html))
 
 GET ?action=getNasaPlatformsKeywords
 

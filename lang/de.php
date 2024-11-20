@@ -15,6 +15,7 @@ $translations = [
     // Form Group Resource Information
     'resourceInformation' => 'Informationen zur Ressource',
     'doi' => 'DOI',
+    'doi_valid'=>'Eine neue DOI wird registriert',
     'doi_invalid' => 'Format 10.ORGANISATION/ID nutzen (z.B.: 10.57757/IUGG23-3081) oder leer lassen',
     'publicationYear' => 'Veröffentlichungsjahr',
     'publicationYear_invalid' => 'Bitte geben Sie eine gültige Jahreszahl (4-stellig) an.',
@@ -60,7 +61,7 @@ $translations = [
     'contributors_firstname_invalid' => 'Bitte geben Sie den Vornamen der/des Mitwirkenden ein. Es sind nur Buchstaben erlaubt.',
     'Organisation' => 'Organisationsname',
     'Organisation_invalid' => 'Bitte geben Sie einen gültigen Organisationsname an.',
-    'contributors_ORCID' => 'Mitwirkende ORCID',
+    'contributors_ORCID' => 'ORCID',
     'contributorsPersonZeile' => 'Mitwirkende Person(en)',
     'contributorsInstitutionZeile' => 'Mitwirkende Institution(en)',
 
@@ -76,7 +77,7 @@ $translations = [
     'd_other_tooltip' => 'Bitte geben Sie sonstige Informationen ein...',
 
     // Form Group MSL-Keywords
-    'mslKeywords' => 'MSL-Schlüsselwörter',
+    'mslKeywords' => 'EPOS Multi-Scale Laboratories Keywords',
 
     // Form Group Dates
     'dates' => 'Datumsangaben',
@@ -86,7 +87,7 @@ $translations = [
     'embargo_invalid' => 'Bitte geben Sie ein gültiges Datum ein!',
 
     //Formgroup thesaurusKeywords
-    'thesaurusKeywords' => 'Thesaurus-Schlagwörter',
+    'thesaurusKeywords' => 'GCMD Science Keywords',
     'thesaurus' => 'Thesaurus',
     'scienceKeywords' => 'NASA GCMD Science Keywords',
     'instruments' => 'NASA GCMD Instruments',

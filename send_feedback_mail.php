@@ -1,6 +1,13 @@
 <?php
+/**
+ *
+ * This script handles sending feedback emails using PHPMailer.
+ *
+ */
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
 require 'vendor/autoload.php';
 include 'settings.php';
 
@@ -18,8 +25,9 @@ include 'settings.php';
  * @return void
  */
 function sendFeedbackMail($feedbackQuestion1, $feedbackQuestion2, $feedbackQuestion3, $feedbackQuestion4, $feedbackQuestion5, $feedbackQuestion6, $feedbackQuestion7)
+
 {
-    global $smtpHost, $smtpPort, $smtpUser, $smtpPassword, $smtpSender, $feedbackAdress;
+    global $smtpHost, $smtpPort, $smtpUser, $smtpPassword, $smtpSender, $feedbackAddress;
 
     $mail = new PHPMailer(true);
 
@@ -29,11 +37,12 @@ function sendFeedbackMail($feedbackQuestion1, $feedbackQuestion2, $feedbackQuest
         $mail->SMTPAuth = true;
         $mail->Username = $smtpUser;
         $mail->Password = $smtpPassword;
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // SMTPS aktivieren
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Enable SMTPS encryption
         $mail->Port = $smtpPort;
         $mail->setFrom($smtpSender, 'Feedback System');
-        $mail->addAddress($feedbackAdress);
-        // Inhalt der E-Mail
+        $mail->addAddress($feedbackAddress);
+
+        // Email content
         $mail->isHTML(false);
         $mail->Subject = 'Neues Feedback zu MDE2-MSL';
         $mail->Body =
@@ -46,13 +55,15 @@ function sendFeedbackMail($feedbackQuestion1, $feedbackQuestion2, $feedbackQuest
             . "\n\nIs there a specific improvement you would like to see?:\n" . $feedbackQuestion7;
 
         $mail->send();
-        echo 'Feedback erfolgreich gesendet.';
+        echo 'Feedback sent successfully.';
     } catch (Exception $e) {
-        echo "Fehler beim Senden der E-Mail: {$mail->ErrorInfo}";
+        echo "Error sending email: {$mail->ErrorInfo}";
     }
 }
 
+// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  
     // Debugging: Überprüfen Sie, ob Daten ankommen
     error_log(print_r($_POST, true));
     $feedbackQuestion1 = $_POST['feedbackQuestion1'] ?? '';

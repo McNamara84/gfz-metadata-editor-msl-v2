@@ -165,4 +165,74 @@ class ApiTest extends TestCase
             throw $e;
         }
     }
+
+    public function testUpdateMslVocabShouldHandleErrors(): void
+    {
+        $endpointUrl = $this->getApiUrl('update/vocabs/msl');
+        echo "\nTesting endpoint: " . $this->baseUri . $endpointUrl;
+
+        try {
+            $response = $this->client->get($endpointUrl);
+            echo "\nResponse Status: " . $response->getStatusCode();
+            echo "\nResponse Body: " . $response->getBody();
+
+            $data = json_decode($response->getBody(), true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                $this->fail('Failed to parse JSON response: ' . json_last_error_msg());
+            }
+
+            // Überprüfen ob die Antwort entweder ein erfolgreicher Update ist ODER eine valide Fehlermeldung
+            if ($response->getStatusCode() === 200) {
+                // Success case
+                $this->assertArrayHasKey('message', $data, 'Response should contain a message');
+                $this->assertArrayHasKey('version', $data, 'Response should contain a version');
+                $this->assertArrayHasKey('timestamp', $data, 'Response should contain a timestamp');
+
+                $this->assertStringContainsString(
+                    'Successfully updated MSL vocabularies',
+                    $data['message'],
+                    'Message should indicate successful update'
+                );
+
+                $this->assertMatchesRegularExpression(
+                    '/^\d+\.\d+$/',
+                    $data['version'],
+                    'Version should be in format X.Y'
+                );
+
+                $this->assertMatchesRegularExpression(
+                    '/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/',
+                    $data['timestamp'],
+                    'Timestamp should be in format YYYY-MM-DD HH:mm:ss'
+                );
+
+            } else if ($response->getStatusCode() === 500) {
+                // Error case
+                $this->assertArrayHasKey('error', $data, 'Error response should contain an error message');
+                $this->assertNotEmpty($data['error'], 'Error message should not be empty');
+
+                // Spezifische Fehlermeldung prüfen
+                $expectedErrors = [
+                    "No vocabulary version found",
+                    "Failed to download vocabulary data"
+                ];
+                $this->assertTrue(
+                    in_array($data['error'], $expectedErrors),
+                    'Error message should be one of the expected errors'
+                );
+            } else {
+                $this->fail('Unexpected response status code: ' . $response->getStatusCode());
+            }
+
+        } catch (Exception $e) {
+            echo "\nException: " . get_class($e);
+            echo "\nMessage: " . $e->getMessage();
+            if ($e instanceof \GuzzleHttp\Exception\RequestException && $e->hasResponse()) {
+                $response = $e->getResponse();
+                echo "\nResponse Status: " . $response->getStatusCode();
+                echo "\nResponse Body: " . $response->getBody();
+            }
+            throw $e;
+        }
+    }
 }

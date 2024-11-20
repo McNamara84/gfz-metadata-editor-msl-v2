@@ -116,6 +116,9 @@
                 <div class="invalid-feedback">
                   <?php echo $translations['doi_invalid']; ?>
                 </div>
+                <div class="valid-feedback">
+                  <?php echo $translations['doi_valid']; ?>
+                </div>
               </div>
               <div class="input-group-append">
                 <span class="input-group-text">
@@ -132,7 +135,7 @@
                 <input type="text" inputmode="numeric" class="form-control input-with-help input-right-no-round-corners"
                   name="year" pattern="^[1-2]{1}[0-9]{3}$" required id="inputPublicationYear" />
                 <label for="inputPublicationYear">
-                  <?php echo $translations['publicationYear']; ?>
+                  <?php echo $translations['publicationYear']; ?><span class="text-danger">*</span>
                 </label>
                 <div class="invalid-feedback">
                   <?php echo $translations['publicationYear_invalid']; ?>
@@ -157,7 +160,7 @@
                   <?php echo $optionresourcentype; ?>
                 </select>
                 <label for="inputResourceType">
-                  <?php echo $translations['resourceType']; ?>
+                  <?php echo $translations['resourceType']; ?><span class="text-danger">*</span>
                 </label>
                 <div class="invalid-feedback">
                   <?php echo $translations['PleaseChoose_invalid']; ?>
@@ -220,7 +223,7 @@
                 <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputTitle"
                   name="title[]" pattern="^[a-zA-ZäöüÄÖÜß 0-9 .\-_()\!?]+$" required />
                 <label for="inputTitle">
-                  <?php echo $translations['title']; ?>
+                  <?php echo $translations['title']; ?><span class="text-danger">*</span>
                 </label>
                 <div class="invalid-feedback">
                   <?php echo $translations['title_invalid']; ?>

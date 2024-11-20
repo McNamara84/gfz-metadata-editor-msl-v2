@@ -1,17 +1,18 @@
 <?php
 /**
- * Speichert die Related Work Informationen in der Datenbank.
+ * Saves the related work information into the database.
  *
- * Diese Funktion verarbeitet die Eingabedaten für Related Work, wenn alle Felder einer Zeile
- * ausgefüllt wurden und speichert sie in der Datenbank und erstellt die Verknüpfung zur Ressource.
+ * This function processes the input data for related work, saving entries
+ * where all fields in a row are filled. It saves the data into the database
+ * and creates the linkage to the resource.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param array $postData Die POST-Daten aus dem Formular.
- * @param int $resource_id Die ID der zugehörigen Ressource.
+ * @param mysqli $connection  The database connection.
+ * @param array  $postData    The POST data from the form.
+ * @param int    $resource_id The ID of the associated resource.
  *
  * @return void
  *
- * @throws mysqli_sql_exception Wenn ein Datenbankfehler auftritt.
+ * @throws mysqli_sql_exception If a database error occurs.
  */
 function saveRelatedWork($connection, $postData, $resource_id)
 {
@@ -26,7 +27,7 @@ function saveRelatedWork($connection, $postData, $resource_id)
         $len = count($rIdentifier);
 
         for ($i = 0; $i < $len; $i++) {
-            // Überspringe leere Identifier oder wenn keine Relation ausgewählt wurde
+            // Skip empty identifiers or if no relation is selected
             if (empty($rIdentifier[$i]) || empty($relation[$i])) {
                 continue;
             }
@@ -45,12 +46,12 @@ function saveRelatedWork($connection, $postData, $resource_id)
 }
 
 /**
- * Holt die Relation ID basierend auf der übergebenen Relation.
+ * Retrieves the relation ID based on the given relation.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param int $relation_id Die zu suchende Relation ID.
+ * @param mysqli $connection  The database connection.
+ * @param int    $relation_id The relation ID to search for.
  *
- * @return int|null Die gefundene Relation ID oder null, wenn nicht gefunden.
+ * @return int|null The found relation ID or null if not found.
  */
 function getRelationId($connection, $relation_id)
 {
@@ -64,12 +65,12 @@ function getRelationId($connection, $relation_id)
 }
 
 /**
- * Holt die Identifier Type ID basierend auf dem übergebenen Namen.
+ * Retrieves the identifier type ID based on the given name.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param string $identifier_type_name Der Name des Identifier Types.
+ * @param mysqli $connection           The database connection.
+ * @param string $identifier_type_name The name of the identifier type.
  *
- * @return int|null Die gefundene Identifier Type ID oder null, wenn nicht gefunden.
+ * @return int|null The found identifier type ID or null if not found.
  */
 function getIdentifierTypeId($connection, $identifier_type_name)
 {
@@ -83,14 +84,14 @@ function getIdentifierTypeId($connection, $identifier_type_name)
 }
 
 /**
- * Fügt einen Related Work Eintrag in die Datenbank ein.
+ * Inserts a related work entry into the database.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param string $identifier Der Identifier des Related Work.
- * @param int $relation_id Die Relation ID.
- * @param int $identifier_type_id Die Identifier Type ID.
+ * @param mysqli $connection         The database connection.
+ * @param string $identifier         The identifier of the related work.
+ * @param int    $relation_id        The relation ID.
+ * @param int    $identifier_type_id The identifier type ID.
  *
- * @return int|null Die ID des eingefügten Related Work Eintrags oder null bei einem Fehler.
+ * @return int|null The ID of the inserted related work entry or null on failure.
  */
 function insertRelatedWork($connection, $identifier, $relation_id, $identifier_type_id)
 {
@@ -108,11 +109,11 @@ function insertRelatedWork($connection, $identifier, $relation_id, $identifier_t
 }
 
 /**
- * Verknüpft eine Ressource mit einem Related Work Eintrag.
+ * Links a resource to a related work entry.
  *
- * @param mysqli $connection Die Datenbankverbindung.
- * @param int $resource_id Die ID der Ressource.
- * @param int $related_work_id Die ID des Related Work Eintrags.
+ * @param mysqli $connection      The database connection.
+ * @param int    $resource_id     The ID of the resource.
+ * @param int    $related_work_id The ID of the related work entry.
  *
  * @return void
  */

@@ -4,14 +4,14 @@
       <?php echo $translations['thesaurusKeywords']; ?>
     </b>
   </div>
-  <div class="card-body">
+  <div class="card-body reduce-padding">
     <!------------------------------- NASA GCMD SCIENCE KEYWORDS ------------------------------------------------------------>
     <!--Eingabefeld NASA GCMD Science Keywords-->
-    <div class="input-group has-validation">
+    <div class="input-group has-validation input-margin-top-bottom">
       <div class="form-floating">
         <div class="input-group has-validation">
           <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputScienceKeywords"
-            name="thesaurusKeywords" />
+            name="thesaurusKeywords" placeholder="<?php echo $translations['thesaurusLabel']; ?>"/>
           <span class="input-group-text"><i class="bi bi-question-circle-fill"
               data-help-section-id="thesKeywords"></i></span>
         </div>
@@ -20,15 +20,11 @@
       <div class="col-auto p-2">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scienceModal"
           id="openScienceKeywordsThesaurus">
-          <?php echo $translations['thesaurus']; ?>
+          <i class="bi bi-diagram-3"></i>
         </button>
       </div>
     </div>
   </div>
-</div>
-</div>
-</div>
-</div>
 </div>
 <!------------------------------------- MODALS ---------------------------------------------------------------------->
 <!-- Modal für Science Keywords -->
