@@ -30,20 +30,65 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="feedbackForm">
+
+          <div id="feedbackStatus"></div>
+
+          <div id="thankYouMessage"
+            style="display: none; color: green; font-size: 1.2em; text-align: center; margin-bottom: 20px;">
+            <?php echo $translations['thankYouMessage']; ?>
+          </div>
+
+          <form id="feedbackForm" method="POST" action="send_feedback_mail.php">
             <div class="mb-3">
-              <label for="feedbackTextPositiv" class="form-label">
+              <label for="feedbackQuestion1" class="form-label">
                 <?php echo $translations['feedbackQuestion1']; ?>
               </label>
-              <textarea class="form-control" id="feedbackTextPositiv" rows="3" required></textarea>
+              <textarea class="form-control" id="feedbackQuestion1" name="feedbackQuestion1" rows="3"
+                required></textarea>
             </div>
             <div class="mb-3">
-              <label for="feedbackTextNegativ" class="form-label">
+              <label for="feedbackQuestion2" class="form-label">
                 <?php echo $translations['feedbackQuestion2']; ?>
               </label>
-              <textarea class="form-control" id="feedbackTextNegativ" rows="3" required></textarea>
+              <textarea class="form-control" id="feedbackQuestion2" name="feedbackQuestion2" rows="3"
+                required></textarea>
             </div>
-            <button class="btn btn-primary" id="sendFeedback">
+            <div class="mb-3">
+              <label for="feedbackQuestion3" class="form-label">
+                <?php echo $translations['feedbackQuestion3']; ?>
+              </label>
+              <textarea class="form-control" id="feedbackQuestion3" name="feedbackQuestion3" rows="3"
+                required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="feedbackQuestion4" class="form-label">
+                <?php echo $translations['feedbackQuestion4']; ?>
+              </label>
+              <textarea class="form-control" id="feedbackQuestion4" name="feedbackQuestion4" rows="3"
+                required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="feedbackQuestion5" class="form-label">
+                <?php echo $translations['feedbackQuestion5']; ?>
+              </label>
+              <textarea class="form-control" id="feedbackQuestion5" name="feedbackQuestion5" rows="3"
+                required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="feedbackQuestion6" class="form-label">
+                <?php echo $translations['feedbackQuestion6']; ?>
+              </label>
+              <textarea class="form-control" id="feedbackQuestion6" name="feedbackQuestion6" rows="3"
+                required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="feedbackQuestion7" class="form-label">
+                <?php echo $translations['feedbackQuestion7']; ?>
+              </label>
+              <textarea class="form-control" id="feedbackQuestion7" name="feedbackQuestion7" rows="3"
+                required></textarea>
+            </div>
+            <button class="btn btn-primary" id="sendFeedback" style="margin-left: auto; display: block;">
               <?php echo $translations['feedbackSendButton']; ?>
             </button>
           </form>
@@ -87,8 +132,8 @@
           <div class="col-12 col-sm-6 col-md-6 col-lg-2 p-1">
             <div class="input-group has-validation">
               <div class="form-floating">
-                <input type="text" inputmode="numeric" class="form-control input-with-help input-right-no-round-corners" name="year" pattern="^[1-2]{1}[0-9]{3}$"
-                  required id="inputPublicationYear" />
+                <input type="text" inputmode="numeric" class="form-control input-with-help input-right-no-round-corners"
+                  name="year" pattern="^[1-2]{1}[0-9]{3}$" required id="inputPublicationYear" />
                 <label for="inputPublicationYear">
                   <?php echo $translations['publicationYear']; ?><span class="text-danger">*</span>
                 </label>
@@ -172,7 +217,7 @@
         <!--Zeile 2-->
         <div class="row">
           <!--Eingabefeld Titel-->
-          <div class="col-12 col-sm-12 col-md-8 col-lg-8 p-1">
+          <div class="col-12 col-sm-12 col-md-11 col-lg-11 p-1">
             <div class="input-group has-validation">
               <div class="form-floating">
                 <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputTitle"
@@ -189,8 +234,8 @@
             </div>
           </div>
 
-          <!--Eingabefeld Title Type-->
-          <div class="col-10 col-sm-11 col-md-3 col-lg-3 p-1">
+          <!-- Eingabefeld Title Type (nur sichtbar ab dem zweiten Titel) -->
+          <div class="col-10 col-md-3 p-1" id="titleTypeContainer" style="display:none;">
             <div class="input-group has-validation">
               <div class="form-floating">
                 <select class="form-select input-with-help input-right-no-round-corners" id="inputTitleType"

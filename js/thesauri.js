@@ -144,7 +144,8 @@ $(document).ready(function () {
                 dropdown: {
                     maxItems: 50,  // max. number of whitelist items shown
                     enabled: 3,    // show whitelist when 3 characters are typed
-                    closeOnSelect: true  //close dropdown after keyword-selection
+                    closeOnSelect: true,  //close dropdown after keyword-selection
+                    classname: "thesaurus-tagify", // custom class for dropdown
                 },
                 editTags: false,  // tags can not be edited
             });

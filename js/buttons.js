@@ -5,40 +5,35 @@ $(document).ready(function () {
    */
   $("#sendFeedback").click(function (event) {
     event.preventDefault();
-    var feedbackTextPositiv = $("#feedbackTextPositiv").val();
-    var feedbackTextNegativ = $("#feedbackTextNegativ").val();
+    var feedbackForm = $("#feedbackForm");
+    var feedbackData = feedbackForm.serialize();
+
 
     // Disable the button and show a loading spinner
     $("#sendFeedback")
       .prop("disabled", true)
-      .html(
-        '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...'
-      );
+      .html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...');
+
 
     $.ajax({
       url: "send_feedback_mail.php",
       type: "POST",
-      data: {
-        feedbackTextPositiv: feedbackTextPositiv,
-        feedbackTextNegativ: feedbackTextNegativ,
-      },
+      data: feedbackData,
       success: function (response) {
-        // Display success message
-        $("#feedbackStatus").html(
-          '<div class="alert alert-success">Feedback sent successfully!</div>'
-        );
 
-        // Close the modal after 2 seconds
+        // Formular ausblenden
+        feedbackForm.hide();
+
+        // Erfolgsmeldung und Danke-Nachricht anzeigen
+        $("#thankYouMessage").show();
+        $("#feedbackStatus").html('<div class="alert alert-success">Feedback sent successfully!</div>');
+
+        // Modal schließen nach 3 Sekunden
         setTimeout(function () {
           $("#feedbackModal").modal("hide");
+        }, 3000);
 
-          // Reset form and status message when modal is hidden
-          $("#feedbackModal").on("hidden.bs.modal", function () {
-            $("#feedbackForm")[0].reset();
-            $("#feedbackStatus").html("");
-            $("#sendFeedback").prop("disabled", false).html("Send");
-          });
-        }, 2000);
+
       },
       error: function (xhr, status, error) {
         // Display error message
@@ -48,67 +43,130 @@ $(document).ready(function () {
         // Enable the send button
         $("#sendFeedback").prop("disabled", false).html("Send");
       },
+      complete: function () {
+        // Modal zurücksetzen, wenn es geschlossen wird
+        $("#feedbackModal").on("hidden.bs.modal", function () {
+          feedbackForm[0].reset();
+          feedbackForm.show();
+          $("#thankYouMessage").hide();
+          $("#feedbackStatus").html("");
+          $("#sendFeedback").prop("disabled", false).html("Senden");
+        });
+      }
     });
   });
 
-  // Initialize tooltips
+
+  // Optional: Formular zurücksetzen, wenn das Modal geöffnet wird
+  $('#feedbackModal').on('show.bs.modal', function () {
+    $("#feedbackForm")[0].reset();
+    $("#feedbackForm").show();
+    $("#thankYouMessage").hide();
+    $("#feedbackStatus").html("");
+    $("#sendFeedback").prop("disabled", false).html("Senden");
+  });
+  // Tooltip initialisieren
   $('[data-bs-toggle="tooltip"]').tooltip();
 
   //////////////////////////// ADD AND REMOVE BUTTONS ///////////////////////////////////////////////////////////////
+  //Remove  Button anlegen, der in Formgroups Authors, Contact Persons, Contributors genutzt wird
+  var removeButton = '<button type="button" class="btn btn-danger removeButton" style="width: 36px">-</button>';
+  /**
+ * HTML markup for the title type options, copied from the initial dropdown.
+ * @type {string}
+ */
 
-  // Variable for the remove button used in author, contact person, and contributor form groups
-  var removeButton =
-    '<button type="button" class="btn btn-danger removeButton" style="width: 36px">-</button>';
-
-  // Copy options from the first select element for the title row
   var optionTitleTypeHTML = $("#titleType").html();
+
+  /**
+   * Counter for the number of titles currently added.
+   * @type {number}
+   */
   var titlesNumber = 1;
 
   /**
-   * Event handler for the "Add Title" button click.
-   * Adds a new title row up to the maximum allowed titles.
+   * Stores the main title type, which is set for the first title row.
+   * @type {string}
+   */
+  var mainTitleType = "";
+
+  /**
+   * Click event handler for the "Add Title" button.
+   * Adds a new title row if the maximum number of titles has not been reached.
    */
   $("#addTitle").click(function () {
+    /**
+     * Reference to the "Add Title" button.
+     * @type {jQuery}
+     */
     var $addTitleBtn = $(this);
 
-    if (titlesNumber <= maxTitles) {
-      // Prepare the new title row by cloning and resetting input fields
+    // Check if the current number of titles is below the allowed maximum.
+    if (titlesNumber < maxTitles) {
+      // Clone the existing title row and reset its input fields.
       var newTitleRow = $addTitleBtn.closest(".row").clone();
-      // Remove help buttons
+
+      // Remove help buttons from the cloned row.
       deleteHelpButtonFromClonedRows(newTitleRow);
       $(newTitleRow).find("input").val("");
-      $(newTitleRow).find("select").html(optionTitleTypeHTML).val("");
-      if (titlesNumber < maxTitles) {
-        // Add a remove button for each new title row
-        var removeBtn = $("<button/>", {
-          text: "-",
-          type: "button",
-          class: "btn btn-danger removeTitle",
-          click: function () {
-            $(this).closest(".row").remove();
-            titlesNumber--;
 
-            // Reactivate the add button if below max titles
-            if (titlesNumber < maxTitles) {
-              $addTitleBtn.prop("disabled", false);
-              $addTitleBtn.attr("data-bs-original-title");
-              deleteHelpButtonFromClonedRows(newTitleRow);
-            }
-          },
-        }).css("width", "36px");
+      // Adjust the column layout classes for the cloned row.
+      newTitleRow.find(".col-12.col-sm-12.col-md-11.col-lg-11")
+        .removeClass("col-md-11 col-lg-11")
+        .addClass("col-md-8 col-lg-8");
 
-        // Replace the add button with the remove button in the cloned element
-        $(newTitleRow).find(".addTitle").replaceWith(removeBtn);
-
-        // Add the new title row to the DOM
-        $addTitleBtn.closest(".row").parent().append(newTitleRow);
-        titlesNumber++;
+      // Control the visibility of the title type dropdown.
+      if (titlesNumber === 0) {
+        // Show the dropdown for the first title.
+        $("#titleTypeContainer").show();
+      } else {
+        // Ensure the dropdown is visible for subsequent titles.
+        $(newTitleRow).find("#titleTypeContainer").show();
       }
-      // Disable the add button if the maximum number of titles is reached
-      if (titlesNumber == maxTitles) {
+
+      // Capture the main title type for the first row.
+      if (titlesNumber === 1) {
+        mainTitleType = $(newTitleRow).find("select").val();
+      }
+
+      // Populate the title type dropdown with options and remove the main title type.
+      var $select = $(newTitleRow).find("select");
+      $select.html(optionTitleTypeHTML);
+      $select.find("option[value='" + mainTitleType + "']").remove(); // Remove the main title type
+      $select.val(""); // Reset the dropdown selection
+
+      // Create a remove button for the new row.
+      var removeBtn = $("<button/>", {
+        text: "-",
+        type: "button",
+        class: "btn btn-danger removeTitle",
+      }).css("width", "36px");
+
+      // Event handler for the remove button.
+      removeBtn.click(function () {
+        // Remove the current row and decrement the titles counter.
+        $(this).closest(".row").remove();
+        titlesNumber--;
+
+        // Enable the "Add Title" button if below the maximum limit.
+        if (titlesNumber < maxTitles) {
+          $addTitleBtn.prop("disabled", false);
+        }
+      });
+
+      // Replace the "Add Title" button in the cloned row with the remove button.
+      $(newTitleRow).find(".addTitle").replaceWith(removeBtn);
+
+      // Append the new title row to the DOM.
+      $addTitleBtn.closest(".row").parent().append(newTitleRow);
+      titlesNumber++;
+
+      // Disable the "Add Title" button if the maximum number of titles is reached.
+      if (titlesNumber === maxTitles) {
         $addTitleBtn.prop("disabled", true);
       }
     } else {
+      // Log a message if the maximum number of titles is reached.
       console.log("Maximum number of titles reached: " + maxTitles);
     }
   });
