@@ -22,7 +22,7 @@
                         <div class="col-9 col-sm-9 col-md-10 col-lg-2 p-1">
                             <!--Eingabefelder Latitude-->
                             <label for="tscLatitudeMin" class="form-label">
-                                <?php echo $translations['tsc_latitude']; ?>
+                                <?php echo $translations['tsc_latitude']; ?><span class="text-danger">*</span>
                             </label>
                             <div class="input-group">
                                 <input type="text" class="form-control" id="tscLatitudeMin" placeholder="Min" name="tscLatitudeMin[]"
@@ -34,7 +34,7 @@
                             </div>
                             <!--Eingabefelder Longitude-->
                             <label for="tscLongitudeMin" class="form-label">
-                                <?php echo $translations['tsc_longitude']; ?>
+                                <?php echo $translations['tsc_longitude']; ?><span class="text-danger">*</span>
                             </label>
                             <div class="input-group">
                                 <input type="text" class="form-control" id="tscLongitudeMin" placeholder="Min" name="tscLongitudeMin[]"
@@ -48,7 +48,7 @@
                         <!--Eingabefeld Description-->
                         <div class="col-12 col-sm-12 col-md-12 col-lg-4 p-1">
                             <label for="tscDescription" class="form-label">
-                                <?php echo $translations['tsc_description']; ?>
+                                <?php echo $translations['tsc_description']; ?><span class="text-danger">*</span>
                             </label>
                             <div class="input-group">
                                 <textarea rows="4"
@@ -61,7 +61,7 @@
                         <!--Eingabefelder Date/Time-->
                         <div class="col-12 col-sm-12 col-md-8 col-lg-2 p-1">
                             <label for="tscDateStart" class="form-label">
-                                <?php echo $translations['tsc_start']; ?>
+                                <?php echo $translations['tsc_start']; ?><span class="text-danger">*</span>
                             </label>
                             <div class="input-group">
                                 <input type="date" class="form-control" id="tscDateStart" name="tscDateStart[]" required>
