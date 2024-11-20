@@ -40,12 +40,6 @@
     padding: 1.0rem;
 }
 
-/* Spacing between rows */
-.card-body .row {
-    margin-top: -0.25rem;
-    margin-bottom: -0.25rem;
-}
-
 /* Spacing between input fields */
 .card-body .row>[class*="col-"] {
     padding-top: 0.25rem;
@@ -69,5 +63,5 @@
 
 /* Adjust padding for special uses (thesaurus input fields) */
 .reduce-padding {
-    padding: 0.5rem;
+    padding: 0.5rem !important;
 }
