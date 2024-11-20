@@ -181,9 +181,14 @@ jobs:
         echo "Testing connectivity from Selenium container to PHP application..."
         docker exec selenium curl -v http://php-app:8000/ || true
 
+    - name: Test application accessibility from Selenium container
+      run: |
+        docker exec selenium curl -v http://php-app:8000/ -o /dev/null
+
     - name: Run Selenium tests
       run: |
         selenium-side-runner \
+          --debug \
           --browser chrome \
           --server http://localhost:4444/wd/hub \
           --base-url http://php-app:8000 \
