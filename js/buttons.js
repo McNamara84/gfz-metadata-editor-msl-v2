@@ -60,7 +60,6 @@ $(document).ready(function () {
   //////////////////////////// ADD AND REMOVE BUTTONS ///////////////////////////////////////////////////////////////
   //Remove  Button anlegen, der in Formgroups Authors, Contact Persons, Contributors genutzt wird
   var removeButton = '<button type="button" class="btn btn-danger removeButton" style="width: 36px">-</button>';
-  // Optionen aus dem ersten Select-Element für die Titelzeile kopieren
   var optionTitleTypeHTML = $("#titleType").html();
   var titlesNumber = 1;
   // Variable für den Haupttiteltyp
@@ -76,7 +75,20 @@ $(document).ready(function () {
       deleteHelpButtonFromClonedRows(newTitleRow);
       $(newTitleRow).find("input").val("");
 
-      // Haupttiteltyp speichern (nur beim ersten Hinzufügen)
+      // Adjust classes for layout of new row
+      newTitleRow.find(".col-12.col-sm-12.col-md-11.col-lg-11")
+        .removeClass("col-md-11 col-lg-11")
+        .addClass("col-md-8 col-lg-8");
+
+      // Sichtbarkeit des Dropdowns steuern
+      if (titlesNumber === 0) {
+        // Beim ersten Titel, Dropdown ausblenden
+        $("#titleTypeContainer").show();
+      } else {
+        // Bei weiteren Titeln, Dropdown sichtbar machen
+        $(newTitleRow).find("#titleTypeContainer").show();
+      }
+
       if (titlesNumber === 1) {
         mainTitleType = $(newTitleRow).find("select").val(); // Haupttiteltyp erfassen
       }
