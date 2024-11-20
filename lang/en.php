@@ -142,8 +142,14 @@ $translations = [
 
     // Testing
     'feedbackButton' => 'Feedback',
-    'feedbackLabel' => 'Send Feedback',
-    'feedbackQuestion1' => 'What do you like about the new metadata editor?',
-    'feedbackQuestion2' => 'What don\'t you like so much about the new metadata editor?',
+    'feedbackLabel' => 'User Feedback',
+    'feedbackQuestion1' => 'Which functions of the new metadata editor do you find particularly helpful?',
+    'feedbackQuestion2' => 'Is there a particular design or user interface change that you like?',
+    'feedbackQuestion3' => 'What do you find positive about the usability of the new editor?',
+    'feedbackQuestion4' => 'Which functions of the new editor do you find difficult to use?',
+    'feedbackQuestion5' => 'Are there any aspects of the user interface that you find confusing or annoying?',
+    'feedbackQuestion6' => 'Do you miss certain functions in the new metadata editor?',
+    'feedbackQuestion7' => 'Is there a specific improvement you would like to see?',
     'feedbackSendButton' => 'Send Feedback',
+    'thankYouMessage' => 'Thanks for your feedback!',
 ];

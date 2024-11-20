@@ -185,9 +185,10 @@
                     <!-- Inhalt aus Section 8 -->
                     <div id="title">
                         <h3>Title</h3>
-                        <p>The main title of the dataset. You can specify up to
-                            <?php echo $maxTitles; ?> different title types if your dataset
-                            is known by multiple names or translations.
+                        <p>The main title of the dataset. The first row is reserved for the main title. You can specify
+                            up to
+                            <?php echo $maxTitles; ?> additional title types if your dataset is known by multiple names
+                            or translations.
                         </p>
                     </div>
                     <!-- Inhalt aus Section 9 -->
@@ -197,8 +198,8 @@
                             Default is "MainTitle". Every title should have a title type.</p>
                         <ul>
                             <li><strong>Main Title:</strong> The primary title by which the dataset is known. This title
-                                type is
-                                required.</li>
+                                type is required and can only be entered once.
+                            </li>
                             <li><strong>Alternative Title:</strong> You can also add an alternative title if required.
                             </li>
                             <li><strong>Subtitle:</strong> If the data record has a subtitle, you can enter it with this
