@@ -7,7 +7,7 @@
 .tagify__input {
     margin: 1px 5px 5px 5px !important;
     font-size: 0.8rem;
-    min-height: 3.5em !important;
+    min-height: 3.8em !important;
 }
 
 /* For wrapping tags in new lines and filled tags */
@@ -57,11 +57,16 @@
 }
 
 /* Reset for Tagify container spacing */
-.tagify {
-    margin: 0;
-}
+/*.tagify {
+    margin: 5px;
+}*/
 
 /* Adjust padding for special uses (thesaurus input fields) */
 .reduce-padding {
     padding: 0.5rem !important;
+}
+
+.input-margin-top-bottom {
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
 }
