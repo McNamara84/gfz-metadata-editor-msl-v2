@@ -15,7 +15,7 @@ $translations = [
     // Form Group Resource Information
     'resourceInformation' => 'Resource Information',
     'doi' => 'DOI',
-    'doi_valid'=>'A new DOI is registered',
+    'doi_valid'=>'A new DOI will be registered',
     'doi_invalid' => 'Please use format 10.ORGANISATION/ID (i.e.: 10.57757/IUGG23-3081) or leave empty',
     'publicationYear' => 'Publication Year',
     'publicationYear_invalid' => 'Please provide a valid year (4 digits).',

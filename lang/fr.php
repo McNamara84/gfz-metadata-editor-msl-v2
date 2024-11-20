@@ -22,7 +22,7 @@ $translations = [
     // Groupe de formulaire Informations sur la ressource
     'resourceInformation' => 'Informations sur la ressource',
     'doi' => 'DOI',
-    'doi_valid'=> 'Un nouveau DOI est enregistré',
+    'doi_valid'=> 'Un nouveau DOI sera enregistré',
     'doi_invalid' => 'Utilisez le format 10.ORGANISATION/ID (ex.: 10.57757/IUGG23-3081) ou laissez vide',
     'publicationYear' => 'Année de publication',
     'publicationYear_invalid' => 'Veuillez fournir une année valide (4 chiffres).',
