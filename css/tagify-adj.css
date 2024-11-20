@@ -1,7 +1,7 @@
-.tagify__dropdown__item {
-    font-size: 0.7rem;
-    white-space: normal;
-    height: min-content;
+.thesaurus-tagify .tagify__dropdown__item {
+    font-size: 0.7rem !important;
+    white-space: normal !important;
+    height: min-content !important;
 }
 
 .tagify__input {
