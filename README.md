@@ -1036,6 +1036,8 @@ Für einige Funktionen existieren bereits Unit Tests:
 - vendor/bin/phpunit tests/SaveResourceInformationAndRightsTest.php
 - vendor/bin/phpunit tests/SaveResourceInformationAndRightsTestThreeTitles.php
 
+Außerdem befinden sich im Unterordner tests\Selenium auch mehrere Selenium-Tests, die aktuell noch manuell ausgeführt werden müssen.
+
 ## Lizenz
 
 Dieses Projekt wurde 2024 von Studenten der Fachhochschule Potsdam in Zusammenarbeit mit dem Deutschen GeoForschungsZentrum entwickelt und wird unter der MIT-Lizenz veröffentlicht.
