@@ -120,7 +120,12 @@ jobs:
         \$feedbackAdress = 'feedback@test.com';
         EOF
 
-        php install.php
+        # Führe install.php aus und erfasse die Ausgabe
+        php install.php > install_output.log 2>&1 || true
+
+        # Zeige die Ausgabe von install.php an
+        echo "Installationsausgabe:"
+        cat install_output.log
 
     - name: Start PHP container
       run: |
@@ -151,34 +156,55 @@ jobs:
 
     - name: Wait for services and verify
       run: |
-        # Create test output directory
+        # Erstelle Verzeichnis für Testergebnisse
         mkdir -p test-output
 
-        # Test PHP server
-        echo "Testing PHP server..."
+        # Teste PHP-Server
+        echo "Teste PHP-Server..."
         curl -v http://localhost:8000/info.php > test-output/php-info.html
         curl -v http://localhost:8000/debug.php
         curl -v http://localhost:8000/ > test-output/index.html
 
-        # Test Selenium
-        echo "Testing Selenium..."
+        # Teste Selenium
+        echo "Teste Selenium..."
         curl -v http://localhost:4444/wd/hub/status > test-output/selenium-status.json
 
-        # Show network info
-        echo "Docker network info:"
+        # Zeige Netzwerkinfo
+        echo "Docker Netzwerkinfo:"
         docker network inspect test-network
 
-        # Show running containers
-        echo "Running containers:"
+        # Zeige laufende Container
+        echo "Laufende Container:"
         docker ps
 
-        # Show PHP logs
-        echo "PHP container logs:"
+        # Zeige PHP-Logs
+        echo "PHP-Container-Logs:"
         docker logs php-app
+
+    - name: Display application index.html
+      run: |
+        echo "Inhalt von test-output/index.html:"
+        cat test-output/index.html
+
+    - name: Fetch page content from Selenium container
+      run: |
+        echo "Rufe Seiteninhalt aus dem Selenium-Container ab..."
+        docker exec selenium sh -c 'curl -s http://php-app:8000/ > /tmp/page.html'
+        docker exec selenium sh -c 'cat /tmp/page.html'
+        docker cp selenium:/tmp/page.html test-output/page-from-selenium.html
+
+    - name: Display PHP application logs
+      run: |
+        echo "PHP-Anwendungs-Logs:"
+        docker logs php-app
+
+    - name: Verify database tables
+      run: |
+        mysql -h127.0.0.1 -utest_user -ptest_password -e "SHOW TABLES FROM mde2-msl-test;"
 
     - name: Test connectivity from Selenium container
       run: |
-        echo "Testing connectivity from Selenium container to PHP application..."
+        echo "Teste Konnektivität vom Selenium-Container zur PHP-Anwendung..."
         docker exec selenium curl -v http://php-app:8000/ -o /dev/null
 
     - name: Run Selenium tests
@@ -188,25 +214,23 @@ jobs:
           --browser chrome \
           --server http://localhost:4444/wd/hub \
           --base-url http://php-app:8000 \
-          --timeout-pageLoad 30000 \
-          --timeout-script 30000 \
-          --timeout-element 30000 \
+          --timeout 60000 \
           tests/Selenium/Tests_MDE.side
 
     - name: Show debug info on failure
       if: failure()
       run: |
-        echo "PHP container logs:"
+        echo "PHP-Container-Logs:"
         docker logs php-app
-        echo "Selenium container logs:"
+        echo "Selenium-Container-Logs:"
         docker logs selenium
-        echo "Network status:"
+        echo "Netzwerkstatus:"
         docker network inspect test-network
-        echo "Container status:"
+        echo "Container-Status:"
         docker ps -a
-        echo "Directory contents:"
+        echo "Verzeichnisinhalte:"
         ls -la
-        echo "Test output contents:"
+        echo "Inhalt von test-output:"
         ls -la test-output/
         cat test-output/* || true
 
@@ -219,6 +243,7 @@ jobs:
           test-output/
           *.log
           *.php
+          install_output.log
 
     - name: Cleanup
       if: always()
