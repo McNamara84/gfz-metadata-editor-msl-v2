@@ -59,7 +59,7 @@ jobs:
 
     - name: Install Selenium Dependencies
       run: |
-        npm install -g selenium-side-runner@3.17.0
+        npm install -g selenium-side-runner@latest
         npm install -g selenium-webdriver
 
     - name: Update Composer dependencies
@@ -179,10 +179,6 @@ jobs:
     - name: Test connectivity from Selenium container
       run: |
         echo "Testing connectivity from Selenium container to PHP application..."
-        docker exec selenium curl -v http://php-app:8000/ || true
-
-    - name: Test application accessibility from Selenium container
-      run: |
         docker exec selenium curl -v http://php-app:8000/ -o /dev/null
 
     - name: Run Selenium tests
