@@ -1023,19 +1023,26 @@ Räumliche und zeitliche Einordnung des Datensatzes. Zur einfacheren Erfassung d
 - Folgende Felder müssen zwingend ausgefüllt werden: **Publication Year**, **Title**, **Author Lastname**, **Author Firstname**, **Author Role**, **Author ORCID**, **Contributor ORCID**, **Contributor Role**, **Description Abstract** **Relation** und **Identifier**.❗
 - Die restlichen Felder **DOI**, **Resource Type**, **Version**, **Language of Dataset**, **Title Type**, **Rights**, **Contact Person Position**, **Contact Person Email**, **Contact Person Website**, **Author Affiliation**, **Contact Person Affiliation**, **Contributor Lastname**, **Contributor Firstname**, **Contributor Affiliation**, **Contributor Organisation Name**, **Description Methods**, **Description TechnicalInfo**, **Description Other**, **Thesaurus Keywords**, **MSL Keywords** und **Identifier Typ** können optional leer bleiben.✅
 
-## Datenbankstruktur
+## Database structure
 
-#### ER-Diagramm
+#### ER diagram
 
-Das folgende ER-Diagramm zeigt die Beziehungen und Strukturen der Tabellen in der Datenbank.
+The following ER diagram shows the relationships and structures of the tables in the database.
 
 [![ER-Diagramm](doc/ER-Modell.jpg)](https://raw.githubusercontent.com/McNamara84/gfz-metadata-editor-msl-v2/feature/msl-frontend/doc/ER-Modell.jpg)
 
 ## Testing
-Für einige Funktionen existieren bereits Unit Tests:
-- vendor/bin/phpunit tests/SaveResourceInformationAndRightsTest.php
-- vendor/bin/phpunit tests/SaveResourceInformationAndRightsTestThreeTitles.php
-
-## Lizenz
-
-Dieses Projekt wurde 2024 von Studenten der Fachhochschule Potsdam in Zusammenarbeit mit dem Deutschen GeoForschungsZentrum entwickelt und wird unter der MIT-Lizenz veröffentlicht.
+Unit tests already exist for some functions:
+- `vendor/bin/phpunit tests/ApiTest.php`
+- `vendor/bin/phpunit tests/SaveAuthorsTest.php`
+- `vendor/bin/phpunit tests/SaveContactpersonsTest.php`
+- `vendor/bin/phpunit tests/SaveContributorsTest.php`
+- `vendor/bin/phpunit tests/SaveDescriptionsTest.php`
+- `vendor/bin/phpunit tests/SaveFreekeywordsTest.php`
+- `vendor/bin/phpunit tests/SaveFundingreferencesTest.php`
+- `vendor/bin/phpunit tests/SaveOriginatingLaboratoryTest.php`
+- `vendor/bin/phpunit tests/SaveRelatedworkTest.php`
+- `vendor/bin/phpunit tests/SaveResourceInformationAndRightsTest.php`
+- `vendor/bin/phpunit tests/SaveSpatialTemporalCoverageTest.php`
+- `vendor/bin/phpunit tests/SaveThesauruskeywordsTest.php`
+The user interface is also tested with Selenium. All tests are executed automatically during a pull.
