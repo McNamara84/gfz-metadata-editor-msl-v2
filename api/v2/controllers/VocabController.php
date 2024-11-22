@@ -518,7 +518,6 @@ class VocabController
     {
         error_log("getAllLicenses called");
         try {
-            error_log("Database connection status: " . ($GLOBALS['connection']->ping() ? "connected" : "not connected"));
             $this->getLicensesByType(false);
         } catch (Exception $e) {
             error_log("Error in getAllLicenses: " . $e->getMessage());
@@ -536,7 +535,7 @@ class VocabController
     {
         error_log("getSoftwareLicenses called");
         try {
-            error_log("Database connection status: " . ($GLOBALS['connection']->ping() ? "connected" : "not connected"));
+
             $this->getLicensesByType(true);
         } catch (Exception $e) {
             error_log("Error in getSoftwareLicenses: " . $e->getMessage());
