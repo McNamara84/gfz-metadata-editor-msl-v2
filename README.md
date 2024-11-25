@@ -26,24 +26,24 @@ This metadata editor is based on a student cooperation project between the Unive
 
 If you encounter problems with the installation, feel free to leave an entry in the feedback form or in [our issue board on GitHub](https://github.com/McNamara84/gfz-metadata-editor-msl-v2/issues)!
 
-## Abhängigkeiten
+## Dependencies
 
-In der header.html und footer.html werden folgende Abhängikeiten von Drittanbietern eingebunden:
+The following third-party dependencies are included in header.html and footer.html:
 
 - Bootstrap 5.3.3<br>
-  Für das responsive Design und zur Gestaltung des größten Teils der Formulareingabefelder.
+  For the design, responsiveness and dark mode.
 - Bootstrap Icons 1.11.3<br>
-  Für die Icons in der oberen rechten Ecke des Editors (Dark Mode Switch, Language Switch)
+  For the icons used.
 - jQuery 3.7.1<br>
-  Für die Event Handler in JavaScript und zum Vereinfachen des JavaScript-Codes allgemein.
+  For the event handlers in JavaScript and to simplify the JavaScript code.
 - jQuery UI 1.14.1<br>
-  Erweitert jQuery um die Autocomplete-Funktion, die wir aktuell für die Affiliation-Felder nutzen.
-- Tagify 4.32.0<br>
-  Wird für das Feld Thesaurus Keywords, die eingabe von mehreren Affiliations und Free Keywords genutzt.
+  Extends jQuery with the autocomplete function that we currently use for the affiliation fields.
+- Tagify 4.32.1<br>
+  Is used for the Thesaurus Keywords field, the entry of multiple affiliations and free keywords.
 - jsTree 3.3.17<br>
-  Wird zur Darstellung der Thesauri als hierarchische Baumstruktur verwendet.
+  Is used to display the thesauri as a hierarchical tree structure.
 - Swagger UI 5.18.2<br>
-  Zur Darstellung der dynamischen und interaktiven API-Dokumentation nach OpenAPI-Standard 3.1.
+  For displaying the dynamic and interactive API documentation in accordance with OpenAPI standard 3.1.
 
 ## Einstellungen
 
