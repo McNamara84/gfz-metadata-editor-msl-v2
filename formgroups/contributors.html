@@ -6,13 +6,13 @@
   </div>
   <div class="card-body">
     <div id="contributorsGroup">
-      <!-- Erstellen der Zeile für Person -->
+      <!-- Row for Contributor Persons -->
       <div class="row" contributor-person-row>
-        <!-- Zeilenbeschriftung für Person -->
-        <label class="row-label">
+        <!-- Label for row -->
+        <div class="row-label">
           <?php echo $translations['contributorsPersonZeile']; ?>
-        </label>
-        <!--Eingabefeld Contributor ORCID-->
+        </div>
+        <!-- Input field for Contributor ORCID -->
         <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-        <!--Eingabefeld Contributor Lastname-->
+        <!-- Input field for Contributor Lastname -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-2 p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
@@ -48,7 +48,7 @@
 
           </div>
         </div>
-        <!--Eingabefeld Contributor Firstname -->
+        <!-- Input field for Contributor Firstname -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-2 p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
@@ -63,20 +63,20 @@
             </div>
           </div>
         </div>
-        <!--Eingabefeld Contributor Person Role(s)-->
+        <!-- Input field for Contributor Person Role(s) -->
         <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
           <div class="input-group has-validation">
             <input name="cbPersonRoles[]" id="inputContributorsPerRole"
               class="form-control tagify--custom-dropdown input-with-help input-right-no-round-corners"
               placeholder="<?php echo $translations['role_label']; ?>" />
-              <span class="input-group-text"><i class="bi bi-question-circle-fill"
+            <span class="input-group-text"><i class="bi bi-question-circle-fill"
                 data-help-section-id="CPer_roles"></i></span>
-                <div class="invalid-feedback">
-                  <?php echo $translations['PleaseChoose_invalid']; ?>
-                </div>
+            <div class="invalid-feedback">
+              <?php echo $translations['PleaseChoose_invalid']; ?>
+            </div>
           </div>
         </div>
-        <!--Eingabefeld Contributor Affiliation-->
+        <!-- Input field for Contributor Affiliation -->
         <div class="col-10 col-sm-10 col-md-7 col-lg-3 p-1">
           <div class="input-group has-validation">
             <input type="text" class="form-control input-with-help input-right-no-round-corners"
@@ -87,7 +87,7 @@
             <input type="hidden" id="hiddenContributorRorId" name="cbpRorIds[]" />
           </div>
         </div>
-        <!--Button "add Contact Contributor"-->
+        <!-- Button for Cloning Contributor Person row -->
         <div class="col-2 col-sm-2 col-md-1 col-lg-1 d-flex justify-content-center align-items-center">
           <button type="button" class="btn btn-primary addContributorPerson" id="addContributorPerson"
             style="width: 36px">
@@ -96,16 +96,16 @@
         </div>
       </div>
     </div>
-    <!--Das div definiert den Abstand zwischen den beiden Zeilen.-->
+    <!-- Spacing between rows -->
     <div style="height: 10px;"></div>
-    <!-- Erstellen der Zeile für Institution -->
+    <!-- Row for Contributor Organisation -->
     <div id="contributorOrganisationGroup">
       <div class="row" contributors-row>
-        <!-- Zeilenbeschriftung für Institution -->
-        <label class="row-label">
+        <!-- Label for row -->
+        <div class="row-label">
           <?php echo $translations['contributorsInstitutionZeile']; ?>
-        </label>
-        <!-- Eingabefeld Organisation name-->
+        </div>
+        <!-- Input field for Organisation Name-->
         <div class="col-12 col-sm-12 col-md-12 col-lg-4 p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
@@ -121,21 +121,21 @@
             </div>
           </div>
         </div>
-        <!-- Eingabefeld Organisation Role(s)-->
+        <!-- Input field for Organisation Role(s)-->
         <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
           <div class="input-group has-validation">
             <input name="cbOrganisationRoles[]" id="inputContributorOrgaRole"
               class="form-control tagify--custom-dropdown input-with-help input-right-no-round-corners"
               placeholder="<?php echo $translations['role_label']; ?>" />
-              <span class="input-group-text"><i class="bi bi-question-circle-fill"
+            <span class="input-group-text"><i class="bi bi-question-circle-fill"
                 data-help-section-id="organisation_roles"></i></span>
             <div class="invalid-feedback">
               <?php echo $translations['PleaseChoose_invalid']; ?>
             </div>
           </div>
         </div>
-        <!--Eingabefeld Organisation Affiliation-->
-        <div class="col 10 col-sm-10 col-md-7 col-lg-5 p-1">
+        <!-- Input field for Organisation Affiliation -->
+        <div class="col-10 col-sm-10 col-md-7 col-lg-5 p-1">
           <div class="input-group has-validation">
             <input type="text" class="form-control input-with-help input-right-no-round-corners"
               id="inputOrganisationAffiliation" name="OrganisationAffiliation[]"
@@ -145,7 +145,7 @@
             <input type="hidden" id="hiddenOrganisationRorId" name="hiddenOrganisationRorId[]" />
           </div>
         </div>
-        <!-- Button "add Contributor"-->
+        <!-- Button for cloning Contributor row -->
         <div class="col-2 col-sm-2 col-md-1 col-lg-1 d-flex justify-content-center align-items-center">
           <button type="button" class="btn btn-primary addContributor" id="addContributor" style="width: 36px">
             <?php echo $translations['add']; ?>

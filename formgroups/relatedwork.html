@@ -5,7 +5,7 @@
   <div class="card-body">
     <div id="relatedworkGroup">
       <div class="row" related-work-row>
-        <!--Eingabefeld Relation-->
+        <!-- Input field Relation -->
         <div class="col-sm-6 col-md-4 col-lg-3 p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
@@ -19,18 +19,18 @@
               </div>
             </div>
             <div class="input-group-append">
-            <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                data-help-section-id="relation"></i></span>
-              </div>
+              <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                  data-help-section-id="relation"></i></span>
+            </div>
           </div>
         </div>
-        <!--Eingabefeld Identifier-->
+        <!-- Input field Identifier -->
         <div class="col p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
               <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputRIdentifier"
                 name="rIdentifier[]" />
-              <label for="rIdentifier">
+              <label for="inputRIdentifier">
                 <?php echo $translations['r_Identifier']; ?>
               </label>
               <div class="invalid-feedback">
@@ -43,7 +43,7 @@
             </div>
           </div>
         </div>
-        <!--Eingabefeld Identifier Type-->
+        <!-- Input field Identifier Type -->
         <div class="col-sm-6 col-md-4 col-lg-2 p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
@@ -57,7 +57,7 @@
                 data-help-section-id="identifier-type"></i></span>
           </div>
         </div>
-        <!--Button "add Related work"-->
+        <!-- Clone Related Work row button-->
         <div class="col-2 col-sm-1 col-md-1 col-lg-1 p-1 d-flex justify-content-center align-items-center">
           <button type="button" class="btn btn-primary addRelatedWork" id="addRelatedWork" style="width: 36px">
             <?php echo $translations['add']; ?>
