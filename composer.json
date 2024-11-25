@@ -3,7 +3,7 @@
     "description": "Editor for research metadata of MSL data.",
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.2 || ^8.3 || ^8.4",
         "easyrdf/easyrdf": "^1.1",
         "phpmailer/phpmailer": "^6.9",
         "nikic/fast-route": "^1.3"

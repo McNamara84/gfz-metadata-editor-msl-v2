@@ -1,4 +1,4 @@
-name: PHP Composer
+name: PHP 8.3 Tests
 
 on:
   push:
@@ -34,7 +34,7 @@ jobs:
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.2'
+        php-version: '8.3'
         extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, zip
         coverage: xdebug
 
@@ -115,18 +115,15 @@ jobs:
 
     - name: Start PHP built-in web server
       run: |
-        # Start PHP server with error logging
         php -S localhost:8000 -t . tests/server.php 2>&1 > server.log &
         echo $! > server.pid
-        sleep 5  # Wait for server to start
+        sleep 5
         
-        # Test initial connection
         echo "Testing initial API endpoints:"
         curl -v http://localhost:8000/api/v2/general/alive
         echo "\nTesting licenses endpoint:"
         curl -v http://localhost:8000/api/v2/vocabs/licenses/all
         
-        # Show initial logs
         echo "\nInitial server log contents:"
         cat server.log
         echo "\nPHP error log:"
@@ -141,10 +138,8 @@ jobs:
       env:
         API_BASE_URL: http://localhost:8000
       run: |
-        # Run tests
         vendor/bin/phpunit --configuration phpunit.xml --debug
         
-        # Show final logs
         echo "\nFinal Server Log:"
         cat server.log
 
