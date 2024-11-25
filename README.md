@@ -1032,7 +1032,7 @@ The following ER diagram shows the relationships and structures of the tables in
 [![ER-Diagramm](doc/ER-Modell.jpg)](https://raw.githubusercontent.com/McNamara84/gfz-metadata-editor-msl-v2/feature/msl-frontend/doc/ER-Modell.jpg)
 
 ## Testing
-Unit tests already exist for some functions:
+The flollowing unit tests are available:
 - `vendor/bin/phpunit tests/ApiTest.php`
 - `vendor/bin/phpunit tests/SaveAuthorsTest.php`
 - `vendor/bin/phpunit tests/SaveContactpersonsTest.php`
