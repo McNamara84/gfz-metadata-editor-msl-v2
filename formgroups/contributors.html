@@ -9,9 +9,9 @@
       <!-- Erstellen der Zeile für Person -->
       <div class="row" contributor-person-row>
         <!-- Zeilenbeschriftung für Person -->
-        <label class="row-label">
+        <div class="row-label">
           <?php echo $translations['contributorsPersonZeile']; ?>
-        </label>
+        </div>
         <!--Eingabefeld Contributor ORCID-->
         <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
           <div class="input-group has-validation">
@@ -69,11 +69,11 @@
             <input name="cbPersonRoles[]" id="inputContributorsPerRole"
               class="form-control tagify--custom-dropdown input-with-help input-right-no-round-corners"
               placeholder="<?php echo $translations['role_label']; ?>" />
-              <span class="input-group-text"><i class="bi bi-question-circle-fill"
+            <span class="input-group-text"><i class="bi bi-question-circle-fill"
                 data-help-section-id="CPer_roles"></i></span>
-                <div class="invalid-feedback">
-                  <?php echo $translations['PleaseChoose_invalid']; ?>
-                </div>
+            <div class="invalid-feedback">
+              <?php echo $translations['PleaseChoose_invalid']; ?>
+            </div>
           </div>
         </div>
         <!--Eingabefeld Contributor Affiliation-->
@@ -102,9 +102,9 @@
     <div id="contributorOrganisationGroup">
       <div class="row" contributors-row>
         <!-- Zeilenbeschriftung für Institution -->
-        <label class="row-label">
+        <div class="row-label">
           <?php echo $translations['contributorsInstitutionZeile']; ?>
-        </label>
+        </div>
         <!-- Eingabefeld Organisation name-->
         <div class="col-12 col-sm-12 col-md-12 col-lg-4 p-1">
           <div class="input-group has-validation">
@@ -127,7 +127,7 @@
             <input name="cbOrganisationRoles[]" id="inputContributorOrgaRole"
               class="form-control tagify--custom-dropdown input-with-help input-right-no-round-corners"
               placeholder="<?php echo $translations['role_label']; ?>" />
-              <span class="input-group-text"><i class="bi bi-question-circle-fill"
+            <span class="input-group-text"><i class="bi bi-question-circle-fill"
                 data-help-section-id="organisation_roles"></i></span>
             <div class="invalid-feedback">
               <?php echo $translations['PleaseChoose_invalid']; ?>
@@ -135,7 +135,7 @@
           </div>
         </div>
         <!--Eingabefeld Organisation Affiliation-->
-        <div class="col 10 col-sm-10 col-md-7 col-lg-5 p-1">
+        <div class="col-10 col-sm-10 col-md-7 col-lg-5 p-1">
           <div class="input-group has-validation">
             <input type="text" class="form-control input-with-help input-right-no-round-corners"
               id="inputOrganisationAffiliation" name="OrganisationAffiliation[]"

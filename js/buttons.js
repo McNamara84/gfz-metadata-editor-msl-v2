@@ -264,12 +264,22 @@ $(document).ready(function () {
   });
 
   /**
-   * Event handler for the "Add Contributor Person" button click.
-   * Clones the first contributor person row, resets input fields, and appends it to the contributors group.
-   */
+ * Event handler for the "Add Contributor Person" button click.
+ * Clones the first contributor person row, resets input fields,
+ * updates IDs and labels to ensure uniqueness,
+ * and appends it to the contributors group.
+ */
   $("#addContributorPerson").click(function () {
+    /**
+     * The contributors group where new contributor person rows are appended.
+     * @type {jQuery}
+     */
     var contributorGroup = $("#contributorsGroup");
-    // The first contributor row used as a template
+
+    /**
+     * The first contributor person row used as a template for cloning.
+     * @type {jQuery}
+     */
     var firstContributorRow = contributorGroup.children().first();
 
     // Clone the template
@@ -280,24 +290,48 @@ $(document).ready(function () {
     newContributorRow.find(".tagify").remove();
     newContributorRow.find(".invalid-feedback, .valid-feedback").hide();
 
-    // Remove help buttons
+    // Remove help buttons from the cloned row
     deleteHelpButtonFromClonedRows(newContributorRow);
 
-    // Hide labels in cloned row(s)
-    newContributorRow.find("label.row-label").hide();
+    // Hide the row label in cloned rows
+    newContributorRow.find(".row-label").hide();
 
+    /**
+     * Unique suffix to avoid duplicate IDs.
+     * @type {number}
+     */
     var uniqueSuffix = new Date().getTime();
+
+    // Update the IDs of input fields to ensure uniqueness
     newContributorRow
       .find("#inputContributorAffiliation")
       .attr("id", "inputContributorAffiliation" + uniqueSuffix);
     newContributorRow
       .find("#hiddenContributorRorId")
       .attr("id", "hiddenContributorRorId" + uniqueSuffix);
-
-    // Assign new ID to the Roles field
     newContributorRow
       .find("#inputContributorsPerRole")
       .attr("id", "inputContributorsPerRole" + uniqueSuffix);
+    newContributorRow
+      .find("#inputContributorORCID")
+      .attr("id", "inputContributorORCID" + uniqueSuffix);
+    newContributorRow
+      .find("#inputContributorLastname")
+      .attr("id", "inputContributorLastname" + uniqueSuffix);
+    newContributorRow
+      .find("#inputContributorFirstname")
+      .attr("id", "inputContributorFirstname" + uniqueSuffix);
+
+    // Update the corresponding 'for' attributes in labels
+    newContributorRow
+      .find("label[for='inputContributorORCID']")
+      .attr("for", "inputContributorORCID" + uniqueSuffix);
+    newContributorRow
+      .find("label[for='inputContributorLastname']")
+      .attr("for", "inputContributorLastname" + uniqueSuffix);
+    newContributorRow
+      .find("label[for='inputContributorFirstname']")
+      .attr("for", "inputContributorFirstname" + uniqueSuffix);
 
     // Replace the add button with the remove button
     newContributorRow.find(".addContributorPerson").replaceWith(removeButton);
@@ -315,19 +349,30 @@ $(document).ready(function () {
     // Initialize Tagify for the new Roles field
     setupRolesDropdown(["person", "both"], "#inputContributorsPerRole" + uniqueSuffix);
 
-    // Event handler for the remove button
+    // Event handler for the remove button in the new row
     newContributorRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
     });
   });
 
+
   /**
-   * Event handler for the "Add Contributor Organization" button click.
-   * Clones the first contributor organization row, resets input fields, and appends it to the contributor organization group.
-   */
+ * Event handler for the "Add Contributor Organization" button click.
+ * Clones the first contributor organization row, resets input fields,
+ * updates IDs and labels to ensure uniqueness,
+ * and appends it to the contributor organization group.
+ */
   $("#addContributor").click(function () {
+    /**
+     * The contributor organization group where new contributor organization rows are appended.
+     * @type {jQuery}
+     */
     var contributorGroup = $("#contributorOrganisationGroup");
-    // The first contributor row used as a template
+
+    /**
+     * The first contributor organization row used as a template for cloning.
+     * @type {jQuery}
+     */
     var firstContributorRow = contributorGroup.children().first();
 
     // Clone the template
@@ -338,24 +383,36 @@ $(document).ready(function () {
     newContributorRow.find(".tagify").remove();
     newContributorRow.find(".invalid-feedback, .valid-feedback").hide();
 
-    // Remove help buttons
+    // Remove help buttons from the cloned row
     deleteHelpButtonFromClonedRows(newContributorRow);
 
-    // Hide labels in cloned row(s)
-    newContributorRow.find("label.row-label").hide();
+    // Hide the row label in cloned rows
+    newContributorRow.find(".row-label").hide();
 
+    /**
+     * Unique suffix to avoid duplicate IDs.
+     * @type {number}
+     */
     var uniqueSuffix = new Date().getTime();
+
+    // Update the IDs of input fields to ensure uniqueness
     newContributorRow
       .find("#inputOrganisationAffiliation")
       .attr("id", "inputOrganisationAffiliation" + uniqueSuffix);
     newContributorRow
       .find("#hiddenOrganisationRorId")
       .attr("id", "hiddenOrganisationRorId" + uniqueSuffix);
-
-    // Assign new ID to the Roles field
     newContributorRow
       .find("#inputContributorOrgaRole")
       .attr("id", "inputContributorOrgaRole" + uniqueSuffix);
+    newContributorRow
+      .find("#inputOrganisationName")
+      .attr("id", "inputOrganisationName" + uniqueSuffix);
+
+    // Update the corresponding 'for' attributes in labels
+    newContributorRow
+      .find("label[for='inputOrganisationName']")
+      .attr("for", "inputOrganisationName" + uniqueSuffix);
 
     // Replace the add button with the remove button
     newContributorRow.find(".addContributor").replaceWith(removeButton);
@@ -366,17 +423,19 @@ $(document).ready(function () {
     // Apply Tagify to the new Organization Affiliations field
     autocompleteAffiliations(
       "inputOrganisationAffiliation" + uniqueSuffix,
-      "hiddenOrganisationRorId" + uniqueSuffix
+      "hiddenOrganisationRorId" + uniqueSuffix,
+      affiliationsData
     );
 
     // Initialize Tagify for the new Roles field
     setupRolesDropdown(["institution", "both"], "#inputContributorOrgaRole" + uniqueSuffix);
 
-    // Event handler for the remove button
+    // Event handler for the remove button in the new row
     newContributorRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
     });
   });
+
 
   /**
    * Event handler for the "Add TSC" button click.
