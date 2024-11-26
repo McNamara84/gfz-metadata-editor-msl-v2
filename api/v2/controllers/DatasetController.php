@@ -726,17 +726,19 @@ class DatasetController
         foreach ($spatialTemporalCoverages as $coverage) {
             $coverageXml = $coveragesXml->addChild('SpatialTemporalCoverage');
             foreach ($coverage as $key => $value) {
-                if ($key === 'dateTimeStart' || $key === 'dateTimeEnd') {
-                    $datetime = new DateTime($value);
-                    $value = $datetime->format('Y-m-d\TH:i:s');
-                }
-                // Überprüfen, ob Max-Werte vorhanden sind und nicht leer
+                // Check if max value and not empty
                 if (in_array($key, ['latitudeMax', 'longitudeMax'])) {
                     if (!empty($value)) {
                         $coverageXml->addChild($key, htmlspecialchars($value));
                     }
+                } else if (in_array($key, ['dateStart', 'dateEnd', 'TimeStart', 'TimeEnd'])) {
+                    if (!empty($value)) {
+                        $coverageXml->addChild($key, htmlspecialchars($value));
+                    }
                 } else {
-                    $coverageXml->addChild($key, htmlspecialchars($value ?? ''));
+                    if ($value !== null) {
+                        $coverageXml->addChild($key, htmlspecialchars($value));
+                    }
                 }
             }
         }
