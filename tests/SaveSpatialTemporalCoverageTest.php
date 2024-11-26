@@ -113,8 +113,10 @@ class SaveSpatialTemporalCoverageTest extends TestCase
         $this->assertEquals($postData["tscLatitudeMax"][0], $stc["latitudeMax"]);
         $this->assertEquals($postData["tscLongitudeMin"][0], $stc["longitudeMin"]);
         $this->assertEquals($postData["tscLongitudeMax"][0], $stc["longitudeMax"]);
-        $this->assertEquals($postData["tscDateStart"][0] . " " . $postData["tscTimeStart"][0], $stc["dateTimeStart"]);
-        $this->assertEquals($postData["tscDateEnd"][0] . " " . $postData["tscTimeEnd"][0], $stc["dateTimeEnd"]);
+        $this->assertEquals($postData["tscDateStart"][0], $stc["dateStart"]);
+        $this->assertEquals($postData["tscTimeStart"][0], $stc["timeStart"]);
+        $this->assertEquals($postData["tscDateEnd"][0], $stc["dateEnd"]);
+        $this->assertEquals($postData["tscTimeEnd"][0], $stc["timeEnd"]);
         $this->assertEquals("-05:00", $stc["timezone"]);
 
         // Check if the relation to the resource was created
@@ -348,8 +350,10 @@ class SaveSpatialTemporalCoverageTest extends TestCase
         $stc = $stmt->get_result()->fetch_assoc();
 
         $this->assertNotNull($stc, "Der STC-Eintrag sollte gespeichert worden sein.");
-        $this->assertEquals($postData["tscDateStart"][0], date('Y-m-d', strtotime($stc["dateTimeStart"])));
-        $this->assertEquals($postData["tscDateEnd"][0], date('Y-m-d', strtotime($stc["dateTimeEnd"])));
+        $this->assertEquals($postData["tscDateStart"][0], $stc["dateStart"]);
+        $this->assertEquals($postData["tscDateEnd"][0], $stc["dateEnd"]);
+        $this->assertNull($stc["timeStart"]);
+        $this->assertNull($stc["timeEnd"]);
     }
 
     /**
@@ -393,7 +397,9 @@ class SaveSpatialTemporalCoverageTest extends TestCase
         $stc = $stmt->get_result()->fetch_assoc();
 
         $this->assertNotNull($stc, "Der STC-Eintrag sollte gespeichert worden sein.");
-        $this->assertEquals($postData["tscDateStart"][0], date('Y-m-d', strtotime($stc["dateTimeStart"])));
-        $this->assertEquals($postData["tscDateEnd"][0] . " " . $postData["tscTimeEnd"][0], $stc["dateTimeEnd"]);
+        $this->assertEquals($postData["tscDateStart"][0], $stc["dateStart"]);
+        $this->assertEquals($postData["tscDateEnd"][0], $stc["dateEnd"]);
+        $this->assertNull($stc["timeStart"]);
+        $this->assertEquals($postData["tscTimeEnd"][0], $stc["timeEnd"]);
     }
 }
