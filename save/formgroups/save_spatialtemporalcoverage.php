@@ -56,12 +56,9 @@ function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
             return false;
         }
 
-        // Check if end date and end time are provided but start date or start time are missing
-        if (
-            (!empty($postData['tscDateEnd'][$i]) || !empty($postData['tscTimeEnd'][$i])) &&
-            (empty($postData['tscDateStart'][$i]) || empty($postData['tscTimeStart'][$i]))
-        ) {
-            error_log("End date/time is set but start date/time is missing for entry $i");
+        // Check if dates are provided (required)
+        if (empty($postData['tscDateStart'][$i]) || empty($postData['tscDateEnd'][$i])) {
+            error_log("Start date or end date is missing for entry $i");
             return false;
         }
 
@@ -71,8 +68,10 @@ function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
             'longitudeMin' => $postData['tscLongitudeMin'][$i],
             'longitudeMax' => $postData['tscLongitudeMax'][$i],
             'description' => $postData['tscDescription'][$i],
-            'dateTimeStart' => $postData['tscDateStart'][$i] . " " . $postData['tscTimeStart'][$i],
-            'dateTimeEnd' => $postData['tscDateEnd'][$i] . " " . $postData['tscTimeEnd'][$i],
+            'dateStart' => $postData['tscDateStart'][$i],
+            'dateEnd' => $postData['tscDateEnd'][$i],
+            'timeStart' => !empty($postData['tscTimeStart'][$i]) ? $postData['tscTimeStart'][$i] : null,
+            'timeEnd' => !empty($postData['tscTimeEnd'][$i]) ? $postData['tscTimeEnd'][$i] : null,
             'timezone' => $postData['tscTimezone'][$i]
         ];
 
@@ -103,18 +102,21 @@ function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
 function insertSpatialTemporalCoverage($connection, $stcData)
 {
     $stmt = $connection->prepare("INSERT INTO Spatial_Temporal_Coverage 
-        (`latitudeMin`, `latitudeMax`, `longitudeMin`, `longitudeMax`, `Description`, `dateTimeStart`, `dateTimeEnd`, `timezone`) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        (`latitudeMin`, `latitudeMax`, `longitudeMin`, `longitudeMax`, `Description`, 
+         `dateStart`, `dateEnd`, `timeStart`, `timeEnd`, `timezone`) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     $stmt->bind_param(
-        "ssssssss",
+        "ssssssssss",
         $stcData['latitudeMin'],
         $stcData['latitudeMax'],
         $stcData['longitudeMin'],
         $stcData['longitudeMax'],
         $stcData['description'],
-        $stcData['dateTimeStart'],
-        $stcData['dateTimeEnd'],
+        $stcData['dateStart'],
+        $stcData['dateEnd'],
+        $stcData['timeStart'],
+        $stcData['timeEnd'],
         $stcData['timezone']
     );
 
