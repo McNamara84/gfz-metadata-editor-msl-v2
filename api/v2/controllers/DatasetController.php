@@ -565,11 +565,17 @@ class DatasetController
         $xml->addChild('currentDate', date('Y-m-d'));
 
         // Resource Information
-        $xml->addChild('doi', htmlspecialchars($resource['doi'] ?? ''));
-        $xml->addChild('version', htmlspecialchars($resource['version'] ?? ''));
+        if ($resource['doi']){
+            $xml->addChild('doi', htmlspecialchars($resource['doi']));
+        }
+        if ($resource['version']){
+            $xml->addChild('version', htmlspecialchars($resource['version']));
+        }
         $xml->addChild('year', htmlspecialchars($resource['year']));
         $xml->addChild('dateCreated', htmlspecialchars($resource['dateCreated']));
-        $xml->addChild('dateEmbargoUntil', htmlspecialchars($resource['dateEmbargoUntil'] ?? ''));
+        if ($resource['dateEmbargoUntil']){
+            $xml->addChild('dateEmbargoUntil', htmlspecialchars($resource['dateEmbargoUntil']));
+        }
 
         // Rights
         $rights = $this->getRelatedData($connection, 'Rights', 'rights_id', $resource['Rights_rights_id']);
