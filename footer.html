@@ -40,9 +40,10 @@
             data-bs-title="<?php echo $translations['clear_tooltip']; ?>" id="resetButton" disabled>
             <?php echo $translations['clear']; ?>
           </button>
-          <button class="btn btn-primary m-1" type="button" disabled>
+          <label class="btn btn-primary m-1" for="fileInput">
             <?php echo $translations['load']; ?>
-          </button>
+            <input type="file" id="fileInput" style="display:none;">
+          </label>
           <button type="submit" class="btn btn-warning m-1" form="metaForm" id="saveAs" data-action="save">
             Save
           </button>
