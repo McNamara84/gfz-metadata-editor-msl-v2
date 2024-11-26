@@ -2,16 +2,11 @@
 /**
  * Saves the Spatial Temporal Coverage (STC) information into the database.
  *
- * This function processes the input data for spatial-temporal coverage,
- * saves it into the database, and creates the linkage to the resource.
- *
  * @param mysqli $connection  The database connection.
  * @param array  $postData    The POST data from the form.
  * @param int    $resource_id The ID of the associated resource.
  *
  * @return bool Returns true if the saving was successful, otherwise false.
- *
- * @throws mysqli_sql_exception If a database error occurs.
  */
 function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
 {
