@@ -252,8 +252,10 @@ function createDatabaseStructure($connection)
             `longitudeMin` FLOAT NOT NULL,
             `longitudeMax` FLOAT NULL,
             `Description` TEXT(5000) NOT NULL,
-            `dateTimeStart` DATETIME NOT NULL,
-            `dateTimeEnd` DATETIME NOT NULL,
+            `dateStart` DATE NOT NULL,
+            `dateEnd` DATE NOT NULL,
+            `TimeStart` TIME NULL,
+            `TimeEnd` TIME NULL,
             `timezone` VARCHAR(10) NOT NULL,
             PRIMARY KEY (`spatial_temporal_coverage_id`));",
 
@@ -609,9 +611,9 @@ function insertTestDataIntoMainTables($connection)
                         ["free_keyword" => "CH5 flux measurements", "isCurated" => "0"],
                 ],
                 "Spatial_Temporal_Coverage" => [
-                        ["latitudeMin" => "53.773072687072634", "latitudeMax" => "56.19295930435612", "longitudeMin" => "49.417527009637524", "longitudeMax" => "57.503464509637524", "Description" => "Ein großes Sedimentbecken in Westaustralien, das reich an fossilen Brennstoffen und bedeutenden Erdöl- und Erdgasvorkommen ist.", "dateTimeStart" => "2024-06-03T12:13", "dateTimeEnd" => "2024-06-09T17:13", "timezone" => "+00:00"],
-                        ["latitudeMin" => "7.357546774322249", "latitudeMax" => "8.836749074314008", "longitudeMin" => "-70.8163484389335", "longitudeMax" => "-69.4979890639335", "Description" => "Eine geologisch aktive Region in den Alpen, geprägt durch die Kollision der eurasischen und afrikanischen Kontinentalplatten, die zur Bildung hoher Gebirgsketten führt.", "dateTimeStart" => "2000-07-23T12:22:55", "dateTimeEnd" => "2001-07-23T12:22:55", "timezone" => "+05:00"],
-                        ["latitudeMin" => "26.40875141688829", "latitudeMax" => "56.19295930435612", "longitudeMin" => "14.852995116766325", "longitudeMax" => "18.566374023016326", "Description" => " Ein aktives vulkanisches Gebiet in Island, bekannt für seine regelmäßigen Ausbrüche, Lavafelder und geothermischen Aktivitäten.", "dateTimeStart" => "2024-06-10T12:35", "dateTimeEnd" => "2024-06-16T18:42", "timezone" => "+02:00"]
+                        ["latitudeMin" => "53.773072687072634", "latitudeMax" => "56.19295930435612", "longitudeMin" => "49.417527009637524", "longitudeMax" => "57.503464509637524", "Description" => "Ein großes Sedimentbecken in Westaustralien, das reich an fossilen Brennstoffen und bedeutenden Erdöl- und Erdgasvorkommen ist.", "dateStart" => "2024-06-03", "dateEnd" => "2024-06-03", "TimeStart" => "", "TimeEnd" => "", "timezone" => "+00:00"],
+                        ["latitudeMin" => "7.357546774322249", "latitudeMax" => "8.836749074314008", "longitudeMin" => "-70.8163484389335", "longitudeMax" => "-69.4979890639335", "Description" => "Eine geologisch aktive Region in den Alpen, geprägt durch die Kollision der eurasischen und afrikanischen Kontinentalplatten, die zur Bildung hoher Gebirgsketten führt.", "dateStart" => "2000-07-23", "dateEnd" => "2024-06-03", "TimeStart" => "12:13", "TimeEnd" => "12:22:55", "timezone" => "+05:00"],
+                        ["latitudeMin" => "26.40875141688829", "latitudeMax" => "56.19295930435612", "longitudeMin" => "14.852995116766325", "longitudeMax" => "18.566374023016326", "Description" => " Ein aktives vulkanisches Gebiet in Island, bekannt für seine regelmäßigen Ausbrüche, Lavafelder und geothermischen Aktivitäten.", "dateStart" => "2024-06-10", "dateEnd" => "2024-06-03", "TimeStart" => "", "TimeEnd" => "", "timezone" => "+02:00"]
                 ],
                 "Relation" => [
                         ["name" => "IsCitedBy", "description" => "indicates that B includes A in a citation"],
