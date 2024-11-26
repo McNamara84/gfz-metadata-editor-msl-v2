@@ -494,10 +494,10 @@ function insertTestDataIntoMainTables($connection)
                         ["code" => "fr", "name" => "French"]
                 ],
                 "Resource" => [
-                        ["doi" => "http://doi.org/10.1029/2023JB028411", "version" => null, "year" => 2024, "dateCreated" => "2024-06-05", "dateEmbargoUntil" => "2024-06-15", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1],
-                        ["doi" => "https://doi.org/10.5880/GFZ.2.4.2024.001", "version" => 2.1, "year" => 2024, "dateCreated" => "1999-04-07", "dateEmbargoUntil" => "2000-12-31", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1],
-                        ["doi" => "http://doi.org/10.1038/s43247-024-01226-9", "version" => 1.23, "year" => 2024, "dateCreated" => "2023-07-02", "dateEmbargoUntil" => "2023-07-10", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1]
-                ],
+                        ["doi" => "10.1029/2023JB028411", "version" => null, "year" => 2024, "dateCreated" => "2024-06-05", "dateEmbargoUntil" => "2024-06-15", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1],
+                        ["doi" => "10.5880/GFZ.2.4.2024.001", "version" => 2.1, "year" => 2024, "dateCreated" => "1999-04-07", "dateEmbargoUntil" => "2000-12-31", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1],
+                        ["doi" => "10.21384/test-dataset", "version" => 1.23, "year" => 2024, "dateCreated" => "2023-07-02", "dateEmbargoUntil" => "2023-07-10", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1]
+],
                 "Author" => [
                         ["familyName" => "Grzegorz", "givenname" => "Kwiatek", "orcid" => "0000-0003-1076-615X"],
                         ["familyName" => "Goebel", "givenname" => "Thomas", "orcid" => "0000-0003-1552-0861"],
