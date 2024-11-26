@@ -59,18 +59,18 @@ function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
 
         $stcData = [
             'latitudeMin' => $postData['tscLatitudeMin'][$i],
-            'latitudeMax' => $postData['tscLatitudeMax'][$i],
+            'latitudeMax' => empty($postData['tscLatitudeMax'][$i]) ? null : $postData['tscLatitudeMax'][$i],
             'longitudeMin' => $postData['tscLongitudeMin'][$i],
-            'longitudeMax' => $postData['tscLongitudeMax'][$i],
+            'longitudeMax' => empty($postData['tscLongitudeMax'][$i]) ? null : $postData['tscLongitudeMax'][$i],
             'description' => $postData['tscDescription'][$i],
             'dateStart' => $postData['tscDateStart'][$i],
             'dateEnd' => $postData['tscDateEnd'][$i],
-            'timeStart' => !empty($postData['tscTimeStart'][$i]) ? $postData['tscTimeStart'][$i] : null,
-            'timeEnd' => !empty($postData['tscTimeEnd'][$i]) ? $postData['tscTimeEnd'][$i] : null,
+            'timeStart' => empty($postData['tscTimeStart'][$i]) ? null : $postData['tscTimeStart'][$i],
+            'timeEnd' => empty($postData['tscTimeEnd'][$i]) ? null : $postData['tscTimeEnd'][$i],
             'timezone' => $postData['tscTimezone'][$i]
         ];
 
-        // Remove empty strings by converting them to null
+        // Remove empty strings by converting them to null (optional, da wir bereits oben null setzen)
         $stcData = array_map(function ($value) {
             return $value === '' ? null : $value;
         }, $stcData);
@@ -96,23 +96,36 @@ function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
  */
 function insertSpatialTemporalCoverage($connection, $stcData)
 {
+    // Prepare separate variables for bind_param to work correctly with null values
+    $latitudeMin = $stcData['latitudeMin'];
+    $latitudeMax = $stcData['latitudeMax'];
+    $longitudeMin = $stcData['longitudeMin'];
+    $longitudeMax = $stcData['longitudeMax'];
+    $description = $stcData['description'];
+    $dateStart = $stcData['dateStart'];
+    $dateEnd = $stcData['dateEnd'];
+    $timeStart = $stcData['timeStart'];
+    $timeEnd = $stcData['timeEnd'];
+    $timezone = $stcData['timezone'];
+
     $stmt = $connection->prepare("INSERT INTO Spatial_Temporal_Coverage 
         (`latitudeMin`, `latitudeMax`, `longitudeMin`, `longitudeMax`, `Description`, 
          `dateStart`, `dateEnd`, `timeStart`, `timeEnd`, `timezone`) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
+    // Bind parameters by reference
     $stmt->bind_param(
         "ssssssssss",
-        $stcData['latitudeMin'],
-        $stcData['latitudeMax'],
-        $stcData['longitudeMin'],
-        $stcData['longitudeMax'],
-        $stcData['description'],
-        $stcData['dateStart'],
-        $stcData['dateEnd'],
-        $stcData['timeStart'],
-        $stcData['timeEnd'],
-        $stcData['timezone']
+        $latitudeMin,
+        $latitudeMax,
+        $longitudeMin,
+        $longitudeMax,
+        $description,
+        $dateStart,
+        $dateEnd,
+        $timeStart,
+        $timeEnd,
+        $timezone
     );
 
     if ($stmt->execute()) {
