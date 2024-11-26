@@ -297,7 +297,7 @@ class SaveSpatialTemporalCoverageTest extends TestCase
 
         $result = saveSpatialTemporalCoverage($this->connection, $postData, $resource_id);
 
-        $this->assertFalse($result, "Die Funktion sollte false zurückgeben.");
+        $this->assertFalse($result, "Die Funktion sollte false zurückgeben wenn das Startdatum fehlt.");
 
         // Check that no STC was saved
         $stmt = $this->connection->prepare("SELECT COUNT(*) as count FROM Spatial_Temporal_Coverage");
@@ -305,5 +305,95 @@ class SaveSpatialTemporalCoverageTest extends TestCase
         $count = $stmt->get_result()->fetch_assoc()['count'];
 
         $this->assertEquals(0, $count, "Es sollten keine STC-Einträge gespeichert worden sein.");
+    }
+
+    /**
+     * Test mit fehlenden Uhrzeiten aber vorhandenen Datumswerten
+     */
+    public function testSaveWithoutTimes()
+    {
+        $resourceData = [
+            "doi" => "10.5880/GFZ.TEST.NO.TIMES",
+            "year" => 2023,
+            "dateCreated" => "2023-06-01",
+            "resourcetype" => 1,
+            "language" => 1,
+            "Rights" => 1,
+            "title" => ["Test No Times STC"],
+            "titleType" => [1]
+        ];
+        $resource_id = saveResourceInformationAndRights($this->connection, $resourceData);
+
+        $postData = [
+            "tscLatitudeMin" => ["40.7128"],
+            "tscLatitudeMax" => ["40.7828"],
+            "tscLongitudeMin" => ["-74.0060"],
+            "tscLongitudeMax" => ["-73.9360"],
+            "tscDescription" => ["New York City"],
+            "tscDateStart" => ["2023-01-01"],
+            "tscTimeStart" => [""],
+            "tscDateEnd" => ["2023-12-31"],
+            "tscTimeEnd" => [""],
+            "tscTimezone" => ["-05:00"]
+        ];
+
+        $result = saveSpatialTemporalCoverage($this->connection, $postData, $resource_id);
+
+        $this->assertTrue($result, "Die Funktion sollte true zurückgeben wenn nur die Uhrzeiten fehlen.");
+
+        // Check if the STC was saved correctly
+        $stmt = $this->connection->prepare("SELECT * FROM Spatial_Temporal_Coverage WHERE Description = ?");
+        $stmt->bind_param("s", $postData["tscDescription"][0]);
+        $stmt->execute();
+        $stc = $stmt->get_result()->fetch_assoc();
+
+        $this->assertNotNull($stc, "Der STC-Eintrag sollte gespeichert worden sein.");
+        $this->assertEquals($postData["tscDateStart"][0], date('Y-m-d', strtotime($stc["dateTimeStart"])));
+        $this->assertEquals($postData["tscDateEnd"][0], date('Y-m-d', strtotime($stc["dateTimeEnd"])));
+    }
+
+    /**
+     * Test mit fehlender Startuhrzeit aber vorhandener Enduhrzeit
+     */
+    public function testSaveWithMixedTimes()
+    {
+        $resourceData = [
+            "doi" => "10.5880/GFZ.TEST.MIXED.TIMES",
+            "year" => 2023,
+            "dateCreated" => "2023-06-01",
+            "resourcetype" => 1,
+            "language" => 1,
+            "Rights" => 1,
+            "title" => ["Test Mixed Times STC"],
+            "titleType" => [1]
+        ];
+        $resource_id = saveResourceInformationAndRights($this->connection, $resourceData);
+
+        $postData = [
+            "tscLatitudeMin" => ["40.7128"],
+            "tscLatitudeMax" => ["40.7828"],
+            "tscLongitudeMin" => ["-74.0060"],
+            "tscLongitudeMax" => ["-73.9360"],
+            "tscDescription" => ["New York City"],
+            "tscDateStart" => ["2023-01-01"],
+            "tscTimeStart" => [""],
+            "tscDateEnd" => ["2023-12-31"],
+            "tscTimeEnd" => ["23:59:59"],
+            "tscTimezone" => ["-05:00"]
+        ];
+
+        $result = saveSpatialTemporalCoverage($this->connection, $postData, $resource_id);
+
+        $this->assertTrue($result, "Die Funktion sollte true zurückgeben wenn nur eine Uhrzeit fehlt.");
+
+        // Check if the STC was saved correctly
+        $stmt = $this->connection->prepare("SELECT * FROM Spatial_Temporal_Coverage WHERE Description = ?");
+        $stmt->bind_param("s", $postData["tscDescription"][0]);
+        $stmt->execute();
+        $stc = $stmt->get_result()->fetch_assoc();
+
+        $this->assertNotNull($stc, "Der STC-Eintrag sollte gespeichert worden sein.");
+        $this->assertEquals($postData["tscDateStart"][0], date('Y-m-d', strtotime($stc["dateTimeStart"])));
+        $this->assertEquals($postData["tscDateEnd"][0] . " " . $postData["tscTimeEnd"][0], $stc["dateTimeEnd"]);
     }
 }
