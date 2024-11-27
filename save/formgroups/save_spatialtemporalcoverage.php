@@ -65,8 +65,8 @@ function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
             'description' => $postData['tscDescription'][$i],
             'dateStart' => $postData['tscDateStart'][$i],
             'dateEnd' => $postData['tscDateEnd'][$i],
-            'TimeStart' => empty($postData['tscTimeStart'][$i]) ? null : $postData['tscTimeStart'][$i],
-            'TimeEnd' => empty($postData['tscTimeEnd'][$i]) ? null : $postData['tscTimeEnd'][$i],
+            'timeStart' => empty($postData['tscTimeStart'][$i]) ? null : $postData['tscTimeStart'][$i],
+            'timeEnd' => empty($postData['tscTimeEnd'][$i]) ? null : $postData['tscTimeEnd'][$i],
             'timezone' => $postData['tscTimezone'][$i]
         ];
 
@@ -104,13 +104,13 @@ function insertSpatialTemporalCoverage($connection, $stcData)
     $description = $stcData['description'];
     $dateStart = $stcData['dateStart'];
     $dateEnd = $stcData['dateEnd'];
-    $timeStart = $stcData['TimeStart'];
-    $timeEnd = $stcData['TimeEnd'];
+    $timeStart = $stcData['timeStart'];
+    $timeEnd = $stcData['timeEnd'];
     $timezone = $stcData['timezone'];
 
     $stmt = $connection->prepare("INSERT INTO Spatial_Temporal_Coverage 
-        (`latitudeMin`, `latitudeMax`, `longitudeMin`, `longitudeMax`, `Description`, 
-         `dateStart`, `dateEnd`, `TimeStart`, `TimeEnd`, `timezone`) 
+        (`latitudeMin`, `latitudeMax`, `longitudeMin`, `longitudeMax`, `description`, 
+         `dateStart`, `dateEnd`, `timeStart`, `timeEnd`, `timezone`) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     $stmt->bind_param(
