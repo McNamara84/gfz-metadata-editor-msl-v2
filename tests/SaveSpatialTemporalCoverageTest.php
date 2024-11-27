@@ -150,9 +150,9 @@ class SaveSpatialTemporalCoverageTest extends TestCase
         $this->assertEquals($postData["tscLongitudeMin"][0], $stc["longitudeMin"]);
         $this->assertEquals($postData["tscLongitudeMax"][0], $stc["longitudeMax"]);
         $this->assertEquals($postData["tscDateStart"][0], $stc["dateStart"]);
-        $this->assertEquals($postData["tscTimeStart"][0], $stc["TimeStart"]);
+        $this->assertEquals($postData["tscTimeStart"][0], $stc["timeStart"]);
         $this->assertEquals($postData["tscDateEnd"][0], $stc["dateEnd"]);
-        $this->assertEquals($postData["tscTimeEnd"][0], $stc["TimeEnd"]);
+        $this->assertEquals($postData["tscTimeEnd"][0], $stc["timeEnd"]);
         $this->assertEquals($postData["tscTimezone"][0], $stc["timezone"]);
 
         // Verify resource linkage
@@ -410,8 +410,8 @@ class SaveSpatialTemporalCoverageTest extends TestCase
         $this->assertNotNull($stc, "Der STC-Eintrag sollte gespeichert worden sein.");
         $this->assertEquals($postData["tscDateStart"][0], $stc["dateStart"]);
         $this->assertEquals($postData["tscDateEnd"][0], $stc["dateEnd"]);
-        $this->assertNull($stc["TimeStart"]);
-        $this->assertNull($stc["TimeEnd"]);
+        $this->assertNull($stc["timeStart"]);
+        $this->assertNull($stc["timeEnd"]);
     }
 
     /**
@@ -462,7 +462,7 @@ class SaveSpatialTemporalCoverageTest extends TestCase
         $this->assertNotNull($stc, "Der STC-Eintrag sollte gespeichert worden sein.");
         $this->assertEquals($postData["tscDateStart"][0], $stc["dateStart"]);
         $this->assertEquals($postData["tscDateEnd"][0], $stc["dateEnd"]);
-        $this->assertNull($stc["TimeStart"]);
-        $this->assertEquals($postData["tscTimeEnd"][0], $stc["TimeEnd"]);
+        $this->assertNull($stc["timeStart"]);
+        $this->assertEquals($postData["tscTimeEnd"][0], $stc["timeEnd"]);
     }
 }

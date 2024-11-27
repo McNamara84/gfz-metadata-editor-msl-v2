@@ -731,7 +731,7 @@ class DatasetController
                     if (!empty($value)) {
                         $coverageXml->addChild($key, htmlspecialchars($value));
                     }
-                } else if (in_array($key, ['dateStart', 'dateEnd', 'TimeStart', 'TimeEnd'])) {
+                } else if (in_array($key, ['dateStart', 'dateEnd', 'timeStart', 'timeEnd'])) {
                     if (!empty($value)) {
                         $coverageXml->addChild($key, htmlspecialchars($value));
                     }
