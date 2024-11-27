@@ -459,9 +459,8 @@ $(document).ready(function () {
     var newtscLineId = (maxId + 1).toString();
     newtscLine.attr("tsc-row-id", newtscLineId);
 
-    // Reset values and validation feedback
-    newtscLine.find("input").val("").removeClass("is-invalid is-valid");
-    newtscLine.find("select").val("").removeClass("is-invalid is-valid");
+    // Reset values and validation feedback for all form elements
+    newtscLine.find("input, select, textarea").val("").removeClass("is-invalid is-valid");
     newtscLine.find(".invalid-feedback, .valid-feedback").hide();
 
     // Remove help buttons
