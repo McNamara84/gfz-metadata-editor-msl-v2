@@ -26,28 +26,22 @@ function saveContactPerson($connection, $postData, $resource_id)
         isset($postData['cpLastname'], $postData['cpFirstname'], $postData['cpPosition'], $postData['cpEmail']) &&
         is_array($postData['cpLastname']) && is_array($postData['cpFirstname']) && is_array($postData['cpPosition']) && is_array($postData['cpEmail'])
     ) {
-        $familynames = $postData['cpLastname'];
-        $givennames = $postData['cpFirstname'];
-        $positions = $postData['cpPosition'];
-        $emails = $postData['cpEmail'];
+        $familynames = $postData['cpLastname'] ?? [];
+        $givennames = $postData['cpFirstname'] ?? [];
+        $positions = $postData['cpPosition'] ?? [];
+        $emails = $postData['cpEmail'] ?? [];
         $websites = $postData['cpOnlineResource'] ?? [];
         $affiliations = $postData['cpAffiliation'] ?? [];
         $rorIds = $postData['hiddenCPRorId'] ?? [];
 
         $len = count($familynames);
         for ($i = 0; $i < $len; $i++) {
-            // Check if all required fields are filled
-            if (empty($familynames[$i]) || empty($emails[$i]) || empty($websites[$i])) {
-                continue; // Skip this contact person if a required field is missing
-            }
-
             // Check if a valid affiliation is present
             $affiliationData = parseAffiliationCPData($affiliations[$i] ?? '[]');
             $rorIdData = parseAffiliationCPData($rorIds[$i] ?? '[]');
             if (empty($affiliationData) && !empty($rorIdData)) {
                 continue; // Skip this contact person if only a ROR ID without affiliation is present
             }
-
             // Check if the contact person already exists (based on email)
             $stmt = $connection->prepare("SELECT contact_person_id FROM Contact_Person WHERE email = ?");
             $stmt->bind_param("s", $emails[$i]);

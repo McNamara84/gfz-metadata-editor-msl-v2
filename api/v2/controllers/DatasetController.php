@@ -357,7 +357,7 @@ class DatasetController
                 'position' => $row['position'] ?? null,
                 'email' => $row['email'] ?? null,
                 'website' => $row['website'] ?? null,
-                'Affiliations' => $this->getContactPersonAffiliations($connection, $row['contact_person_id'])
+                'Affiliations' => $this->getContactPersonAffiliations($connection, $row['contact_person_id']) ?? null
             ];
             $contactPersons[] = $contactPerson;
         }
@@ -699,16 +699,58 @@ class DatasetController
     }
 
         // Contact Persons
-        $contactPersons = $this->getContactPersons($connection, $id);
-        $contactPersonsXml = $xml->addChild('ContactPersons');
-        foreach ($contactPersons as $contactPerson) {
+        // Get contact persons
+$contactPersons = $this->getContactPersons($connection, $id);
+
+// Check if there is any valid contact person data
+$validContactPersons = false;
+foreach ($contactPersons as $contactPerson) {
+    if (
+        !empty($contactPerson['familyname']) || 
+        !empty($contactPerson['givenname']) || 
+        !empty($contactPerson['position']) || 
+        !empty($contactPerson['email']) || 
+        !empty($contactPerson['website']) || 
+        !empty($contactPerson['Affiliations'])
+    ) {
+        $validContactPersons = true;
+        break;  // Exit the loop once we find a valid contact person
+    }
+}
+
+if ($validContactPersons) {
+    $contactPersonsXml = $xml->addChild('ContactPersons');
+
+    // Iterate over contact persons and add them to XML
+    foreach ($contactPersons as $contactPerson) {
+        if (
+            !empty($contactPerson['familyname']) || 
+            !empty($contactPerson['givenname']) || 
+            !empty($contactPerson['position']) || 
+            !empty($contactPerson['email']) || 
+            !empty($contactPerson['website']) || 
+            !empty($contactPerson['Affiliations'])
+        ) {
+            // Add ContactPerson element if there's data
             $contactPersonXml = $contactPersonsXml->addChild('ContactPerson');
-            $contactPersonXml->addChild('familyname', htmlspecialchars($contactPerson['familyname'] ?? ''));
-            $contactPersonXml->addChild('givenname', htmlspecialchars($contactPerson['givenname'] ?? ''));
-            $contactPersonXml->addChild('position', htmlspecialchars($contactPerson['position'] ?? ''));
-            $contactPersonXml->addChild('email', htmlspecialchars($contactPerson['email'] ?? ''));
-            $contactPersonXml->addChild('website', htmlspecialchars($contactPerson['website'] ?? ''));
-            if (isset($contactPerson['Affiliations'])) {
+
+            if ($contactPerson['familyname']) {
+                $contactPersonXml->addChild('familyname', htmlspecialchars($contactPerson['familyname']));
+            }
+            if ($contactPerson['givenname']) {
+                $contactPersonXml->addChild('givenname', htmlspecialchars($contactPerson['givenname']));
+            }
+            if ($contactPerson['position']) {
+                $contactPersonXml->addChild('position', htmlspecialchars($contactPerson['position']));
+            }
+            if ($contactPerson['email']) {
+                $contactPersonXml->addChild('email', htmlspecialchars($contactPerson['email']));
+            }
+            if ($contactPerson['website']) {
+                $contactPersonXml->addChild('website', htmlspecialchars($contactPerson['website']));
+            }
+
+            if ($contactPerson['Affiliations']) {
                 $affiliationsXml = $contactPersonXml->addChild('Affiliations');
                 foreach ($contactPerson['Affiliations'] as $affiliation) {
                     $affiliationXml = $affiliationsXml->addChild('Affiliation');
@@ -718,7 +760,13 @@ class DatasetController
                 }
             }
         }
+    }
+}
 
+            
+
+    
+        
         // Related Works
         $relatedWorks = $this->getRelatedWorks($connection, $id);
         $relatedWorksXml = $xml->addChild('RelatedWorks');
