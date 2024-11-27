@@ -933,7 +933,7 @@ Räumliche und zeitliche Einordnung des Datensatzes. Zur einfacheren Erfassung d
 - Start Time
   Zeitangabe im Format hh:mm:ss
   - Datentyp: String
-  - Vorkommen: 1 (Pflichtfeld)
+  - Vorkommen: 0-1
   - Restriktionen: hh:mm:ss
   - XML-Schemata: DataCite, ISO
   - Beispielwerte: `10:43:50` `04:00:00`
@@ -947,7 +947,7 @@ Räumliche und zeitliche Einordnung des Datensatzes. Zur einfacheren Erfassung d
 - End Time
   Zeitangabe im Format hh:mm:ss
   - Datentyp: String
-  - Vorkommen: 1 (Pflichtfeld)
+  - Vorkommen: 0-1
   - Restriktionen: hh:mm:ss
   - XML-Schemata: DataCite, ISO
   - Beispielwerte: `11:34:56` `09:00:00`
