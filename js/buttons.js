@@ -443,13 +443,23 @@ $(document).ready(function () {
    */
   $("#tscAddButton").click(function () {
     var tscGroup = $("#tscGroup");
-    // The first TSC line used as a template
     var firsttscLine = tscGroup.children().first();
+
+    // Finding highest ID
+    var maxId = 0;
+    tscGroup.find("[tsc-row]").each(function () {
+      var currentId = parseInt($(this).attr("tsc-row-id"));
+      if (currentId > maxId) maxId = currentId;
+    });
 
     // Clone the template
     var newtscLine = firsttscLine.clone();
 
-    // Reset values and validation feedback in the cloned element
+    // Increment the ID for the new TSC line
+    var newtscLineId = (maxId + 1).toString();
+    newtscLine.attr("tsc-row-id", newtscLineId);
+
+    // Reset values and validation feedback
     newtscLine.find("input").val("").removeClass("is-invalid is-valid");
     newtscLine.find("select").val("").removeClass("is-invalid is-valid");
     newtscLine.find(".invalid-feedback, .valid-feedback").hide();
@@ -457,17 +467,13 @@ $(document).ready(function () {
     // Remove help buttons
     deleteHelpButtonFromClonedRows(newtscLine);
 
-    // Increment the tsc-row-id attribute by 1 in the new line
-    var newtscLineId = parseInt(newtscLine.attr("tsc-row-id")) + 1;
-    newtscLine.attr("tsc-row-id", newtscLineId);
-
-    // Replace the add button with the remove button
+    // Replace add button with remove button
     newtscLine.find("#tscAddButton").replaceWith(removeButton);
 
-    // Append the new TSC line to the DOM
+    // Append the new TSC line
     tscGroup.append(newtscLine);
 
-    // Event handler for the remove button
+    // Event handler for remove button
     newtscLine.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
     });

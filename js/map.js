@@ -1,40 +1,59 @@
 $(document).ready(function () {
+  /** @type {google.maps.Map} */
   var map;
+  /** @type {Array<Object>} */
   var drawnOverlays = [];
   var rowCounter = $("#tscGroup [tsc-row]").length;
 
-  // Event Listener für Map-Buttons
+  /**
+   * Event listener for Map buttons within the #tscGroup.
+   * Stores the current row data when the map modal is opened and adjusts the map.
+   */
   $("#tscGroup").on("click", "[data-bs-target='#mapModal']", function () {
-    var rowId = $(this).closest("[tsc-row]").attr("tsc-row-id");
-    $("#mapModal").data("tsc-row-id", rowId);
+    var $currentRow = $(this).closest("[tsc-row]");
+    var rowId = $currentRow.attr("tsc-row-id");
 
-    // Karte anpassen, wenn Modal geöffnet wird
-    $("#mapModal").on("shown.bs.modal", function () {
+    // Store current row reference and ID in the modal
+    $("#mapModal")
+      .data("current-row", $currentRow)
+      .data("tsc-row-id", rowId);
+
+    // Adjust the map when the modal is shown
+    $("#mapModal").one("shown.bs.modal", function () {
       google.maps.event.trigger(map, "resize");
       fitMapBounds();
     });
   });
 
-  // Event Listener für Button mit ID cancelCoords
+  /**
+   * Event listener for the "Cancel Coordinates" button.
+   * Clears coordinate inputs and removes any drawn overlays for the current row.
+   */
   $("#cancelCoords").click(function () {
-    var rowId = $("#mapModal").data("tsc-row-id");
-    // Eingabefelder leeren
-    $(`[tsc-row][tsc-row-id="${rowId}"] [id^=tscLatitudeMax]`).val("");
-    $(`[tsc-row][tsc-row-id="${rowId}"] [id^=tscLongitudeMax]`).val("");
-    $(`[tsc-row][tsc-row-id="${rowId}"] [id^=tscLatitudeMin]`).val("");
-    $(`[tsc-row][tsc-row-id="${rowId}"] [id^=tscLongitudeMin]`).val("");
+    var $currentRow = $("#mapModal").data("current-row");
+    if ($currentRow && $currentRow.length) {
+      $currentRow.find("[id^=tscLatitudeMax]").val("");
+      $currentRow.find("[id^=tscLongitudeMax]").val("");
+      $currentRow.find("[id^=tscLatitudeMin]").val("");
+      $currentRow.find("[id^=tscLongitudeMin]").val("");
 
-    // Gezeichnete Marker/Rechtecke löschen
-    deleteDrawnOverlaysForRow(rowId);
+      var rowId = $currentRow.attr("tsc-row-id");
+      deleteDrawnOverlaysForRow(rowId);
+    }
   });
 
-  // Event-Listener für Button mit ID sendCoords
+  /**
+   * Event listener for the "Send Coordinates" button.
+   * Hides the map modal.
+   */
   $("#sendCoords").click(function () {
-    // Modal schließen
     $("#mapModal").modal("hide");
   });
 
-  // Initialisierung der Karte
+  /**
+   * Initializes the Google Map and Drawing Manager.
+   * Sets up event listeners for drawing rectangles and markers on the map.
+   */
   async function initMap() {
     const { Map } = await google.maps.importLibrary("maps");
     const { DrawingManager } = await google.maps.importLibrary("drawing");
@@ -50,7 +69,10 @@ $(document).ready(function () {
       drawingControl: true,
       drawingControlOptions: {
         position: google.maps.ControlPosition.TOP_CENTER,
-        drawingModes: [google.maps.drawing.OverlayType.RECTANGLE, google.maps.drawing.OverlayType.MARKER],
+        drawingModes: [
+          google.maps.drawing.OverlayType.RECTANGLE,
+          google.maps.drawing.OverlayType.MARKER,
+        ],
       },
       rectangleOptions: {
         strokeColor: "#FF0000",
@@ -63,74 +85,102 @@ $(document).ready(function () {
 
     drawingManager.setMap(map);
 
-    // Koordinaten des Rechtecks übergeben als Wert für Eingabefelder
-    google.maps.event.addListener(drawingManager, "rectanglecomplete", function (rectangle) {
-      var rowId = $("#mapModal").data("tsc-row-id");
+    /**
+     * Event listener for when a rectangle is completed.
+     * Updates the coordinate inputs and draws overlays on the map.
+     *
+     * @param {google.maps.Rectangle} rectangle - The completed rectangle.
+     */
+    google.maps.event.addListener(
+      drawingManager,
+      "rectanglecomplete",
+      function (rectangle) {
+        var $currentRow = $("#mapModal").data("current-row");
+        if (!$currentRow || !$currentRow.length) return;
 
-      // Löschen aller vorhandenen Overlays für diese Zeile
-      deleteDrawnOverlaysForRow(rowId);
+        var rowId = $currentRow.attr("tsc-row-id");
+        deleteDrawnOverlaysForRow(rowId);
 
-      var bounds = rectangle.getBounds();
-      var ne = bounds.getNorthEast();
-      var sw = bounds.getSouthWest();
-      $(`[tsc-row][tsc-row-id="${rowId}"] [id^=tscLatitudeMax]`).val(ne.lat());
-      $(`[tsc-row][tsc-row-id="${rowId}"] [id^=tscLongitudeMax]`).val(ne.lng());
-      $(`[tsc-row][tsc-row-id="${rowId}"] [id^=tscLatitudeMin]`).val(sw.lat());
-      $(`[tsc-row][tsc-row-id="${rowId}"] [id^=tscLongitudeMin]`).val(sw.lng());
+        var bounds = rectangle.getBounds();
+        var ne = bounds.getNorthEast();
+        var sw = bounds.getSouthWest();
 
-      // Label für Rechteck ergänzen (Workaround mit Marker, da Rechtecke keine Labels unterstützen)
-      var label = new google.maps.Marker({
-        position: rectangle.getBounds().getCenter(),
-        label: rowId,
-        map: map,
-      });
+        $currentRow.find("[id^=tscLatitudeMax]").val(ne.lat());
+        $currentRow.find("[id^=tscLongitudeMax]").val(ne.lng());
+        $currentRow.find("[id^=tscLatitudeMin]").val(sw.lat());
+        $currentRow.find("[id^=tscLongitudeMin]").val(sw.lng());
 
-      drawnOverlays.push({ rowId: rowId, overlay: rectangle });
-      drawnOverlays.push({ rowId: rowId, overlay: label });
-    });
+        var label = new google.maps.Marker({
+          position: bounds.getCenter(),
+          label: rowId,
+          map: map,
+        });
 
-    // Koordinaten des Markers übergeben als Wert für Eingabefeld mit ID tscLatitudeMin und tscLongitudeMin
-    google.maps.event.addListener(drawingManager, "markercomplete", function (marker) {
-      var rowId = $("#mapModal").data("tsc-row-id");
+        drawnOverlays.push({ rowId: rowId, overlay: rectangle });
+        drawnOverlays.push({ rowId: rowId, overlay: label });
+      }
+    );
 
-      // Löschen aller vorhandenen Marker/Rechtecke für diese Zeile
-      deleteDrawnOverlaysForRow(rowId);
+    /**
+     * Event listener for when a marker is completed.
+     * Updates the coordinate inputs and draws overlays on the map.
+     *
+     * @param {google.maps.Marker} marker - The completed marker.
+     */
+    google.maps.event.addListener(
+      drawingManager,
+      "markercomplete",
+      function (marker) {
+        var $currentRow = $("#mapModal").data("current-row");
+        if (!$currentRow || !$currentRow.length) return;
 
-      var position = marker.getPosition();
-      $(`[tsc-row][tsc-row-id="${rowId}"] [id^=tscLatitudeMin]`).val(position.lat());
-      $(`[tsc-row][tsc-row-id="${rowId}"] [id^=tscLongitudeMin]`).val(position.lng());
-      $(`[tsc-row][tsc-row-id="${rowId}"] [id^=tscLatitudeMax]`).val("");
-      $(`[tsc-row][tsc-row-id="${rowId}"] [id^=tscLongitudeMax]`).val("");
+        var rowId = $currentRow.attr("tsc-row-id");
+        deleteDrawnOverlaysForRow(rowId);
 
-      marker.setLabel(rowId);
+        var position = marker.getPosition();
+        $currentRow.find("[id^=tscLatitudeMin]").val(position.lat());
+        $currentRow.find("[id^=tscLongitudeMin]").val(position.lng());
+        $currentRow.find("[id^=tscLatitudeMax]").val("");
+        $currentRow.find("[id^=tscLongitudeMax]").val("");
 
-      drawnOverlays.push({ rowId: rowId, overlay: marker });
-    });
+        marker.setLabel(rowId);
+        drawnOverlays.push({ rowId: rowId, overlay: marker });
+      }
+    );
   }
 
-  // Event Listener für Änderungen in den Eingabefeldern
-  $("#tscGroup").on("input", "[tsc-row] [id^=tscLatitude], [tsc-row] [id^=tscLongitude]", function () {
-    var $row = $(this).closest("[tsc-row]");
-    var currentRowId = $row.attr("tsc-row-id");
+  /**
+   * Event listener for changes in the coordinate input fields.
+   * Updates the map overlays based on the input values.
+   */
+  $("#tscGroup").on(
+    "input",
+    "[tsc-row] [id^=tscLatitude], [tsc-row] [id^=tscLongitude]",
+    function () {
+      var $row = $(this).closest("[tsc-row]");
+      var currentRowId = $row.attr("tsc-row-id");
 
-    var latMax = $row.find("[id^=tscLatitudeMax]").val();
-    var lngMax = $row.find("[id^=tscLongitudeMax]").val();
-    var latMin = $row.find("[id^=tscLatitudeMin]").val();
-    var lngMin = $row.find("[id^=tscLongitudeMin]").val();
+      var latMax = $row.find("[id^=tscLatitudeMax]").val();
+      var lngMax = $row.find("[id^=tscLongitudeMax]").val();
+      var latMin = $row.find("[id^=tscLatitudeMin]").val();
+      var lngMin = $row.find("[id^=tscLongitudeMin]").val();
 
-    updateMapOverlay(currentRowId, latMax, lngMax, latMin, lngMin);
-  });
+      updateMapOverlay(currentRowId, latMax, lngMax, latMin, lngMin);
+    }
+  );
 
-  // Funktion zum Aktualisieren der Zeilen-IDs und Marker/Rechteck-Labels
+  /**
+   * Updates the row IDs and labels for markers and rectangles when rows are added or removed.
+   */
   function updateRowIdsAndLabels() {
     $("#tscGroup [tsc-row]").each(function (index) {
       var newRowId = (index + 1).toString();
       var oldRowId = $(this).attr("tsc-row-id");
 
-      // Zeilen-IDs aktualisieren
+      // Update row IDs
       $(this).attr("tsc-row-id", newRowId);
 
-      // IDs der Eingabefelder aktualisieren
+      // Update IDs of input fields
       $(this)
         .find("input, select, textarea")
         .each(function () {
@@ -139,15 +189,17 @@ $(document).ready(function () {
           $(this).attr("id", newId);
         });
 
-      // Aktualisierund der Rechtecke/Marker
+      // Update labels for rectangles and markers
       drawnOverlays.forEach(function (item) {
         if (item.rowId === oldRowId) {
           item.rowId = newRowId;
           if (item.overlay instanceof google.maps.Marker) {
             item.overlay.setLabel(newRowId);
           } else if (item.overlay instanceof google.maps.Rectangle) {
-            // Label-Overlays für Rwechtecke finden und aktualisieren
-            var centerMarker = drawnOverlays.find((m) => m.rowId === newRowId && m.overlay instanceof google.maps.Marker);
+            // Find and update label overlays for rectangles
+            var centerMarker = drawnOverlays.find(
+              (m) => m.rowId === newRowId && m.overlay instanceof google.maps.Marker
+            );
             if (centerMarker) {
               centerMarker.overlay.setLabel(newRowId);
             }
@@ -157,6 +209,16 @@ $(document).ready(function () {
     });
   }
 
+  /**
+   * Updates the map overlays based on the provided coordinates.
+   * Draws rectangles or markers on the map depending on the inputs.
+   *
+   * @param {string} currentRowId - The ID of the current row.
+   * @param {string} latMax - The maximum latitude value.
+   * @param {string} lngMax - The maximum longitude value.
+   * @param {string} latMin - The minimum latitude value.
+   * @param {string} lngMin - The minimum longitude value.
+   */
   function updateMapOverlay(currentRowId, latMax, lngMax, latMin, lngMin) {
     deleteDrawnOverlaysForRow(currentRowId);
 
@@ -184,7 +246,10 @@ $(document).ready(function () {
       drawnOverlays.push({ rowId: currentRowId, overlay: rectangle });
       drawnOverlays.push({ rowId: currentRowId, overlay: label });
     } else if (latMin && lngMin) {
-      var position = new google.maps.LatLng(parseFloat(latMin), parseFloat(lngMin));
+      var position = new google.maps.LatLng(
+        parseFloat(latMin),
+        parseFloat(lngMin)
+      );
       var marker = new google.maps.Marker({
         position: position,
         label: currentRowId,
@@ -197,6 +262,11 @@ $(document).ready(function () {
     fitMapBounds();
   }
 
+  /**
+   * Deletes all drawn overlays (markers and rectangles) for a specific row ID.
+   *
+   * @param {string} rowId - The ID of the row whose overlays should be deleted.
+   */
   function deleteDrawnOverlaysForRow(rowId) {
     drawnOverlays = drawnOverlays.filter((item) => {
       if (item.rowId === rowId) {
@@ -207,11 +277,17 @@ $(document).ready(function () {
     });
   }
 
+  /**
+   * Deletes all drawn overlays (markers and rectangles) from the map.
+   */
   function deleteDrawnOverlays() {
     drawnOverlays.forEach((item) => item.overlay.setMap(null));
     drawnOverlays = [];
   }
 
+  /**
+   * Adjusts the map's viewport to fit all drawn overlays with a 50% buffer.
+   */
   function fitMapBounds() {
     var bounds = new google.maps.LatLngBounds();
     drawnOverlays.forEach((item) => {
@@ -223,18 +299,27 @@ $(document).ready(function () {
     });
 
     if (!bounds.isEmpty()) {
-      // Zoom mit 50% Puffer
+      // Zoom with 50% buffer
       var ne = bounds.getNorthEast();
       var sw = bounds.getSouthWest();
       var lat_buffer = (ne.lat() - sw.lat()) * 0.5;
       var lng_buffer = (ne.lng() - sw.lng()) * 0.5;
-      bounds.extend(new google.maps.LatLng(ne.lat() + lat_buffer, ne.lng() + lng_buffer));
-      bounds.extend(new google.maps.LatLng(sw.lat() - lat_buffer, sw.lng() - lng_buffer));
+      bounds.extend(
+        new google.maps.LatLng(ne.lat() + lat_buffer, ne.lng() + lng_buffer)
+      );
+      bounds.extend(
+        new google.maps.LatLng(sw.lat() - lat_buffer, sw.lng() - lng_buffer)
+      );
       map.fitBounds(bounds);
     }
   }
 
-  // Funktion übernommen aus der Google Maps JavaScript API
+  /**
+   * Loads the Google Maps API dynamically using the provided API key.
+   * This function is adapted from the Google Maps JavaScript API documentation.
+   *
+   * @param {string} apiKey - The API key for Google Maps.
+   */
   function loadGoogleMapsApi(apiKey) {
     ((g) => {
       var h,
@@ -267,35 +352,40 @@ $(document).ready(function () {
             a.nonce = m.querySelector("script[nonce]")?.nonce || "";
             m.head.append(a);
           }));
-      d[l] ? console.warn(p + " only loads once. Ignoring:", g) : (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)));
+      d[l]
+        ? console.warn(p + " only loads once. Ignoring:", g)
+        : (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)));
     })({
       key: apiKey,
       v: "weekly",
     });
   }
 
-  // AJAX-Anfrage, um den API-Key zu holen
+  // Fetch the API key via AJAX request and initialize the map
   fetch("settings.php")
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Netzwerkantwort war nicht ok");
+        throw new Error("Network response was not ok");
       }
       return response.json();
     })
     .then((data) => {
       if (data.apiKey) {
         loadGoogleMapsApi(data.apiKey);
-        // Karte laden
+        // Load the map
         google.maps.importLibrary("maps").then(initMap);
       } else {
-        console.error("API-Schlüssel nicht in der Antwort gefunden");
+        console.error("API key not found in the response");
       }
     })
     .catch((error) => {
-      console.error("Fehler beim Abrufen des API-Schlüssels:", error);
+      console.error("Error fetching the API key:", error);
     });
 
-  // Initialisieren der Buttons
+  /**
+   * Initializes the add and delete buttons for the TSC rows.
+   * Adjusts button visibility based on the number of rows.
+   */
   function initializeButtons() {
     var $rows = $("#tscGroup [tsc-row]");
     rowCounter = $rows.length;
@@ -305,17 +395,17 @@ $(document).ready(function () {
       var $deleteButton = $row.find("[data-action='delete-tsc-row']");
       var $addButton = $row.find("[data-action='add-tsc-row']");
 
-      // Logik für Delete-Buttons
+      // Logic for Delete Buttons
       if (index === rowCounter - 1 || rowCounter === 1) {
-        // Verstecke den Delete-Button in der letzten Zeile oder wenn es nur eine Zeile gibt
+        // Hide the delete button in the last row or if there's only one row
         $deleteButton.addClass("d-none");
       } else {
         $deleteButton.removeClass("d-none");
       }
 
-      // Logik für Add-Buttons
+      // Logic for Add Buttons
       if (index === rowCounter - 1) {
-        // Nur der letzte Add-Button ist sichtbar
+        // Only the last add button is visible
         $addButton.removeClass("d-none");
       } else {
         $addButton.addClass("d-none");
@@ -323,7 +413,10 @@ $(document).ready(function () {
     });
   }
 
-  // Hinzufügen einer neuen Zeile
+  /**
+   * Adds a new TSC row to the form.
+   * Clones the last row, resets input fields, updates IDs, and initializes buttons and map overlays.
+   */
   function addNewRow() {
     rowCounter++;
     var newRowId = rowCounter.toString();
@@ -346,7 +439,12 @@ $(document).ready(function () {
     updateMapOverlay(newRowId, "", "", "", "");
   }
 
-  // Löschen einer Zeile
+  /**
+   * Deletes a TSC row from the form.
+   * Removes the row, updates row IDs and labels, and adjusts the map overlays.
+   *
+   * @param {HTMLElement} button - The delete button that was clicked.
+   */
   function deleteRow(button) {
     var $row = $(button).closest("[tsc-row]");
     var rowId = $row.attr("tsc-row-id");
@@ -354,18 +452,18 @@ $(document).ready(function () {
     deleteDrawnOverlaysForRow(rowId);
     $row.remove();
 
-    updateRowIdsAndLabels(); // Aktualisiere die Nummerierung
+    updateRowIdsAndLabels(); // Update numbering
     initializeButtons();
     fitMapBounds();
   }
 
-  // Event Listener für den Add-Button
+  // Event listener for the Add Button
   $(document).on("click", "[data-action='add-tsc-row']", function (e) {
     e.preventDefault();
     addNewRow();
   });
 
-  // Event Listener für den Delete-Button
+  // Event listener for the Delete Button
   $(document).on("click", "[data-action='delete-tsc-row']", function (e) {
     e.preventDefault();
     if (!$(this).hasClass("d-none")) {
@@ -373,9 +471,9 @@ $(document).ready(function () {
     }
   });
 
-  // Entfernen Sie alle vorherigen Click-Event-Listener von den Buttons
+  // Remove all previous click event listeners from the buttons
   $(".tscAddButton, .tscDeleteButton").off("click");
 
-  // Initialisiere die Buttons beim Laden der Seite
+  // Initialize the buttons when the page loads
   initializeButtons();
 });
