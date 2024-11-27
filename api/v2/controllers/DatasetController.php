@@ -641,9 +641,11 @@ class DatasetController
 
         // Contributors
         $contributors = $this->getContributors($connection, $id);
-        $contributorsXml = $xml->addChild('Contributors');
-
+        if(!empty($contributors['persons']) || !empty($contributors['institutions'])){
+            $contributorsXml = $xml->addChild('Contributors');
+        }
         // Contributor Persons
+        if (!empty($contributors['persons']) ){
         $personsXml = $contributorsXml->addChild('Persons');
         foreach ($contributors['persons'] as $person) {
             $personXml = $personsXml->addChild('Person');
@@ -669,8 +671,10 @@ class DatasetController
                 }
             }
         }
+    }
 
         // Contributor Institutions
+        if(!empty($contributors['institutions'])){
         $institutionsXml = $contributorsXml->addChild('Institutions');
         foreach ($contributors['institutions'] as $institution) {
             $institutionXml = $institutionsXml->addChild('Institution');
@@ -692,6 +696,7 @@ class DatasetController
                 }
             }
         }
+    }
 
         // Contact Persons
         $contactPersons = $this->getContactPersons($connection, $id);
