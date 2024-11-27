@@ -49,6 +49,10 @@ The following third-party dependencies are included in header.html and footer.ht
 
 In addition to the access data for the database, other settings can also be adjusted in the `settings.php` file:
 
+- `$host`: Database host.
+- `$username`: Username of the user with access to the given database.
+- `$password`: Password of database user.
+- `$database`: Name of the database created.
 - `$maxTitles`: Defines the maximum number of titles that users can enter in the editor.
 - `$mslLabsUrl`: URL to the JSON file with the current list of laboratories.
 - `$showFeedbackLink`: true-> feedback function switched on, false-> feedback function switched off
@@ -57,8 +61,8 @@ In addition to the access data for the database, other settings can also be adju
 - `$smtpUser`: User name of the mailbox for sending the mails
 - `$smtpPassword`: Password of the mailbox
 - `$smtpSender`: Name of the sender in the feedback mails
-- `$feedbackAdress`: Address to which the feedback is sent
-- `$xmlSubmitAdress`: Address to which the finished XML file is sent
+- `$feedbackAdress`: Email Address to which the feedback is sent
+- `$xmlSubmitAdress`: Email Address to which the finished XML file is sent
 
 # API-Dokumentation
 
