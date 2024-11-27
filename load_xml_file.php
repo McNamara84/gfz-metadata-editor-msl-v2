@@ -14,20 +14,31 @@ require_once 'settings.php';
  */
 function load_html()
 {
-    // Generate HTML string
-    $htmlFile = 'header.html';
-    // Load HTML to string
-    $htmlString = file_get_contents($htmlFile);
-    // Next HTML file (Resource Information)
-    $htmlFile = 'formgroups/resourceInformation.html';
-    // Add Resource Information to HTML string
-    $htmlString .= file_get_contents($htmlFile);
-    $htmlFile = 'formgroups/rights.html';
-    $htmlString .= file_get_contents($htmlFile);
-    $htmlFile = 'footer.html';
-    $htmlString .= file_get_contents($htmlFile);
+    // Array with paths to HTML files
+    $htmlFiles = [
+        'header.html',
+        'formgroups/resourceInformation.html',
+        'formgroups/rights.html',
+        'formgroups/authors.html',
+        'formgroups/contactpersons.html',
+        'formgroups/originatingLaboratory.html',
+        'formgroups/contributors.html',
+        'formgroups/descriptions.html',
+        'formgroups/mslKeywords.html',
+        'formgroups/thesaurusKeywords.html',
+        'formgroups/freeKeywords.html',
+        'formgroups/dates.html',
+        'formgroups/spatialtemporalcoverage.html',
+        'formgroups/relatedwork.html',
+        'formgroups/fundingreference.html',
+        'footer.html'
+    ];
+    $combinedHtml = '';
+    foreach ($htmlFiles as $file) {
+        $combinedHtml .= file_get_contents($file) . "\n";
+    }
 
-    return $htmlString;
+    return $combinedHtml;
 }
 
 /**
