@@ -81,7 +81,7 @@ function isCurrentAffiliation(affiliation) {
  * //   <input id="hiddenAuthorRorId" />
  * // </div>
  */
-$('#authorGroup').on('blur', 'input[name="orcids[]"]', function () {
+$('#group-author').on('blur', 'input[name="orcids[]"]', function () {
   const orcidInput = $(this);
   const row = orcidInput.closest('[data-creator-row]');
   const orcid = orcidInput.val();

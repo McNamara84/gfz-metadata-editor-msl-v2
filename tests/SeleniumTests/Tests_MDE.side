@@ -349,10 +349,10 @@
       "id": "0b8d28fb-7665-46eb-8806-eb73462f800b",
       "comment": "",
       "command": "click",
-      "target": "css=#authorGroup .col-12 .bi",
+      "target": "css=#group-author .col-12 .bi",
       "targets": [
-        ["css=#authorGroup .col-12 .bi", "css:finder"],
-        ["xpath=//div[@id='authorGroup']/div/div/div/div[2]/span/i", "xpath:idRelative"],
+        ["css=#group-author .col-12 .bi", "css:finder"],
+        ["xpath=//div[@id='group-author']/div/div/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[3]/div[2]/div/div/div/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -399,7 +399,7 @@
       "target": "css=.col-sm-11 > .input-group > .input-group-text > .bi",
       "targets": [
         ["css=.col-sm-11 > .input-group > .input-group-text > .bi", "css:finder"],
-        ["xpath=//div[@id='authorGroup']/div/div[4]/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div[4]/div/span/i", "xpath:idRelative"],
         ["xpath=//div[4]/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -2212,7 +2212,7 @@
         ["name=orcids[]", "name"],
         ["css=#inputAuthorORCID", "css:finder"],
         ["xpath=//input[@id='inputAuthorORCID']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div[3]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/input", "xpath:position"]
       ],
       "value": "1234-1234-1234-1234"
@@ -2226,7 +2226,7 @@
         ["name=familynames[]", "name"],
         ["css=#inputFamilyname", "css:finder"],
         ["xpath=//input[@id='inputFamilyname']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -2247,7 +2247,7 @@
         ["name=familynames[]", "name"],
         ["css=#inputFamilyname", "css:finder"],
         ["xpath=//input[@id='inputFamilyname']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": "Franz"
@@ -2261,7 +2261,7 @@
         ["name=givennames[]", "name"],
         ["css=#inputGivenname", "css:finder"],
         ["xpath=//input[@id='inputGivenname']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "Jana"
@@ -2764,7 +2764,7 @@
         ["name=familynames[]", "name"],
         ["css=#inputFamilyname", "css:finder"],
         ["xpath=//input[@id='inputFamilyname']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -2778,7 +2778,7 @@
         ["name=familynames[]", "name"],
         ["css=#inputFamilyname", "css:finder"],
         ["xpath=//input[@id='inputFamilyname']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": "Franz"
@@ -2792,7 +2792,7 @@
         ["name=givennames[]", "name"],
         ["css=#inputGivenname", "css:finder"],
         ["xpath=//input[@id='inputGivenname']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "Jana"
@@ -2806,7 +2806,7 @@
         ["name=orcids[]", "name"],
         ["css=#inputAuthorORCID", "css:finder"],
         ["xpath=//input[@id='inputAuthorORCID']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div[3]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/input", "xpath:position"]
       ],
       "value": "1234-1234-1234-1234"
@@ -4324,7 +4324,7 @@
         ["name=familynames[]", "name"],
         ["css=#inputFamilyname", "css:finder"],
         ["xpath=//input[@id='inputFamilyname']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -4338,7 +4338,7 @@
         ["name=familynames[]", "name"],
         ["css=#inputFamilyname", "css:finder"],
         ["xpath=//input[@id='inputFamilyname']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": "Testname"
@@ -4352,7 +4352,7 @@
         ["name=givennames[]", "name"],
         ["css=#inputGivenname", "css:finder"],
         ["xpath=//input[@id='inputGivenname']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "Testfirstname"
@@ -4366,7 +4366,7 @@
         ["name=orcids[]", "name"],
         ["css=#inputAuthorORCID", "css:finder"],
         ["xpath=//input[@id='inputAuthorORCID']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div[3]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/input", "xpath:position"]
       ],
       "value": "2345-2345-2345-2345"
@@ -4811,7 +4811,7 @@
         ["name=orcids[]", "name"],
         ["css=#inputAuthorORCID", "css:finder"],
         ["xpath=//input[@id='inputAuthorORCID']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -4839,7 +4839,7 @@
         ["name=familynames[]", "name"],
         ["css=#inputFamilyname", "css:finder"],
         ["xpath=//input[@id='inputFamilyname']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "Nachname"
@@ -4860,7 +4860,7 @@
         ["name=givennames[]", "name"],
         ["css=#inputGivenname", "css:finder"],
         ["xpath=//input[@id='inputGivenname']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div[3]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/input", "xpath:position"]
       ],
       "value": "Josiah"
@@ -4868,10 +4868,10 @@
       "id": "23cc6314-ce89-49b1-b2dd-64e3b9b13f5c",
       "comment": "",
       "command": "click",
-      "target": "xpath=//div[@id='authorGroup']/div/div[4]",
+      "target": "xpath=//div[@id='group-author']/div/div[4]",
       "targets": [
         ["css=.col-10:nth-child(4)", "css:finder"],
-        ["xpath=//div[@id='authorGroup']/div/div[4]", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div[4]", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div[4]", "xpath:position"]
       ],
       "value": ""
@@ -4884,7 +4884,7 @@
         ["id=addAuthor", "id"],
         ["css=#addAuthor", "css:finder"],
         ["xpath=//button[@id='addAuthor']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div[5]/div/button", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div[5]/div/button", "xpath:idRelative"],
         ["xpath=//div[5]/div/button", "xpath:position"]
       ],
       "value": ""
@@ -4896,7 +4896,7 @@
       "targets": [
         ["css=.row:nth-child(2) #inputAuthorORCID", "css:finder"],
         ["xpath=(//input[@id='inputAuthorORCID'])[2]", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div[2]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -4908,7 +4908,7 @@
       "targets": [
         ["css=.row:nth-child(2) #inputAuthorORCID", "css:finder"],
         ["xpath=(//input[@id='inputAuthorORCID'])[2]", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div[2]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/input", "xpath:position"]
       ],
       "value": "0000-0002-2771-9344"
@@ -4920,7 +4920,7 @@
       "targets": [
         ["css=.row:nth-child(2) #inputFamilyname", "css:finder"],
         ["xpath=(//input[@id='inputFamilyname'])[2]", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -4939,7 +4939,7 @@
       "targets": [
         ["css=.row:nth-child(2) #inputFamilyname", "css:finder"],
         ["xpath=(//input[@id='inputFamilyname'])[2]", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "Hernandez"
@@ -4951,7 +4951,7 @@
       "targets": [
         ["css=.row:nth-child(2) #inputGivenname", "css:finder"],
         ["xpath=(//input[@id='inputGivenname'])[2]", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div[2]/div[3]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div[2]/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div[3]/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -4963,7 +4963,7 @@
       "targets": [
         ["css=.row:nth-child(2) #inputGivenname", "css:finder"],
         ["xpath=(//input[@id='inputGivenname'])[2]", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div[2]/div[3]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div[2]/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div[3]/div/div/input", "xpath:position"]
       ],
       "value": "Sofia"
@@ -4976,7 +4976,7 @@
         ["id=addAuthor", "id"],
         ["css=#addAuthor", "css:finder"],
         ["xpath=//button[@id='addAuthor']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div[5]/div/button", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div[5]/div/button", "xpath:idRelative"],
         ["xpath=//div[5]/div/button", "xpath:position"]
       ],
       "value": ""
@@ -4989,7 +4989,7 @@
         ["id=addAuthor", "id"],
         ["css=#addAuthor", "css:finder"],
         ["xpath=//button[@id='addAuthor']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div[5]/div/button", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div[5]/div/button", "xpath:idRelative"],
         ["xpath=//div[5]/div/button", "xpath:position"]
       ],
       "value": ""
@@ -5002,7 +5002,7 @@
         ["id=addAuthor", "id"],
         ["css=#addAuthor", "css:finder"],
         ["xpath=//button[@id='addAuthor']", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div/div[5]/div/button", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div/div[5]/div/button", "xpath:idRelative"],
         ["xpath=//div[5]/div/button", "xpath:position"]
       ],
       "value": ""
@@ -5014,7 +5014,7 @@
       "targets": [
         ["css=.row:nth-child(3) #inputAuthorORCID", "css:finder"],
         ["xpath=(//input[@id='inputAuthorORCID'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div[3]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div[3]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[3]/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -5026,7 +5026,7 @@
       "targets": [
         ["css=.row:nth-child(3) #inputAuthorORCID", "css:finder"],
         ["xpath=(//input[@id='inputAuthorORCID'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div[3]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div[3]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[3]/div/div/div/input", "xpath:position"]
       ],
       "value": "0000-0003-1515-9236"
@@ -5038,7 +5038,7 @@
       "targets": [
         ["css=.row:nth-child(3) #inputFamilyname", "css:finder"],
         ["xpath=(//input[@id='inputFamilyname'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -5057,7 +5057,7 @@
       "targets": [
         ["css=.row:nth-child(3) #inputFamilyname", "css:finder"],
         ["xpath=(//input[@id='inputFamilyname'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div[3]/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "Khan"
@@ -5069,7 +5069,7 @@
       "targets": [
         ["css=.row:nth-child(3) #inputGivenname", "css:finder"],
         ["xpath=(//input[@id='inputGivenname'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='authorGroup']/div[3]/div[3]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div[3]/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div[3]/div/div/input", "xpath:position"]
       ],
       "value": "Hameed Ullah"
@@ -5087,7 +5087,7 @@
       "target": "xpath=//span[contains(.,'International Islamic University, Islamabad')]",
       "targets": [
         ["css=.tagify__tag-text", "css:finder"],
-        ["xpath=//div[@id='authorGroup']/div[3]/div[4]/div/tags/tag/div/span", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div[3]/div[4]/div/tags/tag/div/span", "xpath:idRelative"],
         ["xpath=//tag/div/span", "xpath:position"],
         ["xpath=//span[contains(.,'International Islamic University, Islamabad')]", "xpath:innerText"]
       ],
@@ -5099,7 +5099,7 @@
       "target": "id=inputContributorORCID",
       "targets": [
         ["css=.tagify__tag-text", "css:finder"],
-        ["xpath=//div[@id='authorGroup']/div[3]/div[4]/div/tags/tag/div/span", "xpath:idRelative"],
+        ["xpath=//div[@id='group-author']/div[3]/div[4]/div/tags/tag/div/span", "xpath:idRelative"],
         ["xpath=//tag/div/span", "xpath:position"],
         ["xpath=//span[contains(.,'International Islamic University, Islamabad')]", "xpath:innerText"]
       ],

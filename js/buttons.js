@@ -176,7 +176,7 @@ $(document).ready(function () {
    * Clones the first author row, resets input fields, and appends it to the author group.
    */
   $("#addAuthor").click(function () {
-    var authorGroup = $("#authorGroup");
+    var authorGroup = $("#group-author");
     // First row to be used as a template
     var firstAuthorLine = authorGroup.children().first();
 
