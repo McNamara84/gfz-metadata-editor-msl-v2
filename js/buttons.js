@@ -438,40 +438,97 @@ $(document).ready(function () {
 
 
   /**
+  * Global variable to keep track of unique tsc-row-ids.
+  * This ensures each row has a unique identifier.
+  */
+  var tscRowIdCounter = 1;
+
+  /**
+   * Creates the Remove button element.
+   * @returns {jQuery} A jQuery object representing the Remove button.
+   */
+  function createRemoveButton() {
+    return $('<button type="button" class="btn btn-danger removeButton" style="width: 36px;">-</button>');
+  }
+
+  /**
    * Event handler for the "Add TSC" button click.
-   * Clones the first TSC row, resets input fields, and appends it to the TSC group.
+   * Clones the last TSC row, resets input fields, updates IDs, and appends it to the TSC group.
    */
   $("#tscAddButton").click(function () {
     var tscGroup = $("#tscGroup");
-    // The first TSC line used as a template
-    var firsttscLine = tscGroup.children().first();
+    var lastTscLine = tscGroup.children().last();
 
-    // Clone the template
-    var newtscLine = firsttscLine.clone();
+    // Increment the unique row counter
+    tscRowIdCounter++;
 
-    // Reset values and validation feedback in the cloned element
-    newtscLine.find("input").val("").removeClass("is-invalid is-valid");
-    newtscLine.find("select").val("").removeClass("is-invalid is-valid");
-    newtscLine.find(".invalid-feedback, .valid-feedback").hide();
+    // Clone the last row
+    var newTscLine = lastTscLine.clone();
 
-    // Remove help buttons
-    deleteHelpButtonFromClonedRows(newtscLine);
+    // Set the new tsc-row-id
+    newTscLine.attr("tsc-row-id", tscRowIdCounter);
 
-    // Increment the tsc-row-id attribute by 1 in the new line
-    var newtscLineId = parseInt(newtscLine.attr("tsc-row-id")) + 1;
-    newtscLine.attr("tsc-row-id", newtscLineId);
-
-    // Replace the add button with the remove button
-    newtscLine.find("#tscAddButton").replaceWith(removeButton);
-
-    // Append the new TSC line to the DOM
-    tscGroup.append(newtscLine);
-
-    // Event handler for the remove button
-    newtscLine.on("click", ".removeButton", function () {
-      $(this).closest(".row").remove();
+    // Update IDs of input fields to include the new unique tsc-row-id
+    newTscLine.find("input, select, textarea").each(function () {
+      var oldId = $(this).attr("id");
+      if (oldId) {
+        var newId = oldId.replace(/_\d+$/, "_" + tscRowIdCounter);
+        $(this).attr("id", newId);
+      }
     });
+
+    // Reset values and validation feedback
+    newTscLine.find("input, select, textarea").val("").removeClass("is-invalid is-valid");
+    newTscLine.find(".invalid-feedback, .valid-feedback").hide();
+
+    // Remove help buttons (if applicable)
+    if (typeof deleteHelpButtonFromClonedRows === 'function') {
+      deleteHelpButtonFromClonedRows(newTscLine);
+    }
+
+    // Replace the Add button with a Remove button
+    newTscLine.find("#tscAddButton").replaceWith(createRemoveButton());
+
+    // Append the new TSC line
+    tscGroup.append(newTscLine);
+
+    // Update the overlay labels
+    updateOverlayLabels();
   });
+
+  /**
+   * Event handler for the "Remove TSC" button click.
+   * Removes the TSC row and its associated map overlays.
+   */
+  $(document).on("click", ".removeButton", function () {
+    var $row = $(this).closest("[tsc-row]");
+    var rowId = $row.attr("tsc-row-id");
+
+    // Remove the map overlays for this row
+    if (typeof window.deleteDrawnOverlaysForRow === 'function') {
+      window.deleteDrawnOverlaysForRow(rowId);
+    }
+
+    // Remove the row
+    $row.remove();
+
+    // Update the overlay labels
+    updateOverlayLabels();
+
+    // Update the map view
+    if (typeof window.fitMapBounds === 'function') {
+      window.fitMapBounds();
+    }
+  });
+
+  /**
+   * Updates the labels on the map overlays to match the current row numbering.
+   */
+  function updateOverlayLabels() {
+    if (typeof window.updateOverlayLabels === 'function') {
+      window.updateOverlayLabels();
+    }
+  }
 
   /**
    * Event handler for the "Add Related Work" button click.

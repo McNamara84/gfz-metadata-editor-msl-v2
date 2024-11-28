@@ -2,13 +2,13 @@
 ///////////////////////////////////////////////////////////////////
 // Description: French language file for the metadata editor     //
 // Authors: Matan Israel, Holger Ehrmann                         //
-// Version: 1.8                                                  //
+// Version: 1.9                                                  //
 // License: CC BY 4.0                                            //
 ///////////////////////////////////////////////////////////////////
 
 $translations = [
     // Général
-    'logotitle' => 'Éditeur de métadonnées 1.8',
+    'logotitle' => 'Éditeur de métadonnées 1.9',
     'choose' => 'Choisissez...',
     'valid' => 'Valide',
     'PleaseChoose_invalid' => 'Veuillez choisir',
