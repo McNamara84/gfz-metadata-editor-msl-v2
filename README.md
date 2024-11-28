@@ -49,6 +49,7 @@ The following third-party dependencies are included in header.html and footer.ht
 
 In der Datei `settings.php` können, neben den Zugangsdaten für die Datenbank, auch andere Einstellungen angepasst werden:
 
+<<<<<<< Updated upstream
 - `$maxTitles`: Legt die max. Anzahl an Titeln fest, die Nutzende im Editor eingeben können, fest.
 - `$mslLabsUrl`: URL zur JSON-Datei mit der aktuellen Liste an Laboratorien.
 - `$showFeedbackLink`: true-> Feedback-Funktion eingeschaltet, false-> Feedback-Funktion ausgeschaltet
@@ -59,6 +60,22 @@ In der Datei `settings.php` können, neben den Zugangsdaten für die Datenbank, 
 - `$smtpSender` Name des Absenders in den Feedback Mails
 - `$feedbackAdress`: Adresse an die das Feedback gesendet wird
 - `$xmlSubmitAdress`: Adresse an die diefertige XML-Datei gesendet wird
+=======
+- `$host`: Database host.
+- `$username`: Username of the user with access to the given database.
+- `$password`: Password of database user.
+- `$database`: Name of the database created.
+- `$maxTitles`: Defines the maximum number of titles that users can enter in the editor.
+- `$mslLabsUrl`: URL to the JSON file with the current list of laboratories.
+- `$showFeedbackLink`: true-> feedback function switched on, false-> feedback function switched off
+- `$smtpHost`: URL to the SMTP mail server
+- `$smtpPort`: Port of the mail server
+- `$smtpUser`: User name of the mailbox for sending the mails
+- `$smtpPassword`: Password of the mailbox
+- `$smtpSender`: Name of the sender in the feedback mails
+- `$feedbackAddress`: Email Address to which the feedback is sent
+- `$xmlSubmitAdress`: Email Address to which the finished XML file is sent
+>>>>>>> Stashed changes
 
 # API-Dokumentation
 
