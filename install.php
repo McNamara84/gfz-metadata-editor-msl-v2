@@ -251,9 +251,11 @@ function createDatabaseStructure($connection)
             `latitudeMax` FLOAT NULL,
             `longitudeMin` FLOAT NOT NULL,
             `longitudeMax` FLOAT NULL,
-            `Description` TEXT(5000) NOT NULL,
-            `dateTimeStart` DATETIME NOT NULL,
-            `dateTimeEnd` DATETIME NOT NULL,
+            `description` TEXT(5000) NOT NULL,
+            `dateStart` DATE NOT NULL,
+            `dateEnd` DATE NOT NULL,
+            `timeStart` TIME NULL,
+            `timeEnd` TIME NULL,
             `timezone` VARCHAR(10) NOT NULL,
             PRIMARY KEY (`spatial_temporal_coverage_id`));",
 
@@ -492,10 +494,10 @@ function insertTestDataIntoMainTables($connection)
                         ["code" => "fr", "name" => "French"]
                 ],
                 "Resource" => [
-                        ["doi" => "http://doi.org/10.1029/2023JB028411", "version" => null, "year" => 2024, "dateCreated" => "2024-06-05", "dateEmbargoUntil" => "2024-06-15", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1],
-                        ["doi" => "https://doi.org/10.5880/GFZ.2.4.2024.001", "version" => 2.1, "year" => 2024, "dateCreated" => "1999-04-07", "dateEmbargoUntil" => "2000-12-31", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1],
-                        ["doi" => "http://doi.org/10.1038/s43247-024-01226-9", "version" => 1.23, "year" => 2024, "dateCreated" => "2023-07-02", "dateEmbargoUntil" => "2023-07-10", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1]
-                ],
+                        ["doi" => "10.1029/2023JB028411", "version" => null, "year" => 2024, "dateCreated" => "2024-06-05", "dateEmbargoUntil" => "2024-06-15", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1],
+                        ["doi" => "10.5880/GFZ.2.4.2024.001", "version" => 2.1, "year" => 2024, "dateCreated" => "1999-04-07", "dateEmbargoUntil" => "2000-12-31", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1],
+                        ["doi" => "10.21384/test-dataset", "version" => 1.23, "year" => 2024, "dateCreated" => "2023-07-02", "dateEmbargoUntil" => "2023-07-10", "Rights_rights_id" => 1, "Resource_Type_resource_name_id" => 3, "Language_language_id" => 1]
+],
                 "Author" => [
                         ["familyName" => "Grzegorz", "givenname" => "Kwiatek", "orcid" => "0000-0003-1076-615X"],
                         ["familyName" => "Goebel", "givenname" => "Thomas", "orcid" => "0000-0003-1552-0861"],
@@ -609,9 +611,9 @@ function insertTestDataIntoMainTables($connection)
                         ["free_keyword" => "CH5 flux measurements", "isCurated" => "0"],
                 ],
                 "Spatial_Temporal_Coverage" => [
-                        ["latitudeMin" => "53.773072687072634", "latitudeMax" => "56.19295930435612", "longitudeMin" => "49.417527009637524", "longitudeMax" => "57.503464509637524", "Description" => "Ein großes Sedimentbecken in Westaustralien, das reich an fossilen Brennstoffen und bedeutenden Erdöl- und Erdgasvorkommen ist.", "dateTimeStart" => "2024-06-03T12:13", "dateTimeEnd" => "2024-06-09T17:13", "timezone" => "+00:00"],
-                        ["latitudeMin" => "7.357546774322249", "latitudeMax" => "8.836749074314008", "longitudeMin" => "-70.8163484389335", "longitudeMax" => "-69.4979890639335", "Description" => "Eine geologisch aktive Region in den Alpen, geprägt durch die Kollision der eurasischen und afrikanischen Kontinentalplatten, die zur Bildung hoher Gebirgsketten führt.", "dateTimeStart" => "2000-07-23T12:22:55", "dateTimeEnd" => "2001-07-23T12:22:55", "timezone" => "+05:00"],
-                        ["latitudeMin" => "26.40875141688829", "latitudeMax" => "56.19295930435612", "longitudeMin" => "14.852995116766325", "longitudeMax" => "18.566374023016326", "Description" => " Ein aktives vulkanisches Gebiet in Island, bekannt für seine regelmäßigen Ausbrüche, Lavafelder und geothermischen Aktivitäten.", "dateTimeStart" => "2024-06-10T12:35", "dateTimeEnd" => "2024-06-16T18:42", "timezone" => "+02:00"]
+                        ["latitudeMin" => "53.773072687072634", "latitudeMax" => "56.19295930435612", "longitudeMin" => "49.417527009637524", "longitudeMax" => "57.503464509637524", "description" => "Ein großes Sedimentbecken in Westaustralien, das reich an fossilen Brennstoffen und bedeutenden Erdöl- und Erdgasvorkommen ist.", "dateStart" => "2024-06-03", "dateEnd" => "2024-06-03", "timeStart" => "", "timeEnd" => "", "timezone" => "+00:00"],
+                        ["latitudeMin" => "7.357546774322249", "latitudeMax" => "8.836749074314008", "longitudeMin" => "-70.8163484389335", "longitudeMax" => "-69.4979890639335", "description" => "Eine geologisch aktive Region in den Alpen, geprägt durch die Kollision der eurasischen und afrikanischen Kontinentalplatten, die zur Bildung hoher Gebirgsketten führt.", "dateStart" => "2000-07-23", "dateEnd" => "2024-06-03", "timeStart" => "12:13", "timeEnd" => "12:22:55", "timezone" => "+05:00"],
+                        ["latitudeMin" => "26.40875141688829", "latitudeMax" => "56.19295930435612", "longitudeMin" => "14.852995116766325", "longitudeMax" => "18.566374023016326", "description" => " Ein aktives vulkanisches Gebiet in Island, bekannt für seine regelmäßigen Ausbrüche, Lavafelder und geothermischen Aktivitäten.", "dateStart" => "2024-06-10", "dateEnd" => "2024-06-03", "timeStart" => "", "timeEnd" => "", "timezone" => "+02:00"]
                 ],
                 "Relation" => [
                         ["name" => "IsCitedBy", "description" => "indicates that B includes A in a citation"],

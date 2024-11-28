@@ -45,20 +45,24 @@ The following third-party dependencies are included in header.html and footer.ht
 - Swagger UI 5.18.2<br>
   For displaying the dynamic and interactive API documentation in accordance with OpenAPI standard 3.1.
 
-## Einstellungen
+## Settings
 
-In der Datei `settings.php` können, neben den Zugangsdaten für die Datenbank, auch andere Einstellungen angepasst werden:
+In addition to the access data for the database, other settings can also be adjusted in the `settings.php` file:
 
-- `$maxTitles`: Legt die max. Anzahl an Titeln fest, die Nutzende im Editor eingeben können, fest.
-- `$mslLabsUrl`: URL zur JSON-Datei mit der aktuellen Liste an Laboratorien.
-- `$showFeedbackLink`: true-> Feedback-Funktion eingeschaltet, false-> Feedback-Funktion ausgeschaltet
-- `$smtpHost`: URL zum SMTP-Mailserver
-- `$smtpPort`: Port des Mailservers
-- `$smtpUser`: Nutzername des Postfachs zum Versenden der Mails
-- `$smtpPassword`: Password des Postfach
-- `$smtpSender` Name des Absenders in den Feedback Mails
-- `$feedbackAdress`: Adresse an die das Feedback gesendet wird
-- `$xmlSubmitAdress`: Adresse an die diefertige XML-Datei gesendet wird
+- `$host`: Database host.
+- `$username`: Username of the user with access to the given database.
+- `$password`: Password of database user.
+- `$database`: Name of the database created.
+- `$maxTitles`: Defines the maximum number of titles that users can enter in the editor.
+- `$mslLabsUrl`: URL to the JSON file with the current list of laboratories.
+- `$showFeedbackLink`: true-> feedback function switched on, false-> feedback function switched off
+- `$smtpHost`: URL to the SMTP mail server
+- `$smtpPort`: Port of the mail server
+- `$smtpUser`: User name of the mailbox for sending the mails
+- `$smtpPassword`: Password of the mailbox
+- `$smtpSender`: Name of the sender in the feedback mails
+- `$feedbackAdress`: Email Address to which the feedback is sent
+- `$xmlSubmitAdress`: Email Address to which the finished XML file is sent
 
 # API-Dokumentation
 
@@ -933,7 +937,7 @@ Räumliche und zeitliche Einordnung des Datensatzes. Zur einfacheren Erfassung d
 - Start Time
   Zeitangabe im Format hh:mm:ss
   - Datentyp: String
-  - Vorkommen: 1 (Pflichtfeld)
+  - Vorkommen: 0-1
   - Restriktionen: hh:mm:ss
   - XML-Schemata: DataCite, ISO
   - Beispielwerte: `10:43:50` `04:00:00`
@@ -947,7 +951,7 @@ Räumliche und zeitliche Einordnung des Datensatzes. Zur einfacheren Erfassung d
 - End Time
   Zeitangabe im Format hh:mm:ss
   - Datentyp: String
-  - Vorkommen: 1 (Pflichtfeld)
+  - Vorkommen: 0-1
   - Restriktionen: hh:mm:ss
   - XML-Schemata: DataCite, ISO
   - Beispielwerte: `11:34:56` `09:00:00`

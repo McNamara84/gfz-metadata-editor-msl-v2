@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Resource>
-  <currentDate>2024-11-13</currentDate>
+  <currentDate>2024-11-26</currentDate>
   <doi>http://doi.org/10.1029/2023JB028411</doi>
   <version/>
   <year>2024</year>
@@ -130,8 +130,10 @@
       <longitudeMin>-70.8163</longitudeMin>
       <longitudeMax>-69.498</longitudeMax>
       <Description>Eine geologisch aktive Region in den Alpen, gepr&#xE4;gt durch die Kollision der eurasischen und afrikanischen Kontinentalplatten, die zur Bildung hoher Gebirgsketten f&#xFC;hrt.</Description>
-      <dateTimeStart>2000-07-23T12:22:55</dateTimeStart>
-      <dateTimeEnd>2001-07-23T12:22:55</dateTimeEnd>
+      <dateStart>2000-07-23</dateStart>
+      <dateEnd>2024-06-03</dateEnd>
+      <TimeStart>12:13:00</TimeStart>
+      <TimeEnd>12:22:55</TimeEnd>
       <timezone>+05:00</timezone>
     </SpatialTemporalCoverage>
   </SpatialTemporalCoverages>

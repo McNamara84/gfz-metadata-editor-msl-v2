@@ -256,10 +256,12 @@
 										<xs:element name="latitudeMax" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
 										<xs:element name="longitudeMin" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
 										<xs:element name="longitudeMax" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
-										<xs:element name="Description" type="xs:string"/>
-										<xs:element name="dateTimeStart" type="xs:dateTime"/>
-										<xs:element name="dateTimeEnd" type="xs:dateTime"/>
-										<xs:element name="timezone" type="xs:string"/>
+										<xs:element name="Description" type="xs:string" minOccurs="1" maxOccurs="1"/>
+										<xs:element name="dateStart" type="xs:date" minOccurs="1" maxOccurs="1"/>
+										<xs:element name="timeStart" type="xs:time" minOccurs="0" maxOccurs="1"/>
+										<xs:element name="dateEnd" type="xs:date" minOccurs="1" maxOccurs="1"/>
+										<xs:element name="timeEnd" type="xs:time" minOccurs="0" maxOccurs="1"/>
+										<xs:element name="timezone" type="xs:string" minOccurs="1" maxOccurs="1"/>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
