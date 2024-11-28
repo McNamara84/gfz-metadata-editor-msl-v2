@@ -13,6 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Small;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(TestTrigger::class)]
 #[CoversClass(SelfTrigger::class)]
 #[CoversClass(DirectTrigger::class)]
 #[CoversClass(IndirectTrigger::class)]
@@ -20,11 +21,24 @@ use PHPUnit\Framework\TestCase;
 #[Small]
 final class IssueTriggerTest extends TestCase
 {
+    public function testCanBeTest(): void
+    {
+        $trigger = IssueTrigger::test();
+
+        $this->assertTrue($trigger->isTest());
+        $this->assertFalse($trigger->isSelf());
+        $this->assertFalse($trigger->isDirect());
+        $this->assertFalse($trigger->isIndirect());
+        $this->assertFalse($trigger->isUnknown());
+        $this->assertSame('issue triggered by test code', $trigger->asString());
+    }
+
     public function testCanBeSelf(): void
     {
         $trigger = IssueTrigger::self();
 
         $this->assertTrue($trigger->isSelf());
+        $this->assertFalse($trigger->isTest());
         $this->assertFalse($trigger->isDirect());
         $this->assertFalse($trigger->isIndirect());
         $this->assertFalse($trigger->isUnknown());
@@ -36,6 +50,7 @@ final class IssueTriggerTest extends TestCase
         $trigger = IssueTrigger::direct();
 
         $this->assertTrue($trigger->isDirect());
+        $this->assertFalse($trigger->isTest());
         $this->assertFalse($trigger->isSelf());
         $this->assertFalse($trigger->isIndirect());
         $this->assertFalse($trigger->isUnknown());
@@ -47,6 +62,7 @@ final class IssueTriggerTest extends TestCase
         $trigger = IssueTrigger::indirect();
 
         $this->assertTrue($trigger->isIndirect());
+        $this->assertFalse($trigger->isTest());
         $this->assertFalse($trigger->isSelf());
         $this->assertFalse($trigger->isDirect());
         $this->assertFalse($trigger->isUnknown());
@@ -57,6 +73,7 @@ final class IssueTriggerTest extends TestCase
     {
         $trigger = IssueTrigger::unknown();
 
+        $this->assertFalse($trigger->isTest());
         $this->assertFalse($trigger->isSelf());
         $this->assertFalse($trigger->isDirect());
         $this->assertFalse($trigger->isIndirect());
