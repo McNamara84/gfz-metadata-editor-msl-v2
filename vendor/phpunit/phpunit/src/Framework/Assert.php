@@ -195,6 +195,8 @@ abstract class Assert
     }
 
     /**
+     * @phpstan-assert list<mixed> $array
+     *
      * @throws ExpectationFailedException
      */
     final public static function assertIsList(mixed $array, string $message = ''): void
@@ -1196,7 +1198,7 @@ abstract class Assert
      * @throws Exception
      * @throws ExpectationFailedException
      *
-     * @phpstan-assert array $actual
+     * @phpstan-assert array<mixed> $actual
      */
     final public static function assertIsArray(mixed $actual, string $message = ''): void
     {
@@ -1383,7 +1385,7 @@ abstract class Assert
      * @throws Exception
      * @throws ExpectationFailedException
      *
-     * @phpstan-assert iterable $actual
+     * @phpstan-assert iterable<mixed> $actual
      */
     final public static function assertIsIterable(mixed $actual, string $message = ''): void
     {
@@ -1400,7 +1402,7 @@ abstract class Assert
      * @throws Exception
      * @throws ExpectationFailedException
      *
-     * @phpstan-assert !array $actual
+     * @phpstan-assert !array<mixed> $actual
      */
     final public static function assertIsNotArray(mixed $actual, string $message = ''): void
     {
@@ -1587,7 +1589,7 @@ abstract class Assert
      * @throws Exception
      * @throws ExpectationFailedException
      *
-     * @phpstan-assert !iterable $actual
+     * @phpstan-assert !iterable<mixed> $actual
      */
     final public static function assertIsNotIterable(mixed $actual, string $message = ''): void
     {
