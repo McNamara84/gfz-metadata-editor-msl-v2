@@ -12,14 +12,10 @@ function saveSpatialTemporalCoverage($connection, $postData, $resource_id)
 {
     $requiredFields = [
         'tscLatitudeMin',
-        'tscLatitudeMax',
         'tscLongitudeMin',
-        'tscLongitudeMax',
         'tscDescription',
         'tscDateStart',
-        'tscTimeStart',
         'tscDateEnd',
-        'tscTimeEnd',
         'tscTimezone'
     ];
 
