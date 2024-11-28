@@ -61,8 +61,8 @@ In addition to the access data for the database, other settings can also be adju
 - `$smtpUser`: User name of the mailbox for sending the mails
 - `$smtpPassword`: Password of the mailbox
 - `$smtpSender`: Name of the sender in the feedback mails
-- `$feedbackAdress`: Email Address to which the feedback is sent
-- `$xmlSubmitAdress`: Email Address to which the finished XML file is sent
+- `$feedbackAddress`: Email Address to which the feedback is sent
+- `$xmlSubmitAddress`: Email Address to which the finished XML file is sent
 
 # API-Dokumentation
 
