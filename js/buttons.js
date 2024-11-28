@@ -438,45 +438,97 @@ $(document).ready(function () {
 
 
   /**
+  * Global variable to keep track of unique tsc-row-ids.
+  * This ensures each row has a unique identifier.
+  */
+  var tscRowIdCounter = 1;
+
+  /**
+   * Creates the Remove button element.
+   * @returns {jQuery} A jQuery object representing the Remove button.
+   */
+  function createRemoveButton() {
+    return $('<button type="button" class="btn btn-danger removeButton" style="width: 36px;">-</button>');
+  }
+
+  /**
    * Event handler for the "Add TSC" button click.
-   * Clones the first TSC row, resets input fields, and appends it to the TSC group.
+   * Clones the last TSC row, resets input fields, updates IDs, and appends it to the TSC group.
    */
   $("#tscAddButton").click(function () {
     var tscGroup = $("#tscGroup");
-    var firsttscLine = tscGroup.children().first();
+    var lastTscLine = tscGroup.children().last();
 
-    // Finding highest ID
-    var maxId = 0;
-    tscGroup.find("[tsc-row]").each(function () {
-      var currentId = parseInt($(this).attr("tsc-row-id"));
-      if (currentId > maxId) maxId = currentId;
+    // Increment the unique row counter
+    tscRowIdCounter++;
+
+    // Clone the last row
+    var newTscLine = lastTscLine.clone();
+
+    // Set the new tsc-row-id
+    newTscLine.attr("tsc-row-id", tscRowIdCounter);
+
+    // Update IDs of input fields to include the new unique tsc-row-id
+    newTscLine.find("input, select, textarea").each(function () {
+      var oldId = $(this).attr("id");
+      if (oldId) {
+        var newId = oldId.replace(/_\d+$/, "_" + tscRowIdCounter);
+        $(this).attr("id", newId);
+      }
     });
 
-    // Clone the template
-    var newtscLine = firsttscLine.clone();
+    // Reset values and validation feedback
+    newTscLine.find("input, select, textarea").val("").removeClass("is-invalid is-valid");
+    newTscLine.find(".invalid-feedback, .valid-feedback").hide();
 
-    // Increment the ID for the new TSC line
-    var newtscLineId = (maxId + 1).toString();
-    newtscLine.attr("tsc-row-id", newtscLineId);
+    // Remove help buttons (if applicable)
+    if (typeof deleteHelpButtonFromClonedRows === 'function') {
+      deleteHelpButtonFromClonedRows(newTscLine);
+    }
 
-    // Reset values and validation feedback for all form elements
-    newtscLine.find("input, select, textarea").val("").removeClass("is-invalid is-valid");
-    newtscLine.find(".invalid-feedback, .valid-feedback").hide();
-
-    // Remove help buttons
-    deleteHelpButtonFromClonedRows(newtscLine);
-
-    // Replace add button with remove button
-    newtscLine.find("#tscAddButton").replaceWith(removeButton);
+    // Replace the Add button with a Remove button
+    newTscLine.find("#tscAddButton").replaceWith(createRemoveButton());
 
     // Append the new TSC line
-    tscGroup.append(newtscLine);
+    tscGroup.append(newTscLine);
 
-    // Event handler for remove button
-    newtscLine.on("click", ".removeButton", function () {
-      $(this).closest(".row").remove();
-    });
+    // Update the overlay labels
+    updateOverlayLabels();
   });
+
+  /**
+   * Event handler for the "Remove TSC" button click.
+   * Removes the TSC row and its associated map overlays.
+   */
+  $(document).on("click", ".removeButton", function () {
+    var $row = $(this).closest("[tsc-row]");
+    var rowId = $row.attr("tsc-row-id");
+
+    // Remove the map overlays for this row
+    if (typeof window.deleteDrawnOverlaysForRow === 'function') {
+      window.deleteDrawnOverlaysForRow(rowId);
+    }
+
+    // Remove the row
+    $row.remove();
+
+    // Update the overlay labels
+    updateOverlayLabels();
+
+    // Update the map view
+    if (typeof window.fitMapBounds === 'function') {
+      window.fitMapBounds();
+    }
+  });
+
+  /**
+   * Updates the labels on the map overlays to match the current row numbering.
+   */
+  function updateOverlayLabels() {
+    if (typeof window.updateOverlayLabels === 'function') {
+      window.updateOverlayLabels();
+    }
+  }
 
   /**
    * Event handler for the "Add Related Work" button click.

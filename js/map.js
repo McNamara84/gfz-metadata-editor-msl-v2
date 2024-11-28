@@ -3,7 +3,6 @@ $(document).ready(function () {
   var map;
   /** @type {Array<Object>} */
   var drawnOverlays = [];
-  var rowCounter = $("#tscGroup [tsc-row]").length;
 
   /**
    * Event listener for Map buttons within the #tscGroup.
@@ -110,14 +109,16 @@ $(document).ready(function () {
         $currentRow.find("[id^=tscLatitudeMin]").val(sw.lat());
         $currentRow.find("[id^=tscLongitudeMin]").val(sw.lng());
 
+        // Get the display number based on the row's position
+        var displayNumber = $currentRow.index() + 1;
+
         var label = new google.maps.Marker({
           position: bounds.getCenter(),
-          label: rowId,
+          label: displayNumber.toString(),
           map: map,
         });
 
-        drawnOverlays.push({ rowId: rowId, overlay: rectangle });
-        drawnOverlays.push({ rowId: rowId, overlay: label });
+        drawnOverlays.push({ rowId: rowId, overlay: rectangle, labelOverlay: label });
       }
     );
 
@@ -143,7 +144,10 @@ $(document).ready(function () {
         $currentRow.find("[id^=tscLatitudeMax]").val("");
         $currentRow.find("[id^=tscLongitudeMax]").val("");
 
-        marker.setLabel(rowId);
+        // Get the display number based on the row's position
+        var displayNumber = $currentRow.index() + 1;
+
+        marker.setLabel(displayNumber.toString());
         drawnOverlays.push({ rowId: rowId, overlay: marker });
       }
     );
@@ -170,42 +174,39 @@ $(document).ready(function () {
   );
 
   /**
-   * Updates the row IDs and labels for markers and rectangles when rows are added or removed.
+   * Updates the labels on the overlays to match the current row numbering.
    */
-  function updateRowIdsAndLabels() {
-    $("#tscGroup [tsc-row]").each(function (index) {
-      var newRowId = (index + 1).toString();
-      var oldRowId = $(this).attr("tsc-row-id");
+  function updateOverlayLabels() {
+    drawnOverlays.forEach(function (item) {
+      var rowId = item.rowId;
 
-      // Update row IDs
-      $(this).attr("tsc-row-id", newRowId);
+      // Find the row with this tsc-row-id
+      var $row = $("#tscGroup").find("[tsc-row-id='" + rowId + "']");
 
-      // Update IDs of input fields
-      $(this)
-        .find("input, select, textarea")
-        .each(function () {
-          var oldId = $(this).attr("id");
-          var newId = oldId.replace(/_\d+$/, "_" + newRowId);
-          $(this).attr("id", newId);
-        });
+      if ($row.length > 0) {
+        var displayNumber = $row.index() + 1; // Since index is zero-based
 
-      // Update labels for rectangles and markers
-      drawnOverlays.forEach(function (item) {
-        if (item.rowId === oldRowId) {
-          item.rowId = newRowId;
-          if (item.overlay instanceof google.maps.Marker) {
-            item.overlay.setLabel(newRowId);
-          } else if (item.overlay instanceof google.maps.Rectangle) {
-            // Find and update label overlays for rectangles
-            var centerMarker = drawnOverlays.find(
-              (m) => m.rowId === newRowId && m.overlay instanceof google.maps.Marker
-            );
-            if (centerMarker) {
-              centerMarker.overlay.setLabel(newRowId);
-            }
+        // Update the label on the overlay
+        if (item.overlay instanceof google.maps.Rectangle) {
+          if (item.labelOverlay) {
+            item.labelOverlay.setLabel(displayNumber.toString());
           }
+        } else if (item.overlay instanceof google.maps.Marker) {
+          item.overlay.setLabel(displayNumber.toString());
         }
-      });
+      } else {
+        // If the row no longer exists, remove the overlay
+        item.overlay.setMap(null);
+        if (item.labelOverlay) {
+          item.labelOverlay.setMap(null);
+        }
+      }
+    });
+
+    // Remove any overlays that are no longer associated with existing rows
+    drawnOverlays = drawnOverlays.filter(function (item) {
+      var $row = $("#tscGroup").find("[tsc-row-id='" + item.rowId + "']");
+      return $row.length > 0;
     });
   }
 
@@ -221,6 +222,9 @@ $(document).ready(function () {
    */
   function updateMapOverlay(currentRowId, latMax, lngMax, latMin, lngMin) {
     deleteDrawnOverlaysForRow(currentRowId);
+
+    var $row = $("#tscGroup").find("[tsc-row-id='" + currentRowId + "']");
+    var displayNumber = $row.index() + 1;
 
     if (latMax && lngMax && latMin && lngMin) {
       var bounds = new google.maps.LatLngBounds(
@@ -239,12 +243,11 @@ $(document).ready(function () {
 
       var label = new google.maps.Marker({
         position: bounds.getCenter(),
-        label: currentRowId,
+        label: displayNumber.toString(),
         map: map,
       });
 
-      drawnOverlays.push({ rowId: currentRowId, overlay: rectangle });
-      drawnOverlays.push({ rowId: currentRowId, overlay: label });
+      drawnOverlays.push({ rowId: currentRowId, overlay: rectangle, labelOverlay: label });
     } else if (latMin && lngMin) {
       var position = new google.maps.LatLng(
         parseFloat(latMin),
@@ -252,7 +255,7 @@ $(document).ready(function () {
       );
       var marker = new google.maps.Marker({
         position: position,
-        label: currentRowId,
+        label: displayNumber.toString(),
         map: map,
       });
 
@@ -271,18 +274,13 @@ $(document).ready(function () {
     drawnOverlays = drawnOverlays.filter((item) => {
       if (item.rowId === rowId) {
         item.overlay.setMap(null);
+        if (item.labelOverlay) {
+          item.labelOverlay.setMap(null);
+        }
         return false;
       }
       return true;
     });
-  }
-
-  /**
-   * Deletes all drawn overlays (markers and rectangles) from the map.
-   */
-  function deleteDrawnOverlays() {
-    drawnOverlays.forEach((item) => item.overlay.setMap(null));
-    drawnOverlays = [];
   }
 
   /**
@@ -382,98 +380,8 @@ $(document).ready(function () {
       console.error("Error fetching the API key:", error);
     });
 
-  /**
-   * Initializes the add and delete buttons for the TSC rows.
-   * Adjusts button visibility based on the number of rows.
-   */
-  function initializeButtons() {
-    var $rows = $("#tscGroup [tsc-row]");
-    rowCounter = $rows.length;
-
-    $rows.each(function (index) {
-      var $row = $(this);
-      var $deleteButton = $row.find("[data-action='delete-tsc-row']");
-      var $addButton = $row.find("[data-action='add-tsc-row']");
-
-      // Logic for Delete Buttons
-      if (index === rowCounter - 1 || rowCounter === 1) {
-        // Hide the delete button in the last row or if there's only one row
-        $deleteButton.addClass("d-none");
-      } else {
-        $deleteButton.removeClass("d-none");
-      }
-
-      // Logic for Add Buttons
-      if (index === rowCounter - 1) {
-        // Only the last add button is visible
-        $addButton.removeClass("d-none");
-      } else {
-        $addButton.addClass("d-none");
-      }
-    });
-  }
-
-  /**
-   * Adds a new TSC row to the form.
-   * Clones the last row, resets input fields, updates IDs, and initializes buttons and map overlays.
-   */
-  function addNewRow() {
-    rowCounter++;
-    var newRowId = rowCounter.toString();
-    var $lastRow = $("#tscGroup [tsc-row]").last();
-    var $newRow = $lastRow.clone();
-
-    $newRow.attr("tsc-row-id", newRowId);
-    $newRow
-      .find("input, select, textarea")
-      .val("")
-      .each(function () {
-        var oldId = $(this).attr("id");
-        var newId = oldId.split("_")[0] + "_" + newRowId;
-        $(this).attr("id", newId);
-      });
-
-    $lastRow.after($newRow);
-
-    initializeButtons();
-    updateMapOverlay(newRowId, "", "", "", "");
-  }
-
-  /**
-   * Deletes a TSC row from the form.
-   * Removes the row, updates row IDs and labels, and adjusts the map overlays.
-   *
-   * @param {HTMLElement} button - The delete button that was clicked.
-   */
-  function deleteRow(button) {
-    var $row = $(button).closest("[tsc-row]");
-    var rowId = $row.attr("tsc-row-id");
-
-    deleteDrawnOverlaysForRow(rowId);
-    $row.remove();
-
-    updateRowIdsAndLabels(); // Update numbering
-    initializeButtons();
-    fitMapBounds();
-  }
-
-  // Event listener for the Add Button
-  $(document).on("click", "[data-action='add-tsc-row']", function (e) {
-    e.preventDefault();
-    addNewRow();
-  });
-
-  // Event listener for the Delete Button
-  $(document).on("click", "[data-action='delete-tsc-row']", function (e) {
-    e.preventDefault();
-    if (!$(this).hasClass("d-none")) {
-      deleteRow(this);
-    }
-  });
-
-  // Remove all previous click event listeners from the buttons
-  $(".tscAddButton, .tscDeleteButton").off("click");
-
-  // Initialize the buttons when the page loads
-  initializeButtons();
+  // Make functions globally accessible
+  window.deleteDrawnOverlaysForRow = deleteDrawnOverlaysForRow;
+  window.fitMapBounds = fitMapBounds;
+  window.updateOverlayLabels = updateOverlayLabels;
 });
