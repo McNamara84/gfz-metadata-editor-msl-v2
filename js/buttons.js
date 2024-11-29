@@ -192,7 +192,7 @@ $(document).ready(function () {
     newAuthorRow
       .find("#input-author-affiliation")
       .attr("id", "input-author-affiliation" + uniqueSuffix);
-    newAuthorRow.find("#hiddenAuthorRorId").attr("id", "hiddenAuthorRorId" + uniqueSuffix);
+    newAuthorRow.find("#input-author-rorid").attr("id", "input-author-rorid" + uniqueSuffix);
 
     // Remove old Tagify elements (will be re-initialized in autocompleteAffiliation)
     newAuthorRow.find(".tagify").remove();
@@ -209,7 +209,7 @@ $(document).ready(function () {
     // Apply Tagify to the new Author Affiliations field
     autocompleteAffiliations(
       "input-author-affiliation" + uniqueSuffix,
-      "hiddenAuthorRorId" + uniqueSuffix,
+      "input-author-rorid" + uniqueSuffix,
       affiliationsData
     );
 

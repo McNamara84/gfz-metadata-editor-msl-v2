@@ -43,7 +43,7 @@ $(document).ready(function () {
       $("#inputRights").empty().append(allOptions.clone());
     }
   });
-  setupAutocomplete("#input-author-affiliation", "#hiddenAuthorRorId");
+  setupAutocomplete("#input-author-affiliation", "#input-author-rorid");
   setupAutocomplete("#inputCPAffiliation", "#hiddenCPRorId");
 });
 
@@ -78,7 +78,7 @@ function isCurrentAffiliation(affiliation) {
  * //   <input name="familynames[]" />
  * //   <input name="givennames[]" />
  * //   <input id="input-author-affiliation" /> // Tagify field
- * //   <input id="hiddenAuthorRorId" />
+ * //   <input id="input-author-rorid" />
  * // </div>
  */
 $('#group-author').on('blur', 'input[name="orcids[]"]', function () {
@@ -152,7 +152,7 @@ $('#group-author').on('blur', 'input[name="orcids[]"]', function () {
         // Fill hidden ROR ID field
         const rorIdsArray = Array.from(rorIds);
         if (rorIdsArray.length > 0) {
-          row.find('input[id^="hiddenAuthorRorId"]').val(rorIdsArray.join(','));
+          row.find('input[id^="input-author-rorid"]').val(rorIdsArray.join(','));
         }
       })
       .catch(error => {
