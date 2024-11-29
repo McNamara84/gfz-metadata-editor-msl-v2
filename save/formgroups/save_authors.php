@@ -101,8 +101,8 @@ function saveAuthors($connection, $postData, $resource_id)
  */
 function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $rorId_data)
 {
-    error_log("Affiliation: " . print_r($affiliation_data, true));
-    error_log("ROR ID: " . print_r($rorId_data, true));
+    error_log("Affiliation: " . $affiliation_data);
+    error_log("ROR ID: " . $rorId_data);
     $affiliations_array = parseAffiliationData($affiliation_data);
     $rorIds_array = parseAffiliationData($rorId_data);
 

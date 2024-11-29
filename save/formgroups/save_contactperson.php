@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Saves the contact person information in the database.
  *
@@ -33,18 +34,16 @@ function saveContactPerson($connection, $postData, $resource_id)
         $websites = $postData['cpOnlineResource'] ?? [];
         $affiliations = $postData['cpAffiliation'] ?? [];
         $rorIds = $postData['hiddenCPRorId'] ?? [];
-
+        error_log("HALLO: " . $rorIds[0]);
         $len = count($familynames);
         for ($i = 0; $i < $len; $i++) {
             // Check if a valid affiliation is present
             $affiliationData = parseAffiliationCPData($affiliations[$i] ?? '[]');
-            $rorIdData = parseAffiliationCPData($rorIds[$i] ?? '[]');
 
-
-                // Insert new contact person
-                $website = isset($websites[$i]) ? preg_replace('#^https?://#', '', $websites[$i]) : '';  // Remove protocol
-                $stmt = $connection->prepare("INSERT INTO Contact_Person (familyname, givenname, position, email, website) VALUES (?, ?, ?, ?, ?)");
-                $stmt->bind_param("sssss", $familynames[$i], $givennames[$i], $positions[$i], $emails[$i], $website);
+            // Insert new contact person
+            $website = isset($websites[$i]) ? preg_replace('#^https?://#', '', $websites[$i]) : '';  // Remove protocol
+            $stmt = $connection->prepare("INSERT INTO Contact_Person (familyname, givenname, position, email, website) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssss", $familynames[$i], $givennames[$i], $positions[$i], $emails[$i], $website);
             $stmt->execute();
             $contact_person_id = $stmt->insert_id;
             $stmt->close();
@@ -54,7 +53,7 @@ function saveContactPerson($connection, $postData, $resource_id)
             $stmt->bind_param("ii", $resource_id, $contact_person_id);
             $stmt->execute();
             $stmt->close();
-            saveContactPersonAffiliations($connection, $contact_person_id, $affiliationData, $rorIdData );
+            saveContactPersonAffiliations($connection, $contact_person_id, $affiliationData, $rorIds);
         }
     }
 }
@@ -69,43 +68,48 @@ function saveContactPerson($connection, $postData, $resource_id)
  *
  * @return void
  */
-function saveContactPersonAffiliations($connection, $contact_person_id, $affiliation_data, $rorId_data) {
+function saveContactPersonAffiliations($connection, $contact_person_id, $affiliation_data, $rorId_data)
+{
     // Parse the input data
     $affiliations = parseAffiliationCPData($affiliation_data);
-    $rorIds = parseAffiliationCPData($rorId_data);
+    //rorId_data already is an array
 
-    // Ensure arrays are aligned
-    $count = max(count($affiliations), count($rorIds));
+    $count = count($affiliations);
     for ($index = 0; $index < $count; $index++) {
-        $affiliation_name = $affiliations[$index] ?? null;
-        $rorId = isset($rorIds[$index]) ? str_replace("https://ror.org/", "", $rorIds[$index]) : null;
+        $affiliation_name = $affiliations[$index];
+        $rorIds = isset($rorId_data[$index]) ? str_replace("https://ror.org/", "", $rorId_data[$index]) : null;
+        $rorIds = explode(",", $rorIds);
 
+        foreach ($rorIds as $rorId) {
+
+            $stmt = $connection->prepare(
+                "INSERT INTO Affiliation (name, rorId) VALUES (?, ?) 
+             ON DUPLICATE KEY UPDATE 
+             name = VALUES(name), 
+             rorId = COALESCE(VALUES(rorId), rorId)"
+            );
+            $stmt->bind_param("ss", $affiliation_name, $rorId); // rorId will be null if not provided
+            $stmt->execute();
+
+            // Get the affiliation ID (newly inserted or existing)
+            $affiliation_id = $stmt->insert_id ?: $connection->insert_id;
+            $stmt->close();
+
+            // Link the contact person to the affiliation
+            $stmt = $connection->prepare(
+                "INSERT IGNORE INTO Contact_Person_has_Affiliation (Contact_Person_contact_person_id, Affiliation_affiliation_id) VALUES (?, ?)"
+            );
+            $stmt->bind_param("ii", $contact_person_id, $affiliation_id);
+            $stmt->execute();
+            $stmt->close();
+        }
         // Skip invalid or empty affiliation names
         if (empty($affiliation_name)) {
             continue;
         }
 
         // Insert or update the affiliation (handle null for rorId properly)
-        $stmt = $connection->prepare(
-            "INSERT INTO Affiliation (name, rorId) VALUES (?, ?) 
-             ON DUPLICATE KEY UPDATE 
-             name = VALUES(name), 
-             rorId = COALESCE(VALUES(rorId), rorId)"
-        );
-        $stmt->bind_param("ss", $affiliation_name, $rorId); // rorId will be null if not provided
-        $stmt->execute();
 
-        // Get the affiliation ID (newly inserted or existing)
-        $affiliation_id = $stmt->insert_id ?: $connection->insert_id;
-        $stmt->close();
-
-        // Link the contact person to the affiliation
-        $stmt = $connection->prepare(
-            "INSERT IGNORE INTO Contact_Person_has_Affiliation (Contact_Person_contact_person_id, Affiliation_affiliation_id) VALUES (?, ?)"
-        );
-        $stmt->bind_param("ii", $contact_person_id, $affiliation_id);
-        $stmt->execute();
-        $stmt->close();
     }
 }
 
@@ -117,19 +121,23 @@ function saveContactPersonAffiliations($connection, $contact_person_id, $affilia
  *
  * @return array The parsed data as an array.
  */
-function parseAffiliationCPData($data) {
+function parseAffiliationCPData($data)
+{
     if (empty($data) || $data === '[]') {
         return [];
     }
-
-    // Handle if $data is already an array
+    error_log("data:" . $data[1]);
+    // Handle if $data is already an array (more than one affiliation is saved)
     if (is_array($data)) {
         return array_map(function ($item) {
             if (is_string($item)) {
                 $decoded = json_decode($item, true);
+                error_log("Decoded: " . $decoded);
                 if (json_last_error() === JSON_ERROR_NONE && isset($decoded[0]['value'])) {
-                    return trim($decoded[0]['value']);
+                    $result = trim($decoded[0]['value']);
+                    return $result;
                 }
+            } else {
             }
             return is_array($item) && isset($item['value']) ? trim($item['value']) : trim($item);
         }, $data);
@@ -159,4 +167,3 @@ function parseAffiliationCPData($data) {
     // Fallback for other types
     return [trim((string)$data)];
 }
-
