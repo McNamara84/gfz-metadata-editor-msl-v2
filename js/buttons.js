@@ -274,7 +274,7 @@ $(document).ready(function () {
      * The contributors group where new contributor person rows are appended.
      * @type {jQuery}
      */
-    var contributorGroup = $("#contributorsGroup");
+    var contributorGroup = $("#group-contributor");
 
     /**
      * The first contributor person row used as a template for cloning.

@@ -621,7 +621,7 @@
       "target": "css=.col-md-4:nth-child(2) .bi",
       "targets": [
         ["css=.col-md-4:nth-child(2) .bi", "css:finder"],
-        ["xpath=//div[@id='contributorsGroup']/div/div/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div/div/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -668,7 +668,7 @@
       "target": "css=.col-12:nth-child(5) > .input-group > .input-group-text > .bi",
       "targets": [
         ["css=.col-12:nth-child(5) > .input-group > .input-group-text > .bi", "css:finder"],
-        ["xpath=//div[@id='contributorsGroup']/div/div[4]/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div/div[4]/div/span/i", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div[4]/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -714,7 +714,7 @@
       "target": "css=.col-md-7:nth-child(6) .bi",
       "targets": [
         ["css=.col-md-7:nth-child(6) .bi", "css:finder"],
-        ["xpath=//div[@id='contributorsGroup']/div/div[5]/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div/div[5]/div/span/i", "xpath:idRelative"],
         ["xpath=//div[5]/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -2918,7 +2918,7 @@
         ["name=cbPersonLastname[]", "name"],
         ["css=#inputContributorLastname", "css:finder"],
         ["xpath=//input[@id='inputContributorLastname']", "xpath:attributes"],
-        ["xpath=//div[@id='contributorsGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -2932,7 +2932,7 @@
         ["name=cbPersonLastname[]", "name"],
         ["css=#inputContributorLastname", "css:finder"],
         ["xpath=//input[@id='inputContributorLastname']", "xpath:attributes"],
-        ["xpath=//div[@id='contributorsGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": "Franz"
@@ -2946,7 +2946,7 @@
         ["name=cbPersonFirstname[]", "name"],
         ["css=#inputContributorFirstname", "css:finder"],
         ["xpath=//input[@id='inputContributorFirstname']", "xpath:attributes"],
-        ["xpath=//div[@id='contributorsGroup']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "Franz"
@@ -2967,7 +2967,7 @@
         ["name=cbPersonFirstname[]", "name"],
         ["css=#inputContributorFirstname", "css:finder"],
         ["xpath=//input[@id='inputContributorFirstname']", "xpath:attributes"],
-        ["xpath=//div[@id='contributorsGroup']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "2345-2345-2345-2345"
@@ -5114,7 +5114,7 @@
         ["name=cbORCID[]", "name"],
         ["css=#inputContributorORCID", "css:finder"],
         ["xpath=//input[@id='inputContributorORCID']", "xpath:attributes"],
-        ["xpath=//div[@id='contributorsGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": "0000-0002-8638-2139"
@@ -5128,7 +5128,7 @@
         ["name=cbPersonLastname[]", "name"],
         ["css=#inputContributorLastname", "css:finder"],
         ["xpath=//input[@id='inputContributorLastname']", "xpath:attributes"],
-        ["xpath=//div[@id='contributorsGroup']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -5156,7 +5156,7 @@
         ["name=cbPersonFirstname[]", "name"],
         ["css=#inputContributorFirstname", "css:finder"],
         ["xpath=//input[@id='inputContributorFirstname']", "xpath:attributes"],
-        ["xpath=//div[@id='contributorsGroup']/div/div[3]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div[3]/div/div/input", "xpath:position"]
       ],
       "value": "Dr. Manjunath"
@@ -5169,7 +5169,7 @@
         ["id=addContributorPerson", "id"],
         ["css=#addContributorPerson", "css:finder"],
         ["xpath=//button[@id='addContributorPerson']", "xpath:attributes"],
-        ["xpath=//div[@id='contributorsGroup']/div/div[6]/button", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div/div[6]/button", "xpath:idRelative"],
         ["xpath=//div[6]/button", "xpath:position"]
       ],
       "value": ""
@@ -5181,7 +5181,7 @@
       "targets": [
         ["css=.row:nth-child(2) #inputContributorORCID", "css:finder"],
         ["xpath=(//input[@id='inputContributorORCID'])[2]", "xpath:attributes"],
-        ["xpath=//div[@id='contributorsGroup']/div[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div[2]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div[2]/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -5193,7 +5193,7 @@
       "targets": [
         ["css=.row:nth-child(2) #inputContributorORCID", "css:finder"],
         ["xpath=(//input[@id='inputContributorORCID'])[2]", "xpath:attributes"],
-        ["xpath=//div[@id='contributorsGroup']/div[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div[2]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div[2]/div/div/div/input", "xpath:position"]
       ],
       "value": "0009-0000-1235-6950"
@@ -5205,7 +5205,7 @@
       "targets": [
         ["css=.row:nth-child(2) #inputContributorLastname", "css:finder"],
         ["xpath=(//input[@id='inputContributorLastname'])[2]", "xpath:attributes"],
-        ["xpath=//div[@id='contributorsGroup']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div[2]/div[2]/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -5217,7 +5217,7 @@
       "targets": [
         ["css=.row:nth-child(2) #inputContributorLastname", "css:finder"],
         ["xpath=(//input[@id='inputContributorLastname'])[2]", "xpath:attributes"],
-        ["xpath=//div[@id='contributorsGroup']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div[2]/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "30000"
@@ -5229,7 +5229,7 @@
       "targets": [
         ["css=.row:nth-child(2) #inputContributorLastname", "css:finder"],
         ["xpath=(//input[@id='inputContributorLastname'])[2]", "xpath:attributes"],
-        ["xpath=//div[@id='contributorsGroup']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div[2]/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "Ehrmann"
@@ -5241,7 +5241,7 @@
       "targets": [
         ["css=.row:nth-child(2) #inputContributorFirstname", "css:finder"],
         ["xpath=(//input[@id='inputContributorFirstname'])[2]", "xpath:attributes"],
-        ["xpath=//div[@id='contributorsGroup']/div[2]/div[3]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div[2]/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div[2]/div[3]/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -5253,7 +5253,7 @@
       "targets": [
         ["css=.row:nth-child(2) #inputContributorFirstname", "css:finder"],
         ["xpath=(//input[@id='inputContributorFirstname'])[2]", "xpath:attributes"],
-        ["xpath=//div[@id='contributorsGroup']/div[2]/div[3]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div[2]/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div[2]/div[3]/div/div/input", "xpath:position"]
       ],
       "value": "Holger"
@@ -5264,7 +5264,7 @@
       "target": "css=.tagify--focus > .tagify__tag:nth-child(1) .tagify__tag-text",
       "targets": [
         ["css=.tagify--focus > .tagify__tag:nth-child(1) .tagify__tag-text", "css:finder"],
-        ["xpath=//div[@id='contributorsGroup']/div[2]/div[5]/div/tags/tag/div/span", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div[2]/div[5]/div/tags/tag/div/span", "xpath:idRelative"],
         ["xpath=//div[5]/div/tags/tag/div/span", "xpath:position"],
         ["xpath=//span[contains(.,'Helmholtz Centre Potsdam - GFZ German Research Centre for Geosciences')]", "xpath:innerText"]
       ],
@@ -5276,7 +5276,7 @@
       "target": "css=.tagify__tag:nth-child(2) .tagify__tag-text",
       "targets": [
         ["css=.tagify__tag:nth-child(2) .tagify__tag-text", "css:finder"],
-        ["xpath=//div[@id='contributorsGroup']/div[2]/div[5]/div/tags/tag[2]/div/span", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div[2]/div[5]/div/tags/tag[2]/div/span", "xpath:idRelative"],
         ["xpath=//tag[2]/div/span", "xpath:position"],
         ["xpath=//span[contains(.,'Fachhochschule Potsdam University of Applied Sciences')]", "xpath:innerText"]
       ],
@@ -5288,7 +5288,7 @@
       "target": "css=.tagify__tag:nth-child(2) .tagify__tag-text",
       "targets": [
         ["css=.tagify__tag:nth-child(2) .tagify__tag-text", "css:finder"],
-        ["xpath=//div[@id='contributorsGroup']/div[2]/div[5]/div/tags/tag[2]/div/span", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributor']/div[2]/div[5]/div/tags/tag[2]/div/span", "xpath:idRelative"],
         ["xpath=//tag[2]/div/span", "xpath:position"],
         ["xpath=//span[contains(.,'Fachhochschule Potsdam University of Applied Sciences')]", "xpath:innerText"]
       ],
