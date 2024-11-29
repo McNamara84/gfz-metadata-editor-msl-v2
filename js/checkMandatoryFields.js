@@ -4,7 +4,7 @@ function checkMandatoryFields() {
     var lastname = document.getElementById('input-contributor-lastname').value.trim();
 
     // Role and ORCID fields (Contributing Person(s))
-    var roleField = document.getElementById('inputContributorsPerRole');
+    var roleField = document.getElementById('input-contributor-personrole');
     var orcidField = document.getElementById('input-contributor-orcid');
 
     // Organization name and role fields (Contributing Institution(s))

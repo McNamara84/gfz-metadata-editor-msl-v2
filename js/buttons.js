@@ -311,8 +311,8 @@ $(document).ready(function () {
       .find("#hiddenContributorRorId")
       .attr("id", "hiddenContributorRorId" + uniqueSuffix);
     newContributorRow
-      .find("#inputContributorsPerRole")
-      .attr("id", "inputContributorsPerRole" + uniqueSuffix);
+      .find("#input-contributor-personrole")
+      .attr("id", "input-contributor-personrole" + uniqueSuffix);
     newContributorRow
       .find("#input-contributor-orcid")
       .attr("id", "input-contributor-orcid" + uniqueSuffix);
@@ -348,7 +348,7 @@ $(document).ready(function () {
     );
 
     // Initialize Tagify for the new Roles field
-    setupRolesDropdown(["person", "both"], "#inputContributorsPerRole" + uniqueSuffix);
+    setupRolesDropdown(["person", "both"], "#input-contributor-personrole" + uniqueSuffix);
 
     // Event handler for the remove button in the new row
     newContributorRow.on("click", ".removeButton", function () {

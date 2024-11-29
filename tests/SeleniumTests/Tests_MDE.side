@@ -2954,7 +2954,7 @@
       "id": "69d1ad49-8128-4390-aa54-950838deaf50",
       "comment": "",
       "command": "executeScript",
-      "target": "document.querySelector('#inputContributorsPerRole').value=\"Editor\"",
+      "target": "document.querySelector('#input-contributor-personrole').value=\"Editor\"",
       "targets": [],
       "value": ""
     }, {
