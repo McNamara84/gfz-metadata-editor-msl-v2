@@ -2891,12 +2891,12 @@
       "id": "f7e83b64-2fe8-4097-9dcd-89e18f16c4fe",
       "comment": "",
       "command": "type",
-      "target": "id=inputWebsite",
+      "target": "id=input-contactperson-website",
       "targets": [
-        ["id=inputWebsite", "id"],
+        ["id=input-contactperson-website", "id"],
         ["name=cpOnlineResource[]", "name"],
-        ["css=#inputWebsite", "css:finder"],
-        ["xpath=//input[@id='inputWebsite']", "xpath:attributes"],
+        ["css=#input-contactperson-website", "css:finder"],
+        ["xpath=//input[@id='input-contactperson-website']", "xpath:attributes"],
         ["xpath=//div[@id='contactpersonsGroup']/div/div[5]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[5]/div/div/input", "xpath:position"]
       ],
