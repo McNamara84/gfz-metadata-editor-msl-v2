@@ -1985,7 +1985,7 @@
       "target": "css=.col-md-4:nth-child(1) > .input-group > .input-group-text > .bi",
       "targets": [
         ["css=.col-md-4:nth-child(1) > .input-group > .input-group-text > .bi", "css:finder"],
-        ["xpath=//div[@id='fundingreferenceGroup']/div/div/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-fundingreference']/div/div/div/span/i", "xpath:idRelative"],
         ["xpath=//div[16]/div[2]/div/div/div/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -2032,7 +2032,7 @@
       "target": "css=.col:nth-child(2) > .input-group > .input-group-text > .bi",
       "targets": [
         ["css=.col:nth-child(2) > .input-group > .input-group-text > .bi", "css:finder"],
-        ["xpath=//div[@id='fundingreferenceGroup']/div/div[2]/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-fundingreference']/div/div[2]/div/span/i", "xpath:idRelative"],
         ["xpath=//div[16]/div[2]/div/div/div[2]/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -2078,7 +2078,7 @@
       "target": "css=.col:nth-child(3) .bi",
       "targets": [
         ["css=.col:nth-child(3) .bi", "css:finder"],
-        ["xpath=//div[@id='fundingreferenceGroup']/div/div[3]/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-fundingreference']/div/div[3]/div/span/i", "xpath:idRelative"],
         ["xpath=//div[16]/div[2]/div/div/div[3]/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -2463,7 +2463,7 @@
         ["name=funder[]", "name"],
         ["css=.inputFunder", "css:finder"],
         ["xpath=//input[@name='funder[]']", "xpath:attributes"],
-        ["xpath=//div[@id='fundingreferenceGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-fundingreference']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[16]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -2476,7 +2476,7 @@
         ["name=funder[]", "name"],
         ["css=.inputFunder", "css:finder"],
         ["xpath=//input[@name='funder[]']", "xpath:attributes"],
-        ["xpath=//div[@id='fundingreferenceGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-fundingreference']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[16]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": "Jana"
@@ -3784,7 +3784,7 @@
         ["name=funder[]", "name"],
         ["css=.inputFunder", "css:finder"],
         ["xpath=//input[@name='funder[]']", "xpath:attributes"],
-        ["xpath=//div[@id='fundingreferenceGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-fundingreference']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[16]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -3797,7 +3797,7 @@
         ["name=funder[]", "name"],
         ["css=.inputFunder", "css:finder"],
         ["xpath=//input[@name='funder[]']", "xpath:attributes"],
-        ["xpath=//div[@id='fundingreferenceGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-fundingreference']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[16]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": "Bill and Melinda Gates Foundation"
@@ -3805,13 +3805,13 @@
       "id": "f721d340-9935-4b58-9f9d-206a3dbc9e84",
       "comment": "",
       "command": "click",
-      "target": "id=inputGrantNummer",
+      "target": "id=input-grantnumber",
       "targets": [
-        ["id=inputGrantNummer", "id"],
+        ["id=input-grantnumber", "id"],
         ["name=grantNummer[]", "name"],
-        ["css=#inputGrantNummer", "css:finder"],
-        ["xpath=//input[@id='inputGrantNummer']", "xpath:attributes"],
-        ["xpath=//div[@id='fundingreferenceGroup']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["css=#input-grantnumber", "css:finder"],
+        ["xpath=//input[@id='input-grantnumber']", "xpath:attributes"],
+        ["xpath=//div[@id='group-fundingreference']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[16]/div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -3819,13 +3819,13 @@
       "id": "cc4deabf-0681-4729-9877-479088a70414",
       "comment": "",
       "command": "type",
-      "target": "id=inputGrantNummer",
+      "target": "id=input-grantnumber",
       "targets": [
-        ["id=inputGrantNummer", "id"],
+        ["id=input-grantnumber", "id"],
         ["name=grantNummer[]", "name"],
-        ["css=#inputGrantNummer", "css:finder"],
-        ["xpath=//input[@id='inputGrantNummer']", "xpath:attributes"],
-        ["xpath=//div[@id='fundingreferenceGroup']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["css=#input-grantnumber", "css:finder"],
+        ["xpath=//input[@id='input-grantnumber']", "xpath:attributes"],
+        ["xpath=//div[@id='group-fundingreference']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[16]/div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "1"
@@ -3833,13 +3833,13 @@
       "id": "e303bb45-bfe3-4357-b4ff-a77288056be1",
       "comment": "",
       "command": "type",
-      "target": "id=inputGrantName",
+      "target": "id=input-grantname",
       "targets": [
-        ["id=inputGrantName", "id"],
+        ["id=input-grantname", "id"],
         ["name=grantName[]", "name"],
-        ["css=#inputGrantName", "css:finder"],
-        ["xpath=//input[@id='inputGrantName']", "xpath:attributes"],
-        ["xpath=//div[@id='fundingreferenceGroup']/div/div[3]/div/div/input", "xpath:idRelative"],
+        ["css=#input-grantname", "css:finder"],
+        ["xpath=//input[@id='input-grantname']", "xpath:attributes"],
+        ["xpath=//div[@id='group-fundingreference']/div/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[16]/div[2]/div/div/div[3]/div/div/input", "xpath:position"]
       ],
       "value": "TEST_GRANZ"
@@ -4710,7 +4710,7 @@
         ["name=funder[]", "name"],
         ["css=.inputFunder", "css:finder"],
         ["xpath=//input[@name='funder[]']", "xpath:attributes"],
-        ["xpath=//div[@id='fundingreferenceGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-fundingreference']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[16]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -4723,7 +4723,7 @@
         ["name=funder[]", "name"],
         ["css=.inputFunder", "css:finder"],
         ["xpath=//input[@name='funder[]']", "xpath:attributes"],
-        ["xpath=//div[@id='fundingreferenceGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-fundingreference']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[16]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": "Helmholtz-Zentrum Potsdam - Deutsches GeoForschungsZentrum GFZ"

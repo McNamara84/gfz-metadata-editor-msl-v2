@@ -566,8 +566,8 @@ $(document).ready(function () {
    * Event handler for the "Add Funding Reference" button click.
    * Clones the first funding reference row, resets input fields, and appends it to the funding reference group.
    */
-  $("#addFundingReference").click(function () {
-    var fundingreferenceGroup = $("#fundingreferenceGroup");
+  $("#button-fundingreference-add").click(function () {
+    var fundingreferenceGroup = $("#group-fundingreference");
     // First row used as a template
     var firstFundingReferenceLine = fundingreferenceGroup.children().first();
 
