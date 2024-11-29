@@ -4879,11 +4879,11 @@
       "id": "5a8730e2-1498-4af8-9270-de1c987bc616",
       "comment": "",
       "command": "click",
-      "target": "id=addAuthor",
+      "target": "id=button-author-add",
       "targets": [
-        ["id=addAuthor", "id"],
-        ["css=#addAuthor", "css:finder"],
-        ["xpath=//button[@id='addAuthor']", "xpath:attributes"],
+        ["id=button-author-add", "id"],
+        ["css=#button-author-add", "css:finder"],
+        ["xpath=//button[@id='button-author-add']", "xpath:attributes"],
         ["xpath=//div[@id='group-author']/div/div[5]/div/button", "xpath:idRelative"],
         ["xpath=//div[5]/div/button", "xpath:position"]
       ],
@@ -4971,11 +4971,11 @@
       "id": "d65250ab-3342-4031-8539-39d5add72e4d",
       "comment": "",
       "command": "click",
-      "target": "id=addAuthor",
+      "target": "id=button-author-add",
       "targets": [
-        ["id=addAuthor", "id"],
-        ["css=#addAuthor", "css:finder"],
-        ["xpath=//button[@id='addAuthor']", "xpath:attributes"],
+        ["id=button-author-add", "id"],
+        ["css=#button-author-add", "css:finder"],
+        ["xpath=//button[@id='button-author-add']", "xpath:attributes"],
         ["xpath=//div[@id='group-author']/div/div[5]/div/button", "xpath:idRelative"],
         ["xpath=//div[5]/div/button", "xpath:position"]
       ],
@@ -4984,11 +4984,11 @@
       "id": "e28c82ba-3c32-49cb-bbd0-679be94fbcab",
       "comment": "",
       "command": "mouseOver",
-      "target": "id=addAuthor",
+      "target": "id=button-author-add",
       "targets": [
-        ["id=addAuthor", "id"],
-        ["css=#addAuthor", "css:finder"],
-        ["xpath=//button[@id='addAuthor']", "xpath:attributes"],
+        ["id=button-author-add", "id"],
+        ["css=#button-author-add", "css:finder"],
+        ["xpath=//button[@id='button-author-add']", "xpath:attributes"],
         ["xpath=//div[@id='group-author']/div/div[5]/div/button", "xpath:idRelative"],
         ["xpath=//div[5]/div/button", "xpath:position"]
       ],
@@ -4997,11 +4997,11 @@
       "id": "e19a6d55-e6d3-48db-8845-02236919642e",
       "comment": "",
       "command": "mouseOut",
-      "target": "id=addAuthor",
+      "target": "id=button-author-add",
       "targets": [
-        ["id=addAuthor", "id"],
-        ["css=#addAuthor", "css:finder"],
-        ["xpath=//button[@id='addAuthor']", "xpath:attributes"],
+        ["id=button-author-add", "id"],
+        ["css=#button-author-add", "css:finder"],
+        ["xpath=//button[@id='button-author-add']", "xpath:attributes"],
         ["xpath=//div[@id='group-author']/div/div[5]/div/button", "xpath:idRelative"],
         ["xpath=//div[5]/div/button", "xpath:position"]
       ],
