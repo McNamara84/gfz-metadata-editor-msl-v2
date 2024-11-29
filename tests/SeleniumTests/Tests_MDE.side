@@ -957,10 +957,10 @@
       "id": "ecfc2687-e82e-4bda-960e-c20fb94f80cc",
       "comment": "",
       "command": "click",
-      "target": "css=#collapseMethods .bi",
+      "target": "css=#collapse-methods .bi",
       "targets": [
-        ["css=#collapseMethods .bi", "css:finder"],
-        ["xpath=//div[@id='collapseMethods']/div/div/span/i", "xpath:idRelative"],
+        ["css=#collapse-methods .bi", "css:finder"],
+        ["xpath=//div[@id='collapse-methods']/div/div/span/i", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -1017,10 +1017,10 @@
       "id": "1116ab7f-da3d-4e30-a098-8836311c837b",
       "comment": "",
       "command": "click",
-      "target": "css=#collapseTechnicalInfo .bi",
+      "target": "css=#collapse-technicalinfo .bi",
       "targets": [
-        ["css=#collapseTechnicalInfo .bi", "css:finder"],
-        ["xpath=//div[@id='collapseTechnicalInfo']/div/div/span/i", "xpath:idRelative"],
+        ["css=#collapse-technicalinfo .bi", "css:finder"],
+        ["xpath=//div[@id='collapse-technicalinfo']/div/div/span/i", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[3]/div/div/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -1077,10 +1077,10 @@
       "id": "93af13bd-94fb-4785-ba6f-955808afb83b",
       "comment": "",
       "command": "click",
-      "target": "css=#collapseOther .bi",
+      "target": "css=#collapse-other .bi",
       "targets": [
-        ["css=#collapseOther .bi", "css:finder"],
-        ["xpath=//div[@id='collapseOther']/div/div/span/i", "xpath:idRelative"],
+        ["css=#collapse-other .bi", "css:finder"],
+        ["xpath=//div[@id='collapse-other']/div/div/span/i", "xpath:idRelative"],
         ["xpath=//div[4]/div/div/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -3065,13 +3065,13 @@
       "id": "753e40a2-b223-4e79-a381-d1c6ec161a71",
       "comment": "",
       "command": "type",
-      "target": "id=inputMethods",
+      "target": "id=input-methods",
       "targets": [
-        ["id=inputMethods", "id"],
+        ["id=input-methods", "id"],
         ["name=descriptionMethods", "name"],
-        ["css=#inputMethods", "css:finder"],
-        ["xpath=//textarea[@id='inputMethods']", "xpath:attributes"],
-        ["xpath=//div[@id='collapseMethods']/div/div/div/textarea", "xpath:idRelative"],
+        ["css=#input-methods", "css:finder"],
+        ["xpath=//textarea[@id='input-methods']", "xpath:attributes"],
+        ["xpath=//div[@id='collapse-methods']/div/div/div/textarea", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/textarea", "xpath:position"]
       ],
       "value": "Test_Methods"
@@ -3092,13 +3092,13 @@
       "id": "3567ca1e-d9fd-4569-bd57-1cf13f09625f",
       "comment": "",
       "command": "click",
-      "target": "id=inputTechnicalInfo",
+      "target": "id=input-technicalinfo",
       "targets": [
-        ["id=inputTechnicalInfo", "id"],
+        ["id=input-technicalinfo", "id"],
         ["name=descriptionTechnical", "name"],
-        ["css=#inputTechnicalInfo", "css:finder"],
-        ["xpath=//textarea[@id='inputTechnicalInfo']", "xpath:attributes"],
-        ["xpath=//div[@id='collapseTechnicalInfo']/div/div/div/textarea", "xpath:idRelative"],
+        ["css=#input-technicalinfo", "css:finder"],
+        ["xpath=//textarea[@id='input-technicalinfo']", "xpath:attributes"],
+        ["xpath=//div[@id='collapse-technicalinfo']/div/div/div/textarea", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/div/div/textarea", "xpath:position"]
       ],
       "value": ""
@@ -3106,13 +3106,13 @@
       "id": "55c188c6-bad8-416a-b816-98f05c7724e4",
       "comment": "",
       "command": "type",
-      "target": "id=inputTechnicalInfo",
+      "target": "id=input-technicalinfo",
       "targets": [
-        ["id=inputTechnicalInfo", "id"],
+        ["id=input-technicalinfo", "id"],
         ["name=descriptionTechnical", "name"],
-        ["css=#inputTechnicalInfo", "css:finder"],
-        ["xpath=//textarea[@id='inputTechnicalInfo']", "xpath:attributes"],
-        ["xpath=//div[@id='collapseTechnicalInfo']/div/div/div/textarea", "xpath:idRelative"],
+        ["css=#input-technicalinfo", "css:finder"],
+        ["xpath=//textarea[@id='input-technicalinfo']", "xpath:attributes"],
+        ["xpath=//div[@id='collapse-technicalinfo']/div/div/div/textarea", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/div/div/textarea", "xpath:position"]
       ],
       "value": "Test_Technical_Info"
@@ -3133,13 +3133,13 @@
       "id": "ea0cd66f-77a3-45ea-ae20-89b8897abc73",
       "comment": "",
       "command": "type",
-      "target": "id=inputOther",
+      "target": "id=input-other",
       "targets": [
-        ["id=inputOther", "id"],
+        ["id=input-other", "id"],
         ["name=descriptionOther", "name"],
-        ["css=#inputOther", "css:finder"],
-        ["xpath=//textarea[@id='inputOther']", "xpath:attributes"],
-        ["xpath=//div[@id='collapseOther']/div/div/div/textarea", "xpath:idRelative"],
+        ["css=#input-other", "css:finder"],
+        ["xpath=//textarea[@id='input-other']", "xpath:attributes"],
+        ["xpath=//div[@id='collapse-other']/div/div/div/textarea", "xpath:idRelative"],
         ["xpath=//div[4]/div/div/div/div/textarea", "xpath:position"]
       ],
       "value": "Test_other"
