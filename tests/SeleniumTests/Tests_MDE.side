@@ -2821,12 +2821,12 @@
       "id": "5b50c39b-3c3c-45ac-9a2b-9f2a3f9f794d",
       "comment": "",
       "command": "click",
-      "target": "id=inputCpLastname",
+      "target": "id=input-contactperson-lastname",
       "targets": [
-        ["id=inputCpLastname", "id"],
+        ["id=input-contactperson-lastname", "id"],
         ["name=cpLastname[]", "name"],
-        ["css=#inputCpLastname", "css:finder"],
-        ["xpath=//input[@id='inputCpLastname']", "xpath:attributes"],
+        ["css=#input-contactperson-lastname", "css:finder"],
+        ["xpath=//input[@id='input-contactperson-lastname']", "xpath:attributes"],
         ["xpath=//div[@id='contactpersonsGroup']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
@@ -2835,12 +2835,12 @@
       "id": "d59d4f4f-f816-4ee9-9035-bf4c52952e3e",
       "comment": "",
       "command": "type",
-      "target": "id=inputCpLastname",
+      "target": "id=input-contactperson-lastname",
       "targets": [
-        ["id=inputCpLastname", "id"],
+        ["id=input-contactperson-lastname", "id"],
         ["name=cpLastname[]", "name"],
-        ["css=#inputCpLastname", "css:finder"],
-        ["xpath=//input[@id='inputCpLastname']", "xpath:attributes"],
+        ["css=#input-contactperson-lastname", "css:finder"],
+        ["xpath=//input[@id='input-contactperson-lastname']", "xpath:attributes"],
         ["xpath=//div[@id='contactpersonsGroup']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
