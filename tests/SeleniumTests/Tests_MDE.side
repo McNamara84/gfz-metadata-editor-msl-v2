@@ -3010,7 +3010,7 @@
       "id": "ce78dcf5-7d3d-4d56-9001-d36c47d3abdf",
       "comment": "",
       "command": "executeScript",
-      "target": "document.querySelector('#inputContributorOrgaRole').value=\"Hosting Institution\"",
+      "target": "document.querySelector('#input-contributor-organisationrole').value=\"Hosting Institution\"",
       "targets": [],
       "value": ""
     }, {

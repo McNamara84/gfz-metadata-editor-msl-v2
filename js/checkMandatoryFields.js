@@ -9,7 +9,7 @@ function checkMandatoryFields() {
 
     // Organization name and role fields (Contributing Institution(s))
     var OrganisationName = document.getElementById('input-contributor-name').value.trim();
-    var institutionRoleField = document.getElementById('inputContributorOrgaRole');
+    var institutionRoleField = document.getElementById('input-contributor-organisationrole');
 
     // Check if first name or last name(Contributing Person(s)) is filled
     if (firstname !== '' || lastname !== '') {

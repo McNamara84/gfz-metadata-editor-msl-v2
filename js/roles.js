@@ -45,5 +45,5 @@ function setupRolesDropdown(roletypes, inputSelector) {
 
 $(document).ready(function () {
   setupRolesDropdown(["person", "both"], "#input-contributor-personrole");
-  setupRolesDropdown(["institution", "both"], "#inputContributorOrgaRole");
+  setupRolesDropdown(["institution", "both"], "#input-contributor-organisationrole");
 });
