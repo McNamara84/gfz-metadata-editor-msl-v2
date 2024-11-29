@@ -368,7 +368,7 @@ $(document).ready(function () {
      * The contributor organization group where new contributor organization rows are appended.
      * @type {jQuery}
      */
-    var contributorGroup = $("#contributorOrganisationGroup");
+    var contributorGroup = $("#group-contributororganisation");
 
     /**
      * The first contributor organization row used as a template for cloning.

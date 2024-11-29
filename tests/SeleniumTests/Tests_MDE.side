@@ -761,7 +761,7 @@
       "target": "css=.col-md-12:nth-child(2) .bi",
       "targets": [
         ["css=.col-md-12:nth-child(2) .bi", "css:finder"],
-        ["xpath=//div[@id='contributorOrganisationGroup']/div/div/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributororganisation']/div/div/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -807,7 +807,7 @@
       "target": "css=.col-12:nth-child(3) > .has-validation > .input-group-text > .bi",
       "targets": [
         ["css=.col-12:nth-child(3) > .has-validation > .input-group-text > .bi", "css:finder"],
-        ["xpath=//div[@id='contributorOrganisationGroup']/div/div[2]/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributororganisation']/div/div[2]/div/span/i", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -853,7 +853,7 @@
       "target": "css=.\\31 0 .bi",
       "targets": [
         ["css=.\\31 0 .bi", "css:finder"],
-        ["xpath=//div[@id='contributorOrganisationGroup']/div/div[3]/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributororganisation']/div/div[3]/div/span/i", "xpath:idRelative"],
         ["xpath=//div[3]/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -2988,7 +2988,7 @@
         ["name=cbOrganisationName[]", "name"],
         ["css=#inputOrganisationName", "css:finder"],
         ["xpath=//input[@id='inputOrganisationName']", "xpath:attributes"],
-        ["xpath=//div[@id='contributorOrganisationGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributororganisation']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -3002,7 +3002,7 @@
         ["name=cbOrganisationName[]", "name"],
         ["css=#inputOrganisationName", "css:finder"],
         ["xpath=//input[@id='inputOrganisationName']", "xpath:attributes"],
-        ["xpath=//div[@id='contributorOrganisationGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contributororganisation']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/div/div/input", "xpath:position"]
       ],
       "value": "Tromsö Rock Institute"
