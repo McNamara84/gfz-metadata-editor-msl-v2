@@ -897,10 +897,10 @@
       "id": "554de01f-a7da-498a-92d7-a85c1122303b",
       "comment": "",
       "command": "click",
-      "target": "css=#collapseAbstract .bi",
+      "target": "css=#collapse-abstract .bi",
       "targets": [
-        ["css=#collapseAbstract .bi", "css:finder"],
-        ["xpath=//div[@id='collapseAbstract']/div/div/span/i", "xpath:idRelative"],
+        ["css=#collapse-abstract .bi", "css:finder"],
+        ["xpath=//div[@id='collapse-abstract']/div/div/span/i", "xpath:idRelative"],
         ["xpath=//div[7]/div[2]/div/div/div/div/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -2275,7 +2275,7 @@
         ["name=descriptionAbstract", "name"],
         ["css=#inputAbstract", "css:finder"],
         ["xpath=//textarea[@id='inputAbstract']", "xpath:attributes"],
-        ["xpath=//div[@id='collapseAbstract']/div/div/div/textarea", "xpath:idRelative"],
+        ["xpath=//div[@id='collapse-abstract']/div/div/div/textarea", "xpath:idRelative"],
         ["xpath=//div/div/textarea", "xpath:position"]
       ],
       "value": ""
@@ -2289,7 +2289,7 @@
         ["name=descriptionAbstract", "name"],
         ["css=#inputAbstract", "css:finder"],
         ["xpath=//textarea[@id='inputAbstract']", "xpath:attributes"],
-        ["xpath=//div[@id='collapseAbstract']/div/div/div/textarea", "xpath:idRelative"],
+        ["xpath=//div[@id='collapse-abstract']/div/div/div/textarea", "xpath:idRelative"],
         ["xpath=//div/div/textarea", "xpath:position"]
       ],
       "value": "This is an abstract."
@@ -3030,7 +3030,7 @@
         ["name=descriptionAbstract", "name"],
         ["css=#inputAbstract", "css:finder"],
         ["xpath=//textarea[@id='inputAbstract']", "xpath:attributes"],
-        ["xpath=//div[@id='collapseAbstract']/div/div/div/textarea", "xpath:idRelative"],
+        ["xpath=//div[@id='collapse-abstract']/div/div/div/textarea", "xpath:idRelative"],
         ["xpath=//div/div/textarea", "xpath:position"]
       ],
       "value": ""
@@ -3044,7 +3044,7 @@
         ["name=descriptionAbstract", "name"],
         ["css=#inputAbstract", "css:finder"],
         ["xpath=//textarea[@id='inputAbstract']", "xpath:attributes"],
-        ["xpath=//div[@id='collapseAbstract']/div/div/div/textarea", "xpath:idRelative"],
+        ["xpath=//div[@id='collapse-abstract']/div/div/div/textarea", "xpath:idRelative"],
         ["xpath=//div/div/textarea", "xpath:position"]
       ],
       "value": "Test_Abstract"
@@ -4380,7 +4380,7 @@
         ["name=descriptionAbstract", "name"],
         ["css=#inputAbstract", "css:finder"],
         ["xpath=//textarea[@id='inputAbstract']", "xpath:attributes"],
-        ["xpath=//div[@id='collapseAbstract']/div/div/div/textarea", "xpath:idRelative"],
+        ["xpath=//div[@id='collapse-abstract']/div/div/div/textarea", "xpath:idRelative"],
         ["xpath=//div/div/textarea", "xpath:position"]
       ],
       "value": ""
@@ -4394,7 +4394,7 @@
         ["name=descriptionAbstract", "name"],
         ["css=#inputAbstract", "css:finder"],
         ["xpath=//textarea[@id='inputAbstract']", "xpath:attributes"],
-        ["xpath=//div[@id='collapseAbstract']/div/div/div/textarea", "xpath:idRelative"],
+        ["xpath=//div[@id='collapse-abstract']/div/div/div/textarea", "xpath:idRelative"],
         ["xpath=//div/div/textarea", "xpath:position"]
       ],
       "value": "The best Abstract"
