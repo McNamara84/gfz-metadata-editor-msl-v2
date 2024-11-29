@@ -2863,12 +2863,12 @@
       "id": "8e0e5064-fce9-4c5f-816b-6d217842e926",
       "comment": "",
       "command": "type",
-      "target": "id=cpPosition",
+      "target": "id=input-contactperson-position",
       "targets": [
-        ["id=cpPosition", "id"],
+        ["id=input-contactperson-position", "id"],
         ["name=cpPosition[]", "name"],
-        ["css=#cpPosition", "css:finder"],
-        ["xpath=//input[@id='cpPosition']", "xpath:attributes"],
+        ["css=#input-contactperson-position", "css:finder"],
+        ["xpath=//input[@id='input-contactperson-position']", "xpath:attributes"],
         ["xpath=//div[@id='contactpersonsGroup']/div/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/div/div/div[3]/div/div/input", "xpath:position"]
       ],
