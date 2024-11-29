@@ -181,7 +181,7 @@ $('#group-author').on('blur', 'input[name="orcids[]"]', function () {
  * // <input name="cbPersonLastname[]" />
  * // <input name="cbPersonFirstname[]" />
  * // <input id="input-contributor-affiliation" /> // Tagify field
- * // <input id="hiddenContributorRorId" />
+ * // <input id="input-contributor-personrorid" />
  */
 $('#group-contributorperson').on('blur', 'input[name="cbORCID[]"]', function () {
   const orcidInput = $(this);
@@ -252,7 +252,7 @@ $('#group-contributorperson').on('blur', 'input[name="cbORCID[]"]', function () 
         // Fill hidden ROR ID field
         const rorIdsArray = Array.from(rorIds);
         if (rorIdsArray.length > 0) {
-          row.find('input[id^="hiddenContributorRorId"]').val(rorIdsArray.join(','));
+          row.find('input[id^="input-contributor-personrorid"]').val(rorIdsArray.join(','));
         }
       })
       .catch(error => {

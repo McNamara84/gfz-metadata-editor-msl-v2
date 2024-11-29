@@ -308,8 +308,8 @@ $(document).ready(function () {
       .find("#input-contributor-affiliation")
       .attr("id", "input-contributor-affiliation" + uniqueSuffix);
     newContributorRow
-      .find("#hiddenContributorRorId")
-      .attr("id", "hiddenContributorRorId" + uniqueSuffix);
+      .find("#input-contributor-personrorid")
+      .attr("id", "input-contributor-personrorid" + uniqueSuffix);
     newContributorRow
       .find("#input-contributor-personrole")
       .attr("id", "input-contributor-personrole" + uniqueSuffix);
@@ -343,7 +343,7 @@ $(document).ready(function () {
     // Apply Tagify to the new Contributor Affiliations field
     autocompleteAffiliations(
       "input-contributor-affiliation" + uniqueSuffix,
-      "hiddenContributorRorId" + uniqueSuffix,
+      "input-contributor-personrorid" + uniqueSuffix,
       affiliationsData
     );
 
