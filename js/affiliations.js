@@ -13,7 +13,7 @@ $.getJSON("json/affiliations.json", function (data) {
     autocompleteAffiliations("input-author-affiliation", "input-author-rorid", affiliationsData);
     autocompleteAffiliations("input-contactperson-affiliation", "input-contactperson-rorid", affiliationsData);
     autocompleteAffiliations("input-contributor-affiliation", "hiddenContributorRorId", affiliationsData);
-    autocompleteAffiliations("inputOrganisationAffiliation", "hiddenOrganisationRorId", affiliationsData);
+    autocompleteAffiliations("inputOrganisationAffiliation", "input-contributor-organisationrorid", affiliationsData);
   });
 });
 

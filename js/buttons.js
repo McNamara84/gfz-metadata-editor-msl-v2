@@ -401,8 +401,8 @@ $(document).ready(function () {
       .find("#inputOrganisationAffiliation")
       .attr("id", "inputOrganisationAffiliation" + uniqueSuffix);
     newContributorRow
-      .find("#hiddenOrganisationRorId")
-      .attr("id", "hiddenOrganisationRorId" + uniqueSuffix);
+      .find("#input-contributor-organisationrorid")
+      .attr("id", "input-contributor-organisationrorid" + uniqueSuffix);
     newContributorRow
       .find("#input-contributor-organisationrole")
       .attr("id", "input-contributor-organisationrole" + uniqueSuffix);
