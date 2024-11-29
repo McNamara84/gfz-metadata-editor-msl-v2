@@ -238,7 +238,7 @@ $(document).ready(function () {
 
     var uniqueSuffix = new Date().getTime();
     newCPRow.find("#input-contactperson-affiliation").attr("id", "input-contactperson-affiliation" + uniqueSuffix);
-    newCPRow.find("#hiddenCPRorId").attr("id", "hiddenCPRorId" + uniqueSuffix);
+    newCPRow.find("#input-contactperson-rorid").attr("id", "input-contactperson-rorid" + uniqueSuffix);
 
     // Remove old Tagify elements (will be re-initialized in autocompleteAffiliation)
     newCPRow.find(".tagify").remove();
@@ -254,7 +254,7 @@ $(document).ready(function () {
     // Apply autocomplete to the Affiliation field
     autocompleteAffiliations(
       "input-contactperson-affiliation" + uniqueSuffix,
-      "hiddenCPRorId" + uniqueSuffix,
+      "input-contactperson-rorid" + uniqueSuffix,
       affiliationsData
     );
 

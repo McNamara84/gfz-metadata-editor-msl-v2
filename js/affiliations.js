@@ -11,7 +11,7 @@ $.getJSON("json/affiliations.json", function (data) {
   // Initialize Tagify for existing input fields when the document is ready
   $(document).ready(function () {
     autocompleteAffiliations("input-author-affiliation", "input-author-rorid", affiliationsData);
-    autocompleteAffiliations("input-contactperson-affiliation", "hiddenCPRorId", affiliationsData);
+    autocompleteAffiliations("input-contactperson-affiliation", "input-contactperson-rorid", affiliationsData);
     autocompleteAffiliations("inputContributorAffiliation", "hiddenContributorRorId", affiliationsData);
     autocompleteAffiliations("inputOrganisationAffiliation", "hiddenOrganisationRorId", affiliationsData);
   });

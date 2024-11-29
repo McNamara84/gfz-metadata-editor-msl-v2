@@ -44,7 +44,7 @@ $(document).ready(function () {
     }
   });
   setupAutocomplete("#input-author-affiliation", "#input-author-rorid");
-  setupAutocomplete("#input-contactperson-affiliation", "#hiddenCPRorId");
+  setupAutocomplete("#input-contactperson-affiliation", "#input-contactperson-rorid");
 });
 
 /**
