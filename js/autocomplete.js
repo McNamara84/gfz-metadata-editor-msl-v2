@@ -183,7 +183,7 @@ $('#group-author').on('blur', 'input[name="orcids[]"]', function () {
  * // <input id="input-contributor-affiliation" /> // Tagify field
  * // <input id="hiddenContributorRorId" />
  */
-$('#group-contributor').on('blur', 'input[name="cbORCID[]"]', function () {
+$('#group-contributorperson').on('blur', 'input[name="cbORCID[]"]', function () {
   const orcidInput = $(this);
   const row = orcidInput.closest('[contributor-person-row]');
   const orcid = orcidInput.val();
