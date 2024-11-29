@@ -363,7 +363,7 @@ $(document).ready(function () {
  * updates IDs and labels to ensure uniqueness,
  * and appends it to the contributor organization group.
  */
-  $("#addContributor").click(function () {
+  $("#button-contributor-addorganisation").click(function () {
     /**
      * The contributor organization group where new contributor organization rows are appended.
      * @type {jQuery}
