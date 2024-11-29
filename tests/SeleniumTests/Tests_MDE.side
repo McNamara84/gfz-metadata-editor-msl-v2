@@ -2206,12 +2206,12 @@
       "id": "d360b3ca-7bf2-45d0-959a-79bd311605ea",
       "comment": "",
       "command": "type",
-      "target": "id=inputAuthorORCID",
+      "target": "id=input-author-orcid",
       "targets": [
-        ["id=inputAuthorORCID", "id"],
+        ["id=input-author-orcid", "id"],
         ["name=orcids[]", "name"],
-        ["css=#inputAuthorORCID", "css:finder"],
-        ["xpath=//input[@id='inputAuthorORCID']", "xpath:attributes"],
+        ["css=#input-author-orcid", "css:finder"],
+        ["xpath=//input[@id='input-author-orcid']", "xpath:attributes"],
         ["xpath=//div[@id='group-author']/div/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/input", "xpath:position"]
       ],
@@ -2800,12 +2800,12 @@
       "id": "2b205085-9698-4998-bfb2-2cfad7b08ebb",
       "comment": "",
       "command": "type",
-      "target": "id=inputAuthorORCID",
+      "target": "id=input-author-orcid",
       "targets": [
-        ["id=inputAuthorORCID", "id"],
+        ["id=input-author-orcid", "id"],
         ["name=orcids[]", "name"],
-        ["css=#inputAuthorORCID", "css:finder"],
-        ["xpath=//input[@id='inputAuthorORCID']", "xpath:attributes"],
+        ["css=#input-author-orcid", "css:finder"],
+        ["xpath=//input[@id='input-author-orcid']", "xpath:attributes"],
         ["xpath=//div[@id='group-author']/div/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/input", "xpath:position"]
       ],
@@ -4360,12 +4360,12 @@
       "id": "4cbc4425-d064-4e0f-ad4b-8205664441d0",
       "comment": "",
       "command": "type",
-      "target": "id=inputAuthorORCID",
+      "target": "id=input-author-orcid",
       "targets": [
-        ["id=inputAuthorORCID", "id"],
+        ["id=input-author-orcid", "id"],
         ["name=orcids[]", "name"],
-        ["css=#inputAuthorORCID", "css:finder"],
-        ["xpath=//input[@id='inputAuthorORCID']", "xpath:attributes"],
+        ["css=#input-author-orcid", "css:finder"],
+        ["xpath=//input[@id='input-author-orcid']", "xpath:attributes"],
         ["xpath=//div[@id='group-author']/div/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/input", "xpath:position"]
       ],
@@ -4805,12 +4805,12 @@
       "id": "78b0d757-7c90-4052-94b9-596701a7fda1",
       "comment": "",
       "command": "click",
-      "target": "id=inputAuthorORCID",
+      "target": "id=input-author-orcid",
       "targets": [
-        ["id=inputAuthorORCID", "id"],
+        ["id=input-author-orcid", "id"],
         ["name=orcids[]", "name"],
-        ["css=#inputAuthorORCID", "css:finder"],
-        ["xpath=//input[@id='inputAuthorORCID']", "xpath:attributes"],
+        ["css=#input-author-orcid", "css:finder"],
+        ["xpath=//input[@id='input-author-orcid']", "xpath:attributes"],
         ["xpath=//div[@id='group-author']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
@@ -4819,7 +4819,7 @@
       "id": "301624ea-7bf8-42b3-bf66-d7e397c14ac5",
       "comment": "",
       "command": "type",
-      "target": "id=inputAuthorORCID",
+      "target": "id=input-author-orcid",
       "targets": [],
       "value": "0000-0002-1825-0097"
     }, {
@@ -4892,10 +4892,10 @@
       "id": "7ecc40f4-a792-4993-ba75-eee4a1af178e",
       "comment": "",
       "command": "click",
-      "target": "css=.row:nth-child(2) #inputAuthorORCID",
+      "target": "css=.row:nth-child(2) #input-author-orcid",
       "targets": [
-        ["css=.row:nth-child(2) #inputAuthorORCID", "css:finder"],
-        ["xpath=(//input[@id='inputAuthorORCID'])[2]", "xpath:attributes"],
+        ["css=.row:nth-child(2) #input-author-orcid", "css:finder"],
+        ["xpath=(//input[@id='input-author-orcid'])[2]", "xpath:attributes"],
         ["xpath=//div[@id='group-author']/div[2]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/input", "xpath:position"]
       ],
@@ -4904,10 +4904,10 @@
       "id": "aefa7f9c-730b-4bff-8722-a9c3e4d61f04",
       "comment": "",
       "command": "type",
-      "target": "css=.row:nth-child(2) #inputAuthorORCID",
+      "target": "css=.row:nth-child(2) #input-author-orcid",
       "targets": [
-        ["css=.row:nth-child(2) #inputAuthorORCID", "css:finder"],
-        ["xpath=(//input[@id='inputAuthorORCID'])[2]", "xpath:attributes"],
+        ["css=.row:nth-child(2) #input-author-orcid", "css:finder"],
+        ["xpath=(//input[@id='input-author-orcid'])[2]", "xpath:attributes"],
         ["xpath=//div[@id='group-author']/div[2]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/input", "xpath:position"]
       ],
@@ -5010,10 +5010,10 @@
       "id": "101a0995-2dc6-4ae4-8152-b977dca088cf",
       "comment": "",
       "command": "click",
-      "target": "css=.row:nth-child(3) #inputAuthorORCID",
+      "target": "css=.row:nth-child(3) #input-author-orcid",
       "targets": [
-        ["css=.row:nth-child(3) #inputAuthorORCID", "css:finder"],
-        ["xpath=(//input[@id='inputAuthorORCID'])[3]", "xpath:attributes"],
+        ["css=.row:nth-child(3) #input-author-orcid", "css:finder"],
+        ["xpath=(//input[@id='input-author-orcid'])[3]", "xpath:attributes"],
         ["xpath=//div[@id='group-author']/div[3]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[3]/div/div/div/input", "xpath:position"]
       ],
@@ -5022,10 +5022,10 @@
       "id": "f04f2119-3a77-4852-9e63-6f5060bee097",
       "comment": "",
       "command": "type",
-      "target": "css=.row:nth-child(3) #inputAuthorORCID",
+      "target": "css=.row:nth-child(3) #input-author-orcid",
       "targets": [
-        ["css=.row:nth-child(3) #inputAuthorORCID", "css:finder"],
-        ["xpath=(//input[@id='inputAuthorORCID'])[3]", "xpath:attributes"],
+        ["css=.row:nth-child(3) #input-author-orcid", "css:finder"],
+        ["xpath=(//input[@id='input-author-orcid'])[3]", "xpath:attributes"],
         ["xpath=//div[@id='group-author']/div[3]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[3]/div/div/div/input", "xpath:position"]
       ],
