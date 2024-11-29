@@ -224,7 +224,7 @@ $(document).ready(function () {
    * Clones the first contact person row, resets input fields, and appends it to the contact persons group.
    */
   $("#button-author-add").click(function () {
-    var CPGroup = $("#contactpersonsGroup");
+    var CPGroup = $("#group-contactperson");
 
     // First row to be used as a template
     var firstCPLine = CPGroup.children().first();

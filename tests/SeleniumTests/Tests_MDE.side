@@ -434,7 +434,7 @@
       "target": "css=.col-md-4:nth-child(3) .input-group-append .bi",
       "targets": [
         ["css=.col-md-4:nth-child(3) .input-group-append .bi", "css:finder"],
-        ["xpath=//div[@id='contactpersonsGroup']/div/div[3]/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contactperson']/div/div[3]/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div[3]/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -469,7 +469,7 @@
       "target": "css=.col-12:nth-child(5) .input-group-append .bi",
       "targets": [
         ["css=.col-12:nth-child(5) .input-group-append .bi", "css:finder"],
-        ["xpath=//div[@id='contactpersonsGroup']/div/div[5]/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contactperson']/div/div[5]/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[5]/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -492,7 +492,7 @@
       "target": "css=.col-12:nth-child(5) .input-group-append .bi",
       "targets": [
         ["css=.col-12:nth-child(5) .input-group-append .bi", "css:finder"],
-        ["xpath=//div[@id='contactpersonsGroup']/div/div[5]/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contactperson']/div/div[5]/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[5]/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -527,7 +527,7 @@
       "target": "css=.col-md-11:nth-child(6) .bi",
       "targets": [
         ["css=.col-md-11:nth-child(6) .bi", "css:finder"],
-        ["xpath=//div[@id='contactpersonsGroup']/div/div[6]/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contactperson']/div/div[6]/div/span/i", "xpath:idRelative"],
         ["xpath=//div[6]/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -2827,7 +2827,7 @@
         ["name=cpLastname[]", "name"],
         ["css=#input-contactperson-lastname", "css:finder"],
         ["xpath=//input[@id='input-contactperson-lastname']", "xpath:attributes"],
-        ["xpath=//div[@id='contactpersonsGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contactperson']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -2841,7 +2841,7 @@
         ["name=cpLastname[]", "name"],
         ["css=#input-contactperson-lastname", "css:finder"],
         ["xpath=//input[@id='input-contactperson-lastname']", "xpath:attributes"],
-        ["xpath=//div[@id='contactpersonsGroup']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contactperson']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
       "value": "Franz"
@@ -2855,7 +2855,7 @@
         ["name=cpFirstname[]", "name"],
         ["css=#input-contactperson-firstname", "css:finder"],
         ["xpath=//input[@id='input-contactperson-firstname']", "xpath:attributes"],
-        ["xpath=//div[@id='contactpersonsGroup']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contactperson']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "Franz"
@@ -2869,7 +2869,7 @@
         ["name=cpPosition[]", "name"],
         ["css=#input-contactperson-position", "css:finder"],
         ["xpath=//input[@id='input-contactperson-position']", "xpath:attributes"],
-        ["xpath=//div[@id='contactpersonsGroup']/div/div[3]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contactperson']/div/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/div/div/div[3]/div/div/input", "xpath:position"]
       ],
       "value": "Tester"
@@ -2883,7 +2883,7 @@
         ["name=cpEmail[]", "name"],
         ["css=#input-contactperson-email", "css:finder"],
         ["xpath=//input[@id='input-contactperson-email']", "xpath:attributes"],
-        ["xpath=//div[@id='contactpersonsGroup']/div/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contactperson']/div/div[4]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div[4]/div/div/input", "xpath:position"]
       ],
       "value": "franz@franz.de"
@@ -2897,7 +2897,7 @@
         ["name=cpOnlineResource[]", "name"],
         ["css=#input-contactperson-website", "css:finder"],
         ["xpath=//input[@id='input-contactperson-website']", "xpath:attributes"],
-        ["xpath=//div[@id='contactpersonsGroup']/div/div[5]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-contactperson']/div/div[5]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[5]/div/div/input", "xpath:position"]
       ],
       "value": "www.franz.franz"
