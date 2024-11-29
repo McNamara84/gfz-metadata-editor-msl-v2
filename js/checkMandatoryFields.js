@@ -5,7 +5,7 @@ function checkMandatoryFields() {
 
     // Role and ORCID fields (Contributing Person(s))
     var roleField = document.getElementById('inputContributorsPerRole');
-    var orcidField = document.getElementById('inputContributorORCID');
+    var orcidField = document.getElementById('input-contributor-orcid');
 
     // Organization name and role fields (Contributing Institution(s))
     var OrganisationName = document.getElementById('inputOrganisationName').value.trim();

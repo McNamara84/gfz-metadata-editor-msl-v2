@@ -314,8 +314,8 @@ $(document).ready(function () {
       .find("#inputContributorsPerRole")
       .attr("id", "inputContributorsPerRole" + uniqueSuffix);
     newContributorRow
-      .find("#inputContributorORCID")
-      .attr("id", "inputContributorORCID" + uniqueSuffix);
+      .find("#input-contributor-orcid")
+      .attr("id", "input-contributor-orcid" + uniqueSuffix);
     newContributorRow
       .find("#input-contributor-lastname")
       .attr("id", "input-contributor-lastname" + uniqueSuffix);
@@ -325,8 +325,8 @@ $(document).ready(function () {
 
     // Update the corresponding 'for' attributes in labels
     newContributorRow
-      .find("label[for='inputContributorORCID']")
-      .attr("for", "inputContributorORCID" + uniqueSuffix);
+      .find("label[for='input-contributor-orcid']")
+      .attr("for", "input-contributor-orcid" + uniqueSuffix);
     newContributorRow
       .find("label[for='input-contributor-lastname']")
       .attr("for", "input-contributor-lastname" + uniqueSuffix);

@@ -2961,7 +2961,7 @@
       "id": "b97d0992-2cd1-4aa6-8d47-b907ee59f852",
       "comment": "",
       "command": "type",
-      "target": "id=inputContributorORCID",
+      "target": "id=input-contributor-orcid",
       "targets": [
         ["id=inputContributorFirstname", "id"],
         ["name=cbPersonFirstname[]", "name"],
@@ -5096,7 +5096,7 @@
       "id": "b9a063f7-66fa-4092-9dc3-6350ff4987cb",
       "comment": "",
       "command": "click",
-      "target": "id=inputContributorORCID",
+      "target": "id=input-contributor-orcid",
       "targets": [
         ["css=.tagify__tag-text", "css:finder"],
         ["xpath=//div[@id='group-author']/div[3]/div[4]/div/tags/tag/div/span", "xpath:idRelative"],
@@ -5108,12 +5108,12 @@
       "id": "d5311660-156b-4d44-b362-b013787d1232",
       "comment": "",
       "command": "type",
-      "target": "id=inputContributorORCID",
+      "target": "id=input-contributor-orcid",
       "targets": [
-        ["id=inputContributorORCID", "id"],
+        ["id=input-contributor-orcid", "id"],
         ["name=cbORCID[]", "name"],
-        ["css=#inputContributorORCID", "css:finder"],
-        ["xpath=//input[@id='inputContributorORCID']", "xpath:attributes"],
+        ["css=#input-contributor-orcid", "css:finder"],
+        ["xpath=//input[@id='input-contributor-orcid']", "xpath:attributes"],
         ["xpath=//div[@id='group-contributor']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
@@ -5177,10 +5177,10 @@
       "id": "eb045d24-6758-44ab-b530-af13cb156daa",
       "comment": "",
       "command": "click",
-      "target": "css=.row:nth-child(2) #inputContributorORCID",
+      "target": "css=.row:nth-child(2) #input-contributor-orcid",
       "targets": [
-        ["css=.row:nth-child(2) #inputContributorORCID", "css:finder"],
-        ["xpath=(//input[@id='inputContributorORCID'])[2]", "xpath:attributes"],
+        ["css=.row:nth-child(2) #input-contributor-orcid", "css:finder"],
+        ["xpath=(//input[@id='input-contributor-orcid'])[2]", "xpath:attributes"],
         ["xpath=//div[@id='group-contributor']/div[2]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div[2]/div/div/div/input", "xpath:position"]
       ],
@@ -5189,10 +5189,10 @@
       "id": "c9b905ee-e2da-4f85-8d10-84685642537c",
       "comment": "",
       "command": "type",
-      "target": "css=.row:nth-child(2) #inputContributorORCID",
+      "target": "css=.row:nth-child(2) #input-contributor-orcid",
       "targets": [
-        ["css=.row:nth-child(2) #inputContributorORCID", "css:finder"],
-        ["xpath=(//input[@id='inputContributorORCID'])[2]", "xpath:attributes"],
+        ["css=.row:nth-child(2) #input-contributor-orcid", "css:finder"],
+        ["xpath=(//input[@id='input-contributor-orcid'])[2]", "xpath:attributes"],
         ["xpath=//div[@id='group-contributor']/div[2]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div[2]/div/div/div/input", "xpath:position"]
       ],
