@@ -2849,12 +2849,12 @@
       "id": "eab2289c-2ac8-4c08-be8e-c8a623ade05a",
       "comment": "",
       "command": "type",
-      "target": "id=inputCpFirstname",
+      "target": "id=input-contactperson-firstname",
       "targets": [
-        ["id=inputCpFirstname", "id"],
+        ["id=input-contactperson-firstname", "id"],
         ["name=cpFirstname[]", "name"],
-        ["css=#inputCpFirstname", "css:finder"],
-        ["xpath=//input[@id='inputCpFirstname']", "xpath:attributes"],
+        ["css=#input-contactperson-firstname", "css:finder"],
+        ["xpath=//input[@id='input-contactperson-firstname']", "xpath:attributes"],
         ["xpath=//div[@id='contactpersonsGroup']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
