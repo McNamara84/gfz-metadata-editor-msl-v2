@@ -2940,12 +2940,12 @@
       "id": "7743580a-7220-4f97-b616-f75a73858a78",
       "comment": "",
       "command": "type",
-      "target": "id=inputContributorFirstname",
+      "target": "id=input-contributor-firstname",
       "targets": [
-        ["id=inputContributorFirstname", "id"],
+        ["id=input-contributor-firstname", "id"],
         ["name=cbPersonFirstname[]", "name"],
-        ["css=#inputContributorFirstname", "css:finder"],
-        ["xpath=//input[@id='inputContributorFirstname']", "xpath:attributes"],
+        ["css=#input-contributor-firstname", "css:finder"],
+        ["xpath=//input[@id='input-contributor-firstname']", "xpath:attributes"],
         ["xpath=//div[@id='group-contributor']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
@@ -2963,10 +2963,10 @@
       "command": "type",
       "target": "id=input-contributor-orcid",
       "targets": [
-        ["id=inputContributorFirstname", "id"],
+        ["id=input-contributor-firstname", "id"],
         ["name=cbPersonFirstname[]", "name"],
-        ["css=#inputContributorFirstname", "css:finder"],
-        ["xpath=//input[@id='inputContributorFirstname']", "xpath:attributes"],
+        ["css=#input-contributor-firstname", "css:finder"],
+        ["xpath=//input[@id='input-contributor-firstname']", "xpath:attributes"],
         ["xpath=//div[@id='group-contributor']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
@@ -5150,12 +5150,12 @@
       "id": "4353971e-e7e4-4630-812e-75a078a051ce",
       "comment": "",
       "command": "assertValue",
-      "target": "id=inputContributorFirstname",
+      "target": "id=input-contributor-firstname",
       "targets": [
-        ["id=inputContributorFirstname", "id"],
+        ["id=input-contributor-firstname", "id"],
         ["name=cbPersonFirstname[]", "name"],
-        ["css=#inputContributorFirstname", "css:finder"],
-        ["xpath=//input[@id='inputContributorFirstname']", "xpath:attributes"],
+        ["css=#input-contributor-firstname", "css:finder"],
+        ["xpath=//input[@id='input-contributor-firstname']", "xpath:attributes"],
         ["xpath=//div[@id='group-contributor']/div/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div[3]/div/div/input", "xpath:position"]
       ],
@@ -5237,10 +5237,10 @@
       "id": "edbedb2a-798a-4484-aea7-2c2a9dfefe68",
       "comment": "",
       "command": "click",
-      "target": "css=.row:nth-child(2) #inputContributorFirstname",
+      "target": "css=.row:nth-child(2) #input-contributor-firstname",
       "targets": [
-        ["css=.row:nth-child(2) #inputContributorFirstname", "css:finder"],
-        ["xpath=(//input[@id='inputContributorFirstname'])[2]", "xpath:attributes"],
+        ["css=.row:nth-child(2) #input-contributor-firstname", "css:finder"],
+        ["xpath=(//input[@id='input-contributor-firstname'])[2]", "xpath:attributes"],
         ["xpath=//div[@id='group-contributor']/div[2]/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div[2]/div[3]/div/div/input", "xpath:position"]
       ],
@@ -5249,10 +5249,10 @@
       "id": "6b47a93c-862b-4a4b-8402-ec30d01dc1d9",
       "comment": "",
       "command": "assertValue",
-      "target": "css=.row:nth-child(2) #inputContributorFirstname",
+      "target": "css=.row:nth-child(2) #input-contributor-firstname",
       "targets": [
-        ["css=.row:nth-child(2) #inputContributorFirstname", "css:finder"],
-        ["xpath=(//input[@id='inputContributorFirstname'])[2]", "xpath:attributes"],
+        ["css=.row:nth-child(2) #input-contributor-firstname", "css:finder"],
+        ["xpath=(//input[@id='input-contributor-firstname'])[2]", "xpath:attributes"],
         ["xpath=//div[@id='group-contributor']/div[2]/div[3]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div[2]/div[3]/div/div/input", "xpath:position"]
       ],

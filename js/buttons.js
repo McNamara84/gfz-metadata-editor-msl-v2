@@ -320,8 +320,8 @@ $(document).ready(function () {
       .find("#input-contributor-lastname")
       .attr("id", "input-contributor-lastname" + uniqueSuffix);
     newContributorRow
-      .find("#inputContributorFirstname")
-      .attr("id", "inputContributorFirstname" + uniqueSuffix);
+      .find("#input-contributor-firstname")
+      .attr("id", "input-contributor-firstname" + uniqueSuffix);
 
     // Update the corresponding 'for' attributes in labels
     newContributorRow
@@ -331,8 +331,8 @@ $(document).ready(function () {
       .find("label[for='input-contributor-lastname']")
       .attr("for", "input-contributor-lastname" + uniqueSuffix);
     newContributorRow
-      .find("label[for='inputContributorFirstname']")
-      .attr("for", "inputContributorFirstname" + uniqueSuffix);
+      .find("label[for='input-contributor-firstname']")
+      .attr("for", "input-contributor-firstname" + uniqueSuffix);
 
     // Replace the add button with the remove button
     newContributorRow.find(".addContributorPerson").replaceWith(removeButton);
