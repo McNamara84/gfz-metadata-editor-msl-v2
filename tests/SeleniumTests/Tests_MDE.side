@@ -2877,12 +2877,12 @@
       "id": "b4658b30-1927-46ff-a2a7-bd5104427ac7",
       "comment": "",
       "command": "type",
-      "target": "id=inputEmail",
+      "target": "id=input-contactperson-email",
       "targets": [
-        ["id=inputEmail", "id"],
+        ["id=input-contactperson-email", "id"],
         ["name=cpEmail[]", "name"],
-        ["css=#inputEmail", "css:finder"],
-        ["xpath=//input[@id='inputEmail']", "xpath:attributes"],
+        ["css=#input-contactperson-email", "css:finder"],
+        ["xpath=//input[@id='input-contactperson-email']", "xpath:attributes"],
         ["xpath=//div[@id='contactpersonsGroup']/div/div[4]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div[4]/div/div/input", "xpath:position"]
       ],
