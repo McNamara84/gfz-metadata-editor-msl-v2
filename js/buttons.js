@@ -270,7 +270,7 @@ $(document).ready(function () {
  * updates IDs and labels to ensure uniqueness,
  * and appends it to the contributors group.
  */
-  $("#addContributorPerson").click(function () {
+  $("#button-contributor-addperson").click(function () {
     /**
      * The contributors group where new contributor person rows are appended.
      * @type {jQuery}

@@ -5164,11 +5164,11 @@
       "id": "f1ccecae-c47f-4998-bdad-0f07d95c8b3c",
       "comment": "",
       "command": "click",
-      "target": "id=addContributorPerson",
+      "target": "id=button-contributor-addperson",
       "targets": [
-        ["id=addContributorPerson", "id"],
-        ["css=#addContributorPerson", "css:finder"],
-        ["xpath=//button[@id='addContributorPerson']", "xpath:attributes"],
+        ["id=button-contributor-addperson", "id"],
+        ["css=#button-contributor-addperson", "css:finder"],
+        ["xpath=//button[@id='button-contributor-addperson']", "xpath:attributes"],
         ["xpath=//div[@id='group-contributor']/div/div[6]/button", "xpath:idRelative"],
         ["xpath=//div[6]/button", "xpath:position"]
       ],
