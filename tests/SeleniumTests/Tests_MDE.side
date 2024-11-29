@@ -2905,7 +2905,7 @@
       "id": "130a765f-e273-48bf-bc3f-274f054e1114",
       "comment": "",
       "command": "executeScript",
-      "target": "document.querySelector('#inputCPAffiliation').value = 'GFZ';",
+      "target": "document.querySelector('#input-contactperson-affiliation').value = 'GFZ';",
       "targets": [],
       "value": "30000"
     }, {
