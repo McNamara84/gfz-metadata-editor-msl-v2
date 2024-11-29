@@ -948,7 +948,7 @@
       "targets": [
         ["css=.accordion-item:nth-child(2) .accordion-button", "css:finder"],
         ["xpath=(//button[@type='button'])[13]", "xpath:attributes"],
-        ["xpath=//div[@id='accordionDescriptions']/div[2]/h2/button", "xpath:idRelative"],
+        ["xpath=//div[@id='accordion-description']/div[2]/h2/button", "xpath:idRelative"],
         ["xpath=//div[2]/h2/button", "xpath:position"],
         ["xpath=//button[contains(.,'Methods')]", "xpath:innerText"]
       ],
@@ -1008,7 +1008,7 @@
       "targets": [
         ["css=.accordion-item:nth-child(3) .accordion-button", "css:finder"],
         ["xpath=(//button[@type='button'])[14]", "xpath:attributes"],
-        ["xpath=//div[@id='accordionDescriptions']/div[3]/h2/button", "xpath:idRelative"],
+        ["xpath=//div[@id='accordion-description']/div[3]/h2/button", "xpath:idRelative"],
         ["xpath=//div[3]/h2/button", "xpath:position"],
         ["xpath=//button[contains(.,'Technical Information')]", "xpath:innerText"]
       ],
@@ -1068,7 +1068,7 @@
       "targets": [
         ["css=.accordion-item:nth-child(4) .accordion-button", "css:finder"],
         ["xpath=(//button[@type='button'])[15]", "xpath:attributes"],
-        ["xpath=//div[@id='accordionDescriptions']/div[4]/h2/button", "xpath:idRelative"],
+        ["xpath=//div[@id='accordion-description']/div[4]/h2/button", "xpath:idRelative"],
         ["xpath=//div[4]/h2/button", "xpath:position"],
         ["xpath=//button[contains(.,'Other')]", "xpath:innerText"]
       ],
@@ -3056,7 +3056,7 @@
       "targets": [
         ["css=.accordion-item:nth-child(2) .accordion-button", "css:finder"],
         ["xpath=(//button[@type='button'])[14]", "xpath:attributes"],
-        ["xpath=//div[@id='accordionDescriptions']/div[2]/h2/button", "xpath:idRelative"],
+        ["xpath=//div[@id='accordion-description']/div[2]/h2/button", "xpath:idRelative"],
         ["xpath=//div[2]/h2/button", "xpath:position"],
         ["xpath=//button[contains(.,'Methods')]", "xpath:innerText"]
       ],
@@ -3083,7 +3083,7 @@
       "targets": [
         ["css=.accordion-item:nth-child(3) .accordion-button", "css:finder"],
         ["xpath=(//button[@type='button'])[15]", "xpath:attributes"],
-        ["xpath=//div[@id='accordionDescriptions']/div[3]/h2/button", "xpath:idRelative"],
+        ["xpath=//div[@id='accordion-description']/div[3]/h2/button", "xpath:idRelative"],
         ["xpath=//div[3]/h2/button", "xpath:position"],
         ["xpath=//button[contains(.,'Technical Information')]", "xpath:innerText"]
       ],
@@ -3124,7 +3124,7 @@
       "targets": [
         ["css=.accordion-item:nth-child(4) .accordion-button", "css:finder"],
         ["xpath=(//button[@type='button'])[16]", "xpath:attributes"],
-        ["xpath=//div[@id='accordionDescriptions']/div[4]/h2/button", "xpath:idRelative"],
+        ["xpath=//div[@id='accordion-description']/div[4]/h2/button", "xpath:idRelative"],
         ["xpath=//div[4]/h2/button", "xpath:position"],
         ["xpath=//button[contains(.,'Other')]", "xpath:innerText"]
       ],
