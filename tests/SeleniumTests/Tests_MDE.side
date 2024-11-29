@@ -2975,7 +2975,7 @@
       "id": "2344142f-9834-4acb-8a55-695e61e18bf2",
       "comment": "",
       "command": "executeScript",
-      "target": "document.querySelector('#input-contributor-affiliation').value=\"GFZ\"",
+      "target": "document.querySelector('#input-contributor-personaffiliation').value=\"GFZ\"",
       "targets": [],
       "value": ""
     }, {
