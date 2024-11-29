@@ -3017,7 +3017,7 @@
       "id": "67fdada9-ee51-4935-9ac2-7daf80907a2a",
       "comment": "",
       "command": "executeScript",
-      "target": "document.querySelector('#inputOrganisationAffiliation').value=\"GFZ\"",
+      "target": "document.querySelector('#input-contributor-organisationaffiliation').value=\"GFZ\"",
       "targets": [],
       "value": ""
     }, {
