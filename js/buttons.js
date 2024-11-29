@@ -254,7 +254,8 @@ $(document).ready(function () {
     // Apply autocomplete to the Affiliation field
     autocompleteAffiliations(
       "input-contactperson-affiliation" + uniqueSuffix,
-      "hiddenCPRorId" + uniqueSuffix
+      "hiddenCPRorId" + uniqueSuffix,
+      affiliationsData
     );
 
     // Event handler for the remove button
