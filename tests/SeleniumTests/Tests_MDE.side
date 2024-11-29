@@ -2912,12 +2912,12 @@
       "id": "fb36480b-5016-461d-bdb3-87b8c5d9717b",
       "comment": "",
       "command": "click",
-      "target": "id=inputContributorLastname",
+      "target": "id=input-contributor-lastname",
       "targets": [
-        ["id=inputContributorLastname", "id"],
+        ["id=input-contributor-lastname", "id"],
         ["name=cbPersonLastname[]", "name"],
-        ["css=#inputContributorLastname", "css:finder"],
-        ["xpath=//input[@id='inputContributorLastname']", "xpath:attributes"],
+        ["css=#input-contributor-lastname", "css:finder"],
+        ["xpath=//input[@id='input-contributor-lastname']", "xpath:attributes"],
         ["xpath=//div[@id='group-contributor']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
@@ -2926,12 +2926,12 @@
       "id": "e0446104-cb50-4ea9-a829-05ec3dc444fa",
       "comment": "",
       "command": "type",
-      "target": "id=inputContributorLastname",
+      "target": "id=input-contributor-lastname",
       "targets": [
-        ["id=inputContributorLastname", "id"],
+        ["id=input-contributor-lastname", "id"],
         ["name=cbPersonLastname[]", "name"],
-        ["css=#inputContributorLastname", "css:finder"],
-        ["xpath=//input[@id='inputContributorLastname']", "xpath:attributes"],
+        ["css=#input-contributor-lastname", "css:finder"],
+        ["xpath=//input[@id='input-contributor-lastname']", "xpath:attributes"],
         ["xpath=//div[@id='group-contributor']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div/div/div/input", "xpath:position"]
       ],
@@ -5122,12 +5122,12 @@
       "id": "3405c2b0-3831-4824-a775-d443ada810b5",
       "comment": "",
       "command": "click",
-      "target": "id=inputContributorLastname",
+      "target": "id=input-contributor-lastname",
       "targets": [
-        ["id=inputContributorLastname", "id"],
+        ["id=input-contributor-lastname", "id"],
         ["name=cbPersonLastname[]", "name"],
-        ["css=#inputContributorLastname", "css:finder"],
-        ["xpath=//input[@id='inputContributorLastname']", "xpath:attributes"],
+        ["css=#input-contributor-lastname", "css:finder"],
+        ["xpath=//input[@id='input-contributor-lastname']", "xpath:attributes"],
         ["xpath=//div[@id='group-contributor']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
@@ -5136,14 +5136,14 @@
       "id": "f23c9fd2-9f90-41fd-b7ac-3ffb8766d117",
       "comment": "",
       "command": "waitForElementPresent",
-      "target": "id=inputContributorLastname",
+      "target": "id=input-contributor-lastname",
       "targets": [],
       "value": "50000"
     }, {
       "id": "45126cf7-0426-4fe4-ad03-dfe2310c5d08",
       "comment": "",
       "command": "//assertValue",
-      "target": "id=inputContributorLastname",
+      "target": "id=input-contributor-lastname",
       "targets": [],
       "value": "Managuli"
     }, {
@@ -5201,10 +5201,10 @@
       "id": "97d37141-ad32-4d53-8c72-7e6083c163b9",
       "comment": "",
       "command": "click",
-      "target": "css=.row:nth-child(2) #inputContributorLastname",
+      "target": "css=.row:nth-child(2) #input-contributor-lastname",
       "targets": [
-        ["css=.row:nth-child(2) #inputContributorLastname", "css:finder"],
-        ["xpath=(//input[@id='inputContributorLastname'])[2]", "xpath:attributes"],
+        ["css=.row:nth-child(2) #input-contributor-lastname", "css:finder"],
+        ["xpath=(//input[@id='input-contributor-lastname'])[2]", "xpath:attributes"],
         ["xpath=//div[@id='group-contributor']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div[2]/div[2]/div/div/input", "xpath:position"]
       ],
@@ -5213,10 +5213,10 @@
       "id": "76b4ec7c-0c70-42ad-ae96-c7df10ba257e",
       "comment": "",
       "command": "waitForElementPresent",
-      "target": "css=.row:nth-child(2) #inputContributorLastname",
+      "target": "css=.row:nth-child(2) #input-contributor-lastname",
       "targets": [
-        ["css=.row:nth-child(2) #inputContributorLastname", "css:finder"],
-        ["xpath=(//input[@id='inputContributorLastname'])[2]", "xpath:attributes"],
+        ["css=.row:nth-child(2) #input-contributor-lastname", "css:finder"],
+        ["xpath=(//input[@id='input-contributor-lastname'])[2]", "xpath:attributes"],
         ["xpath=//div[@id='group-contributor']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div[2]/div[2]/div/div/input", "xpath:position"]
       ],
@@ -5225,10 +5225,10 @@
       "id": "78beb1d8-3619-4761-8dfa-8699d7098e2e",
       "comment": "",
       "command": "assertValue",
-      "target": "css=.row:nth-child(2) #inputContributorLastname",
+      "target": "css=.row:nth-child(2) #input-contributor-lastname",
       "targets": [
-        ["css=.row:nth-child(2) #inputContributorLastname", "css:finder"],
-        ["xpath=(//input[@id='inputContributorLastname'])[2]", "xpath:attributes"],
+        ["css=.row:nth-child(2) #input-contributor-lastname", "css:finder"],
+        ["xpath=(//input[@id='input-contributor-lastname'])[2]", "xpath:attributes"],
         ["xpath=//div[@id='group-contributor']/div[2]/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[6]/div[2]/div/div[2]/div[2]/div/div/input", "xpath:position"]
       ],

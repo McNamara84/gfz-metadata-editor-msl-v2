@@ -1,7 +1,7 @@
 function checkMandatoryFields() {
     // First name and last name fields (Contributing Person(s))
     var firstname = document.getElementById('inputContributorFirstname').value.trim();
-    var lastname = document.getElementById('inputContributorLastname').value.trim();
+    var lastname = document.getElementById('input-contributor-lastname').value.trim();
 
     // Role and ORCID fields (Contributing Person(s))
     var roleField = document.getElementById('inputContributorsPerRole');

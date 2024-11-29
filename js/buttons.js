@@ -316,8 +316,8 @@ $(document).ready(function () {
       .find("#inputContributorORCID")
       .attr("id", "inputContributorORCID" + uniqueSuffix);
     newContributorRow
-      .find("#inputContributorLastname")
-      .attr("id", "inputContributorLastname" + uniqueSuffix);
+      .find("#input-contributor-lastname")
+      .attr("id", "input-contributor-lastname" + uniqueSuffix);
     newContributorRow
       .find("#inputContributorFirstname")
       .attr("id", "inputContributorFirstname" + uniqueSuffix);
@@ -327,8 +327,8 @@ $(document).ready(function () {
       .find("label[for='inputContributorORCID']")
       .attr("for", "inputContributorORCID" + uniqueSuffix);
     newContributorRow
-      .find("label[for='inputContributorLastname']")
-      .attr("for", "inputContributorLastname" + uniqueSuffix);
+      .find("label[for='input-contributor-lastname']")
+      .attr("for", "input-contributor-lastname" + uniqueSuffix);
     newContributorRow
       .find("label[for='inputContributorFirstname']")
       .attr("for", "inputContributorFirstname" + uniqueSuffix);
