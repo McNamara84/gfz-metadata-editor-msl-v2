@@ -43,7 +43,7 @@ $(document).ready(function () {
       $("#inputRights").empty().append(allOptions.clone());
     }
   });
-  setupAutocomplete("#inputAuthorAffiliation", "#hiddenAuthorRorId");
+  setupAutocomplete("#input-author-affiliation", "#hiddenAuthorRorId");
   setupAutocomplete("#inputCPAffiliation", "#hiddenCPRorId");
 });
 
@@ -77,7 +77,7 @@ function isCurrentAffiliation(affiliation) {
  * //   <input name="orcids[]" pattern="^[0-9]{4}-[0-9]{4}-[0-9]{4}-([0-9]{4}|[0-9]{3}X)$" />
  * //   <input name="familynames[]" />
  * //   <input name="givennames[]" />
- * //   <input id="inputAuthorAffiliation" /> // Tagify field
+ * //   <input id="input-author-affiliation" /> // Tagify field
  * //   <input id="hiddenAuthorRorId" />
  * // </div>
  */
@@ -141,7 +141,7 @@ $('#group-author').on('blur', 'input[name="orcids[]"]', function () {
         console.log('Collected ROR IDs:', Array.from(rorIds));
 
         // Set Tagify tags
-        const affiliationInput = row.find('input[id^="inputAuthorAffiliation"]')[0];
+        const affiliationInput = row.find('input[id^="input-author-affiliation"]')[0];
         if (affiliationInput.tagify) {
           affiliationInput.tagify.removeAllTags();
           if (affiliationObjects.length > 0) {

@@ -190,8 +190,8 @@ $(document).ready(function () {
     // Generate unique IDs for cloned input elements
     var uniqueSuffix = new Date().getTime();
     newAuthorRow
-      .find("#inputAuthorAffiliation")
-      .attr("id", "inputAuthorAffiliation" + uniqueSuffix);
+      .find("#input-author-affiliation")
+      .attr("id", "input-author-affiliation" + uniqueSuffix);
     newAuthorRow.find("#hiddenAuthorRorId").attr("id", "hiddenAuthorRorId" + uniqueSuffix);
 
     // Remove old Tagify elements (will be re-initialized in autocompleteAffiliation)
@@ -208,7 +208,7 @@ $(document).ready(function () {
 
     // Apply Tagify to the new Author Affiliations field
     autocompleteAffiliations(
-      "inputAuthorAffiliation" + uniqueSuffix,
+      "input-author-affiliation" + uniqueSuffix,
       "hiddenAuthorRorId" + uniqueSuffix,
       affiliationsData
     );

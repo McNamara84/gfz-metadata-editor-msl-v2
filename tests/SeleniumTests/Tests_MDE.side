@@ -2814,7 +2814,7 @@
       "id": "1a4dcdf7-9e88-4e83-b13b-a7fbd3f63acb",
       "comment": "",
       "command": "executeScript",
-      "target": "document.querySelector('#inputAuthorAffiliation').value = 'FH Potsdam';",
+      "target": "document.querySelector('#input-author-affiliation').value = 'FH Potsdam';",
       "targets": [],
       "value": "30000"
     }, {
