@@ -1418,7 +1418,7 @@
       "target": "css=.row > .input-group .bi",
       "targets": [
         ["css=.row > .input-group .bi", "css:finder"],
-        ["xpath=//div[@id='freekeywordsGroup']/div/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-freekeyword']/div/div/span/i", "xpath:idRelative"],
         ["xpath=//div[12]/div[2]/div/div/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -3318,7 +3318,7 @@
       "target": "css=.customLook > .tagify__input",
       "targets": [
         ["css=.customLook > .tagify__input", "css:finder"],
-        ["xpath=//div[@id='freekeywordsGroup']/div/div/tags/span", "xpath:idRelative"],
+        ["xpath=//div[@id='group-freekeyword']/div/div/tags/span", "xpath:idRelative"],
         ["xpath=//div[12]/div[2]/div/div/div/tags/span", "xpath:position"]
       ],
       "value": ""
