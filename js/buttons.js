@@ -305,8 +305,8 @@ $(document).ready(function () {
 
     // Update the IDs of input fields to ensure uniqueness
     newContributorRow
-      .find("#inputContributorAffiliation")
-      .attr("id", "inputContributorAffiliation" + uniqueSuffix);
+      .find("#input-contributor-affiliation")
+      .attr("id", "input-contributor-affiliation" + uniqueSuffix);
     newContributorRow
       .find("#hiddenContributorRorId")
       .attr("id", "hiddenContributorRorId" + uniqueSuffix);
@@ -342,7 +342,7 @@ $(document).ready(function () {
 
     // Apply Tagify to the new Contributor Affiliations field
     autocompleteAffiliations(
-      "inputContributorAffiliation" + uniqueSuffix,
+      "input-contributor-affiliation" + uniqueSuffix,
       "hiddenContributorRorId" + uniqueSuffix,
       affiliationsData
     );

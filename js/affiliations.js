@@ -12,7 +12,7 @@ $.getJSON("json/affiliations.json", function (data) {
   $(document).ready(function () {
     autocompleteAffiliations("input-author-affiliation", "input-author-rorid", affiliationsData);
     autocompleteAffiliations("input-contactperson-affiliation", "input-contactperson-rorid", affiliationsData);
-    autocompleteAffiliations("inputContributorAffiliation", "hiddenContributorRorId", affiliationsData);
+    autocompleteAffiliations("input-contributor-affiliation", "hiddenContributorRorId", affiliationsData);
     autocompleteAffiliations("inputOrganisationAffiliation", "hiddenOrganisationRorId", affiliationsData);
   });
 });
@@ -98,7 +98,7 @@ function autocompleteAffiliations(inputFieldId, hiddenFieldId, data) {
   });
 
   // Remove all tags if the input field is not among the known fields
-  if (!["input-author-affiliation", "input-contactperson-affiliation", "inputContributorAffiliation", "inputOrganisationAffiliation"].includes(inputFieldId)) {
+  if (!["input-author-affiliation", "input-contactperson-affiliation", "input-contributor-affiliation", "inputOrganisationAffiliation"].includes(inputFieldId)) {
     tagify.removeAllTags();
   }
 

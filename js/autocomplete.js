@@ -180,7 +180,7 @@ $('#group-author').on('blur', 'input[name="orcids[]"]', function () {
  * // <input name="cbORCID[]" pattern="^[0-9]{4}-[0-9]{4}-[0-9]{4}-([0-9]{4}|[0-9]{3}X)$" />
  * // <input name="cbPersonLastname[]" />
  * // <input name="cbPersonFirstname[]" />
- * // <input id="inputContributorAffiliation" /> // Tagify field
+ * // <input id="input-contributor-affiliation" /> // Tagify field
  * // <input id="hiddenContributorRorId" />
  */
 $('#group-contributor').on('blur', 'input[name="cbORCID[]"]', function () {
@@ -241,7 +241,7 @@ $('#group-contributor').on('blur', 'input[name="cbORCID[]"]', function () {
         const affiliationObjects = Array.from(affiliationSet).map(name => ({ value: name }));
 
         // Set Tagify tags
-        const affiliationInput = row.find('input[id^="inputContributorAffiliation"]')[0];
+        const affiliationInput = row.find('input[id^="input-contributor-affiliation"]')[0];
         if (affiliationInput.tagify) {
           affiliationInput.tagify.removeAllTags();
           if (affiliationObjects.length > 0) {
