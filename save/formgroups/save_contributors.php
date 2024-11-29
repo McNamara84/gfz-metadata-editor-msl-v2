@@ -189,6 +189,10 @@ function saveContributorPersonAffiliation($connection, $contributor_person_id, $
  */
 function saveContributorPersonRoles($connection, $contributor_person_id, $roles, $valid_roles)
 {
+
+        // JSON-decoding
+        $roles = json_decode($roles, true);
+
     if (!is_array($roles)) {
         $roles = [$roles];
     }
@@ -199,9 +203,9 @@ function saveContributorPersonRoles($connection, $contributor_person_id, $roles,
     $stmt->execute();
     $stmt->close();
 
-    foreach ($roles as $role_name) {
-        error_log("Processing role: $role_name");
-        if (isset($valid_roles[$role_name])) {
+    foreach ($roles as $role) {
+        $role_name = $role['value'] ?? null; // Extract the value
+        if ($role_name && isset($valid_roles[$role_name])) {
             $role_id = $valid_roles[$role_name];
             error_log("Valid role found. Role ID: $role_id");
             $stmt = $connection->prepare("INSERT INTO Contributor_Person_has_Role (Contributor_Person_contributor_person_id, Role_role_id) VALUES (?, ?)");
@@ -348,6 +352,9 @@ function saveContributorInstitutionAffiliation($connection, $contributor_institu
  */
 function saveContributorInstitutionRoles($connection, $contributor_institution_id, $roles, $valid_roles)
 {
+    // JSON-decoding
+    $roles = json_decode($roles, true);
+
     if (!is_array($roles)) {
         $roles = [$roles];
     }
@@ -357,8 +364,9 @@ function saveContributorInstitutionRoles($connection, $contributor_institution_i
     $stmt->execute();
     $stmt->close();
 
-    foreach ($roles as $role_name) {
-        if (isset($valid_roles[$role_name])) {
+    foreach ($roles as $role) {
+        $role_name = $role['value'] ?? null; // Extract the value
+        if ($role_name && isset($valid_roles[$role_name])) {
             $role_id = $valid_roles[$role_name];
             $stmt = $connection->prepare("INSERT INTO Contributor_Institution_has_Role (Contributor_Institution_contributor_institution_id, Role_role_id) VALUES (?, ?)");
             $stmt->bind_param("ii", $contributor_institution_id, $role_id);
