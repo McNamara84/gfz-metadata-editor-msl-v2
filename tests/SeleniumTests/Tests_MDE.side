@@ -2982,12 +2982,12 @@
       "id": "449c8eba-d0e2-4e2a-bcd3-dbef025698ec",
       "comment": "",
       "command": "click",
-      "target": "id=inputOrganisationName",
+      "target": "id=input-contributor-name",
       "targets": [
-        ["id=inputOrganisationName", "id"],
+        ["id=input-contributor-name", "id"],
         ["name=cbOrganisationName[]", "name"],
-        ["css=#inputOrganisationName", "css:finder"],
-        ["xpath=//input[@id='inputOrganisationName']", "xpath:attributes"],
+        ["css=#input-contributor-name", "css:finder"],
+        ["xpath=//input[@id='input-contributor-name']", "xpath:attributes"],
         ["xpath=//div[@id='group-contributororganisation']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/div/div/input", "xpath:position"]
       ],
@@ -2996,12 +2996,12 @@
       "id": "7bcb022e-2fbc-46aa-b670-95fd6a8aaed2",
       "comment": "",
       "command": "type",
-      "target": "id=inputOrganisationName",
+      "target": "id=input-contributor-name",
       "targets": [
-        ["id=inputOrganisationName", "id"],
+        ["id=input-contributor-name", "id"],
         ["name=cbOrganisationName[]", "name"],
-        ["css=#inputOrganisationName", "css:finder"],
-        ["xpath=//input[@id='inputOrganisationName']", "xpath:attributes"],
+        ["css=#input-contributor-name", "css:finder"],
+        ["xpath=//input[@id='input-contributor-name']", "xpath:attributes"],
         ["xpath=//div[@id='group-contributororganisation']/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/div/div/input", "xpath:position"]
       ],

@@ -407,13 +407,13 @@ $(document).ready(function () {
       .find("#inputContributorOrgaRole")
       .attr("id", "inputContributorOrgaRole" + uniqueSuffix);
     newContributorRow
-      .find("#inputOrganisationName")
-      .attr("id", "inputOrganisationName" + uniqueSuffix);
+      .find("#input-contributor-name")
+      .attr("id", "input-contributor-name" + uniqueSuffix);
 
     // Update the corresponding 'for' attributes in labels
     newContributorRow
-      .find("label[for='inputOrganisationName']")
-      .attr("for", "inputOrganisationName" + uniqueSuffix);
+      .find("label[for='input-contributor-name']")
+      .attr("for", "input-contributor-name" + uniqueSuffix);
 
     // Replace the add button with the remove button
     newContributorRow.find(".addContributor").replaceWith(removeButton);

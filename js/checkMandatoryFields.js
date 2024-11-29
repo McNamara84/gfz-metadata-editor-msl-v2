@@ -8,7 +8,7 @@ function checkMandatoryFields() {
     var orcidField = document.getElementById('input-contributor-orcid');
 
     // Organization name and role fields (Contributing Institution(s))
-    var OrganisationName = document.getElementById('inputOrganisationName').value.trim();
+    var OrganisationName = document.getElementById('input-contributor-name').value.trim();
     var institutionRoleField = document.getElementById('inputContributorOrgaRole');
 
     // Check if first name or last name(Contributing Person(s)) is filled
