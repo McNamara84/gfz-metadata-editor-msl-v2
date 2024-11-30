@@ -191,7 +191,7 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
  *
  * @return array The parsed data as an array.
  */
-function parseAffiliationData($data)
+/*function parseAffiliationData($data)
 {
     if (empty($data)) {
         return [];
@@ -210,4 +210,4 @@ function parseAffiliationData($data)
     } else {
         return [trim($data)];
     }
-}
+}*/
