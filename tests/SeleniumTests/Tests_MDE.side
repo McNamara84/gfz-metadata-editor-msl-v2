@@ -574,7 +574,7 @@
       "target": "css=.input-group-text:nth-child(4) > .bi",
       "targets": [
         ["css=.input-group-text:nth-child(4) > .bi", "css:finder"],
-        ["xpath=//div[@id='laboratoryGroup']/div/div/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-originatinglaboratory']/div/div/div/span/i", "xpath:idRelative"],
         ["xpath=//div[5]/div[2]/div/div/div/div/span/i", "xpath:position"]
       ],
       "value": ""

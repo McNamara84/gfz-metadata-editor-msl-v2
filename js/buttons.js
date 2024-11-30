@@ -603,7 +603,7 @@ $(document).ready(function () {
   // Load lab data from JSON and initialize Tagify on the first laboratory row
   $.getJSON("json/msl-labs.json", function (data) {
     labData = data;
-    var firstRow = $("#laboratoryGroup .row").first();
+    var firstRow = $("#group-originatinglaboratory .row").first();
     initializeTagify(firstRow, data);
   });
 
@@ -613,8 +613,8 @@ $(document).ready(function () {
    * Event handler for the "Add Laboratory" button click.
    * Clones the first laboratory row, resets input fields, updates IDs, and appends it to the laboratory group.
    */
-  $("#addLaboratory").click(function () {
-    var laboratoryGroup = $("#laboratoryGroup");
+  $("#button-originatinglaboratory-add").click(function () {
+    var laboratoryGroup = $("#group-originatinglaboratory");
     var firstOriginatingLaboratoryLine = laboratoryGroup.children().first();
 
     var newOriginatingLaboratoryRow = firstOriginatingLaboratoryLine.clone();
