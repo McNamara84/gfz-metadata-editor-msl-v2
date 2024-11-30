@@ -535,8 +535,8 @@ $(document).ready(function () {
    * Event handler for the "Add Related Work" button click.
    * Clones the first related work row, resets input fields, and appends it to the related work group.
    */
-  $("#addRelatedWork").click(function () {
-    var relatedworkGroup = $("#relatedworkGroup");
+  $("#button-relatedwork-add").click(function () {
+    var relatedworkGroup = $("#group-relatedwork");
     // First row used as a template
     var firstRelatedWorkLine = relatedworkGroup.children().first();
 
@@ -551,7 +551,7 @@ $(document).ready(function () {
     deleteHelpButtonFromClonedRows(newRelatedWorkRow);
 
     // Replace the add button with the remove button
-    newRelatedWorkRow.find("#addRelatedWork").replaceWith(removeButton);
+    newRelatedWorkRow.find("#button-relatedwork-add").replaceWith(removeButton);
 
     // Append the new related work row to the DOM
     relatedworkGroup.append(newRelatedWorkRow);

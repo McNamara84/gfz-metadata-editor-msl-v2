@@ -1847,7 +1847,7 @@
       "target": "css=.col-lg-3:nth-child(1) .input-group-append .bi",
       "targets": [
         ["css=.col-lg-3:nth-child(1) .input-group-append .bi", "css:finder"],
-        ["xpath=//div[@id='relatedworkGroup']/div/div/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-relatedwork']/div/div/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[15]/div[2]/div/div/div/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -1893,7 +1893,7 @@
       "target": "css=.col:nth-child(2) .input-group-append .bi",
       "targets": [
         ["css=.col:nth-child(2) .input-group-append .bi", "css:finder"],
-        ["xpath=//div[@id='relatedworkGroup']/div/div[2]/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-relatedwork']/div/div[2]/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div[2]/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -1939,7 +1939,7 @@
       "target": "css=.col-sm-6:nth-child(3) .bi",
       "targets": [
         ["css=.col-sm-6:nth-child(3) .bi", "css:finder"],
-        ["xpath=//div[@id='relatedworkGroup']/div/div[3]/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-relatedwork']/div/div[3]/div/span/i", "xpath:idRelative"],
         ["xpath=//div[15]/div[2]/div/div/div[3]/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -3683,13 +3683,13 @@
       "id": "7d3aa173-5499-4bb8-b85d-ad6977473137",
       "comment": "",
       "command": "click",
-      "target": "id=inputRelation",
+      "target": "id=input-relatedwork-relation",
       "targets": [
-        ["id=inputRelation", "id"],
+        ["id=input-relatedwork-relation", "id"],
         ["name=relation[]", "name"],
-        ["css=#inputRelation", "css:finder"],
-        ["xpath=//select[@id='inputRelation']", "xpath:attributes"],
-        ["xpath=//div[@id='relatedworkGroup']/div/div/div/div/select", "xpath:idRelative"],
+        ["css=#input-relatedwork-relation", "css:finder"],
+        ["xpath=//select[@id='input-relatedwork-relation']", "xpath:attributes"],
+        ["xpath=//div[@id='group-relatedwork']/div/div/div/div/select", "xpath:idRelative"],
         ["xpath=//div[15]/div[2]/div/div/div/div/div/select", "xpath:position"]
       ],
       "value": ""
@@ -3697,18 +3697,18 @@
       "id": "4b53d2c2-f130-4d50-bb05-d243c666f4fa",
       "comment": "",
       "command": "select",
-      "target": "id=inputRelation",
+      "target": "id=input-relatedwork-relation",
       "targets": [],
       "value": "label=IsCitedBy"
     }, {
       "id": "cf31f180-3090-4cdc-9717-34d7e2331da6",
       "comment": "",
       "command": "click",
-      "target": "css=#inputRelation > option:nth-child(11)",
+      "target": "css=#input-relatedwork-relation > option:nth-child(11)",
       "targets": [
-        ["css=#inputRelation > option:nth-child(11)", "css:finder"],
+        ["css=#input-relatedwork-relation > option:nth-child(11)", "css:finder"],
         ["xpath=(//option[@value='1'])[29]", "xpath:attributes"],
-        ["xpath=//select[@id='inputRelation']/option[11]", "xpath:idRelative"],
+        ["xpath=//select[@id='input-relatedwork-relation']/option[11]", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/select/option[11]", "xpath:position"],
         ["xpath=//option[contains(.,'IsCitedBy')]", "xpath:innerText"]
       ],
@@ -3717,13 +3717,13 @@
       "id": "1e33c2e1-c816-4594-91a9-6882615caabb",
       "comment": "",
       "command": "click",
-      "target": "id=inputRIdentifier",
+      "target": "id=input-relatedwork-identifier",
       "targets": [
-        ["id=inputRIdentifier", "id"],
+        ["id=input-relatedwork-identifier", "id"],
         ["name=rIdentifier[]", "name"],
-        ["css=#inputRIdentifier", "css:finder"],
-        ["xpath=//input[@id='inputRIdentifier']", "xpath:attributes"],
-        ["xpath=//div[@id='relatedworkGroup']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["css=#input-relatedwork-identifier", "css:finder"],
+        ["xpath=//input[@id='input-relatedwork-identifier']", "xpath:attributes"],
+        ["xpath=//div[@id='group-relatedwork']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[15]/div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -3731,13 +3731,13 @@
       "id": "cb6a3c14-325b-465f-b5fb-359f69b447ad",
       "comment": "",
       "command": "type",
-      "target": "id=inputRIdentifier",
+      "target": "id=input-relatedwork-identifier",
       "targets": [
-        ["id=inputRIdentifier", "id"],
+        ["id=input-relatedwork-identifier", "id"],
         ["name=rIdentifier[]", "name"],
-        ["css=#inputRIdentifier", "css:finder"],
-        ["xpath=//input[@id='inputRIdentifier']", "xpath:attributes"],
-        ["xpath=//div[@id='relatedworkGroup']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["css=#input-relatedwork-identifier", "css:finder"],
+        ["xpath=//input[@id='input-relatedwork-identifier']", "xpath:attributes"],
+        ["xpath=//div[@id='group-relatedwork']/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[15]/div[2]/div/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "10.1371/journal.pbio.0020449"
@@ -3745,13 +3745,13 @@
       "id": "85d2125f-922e-4671-827e-61fea6eb74ee",
       "comment": "",
       "command": "click",
-      "target": "id=inputRIdentifierType",
+      "target": "id=input-relatedwork-identifiertype",
       "targets": [
-        ["id=inputRIdentifierType", "id"],
+        ["id=input-relatedwork-identifiertype", "id"],
         ["name=rIdentifierType[]", "name"],
-        ["css=#inputRIdentifierType", "css:finder"],
-        ["xpath=//select[@id='inputRIdentifierType']", "xpath:attributes"],
-        ["xpath=//div[@id='relatedworkGroup']/div/div[3]/div/div/select", "xpath:idRelative"],
+        ["css=#input-relatedwork-identifiertype", "css:finder"],
+        ["xpath=//select[@id='input-relatedwork-identifiertype']", "xpath:attributes"],
+        ["xpath=//div[@id='group-relatedwork']/div/div[3]/div/div/select", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div[3]/div/div/select", "xpath:position"]
       ],
       "value": ""
@@ -3759,18 +3759,18 @@
       "id": "81b35e0c-d774-4252-90af-76cef5451842",
       "comment": "",
       "command": "select",
-      "target": "id=inputRIdentifierType",
+      "target": "id=input-relatedwork-identifiertype",
       "targets": [],
       "value": "label=DOI"
     }, {
       "id": "868d9c5e-1208-4077-855c-aa1a90146af7",
       "comment": "",
       "command": "click",
-      "target": "css=#inputRIdentifierType > option:nth-child(4)",
+      "target": "css=#input-relatedwork-identifiertype > option:nth-child(4)",
       "targets": [
-        ["css=#inputRIdentifierType > option:nth-child(4)", "css:finder"],
+        ["css=#input-relatedwork-identifiertype > option:nth-child(4)", "css:finder"],
         ["xpath=//option[@value='DOI']", "xpath:attributes"],
-        ["xpath=//select[@id='inputRIdentifierType']/option[4]", "xpath:idRelative"],
+        ["xpath=//select[@id='input-relatedwork-identifiertype']/option[4]", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div[3]/div/div/select/option[4]", "xpath:position"],
         ["xpath=//option[contains(.,'DOI')]", "xpath:innerText"]
       ],

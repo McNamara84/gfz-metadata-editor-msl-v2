@@ -130,7 +130,7 @@ $(document).ready(function () {
     method: "GET",
     dataType: "json",
     beforeSend: function () {
-      var select = $("#inputRelation");
+      var select = $("#input-relatedwork-relation");
       select.prop('disabled', true);
       select.empty().append(
         $("<option>", {
@@ -140,7 +140,7 @@ $(document).ready(function () {
       );
     },
     success: function (response) {
-      var select = $("#inputRelation");
+      var select = $("#input-relatedwork-relation");
       select.empty();
 
       // Placeholder option
@@ -175,7 +175,7 @@ $(document).ready(function () {
     },
     error: function (jqXHR, textStatus, errorThrown) {
       console.error("Error loading relations:", textStatus, errorThrown);
-      var select = $("#inputRelation");
+      var select = $("#input-relatedwork-relation");
       select.empty().append(
         $("<option>", {
           value: "",
@@ -184,7 +184,7 @@ $(document).ready(function () {
       );
     },
     complete: function () {
-      $("#inputRelation").prop('disabled', false);
+      $("#input-relatedwork-relation").prop('disabled', false);
     }
   });
 
@@ -228,7 +228,7 @@ $(document).ready(function () {
   });*/
 
   // Event listener for newly added fields
-  /*$(document).on("click", ".addRelatedWork", function () {
+  /*$(document).on("click", ".button-relatedwork-add", function () {
     setTimeout(function () {
       $('select[name^="rIdentifierType"]:last').trigger("change");
     }, 100);
@@ -361,18 +361,18 @@ $(document).on("click", ".addRelatedWork", function () {
  * Function to update the IDs and names of elements within the related work group.
  */
 function updateIdsAndNames() {
-  $("#relatedworkGroup .row").each(function (index) {
+  $("#group-relatedwork .row").each(function (index) {
     $(this)
       .find('select[name^="relation"]')
-      .attr("id", "inputRelation" + index);
+      .attr("id", "input-relatedwork-relation" + index);
     $(this)
       .find('input[name^="rIdentifier"]')
-      .attr("id", "inputRIdentifier" + index);
+      .attr("id", "input-relatedwork-identifier" + index);
     $(this)
       .find('select[name^="rIdentifierType"]')
-      .attr("id", "inputRIdentifierType" + index);
+      .attr("id", "input-relatedwork-identifiertype" + index);
   });
 }
 
 // Initialize the dropdowns for identifier types
-setupIdentifierTypesDropdown("#inputRIdentifierType");
+setupIdentifierTypesDropdown("#input-relatedwork-identifiertype");
