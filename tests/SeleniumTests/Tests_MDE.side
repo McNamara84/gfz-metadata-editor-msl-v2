@@ -3326,7 +3326,7 @@
       "id": "e713f2b7-ad88-4a49-902d-4dd854ea47be",
       "comment": "",
       "command": "executeScript",
-      "target": "document.querySelector('#inputfreekeywords').value=\"Selenium\"",
+      "target": "document.querySelector('#input-freekeyword').value=\"Selenium\"",
       "targets": [],
       "value": ""
     }, {

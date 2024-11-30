@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var input = document.getElementById('inputfreekeywords');
+    var input = document.getElementById('input-freekeyword');
 
     // Tagify-Instanz erstellen
     var tagify = new Tagify(input, {
