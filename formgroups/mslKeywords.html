@@ -11,7 +11,7 @@
             <div class="form-floating">
                 <div class="input-group has-validation">
                     <input type="text" class="form-control input-with-help input-right-no-round-corners thesaurus-tagify"
-                        id="inputMSLKeywords" name="MSLKeywords" placeholder="<?php echo $translations['thesaurusLabel']; ?>"/>
+                        id="input-mslkeyword" name="MSLKeywords" placeholder="<?php echo $translations['thesaurusLabel']; ?>"/>
                     <span class="input-group-text"><i class="bi bi-question-circle-fill"
                             data-help-section-id="mslkeywords"></i>
                     </span>
@@ -19,8 +19,8 @@
             </div>
             <!--Button-->
             <div class="col-auto p-2">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#MSLKeywordsModal"
-                    id="MSLKeywords">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-mslkeyword"
+                    id="button-mslkeyword-thesaurus">
                     <i class="bi bi-diagram-3"></i>
                 </button>
 
@@ -32,22 +32,22 @@
 <!------------------------------------- MODALS ---------------------------------------------------------------------->
 <!-- Modal für MSL-Keywords -->
 <div class="modal fade <?php if 
-      (isset($_SESSION['MSLKeywordsModal']) && $_SESSION['MSLKeywordsModal'] == 'true') 
+      (isset($_SESSION['modal-mslkeyword']) && $_SESSION['modal-mslkeyword'] == 'true') 
       {echo 'show'; } ?>
-      " id="MSLKeywordsModal" tabindex="-1" aria-labelledby="MSLKeywordsModalLabel" aria-hidden="true">
+      " id="modal-mslkeyword" tabindex="-1" aria-labelledby="label-mslkeyword-modal" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="MSLKeywordsModalLabel"> EPOS Multi-Scale Laboratories Keywords </h5>
+                <h5 class="modal-title" id="label-mslkeyword-modal">EPOS Multi-Scale Laboratories Keywords</h5>
                 <span class="input-group-text"><i class="bi bi-question-circle-fill"
                         data-help-section-id="modalHelp"></i></span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div id="MSLKeywordsModalThesaurus"> 
-                    <input type="text" class="form-control mb-3" id="searchInputMSLKeywords"
+                <div id="panel-mslkeyword-thesaurus"> 
+                    <input type="text" class="form-control mb-3" id="input-mslkeyword-thesaurussearch"
                         placeholder="Search for Keyword">
-                    <div id="jstreeMSLKeywords"></div>
+                    <div id="jstree-mslkeyword"></div>
                 </div>
             </div>
         </div>

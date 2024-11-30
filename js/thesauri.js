@@ -23,10 +23,10 @@ $(document).ready(function () {
         },
         // MSL-Keywords
         {
-            inputId: '#inputMSLKeywords',
+            inputId: '#input-mslkeyword',
             jsonFile: 'json/msl-vocabularies.json',
-            jsTreeId: '#jstreeMSLKeywords',
-            searchInputId: '#searchInputMSLKeywords',
+            jsTreeId: '#jstree-mslkeyword',
+            searchInputId: '#input-mslkeyword-thesaurussearch',
         },
     ];
 

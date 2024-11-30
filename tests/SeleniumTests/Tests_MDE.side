@@ -1170,11 +1170,11 @@
       "id": "731c4030-01cd-4973-8410-2b8ddbeb9ba4",
       "comment": "",
       "command": "mouseOver",
-      "target": "id=MSLKeywords",
+      "target": "id=button-mslkeyword-thesaurus",
       "targets": [
-        ["id=MSLKeywords", "id"],
-        ["css=#MSLKeywords", "css:finder"],
-        ["xpath=//button[@id='MSLKeywords']", "xpath:attributes"],
+        ["id=button-mslkeyword-thesaurus", "id"],
+        ["css=#button-mslkeyword-thesaurus", "css:finder"],
+        ["xpath=//button[@id='button-mslkeyword-thesaurus']", "xpath:attributes"],
         ["xpath=//form[@id='metaForm']/div[8]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[2]/button", "xpath:position"],
         ["xpath=//button[contains(.,'Thesaurus')]", "xpath:innerText"]
@@ -1184,11 +1184,11 @@
       "id": "9f53445c-a75f-404b-bbc1-57c5f2dcb7f9",
       "comment": "",
       "command": "click",
-      "target": "id=MSLKeywords",
+      "target": "id=button-mslkeyword-thesaurus",
       "targets": [
-        ["id=MSLKeywords", "id"],
-        ["css=#MSLKeywords", "css:finder"],
-        ["xpath=//button[@id='MSLKeywords']", "xpath:attributes"],
+        ["id=button-mslkeyword-thesaurus", "id"],
+        ["css=#button-mslkeyword-thesaurus", "css:finder"],
+        ["xpath=//button[@id='button-mslkeyword-thesaurus']", "xpath:attributes"],
         ["xpath=//form[@id='metaForm']/div[8]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[2]/button", "xpath:position"],
         ["xpath=//button[contains(.,'Thesaurus')]", "xpath:innerText"]
@@ -1198,11 +1198,11 @@
       "id": "8aeb3e38-4112-4e8a-b496-a51682ea4324",
       "comment": "",
       "command": "mouseOut",
-      "target": "id=MSLKeywords",
+      "target": "id=button-mslkeyword-thesaurus",
       "targets": [
-        ["id=MSLKeywords", "id"],
-        ["css=#MSLKeywords", "css:finder"],
-        ["xpath=//button[@id='MSLKeywords']", "xpath:attributes"],
+        ["id=button-mslkeyword-thesaurus", "id"],
+        ["css=#button-mslkeyword-thesaurus", "css:finder"],
+        ["xpath=//button[@id='button-mslkeyword-thesaurus']", "xpath:attributes"],
         ["xpath=//form[@id='metaForm']/div[8]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[2]/button", "xpath:position"],
         ["xpath=//button[contains(.,'Thesaurus')]", "xpath:innerText"]
@@ -1212,10 +1212,10 @@
       "id": "ef8b4985-e1f7-45f1-be88-076b754b9e25",
       "comment": "",
       "command": "click",
-      "target": "css=#MSLKeywordsModal .bi",
+      "target": "css=#modal-mslkeyword .bi",
       "targets": [
-        ["css=#MSLKeywordsModal .bi", "css:finder"],
-        ["xpath=//div[@id='MSLKeywordsModal']/div/div/div/span/i", "xpath:idRelative"],
+        ["css=#modal-mslkeyword .bi", "css:finder"],
+        ["xpath=//div[@id='modal-mslkeyword']/div/div/div/span/i", "xpath:idRelative"],
         ["xpath=//div[9]/div/div/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -1259,11 +1259,11 @@
       "id": "e7c48c5b-273d-40c2-88ba-4bf9c7e4ab6a",
       "comment": "",
       "command": "click",
-      "target": "css=#MSLKeywordsModal .btn-close",
+      "target": "css=#modal-mslkeyword .btn-close",
       "targets": [
-        ["css=#MSLKeywordsModal .btn-close", "css:finder"],
+        ["css=#modal-mslkeyword .btn-close", "css:finder"],
         ["xpath=(//button[@type='button'])[17]", "xpath:attributes"],
-        ["xpath=//div[@id='MSLKeywordsModal']/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//div[@id='modal-mslkeyword']/div/div/div/button", "xpath:idRelative"],
         ["xpath=//div[9]/div/div/div/button", "xpath:position"]
       ],
       "value": ""
@@ -3147,11 +3147,11 @@
       "id": "ba0f5330-b3ba-45a1-9756-ec60f28e16b2",
       "comment": "",
       "command": "click",
-      "target": "id=MSLKeywords",
+      "target": "id=button-mslkeyword-thesaurus",
       "targets": [
-        ["id=MSLKeywords", "id"],
-        ["css=#MSLKeywords", "css:finder"],
-        ["xpath=//button[@id='MSLKeywords']", "xpath:attributes"],
+        ["id=button-mslkeyword-thesaurus", "id"],
+        ["css=#button-mslkeyword-thesaurus", "css:finder"],
+        ["xpath=//button[@id='button-mslkeyword-thesaurus']", "xpath:attributes"],
         ["xpath=//form[@id='metaForm']/div[8]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[2]/button", "xpath:position"],
         ["xpath=//button[contains(.,'Thesaurus')]", "xpath:innerText"]
@@ -3161,12 +3161,12 @@
       "id": "cc7eef22-2953-41d6-8eb4-2eb81acb4873",
       "comment": "",
       "command": "click",
-      "target": "id=searchInputMSLKeywords",
+      "target": "id=input-mslkeyword-thesaurussearch",
       "targets": [
-        ["id=searchInputMSLKeywords", "id"],
-        ["css=#searchInputMSLKeywords", "css:finder"],
-        ["xpath=//input[@id='searchInputMSLKeywords']", "xpath:attributes"],
-        ["xpath=//div[@id='MSLKeywordsModalThesaurus']/input", "xpath:idRelative"],
+        ["id=input-mslkeyword-thesaurussearch", "id"],
+        ["css=#input-mslkeyword-thesaurussearch", "css:finder"],
+        ["xpath=//input[@id='input-mslkeyword-thesaurussearch']", "xpath:attributes"],
+        ["xpath=//div[@id='panel-mslkeyword-thesaurus']/input", "xpath:idRelative"],
         ["xpath=//div[9]/div/div/div[2]/div/input", "xpath:position"]
       ],
       "value": ""
@@ -3174,12 +3174,12 @@
       "id": "f671ad60-95a5-43f7-8fbc-470e050da142",
       "comment": "",
       "command": "type",
-      "target": "id=searchInputMSLKeywords",
+      "target": "id=input-mslkeyword-thesaurussearch",
       "targets": [
-        ["id=searchInputMSLKeywords", "id"],
-        ["css=#searchInputMSLKeywords", "css:finder"],
-        ["xpath=//input[@id='searchInputMSLKeywords']", "xpath:attributes"],
-        ["xpath=//div[@id='MSLKeywordsModalThesaurus']/input", "xpath:idRelative"],
+        ["id=input-mslkeyword-thesaurussearch", "id"],
+        ["css=#input-mslkeyword-thesaurussearch", "css:finder"],
+        ["xpath=//input[@id='input-mslkeyword-thesaurussearch']", "xpath:attributes"],
+        ["xpath=//div[@id='panel-mslkeyword-thesaurus']/input", "xpath:idRelative"],
         ["xpath=//div[9]/div/div/div[2]/div/input", "xpath:position"]
       ],
       "value": "Selen"
@@ -3209,11 +3209,11 @@
       "id": "63a2de27-8d77-490a-8dca-153980307a79",
       "comment": "",
       "command": "click",
-      "target": "css=#MSLKeywordsModal .btn-close",
+      "target": "css=#modal-mslkeyword .btn-close",
       "targets": [
-        ["css=#MSLKeywordsModal .btn-close", "css:finder"],
+        ["css=#modal-mslkeyword .btn-close", "css:finder"],
         ["xpath=(//button[@type='button'])[18]", "xpath:attributes"],
-        ["xpath=//div[@id='MSLKeywordsModal']/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//div[@id='modal-mslkeyword']/div/div/div/button", "xpath:idRelative"],
         ["xpath=//div[9]/div/div/div/button", "xpath:position"]
       ],
       "value": ""
@@ -5308,11 +5308,11 @@
       "id": "e0c7d06b-ddf0-47cc-86cc-e97a6cd5f099",
       "comment": "",
       "command": "click",
-      "target": "id=MSLKeywords",
+      "target": "id=button-mslkeyword-thesaurus",
       "targets": [
-        ["id=MSLKeywords", "id"],
-        ["css=#MSLKeywords", "css:finder"],
-        ["xpath=//button[@id='MSLKeywords']", "xpath:attributes"],
+        ["id=button-mslkeyword-thesaurus", "id"],
+        ["css=#button-mslkeyword-thesaurus", "css:finder"],
+        ["xpath=//button[@id='button-mslkeyword-thesaurus']", "xpath:attributes"],
         ["xpath=//form[@id='metaForm']/div[8]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[2]/button", "xpath:position"],
         ["xpath=//button[contains(.,'Thesaurus')]", "xpath:innerText"]
