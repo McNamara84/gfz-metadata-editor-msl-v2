@@ -3,14 +3,14 @@ $(document).ready(function () {
    * Event handler for the "Send Feedback" button click.
    * Collects feedback data and sends it via AJAX to the server.
    */
-  $("#sendFeedback").click(function (event) {
+  $("#button-feedback-send").click(function (event) {
     event.preventDefault();
-    var feedbackForm = $("#feedbackForm");
+    var feedbackForm = $("#form-feedback");
     var feedbackData = feedbackForm.serialize();
 
 
     // Disable the button and show a loading spinner
-    $("#sendFeedback")
+    $("#button-feedback-send")
       .prop("disabled", true)
       .html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...');
 
@@ -25,32 +25,32 @@ $(document).ready(function () {
         feedbackForm.hide();
 
         // Erfolgsmeldung und Danke-Nachricht anzeigen
-        $("#thankYouMessage").show();
-        $("#feedbackStatus").html('<div class="alert alert-success">Feedback sent successfully!</div>');
+        $("#panel-feedback-message").show();
+        $("#panel-feedback-status").html('<div class="alert alert-success">Feedback sent successfully!</div>');
 
         // Modal schließen nach 3 Sekunden
         setTimeout(function () {
-          $("#feedbackModal").modal("hide");
+          $("#modal-feedback").modal("hide");
         }, 3000);
 
 
       },
       error: function (xhr, status, error) {
         // Display error message
-        $("#feedbackStatus").html(
+        $("#panel-feedback-status").html(
           '<div class="alert alert-danger">Error when sending feedback: ' + error + "</div>"
         );
         // Enable the send button
-        $("#sendFeedback").prop("disabled", false).html("Send");
+        $("#button-feedback-send").prop("disabled", false).html("Send");
       },
       complete: function () {
         // Modal zurücksetzen, wenn es geschlossen wird
-        $("#feedbackModal").on("hidden.bs.modal", function () {
+        $("#modal-feedback").on("hidden.bs.modal", function () {
           feedbackForm[0].reset();
           feedbackForm.show();
-          $("#thankYouMessage").hide();
-          $("#feedbackStatus").html("");
-          $("#sendFeedback").prop("disabled", false).html("Senden");
+          $("#panel-feedback-message").hide();
+          $("#panel-feedback-status").html("");
+          $("#button-feedback-send").prop("disabled", false).html("Senden");
         });
       }
     });
@@ -58,12 +58,12 @@ $(document).ready(function () {
 
 
   // Optional: Formular zurücksetzen, wenn das Modal geöffnet wird
-  $('#feedbackModal').on('show.bs.modal', function () {
-    $("#feedbackForm")[0].reset();
-    $("#feedbackForm").show();
-    $("#thankYouMessage").hide();
-    $("#feedbackStatus").html("");
-    $("#sendFeedback").prop("disabled", false).html("Senden");
+  $('#modal-feedback').on('show.bs.modal', function () {
+    $("#form-feedback")[0].reset();
+    $("#form-feedback").show();
+    $("#panel-feedback-message").hide();
+    $("#panel-feedback-status").html("");
+    $("#button-feedback-send").prop("disabled", false).html("Senden");
   });
   // Tooltip initialisieren
   $('[data-bs-toggle="tooltip"]').tooltip();
@@ -94,7 +94,7 @@ $(document).ready(function () {
    * Click event handler for the "Add Title" button.
    * Adds a new title row if the maximum number of titles has not been reached.
    */
-  $("#addTitle").click(function () {
+  $("#button-resourceinformation-addtitle").click(function () {
     /**
      * Reference to the "Add Title" button.
      * @type {jQuery}
@@ -118,10 +118,10 @@ $(document).ready(function () {
       // Control the visibility of the title type dropdown.
       if (titlesNumber === 0) {
         // Show the dropdown for the first title.
-        $("#titleTypeContainer").show();
+        $("#container-resourceinformation-titletype").show();
       } else {
         // Ensure the dropdown is visible for subsequent titles.
-        $(newTitleRow).find("#titleTypeContainer").show();
+        $(newTitleRow).find("#container-resourceinformation-titletype").show();
       }
 
       // Capture the main title type for the first row.

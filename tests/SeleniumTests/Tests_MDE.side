@@ -48,7 +48,7 @@
       "target": "css=.card:nth-child(1) .row:nth-child(1) > .col-12:nth-child(1) .bi",
       "targets": [
         ["css=.card:nth-child(1) .row:nth-child(1) > .col-12:nth-child(1) .bi", "css:finder"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//span/i", "xpath:position"]
       ],
       "value": ""
@@ -95,7 +95,7 @@
       "target": "css=.col-sm-6:nth-child(2) .bi",
       "targets": [
         ["css=.col-sm-6:nth-child(2) .bi", "css:finder"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div[2]/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div[2]/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -141,7 +141,7 @@
       "target": "css=.col-md-12:nth-child(3) .input-group-append .bi",
       "targets": [
         ["css=.col-md-12:nth-child(3) .input-group-append .bi", "css:finder"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div[3]/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div[3]/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -188,7 +188,7 @@
       "target": "css=.col-12:nth-child(4) .input-group-append .bi",
       "targets": [
         ["css=.col-12:nth-child(4) .input-group-append .bi", "css:finder"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div[4]/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div[4]/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[4]/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -235,7 +235,7 @@
       "target": "css=.col-md-8 .input-group-append .bi",
       "targets": [
         ["css=.col-md-8 .input-group-append .bi", "css:finder"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[3]/div/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[3]/div/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -270,7 +270,7 @@
       "target": "css=.col-10 .input-group-append .bi",
       "targets": [
         ["css=.col-10 .input-group-append .bi", "css:finder"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[3]/div[2]/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[3]/div[2]/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[3]/div[2]/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -1126,7 +1126,7 @@
       "target": "css=.card:nth-child(8) .bi",
       "targets": [
         ["css=.card:nth-child(8) .bi", "css:finder"],
-        ["xpath=//form[@id='metaForm']/div[8]/div[2]/div/div/div/span/i", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[8]/div[2]/div/div/div/span/i", "xpath:idRelative"],
         ["xpath=//div[8]/div[2]/div/div/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -1175,7 +1175,7 @@
         ["id=button-mslkeyword-thesaurus", "id"],
         ["css=#button-mslkeyword-thesaurus", "css:finder"],
         ["xpath=//button[@id='button-mslkeyword-thesaurus']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[8]/div[2]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[8]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[2]/button", "xpath:position"],
         ["xpath=//button[contains(.,'Thesaurus')]", "xpath:innerText"]
       ],
@@ -1189,7 +1189,7 @@
         ["id=button-mslkeyword-thesaurus", "id"],
         ["css=#button-mslkeyword-thesaurus", "css:finder"],
         ["xpath=//button[@id='button-mslkeyword-thesaurus']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[8]/div[2]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[8]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[2]/button", "xpath:position"],
         ["xpath=//button[contains(.,'Thesaurus')]", "xpath:innerText"]
       ],
@@ -1203,7 +1203,7 @@
         ["id=button-mslkeyword-thesaurus", "id"],
         ["css=#button-mslkeyword-thesaurus", "css:finder"],
         ["xpath=//button[@id='button-mslkeyword-thesaurus']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[8]/div[2]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[8]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[2]/button", "xpath:position"],
         ["xpath=//button[contains(.,'Thesaurus')]", "xpath:innerText"]
       ],
@@ -1274,7 +1274,7 @@
       "target": "css=.card:nth-child(10) .bi",
       "targets": [
         ["css=.card:nth-child(10) .bi", "css:finder"],
-        ["xpath=//form[@id='metaForm']/div[10]/div[2]/div/div/div/span/i", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[10]/div[2]/div/div/div/span/i", "xpath:idRelative"],
         ["xpath=//div[10]/div[2]/div/div/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -1323,7 +1323,7 @@
         ["id=openScienceKeywordsThesaurus", "id"],
         ["css=#openScienceKeywordsThesaurus", "css:finder"],
         ["xpath=//button[@id='openScienceKeywordsThesaurus']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[10]/div[2]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[10]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[10]/div[2]/div/div[2]/button", "xpath:position"]
       ],
       "value": ""
@@ -1336,7 +1336,7 @@
         ["id=openScienceKeywordsThesaurus", "id"],
         ["css=#openScienceKeywordsThesaurus", "css:finder"],
         ["xpath=//button[@id='openScienceKeywordsThesaurus']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[10]/div[2]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[10]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[10]/div[2]/div/div[2]/button", "xpath:position"]
       ],
       "value": ""
@@ -1349,7 +1349,7 @@
         ["id=openScienceKeywordsThesaurus", "id"],
         ["css=#openScienceKeywordsThesaurus", "css:finder"],
         ["xpath=//button[@id='openScienceKeywordsThesaurus']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[10]/div[2]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[10]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[10]/div[2]/div/div[2]/button", "xpath:position"]
       ],
       "value": ""
@@ -1465,7 +1465,7 @@
       "target": "css=.col-lg-6:nth-child(1) .bi",
       "targets": [
         ["css=.col-lg-6:nth-child(1) .bi", "css:finder"],
-        ["xpath=//form[@id='metaForm']/div[13]/div[2]/div/div/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[13]/div[2]/div/div/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[13]/div[2]/div/div/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -1511,7 +1511,7 @@
       "target": "css=.col-lg-6:nth-child(2) .bi",
       "targets": [
         ["css=.col-lg-6:nth-child(2) .bi", "css:finder"],
-        ["xpath=//form[@id='metaForm']/div[13]/div[2]/div/div[2]/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[13]/div[2]/div/div[2]/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[13]/div[2]/div/div[2]/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -2139,7 +2139,7 @@
       "id": "9d9746b8-8b05-43a7-8390-79a20494b7a5",
       "comment": "",
       "command": "assertSelectedLabel",
-      "target": "id=inputLanguageDataset",
+      "target": "id=input-resourceinformation-language",
       "targets": [],
       "value": "English"
     }, {
@@ -2171,13 +2171,13 @@
       "id": "b3faffbd-61f4-41a1-8150-ab93536e41a4",
       "comment": "",
       "command": "type",
-      "target": "id=inputPublicationYear",
+      "target": "id=input-resourceinformation-publicationyear",
       "targets": [
-        ["id=inputPublicationYear", "id"],
+        ["id=input-resourceinformation-publicationyear", "id"],
         ["name=year", "name"],
-        ["css=#inputPublicationYear", "css:finder"],
-        ["xpath=//input[@id='inputPublicationYear']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["css=#input-resourceinformation-publicationyear", "css:finder"],
+        ["xpath=//input[@id='input-resourceinformation-publicationyear']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/input", "xpath:position"]
       ],
       "value": "1234"
@@ -2185,20 +2185,20 @@
       "id": "a97d7f79-9fc5-4953-b71a-e0c44fe97afc",
       "comment": "",
       "command": "select",
-      "target": "id=inputResourceType",
+      "target": "id=input-resourceinformation-resourcetype",
       "targets": [],
       "value": "label=Dataset"
     }, {
       "id": "00ff63da-0076-4256-9707-5d7dd3da5d60",
       "comment": "",
       "command": "type",
-      "target": "id=inputTitle",
+      "target": "id=input-resourceinformation-title",
       "targets": [
-        ["id=inputTitle", "id"],
+        ["id=input-resourceinformation-title", "id"],
         ["name=title[]", "name"],
-        ["css=#inputTitle", "css:finder"],
-        ["xpath=//input[@id='inputTitle']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[3]/div/div/div/input", "xpath:idRelative"],
+        ["css=#input-resourceinformation-title", "css:finder"],
+        ["xpath=//input[@id='input-resourceinformation-title']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[3]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/div/input", "xpath:position"]
       ],
       "value": "The Title"
@@ -2303,7 +2303,7 @@
         ["name=dateCreated", "name"],
         ["css=#input-date-created", "css:finder"],
         ["xpath=//input[@id='input-date-created']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[13]/div[2]/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[13]/div[2]/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[13]/div[2]/div/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -2317,7 +2317,7 @@
         ["name=dateCreated", "name"],
         ["css=#input-date-created", "css:finder"],
         ["xpath=//input[@id='input-date-created']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[13]/div[2]/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[13]/div[2]/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[13]/div[2]/div/div/div/div/input", "xpath:position"]
       ],
       "value": "2024-11-05"
@@ -2502,13 +2502,13 @@
       "id": "57cc4244-4960-4cb4-9eee-753d567fbec2",
       "comment": "",
       "command": "click",
-      "target": "id=inputDOI",
+      "target": "id=input-resourceinformation-doi",
       "targets": [
-        ["id=inputDOI", "id"],
+        ["id=input-resourceinformation-doi", "id"],
         ["name=doi", "name"],
-        ["css=#inputDOI", "css:finder"],
-        ["xpath=//input[@id='inputDOI']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div/div/div/input", "xpath:idRelative"],
+        ["css=#input-resourceinformation-doi", "css:finder"],
+        ["xpath=//input[@id='input-resourceinformation-doi']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//input", "xpath:position"]
       ],
       "value": ""
@@ -2516,13 +2516,13 @@
       "id": "7b5a4c98-afcb-4450-b3bb-ed0bc5d13621",
       "comment": "",
       "command": "type",
-      "target": "id=inputDOI",
+      "target": "id=input-resourceinformation-doi",
       "targets": [
-        ["id=inputDOI", "id"],
+        ["id=input-resourceinformation-doi", "id"],
         ["name=doi", "name"],
-        ["css=#inputDOI", "css:finder"],
-        ["xpath=//input[@id='inputDOI']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div/div/div/input", "xpath:idRelative"],
+        ["css=#input-resourceinformation-doi", "css:finder"],
+        ["xpath=//input[@id='input-resourceinformation-doi']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//input", "xpath:position"]
       ],
       "value": "10.46427/gold2022.9610"
@@ -2530,13 +2530,13 @@
       "id": "0e33b9bf-2ae8-4536-b171-d96b85357006",
       "comment": "",
       "command": "type",
-      "target": "id=inputPublicationYear",
+      "target": "id=input-resourceinformation-publicationyear",
       "targets": [
-        ["id=inputPublicationYear", "id"],
+        ["id=input-resourceinformation-publicationyear", "id"],
         ["name=year", "name"],
-        ["css=#inputPublicationYear", "css:finder"],
-        ["xpath=//input[@id='inputPublicationYear']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["css=#input-resourceinformation-publicationyear", "css:finder"],
+        ["xpath=//input[@id='input-resourceinformation-publicationyear']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/input", "xpath:position"]
       ],
       "value": "1234"
@@ -2544,13 +2544,13 @@
       "id": "1a95d23d-f414-4c75-8c0f-737c4924e7e5",
       "comment": "",
       "command": "click",
-      "target": "id=inputResourceType",
+      "target": "id=input-resourceinformation-resourcetype",
       "targets": [
-        ["id=inputResourceType", "id"],
+        ["id=input-resourceinformation-resourcetype", "id"],
         ["name=resourcetype", "name"],
-        ["css=#inputResourceType", "css:finder"],
-        ["xpath=//select[@id='inputResourceType']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div[3]/div/div/select", "xpath:idRelative"],
+        ["css=#input-resourceinformation-resourcetype", "css:finder"],
+        ["xpath=//select[@id='input-resourceinformation-resourcetype']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div[3]/div/div/select", "xpath:idRelative"],
         ["xpath=//select", "xpath:position"]
       ],
       "value": ""
@@ -2558,20 +2558,20 @@
       "id": "da251eb1-eb4a-4cb6-8952-98db9021d5c3",
       "comment": "",
       "command": "select",
-      "target": "id=inputResourceType",
+      "target": "id=input-resourceinformation-resourcetype",
       "targets": [],
       "value": "label=Dataset"
     }, {
       "id": "29515228-ecff-4b81-8653-8b12aaaf770d",
       "comment": "",
       "command": "click",
-      "target": "id=inputVersion",
+      "target": "id=input-resourceinformation-version",
       "targets": [
-        ["id=inputVersion", "id"],
+        ["id=input-resourceinformation-version", "id"],
         ["name=version", "name"],
-        ["css=#inputVersion", "css:finder"],
-        ["xpath=//input[@id='inputVersion']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div[4]/div/div/input", "xpath:idRelative"],
+        ["css=#input-resourceinformation-version", "css:finder"],
+        ["xpath=//input[@id='input-resourceinformation-version']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div[4]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[4]/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -2579,13 +2579,13 @@
       "id": "6726d992-e8a5-4d2a-a431-a44bc783493a",
       "comment": "",
       "command": "type",
-      "target": "id=inputVersion",
+      "target": "id=input-resourceinformation-version",
       "targets": [
-        ["id=inputVersion", "id"],
+        ["id=input-resourceinformation-version", "id"],
         ["name=version", "name"],
-        ["css=#inputVersion", "css:finder"],
-        ["xpath=//input[@id='inputVersion']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div[4]/div/div/input", "xpath:idRelative"],
+        ["css=#input-resourceinformation-version", "css:finder"],
+        ["xpath=//input[@id='input-resourceinformation-version']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div[4]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[4]/div/div/input", "xpath:position"]
       ],
       "value": "2"
@@ -2593,13 +2593,13 @@
       "id": "e5a25fbd-6673-4974-9702-9f20dae54dd3",
       "comment": "",
       "command": "click",
-      "target": "id=inputLanguageDataset",
+      "target": "id=input-resourceinformation-language",
       "targets": [
-        ["id=inputLanguageDataset", "id"],
+        ["id=input-resourceinformation-language", "id"],
         ["name=language", "name"],
-        ["css=#inputLanguageDataset", "css:finder"],
-        ["xpath=//select[@id='inputLanguageDataset']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div[5]/div/div/select", "xpath:idRelative"],
+        ["css=#input-resourceinformation-language", "css:finder"],
+        ["xpath=//select[@id='input-resourceinformation-language']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div[5]/div/div/select", "xpath:idRelative"],
         ["xpath=//div[5]/div/div/select", "xpath:position"]
       ],
       "value": ""
@@ -2607,18 +2607,18 @@
       "id": "b255f018-2738-4c81-a8c4-cdf0d932afca",
       "comment": "",
       "command": "select",
-      "target": "id=inputLanguageDataset",
+      "target": "id=input-resourceinformation-language",
       "targets": [],
       "value": "label=French"
     }, {
       "id": "6e3acbff-264a-4a00-b31a-f12a92cb7def",
       "comment": "",
       "command": "click",
-      "target": "css=#inputLanguageDataset > option:nth-child(3)",
+      "target": "css=#input-resourceinformation-language > option:nth-child(3)",
       "targets": [
-        ["css=#inputLanguageDataset > option:nth-child(3)", "css:finder"],
+        ["css=#input-resourceinformation-language > option:nth-child(3)", "css:finder"],
         ["xpath=(//option[@value='3'])[2]", "xpath:attributes"],
-        ["xpath=//select[@id='inputLanguageDataset']/option[3]", "xpath:idRelative"],
+        ["xpath=//select[@id='input-resourceinformation-language']/option[3]", "xpath:idRelative"],
         ["xpath=//div[5]/div/div/select/option[3]", "xpath:position"],
         ["xpath=//option[contains(.,'French')]", "xpath:innerText"]
       ],
@@ -2627,13 +2627,13 @@
       "id": "998fa3b9-4c69-44bb-97c1-ae1223f55288",
       "comment": "",
       "command": "click",
-      "target": "id=inputTitle",
+      "target": "id=input-resourceinformation-title",
       "targets": [
-        ["id=inputTitle", "id"],
+        ["id=input-resourceinformation-title", "id"],
         ["name=title[]", "name"],
-        ["css=#inputTitle", "css:finder"],
-        ["xpath=//input[@id='inputTitle']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[3]/div/div/div/input", "xpath:idRelative"],
+        ["css=#input-resourceinformation-title", "css:finder"],
+        ["xpath=//input[@id='input-resourceinformation-title']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[3]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -2641,13 +2641,13 @@
       "id": "c94c5ad4-297b-48e0-95f9-547c6539aca3",
       "comment": "",
       "command": "type",
-      "target": "id=inputTitle",
+      "target": "id=input-resourceinformation-title",
       "targets": [
-        ["id=inputTitle", "id"],
+        ["id=input-resourceinformation-title", "id"],
         ["name=title[]", "name"],
-        ["css=#inputTitle", "css:finder"],
-        ["xpath=//input[@id='inputTitle']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[3]/div/div/div/input", "xpath:idRelative"],
+        ["css=#input-resourceinformation-title", "css:finder"],
+        ["xpath=//input[@id='input-resourceinformation-title']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[3]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/div/input", "xpath:position"]
       ],
       "value": "Test_titel"
@@ -2655,12 +2655,12 @@
       "id": "f939360d-b64e-4450-8d1b-f18525e05804",
       "comment": "",
       "command": "click",
-      "target": "id=addTitle",
+      "target": "id=button-resourceinformation-addtitle",
       "targets": [
-        ["id=addTitle", "id"],
-        ["css=#addTitle", "css:finder"],
-        ["xpath=//button[@id='addTitle']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[3]/div[3]/div/button", "xpath:idRelative"],
+        ["id=button-resourceinformation-addtitle", "id"],
+        ["css=#button-resourceinformation-addtitle", "css:finder"],
+        ["xpath=//button[@id='button-resourceinformation-addtitle']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[3]/div[3]/div/button", "xpath:idRelative"],
         ["xpath=//div[3]/div/button", "xpath:position"],
         ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
       ],
@@ -2669,11 +2669,11 @@
       "id": "7f80326b-8d58-48f4-83dd-7d3fcdc2bde3",
       "comment": "",
       "command": "click",
-      "target": "css=.row:nth-child(4) #inputTitle",
+      "target": "css=.row:nth-child(4) #input-resourceinformation-title",
       "targets": [
-        ["css=.row:nth-child(4) #inputTitle", "css:finder"],
-        ["xpath=(//input[@id='inputTitle'])[2]", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[4]/div/div/div/input", "xpath:idRelative"],
+        ["css=.row:nth-child(4) #input-resourceinformation-title", "css:finder"],
+        ["xpath=(//input[@id='input-resourceinformation-title'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[4]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[4]/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -2681,11 +2681,11 @@
       "id": "3ba7c382-f8a5-43ac-8fe6-b6eafade2cf1",
       "comment": "",
       "command": "type",
-      "target": "css=.row:nth-child(4) #inputTitle",
+      "target": "css=.row:nth-child(4) #input-resourceinformation-title",
       "targets": [
-        ["css=.row:nth-child(4) #inputTitle", "css:finder"],
-        ["xpath=(//input[@id='inputTitle'])[2]", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[4]/div/div/div/input", "xpath:idRelative"],
+        ["css=.row:nth-child(4) #input-resourceinformation-title", "css:finder"],
+        ["xpath=(//input[@id='input-resourceinformation-title'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[4]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[4]/div/div/div/input", "xpath:position"]
       ],
       "value": "Test_Subtitel"
@@ -2693,11 +2693,11 @@
       "id": "67aa8032-a7ec-4f46-91da-55910a768b82",
       "comment": "",
       "command": "click",
-      "target": "css=.row:nth-child(4) #inputTitleType",
+      "target": "css=.row:nth-child(4) #input-resourceinformation-titletype",
       "targets": [
-        ["css=.row:nth-child(4) #inputTitleType", "css:finder"],
-        ["xpath=(//select[@id='inputTitleType'])[2]", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[4]/div[2]/div/div/select", "xpath:idRelative"],
+        ["css=.row:nth-child(4) #input-resourceinformation-titletype", "css:finder"],
+        ["xpath=(//select[@id='input-resourceinformation-titletype'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[4]/div[2]/div/div/select", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/div/div/select", "xpath:position"]
       ],
       "value": ""
@@ -2705,7 +2705,7 @@
       "id": "ac73fbf7-e7e8-4a89-ad5c-17a42fa3585e",
       "comment": "",
       "command": "select",
-      "target": "css=.row:nth-child(4) #inputTitleType",
+      "target": "css=.row:nth-child(4) #input-resourceinformation-titletype",
       "targets": [],
       "value": "label=Subtitle"
     }, {
@@ -2716,7 +2716,7 @@
       "targets": [
         ["css=.row:nth-child(4) option:nth-child(3)", "css:finder"],
         ["xpath=(//option[@value='3'])[4]", "xpath:attributes"],
-        ["xpath=(//select[@id='inputTitleType']/option[3])[2]", "xpath:idRelative"],
+        ["xpath=(//select[@id='input-resourceinformation-titletype']/option[3])[2]", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/div/div/select/option[3]", "xpath:position"]
       ],
       "value": ""
@@ -3152,7 +3152,7 @@
         ["id=button-mslkeyword-thesaurus", "id"],
         ["css=#button-mslkeyword-thesaurus", "css:finder"],
         ["xpath=//button[@id='button-mslkeyword-thesaurus']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[8]/div[2]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[8]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[2]/button", "xpath:position"],
         ["xpath=//button[contains(.,'Thesaurus')]", "xpath:innerText"]
       ],
@@ -3226,7 +3226,7 @@
         ["id=openScienceKeywordsThesaurus", "id"],
         ["css=#openScienceKeywordsThesaurus", "css:finder"],
         ["xpath=//button[@id='openScienceKeywordsThesaurus']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[10]/div[2]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[10]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[10]/div[2]/div/div[2]/button", "xpath:position"]
       ],
       "value": ""
@@ -3239,7 +3239,7 @@
         ["id=openScienceKeywordsThesaurus", "id"],
         ["css=#openScienceKeywordsThesaurus", "css:finder"],
         ["xpath=//button[@id='openScienceKeywordsThesaurus']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[10]/div[2]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[10]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[10]/div[2]/div/div[2]/button", "xpath:position"]
       ],
       "value": ""
@@ -3252,7 +3252,7 @@
         ["id=openScienceKeywordsThesaurus", "id"],
         ["css=#openScienceKeywordsThesaurus", "css:finder"],
         ["xpath=//button[@id='openScienceKeywordsThesaurus']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[10]/div[2]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[10]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[10]/div[2]/div/div[2]/button", "xpath:position"]
       ],
       "value": ""
@@ -3339,7 +3339,7 @@
         ["name=dateCreated", "name"],
         ["css=#input-date-created", "css:finder"],
         ["xpath=//input[@id='input-date-created']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[13]/div[2]/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[13]/div[2]/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[13]/div[2]/div/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -3353,7 +3353,7 @@
         ["name=dateCreated", "name"],
         ["css=#input-date-created", "css:finder"],
         ["xpath=//input[@id='input-date-created']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[13]/div[2]/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[13]/div[2]/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[13]/div[2]/div/div/div/div/input", "xpath:position"]
       ],
       "value": "2024-11-08"
@@ -3459,7 +3459,7 @@
         ["name=dateEmbargo", "name"],
         ["css=#input-date-embargo", "css:finder"],
         ["xpath=//input[@id='input-date-embargo']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[13]/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[13]/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[13]/div[2]/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -3473,7 +3473,7 @@
         ["name=dateEmbargo", "name"],
         ["css=#input-date-embargo", "css:finder"],
         ["xpath=//input[@id='input-date-embargo']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[13]/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[13]/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[13]/div[2]/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "0002-12-31"
@@ -3487,7 +3487,7 @@
         ["name=dateEmbargo", "name"],
         ["css=#input-date-embargo", "css:finder"],
         ["xpath=//input[@id='input-date-embargo']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[13]/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[13]/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[13]/div[2]/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "0020-12-31"
@@ -3501,7 +3501,7 @@
         ["name=dateEmbargo", "name"],
         ["css=#input-date-embargo", "css:finder"],
         ["xpath=//input[@id='input-date-embargo']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[13]/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[13]/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[13]/div[2]/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "0202-12-31"
@@ -3515,7 +3515,7 @@
         ["name=dateEmbargo", "name"],
         ["css=#input-date-embargo", "css:finder"],
         ["xpath=//input[@id='input-date-embargo']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[13]/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[13]/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[13]/div[2]/div/div[2]/div/div/input", "xpath:position"]
       ],
       "value": "2024-12-31"
@@ -3878,13 +3878,13 @@
       "id": "c283bf59-fa0b-4863-bd1e-48357508d608",
       "comment": "",
       "command": "click",
-      "target": "id=inputResourceType",
+      "target": "id=input-resourceinformation-resourcetype",
       "targets": [
-        ["id=inputResourceType", "id"],
+        ["id=input-resourceinformation-resourcetype", "id"],
         ["name=resourcetype", "name"],
-        ["css=#inputResourceType", "css:finder"],
-        ["xpath=//select[@id='inputResourceType']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div[3]/div/div/select", "xpath:idRelative"],
+        ["css=#input-resourceinformation-resourcetype", "css:finder"],
+        ["xpath=//select[@id='input-resourceinformation-resourcetype']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div[3]/div/div/select", "xpath:idRelative"],
         ["xpath=//select", "xpath:position"]
       ],
       "value": ""
@@ -3892,18 +3892,18 @@
       "id": "8a28ef1a-362e-4181-91cb-3f658577da8f",
       "comment": "",
       "command": "select",
-      "target": "id=inputResourceType",
+      "target": "id=input-resourceinformation-resourcetype",
       "targets": [],
       "value": "label=Software"
     }, {
       "id": "82506364-40e3-4d7d-ab68-374d8ef836ac",
       "comment": "",
       "command": "click",
-      "target": "css=#inputResourceType > option:nth-child(25)",
+      "target": "css=#input-resourceinformation-resourcetype > option:nth-child(25)",
       "targets": [
-        ["css=#inputResourceType > option:nth-child(25)", "css:finder"],
+        ["css=#input-resourceinformation-resourcetype > option:nth-child(25)", "css:finder"],
         ["xpath=//option[@value='24']", "xpath:attributes"],
-        ["xpath=//select[@id='inputResourceType']/option[25]", "xpath:idRelative"],
+        ["xpath=//select[@id='input-resourceinformation-resourcetype']/option[25]", "xpath:idRelative"],
         ["xpath=//option[25]", "xpath:position"],
         ["xpath=//option[contains(.,'Software')]", "xpath:innerText"]
       ],
@@ -4164,13 +4164,13 @@
       "id": "a7845b4d-b24f-4542-afb3-4d7c7e4e016d",
       "comment": "",
       "command": "click",
-      "target": "id=inputTitle",
+      "target": "id=input-resourceinformation-title",
       "targets": [
-        ["id=inputTitle", "id"],
+        ["id=input-resourceinformation-title", "id"],
         ["name=title[]", "name"],
-        ["css=#inputTitle", "css:finder"],
-        ["xpath=//input[@id='inputTitle']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[3]/div/div/div/input", "xpath:idRelative"],
+        ["css=#input-resourceinformation-title", "css:finder"],
+        ["xpath=//input[@id='input-resourceinformation-title']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[3]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -4178,13 +4178,13 @@
       "id": "3149ff30-9c51-4ed7-beb1-39999802af4e",
       "comment": "",
       "command": "type",
-      "target": "id=inputTitle",
+      "target": "id=input-resourceinformation-title",
       "targets": [
-        ["id=inputTitle", "id"],
+        ["id=input-resourceinformation-title", "id"],
         ["name=title[]", "name"],
-        ["css=#inputTitle", "css:finder"],
-        ["xpath=//input[@id='inputTitle']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[3]/div/div/div/input", "xpath:idRelative"],
+        ["css=#input-resourceinformation-title", "css:finder"],
+        ["xpath=//input[@id='input-resourceinformation-title']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[3]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/div/input", "xpath:position"]
       ],
       "value": "A Main Title"
@@ -4192,26 +4192,26 @@
       "id": "7e34dbf9-d853-40bd-a396-e6591681c7bb",
       "comment": "",
       "command": "select",
-      "target": "id=inputTitleType",
+      "target": "id=input-resourceinformation-titletype",
       "targets": [],
       "value": "label=Main Title"
     }, {
       "id": "3781c91f-7c56-43d2-8cf2-e7ba75a31ae7",
       "comment": "",
       "command": "assertSelectedLabel",
-      "target": "id=inputTitleType",
+      "target": "id=input-resourceinformation-titletype",
       "targets": [],
       "value": "Main Title"
     }, {
       "id": "f77104a8-66d1-4f06-910f-3488d11f8874",
       "comment": "",
       "command": "click",
-      "target": "id=addTitle",
+      "target": "id=button-resourceinformation-addtitle",
       "targets": [
-        ["id=addTitle", "id"],
-        ["css=#addTitle", "css:finder"],
-        ["xpath=//button[@id='addTitle']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[3]/div[3]/div/button", "xpath:idRelative"],
+        ["id=button-resourceinformation-addtitle", "id"],
+        ["css=#button-resourceinformation-addtitle", "css:finder"],
+        ["xpath=//button[@id='button-resourceinformation-addtitle']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[3]/div[3]/div/button", "xpath:idRelative"],
         ["xpath=//div[3]/div/button", "xpath:position"],
         ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
       ],
@@ -4220,11 +4220,11 @@
       "id": "0e70fe16-96ac-4f68-b1c8-0e15ac28773f",
       "comment": "",
       "command": "click",
-      "target": "css=.row:nth-child(4) #inputTitle",
+      "target": "css=.row:nth-child(4) #input-resourceinformation-title",
       "targets": [
-        ["css=.row:nth-child(4) #inputTitle", "css:finder"],
-        ["xpath=(//input[@id='inputTitle'])[2]", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[4]/div/div/div/input", "xpath:idRelative"],
+        ["css=.row:nth-child(4) #input-resourceinformation-title", "css:finder"],
+        ["xpath=(//input[@id='input-resourceinformation-title'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[4]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[4]/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -4232,11 +4232,11 @@
       "id": "759c34f2-09d7-4422-8317-c11910e01ef0",
       "comment": "",
       "command": "type",
-      "target": "css=.row:nth-child(4) #inputTitle",
+      "target": "css=.row:nth-child(4) #input-resourceinformation-title",
       "targets": [
-        ["css=.row:nth-child(4) #inputTitle", "css:finder"],
-        ["xpath=(//input[@id='inputTitle'])[2]", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[4]/div/div/div/input", "xpath:idRelative"],
+        ["css=.row:nth-child(4) #input-resourceinformation-title", "css:finder"],
+        ["xpath=(//input[@id='input-resourceinformation-title'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[4]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[4]/div/div/div/input", "xpath:position"]
       ],
       "value": "A Subtitle"
@@ -4244,11 +4244,11 @@
       "id": "7ebaf955-44cf-43c4-b14c-b7cc27139e7e",
       "comment": "",
       "command": "click",
-      "target": "xpath=(//select[@id='inputTitleType'])[2]",
+      "target": "xpath=(//select[@id='input-resourceinformation-titletype'])[2]",
       "targets": [
-        ["css=.row:nth-child(4) #inputTitleType", "css:finder"],
-        ["xpath=(//select[@id='inputTitleType'])[2]", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[4]/div[2]/div/div/select", "xpath:idRelative"],
+        ["css=.row:nth-child(4) #input-resourceinformation-titletype", "css:finder"],
+        ["xpath=(//select[@id='input-resourceinformation-titletype'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[4]/div[2]/div/div/select", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/div/div/select", "xpath:position"]
       ],
       "value": ""
@@ -4256,7 +4256,7 @@
       "id": "0388d03d-ac38-46fa-92a9-11f5a796476c",
       "comment": "",
       "command": "select",
-      "target": "css=.row:nth-child(4) #inputTitleType",
+      "target": "css=.row:nth-child(4) #input-resourceinformation-titletype",
       "targets": [],
       "value": "label=Subtitle"
     }, {
@@ -4270,13 +4270,13 @@
       "id": "45df0dba-311d-48f7-9c0c-18a7be545bed",
       "comment": "",
       "command": "type",
-      "target": "id=inputPublicationYear",
+      "target": "id=input-resourceinformation-publicationyear",
       "targets": [
-        ["id=inputPublicationYear", "id"],
+        ["id=input-resourceinformation-publicationyear", "id"],
         ["name=year", "name"],
-        ["css=#inputPublicationYear", "css:finder"],
-        ["xpath=//input[@id='inputPublicationYear']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["css=#input-resourceinformation-publicationyear", "css:finder"],
+        ["xpath=//input[@id='input-resourceinformation-publicationyear']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/input", "xpath:position"]
       ],
       "value": "2024"
@@ -4284,13 +4284,13 @@
       "id": "2f8b5328-0fa6-4a79-bdd4-0928862dce80",
       "comment": "",
       "command": "click",
-      "target": "id=inputResourceType",
+      "target": "id=input-resourceinformation-resourcetype",
       "targets": [
-        ["id=inputResourceType", "id"],
+        ["id=input-resourceinformation-resourcetype", "id"],
         ["name=resourcetype", "name"],
-        ["css=#inputResourceType", "css:finder"],
-        ["xpath=//select[@id='inputResourceType']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div[3]/div/div/select", "xpath:idRelative"],
+        ["css=#input-resourceinformation-resourcetype", "css:finder"],
+        ["xpath=//select[@id='input-resourceinformation-resourcetype']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div[3]/div/div/select", "xpath:idRelative"],
         ["xpath=//select", "xpath:position"]
       ],
       "value": ""
@@ -4298,18 +4298,18 @@
       "id": "fbc7ef51-3040-4da7-84b7-b7b3fe303a49",
       "comment": "",
       "command": "select",
-      "target": "id=inputResourceType",
+      "target": "id=input-resourceinformation-resourcetype",
       "targets": [],
       "value": "label=Dataset"
     }, {
       "id": "472bb1d8-42ee-42fd-82ce-e37bb1766237",
       "comment": "",
       "command": "click",
-      "target": "css=#inputResourceType > option:nth-child(10)",
+      "target": "css=#input-resourceinformation-resourcetype > option:nth-child(10)",
       "targets": [
-        ["css=#inputResourceType > option:nth-child(10)", "css:finder"],
+        ["css=#input-resourceinformation-resourcetype > option:nth-child(10)", "css:finder"],
         ["xpath=//option[@value='9']", "xpath:attributes"],
-        ["xpath=//select[@id='inputResourceType']/option[10]", "xpath:idRelative"],
+        ["xpath=//select[@id='input-resourceinformation-resourcetype']/option[10]", "xpath:idRelative"],
         ["xpath=//option[10]", "xpath:position"],
         ["xpath=//option[contains(.,'Dataset')]", "xpath:innerText"]
       ],
@@ -4408,7 +4408,7 @@
         ["name=dateCreated", "name"],
         ["css=#input-date-created", "css:finder"],
         ["xpath=//input[@id='input-date-created']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[13]/div[2]/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[13]/div[2]/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[13]/div[2]/div/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -4422,7 +4422,7 @@
         ["name=dateCreated", "name"],
         ["css=#input-date-created", "css:finder"],
         ["xpath=//input[@id='input-date-created']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[13]/div[2]/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[13]/div[2]/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[13]/div[2]/div/div/div/div/input", "xpath:position"]
       ],
       "value": "2024-11-13"
@@ -4742,13 +4742,13 @@
       "id": "b1d2db52-8599-49c7-b904-a3c442753640",
       "comment": "",
       "command": "type",
-      "target": "id=inputPublicationYear",
+      "target": "id=input-resourceinformation-publicationyear",
       "targets": [
-        ["id=inputPublicationYear", "id"],
+        ["id=input-resourceinformation-publicationyear", "id"],
         ["name=year", "name"],
-        ["css=#inputPublicationYear", "css:finder"],
-        ["xpath=//input[@id='inputPublicationYear']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["css=#input-resourceinformation-publicationyear", "css:finder"],
+        ["xpath=//input[@id='input-resourceinformation-publicationyear']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/input", "xpath:position"]
       ],
       "value": "1234"
@@ -4756,13 +4756,13 @@
       "id": "ef7d3789-56b3-4bef-8790-44ba96fc58c8",
       "comment": "",
       "command": "click",
-      "target": "id=inputResourceType",
+      "target": "id=input-resourceinformation-resourcetype",
       "targets": [
-        ["id=inputResourceType", "id"],
+        ["id=input-resourceinformation-resourcetype", "id"],
         ["name=resourcetype", "name"],
-        ["css=#inputResourceType", "css:finder"],
-        ["xpath=//select[@id='inputResourceType']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div/div[3]/div/div/select", "xpath:idRelative"],
+        ["css=#input-resourceinformation-resourcetype", "css:finder"],
+        ["xpath=//select[@id='input-resourceinformation-resourcetype']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div/div[3]/div/div/select", "xpath:idRelative"],
         ["xpath=//select", "xpath:position"]
       ],
       "value": ""
@@ -4770,20 +4770,20 @@
       "id": "bddc5520-d33f-4251-8e78-779e21e7838a",
       "comment": "",
       "command": "select",
-      "target": "id=inputResourceType",
+      "target": "id=input-resourceinformation-resourcetype",
       "targets": [],
       "value": "label=Model"
     }, {
       "id": "04853456-8e12-4fe6-b44b-d00047a70908",
       "comment": "",
       "command": "click",
-      "target": "id=inputTitle",
+      "target": "id=input-resourceinformation-title",
       "targets": [
-        ["id=inputTitle", "id"],
+        ["id=input-resourceinformation-title", "id"],
         ["name=title[]", "name"],
-        ["css=#inputTitle", "css:finder"],
-        ["xpath=//input[@id='inputTitle']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[3]/div/div/div/input", "xpath:idRelative"],
+        ["css=#input-resourceinformation-title", "css:finder"],
+        ["xpath=//input[@id='input-resourceinformation-title']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[3]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/div/input", "xpath:position"]
       ],
       "value": ""
@@ -4791,13 +4791,13 @@
       "id": "b9a5b817-221b-4e91-b59b-b331c1eb5977",
       "comment": "",
       "command": "type",
-      "target": "id=inputTitle",
+      "target": "id=input-resourceinformation-title",
       "targets": [
-        ["id=inputTitle", "id"],
+        ["id=input-resourceinformation-title", "id"],
         ["name=title[]", "name"],
-        ["css=#inputTitle", "css:finder"],
-        ["xpath=//input[@id='inputTitle']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div/div[2]/div[3]/div/div/div/input", "xpath:idRelative"],
+        ["css=#input-resourceinformation-title", "css:finder"],
+        ["xpath=//input[@id='input-resourceinformation-title']", "xpath:attributes"],
+        ["xpath=//form[@id='form-mde']/div/div[2]/div[3]/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/div/div/div/input", "xpath:position"]
       ],
       "value": "This ist the Title"
@@ -5313,7 +5313,7 @@
         ["id=button-mslkeyword-thesaurus", "id"],
         ["css=#button-mslkeyword-thesaurus", "css:finder"],
         ["xpath=//button[@id='button-mslkeyword-thesaurus']", "xpath:attributes"],
-        ["xpath=//form[@id='metaForm']/div[8]/div[2]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//form[@id='form-mde']/div[8]/div[2]/div/div[2]/button", "xpath:idRelative"],
         ["xpath=//div[2]/div/div[2]/button", "xpath:position"],
         ["xpath=//button[contains(.,'Thesaurus')]", "xpath:innerText"]
       ],

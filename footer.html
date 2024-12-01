@@ -43,16 +43,16 @@
           <button class="btn btn-primary m-1" type="button" disabled>
             <?php echo $translations['load']; ?>
           </button>
-          <button type="submit" class="btn btn-warning m-1" form="metaForm" id="saveAs" data-action="save">
+          <button type="submit" class="btn btn-warning m-1" form="form-mde" id="saveAs" data-action="save">
             Save
           </button>
-          <button type="submit" class="btn btn-success m-1" form="metaForm" id="submitButton" data-action="submit"
+          <button type="submit" class="btn btn-success m-1" form="form-mde" id="submitButton" data-action="submit"
             disabled>
             <?php echo $translations['submit']; ?>
           </button>
           <?php if ($showFeedbackLink): ?>
-          <button type="button" class="btn btn-warning m-1" id="feedback-btn" data-bs-toggle="modal"
-            data-bs-target="#feedbackModal">
+          <button type="button" class="btn btn-warning m-1" id="button-feedback-openmodalfooter" data-bs-toggle="modal"
+            data-bs-target="#modal-feedback">
             <?php echo $translations['feedbackButton']; ?>
           </button>
           <?php endif; ?>

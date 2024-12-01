@@ -23,8 +23,8 @@ $(document).ready(function () {
   var allOptions = $("#inputRights option").clone();
 
   // Event Handler für Änderungen am Resource Type Select Element
-  $("#inputResourceType").change(function () {
-    var selectedResourceType = $("#inputResourceType option:selected").text().trim();
+  $("#input-resourceinformation-resourcetype").change(function () {
+    var selectedResourceType = $("#input-resourceinformation-resourcetype option:selected").text().trim();
 
     // Prüfung ob "Software" ausgewählt wurde
     if (selectedResourceType === "Software") {

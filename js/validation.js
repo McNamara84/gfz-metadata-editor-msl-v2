@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
    * Main form element containing the dataset metadata
    * @type {HTMLFormElement}
    */
-  const form = document.getElementById('metaForm');
+  const form = document.getElementById('form-mde');
 
   /**
    * Modal for notifications

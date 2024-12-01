@@ -66,8 +66,8 @@ $(document).ready(function () {
   setupLicenseDropdown(false);
 
   // Event handler to monitor if the resource type is changed
-  $("#inputResourceType").change(function () {
-    var selectedResourceType = $("#inputResourceType option:selected").text().trim();
+  $("#input-resourceinformation-resourcetype").change(function () {
+    var selectedResourceType = $("#input-resourceinformation-resourcetype option:selected").text().trim();
 
     // Check if "Software" is selected
     if (selectedResourceType === "Software") {
