@@ -305,7 +305,7 @@
       "target": "css=.col:nth-child(1) > .input-group .bi",
       "targets": [
         ["css=.col:nth-child(1) > .input-group .bi", "css:finder"],
-        ["xpath=//div[@id='RightsGroup']/div/div/div/div/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-rights']/div/div/div/div/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -2146,7 +2146,7 @@
       "id": "d77f8505-f067-4ded-804d-9373e91df70e",
       "comment": "",
       "command": "assertSelectedLabel",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "Creative Commons Attribution 4.0 International (CC-BY-4.0)"
     }]
@@ -2724,13 +2724,13 @@
       "id": "99c09ad4-d9f7-4f2a-8800-b49a2433a021",
       "comment": "",
       "command": "click",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [
-        ["id=inputRights", "id"],
+        ["id=input-rights-license", "id"],
         ["name=Rights", "name"],
-        ["css=#inputRights", "css:finder"],
-        ["xpath=//select[@id='inputRights']", "xpath:attributes"],
-        ["xpath=//div[@id='RightsGroup']/div/div/div/div/div/select", "xpath:idRelative"],
+        ["css=#input-rights-license", "css:finder"],
+        ["xpath=//select[@id='input-rights-license']", "xpath:attributes"],
+        ["xpath=//div[@id='group-rights']/div/div/div/div/div/select", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/select", "xpath:position"]
       ],
       "value": ""
@@ -2738,18 +2738,18 @@
       "id": "64555601-dcda-44b9-a139-dbcfdd0dabef",
       "comment": "",
       "command": "select",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "label=MIT License (MIT)"
     }, {
       "id": "cdc64ce7-5187-4720-a932-5dbb02967963",
       "comment": "",
       "command": "click",
-      "target": "css=#inputRights > option:nth-child(4)",
+      "target": "css=#input-rights-license > option:nth-child(4)",
       "targets": [
-        ["css=#inputRights > option:nth-child(4)", "css:finder"],
+        ["css=#input-rights-license > option:nth-child(4)", "css:finder"],
         ["xpath=//option[@value='MIT']", "xpath:attributes"],
-        ["xpath=//select[@id='inputRights']/option[4]", "xpath:idRelative"],
+        ["xpath=//select[@id='input-rights-license']/option[4]", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/select/option[4]", "xpath:position"],
         ["xpath=//option[contains(.,'MIT License (MIT)')]", "xpath:innerText"]
       ],
@@ -3912,20 +3912,20 @@
       "id": "cb1f68b8-356d-4abb-b755-17a7904ae5ec",
       "comment": "",
       "command": "assertNotSelectedValue",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "CC-BY-4.0"
     }, {
       "id": "022ccde3-9875-45b1-94ad-b8ed08bf9586",
       "comment": "",
       "command": "click",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [
-        ["id=inputRights", "id"],
+        ["id=input-rights-license", "id"],
         ["name=Rights", "name"],
-        ["css=#inputRights", "css:finder"],
-        ["xpath=//select[@id='inputRights']", "xpath:attributes"],
-        ["xpath=//div[@id='RightsGroup']/div/div/div/div/div/select", "xpath:idRelative"],
+        ["css=#input-rights-license", "css:finder"],
+        ["xpath=//select[@id='input-rights-license']", "xpath:attributes"],
+        ["xpath=//div[@id='group-rights']/div/div/div/div/div/select", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/select", "xpath:position"]
       ],
       "value": ""
@@ -3933,27 +3933,27 @@
       "id": "70d5fe9b-a5c6-4a4e-9c93-22a0e56108bb",
       "comment": "",
       "command": "select",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "label=GNU General Public License v3.0 or later (GPL-3.0-or-later)"
     }, {
       "id": "958e84fd-c24f-43d9-bf9e-27adf00436cd",
       "comment": "",
       "command": "assertSelectedLabel",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "GNU General Public License v3.0 or later (GPL-3.0-or-later)"
     }, {
       "id": "3312e0ad-484c-45a4-b606-7c238edce1e6",
       "comment": "",
       "command": "click",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [
-        ["id=inputRights", "id"],
+        ["id=input-rights-license", "id"],
         ["name=Rights", "name"],
-        ["css=#inputRights", "css:finder"],
-        ["xpath=//select[@id='inputRights']", "xpath:attributes"],
-        ["xpath=//div[@id='RightsGroup']/div/div/div/div/div/select", "xpath:idRelative"],
+        ["css=#input-rights-license", "css:finder"],
+        ["xpath=//select[@id='input-rights-license']", "xpath:attributes"],
+        ["xpath=//div[@id='group-rights']/div/div/div/div/div/select", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/select", "xpath:position"]
       ],
       "value": ""
@@ -3961,27 +3961,27 @@
       "id": "8e1d6a28-d5e7-4441-b7d0-71bc1270713c",
       "comment": "",
       "command": "select",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "label=MIT License (MIT)"
     }, {
       "id": "c3c9f915-6a19-43ff-8720-5f4ac578ed70",
       "comment": "",
       "command": "assertSelectedLabel",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "MIT License (MIT)"
     }, {
       "id": "400f0da7-d409-4521-bae1-b0d3e30f1d57",
       "comment": "",
       "command": "click",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [
-        ["id=inputRights", "id"],
+        ["id=input-rights-license", "id"],
         ["name=Rights", "name"],
-        ["css=#inputRights", "css:finder"],
-        ["xpath=//select[@id='inputRights']", "xpath:attributes"],
-        ["xpath=//div[@id='RightsGroup']/div/div/div/div/div/select", "xpath:idRelative"],
+        ["css=#input-rights-license", "css:finder"],
+        ["xpath=//select[@id='input-rights-license']", "xpath:attributes"],
+        ["xpath=//div[@id='group-rights']/div/div/div/div/div/select", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/select", "xpath:position"]
       ],
       "value": ""
@@ -3989,14 +3989,14 @@
       "id": "7f9592c5-007a-4f2d-94b0-3a7ddf7aabd9",
       "comment": "",
       "command": "select",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "label=Apache License 2.0 (Apache-2.0)"
     }, {
       "id": "77826f45-5eae-41b5-8e71-d4783edfb2ff",
       "comment": "",
       "command": "assertSelectedLabel",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "Apache License 2.0 (Apache-2.0)"
     }, {
@@ -4028,13 +4028,13 @@
       "id": "29403cb2-5dff-4e85-ac1a-e3e2a7253264",
       "comment": "",
       "command": "click",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [
-        ["id=inputRights", "id"],
+        ["id=input-rights-license", "id"],
         ["name=Rights", "name"],
-        ["css=#inputRights", "css:finder"],
-        ["xpath=//select[@id='inputRights']", "xpath:attributes"],
-        ["xpath=//div[@id='RightsGroup']/div/div/div/div/div/select", "xpath:idRelative"],
+        ["css=#input-rights-license", "css:finder"],
+        ["xpath=//select[@id='input-rights-license']", "xpath:attributes"],
+        ["xpath=//div[@id='group-rights']/div/div/div/div/div/select", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/select", "xpath:position"]
       ],
       "value": ""
@@ -4042,69 +4042,69 @@
       "id": "56bc596b-972f-489a-86c0-8c544d166be0",
       "comment": "",
       "command": "select",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "label=Creative Commons Attribution 4.0 International (CC-BY-4.0)"
     }, {
       "id": "44e22d37-f655-4fd3-b24f-7508d2232969",
       "comment": "",
       "command": "assertSelectedLabel",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "Creative Commons Attribution 4.0 International (CC-BY-4.0)"
     }, {
       "id": "e2b0e799-d3f9-4326-a668-eaa030399d53",
       "comment": "",
       "command": "select",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "label=Creative Commons Zero v1.0 Universal (CC0-1.0)"
     }, {
       "id": "e43e5f12-e4f0-4ed9-bd1d-6d4ba27ee65c",
       "comment": "",
       "command": "assertSelectedLabel",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "Creative Commons Zero v1.0 Universal (CC0-1.0)"
     }, {
       "id": "987d0009-c418-49f0-8466-d409722a4f70",
       "comment": "",
       "command": "select",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "label=GNU General Public License v3.0 or later (GPL-3.0-or-later)"
     }, {
       "id": "58263437-cb9b-4cc0-a9e3-be32bef5b0ad",
       "comment": "",
       "command": "assertSelectedLabel",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "GNU General Public License v3.0 or later (GPL-3.0-or-later)"
     }, {
       "id": "80a20df3-4f30-4933-bf13-d4c75f1e411a",
       "comment": "",
       "command": "select",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "label=MIT License (MIT)"
     }, {
       "id": "fa5fcfac-0749-47e0-bdf7-8fc776ce19c0",
       "comment": "",
       "command": "assertSelectedLabel",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "MIT License (MIT)"
     }, {
       "id": "f0407eb3-ae2e-49d9-b618-5a1a1d4ad0dd",
       "comment": "",
       "command": "click",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [
-        ["id=inputRights", "id"],
+        ["id=input-rights-license", "id"],
         ["name=Rights", "name"],
-        ["css=#inputRights", "css:finder"],
-        ["xpath=//select[@id='inputRights']", "xpath:attributes"],
-        ["xpath=//div[@id='RightsGroup']/div/div/div/div/div/select", "xpath:idRelative"],
+        ["css=#input-rights-license", "css:finder"],
+        ["xpath=//select[@id='input-rights-license']", "xpath:attributes"],
+        ["xpath=//div[@id='group-rights']/div/div/div/div/div/select", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/select", "xpath:position"]
       ],
       "value": ""
@@ -4112,18 +4112,18 @@
       "id": "51c8b684-483e-4c99-8257-1a084b110aea",
       "comment": "",
       "command": "select",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "label=Apache License 2.0 (Apache-2.0)"
     }, {
       "id": "0c527e91-84bc-4fe2-be94-260303d21dea",
       "comment": "",
       "command": "click",
-      "target": "css=#inputRights > option:nth-child(5)",
+      "target": "css=#input-rights-license > option:nth-child(5)",
       "targets": [
-        ["css=#inputRights > option:nth-child(5)", "css:finder"],
+        ["css=#input-rights-license > option:nth-child(5)", "css:finder"],
         ["xpath=//option[@value='Apache-2.0']", "xpath:attributes"],
-        ["xpath=//select[@id='inputRights']/option[5]", "xpath:idRelative"],
+        ["xpath=//select[@id='input-rights-license']/option[5]", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/select/option[5]", "xpath:position"],
         ["xpath=//option[contains(.,'Apache License 2.0 (Apache-2.0)')]", "xpath:innerText"]
       ],
@@ -4132,21 +4132,21 @@
       "id": "6720f08b-7ef3-47ff-9998-a66f98d86ede",
       "comment": "",
       "command": "assertSelectedLabel",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "Apache License 2.0 (Apache-2.0)"
     }, {
       "id": "31117ce9-ba88-4fc3-8066-f3695c67a8cb",
       "comment": "",
       "command": "select",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "label=European Union Public License 1.2 (EUPL-1.2)"
     }, {
       "id": "13c04126-53c7-4c97-ad0f-0c2bf5f08bf6",
       "comment": "",
       "command": "assertSelectedLabel",
-      "target": "id=inputRights",
+      "target": "id=input-rights-license",
       "targets": [],
       "value": "European Union Public License 1.2 (EUPL-1.2)"
     }]

@@ -20,7 +20,7 @@ $(document).ready(function () {
   }
 
   // Alle Optionen klonen und als Variable zwischenspeichern
-  var allOptions = $("#inputRights option").clone();
+  var allOptions = $("#input-rights-license option").clone();
 
   // Event Handler für Änderungen am Resource Type Select Element
   $("#input-resourceinformation-resourcetype").change(function () {
@@ -28,19 +28,19 @@ $(document).ready(function () {
 
     // Prüfung ob "Software" ausgewählt wurde
     if (selectedResourceType === "Software") {
-      $("#inputRights").empty();
+      $("#input-rights-license").empty();
 
       // Filtern der Optionen nach "MIT License" und "Apache License 2.0"
       allOptions.each(function () {
         var optionText = $(this).text().trim();
 
         if (optionText === "MIT License" || optionText === "Apache License 2.0") {
-          $("#inputRights").append($(this).clone());
+          $("#input-rights-license").append($(this).clone());
         }
       });
     } else {
       // Optionen zurücksetzen auf Klon der ursprünglichen Optionen
-      $("#inputRights").empty().append(allOptions.clone());
+      $("#input-rights-license").empty().append(allOptions.clone());
     }
   });
   setupAutocomplete("#input-author-affiliation", "#input-author-rorid");

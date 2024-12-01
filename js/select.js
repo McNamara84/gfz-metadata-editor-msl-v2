@@ -24,11 +24,11 @@ $(document).ready(function () {
   // $(".chosen-select").chosen({});
 
   /**
-  * Populates the select field with ID inputRights with options created via an API call.
+  * Populates the select field with ID input-rights-license with options created via an API call.
   * @param {boolean} isSoftware - Determines whether to retrieve licenses for software or all resource types.
   */
   function setupLicenseDropdown(isSoftware) {
-    $("#inputRights").empty();
+    $("#input-rights-license").empty();
 
     const endpoint = isSoftware ? "vocabs/licenses/software" : "vocabs/licenses/all";
     $.getJSON(`./api/v2/${endpoint}`, function (data) {
@@ -45,20 +45,20 @@ $(document).ready(function () {
           defaultOptionSet = true;
         }
 
-        $("#inputRights").append(option);
+        $("#input-rights-license").append(option);
       });
 
       // Trigger change event to ensure any listeners are notified
-      $("#inputRights").trigger("change");
+      $("#input-rights-license").trigger("change");
     }).fail(function (jqXHR, textStatus, errorThrown) {
       console.error("Fehler beim Laden der Lizenzen:", textStatus, errorThrown);
       // Fallback: Default-Option hinzufügen
-      $("#inputRights").append($("<option>", {
+      $("#input-rights-license").append($("<option>", {
         value: "CC-BY-4.0",
         text: "Creative Commons Attribution 4.0 International (CC-BY-4.0)",
         selected: true,
       }));
-      $("#inputRights").trigger("change");
+      $("#input-rights-license").trigger("change");
     });
   }
 
