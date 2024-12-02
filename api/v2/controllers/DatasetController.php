@@ -769,6 +769,7 @@ if ($validContactPersons) {
         
         // Related Works
         $relatedWorks = $this->getRelatedWorks($connection, $id);
+        if($relatedWorks){
         $relatedWorksXml = $xml->addChild('RelatedWorks');
         foreach ($relatedWorks as $work) {
             $workXml = $relatedWorksXml->addChild('RelatedWork');
@@ -778,6 +779,7 @@ if ($validContactPersons) {
             $identifierTypeXml = $workXml->addChild('IdentifierType');
             $identifierTypeXml->addChild('name', htmlspecialchars($work['IdentifierType']['name']));
         }
+    }
 
         // Spatial Temporal Coverages
         $spatialTemporalCoverages = $this->getSpatialTemporalCoverage($connection, $id);
