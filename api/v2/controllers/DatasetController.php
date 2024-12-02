@@ -804,23 +804,30 @@ if ($validContactPersons) {
 
         // Thesaurus Keywords
         $thesaurusKeywords = $this->getThesaurusKeywords($connection, $id);
-        $keywordsXml = $xml->addChild('ThesaurusKeywords');
-        foreach ($thesaurusKeywords as $keyword) {
-            $keywordXml = $keywordsXml->addChild('Keyword');
-            foreach ($keyword as $key => $value) {
-                $keywordXml->addChild($key, htmlspecialchars($value ?? ''));
+        if($thesaurusKeywords){
+            $keywordsXml = $xml->addChild('ThesaurusKeywords');
+            foreach ($thesaurusKeywords as $keyword) {
+                $keywordXml = $keywordsXml->addChild('Keyword');
+                foreach ($keyword as $key => $value) {
+                    $keywordXml->addChild($key, htmlspecialchars($value ?? ''));
+                }
             }
         }
+        
 
         // Free Keywords
         $freeKeywords = $this->getFreeKeywords($connection, $id);
-        $freeKeywordsXml = $xml->addChild('FreeKeywords');
-        foreach ($freeKeywords as $keyword) {
-            $keywordXml = $freeKeywordsXml->addChild('Keyword');
-            $keywordXml->addChild('free_keywords_id', htmlspecialchars($keyword['free_keywords_id']));
-            $keywordXml->addChild('free_keyword', htmlspecialchars($keyword['free_keyword']));
-            $keywordXml->addChild('isCurated', htmlspecialchars($keyword['isCurated']));
+        if($freeKeywords){
+            $freeKeywordsXml = $xml->addChild('FreeKeywords');
+            foreach ($freeKeywords as $keyword) {
+                $keywordXml = $freeKeywordsXml->addChild('Keyword');
+                $keywordXml->addChild('free_keywords_id', htmlspecialchars($keyword['free_keywords_id']));
+                $keywordXml->addChild('free_keyword', htmlspecialchars($keyword['free_keyword']));
+                $keywordXml->addChild('isCurated', htmlspecialchars($keyword['isCurated']));
+            }
         }
+
+
 
         // Funding References
         $fundingReferences = $this->getFundingReferences($connection, $id);
