@@ -841,21 +841,24 @@ if ($validContactPersons) {
 
         // Originating Laboratory
         $originatingLaboratories = $this->getOriginatingLaboratories($connection, $id);
-        $originatingLaboratoriesXml = $xml->addChild('OriginatingLaboratories');
-        foreach ($originatingLaboratories as $laboratory) {
-            $laboratoryXml = $originatingLaboratoriesXml->addChild('OriginatingLaboratory');
-            $laboratoryXml->addChild('laboratoryname', htmlspecialchars($laboratory['laboratoryname']));
-            $laboratoryXml->addChild('labId', htmlspecialchars($laboratory['labId'] ?? ''));
-            if (isset($laboratory['Affiliations'])) {
-                $affiliationsXml = $laboratoryXml->addChild('Affiliations');
-                foreach ($laboratory['Affiliations'] as $affiliation) {
-                    $affiliationXml = $affiliationsXml->addChild('Affiliation');
-                    foreach ($affiliation as $key => $value) {
-                        $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
+        if($originatingLaboratories){
+            $originatingLaboratoriesXml = $xml->addChild('OriginatingLaboratories');
+            foreach ($originatingLaboratories as $laboratory) {
+                $laboratoryXml = $originatingLaboratoriesXml->addChild('OriginatingLaboratory');
+                $laboratoryXml->addChild('laboratoryname', htmlspecialchars($laboratory['laboratoryname']));
+                $laboratoryXml->addChild('labId', htmlspecialchars($laboratory['labId'] ?? ''));
+                if (isset($laboratory['Affiliations'])) {
+                    $affiliationsXml = $laboratoryXml->addChild('Affiliations');
+                    foreach ($laboratory['Affiliations'] as $affiliation) {
+                        $affiliationXml = $affiliationsXml->addChild('Affiliation');
+                        foreach ($affiliation as $key => $value) {
+                            $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
+                        }
                     }
                 }
             }
         }
+        
 
         // XML formating
         $dom = dom_import_simplexml($xml)->ownerDocument;
