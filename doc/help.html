@@ -51,7 +51,7 @@
             <div class="col-xs-12 col-md-9">
                 <!-- Inhalt aus Section 1 -->
                 <div id="help-introduction" class="section-content">
-                    <h2>Introduction</h2>
+                    <h4>Introduction</h4>
                     <p class="lead">Translations exist for the metadata editor in various languages. You can see whether
                         your
                         language already exists in the language selection drop-down menu at the top right. However, the
@@ -61,21 +61,21 @@
                 <div class="section-divider"></div>
                 <!-- Inhalt aus Section 2 -->
                 <div id="help-resourceinformation" class="section-content">
-                    <h2>Resource Information</h2>
+                    <h4>Resource Information</h4>
                     <p>General metadata for the data set is specified in the Resource Information section. In
                         detail,these are the form fields DOI, Publication Year, Resource Type, Version, Language of
                         dataset, Title and Title Type. Up to
                         <?php echo $maxTitles; ?> different titles can be specified.
                     </p>
                     <div id="help-resourceinformation-doi">
-                        <h3>DOI</h3>
+                        <h5>DOI</h5>
                         <p>The DOI is a unique string that identifies a resource. Format should be 10.ORGANISATION/ID.
                             If you have no DOI for your dataset yet, you can leave this field empty and a DOI will be
                             registered.</p>
                     </div>
                     <!-- Inhalt aus Section 4 -->
                     <div id="help-resourceinformation-publicationyear">
-                        <h3>Publication Year</h3>
+                        <h5>Publication Year</h5>
                         <p>The year when the data was or will be made publicly available. In the case of datasets,
                             “publish”
                             is understood to mean making the data available on a specific date to the community of
@@ -90,7 +90,7 @@
                     </div>
                     <!-- Inhalt aus Section 5 -->
                     <div id="help-resourceinformation-resourcetype">
-                        <h3>Resource Type</h3>
+                        <h5>Resource Type</h5>
                         <p>The data record is classified in the Resource Type form field. The following different
                             resource
                             types are available for selection.</p>
@@ -165,7 +165,7 @@
                     </div>
                     <!-- Inhalt aus Section 6 -->
                     <div id="help-resourceinformation-version">
-                        <h3>Version</h3>
+                        <h5>Version</h5>
                         <p>The version number or other identifier of the dataset. If your dataset is published for the
                             first
                             time, this field can be left empty. If it has been updated, specify the version number here.
@@ -178,13 +178,13 @@
                     </div>
                     <!-- Inhalt aus Section 7 -->
                     <div id="help-resourceinformation-language">
-                        <h3>Language of dataset</h3>
+                        <h5>Language of dataset</h5>
                         <p>The primary language of the dataset. Choose from a list of supported languages. Default is
                             English.</p>
                     </div>
                     <!-- Inhalt aus Section 8 -->
                     <div id="help-resourceinformation-title">
-                        <h3>Title</h3>
+                        <h5>Title</h5>
                         <p>The main title of the dataset. The first row is reserved for the main title. You can specify
                             up to
                             <?php echo $maxTitles; ?> additional title types if your dataset is known by multiple names
@@ -193,7 +193,7 @@
                     </div>
                     <!-- Inhalt aus Section 9 -->
                     <div id="help-resourceinformation-titletype">
-                        <h3>Title Type</h3>
+                        <h5>Title Type</h5>
                         <p>Indicates the type of title being provided, such as an alternative title or translated title.
                             Default is "MainTitle". Every title should have a title type.</p>
                         <ul>
@@ -215,17 +215,16 @@
                 <div class="section-divider"></div>
                 <!-- Inhalt aus Section -->
                 <div id="help-rights" class="section-content">
-                    <h2>Licenses and rights</h2>
+                    <h4>Licenses and rights</h4>
                     <p>Rights information for the data set. We recommend a Creative Commons Attribution 4.0 (CC-BY)
                         licence whenever possible.</p>
                 </div>
                 <div class="section-divider"></div>
                 <!-- Inhalt aus Section -->
                 <div id="help-authors" class="section-content">
-                    <h2>Authors</h2>
-                    <div class="section-divider"></div>
+                    <h4>Authors</h4>
                     <div id="help-author-orcid">
-                        <h3>ORCID</h3>
+                        <h5>ORCID</h5>
                         <p>Uniquely identifies an individual or legal entity, according to various schemes. Please enter
                             a valid ORCID in the format XXXX-XXXX-XXXX-XXXX (i.e. 0000-0001-5727-2427). If you do not
                             have an ORCID iD yet, you can learn about it and register
@@ -234,9 +233,8 @@
                             depending on the information provided in the ORCID profile.
                         </p>
                     </div>
-                    <div class="section-divider"></div>
                     <div id="help-author-affiliation">
-                        <h3>Affiliation</h3>
+                        <h5>Affiliation</h5>
                         <p>The organisational or institutional affiliation of the creator.</p>
                         <p>It is recommended to select the affiliation from the list, if the required affiliation is not
                             among the available options, it can be entered manually.</p>
@@ -244,19 +242,17 @@
                 </div>
                 <div class="section-divider"></div>
                 <div id="help-contactperson" class="section-content">
-                    <h2>Contact Persons</h2>
+                    <h4>Contact Persons</h4>
                     <div id="help-contactperson-position">
-                        <h3>Position</h3>
+                        <h5>Position</h5>
                         <p>The position of the person in the organisation.</p>
                     </div>
-                    <div class="section-divider"></div>
                     <div id="help-contactperson-website">
-                        <h3>Website</h3>
+                        <h5>Website</h5>
                         <p>Professional or specialized website, excluding any private websites.</p>
                     </div>
-                    <div class="section-divider"></div>
                     <div id="help-contactperson-affiliation">
-                        <h3>Affiliation</h3>
+                        <h5>Affiliation</h5>
                         <p>The organisational or institutional affiliation of the Person.</p>
                         <p>It is recommended to select the affiliation from the list, if the required affiliation is not
                             among the available options, it can be entered manually.</p>
@@ -265,9 +261,9 @@
                 </div>
                 <div class="section-divider"></div>
                 <div id="help-originatinglaboratory" class="section-content">
-                    <h2>Originating Laboratory</h2>
+                    <h4>Originating Laboratory</h4>
                     <div id="help-originatinglaboratory-name">
-                        <h3>Name of the originating laboratory</h3>
+                        <h5>Name of the originating laboratory</h5>
                         <p>It is recommended that the laboratory be selected from the list, as the affiliation is
                             populated by the autocomplete function. In the event that the desired laboratory is not
                             among the available options, it can be entered manually.</p>
@@ -276,9 +272,9 @@
                 </div>
                 <div class="section-divider"></div>
                 <div id="help-contributors" class="section-content">
-                    <h2>Contributors</h2>
+                    <h4>Contributors</h4>
                     <div id="help-contributor-role">
-                        <h3>Roles (Person)</h3>
+                        <h5>Roles (Person)</h5>
                         <p>The role of the contributor person/s in the creation of the resource. Please choose one or
                             more roles from the controlled list values provided by DataCite.</p>
                         <ul>
@@ -371,9 +367,8 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="section-divider"></div>
                     <div id="help-contributor-orcid">
-                        <h3>ORCID</h3>
+                        <h5>ORCID</h5>
                         <p>Uniquely identifies an individual or legal entity, according to various schemes. Please enter
                             a valid ORCID in form of XXXX-XXXX-XXXX-XXX(X) (i.e. 0000-0001-5727-2427). You can find your
                             colleagues' ORCID on the <a href="https://orcid.org/orcid-search/search"
@@ -381,21 +376,18 @@
                             made to fill in the remaining required fields automatically. Results are depending on the
                             information provided in the ORCID profile.</p>
                     </div>
-                    <div class="section-divider"></div>
                     <div id="help-contributor-affiliation">
-                        <h3>Affiliation</h3>
+                        <h5>Affiliation</h5>
                         <p>The organisational or institutional affiliation of the Person/s.</p>
                         <p>It is recommended to select the affiliation from the list, if the required affiliation is not
                             among the available options, it can be entered manually.</p>
                     </div>
-                    <div class="section-divider"></div>
                     <div id="help-contributor-organisationname">
-                        <h3>Organisation Name</h3>
+                        <h5>Organisation Name</h5>
                         <p>The name of the institution.</p>
                     </div>
-                    <div class="section-divider"></div>
                     <div id="help-contributor-organisationrole">
-                        <h3>Roles (Organisation)</h3>
+                        <h5>Roles (Organisation)</h5>
                         <p>The role of the contributor organisation/s in the creation of the resource. Please choose one
                             or more roles from the controlled list values provided by DataCite:</p>
                         <ul>
@@ -462,323 +454,318 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="section-divider"></div>
                     <div id="help-contributor-organisationaffiliation">
-                        <h3>Affiliation</h3>
+                        <h5>Affiliation</h5>
                         <p>The organisational or institutional affiliation of the Institution.</p>
                         <p>It is recommended to select the affiliation from the list, if the required affiliation is not
                             among the available options, it can be entered manually.</p>
                     </div>
-                    <div class="section-divider"></div>
-                    <div id="help-descriptions" class="section-content">
-                        <h2>Descriptions</h2>
-                        <div id="help-description-abstract">
-                            <h3>Abstract</h3>
-                            <p>A brief description of the resource and the context in which the resource was created.
-                            </p>
-                        </div>
-                        <div class="section-divider"></div>
-                        <div id="help-description-methods">
-                            <h3>Methods</h3>
-                            <p>The methodology employed for the study or research.</p>
-                        </div>
-                        <div class="section-divider"></div>
-                        <div id="help-description-technicalinfo">
-                            <h3>Technical Info</h3>
-                            <p>Detailed information that may be associated with design, implementation, operation, use,
-                                and/or
-                                maintenance of a process, system, or instrument.</p>
-                        </div>
-                        <div class="section-divider"></div>
-                        <div id="help-description-other">
-                            <h3>Other</h3>
-                            <p>Other description information that does not fit into an existing category.</p>
-                        </div>
-                        <div class="section-divider"></div>
-                    </div>
-                    <div class="section-divider"></div>
-                    <div id="help-mslkeywords" class="section-content">
-                        <h2>EPOS Multi-Scale Laboratories Keywords</h2>
-                        <p>Please click on the Thesaurus button to the right to select keywords from the thesaurus or
-                            start typing to use the autocomplete function.
-                        <div class="section-divider"></div>
-                        The selectable keywords are taken from <a target="_blank"
-                            href="https://epos-msl.uu.nl/vocabularies">EPOS Multi-Scale Laboratories vocabularies</a>,
-                        available on <a target="_blank"
-                            href="https://github.com/UtrechtUniversity/msl_vocabularies">GitHub</a>.
-                        </p>
-                    </div>
-                    <div class="section-divider"></div>
-                    <div id="help-scienceKeywords" class="section-content">
-                        <div id="help-scienceKeywords-keyword">
-                            <h2>GCMD Science Keywords</h2>
-                            <!-- Feld der Form Group Thesaurus Keywords wird hier erklärt -->
-                            <p>Please click on the Thesaurus button to the right to select keywords from the thesaurus
-                                or start typing to use the autocomplete function. </p>
-                            <p>GCMD Science Keywords are essential for filtering options within the GFZ Metadata Portal.
-                                Therefore, we highly recommend selecting at least one GCMD Science Keyword to describe
-                                your
-                                dataset (you are welcome to add more if relevant).</p>
-                        </div>
-                        <div id="help-scienceKeywords-keywordviewer">
-                            <h3>Keyword Viewer</h3>
-                            <!--hier wird die Nutzung des Keyword-Baums im Thesaurus Modal erklärt-->
-                            <p>Please try to choose your keywords as specific as possible. Always check if there is a
-                                more
-                                fitting keyword
-                                further down the hierarchy. Definitions of keywords can be read via mouse over, if
-                                provided
-                                by the thesaurus maintainer.</p>
-                            <p>To open the hierarchy ("tree"), click on the small arrow or double-click the keyword.
-                                Choose
-                                a keyword by clicking on it and thereby checking the checkbox. The keyword is than
-                                automatically added. Selected keywords have a checkmark in their checkbox.</p>
-                            <p>You can also use the search bar on top. It searches the keywords and their definitions or
-                                descriptions.</p>
-                        </div>
-                    </div>
-                    <div class="section-divider"></div>
-                    <div id="help-freeKeywords" class="section-content">
-                        <h3>Free Keywords</h3>
-                        <p>Free keywords are user-defined tags that complement predefined thesaurus terms.
-                            They allow for individual description and categorization of your content and improve its
-                            discoverability.
-                            Before adding a free keyword, please check if a suitable term already exists in one of the
-                            thesauri above.</p>
-                    </div>
-                    <div class="section-divider"></div>
-                    <div id="help-dates" class="section-content">
-                        <h2>Dates</h2>
-                        <div id="help-date-created">
-                            <h3>Date created</h3>
-                            <p>The date on which the dataset was created. If the dataset is a collection of data from
-                                different sources, use the date when the dataset was compiled. If the dataset is a
-                                simulation, use the date when the simulation was completed. If the dataset is a
-                                reanalysis,
-                                use the date when the reanalysis was completed. If the dataset is a combination of data
-                                from
-                                different sources, use the date when the dataset was compiled.</p>
-                        </div>
-                        <div id="help-date-embargo">
-                            <h3>Embargo until</h3>
-                            <p>The date until which the dataset is under embargo. If the dataset is not under embargo,
-                                leave
-                                this field empty.</p>
-                        </div>
-                    </div>
-                    <div class="section-divider"></div>
-                    <div id="help-tsc" class="section-content">
-                        <h2>Spatial and temporal coverage</h2>
-                        <div id="help-tsc-geographicalcoverage">
-                            <h3>Geographic Coverage</h3>
-                            <p>If you draw a rectangle on the map, the coordinates of this rectangle will be transferred
-                                to
-                                the
-                                input fields <code>Latitude Min</code> and <code>Latitude Max</code> as well as
-                                <code>Longitude Min</code> and <code>Longitude Max</code>. These coordinates will only
-                                be
-                                saved
-                                together with the entire form. If you only set a marker on the map, the fields
-                                <code>Latitude Min</code> and <code>Longitude Min</code> will be filled, while
-                                <code>Latitude Max</code> and <code>Longitude Max</code> remain empty.
-                            </p>
-                            <ul>
-                                <li><strong>Latitude Min:</strong> Geographic latitude of a single coordinate or the
-                                    smaller
-                                    geographic latitude of a rectangle as a floating point number with a dot as the
-                                    separator.
-                                    Required field. Only positive and negative numbers in the range from -90 to +90 are
-                                    allowed.
-                                </li>
-                                <li><strong>Latitude Max:</strong> Geographic latitude of a rectangle as a floating
-                                    point
-                                    number
-                                    with a dot as the separator. Optional field. Only positive and negative numbers in
-                                    the
-                                    range
-                                    from -90 to +90 are allowed.</li>
-                                <li><strong>Longitude Min:</strong> Geographic longitude of a single coordinate or the
-                                    smaller
-                                    geographic longitude of a rectangle as a floating point number with a dot as the
-                                    separator.
-                                    Required field. Only positive and negative numbers in the range from -180 to +180
-                                    are
-                                    allowed.</li>
-                                <li><strong>Longitude Max:</strong> Geographic longitude of a rectangle as a floating
-                                    point
-                                    number with a dot as the separator. Optional field. Only positive and negative
-                                    numbers
-                                    in
-                                    the range from -180 to +180 are allowed.</li>
-                            </ul>
-                        </div>
-                        <div id="help-tsc-description">
-                            <h3>Description</h3>
-                            Free text field for explaining the geographic and temporal
-                            context. Required field without any restrictions.
-                        </div>
-                        <div class="section-divider"></div>
-                        <div id="help-tsc-temporalcoverage">
-                            <h3>Temporal Coverage</h3>
-                            <ul>
-                                <li><strong>Start Date:</strong> Date of the beginning of the temporal coverage of the
-                                    dataset.
-                                    Can be selected via the date picker. Required field.</li>
-                                <li><strong>Start Time:</strong> Time specification in format hh:mm:ss. Can be selected
-                                    via
-                                    the
-                                    time picker.</li>
-                                <li><strong>End Date:</strong> Date of the end of the temporal coverage of the dataset.
-                                    Can
-                                    be
-                                    selected via the date picker. Required field.</li>
-                                <li><strong>End Time:</strong> Time specification in format hh:mm:ss. Can be selected
-                                    via
-                                    the
-                                    time picker.</li>
-                                <li><strong>Timezone:</strong> Timezone from UTC in which Start Time and End Time are
-                                    specified.
-                                    All worldwide time zones can be selected. Required field.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="section-divider"></div>
-                    <div id="help-relatedwork" class="section-content">
-                        <h2>Related Work</h2>
-                        <div id="help-relatedwork-relation">
-                            <h3>Relation Type</h3>
-                            <p>The data record is classified in the Relation Type form field. The following different
-                                relation types are available for selection.</p>
-                            <ul>
-                                <li><strong>IsCitedBy:</strong> indicates that B includes A in a citation</li>
-                                <li><strong>Cites:</strong> indicates that A includes B in a citation</li>
-                                <li><strong>IsSupplementTo:</strong> indicates that A is a supplement to B</li>
-                                <li><strong>IsSupplementedBy:</strong> indicates that B is a supplement to A</li>
-                                <li><strong>IsContinuedBy:</strong> indicates A is continued by the work B</li>
-                                <li><strong>Continues:</strong> indicates A is a continuation of the work B</li>
-                                <li><strong>Describes:</strong> indicates A describes B</li>
-                                <li><strong>IsDescribedBy:</strong> indicates A is described by B</li>
-                                <li><strong>HasMetadata:</strong> indicates resource A has additional metadata B</li>
-                                <li><strong>IsMetadataFor:</strong> indicates additional metadata A for a resource B
-                                </li>
-                                <li><strong>HasVersion:</strong> indicates A has a version B</li>
-                                <li><strong>IsVersionOf:</strong> indicates A is a version of B</li>
-                                <li><strong>IsNewVersionOf:</strong> indicates A is a new edition of B, where the new
-                                    edition has been modified or updated</li>
-                                <li><strong>IsPreviousVersionOf:</strong> indicates A is a previous edition of B</li>
-                                <li><strong>IsPartOf:</strong> indicates A is a portion of B; may be used for elements
-                                    of a series</li>
-                                <li><strong>HasPart:</strong> indicates A includes the part B</li>
-                                <li><strong>IsPublishedIn:</strong> indicates A is published inside B, but is
-                                    independent of other things published inside of B</li>
-                                <li><strong>IsReferencedBy:</strong> indicates A is used as a source of information by B
-                                </li>
-                                <li><strong>References:</strong> indicates B is used as a source of information for A
-                                </li>
-                                <li><strong>IsDocumentedBy:</strong> indicates B is documentation about/explaining A
-                                </li>
-                                <li><strong>Documents:</strong> indicates A is documentation about/explaining B</li>
-                                <li><strong>IsCompiledBy:</strong> indicates B is used to compile or create A</li>
-                                <li><strong>Compiles:</strong> indicates B is the result of a compile or creation event
-                                    using A</li>
-                                <li><strong>IsVariantFormOf:</strong> indicates A is a variant or different form of B
-                                </li>
-                                <li><strong>IsOriginalFormOf:</strong> indicates A is the original form of B</li>
-                                <li><strong>IsIdenticalTo:</strong> indicates that A is identical to B, for use when
-                                    there is a need to register two separate instances of the same resource</li>
-                                <li><strong>IsReviewedBy:</strong> indicates that A is reviewed by B</li>
-                                <li><strong>Reviews:</strong> indicates that A is a review of B</li>
-                                <li><strong>IsDerivedFrom:</strong> indicates B is a source upon which A is based</li>
-                                <li><strong>IsSourceOf:</strong> indicates A is a source upon which B is based</li>
-                                <li><strong>IsRequiredBy:</strong> Indicates A is required by B</li>
-                                <li><strong>Requires:</strong> Indicates A requires B</li>
-                                <li><strong>Obsoletes:</strong> Indicates A replaces B</li>
-                                <li><strong>IsObsoletedBy:</strong> Indicates A is replaced by B</li>
-                                <li><strong>IsCollectedBy:</strong> Indicates A is collected by B</li>
-                                <li><strong>Collects:</strong> Indicates A collects B</li>
-                            </ul>
-                        </div>
-                        <div id="help-relatedwork-identifier">
-                            <h3>Identifier</h3>
-                            <p>Identifiers of related resources. These must be globally unique identifiers.</p>
-                        </div>
-                        <div id="help-relatedwork-identifiertype">
-                            <h3>Identifier Type</h3>
-                            <p>The type of the Related Identifier.</p>
-                            <ul>
-                                <li><strong>ARK:</strong> A URI designed to support long-term access to information
-                                    objects. In general, ARK syntax is of the form (brackets, []. indicate optional
-                                    elements).</li>
-                                <li><strong>arXiv:</strong> arXiv.org is a repository of preprints of scientific papers
-                                    in the fields of mathematics, physics, astronomy, computer science, quantitative
-                                    biology, statistics, and quantitative financ.</li>
-                                <li><strong>bibcode:</strong> A standardized 19-character identifier according to the
-                                    syntax yyyyjjjjjvvvvmppppa.</li>
-                                <li><strong>DOI:</strong> A character string used to uniquely identify an object. A DOI
-                                    name is divided into two parts, a prefix and a suffix, separated by a slash.</li>
-                                <li><strong>EAN13:</strong> A 13-digit barcoding standard that is a superset of the
-                                    original 12-digit Universal Product Code (UPC) system.</li>
-                                <li><strong>EISSN:</strong> ISSN used to identify periodicals in electronic form (eISSN
-                                    or e-ISSN).</li>
-                                <li><strong>Handle:</strong> This refers specifically to an ID in the Handle system
-                                    operated by the Corporation for National Research Initiatives (CNRI).</li>
-                                <li><strong>IGSN:</strong> A code that uniquely identifies samples from our natural
-                                    environment and related features-of-interest.</li>
-                                <li><strong>ISBN:</strong> A unique numeric book identifier. There are 2 formats: a
-                                    10-digit ISBN format and a 13-digit ISBN.</li>
-                                <li><strong>ISSN:</strong> A unique 8-digit number used to identify a print or
-                                    electronic periodical publication.</li>
-                                <li><strong>ISTC:</strong> A unique “number” assigned to a textual work. An ISTC
-                                    consists of 16 numbers and/or letters..</li>
-                                <li><strong>LISSN:</strong> The linking ISSN or ISSN-L enables collocation or linking
-                                    among different media versions of a continuing resource.</li>
-                                <li><strong>LSID:</strong> A unique identifier for data in the Life Science domain.
-                                    Format: urn:lsid:authority:namespace:identifier:revision.</li>
-                                <li><strong>PMID:</strong> A unique number assigned to each PubMed record.</li>
-                                <li><strong>PURL:</strong> A PURL has three parts: (1) a protocol, (2) a resolver
-                                    address, and (3) a name.</li>
-                                <li><strong>UPC:</strong> A barcode symbology used for tracking trade items in stores.
-                                    Its most common form, the UPC-A, consists of 12 numerical digits.</li>
-                                <li><strong>URL:</strong> Also known as web address, a URL is a specific character
-                                    string that constitutes a reference to a resource. The syntax is:
-                                    scheme://domain:port/path?query_string#fragment_id.</li>
-                                <li><strong>URN:</strong> A unique and persistent identifier of an electronic document.
-                                    The syntax is: urn:<NID>:<NSS>. The leading urn: sequence is case-insensitive, <NID>
-                                                is the namespace identifier, <NSS> is the namespace-specific string.
-                                </li>
-                                <li><strong>w3id:</strong> Mostly used to publish vocabularies and ontologies. The
-                                    letters ‘w3’ stand for “World Wide Web”.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="section-divider"></div>
-                    <div id="help-fundingreference" class="section-content">
-                        <h2>Funding Reference</h2>
-                        <div id="help-fundingreference-funder">
-                            <h3>Funder</h3>
-                            <p>The name of the funding provider. To receive suggestions via the API, you must enter at
-                                least
-                                the first two letters. You can also manually enter the funding provider.</p>
-                        </div>
-                        <div id="help-fundingreference-grantnumber">
-                            <h3>Grant Number</h3>
-                            <p>Free text field for entering the grant number assigned by the funding provider. Optional
-                                field without restrictions.
-                                Examples: GBMF3859.01.</p>
-                        </div>
-                        <div id="help-fundingreference-grantname">
-                            <h3>Grant Name</h3>
-                            <p>Free text field for entering the title or name of the grant. Optional field without
-                                restrictions.
-                                Examples: Socioenvironmental Monitoring of the Amazon Basin and Xingu.</p>
-                        </div>
-                    </div>
-                    <!-- Damit das scrollen besser funktioniert und unter dem letzten Selector Platz nach unten ist -->
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 </div>
                 <div class="section-divider"></div>
+                <div id="help-descriptions" class="section-content">
+                    <h4>Descriptions</h4>
+                    <div id="help-description-abstract">
+                        <h5>Abstract</h5>
+                        <p>A brief description of the resource and the context in which the resource was created.
+                        </p>
+                    </div>
+                    <div id="help-description-methods">
+                        <h5>Methods</h5>
+                        <p>The methodology employed for the study or research.</p>
+                    </div>
+                    <div id="help-description-technicalinfo">
+                        <h5>Technical Info</h5>
+                        <p>Detailed information that may be associated with design, implementation, operation, use,
+                            and/or
+                            maintenance of a process, system, or instrument.</p>
+                    </div>
+                    <div id="help-description-other">
+                        <h5>Other</h5>
+                        <p>Other description information that does not fit into an existing category.</p>
+                    </div>
+                </div>
+                <div class="section-divider"></div>
+                <div id="help-mslkeywords" class="section-content">
+                    <h4>EPOS Multi-Scale Laboratories Keywords</h4>
+                    <p>Please click on the Thesaurus button to the right to select keywords from the thesaurus or
+                        start typing to use the autocomplete function.
+                    <div class="section-divider"></div>
+                    The selectable keywords are taken from <a target="_blank"
+                        href="https://epos-msl.uu.nl/vocabularies">EPOS Multi-Scale Laboratories vocabularies</a>,
+                    available on <a target="_blank"
+                        href="https://github.com/UtrechtUniversity/msl_vocabularies">GitHub</a>.
+                    </p>
+                </div>
+                <div class="section-divider"></div>
+                <div id="help-scienceKeywords" class="section-content">
+                    <div id="help-scienceKeywords-keyword">
+                        <h4>GCMD Science Keywords</h4>
+                        <!-- Feld der Form Group Thesaurus Keywords wird hier erklärt -->
+                        <p>Please click on the Thesaurus button to the right to select keywords from the thesaurus
+                            or start typing to use the autocomplete function. </p>
+                        <p>GCMD Science Keywords are essential for filtering options within the GFZ Metadata Portal.
+                            Therefore, we highly recommend selecting at least one GCMD Science Keyword to describe
+                            your
+                            dataset (you are welcome to add more if relevant).</p>
+                    </div>
+                    <div id="help-scienceKeywords-keywordviewer">
+                        <h5>Keyword Viewer</h5>
+                        <!--hier wird die Nutzung des Keyword-Baums im Thesaurus Modal erklärt-->
+                        <p>Please try to choose your keywords as specific as possible. Always check if there is a
+                            more
+                            fitting keyword
+                            further down the hierarchy. Definitions of keywords can be read via mouse over, if
+                            provided
+                            by the thesaurus maintainer.</p>
+                        <p>To open the hierarchy ("tree"), click on the small arrow or double-click the keyword.
+                            Choose
+                            a keyword by clicking on it and thereby checking the checkbox. The keyword is than
+                            automatically added. Selected keywords have a checkmark in their checkbox.</p>
+                        <p>You can also use the search bar on top. It searches the keywords and their definitions or
+                            descriptions.</p>
+                    </div>
+                </div>
+                <div class="section-divider"></div>
+                <div id="help-freeKeywords" class="section-content">
+                    <h4>Free Keywords</h4>
+                    <p>Free keywords are user-defined tags that complement predefined thesaurus terms.
+                        They allow for individual description and categorization of your content and improve its
+                        discoverability.
+                        Before adding a free keyword, please check if a suitable term already exists in one of the
+                        thesauri above.</p>
+                </div>
+                <div class="section-divider"></div>
+                <div id="help-dates" class="section-content">
+                    <h4>Dates</h4>
+                    <div id="help-date-created">
+                        <h5>Date created</h5>
+                        <p>The date on which the dataset was created. If the dataset is a collection of data from
+                            different sources, use the date when the dataset was compiled. If the dataset is a
+                            simulation, use the date when the simulation was completed. If the dataset is a
+                            reanalysis,
+                            use the date when the reanalysis was completed. If the dataset is a combination of data
+                            from
+                            different sources, use the date when the dataset was compiled.</p>
+                    </div>
+                    <div id="help-date-embargo">
+                        <h5>Embargo until</h5>
+                        <p>The date until which the dataset is under embargo. If the dataset is not under embargo,
+                            leave
+                            this field empty.</p>
+                    </div>
+                </div>
+                <div class="section-divider"></div>
+                <div id="help-tsc" class="section-content">
+                    <h4>Spatial and temporal coverage</h4>
+                    <div id="help-tsc-geographicalcoverage">
+                        <h5>Geographic Coverage</h5>
+                        <p>If you draw a rectangle on the map, the coordinates of this rectangle will be transferred
+                            to
+                            the
+                            input fields <code>Latitude Min</code> and <code>Latitude Max</code> as well as
+                            <code>Longitude Min</code> and <code>Longitude Max</code>. These coordinates will only
+                            be
+                            saved
+                            together with the entire form. If you only set a marker on the map, the fields
+                            <code>Latitude Min</code> and <code>Longitude Min</code> will be filled, while
+                            <code>Latitude Max</code> and <code>Longitude Max</code> remain empty.
+                        </p>
+                        <ul>
+                            <li><strong>Latitude Min:</strong> Geographic latitude of a single coordinate or the
+                                smaller
+                                geographic latitude of a rectangle as a floating point number with a dot as the
+                                separator.
+                                Required field. Only positive and negative numbers in the range from -90 to +90 are
+                                allowed.
+                            </li>
+                            <li><strong>Latitude Max:</strong> Geographic latitude of a rectangle as a floating
+                                point
+                                number
+                                with a dot as the separator. Optional field. Only positive and negative numbers in
+                                the
+                                range
+                                from -90 to +90 are allowed.</li>
+                            <li><strong>Longitude Min:</strong> Geographic longitude of a single coordinate or the
+                                smaller
+                                geographic longitude of a rectangle as a floating point number with a dot as the
+                                separator.
+                                Required field. Only positive and negative numbers in the range from -180 to +180
+                                are
+                                allowed.</li>
+                            <li><strong>Longitude Max:</strong> Geographic longitude of a rectangle as a floating
+                                point
+                                number with a dot as the separator. Optional field. Only positive and negative
+                                numbers
+                                in
+                                the range from -180 to +180 are allowed.</li>
+                        </ul>
+                    </div>
+                    <div id="help-tsc-description">
+                        <h5>Description</h5>
+                        Free text field for explaining the geographic and temporal
+                        context. Required field without any restrictions.
+                    </div>
+                    <div id="help-tsc-temporalcoverage">
+                        <h5>Temporal Coverage</h5>
+                        <ul>
+                            <li><strong>Start Date:</strong> Date of the beginning of the temporal coverage of the
+                                dataset.
+                                Can be selected via the date picker. Required field.</li>
+                            <li><strong>Start Time:</strong> Time specification in format hh:mm:ss. Can be selected
+                                via
+                                the
+                                time picker.</li>
+                            <li><strong>End Date:</strong> Date of the end of the temporal coverage of the dataset.
+                                Can
+                                be
+                                selected via the date picker. Required field.</li>
+                            <li><strong>End Time:</strong> Time specification in format hh:mm:ss. Can be selected
+                                via
+                                the
+                                time picker.</li>
+                            <li><strong>Timezone:</strong> Timezone from UTC in which Start Time and End Time are
+                                specified.
+                                All worldwide time zones can be selected. Required field.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section-divider"></div>
+                <div id="help-relatedwork" class="section-content">
+                    <h4>Related Work</h4>
+                    <div id="help-relatedwork-relation">
+                        <h5>Relation Type</h5>
+                        <p>The data record is classified in the Relation Type form field. The following different
+                            relation types are available for selection.</p>
+                        <ul>
+                            <li><strong>IsCitedBy:</strong> indicates that B includes A in a citation</li>
+                            <li><strong>Cites:</strong> indicates that A includes B in a citation</li>
+                            <li><strong>IsSupplementTo:</strong> indicates that A is a supplement to B</li>
+                            <li><strong>IsSupplementedBy:</strong> indicates that B is a supplement to A</li>
+                            <li><strong>IsContinuedBy:</strong> indicates A is continued by the work B</li>
+                            <li><strong>Continues:</strong> indicates A is a continuation of the work B</li>
+                            <li><strong>Describes:</strong> indicates A describes B</li>
+                            <li><strong>IsDescribedBy:</strong> indicates A is described by B</li>
+                            <li><strong>HasMetadata:</strong> indicates resource A has additional metadata B</li>
+                            <li><strong>IsMetadataFor:</strong> indicates additional metadata A for a resource B
+                            </li>
+                            <li><strong>HasVersion:</strong> indicates A has a version B</li>
+                            <li><strong>IsVersionOf:</strong> indicates A is a version of B</li>
+                            <li><strong>IsNewVersionOf:</strong> indicates A is a new edition of B, where the new
+                                edition has been modified or updated</li>
+                            <li><strong>IsPreviousVersionOf:</strong> indicates A is a previous edition of B</li>
+                            <li><strong>IsPartOf:</strong> indicates A is a portion of B; may be used for elements
+                                of a series</li>
+                            <li><strong>HasPart:</strong> indicates A includes the part B</li>
+                            <li><strong>IsPublishedIn:</strong> indicates A is published inside B, but is
+                                independent of other things published inside of B</li>
+                            <li><strong>IsReferencedBy:</strong> indicates A is used as a source of information by B
+                            </li>
+                            <li><strong>References:</strong> indicates B is used as a source of information for A
+                            </li>
+                            <li><strong>IsDocumentedBy:</strong> indicates B is documentation about/explaining A
+                            </li>
+                            <li><strong>Documents:</strong> indicates A is documentation about/explaining B</li>
+                            <li><strong>IsCompiledBy:</strong> indicates B is used to compile or create A</li>
+                            <li><strong>Compiles:</strong> indicates B is the result of a compile or creation event
+                                using A</li>
+                            <li><strong>IsVariantFormOf:</strong> indicates A is a variant or different form of B
+                            </li>
+                            <li><strong>IsOriginalFormOf:</strong> indicates A is the original form of B</li>
+                            <li><strong>IsIdenticalTo:</strong> indicates that A is identical to B, for use when
+                                there is a need to register two separate instances of the same resource</li>
+                            <li><strong>IsReviewedBy:</strong> indicates that A is reviewed by B</li>
+                            <li><strong>Reviews:</strong> indicates that A is a review of B</li>
+                            <li><strong>IsDerivedFrom:</strong> indicates B is a source upon which A is based</li>
+                            <li><strong>IsSourceOf:</strong> indicates A is a source upon which B is based</li>
+                            <li><strong>IsRequiredBy:</strong> Indicates A is required by B</li>
+                            <li><strong>Requires:</strong> Indicates A requires B</li>
+                            <li><strong>Obsoletes:</strong> Indicates A replaces B</li>
+                            <li><strong>IsObsoletedBy:</strong> Indicates A is replaced by B</li>
+                            <li><strong>IsCollectedBy:</strong> Indicates A is collected by B</li>
+                            <li><strong>Collects:</strong> Indicates A collects B</li>
+                        </ul>
+                    </div>
+                    <div id="help-relatedwork-identifier">
+                        <h5>Identifier</h5>
+                        <p>Identifiers of related resources. These must be globally unique identifiers.</p>
+                    </div>
+                    <div id="help-relatedwork-identifiertype">
+                        <h5>Identifier Type</h5>
+                        <p>The type of the Related Identifier.</p>
+                        <ul>
+                            <li><strong>ARK:</strong> A URI designed to support long-term access to information
+                                objects. In general, ARK syntax is of the form (brackets, []. indicate optional
+                                elements).</li>
+                            <li><strong>arXiv:</strong> arXiv.org is a repository of preprints of scientific papers
+                                in the fields of mathematics, physics, astronomy, computer science, quantitative
+                                biology, statistics, and quantitative financ.</li>
+                            <li><strong>bibcode:</strong> A standardized 19-character identifier according to the
+                                syntax yyyyjjjjjvvvvmppppa.</li>
+                            <li><strong>DOI:</strong> A character string used to uniquely identify an object. A DOI
+                                name is divided into two parts, a prefix and a suffix, separated by a slash.</li>
+                            <li><strong>EAN13:</strong> A 13-digit barcoding standard that is a superset of the
+                                original 12-digit Universal Product Code (UPC) system.</li>
+                            <li><strong>EISSN:</strong> ISSN used to identify periodicals in electronic form (eISSN
+                                or e-ISSN).</li>
+                            <li><strong>Handle:</strong> This refers specifically to an ID in the Handle system
+                                operated by the Corporation for National Research Initiatives (CNRI).</li>
+                            <li><strong>IGSN:</strong> A code that uniquely identifies samples from our natural
+                                environment and related features-of-interest.</li>
+                            <li><strong>ISBN:</strong> A unique numeric book identifier. There are 2 formats: a
+                                10-digit ISBN format and a 13-digit ISBN.</li>
+                            <li><strong>ISSN:</strong> A unique 8-digit number used to identify a print or
+                                electronic periodical publication.</li>
+                            <li><strong>ISTC:</strong> A unique “number” assigned to a textual work. An ISTC
+                                consists of 16 numbers and/or letters..</li>
+                            <li><strong>LISSN:</strong> The linking ISSN or ISSN-L enables collocation or linking
+                                among different media versions of a continuing resource.</li>
+                            <li><strong>LSID:</strong> A unique identifier for data in the Life Science domain.
+                                Format: urn:lsid:authority:namespace:identifier:revision.</li>
+                            <li><strong>PMID:</strong> A unique number assigned to each PubMed record.</li>
+                            <li><strong>PURL:</strong> A PURL has three parts: (1) a protocol, (2) a resolver
+                                address, and (3) a name.</li>
+                            <li><strong>UPC:</strong> A barcode symbology used for tracking trade items in stores.
+                                Its most common form, the UPC-A, consists of 12 numerical digits.</li>
+                            <li><strong>URL:</strong> Also known as web address, a URL is a specific character
+                                string that constitutes a reference to a resource. The syntax is:
+                                scheme://domain:port/path?query_string#fragment_id.</li>
+                            <li><strong>URN:</strong> A unique and persistent identifier of an electronic document.
+                                The syntax is: urn:<NID>:<NSS>. The leading urn: sequence is case-insensitive, <NID>
+                                            is the namespace identifier, <NSS> is the namespace-specific string.
+                            </li>
+                            <li><strong>w3id:</strong> Mostly used to publish vocabularies and ontologies. The
+                                letters ‘w3’ stand for “World Wide Web”.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section-divider"></div>
+                <div id="help-fundingreference" class="section-content">
+                    <h4>Funding Reference</h4>
+                    <div id="help-fundingreference-funder">
+                        <h5>Funder</h5>
+                        <p>The name of the funding provider. To receive suggestions via the API, you must enter at
+                            least
+                            the first two letters. You can also manually enter the funding provider.</p>
+                    </div>
+                    <div id="help-fundingreference-grantnumber">
+                        <h5>Grant Number</h5>
+                        <p>Free text field for entering the grant number assigned by the funding provider. Optional
+                            field without restrictions.
+                            Examples: GBMF3859.01.</p>
+                    </div>
+                    <div id="help-fundingreference-grantname">
+                        <h5>Grant Name</h5>
+                        <p>Free text field for entering the title or name of the grant. Optional field without
+                            restrictions.
+                            Examples: Socioenvironmental Monitoring of the Amazon Basin and Xingu.</p>
+                    </div>
+                </div>
+                <!-- Damit das scrollen besser funktioniert und unter dem letzten Selector Platz nach unten ist -->
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             </div>
+            <div class="section-divider"></div>
         </div>
+    </div>
     </div>
     <!-- Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
