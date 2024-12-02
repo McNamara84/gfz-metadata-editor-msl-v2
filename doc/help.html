@@ -11,7 +11,7 @@
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#myScrollspy">
+<body data-bs-spy="scroll" data-bs-target="#nav-help-menu">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light"
         style="background-color: #005b9d; padding-top: 5px; padding-bottom: 5px;">
@@ -26,32 +26,30 @@
     <div class="container">
         <div class="row">
             <!-- Sidebar -->
-            <nav class="col-xs-12 col-md-3" id="myScrollspy">
+            <nav class="col-xs-12 col-md-3" id="nav-help-menu">
                 <ul class="nav nav-pills flex-column">
-                    <li class="nav-item"><a class="nav-link active" href="#introduction">Introduction</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#resource-information">Resource Information</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#authors">Authors</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#licenses-rights">Licenses and rights</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact-persons">Contact Persons</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#originatingLaboratory">Originating Laboratory</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="#contributors">Contributors</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#descriptions">Descriptions</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#mslkeywords">MSL-Keywords</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#scienceKeywords">GCMD Science Keywords</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#freeKeywords">Free Keywords</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tsc">Spatial and temporal coverage</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#dates">Dates</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#relatedWork">Related Work</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#funding_reference">Funding Reference</a></li>
-
+                    <li class="nav-item"><a class="nav-link active" href="#help-introduction">Introduction</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#help-resourceinformation">Resource Information</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#help-rights">Licenses and rights</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#help-authors">Authors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#help-contactperson">Contact Persons</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#help-originatinglaboratory">Originating Laboratory</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#help-contributors">Contributors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#help-descriptions">Descriptions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#help-mslkeywords">MSL-Keywords</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#help-scienceKeywords">GCMD Science Keywords</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#help-freeKeywords">Free Keywords</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#help-tsc">Spatial and temporal coverage</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#help-dates">Dates</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#help-relatedwork">Related Work</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#help-fundingreference">Funding Reference</a></li>
                     <!-- Hier neue Sections hinzufügen -->
                 </ul>
             </nav>
             <!-- Inhalt der Seite -->
             <div class="col-xs-12 col-md-9">
                 <!-- Inhalt aus Section 1 -->
-                <div id="introduction" class="section-content">
+                <div id="help-introduction" class="section-content">
                     <h2>Introduction</h2>
                     <p class="lead">Translations exist for the metadata editor in various languages. You can see whether
                         your
@@ -61,20 +59,20 @@
                 </div>
                 <div class="section-divider"></div>
                 <!-- Inhalt aus Section 2 -->
-                <div id="resource-information">
+                <div id="help-resourceinformation">
                     <h2>Resource Information</h2>
                     <p>General metadata for the data set is specified in the Resource Information section. In
                         detail,these are the form fields DOI, Publication Year, Resource Type, Version, Language of
                         dataset, Title and Title Type. Up to
                         <?php echo $maxTitles; ?> different titles can be specified.
                     </p>
-                    <div id="doi">
+                    <div id="help-resourceinformation-doi">
                         <h3>DOI</h3>
                         <p>The DOI is a unique string that identifies a resource. Format should be 10.ORGANISATION/ID.
                             If you have no DOI for your dataset yet, you can leave this field empty and a DOI will be registered.</p>
                     </div>
                     <!-- Inhalt aus Section 4 -->
-                    <div id="publication-year">
+                    <div id="help-resourceinformation-publicationyear">
                         <h3>Publication Year</h3>
                         <p>The year when the data was or will be made publicly available. In the case of datasets,
                             “publish”
@@ -89,7 +87,7 @@
                         </ul>
                     </div>
                     <!-- Inhalt aus Section 5 -->
-                    <div id="resource-type">
+                    <div id="help-resourceinformation-resourcetype">
                         <h3>Resource Type</h3>
                         <p>The data record is classified in the Resource Type form field. The following different
                             resource
@@ -164,7 +162,7 @@
                         </ul>
                     </div>
                     <!-- Inhalt aus Section 6 -->
-                    <div id="version">
+                    <div id="help-resourceinformation-version">
                         <h3>Version</h3>
                         <p>The version number or other identifier of the dataset. If your dataset is published for the
                             first
@@ -177,13 +175,13 @@
                                 blank.</em></p>
                     </div>
                     <!-- Inhalt aus Section 7 -->
-                    <div id="language-of-dataset">
+                    <div id="help-resourceinformation-language">
                         <h3>Language of dataset</h3>
                         <p>The primary language of the dataset. Choose from a list of supported languages. Default is
                             English.</p>
                     </div>
                     <!-- Inhalt aus Section 8 -->
-                    <div id="title">
+                    <div id="help-resourceinformation-title">
                         <h3>Title</h3>
                         <p>The main title of the dataset. The first row is reserved for the main title. You can specify
                             up to
@@ -192,7 +190,7 @@
                         </p>
                     </div>
                     <!-- Inhalt aus Section 9 -->
-                    <div id="title-type">
+                    <div id="help-resourceinformation-titletype">
                         <h3>Title Type</h3>
                         <p>Indicates the type of title being provided, such as an alternative title or translated title.
                             Default is "MainTitle". Every title should have a title type.</p>
@@ -214,17 +212,17 @@
                 </div>
                 <div class="section-divider"></div>
                 <!-- Inhalt aus Section -->
-                <div id="licenses-rights">
+                <div id="help-rights">
                     <h2>Licenses and rights</h2>
                     <p>Rights information for the data set. We recommend a Creative Commons Attribution 4.0 (CC-BY)
                         licence whenever possible.</p>
                 </div>
                 <div class="section-divider"></div>
                 <!-- Inhalt aus Section -->
-                <div id="authors">
+                <div id="help-authors">
                     <h2>Authors</h2>
                     <div class="section-divider"></div>
-                    <div id="orcid">
+                    <div id="help-author-orcid">
                         <h3>ORCID</h3>
                         <p>Uniquely identifies an individual or legal entity, according to various schemes. Please enter
                             a valid ORCID in the format XXXX-XXXX-XXXX-XXXX (i.e. 0000-0001-5727-2427). If you do not
@@ -235,32 +233,27 @@
                         </p>
                     </div>
                     <div class="section-divider"></div>
-                    <div id="affiliation">
+                    <div id="help-author-affiliation">
                         <h3>Affiliation</h3>
                         <p>The organisational or institutional affiliation of the creator.</p>
                         <p>It is recommended to select the affiliation from the list, if the required affiliation is not
                             among the available options, it can be entered manually.</p>
                     </div>
-                    <div class="section-divider"></div>
-                    <div id="addAffiliationInfo">
-                        <h3>Additional Affiliation Information</h3>
-                        <p>Specify the Affiliation Information. You can enter the section, department or group here.</p>
-                    </div>
                 </div>
                 <div class="section-divider"></div>
-                <div id="contact-persons">
+                <div id="help-contactperson">
                     <h2>Contact Persons</h2>
-                    <div id="position">
+                    <div id="help-contactperson-position">
                         <h3>Position</h3>
                         <p>The position of the person in the organisation.</p>
                     </div>
                     <div class="section-divider"></div>
-                    <div id="website">
+                    <div id="help-contactperson-website">
                         <h3>Website</h3>
                         <p>Professional or specialized website, excluding any private websites.</p>
                     </div>
                     <div class="section-divider"></div>
-                    <div id="CP_affiliation">
+                    <div id="help-contactperson-affiliation">
                         <h3>Affiliation</h3>
                         <p>The organisational or institutional affiliation of the Person.</p>
                         <p>It is recommended to select the affiliation from the list, if the required affiliation is not
@@ -269,27 +262,20 @@
                     <div class="section-divider"></div>
                 </div>
                 <div class="section-divider"></div>
-                <div id="originatingLaboratory">
+                <div id="help-originatinglaboratory">
                     <h2>Originating Laboratory</h2>
-                    <div id="LaboratorynameHelp">
+                    <div id="help-originatinglaboratory-name">
                         <h3>Name of the originating laboratory</h3>
                         <p>It is recommended that the laboratory be selected from the list, as the affiliation is
                             populated by the autocomplete function. In the event that the desired laboratory is not
                             among the available options, it can be entered manually.</p>
                         <p>The list opens when you start typing.</p>
                     </div>
-                    <div id="LaboratoryAffiliationHelp">
-                        <h3>Affiliation of the originating laboratory</h3>
-                        <p>The organisational or institutional affiliation of the laboratory.</p>
-                        <p>It is recommended to select the affiliation from the list, if the required
-                            laboratory-Affiliation is not among the available options, it can be entered manually.</p>
-                        <p>The list opens when you start typing.</p>
-                    </div>
                 </div>
                 <div class="section-divider"></div>
-                <div id="contributors">
+                <div id="help-contributors">
                     <h2>Contributors</h2>
-                    <div id="CPer_roles">
+                    <div id="help-contributor-role">
                         <h3>Roles (Person)</h3>
                         <p>The role of the contributor person/s in the creation of the resource. Please choose one or more roles from the controlled list values provided by DataCite.</p>
                     <ul>
@@ -344,7 +330,7 @@
                     </ul>
                     </div>
                     <div class="section-divider"></div>
-                    <div id="CPer_orcid">
+                    <div id="help-contributor-orcid">
                         <h3>ORCID</h3>
                         <p>Uniquely identifies an individual or legal entity, according to various schemes. Please enter
                             a valid ORCID in form of XXXX-XXXX-XXXX-XXX(X) (i.e. 0000-0001-5727-2427). You can find your
@@ -354,20 +340,19 @@
                             information provided in the ORCID profile.</p>
                     </div>
                     <div class="section-divider"></div>
-                    <div id="CPer_affiliation">
+                    <div id="help-contributor-affiliation">
                         <h3>Affiliation</h3>
                         <p>The organisational or institutional affiliation of the Person/s.</p>
                         <p>It is recommended to select the affiliation from the list, if the required affiliation is not
                             among the available options, it can be entered manually.</p>
                     </div>
                     <div class="section-divider"></div>
-                    <div class="section-divider"></div>
-                    <div id="organisation_name">
+                    <div id="help-contributor-organisationname">
                         <h3>Organisation Name</h3>
                         <p>The name of the institution.</p>
                     </div>
                     <div class="section-divider"></div>
-                    <div id="organisation_roles">
+                    <div id="help-contributor-organisationrole">
                         <h3>Roles (Organisation)</h3>
                         <p>The role of the contributor organisation/s in the creation of the resource. Please choose one or more roles from the controlled list values provided by DataCite:</p>
                         <ul>
@@ -407,7 +392,7 @@
                         </ul>
                     </div>
                     <div class="section-divider"></div>
-                    <div id="cOrg_affiliation">
+                    <div id="help-contributor-organisationaffiliation">
                         <h3>Affiliation</h3>
                         <p>The organisational or institutional affiliation of the Institution.</p>
                         <p>It is recommended to select the affiliation from the list, if the required affiliation is not
@@ -416,33 +401,33 @@
                     <div class="section-divider"></div>
                 </div>
                 <div class="section-divider"></div>
-                <div id="descriptions">
+                <div id="help-descriptions">
                     <h2>Descriptions</h2>
-                    <div id="abstract">
+                    <div id="help-description-abstract">
                         <h3>Abstract</h3>
                         <p>A brief description of the resource and the context in which the resource was created.</p>
                     </div>
                     <div class="section-divider"></div>
-                    <div id="methods">
+                    <div id="help-description-methods">
                         <h3>Methods</h3>
                         <p>The methodology employed for the study or research.</p>
                     </div>
                     <div class="section-divider"></div>
-                    <div id="technical_info">
+                    <div id="help-description-technicalinfo">
                         <h3>Technical Info</h3>
                         <p>Detailed information that may be associated with design, implementation, operation, use,
                             and/or
                             maintenance of a process, system, or instrument.</p>
                     </div>
                     <div class="section-divider"></div>
-                    <div id="other">
+                    <div id="help-description-other">
                         <h3>Other</h3>
                         <p>Other description information that does not fit into an existing category.</p>
                     </div>
                     <div class="section-divider"></div>
                 </div>
                 <div class="section-divider"></div>
-                <div id="mslkeywords">
+                <div id="help-mslkeywords">
                     <h2>EPOS Multi-Scale Laboratories Keywords</h2>
                         <p>Please click on the Thesaurus button to the right to select keywords from the thesaurus or
                             start typing to use the autocomplete function.
@@ -453,7 +438,7 @@
                         </p>
                     </div>
                 <div class="section-divider"></div>
-                <div id="scienceKeywords">
+                <div id="help-scienceKeywords">
                     <h2>GCMD Science Keywords</h2>
                         <!-- Feld der Form Group Thesaurus Keywords wird hier erklärt -->
                         <p>Please click on the Thesaurus button to the right to select keywords from the thesaurus
@@ -461,7 +446,7 @@
                         <p>GCMD Science Keywords are essential for filtering options within the GFZ Metadata Portal.
                             Therefore, we highly recommend selecting at least one GCMD Science Keyword to describe your
                             dataset (you are welcome to add more if relevant).</p>
-                    <div id="modalHelp">
+                    <div id="help-scienceKeywords-keywordviewer">
                         <h3>Keyword Viewer</h3>
                         <!--hier wird die Nutzung des Keyword-Baums im Thesaurus Modal erklärt-->
                         <p>Please try to choose your keywords as specific as possible. Always check if there is a more
@@ -477,7 +462,7 @@
                 </div>
                 <div class="section-divider"></div>
                 <!-- Feld Free Keywords wird erklärt -->
-                <div id="freeKeywords">
+                <div id="help-freeKeywords">
                     <h3>Free Keywords</h3>
                     <p>Free keywords are user-defined tags that complement predefined thesaurus terms.
                         They allow for individual description and categorization of your content and improve its
@@ -486,9 +471,9 @@
                         thesauri above.</p>
                 </div>
                 <div class="section-divider"></div>
-                <div id="tsc">
+                <div id="help-tsc">
                     <h2>Spatial and temporal coverage</h2>
-                    <div id="geographical-coverage">
+                    <div id="help-tsc-geographicalcoverage">
                         <h3>Geographic Coverage</h3>
                         <p>If you draw a rectangle on the map, the coordinates of this rectangle will be transferred to
                             the
@@ -525,13 +510,13 @@
                     </div>
                 </div>
                 <div class="section-divider"></div>
-                <div id="tsc-description">
+                <div id="help-tsc-description">
                     <h3>Description</h3>
                     Free text field for explaining the geographic and temporal
                     context. Required field without any restrictions.
                 </div>
                 <div class="section-divider"></div>
-                <div id="tsc-temporal">
+                <div id="help-tsc-temporalcoverage">
                     <h3>Temporal Coverage</h3>
                     <ul>
                         <li><strong>Start Date:</strong> Date of the beginning of the temporal coverage of the dataset.
@@ -547,9 +532,9 @@
                     </ul>
                 </div>
                 <div class="section-divider"></div>
-                <div id="dates">
+                <div id="help-dates">
                     <h2>Dates</h2>
-                    <div id="date-created">
+                    <div id="help-date-created">
                         <h3>Date created</h3>
                         <p>The date on which the dataset was created. If the dataset is a collection of data from
                             different sources, use the date when the dataset was compiled. If the dataset is a
@@ -557,16 +542,16 @@
                             use the date when the reanalysis was completed. If the dataset is a combination of data from
                             different sources, use the date when the dataset was compiled.</p>
                     </div>
-                    <div id="date-embargo">
+                    <div id="help-date-embargo">
                         <h3>Embargo until</h3>
                         <p>The date until which the dataset is under embargo. If the dataset is not under embargo, leave
                             this field empty.</p>
                     </div>
                 </div>
                 <div class="section-divider"></div>
-                <div id="relatedWork">
+                <div id="help-relatedwork">
                     <h2>Related Work</h2>
-                    <div id="relation">
+                    <div id="help-relatedwork-relation">
                         <h3>Relation Type</h3>
                         <p>The data record is classified in the Relation Type form field. The following different
                             relation types are available for selection.</p>
@@ -619,11 +604,11 @@
                             <li><strong>Collects:</strong> Indicates A collects B</li>
                         </ul>
                     </div>
-                    <div id="identifier">
+                    <div id="help-relatedwork-identifier">
                         <h3>Identifier</h3>
                         <p>Identifiers of related resources. These must be globally unique identifiers.</p>
                     </div>
-                    <div id="identifier-type">
+                    <div id="help-relatedwork-identifiertype">
                         <h3>Identifier Type</h3>
                         <p>The type of the Related Identifier.</p>
                         <ul>
@@ -673,20 +658,20 @@
                     </div>
                 </div>
                 <div class="section-divider"></div>
-                <div id="funding_reference">
+                <div id="help-fundingreference">
                     <h2>Funding Reference</h2>
-                    <div id="funder">
+                    <div id="help-fundingreference-funder">
                         <h3>Funder</h3>
                         <p>The name of the funding provider. To receive suggestions via the API, you must enter at least
                             the first two letters. You can also manually enter the funding provider.</p>
                     </div>
-                    <div id="grant-number">
+                    <div id="help-fundingreference-grantnumber">
                         <h3>Grant Number</h3>
                         <p>Free text field for entering the grant number assigned by the funding provider. Optional
                             field without restrictions.
                             Examples: GBMF3859.01.</p>
                     </div>
-                    <div id="grant-name">
+                    <div id="help-fundingreference-grantname">
                         <h3>Grant Name</h3>
                         <p>Free text field for entering the title or name of the grant. Optional field without
                             restrictions.
@@ -709,13 +694,4 @@
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
-<footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-qFOQ9YFAeGj1gDOuUD61g3D+tLDv3u1ECYWqT82WQoaWrOhAY+5mRMTTVsQdWutbA5FORCnkEPEgU0OF8IzGvA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-</footer>
-
 </html>
