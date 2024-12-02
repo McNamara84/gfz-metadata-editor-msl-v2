@@ -301,40 +301,41 @@ function linkResourceToContributorInstitution($connection, $resource_id, $contri
 /**
  * Saves the Affiliation of a Contributor Institution.
  *
- * @param mysqli $connection                The Database Connection.
- * @param int $contributor_institution_id   The ID of the Contributor Institution.
- * @param string $affiliation_data          The Affiliation Data.
- * @param string|null $rorId_data           The ROR ID Data.
+ * @param mysqli      $connection                The database connection.
+ * @param int         $contributor_institution_id The ID of the contributor institution.
+ * @param string      $affiliation_data          The affiliation data.
+ * @param string|null $rorId_data                The ROR ID data.
  *
  * @return void
  */
 function saveContributorInstitutionAffiliation($connection, $contributor_institution_id, $affiliation_data, $rorId_data)
 {
-    $affiliation_name = parseAffiliationData($affiliation_data)[0];
-    $rorId = $rorId_data ? parseRorIds($rorId_data)[0] : null;
-    $rorId = $rorId ? str_replace("https://ror.org/", "", $rorId) : null;
+    $affiliations = parseAffiliationData($affiliation_data);
+    $rorIds = parseRorIds($rorId_data);
 
-    $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?) 
-                                  ON DUPLICATE KEY UPDATE 
-                                  name = VALUES(name),
-                                  rorId = COALESCE(VALUES(rorId), rorId)");
-    $stmt->bind_param("ss", $affiliation_name, $rorId);
-    $stmt->execute();
-    $affiliation_id = $stmt->insert_id ?: $connection->insert_id;
-    $stmt->close();
+    foreach ($affiliations as $index => $affiliation_name) {
+        if (empty($affiliation_name)) {
+            continue; // Skip empty affiliations
+        }
 
-    $stmt = $connection->prepare("SELECT 1 FROM Contributor_Institution_has_Affiliation 
-                                  WHERE Contributor_Institution_contributor_institution_id = ? AND Affiliation_affiliation_id = ?");
-    $stmt->bind_param("ii", $contributor_institution_id, $affiliation_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
+        $rorId = isset($rorIds[$index]) ? str_replace("https://ror.org/", "", $rorIds[$index]) : null;
 
-    if ($result->num_rows == 0) {
-        $stmt = $connection->prepare("INSERT INTO Contributor_Institution_has_Affiliation (Contributor_Institution_contributor_institution_id, Affiliation_affiliation_id) VALUES (?, ?)");
+        $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?) 
+                                      ON DUPLICATE KEY UPDATE 
+                                      name = VALUES(name),
+                                      rorId = COALESCE(VALUES(rorId), rorId)");
+        $stmt->bind_param("ss", $affiliation_name, $rorId);
+        $stmt->execute();
+        $affiliation_id = $stmt->insert_id ?: $connection->insert_id;
+        $stmt->close();
+
+        $stmt = $connection->prepare("INSERT IGNORE INTO Contributor_Institution_has_Affiliation 
+                                      (Contributor_Institution_contributor_institution_id, Affiliation_affiliation_id) 
+                                      VALUES (?, ?)");
         $stmt->bind_param("ii", $contributor_institution_id, $affiliation_id);
         $stmt->execute();
+        $stmt->close();
     }
-    $stmt->close();
 }
 
 /**
