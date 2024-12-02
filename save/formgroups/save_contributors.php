@@ -1,4 +1,5 @@
 <?php
+require_once 'parse_affiliations.php';
 /**
  * Saves the contributor information into the database.
  *
@@ -150,7 +151,7 @@ function linkResourceToContributorPerson($connection, $resource_id, $contributor
 function saveContributorPersonAffiliation($connection, $contributor_person_id, $affiliation_data, $rorId_data)
 {
     $affiliations = parseAffiliationData($affiliation_data);
-    $rorIds = parseAffiliationData($rorId_data);
+    $rorIds = parseRorIds($rorId_data);
 
     foreach ($affiliations as $index => $affiliation_name) {
         if (empty($affiliation_name)) {
@@ -310,7 +311,7 @@ function linkResourceToContributorInstitution($connection, $resource_id, $contri
 function saveContributorInstitutionAffiliation($connection, $contributor_institution_id, $affiliation_data, $rorId_data)
 {
     $affiliation_name = parseAffiliationData($affiliation_data)[0];
-    $rorId = $rorId_data ? parseAffiliationData($rorId_data)[0] : null;
+    $rorId = $rorId_data ? parseRorIds($rorId_data)[0] : null;
     $rorId = $rorId ? str_replace("https://ror.org/", "", $rorId) : null;
 
     $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?) 
