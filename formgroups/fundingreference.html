@@ -3,7 +3,7 @@
             <?php echo $translations['funding_reference']; ?>
         </b></div>
     <div class="card-body">
-        <div id="fundingreferenceGroup">
+        <div id="group-fundingreference">
             <div class="row" funding-reference-row>
                 <!-- Input field Funder -->
                 <div class="col-sm-6 col-md-4 col-lg-3 p-1">
@@ -18,7 +18,7 @@
                             </label>
                         </div>
                         <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                                data-help-section-id="funder"></i></span>
+                                data-help-section-id="help-fundingreference-funder"></i></span>
                         <div class="invalid-feedback">
                             <?php echo $translations['PleaseChoose_invalid']; ?>
                         </div>
@@ -28,31 +28,31 @@
                 <div class="col p-1">
                     <div class="input-group has-validation">
                         <div class="form-floating">
-                            <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputGrantNummer" name="grantNummer[]" />
-                            <label for="inputGrantNummer">
+                            <input type="text" class="form-control input-with-help input-right-no-round-corners" id="input-grantnumber" name="grantNummer[]" />
+                            <label for="input-grantnumber">
                                 <?php echo $translations['grant_Number']; ?>
                             </label>
                         </div>
                         <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                                data-help-section-id="grant-number"></i></span>
+                                data-help-section-id="help-fundingreference-grantnumber"></i></span>
                     </div>
                 </div>
                 <!-- Input field Grant Name -->
                 <div class="col p-1">
                     <div class="input-group has-validation">
                         <div class="form-floating">
-                            <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputGrantName" name="grantName[]" />
-                            <label for="inputGrantName">
+                            <input type="text" class="form-control input-with-help input-right-no-round-corners" id="input-grantname" name="grantName[]" />
+                            <label for="input-grantname">
                                 <?php echo $translations['grant_Name']; ?>
                             </label>
                         </div>
                         <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                                data-help-section-id="grant-name"></i></span>
+                                data-help-section-id="help-fundingreference-grantname"></i></span>
                     </div>
                 </div>
                 <!-- Button "add Funding Reference" -->
                 <div class="col-2 col-sm-1 col-md-1 col-lg-1 p-1 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary addFundingReference" id="addFundingReference"
+                    <button type="button" class="btn btn-primary addFundingReference" id="button-fundingreference-add"
                         style="width: 36px">
                         <?php echo $translations['add']; ?>
                     </button>

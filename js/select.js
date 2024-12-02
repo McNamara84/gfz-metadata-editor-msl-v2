@@ -7,7 +7,7 @@ $(document).ready(function () {
    * Loads time zones and populates the time zone select field.
    */
   $.getJSON("json/timezones.json", function (data) {
-    var timezoneSelect = $("#tscTimezone");
+    var timezoneSelect = $("#input-stc-timezone");
     $.each(data, function (index, timezone) {
       var label = timezone.label;
       var utcOffset = label.substring(3, 9); // Extracts "+01:00" or "-04:00"
@@ -24,11 +24,11 @@ $(document).ready(function () {
   // $(".chosen-select").chosen({});
 
   /**
-  * Populates the select field with ID inputRights with options created via an API call.
+  * Populates the select field with ID input-rights-license with options created via an API call.
   * @param {boolean} isSoftware - Determines whether to retrieve licenses for software or all resource types.
   */
   function setupLicenseDropdown(isSoftware) {
-    $("#inputRights").empty();
+    $("#input-rights-license").empty();
 
     const endpoint = isSoftware ? "vocabs/licenses/software" : "vocabs/licenses/all";
     $.getJSON(`./api/v2/${endpoint}`, function (data) {
@@ -45,20 +45,20 @@ $(document).ready(function () {
           defaultOptionSet = true;
         }
 
-        $("#inputRights").append(option);
+        $("#input-rights-license").append(option);
       });
 
       // Trigger change event to ensure any listeners are notified
-      $("#inputRights").trigger("change");
+      $("#input-rights-license").trigger("change");
     }).fail(function (jqXHR, textStatus, errorThrown) {
       console.error("Fehler beim Laden der Lizenzen:", textStatus, errorThrown);
       // Fallback: Default-Option hinzufügen
-      $("#inputRights").append($("<option>", {
+      $("#input-rights-license").append($("<option>", {
         value: "CC-BY-4.0",
         text: "Creative Commons Attribution 4.0 International (CC-BY-4.0)",
         selected: true,
       }));
-      $("#inputRights").trigger("change");
+      $("#input-rights-license").trigger("change");
     });
   }
 
@@ -66,8 +66,8 @@ $(document).ready(function () {
   setupLicenseDropdown(false);
 
   // Event handler to monitor if the resource type is changed
-  $("#inputResourceType").change(function () {
-    var selectedResourceType = $("#inputResourceType option:selected").text().trim();
+  $("#input-resourceinformation-resourcetype").change(function () {
+    var selectedResourceType = $("#input-resourceinformation-resourcetype option:selected").text().trim();
 
     // Check if "Software" is selected
     if (selectedResourceType === "Software") {
@@ -130,7 +130,7 @@ $(document).ready(function () {
     method: "GET",
     dataType: "json",
     beforeSend: function () {
-      var select = $("#inputRelation");
+      var select = $("#input-relatedwork-relation");
       select.prop('disabled', true);
       select.empty().append(
         $("<option>", {
@@ -140,7 +140,7 @@ $(document).ready(function () {
       );
     },
     success: function (response) {
-      var select = $("#inputRelation");
+      var select = $("#input-relatedwork-relation");
       select.empty();
 
       // Placeholder option
@@ -175,7 +175,7 @@ $(document).ready(function () {
     },
     error: function (jqXHR, textStatus, errorThrown) {
       console.error("Error loading relations:", textStatus, errorThrown);
-      var select = $("#inputRelation");
+      var select = $("#input-relatedwork-relation");
       select.empty().append(
         $("<option>", {
           value: "",
@@ -184,7 +184,7 @@ $(document).ready(function () {
       );
     },
     complete: function () {
-      $("#inputRelation").prop('disabled', false);
+      $("#input-relatedwork-relation").prop('disabled', false);
     }
   });
 
@@ -228,7 +228,7 @@ $(document).ready(function () {
   });*/
 
   // Event listener for newly added fields
-  /*$(document).on("click", ".addRelatedWork", function () {
+  /*$(document).on("click", ".button-relatedwork-add", function () {
     setTimeout(function () {
       $('select[name^="rIdentifierType"]:last').trigger("change");
     }, 100);
@@ -361,18 +361,18 @@ $(document).on("click", ".addRelatedWork", function () {
  * Function to update the IDs and names of elements within the related work group.
  */
 function updateIdsAndNames() {
-  $("#relatedworkGroup .row").each(function (index) {
+  $("#group-relatedwork .row").each(function (index) {
     $(this)
       .find('select[name^="relation"]')
-      .attr("id", "inputRelation" + index);
+      .attr("id", "input-relatedwork-relation" + index);
     $(this)
       .find('input[name^="rIdentifier"]')
-      .attr("id", "inputRIdentifier" + index);
+      .attr("id", "input-relatedwork-identifier" + index);
     $(this)
       .find('select[name^="rIdentifierType"]')
-      .attr("id", "inputRIdentifierType" + index);
+      .attr("id", "input-relatedwork-identifiertype" + index);
   });
 }
 
 // Initialize the dropdowns for identifier types
-setupIdentifierTypesDropdown("#inputRIdentifierType");
+setupIdentifierTypesDropdown("#input-relatedwork-identifiertype");

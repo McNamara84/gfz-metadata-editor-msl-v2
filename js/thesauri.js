@@ -16,17 +16,17 @@ $(document).ready(function () {
     var keywordConfigurations = [
         // GCMD Science Keywords
         {
-            inputId: '#inputScienceKeywords',
+            inputId: '#input-sciencekeyword',
             jsonFile: 'json/gcmdScienceKeywords.json',
-            jsTreeId: '#jstreeScience',
-            searchInputId: '#searchInputScience'
+            jsTreeId: '#jstree-sciencekeyword',
+            searchInputId: '#input-sciencekeyword-search'
         },
         // MSL-Keywords
         {
-            inputId: '#inputMSLKeywords',
+            inputId: '#input-mslkeyword',
             jsonFile: 'json/msl-vocabularies.json',
-            jsTreeId: '#jstreeMSLKeywords',
-            searchInputId: '#searchInputMSLKeywords',
+            jsTreeId: '#jstree-mslkeyword',
+            searchInputId: '#input-mslkeyword-thesaurussearch',
         },
     ];
 

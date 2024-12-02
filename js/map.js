@@ -5,20 +5,20 @@ $(document).ready(function () {
   var drawnOverlays = [];
 
   /**
-   * Event listener for Map buttons within the #tscGroup.
+   * Event listener for Map buttons within the #group-stc.
    * Stores the current row data when the map modal is opened and adjusts the map.
    */
-  $("#tscGroup").on("click", "[data-bs-target='#mapModal']", function () {
+  $("#group-stc").on("click", "[data-bs-target='#modal-stc-map']", function () {
     var $currentRow = $(this).closest("[tsc-row]");
     var rowId = $currentRow.attr("tsc-row-id");
 
     // Store current row reference and ID in the modal
-    $("#mapModal")
+    $("#modal-stc-map")
       .data("current-row", $currentRow)
       .data("tsc-row-id", rowId);
 
     // Adjust the map when the modal is shown
-    $("#mapModal").one("shown.bs.modal", function () {
+    $("#modal-stc-map").one("shown.bs.modal", function () {
       google.maps.event.trigger(map, "resize");
       fitMapBounds();
     });
@@ -28,13 +28,13 @@ $(document).ready(function () {
    * Event listener for the "Cancel Coordinates" button.
    * Clears coordinate inputs and removes any drawn overlays for the current row.
    */
-  $("#cancelCoords").click(function () {
-    var $currentRow = $("#mapModal").data("current-row");
+  $("#button-stc-cancelpanel").click(function () {
+    var $currentRow = $("#modal-stc-map").data("current-row");
     if ($currentRow && $currentRow.length) {
-      $currentRow.find("[id^=tscLatitudeMax]").val("");
-      $currentRow.find("[id^=tscLongitudeMax]").val("");
-      $currentRow.find("[id^=tscLatitudeMin]").val("");
-      $currentRow.find("[id^=tscLongitudeMin]").val("");
+      $currentRow.find("[id^=input-stc-latmax]").val("");
+      $currentRow.find("[id^=input-stc-longmax]").val("");
+      $currentRow.find("[id^=input-stc-latmin]").val("");
+      $currentRow.find("[id^=input-stc-longmin]").val("");
 
       var rowId = $currentRow.attr("tsc-row-id");
       deleteDrawnOverlaysForRow(rowId);
@@ -45,8 +45,8 @@ $(document).ready(function () {
    * Event listener for the "Send Coordinates" button.
    * Hides the map modal.
    */
-  $("#sendCoords").click(function () {
-    $("#mapModal").modal("hide");
+  $("#button-stc-sendcoords").click(function () {
+    $("#modal-stc-map").modal("hide");
   });
 
   /**
@@ -57,7 +57,7 @@ $(document).ready(function () {
     const { Map } = await google.maps.importLibrary("maps");
     const { DrawingManager } = await google.maps.importLibrary("drawing");
 
-    map = new Map(document.getElementById("map"), {
+    map = new Map(document.getElementById("panel-stc-map"), {
       center: { lat: 52.37929540757325, lng: 13.065966655404743 },
       zoom: 2,
       mapTypeId: google.maps.MapTypeId.SATELLITE,
@@ -94,7 +94,7 @@ $(document).ready(function () {
       drawingManager,
       "rectanglecomplete",
       function (rectangle) {
-        var $currentRow = $("#mapModal").data("current-row");
+        var $currentRow = $("#modal-stc-map").data("current-row");
         if (!$currentRow || !$currentRow.length) return;
 
         var rowId = $currentRow.attr("tsc-row-id");
@@ -104,10 +104,10 @@ $(document).ready(function () {
         var ne = bounds.getNorthEast();
         var sw = bounds.getSouthWest();
 
-        $currentRow.find("[id^=tscLatitudeMax]").val(ne.lat());
-        $currentRow.find("[id^=tscLongitudeMax]").val(ne.lng());
-        $currentRow.find("[id^=tscLatitudeMin]").val(sw.lat());
-        $currentRow.find("[id^=tscLongitudeMin]").val(sw.lng());
+        $currentRow.find("[id^=input-stc-latmax]").val(ne.lat());
+        $currentRow.find("[id^=input-stc-longmax]").val(ne.lng());
+        $currentRow.find("[id^=input-stc-latmin]").val(sw.lat());
+        $currentRow.find("[id^=input-stc-longmin]").val(sw.lng());
 
         // Get the display number based on the row's position
         var displayNumber = $currentRow.index() + 1;
@@ -132,17 +132,17 @@ $(document).ready(function () {
       drawingManager,
       "markercomplete",
       function (marker) {
-        var $currentRow = $("#mapModal").data("current-row");
+        var $currentRow = $("#modal-stc-map").data("current-row");
         if (!$currentRow || !$currentRow.length) return;
 
         var rowId = $currentRow.attr("tsc-row-id");
         deleteDrawnOverlaysForRow(rowId);
 
         var position = marker.getPosition();
-        $currentRow.find("[id^=tscLatitudeMin]").val(position.lat());
-        $currentRow.find("[id^=tscLongitudeMin]").val(position.lng());
-        $currentRow.find("[id^=tscLatitudeMax]").val("");
-        $currentRow.find("[id^=tscLongitudeMax]").val("");
+        $currentRow.find("[id^=input-stc-latmin]").val(position.lat());
+        $currentRow.find("[id^=input-stc-longmin]").val(position.lng());
+        $currentRow.find("[id^=input-stc-latmax]").val("");
+        $currentRow.find("[id^=input-stc-longmax]").val("");
 
         // Get the display number based on the row's position
         var displayNumber = $currentRow.index() + 1;
@@ -157,17 +157,17 @@ $(document).ready(function () {
    * Event listener for changes in the coordinate input fields.
    * Updates the map overlays based on the input values.
    */
-  $("#tscGroup").on(
+  $("#group-stc").on(
     "input",
     "[tsc-row] [id^=tscLatitude], [tsc-row] [id^=tscLongitude]",
     function () {
       var $row = $(this).closest("[tsc-row]");
       var currentRowId = $row.attr("tsc-row-id");
 
-      var latMax = $row.find("[id^=tscLatitudeMax]").val();
-      var lngMax = $row.find("[id^=tscLongitudeMax]").val();
-      var latMin = $row.find("[id^=tscLatitudeMin]").val();
-      var lngMin = $row.find("[id^=tscLongitudeMin]").val();
+      var latMax = $row.find("[id^=input-stc-latmax]").val();
+      var lngMax = $row.find("[id^=input-stc-longmax]").val();
+      var latMin = $row.find("[id^=input-stc-latmin]").val();
+      var lngMin = $row.find("[id^=input-stc-longmin]").val();
 
       updateMapOverlay(currentRowId, latMax, lngMax, latMin, lngMin);
     }
@@ -181,7 +181,7 @@ $(document).ready(function () {
       var rowId = item.rowId;
 
       // Find the row with this tsc-row-id
-      var $row = $("#tscGroup").find("[tsc-row-id='" + rowId + "']");
+      var $row = $("#group-stc").find("[tsc-row-id='" + rowId + "']");
 
       if ($row.length > 0) {
         var displayNumber = $row.index() + 1; // Since index is zero-based
@@ -205,7 +205,7 @@ $(document).ready(function () {
 
     // Remove any overlays that are no longer associated with existing rows
     drawnOverlays = drawnOverlays.filter(function (item) {
-      var $row = $("#tscGroup").find("[tsc-row-id='" + item.rowId + "']");
+      var $row = $("#group-stc").find("[tsc-row-id='" + item.rowId + "']");
       return $row.length > 0;
     });
   }
@@ -223,7 +223,7 @@ $(document).ready(function () {
   function updateMapOverlay(currentRowId, latMax, lngMax, latMin, lngMin) {
     deleteDrawnOverlaysForRow(currentRowId);
 
-    var $row = $("#tscGroup").find("[tsc-row-id='" + currentRowId + "']");
+    var $row = $("#group-stc").find("[tsc-row-id='" + currentRowId + "']");
     var displayNumber = $row.index() + 1;
 
     if (latMax && lngMax && latMin && lngMin) {
