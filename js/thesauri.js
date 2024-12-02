@@ -16,10 +16,10 @@ $(document).ready(function () {
     var keywordConfigurations = [
         // GCMD Science Keywords
         {
-            inputId: '#inputScienceKeywords',
+            inputId: '#input-sciencekeyword',
             jsonFile: 'json/gcmdScienceKeywords.json',
-            jsTreeId: '#jstreeScience',
-            searchInputId: '#searchInputScience'
+            jsTreeId: '#jstree-sciencekeyword',
+            searchInputId: '#input-sciencekeyword-search'
         },
         // MSL-Keywords
         {
