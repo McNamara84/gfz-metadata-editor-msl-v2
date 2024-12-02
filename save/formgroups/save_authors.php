@@ -1,4 +1,5 @@
 <?php
+require_once 'parse_affiliations.php';
 /**
  * Saves author information in the database.
  *
@@ -45,7 +46,7 @@ function saveAuthors($connection, $postData, $resource_id)
             }
 
             // Check if there is a ROR ID without an affiliation
-            $rorIdArray = parseAffiliationData($rorId_data);
+            $rorIdArray = parseRorIds($rorId_data);
             $affiliationArray = parseAffiliationData($affiliation_data);
             if (!empty($rorIdArray) && empty($affiliationArray)) {
                 continue; // Skip this author
@@ -104,7 +105,7 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
     error_log("Affiliation: " . $affiliation_data);
     error_log("ROR ID: " . $rorId_data);
     $affiliations_array = parseAffiliationData($affiliation_data);
-    $rorIds_array = parseAffiliationData($rorId_data);
+    $rorIds_array = parseRorIds($rorId_data);
 
     foreach ($affiliations_array as $index => $affiliation_name) {
         if (empty($affiliation_name)) {
@@ -183,31 +184,3 @@ function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $ror
         }
     }
 }
-
-/**
- * Parses affiliation data.
- *
- * @param string $data The data to parse.
- *
- * @return array The parsed data as an array.
- */
-/*function parseAffiliationData($data)
-{
-    if (empty($data)) {
-        return [];
-    }
-
-    $decoded = json_decode($data, true);
-
-    if (json_last_error() === JSON_ERROR_NONE) {
-        if (is_array($decoded)) {
-            return array_map(function ($item) {
-                return is_array($item) && isset($item['value']) ? trim($item['value']) : trim($item);
-            }, $decoded);
-        } else {
-            return [trim($decoded)];
-        }
-    } else {
-        return [trim($data)];
-    }
-}*/
