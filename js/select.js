@@ -7,7 +7,7 @@ $(document).ready(function () {
    * Loads time zones and populates the time zone select field.
    */
   $.getJSON("json/timezones.json", function (data) {
-    var timezoneSelect = $("#tscTimezone");
+    var timezoneSelect = $("#input-stc-timezone");
     $.each(data, function (index, timezone) {
       var label = timezone.label;
       var utcOffset = label.substring(3, 9); // Extracts "+01:00" or "-04:00"

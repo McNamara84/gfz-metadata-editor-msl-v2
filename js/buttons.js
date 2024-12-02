@@ -456,8 +456,8 @@ $(document).ready(function () {
    * Event handler for the "Add TSC" button click.
    * Clones the last TSC row, resets input fields, updates IDs, and appends it to the TSC group.
    */
-  $("#tscAddButton").click(function () {
-    var tscGroup = $("#tscGroup");
+  $("#button-stc-add").click(function () {
+    var tscGroup = $("#group-stc");
     var lastTscLine = tscGroup.children().last();
 
     // Increment the unique row counter
@@ -488,7 +488,7 @@ $(document).ready(function () {
     }
 
     // Replace the Add button with a Remove button
-    newTscLine.find("#tscAddButton").replaceWith(createRemoveButton());
+    newTscLine.find("#button-stc-add").replaceWith(createRemoveButton());
 
     // Append the new TSC line
     tscGroup.append(newTscLine);

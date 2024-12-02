@@ -1557,7 +1557,7 @@
       "target": "css=.col-9 > .input-group:nth-child(2) .bi",
       "targets": [
         ["css=.col-9 > .input-group:nth-child(2) .bi", "css:finder"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[2]/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[2]/div/span/i", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div[2]/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -1603,7 +1603,7 @@
       "target": "css=.col-9 > .input-group:nth-child(4) .bi",
       "targets": [
         ["css=.col-9 > .input-group:nth-child(4) .bi", "css:finder"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[2]/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[2]/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[2]/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -1650,7 +1650,7 @@
       "target": "css=.col-md-12 > .input-group > .input-group-text > .bi",
       "targets": [
         ["css=.col-md-12 > .input-group > .input-group-text > .bi", "css:finder"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[3]/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[3]/div/span/i", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div[3]/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -1696,7 +1696,7 @@
       "target": "css=.col-md-8 > .input-group:nth-child(2) .bi",
       "targets": [
         ["css=.col-md-8 > .input-group:nth-child(2) .bi", "css:finder"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div/span/i", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div[4]/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -1742,7 +1742,7 @@
       "target": "css=.col-12 > .input-group:nth-child(4) .bi",
       "targets": [
         ["css=.col-12 > .input-group:nth-child(4) .bi", "css:finder"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div[2]/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div[2]/span/i", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/span/i", "xpath:position"]
       ],
       "value": ""
@@ -1801,7 +1801,7 @@
       "target": "css=.col-8 .bi",
       "targets": [
         ["css=.col-8 .bi", "css:finder"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[5]/div/span/i", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[5]/div/span/i", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div[5]/div/span/i", "xpath:position"]
       ],
       "value": ""
@@ -2329,7 +2329,7 @@
       "targets": [
         ["css=.col-3 > .btn", "css:finder"],
         ["xpath=(//button[@type='button'])[19]", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div/button", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/button", "xpath:position"],
         ["xpath=//button[contains(.,' Map')]", "xpath:innerText"]
       ],
@@ -2338,10 +2338,10 @@
       "id": "2618efee-791f-4001-9cdf-1094fcb7e8f2",
       "comment": "",
       "command": "click",
-      "target": "xpath=//div[@id='map']/div/div[3]/div/div[2]/div/div[3]/div",
+      "target": "xpath=//div[@id='panel-stc-map']/div/div[3]/div/div[2]/div/div[3]/div",
       "targets": [
         ["css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)", "css:finder"],
-        ["xpath=//div[@id='map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/div/div[3]/div", "xpath:position"]
       ],
       "value": ""
@@ -2349,12 +2349,12 @@
       "id": "db7a85fd-2f3b-4793-84cf-6941f3993fe5",
       "comment": "",
       "command": "click",
-      "target": "id=sendCoords",
+      "target": "id=button-stc-sendcoords",
       "targets": [
-        ["id=sendCoords", "id"],
-        ["css=#sendCoords", "css:finder"],
-        ["xpath=//button[@id='sendCoords']", "xpath:attributes"],
-        ["xpath=//div[@id='mapModal']/div/div/div[3]/button[2]", "xpath:idRelative"],
+        ["id=button-stc-sendcoords", "id"],
+        ["css=#button-stc-sendcoords", "css:finder"],
+        ["xpath=//button[@id='button-stc-sendcoords']", "xpath:attributes"],
+        ["xpath=//div[@id='modal-stc-map']/div/div/div[3]/button[2]", "xpath:idRelative"],
         ["xpath=//div[3]/button[2]", "xpath:position"],
         ["xpath=//button[contains(.,'Accept')]", "xpath:innerText"]
       ],
@@ -2366,7 +2366,7 @@
       "target": "css=.form-floating .col-md-12",
       "targets": [
         ["css=.form-floating .col-md-12", "css:finder"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[3]", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[3]", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div[3]", "xpath:position"]
       ],
       "value": ""
@@ -2374,13 +2374,13 @@
       "id": "d9b46451-5ba7-4bcf-8fce-9853c8671535",
       "comment": "",
       "command": "click",
-      "target": "id=tscDescription",
+      "target": "id=input-stc-description",
       "targets": [
-        ["id=tscDescription", "id"],
+        ["id=input-stc-description", "id"],
         ["name=tscDescription[]", "name"],
-        ["css=#tscDescription", "css:finder"],
-        ["xpath=//textarea[@id='tscDescription']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[3]/div/textarea", "xpath:idRelative"],
+        ["css=#input-stc-description", "css:finder"],
+        ["xpath=//textarea[@id='input-stc-description']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[3]/div/textarea", "xpath:idRelative"],
         ["xpath=//div[3]/div/textarea", "xpath:position"]
       ],
       "value": ""
@@ -2388,13 +2388,13 @@
       "id": "af225b54-151f-4c37-bf37-4329d9f813c7",
       "comment": "",
       "command": "type",
-      "target": "id=tscDescription",
+      "target": "id=input-stc-description",
       "targets": [
-        ["id=tscDescription", "id"],
+        ["id=input-stc-description", "id"],
         ["name=tscDescription[]", "name"],
-        ["css=#tscDescription", "css:finder"],
-        ["xpath=//textarea[@id='tscDescription']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[3]/div/textarea", "xpath:idRelative"],
+        ["css=#input-stc-description", "css:finder"],
+        ["xpath=//textarea[@id='input-stc-description']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[3]/div/textarea", "xpath:idRelative"],
         ["xpath=//div[3]/div/textarea", "xpath:position"]
       ],
       "value": "STC_Description"
@@ -2402,13 +2402,13 @@
       "id": "74d2d79e-a979-4df0-bbd4-fb260afabf9e",
       "comment": "",
       "command": "click",
-      "target": "id=tscDateStart",
+      "target": "id=input-stc-datestart",
       "targets": [
-        ["id=tscDateStart", "id"],
+        ["id=input-stc-datestart", "id"],
         ["name=tscDateStart[]", "name"],
-        ["css=#tscDateStart", "css:finder"],
-        ["xpath=//input[@id='tscDateStart']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div/input", "xpath:idRelative"],
+        ["css=#input-stc-datestart", "css:finder"],
+        ["xpath=//input[@id='input-stc-datestart']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div[4]/div/input", "xpath:position"]
       ],
       "value": ""
@@ -2416,13 +2416,13 @@
       "id": "ca8e059a-436b-49ae-b0c4-42c814ad1b00",
       "comment": "",
       "command": "type",
-      "target": "id=tscDateStart",
+      "target": "id=input-stc-datestart",
       "targets": [
-        ["id=tscDateStart", "id"],
+        ["id=input-stc-datestart", "id"],
         ["name=tscDateStart[]", "name"],
-        ["css=#tscDateStart", "css:finder"],
-        ["xpath=//input[@id='tscDateStart']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div/input", "xpath:idRelative"],
+        ["css=#input-stc-datestart", "css:finder"],
+        ["xpath=//input[@id='input-stc-datestart']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div[4]/div/input", "xpath:position"]
       ],
       "value": "2024-11-05"
@@ -2436,7 +2436,7 @@
         ["name=tscDateEnd[]", "name"],
         ["css=#tscDateEnd", "css:finder"],
         ["xpath=//input[@id='tscDateEnd']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div[2]/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/input", "xpath:position"]
       ],
       "value": ""
@@ -2450,7 +2450,7 @@
         ["name=tscDateEnd[]", "name"],
         ["css=#tscDateEnd", "css:finder"],
         ["xpath=//input[@id='tscDateEnd']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div[2]/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/input", "xpath:position"]
       ],
       "value": "2024-11-05"
@@ -3375,7 +3375,7 @@
       "targets": [
         ["css=.col-3 > .btn", "css:finder"],
         ["xpath=(//button[@type='button'])[21]", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div/button", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/button", "xpath:position"],
         ["xpath=//button[contains(.,' Map')]", "xpath:innerText"]
       ],
@@ -3387,7 +3387,7 @@
       "target": "css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)",
       "targets": [
         ["css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)", "css:finder"],
-        ["xpath=//div[@id='map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/div/div[3]/div", "xpath:position"]
       ],
       "value": "443.5,267.333251953125"
@@ -3398,7 +3398,7 @@
       "target": "css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)",
       "targets": [
         ["css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)", "css:finder"],
-        ["xpath=//div[@id='map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/div/div[3]/div", "xpath:position"]
       ],
       "value": "443.5,267.333251953125"
@@ -3409,7 +3409,7 @@
       "target": "css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)",
       "targets": [
         ["css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)", "css:finder"],
-        ["xpath=//div[@id='map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/div/div[3]/div", "xpath:position"]
       ],
       "value": "443.5,267.333251953125"
@@ -3420,7 +3420,7 @@
       "target": "css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)",
       "targets": [
         ["css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)", "css:finder"],
-        ["xpath=//div[@id='map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/div/div[3]/div", "xpath:position"]
       ],
       "value": ""
@@ -3431,7 +3431,7 @@
       "target": "css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)",
       "targets": [
         ["css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)", "css:finder"],
-        ["xpath=//div[@id='map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/div/div[3]/div", "xpath:position"]
       ],
       "value": ""
@@ -3439,12 +3439,12 @@
       "id": "1ad67f95-3ad3-481f-8636-b52071b9d0c0",
       "comment": "",
       "command": "click",
-      "target": "id=sendCoords",
+      "target": "id=button-stc-sendcoords",
       "targets": [
-        ["id=sendCoords", "id"],
-        ["css=#sendCoords", "css:finder"],
-        ["xpath=//button[@id='sendCoords']", "xpath:attributes"],
-        ["xpath=//div[@id='mapModal']/div/div/div[3]/button[2]", "xpath:idRelative"],
+        ["id=button-stc-sendcoords", "id"],
+        ["css=#button-stc-sendcoords", "css:finder"],
+        ["xpath=//button[@id='button-stc-sendcoords']", "xpath:attributes"],
+        ["xpath=//div[@id='modal-stc-map']/div/div/div[3]/button[2]", "xpath:idRelative"],
         ["xpath=//div[3]/button[2]", "xpath:position"],
         ["xpath=//button[contains(.,'Accept')]", "xpath:innerText"]
       ],
@@ -3523,13 +3523,13 @@
       "id": "ca4a5f80-76f3-459b-b563-482cb89db955",
       "comment": "",
       "command": "click",
-      "target": "id=tscDescription",
+      "target": "id=input-stc-description",
       "targets": [
-        ["id=tscDescription", "id"],
+        ["id=input-stc-description", "id"],
         ["name=tscDescription[]", "name"],
-        ["css=#tscDescription", "css:finder"],
-        ["xpath=//textarea[@id='tscDescription']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[3]/div/textarea", "xpath:idRelative"],
+        ["css=#input-stc-description", "css:finder"],
+        ["xpath=//textarea[@id='input-stc-description']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[3]/div/textarea", "xpath:idRelative"],
         ["xpath=//div[3]/div/textarea", "xpath:position"]
       ],
       "value": ""
@@ -3537,13 +3537,13 @@
       "id": "3b13911b-34a1-4f72-a98c-aed4286de3b1",
       "comment": "",
       "command": "type",
-      "target": "id=tscDescription",
+      "target": "id=input-stc-description",
       "targets": [
-        ["id=tscDescription", "id"],
+        ["id=input-stc-description", "id"],
         ["name=tscDescription[]", "name"],
-        ["css=#tscDescription", "css:finder"],
-        ["xpath=//textarea[@id='tscDescription']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[3]/div/textarea", "xpath:idRelative"],
+        ["css=#input-stc-description", "css:finder"],
+        ["xpath=//textarea[@id='input-stc-description']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[3]/div/textarea", "xpath:idRelative"],
         ["xpath=//div[3]/div/textarea", "xpath:position"]
       ],
       "value": "TEST_STC_DESCRIPTION"
@@ -3551,13 +3551,13 @@
       "id": "02d51d2e-b11e-402c-990a-da2958e31124",
       "comment": "",
       "command": "click",
-      "target": "id=tscDateStart",
+      "target": "id=input-stc-datestart",
       "targets": [
-        ["id=tscDateStart", "id"],
+        ["id=input-stc-datestart", "id"],
         ["name=tscDateStart[]", "name"],
-        ["css=#tscDateStart", "css:finder"],
-        ["xpath=//input[@id='tscDateStart']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div/input", "xpath:idRelative"],
+        ["css=#input-stc-datestart", "css:finder"],
+        ["xpath=//input[@id='input-stc-datestart']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div[4]/div/input", "xpath:position"]
       ],
       "value": ""
@@ -3565,13 +3565,13 @@
       "id": "ec1519fd-2ef9-4aad-9f7a-c677b48b92e4",
       "comment": "",
       "command": "type",
-      "target": "id=tscDateStart",
+      "target": "id=input-stc-datestart",
       "targets": [
-        ["id=tscDateStart", "id"],
+        ["id=input-stc-datestart", "id"],
         ["name=tscDateStart[]", "name"],
-        ["css=#tscDateStart", "css:finder"],
-        ["xpath=//input[@id='tscDateStart']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div/input", "xpath:idRelative"],
+        ["css=#input-stc-datestart", "css:finder"],
+        ["xpath=//input[@id='input-stc-datestart']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div[4]/div/input", "xpath:position"]
       ],
       "value": "2024-11-05"
@@ -3585,7 +3585,7 @@
         ["name=tscDateEnd[]", "name"],
         ["css=#tscDateEnd", "css:finder"],
         ["xpath=//input[@id='tscDateEnd']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div[2]/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/input", "xpath:position"]
       ],
       "value": ""
@@ -3599,7 +3599,7 @@
         ["name=tscDateEnd[]", "name"],
         ["css=#tscDateEnd", "css:finder"],
         ["xpath=//input[@id='tscDateEnd']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div[2]/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/input", "xpath:position"]
       ],
       "value": "2024-11-06"
@@ -3607,13 +3607,13 @@
       "id": "5a1ddce5-d1a4-43a1-bc3b-3266ae91ee6a",
       "comment": "",
       "command": "click",
-      "target": "id=tscTimeStart",
+      "target": "id=input-stc-timestart",
       "targets": [
-        ["id=tscTimeStart", "id"],
+        ["id=input-stc-timestart", "id"],
         ["name=tscTimeStart[]", "name"],
-        ["css=#tscTimeStart", "css:finder"],
-        ["xpath=//input[@id='tscTimeStart']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div/input[2]", "xpath:idRelative"],
+        ["css=#input-stc-timestart", "css:finder"],
+        ["xpath=//input[@id='input-stc-timestart']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div/input[2]", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div[4]/div/input[2]", "xpath:position"]
       ],
       "value": ""
@@ -3621,13 +3621,13 @@
       "id": "108c87e3-5b28-4091-acf8-300aed3bee18",
       "comment": "",
       "command": "type",
-      "target": "id=tscTimeStart",
+      "target": "id=input-stc-timestart",
       "targets": [
-        ["id=tscTimeStart", "id"],
+        ["id=input-stc-timestart", "id"],
         ["name=tscTimeStart[]", "name"],
-        ["css=#tscTimeStart", "css:finder"],
-        ["xpath=//input[@id='tscTimeStart']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div/input[2]", "xpath:idRelative"],
+        ["css=#input-stc-timestart", "css:finder"],
+        ["xpath=//input[@id='input-stc-timestart']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div/input[2]", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div[4]/div/input[2]", "xpath:position"]
       ],
       "value": "12:00"
@@ -3635,13 +3635,13 @@
       "id": "172770b3-22c1-4434-b679-9da6edf18b05",
       "comment": "",
       "command": "type",
-      "target": "id=tscTimeEnd",
+      "target": "id=input-stc-timeend",
       "targets": [
-        ["id=tscTimeEnd", "id"],
+        ["id=input-stc-timeend", "id"],
         ["name=tscTimeEnd[]", "name"],
-        ["css=#tscTimeEnd", "css:finder"],
-        ["xpath=//input[@id='tscTimeEnd']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div[2]/input[2]", "xpath:idRelative"],
+        ["css=#input-stc-timeend", "css:finder"],
+        ["xpath=//input[@id='input-stc-timeend']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div[2]/input[2]", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/input[2]", "xpath:position"]
       ],
       "value": "12:00"
@@ -3649,13 +3649,13 @@
       "id": "527f2b93-2b34-42ae-9282-5c7939a33f4e",
       "comment": "",
       "command": "click",
-      "target": "id=tscTimezone",
+      "target": "id=input-stc-timezone",
       "targets": [
-        ["id=tscTimezone", "id"],
+        ["id=input-stc-timezone", "id"],
         ["name=tscTimezone[]", "name"],
-        ["css=#tscTimezone", "css:finder"],
-        ["xpath=//select[@id='tscTimezone']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[5]/div/select", "xpath:idRelative"],
+        ["css=#input-stc-timezone", "css:finder"],
+        ["xpath=//select[@id='input-stc-timezone']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[5]/div/select", "xpath:idRelative"],
         ["xpath=//div[5]/div/select", "xpath:position"]
       ],
       "value": ""
@@ -3663,7 +3663,7 @@
       "id": "41577374-3a1f-4435-bbe7-d516d4d9cf6b",
       "comment": "",
       "command": "select",
-      "target": "id=tscTimezone",
+      "target": "id=input-stc-timezone",
       "targets": [],
       "value": "label=UTC+02:00 (Europe/Berlin)"
     }, {
@@ -3674,7 +3674,7 @@
       "targets": [
         ["css=option:nth-child(317)", "css:finder"],
         ["xpath=(//option[@value='2'])[26]", "xpath:attributes"],
-        ["xpath=//select[@id='tscTimezone']/option[317]", "xpath:idRelative"],
+        ["xpath=//select[@id='input-stc-timezone']/option[317]", "xpath:idRelative"],
         ["xpath=//option[317]", "xpath:position"],
         ["xpath=//option[contains(.,'UTC+02:00 (Europe/Berlin)')]", "xpath:innerText"]
       ],
@@ -4434,7 +4434,7 @@
       "targets": [
         ["css=.col-3 > .btn", "css:finder"],
         ["xpath=(//button[@type='button'])[20]", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div/button", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/button", "xpath:position"],
         ["xpath=//button[contains(.,' Map')]", "xpath:innerText"]
       ],
@@ -4447,7 +4447,7 @@
       "targets": [
         ["css=.col-3 > .btn", "css:finder"],
         ["xpath=(//button[@type='button'])[20]", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div/button", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/button", "xpath:position"],
         ["xpath=//button[contains(.,' Map')]", "xpath:innerText"]
       ],
@@ -4460,7 +4460,7 @@
       "targets": [
         ["css=.col-3 > .btn", "css:finder"],
         ["xpath=(//button[@type='button'])[20]", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div/button", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div/button", "xpath:position"],
         ["xpath=//button[contains(.,' Map')]", "xpath:innerText"]
       ],
@@ -4472,7 +4472,7 @@
       "target": "css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)",
       "targets": [
         ["css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)", "css:finder"],
-        ["xpath=//div[@id='map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/div/div[3]/div", "xpath:position"]
       ],
       "value": "297.5333251953125,137.76666259765625"
@@ -4483,7 +4483,7 @@
       "target": "css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)",
       "targets": [
         ["css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)", "css:finder"],
-        ["xpath=//div[@id='map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/div/div[3]/div", "xpath:position"]
       ],
       "value": "297.5333251953125,137.76666259765625"
@@ -4494,7 +4494,7 @@
       "target": "css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)",
       "targets": [
         ["css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)", "css:finder"],
-        ["xpath=//div[@id='map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/div/div[3]/div", "xpath:position"]
       ],
       "value": "297.5333251953125,137.76666259765625"
@@ -4505,7 +4505,7 @@
       "target": "css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)",
       "targets": [
         ["css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)", "css:finder"],
-        ["xpath=//div[@id='map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/div/div[3]/div", "xpath:position"]
       ],
       "value": ""
@@ -4517,7 +4517,7 @@
       "targets": [
         ["css=div:nth-child(2) > button img", "css:finder"],
         ["xpath=(//img[contains(@src,'https://maps.gstatic.com/mapfiles/drawing.png')])[2]", "xpath:img"],
-        ["xpath=//div[@id='map']/div/div[3]/div[4]/div/div[2]/button/span/div/img", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div[4]/div/div[2]/button/span/div/img", "xpath:idRelative"],
         ["xpath=//div[2]/button/span/div/img", "xpath:position"]
       ],
       "value": ""
@@ -4528,7 +4528,7 @@
       "target": "css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)",
       "targets": [
         ["css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)", "css:finder"],
-        ["xpath=//div[@id='map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/div/div[3]/div", "xpath:position"]
       ],
       "value": "363.5333251953125,185.76666259765625"
@@ -4539,7 +4539,7 @@
       "target": "css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)",
       "targets": [
         ["css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)", "css:finder"],
-        ["xpath=//div[@id='map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/div/div[3]/div", "xpath:position"]
       ],
       "value": "363.5333251953125,185.76666259765625"
@@ -4550,7 +4550,7 @@
       "target": "css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)",
       "targets": [
         ["css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)", "css:finder"],
-        ["xpath=//div[@id='map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/div/div[3]/div", "xpath:position"]
       ],
       "value": "363.5333251953125,185.76666259765625"
@@ -4561,7 +4561,7 @@
       "target": "css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)",
       "targets": [
         ["css=div:nth-child(1) > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2)", "css:finder"],
-        ["xpath=//div[@id='map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div/div[2]/div/div[3]/div", "xpath:idRelative"],
         ["xpath=//div[3]/div/div[2]/div/div[3]/div", "xpath:position"]
       ],
       "value": ""
@@ -4573,7 +4573,7 @@
       "targets": [
         ["css=.gm-svpc", "css:finder"],
         ["xpath=(//button[@type='button'])[34]", "xpath:attributes"],
-        ["xpath=//div[@id='map']/div/div[3]/div[12]/div/button", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div[12]/div/button", "xpath:idRelative"],
         ["xpath=//div[12]/div/button", "xpath:position"]
       ],
       "value": ""
@@ -4585,7 +4585,7 @@
       "targets": [
         ["css=.gm-svpc", "css:finder"],
         ["xpath=(//button[@type='button'])[34]", "xpath:attributes"],
-        ["xpath=//div[@id='map']/div/div[3]/div[12]/div/button", "xpath:idRelative"],
+        ["xpath=//div[@id='panel-stc-map']/div/div[3]/div[12]/div/button", "xpath:idRelative"],
         ["xpath=//div[12]/div/button", "xpath:position"]
       ],
       "value": ""
@@ -4593,12 +4593,12 @@
       "id": "7a255b99-6825-43d4-b801-30479e99a1ad",
       "comment": "",
       "command": "click",
-      "target": "id=sendCoords",
+      "target": "id=button-stc-sendcoords",
       "targets": [
-        ["id=sendCoords", "id"],
-        ["css=#sendCoords", "css:finder"],
-        ["xpath=//button[@id='sendCoords']", "xpath:attributes"],
-        ["xpath=//div[@id='mapModal']/div/div/div[3]/button[2]", "xpath:idRelative"],
+        ["id=button-stc-sendcoords", "id"],
+        ["css=#button-stc-sendcoords", "css:finder"],
+        ["xpath=//button[@id='button-stc-sendcoords']", "xpath:attributes"],
+        ["xpath=//div[@id='modal-stc-map']/div/div/div[3]/button[2]", "xpath:idRelative"],
         ["xpath=//div[3]/button[2]", "xpath:position"],
         ["xpath=//button[contains(.,'Accept')]", "xpath:innerText"]
       ],
@@ -4607,13 +4607,13 @@
       "id": "998c5da8-e8fd-4293-9e40-7e2dcb1e15d1",
       "comment": "",
       "command": "click",
-      "target": "id=tscDescription",
+      "target": "id=input-stc-description",
       "targets": [
-        ["id=tscDescription", "id"],
+        ["id=input-stc-description", "id"],
         ["name=tscDescription[]", "name"],
-        ["css=#tscDescription", "css:finder"],
-        ["xpath=//textarea[@id='tscDescription']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[3]/div/textarea", "xpath:idRelative"],
+        ["css=#input-stc-description", "css:finder"],
+        ["xpath=//textarea[@id='input-stc-description']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[3]/div/textarea", "xpath:idRelative"],
         ["xpath=//div[3]/div/textarea", "xpath:position"]
       ],
       "value": ""
@@ -4621,13 +4621,13 @@
       "id": "4c363563-abb7-429c-80c1-2941f8055470",
       "comment": "",
       "command": "type",
-      "target": "id=tscDescription",
+      "target": "id=input-stc-description",
       "targets": [
-        ["id=tscDescription", "id"],
+        ["id=input-stc-description", "id"],
         ["name=tscDescription[]", "name"],
-        ["css=#tscDescription", "css:finder"],
-        ["xpath=//textarea[@id='tscDescription']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[3]/div/textarea", "xpath:idRelative"],
+        ["css=#input-stc-description", "css:finder"],
+        ["xpath=//textarea[@id='input-stc-description']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[3]/div/textarea", "xpath:idRelative"],
         ["xpath=//div[3]/div/textarea", "xpath:position"]
       ],
       "value": "STC Description"
@@ -4635,13 +4635,13 @@
       "id": "253a447b-0696-47bb-a47d-6c499dd7ea4c",
       "comment": "",
       "command": "click",
-      "target": "id=tscDateStart",
+      "target": "id=input-stc-datestart",
       "targets": [
-        ["id=tscDateStart", "id"],
+        ["id=input-stc-datestart", "id"],
         ["name=tscDateStart[]", "name"],
-        ["css=#tscDateStart", "css:finder"],
-        ["xpath=//input[@id='tscDateStart']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div/input", "xpath:idRelative"],
+        ["css=#input-stc-datestart", "css:finder"],
+        ["xpath=//input[@id='input-stc-datestart']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div[4]/div/input", "xpath:position"]
       ],
       "value": ""
@@ -4649,13 +4649,13 @@
       "id": "b0b7ad0d-743b-46c3-9d2f-2af9b82d2828",
       "comment": "",
       "command": "type",
-      "target": "id=tscDateStart",
+      "target": "id=input-stc-datestart",
       "targets": [
-        ["id=tscDateStart", "id"],
+        ["id=input-stc-datestart", "id"],
         ["name=tscDateStart[]", "name"],
-        ["css=#tscDateStart", "css:finder"],
-        ["xpath=//input[@id='tscDateStart']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div/input", "xpath:idRelative"],
+        ["css=#input-stc-datestart", "css:finder"],
+        ["xpath=//input[@id='input-stc-datestart']", "xpath:attributes"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/div/div/div[4]/div/input", "xpath:position"]
       ],
       "value": "2024-11-12"
@@ -4669,7 +4669,7 @@
         ["name=tscDateEnd[]", "name"],
         ["css=#tscDateEnd", "css:finder"],
         ["xpath=//input[@id='tscDateEnd']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div[2]/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/input", "xpath:position"]
       ],
       "value": ""
@@ -4683,7 +4683,7 @@
         ["name=tscDateEnd[]", "name"],
         ["css=#tscDateEnd", "css:finder"],
         ["xpath=//input[@id='tscDateEnd']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div[2]/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/input", "xpath:position"]
       ],
       "value": ""
@@ -4697,7 +4697,7 @@
         ["name=tscDateEnd[]", "name"],
         ["css=#tscDateEnd", "css:finder"],
         ["xpath=//input[@id='tscDateEnd']", "xpath:attributes"],
-        ["xpath=//div[@id='tscGroup']/div/div/div/div[4]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[@id='group-stc']/div/div/div/div[4]/div[2]/input", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/input", "xpath:position"]
       ],
       "value": "2024-11-13"
