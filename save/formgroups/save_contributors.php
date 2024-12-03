@@ -189,22 +189,25 @@ function saveContributorPersonAffiliation($connection, $contributor_person_id, $
  */
 function saveContributorPersonRoles($connection, $contributor_person_id, $roles, $valid_roles)
 {
-
-        // JSON-decoding
+    // Prüfen, ob $roles ein JSON-String ist, und falls ja, dekodieren
+    if (is_string($roles)) {
         $roles = json_decode($roles, true);
+    }
 
+    // Sicherstellen, dass $roles ein Array ist
     if (!is_array($roles)) {
         $roles = [$roles];
     }
 
-    // Delete extisting roles
+    // Bestehende Rollen löschen
     $stmt = $connection->prepare("DELETE FROM Contributor_Person_has_Role WHERE Contributor_Person_contributor_person_id = ?");
     $stmt->bind_param("i", $contributor_person_id);
     $stmt->execute();
     $stmt->close();
 
+    // Neue Rollen speichern
     foreach ($roles as $role) {
-        $role_name = $role['value'] ?? null; // Extract the value
+        $role_name = is_array($role) ? $role['value'] ?? null : $role; // Extrahiere den Rollennamen
         if ($role_name && isset($valid_roles[$role_name])) {
             $role_id = $valid_roles[$role_name];
             error_log("Valid role found. Role ID: $role_id");
@@ -352,20 +355,25 @@ function saveContributorInstitutionAffiliation($connection, $contributor_institu
  */
 function saveContributorInstitutionRoles($connection, $contributor_institution_id, $roles, $valid_roles)
 {
-    // JSON-decoding
-    $roles = json_decode($roles, true);
+    // Prüfen, ob $roles ein JSON-String ist, und falls ja, dekodieren
+    if (is_string($roles)) {
+        $roles = json_decode($roles, true);
+    }
 
+    // Sicherstellen, dass $roles ein Array ist
     if (!is_array($roles)) {
         $roles = [$roles];
     }
 
+    // Bestehende Rollen löschen
     $stmt = $connection->prepare("DELETE FROM Contributor_Institution_has_Role WHERE Contributor_Institution_contributor_institution_id = ?");
     $stmt->bind_param("i", $contributor_institution_id);
     $stmt->execute();
     $stmt->close();
 
+    // Neue Rollen speichern
     foreach ($roles as $role) {
-        $role_name = $role['value'] ?? null; // Extract the value
+        $role_name = is_array($role) ? $role['value'] ?? null : $role; // Extrahiere den Rollennamen
         if ($role_name && isset($valid_roles[$role_name])) {
             $role_id = $valid_roles[$role_name];
             $stmt = $connection->prepare("INSERT INTO Contributor_Institution_has_Role (Contributor_Institution_contributor_institution_id, Role_role_id) VALUES (?, ?)");
