@@ -653,6 +653,26 @@ $(document).ready(function () {
   });
 
   /**
+  * Initializes the event handler once the document is fully loaded.
+  */
+  $(document).ready(function () {
+    /**
+     * Click event handler for showing the changelog modal.
+     *
+     * @param {Event} event - The event object associated with the click action.
+     */
+    $('#button-changelog-show').click(function (event) {
+      event.preventDefault(); // Prevents the default behavior of the link.
+
+      // Loads the content from 'changelog.html' into the modal's content area.
+      $('#panel-changelog-content').load('changelog.html', function () {
+        // Displays the modal after the content has been successfully loaded.
+        $('#modal-changelog').modal('show');
+      });
+    });
+  });
+
+  /**
    * Initializes Tagify on the laboratory name and affiliation fields.
    *
    * @param {jQuery} row - The row element containing the input fields.
