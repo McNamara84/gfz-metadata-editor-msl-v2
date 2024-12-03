@@ -11,31 +11,24 @@
  */
 function saveOriginatingLaboratories($connection, $postData, $resource_id)
 {
-    if (
-        isset($postData['laboratoryName'], $postData['LabId'], $postData['laboratoryAffiliation'], $postData['laboratoryRorIds']) &&
-        is_array($postData['laboratoryName']) &&
-        is_array($postData['LabId']) &&
-        is_array($postData['laboratoryAffiliation']) &&
-        is_array($postData['laboratoryRorIds'])
-    ) {
-        $len = count($postData['laboratoryName']);
-        for ($i = 0; $i < $len; $i++) {
-            $labName = json_decode($postData['laboratoryName'][$i], true)[0]['value'];
-            $labId = $postData['LabId'][$i];
-            $affiliation = json_decode($postData['laboratoryAffiliation'][$i], true)[0]['value'] ?? null;
-            $rorId = json_decode($postData['laboratoryRorIds'][$i], true)[0]['value'] ?? null;
-            if (!empty($labName)) {
-                $lab_id = saveOrUpdateOriginatingLaboratory($connection, $labName, $labId);
-                linkResourceToOriginatingLaboratory($connection, $resource_id, $lab_id);
+    $len = count($postData['laboratoryName']);
+    for ($i = 0; $i < $len; $i++) {
+        $labName = json_decode($postData['laboratoryName'][$i], true)[0]['value'];
+        $labId = $postData['LabId'][$i];
+        $affiliation = json_decode($postData['laboratoryAffiliation'][$i], true)[0]['value'] ?? null;
+        $rorId = json_decode($postData['laboratoryRorIds'][$i], true)[0]['value'] ?? null;
+        if (!empty($labName)) {
+            $lab_id = saveOrUpdateOriginatingLaboratory($connection, $labName, $labId);
+            linkResourceToOriginatingLaboratory($connection, $resource_id, $lab_id);
 
-                if (!empty($affiliation)) {
-                    $affiliation_id = saveAffiliation($connection, $affiliation, $rorId);
-                    linkLaboratoryToAffiliation($connection, $lab_id, $affiliation_id);
-                }
+            if (!empty($affiliation)) {
+                $affiliation_id = saveAffiliation($connection, $affiliation, $rorId);
+                linkLaboratoryToAffiliation($connection, $lab_id, $affiliation_id);
             }
         }
     }
 }
+
 
 /**
  * Saves or updates an originating laboratory in the database.
