@@ -17,13 +17,13 @@ class SaveOriginatingLaboratoryTest extends TestCase
             $connection = connectDb();
         }
         $this->connection = $connection;
-        // Überprüfen, ob die Testdatenbank verfügbar ist
+        // Check test database
         $dbname = 'mde2-msl-test';
         if ($this->connection->select_db($dbname) === false) {
-            // Testdatenbank erstellen
+            // Create test database
             $connection->query("CREATE DATABASE " . $dbname);
             $connection->select_db($dbname);
-            // install.php ausführen
+            // install databse schema
             require 'install.php';
         }
     }
@@ -69,7 +69,7 @@ class SaveOriginatingLaboratoryTest extends TestCase
     }
 
     /**
-     * Speicherung eines einzelnen Originating Laboratory mit allen Feldern.
+     * Test saving of a single Originating Laboratory.
      */
     public function testSaveSingleOriginatingLaboratory()
     {
@@ -94,7 +94,7 @@ class SaveOriginatingLaboratoryTest extends TestCase
 
         saveOriginatingLaboratories($this->connection, $postData, $resource_id);
 
-        // Überprüfen, ob das Originating Laboratory korrekt gespeichert wurde
+        // Check if Originating Laboratory was saved correctly
         $stmt = $this->connection->prepare("SELECT * FROM Originating_Laboratory WHERE laboratoryname = ?");
         $labName = json_decode($postData["laboratoryName"][0], true)[0]["value"];
         $stmt->bind_param("s", $labName);
@@ -105,13 +105,13 @@ class SaveOriginatingLaboratoryTest extends TestCase
         $this->assertEquals($labName, $result["laboratoryname"], "Der Laborname wurde nicht korrekt gespeichert.");
         $this->assertEquals($postData["LabId"][0], $result["labId"], "Die Lab ID wurde nicht korrekt gespeichert.");
 
-        // Überprüfen der Verknüpfung zur Resource
+        // Check if Originating Laboratory is linked to the Resource
         $stmt = $this->connection->prepare("SELECT * FROM Resource_has_Originating_Laboratory WHERE Resource_resource_id = ? AND Originating_Laboratory_originating_laboratory_id = ?");
         $stmt->bind_param("ii", $resource_id, $result["originating_laboratory_id"]);
         $stmt->execute();
         $this->assertEquals(1, $stmt->get_result()->num_rows, "Die Verknüpfung zur Resource wurde nicht korrekt erstellt.");
 
-        // Überprüfen der Affiliation
+        // Check Affiliation
         $stmt = $this->connection->prepare("SELECT a.name, a.rorId FROM Affiliation a 
                                             JOIN Originating_Laboratory_has_Affiliation olha ON a.affiliation_id = olha.Affiliation_affiliation_id
                                             WHERE olha.Originating_Laboratory_originating_laboratory_id = ?");
@@ -124,7 +124,7 @@ class SaveOriginatingLaboratoryTest extends TestCase
     }
 
     /**
-     * Speicherung von drei vollständig ausgefüllten Originating Laboratories.
+     * Test saving of 3 Originating Laboratories.
      */
     public function testSaveMultipleOriginatingLaboratories()
     {
@@ -149,7 +149,7 @@ class SaveOriginatingLaboratoryTest extends TestCase
 
         saveOriginatingLaboratories($this->connection, $postData, $resource_id);
 
-        // Überprüfen, ob alle drei Originating Laboratories korrekt gespeichert wurden
+        // Check if Originating Laboratories were saved correctly
         for ($i = 0; $i < 3; $i++) {
             $stmt = $this->connection->prepare("SELECT * FROM Originating_Laboratory WHERE laboratoryname = ?");
             $labName = json_decode($postData["laboratoryName"][$i], true)[0]["value"];
@@ -161,13 +161,13 @@ class SaveOriginatingLaboratoryTest extends TestCase
             $this->assertEquals($labName, $result["laboratoryname"], "Der Laborname " . ($i + 1) . " wurde nicht korrekt gespeichert.");
             $this->assertEquals($postData["LabId"][$i], $result["labId"], "Die Lab ID " . ($i + 1) . " wurde nicht korrekt gespeichert.");
 
-            // Überprüfen der Verknüpfung zur Resource
+            // Check if Originating Laboratory is linked to the Resource
             $stmt = $this->connection->prepare("SELECT * FROM Resource_has_Originating_Laboratory WHERE Resource_resource_id = ? AND Originating_Laboratory_originating_laboratory_id = ?");
             $stmt->bind_param("ii", $resource_id, $result["originating_laboratory_id"]);
             $stmt->execute();
             $this->assertEquals(1, $stmt->get_result()->num_rows, "Die Verknüpfung zur Resource für Labor " . ($i + 1) . " wurde nicht korrekt erstellt.");
 
-            // Überprüfen der Affiliation
+            // Check Affiliation
             $stmt = $this->connection->prepare("SELECT a.name, a.rorId FROM Affiliation a 
                                                 JOIN Originating_Laboratory_has_Affiliation olha ON a.affiliation_id = olha.Affiliation_affiliation_id
                                                 WHERE olha.Originating_Laboratory_originating_laboratory_id = ?");
