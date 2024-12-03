@@ -3847,11 +3847,11 @@
       "id": "708a73f8-008a-4234-a80d-d02f0a9c21ae",
       "comment": "",
       "command": "click",
-      "target": "id=saveAs",
+      "target": "id=button-form-save",
       "targets": [
-        ["id=saveAs", "id"],
-        ["css=#saveAs", "css:finder"],
-        ["xpath=//button[@id='saveAs']", "xpath:attributes"],
+        ["id=button-form-save", "id"],
+        ["css=#button-form-save", "css:finder"],
+        ["xpath=//button[@id='button-form-save']", "xpath:attributes"],
         ["xpath=//footer/div/div/div/div/button[3]", "xpath:position"],
         ["xpath=//button[contains(.,'Save')]", "xpath:innerText"]
       ],

@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
    * @type {Object}
    */
   const buttons = {
-    save: document.getElementById('saveAs'),
-    submit: document.getElementById('submitButton')
+    save: document.getElementById('button-form-save'),
+    submit: document.getElementById('button-form-submit')
   };
 
   // Enable buttons
