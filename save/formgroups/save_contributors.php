@@ -70,8 +70,8 @@ function saveContributorPersons($connection, $postData, $resource_id, $valid_rol
 
         $len = count($cbPersonLastnames);
         for ($i = 0; $i < $len; $i++) {
-            if (empty(trim($cbPersonLastnames[$i]))) {
-                continue; // Skip missing last names
+            if (empty(trim($cbORCIDs[$i])) &&empty(trim($cbPersonLastnames[$i])) && empty(trim($cbPersonFirstnames[$i])) && empty(trim($cbPersonRoles[$i])) ) {
+                continue; // Skip missing Contact Person (only if all fields are empty)
             }
 
             $contributor_person_id = saveOrUpdateContributorPerson($connection, $cbPersonLastnames[$i], $cbPersonFirstnames[$i], $cbORCIDs[$i]);

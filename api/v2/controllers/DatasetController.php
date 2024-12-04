@@ -652,10 +652,16 @@ class DatasetController
         if (!empty($contributors['persons']) ){
         $personsXml = $contributorsXml->addChild('Persons');
         foreach ($contributors['persons'] as $person) {
+
             $personXml = $personsXml->addChild('Person');
-            $personXml->addChild('familyname', htmlspecialchars($person['familyname'] ?? ''));
-            $personXml->addChild('givenname', htmlspecialchars($person['givenname'] ?? ''));
-            if (isset($person['orcid']) && $person['orcid'] !== '') {
+            if (!empty($person['familyname'])){
+                $personXml->addChild('familyname', htmlspecialchars($person['familyname']));
+            }
+           if (!empty($person['givenname'])){
+            $personXml->addChild('givenname', htmlspecialchars($person['givenname']));
+           }
+            
+            if (!empty($person['orcid']) && $person['orcid'] !== '') {
                 $personXml->addChild('orcid', htmlspecialchars($person['orcid']));
             }
             if (isset($person['Affiliations'])) {
