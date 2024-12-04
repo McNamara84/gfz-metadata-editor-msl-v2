@@ -40,8 +40,8 @@ $translations = [
 
     // Groupe de formulaire Auteurs
     'authors' => 'Auteur(s)',
-    'lastname_invalid' => 'Veuillez fournir un nom de famille.',
-    'firstname_invalid' => 'Veuillez fournir un prénom.',
+    'lastname_invalid' => 'Veuillez fournir un nom de famille. Seules les lettres sont autorisées',
+    'firstname_invalid' => 'Veuillez fournir un prénom. Seules les lettres sont autorisées',
     'authorORCID' => 'ORCID',
     'ORCID_invalid' => 'Veuillez entrer un ORCID valide (XXXX-XXXX-XXXX-XXX(X))',
     'affiliation_invalid' => 'Veuillez fournir une affiliation.',

@@ -33,8 +33,8 @@ $translations = [
 
     // Form Group Authors
     'authors' => 'Author(s)',
-    'lastname_invalid' => 'Please provide a lastname.',
-    'firstname_invalid' => 'Please provide a firstname.',
+    'lastname_invalid' => 'Please provide a lastname. Only letters are allowed.',
+    'firstname_invalid' => 'Please provide a firstname. Only letters are allowed.',
     'authorORCID' => 'ORCID',
     'ORCID_invalid' => 'Please enter a valid ORCID (XXXX-XXXX-XXXX-XXX(X))',
     'affiliation_invalid' => 'Please provide an affiliation.',

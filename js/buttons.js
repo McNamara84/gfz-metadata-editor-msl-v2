@@ -185,7 +185,7 @@ $(document).ready(function () {
 
     // Clear input fields and remove validation feedback
     newAuthorRow.find("input").val("").removeClass("is-invalid is-valid");
-    newAuthorRow.find(".invalid-feedback, .valid-feedback").hide();
+    newAuthorRow.find(".invalid-feedback, .valid-feedback").css("display", "");
 
     // Generate unique IDs for cloned input elements
     var uniqueSuffix = new Date().getTime();
@@ -214,6 +214,9 @@ $(document).ready(function () {
       "hiddenAuthorRorId" + uniqueSuffix,
       affiliationsData
     );
+
+    // Bind validation listeners to the new row
+    bindValidationListeners(newAuthorRow);
 
     // Event handler for the remove button
     newAuthorRow.on("click", ".removeButton", function () {
@@ -855,6 +858,16 @@ $(document).ready(function () {
     $(".input-group-text").hide();
     localStorage.setItem("inputGroupTextVisible", "false");
   });
+
+  /**
+ * Binds validation listeners to input fields in a given row.
+ * @param {jQuery} row - The row element to bind listeners to.
+ */
+  function bindValidationListeners(row) {
+    row.find('input').on('input', function () {
+      validateField($(this));
+    });
+  }
 
   //////////////////////////////// LANGUAGE BUTTONS ///////////////////////////////////////////////////////////
 
