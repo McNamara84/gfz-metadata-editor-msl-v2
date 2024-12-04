@@ -84,64 +84,9 @@ function saveAuthors($connection, $postData, $resource_id)
 
             // Always save affiliations, regardless of whether the author is new or already exists
             if (!empty($affiliation_data)) {
-                saveAuthorAffiliations($connection, $author_id, $affiliation_data, $rorId_data);
+                saveAffiliations($connection, $author_id, $affiliation_data, $rorId_data, 'Author_has_Affiliation', 'Author_author_id');
+
             }
         }
-    }
-}
-
-/**
- * Saves the affiliations of an author.
- *
- * @param mysqli $connection       The database connection.
- * @param int    $author_id        The ID of the author.
- * @param string $affiliation_data The affiliation data as a JSON string.
- * @param string $rorId_data       The ROR ID data as a JSON string.
- *
- * @return void
- */
-function saveAuthorAffiliations($connection, $author_id, $affiliation_data, $rorId_data)
-{
-    $affiliationNames = parseAffiliationData($affiliation_data);
-    $rorIds = parseRorIds($rorId_data);
-
-    $length = count($affiliationNames);
-
-    for ($i = 0; $i < $length; $i++) {
-        $affiliationName = $affiliationNames[$i];
-        $rorId = isset($rorIds[$i]) ? $rorIds[$i] : null;
-
-        // Check if affiliation already exists
-        $stmt = $connection->prepare("SELECT affiliation_id FROM Affiliation WHERE name = ?");
-        $stmt->bind_param("s", $affiliationName);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            // Update existing affiliation
-            $row = $result->fetch_assoc();
-            $affiliation_id = $row['affiliation_id'];
-
-            if ($rorId !== null) {
-                $updateStmt = $connection->prepare("UPDATE Affiliation SET rorId = ? WHERE affiliation_id = ?");
-                $updateStmt->bind_param("si", $rorId, $affiliation_id);
-                $updateStmt->execute();
-                $updateStmt->close();
-            }
-        } else {
-            // Create new affiliation
-            $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?)");
-            $stmt->bind_param("ss", $affiliationName, $rorId);
-            $stmt->execute();
-            $affiliation_id = $stmt->insert_id;
-        }
-        $stmt->close();
-
-        // Link author with affiliation
-        $stmt = $connection->prepare("INSERT IGNORE INTO Author_has_Affiliation 
-            (Author_author_id, Affiliation_affiliation_id) VALUES (?, ?)");
-        $stmt->bind_param("ii", $author_id, $affiliation_id);
-        $stmt->execute();
-        $stmt->close();
     }
 }
