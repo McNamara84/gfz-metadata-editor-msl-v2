@@ -30,6 +30,33 @@
     </div>
   </div>
 </div>
+<!-- Changelog Modal -->
+<div class="modal fade" id="modal-changelog" tabindex="-1" aria-labelledby="label-changelog-modal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="label-changelog-modal">About ELMO - LANGBEZEICHNUNG</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="lead text-center fs-6">
+          This Metadata Editor was developed in 2024 by students of the University of Applied Sciences Potsdam in
+          cooperation with the German Research Centre for Geosciences and is released under the GNU General Public
+          License, Version 2.
+        </p>
+        <hr>
+        <!-- Changelog -->
+        <h5>Changelog</h5>
+        <div id="panel-changelog-content">
+          <!-- Content will be loaded from doc/changelog.html -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Fixed Footer für die Buttons -->
 <footer class="footer mt-auto py-0 fixed-bottom">
   <div class="container">
@@ -37,16 +64,16 @@
       <div class="col d-flex align-items-center justify-content-center">
         <div class="col-auto d-flex align-items-center justify-content-end">
           <button type="button" class="btn btn-danger m-1" data-bs-toggle="tooltip"
-            data-bs-title="<?php echo $translations['clear_tooltip']; ?>" id="resetButton" disabled>
+            data-bs-title="<?php echo $translations['clear_tooltip']; ?>" id="button-form-reset" disabled>
             <?php echo $translations['clear']; ?>
           </button>
           <button class="btn btn-primary m-1" type="button" disabled>
             <?php echo $translations['load']; ?>
           </button>
-          <button type="submit" class="btn btn-warning m-1" form="form-mde" id="saveAs" data-action="save">
+          <button type="submit" class="btn btn-warning m-1" form="form-mde" id="button-form-save" data-action="save">
             Save
           </button>
-          <button type="submit" class="btn btn-success m-1" form="form-mde" id="submitButton" data-action="submit"
+          <button type="submit" class="btn btn-success m-1" form="form-mde" id="button-form-submit" data-action="submit"
             disabled>
             <?php echo $translations['submit']; ?>
           </button>
@@ -59,9 +86,6 @@
         </div>
       </div>
     </div>
-    <div class="text-center fw-lighter footer-notes">This Metadata Editor was developed in 2024 by students of the
-      University of Applied Sciences Potsdam in cooperation with the German Research Centre for Geosciences and is
-      released under the MIT licence.</div>
   </div>
 </footer>
 <!-- jQuery -->
