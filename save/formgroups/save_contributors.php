@@ -43,6 +43,7 @@ function getValidRoles($connection)
     return $valid_roles;
 }
 
+/////////////////Persons/////////////////////////////////////////////////////////////////////////////
 /**
  * Saves the contributor persons into the database.
  *
@@ -69,18 +70,22 @@ function saveContributorPersons($connection, $postData, $resource_id, $valid_rol
 
         $len = count($cbPersonLastnames);
         for ($i = 0; $i < $len; $i++) {
-            // Check if the last name is provided
             if (empty(trim($cbPersonLastnames[$i]))) {
-                continue; // Skip this record if the last name is missing
+                continue; // Skip missing last names
             }
 
             $contributor_person_id = saveOrUpdateContributorPerson($connection, $cbPersonLastnames[$i], $cbPersonFirstnames[$i], $cbORCIDs[$i]);
             linkResourceToContributorPerson($connection, $resource_id, $contributor_person_id);
 
-            // Only process non-empty affiliations
-            $affiliations = parseAffiliationData($cbAffiliations[$i]);
-            if (!empty($affiliations)) {
-                saveContributorPersonAffiliation($connection, $contributor_person_id, $cbAffiliations[$i], $cbRorIds[$i] ?? null);
+            if (!empty($cbAffiliations[$i])) {
+                saveAffiliations(
+                    $connection, 
+                    $contributor_person_id, 
+                    $cbAffiliations[$i], 
+                    $cbRorIds[$i] ?? null, 
+                    'Contributor_Person_has_Affiliation', 
+                    'Contributor_Person_contributor_person_id'
+                );
             }
 
             saveContributorPersonRoles($connection, $contributor_person_id, $cbPersonRoles[$i], $valid_roles);
@@ -138,66 +143,6 @@ function linkResourceToContributorPerson($connection, $resource_id, $contributor
     $stmt->close();
 }
 
-/**
- * Saves the affiliation of a contributor person.
- *
- * @param mysqli      $connection            The database connection.
- * @param int         $contributor_person_id The ID of the contributor person.
- * @param string      $affiliation_name      The affiliation name.
- * @param string|null $rorId                 The ROR ID data.
- *
- * @return void
- */
-function saveContributorPersonAffiliation($connection, $contributor_person_id, $affiliation_data, $rorId_data)
-{
-    $affiliationNames = parseAffiliationData($affiliation_data);
-    $rorIds = parseRorIds($rorId_data);
-
-    $length = count($affiliationNames);
-
-    for ($i = 0; $i < $length; $i++) {
-        $affiliationName = $affiliationNames[$i];
-        if (empty($affiliationName)) {
-            continue; // Skip empty affiliations
-        }
-
-        $rorId = isset($rorIds[$i]) ? str_replace("https://ror.org/", "", $rorIds[$i]) : null;
-
-        // Check if affiliation already exists
-        $stmt = $connection->prepare("SELECT affiliation_id FROM Affiliation WHERE name = ?");
-        $stmt->bind_param("s", $affiliationName);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            // Update existing affiliation
-            $row = $result->fetch_assoc();
-            $affiliation_id = $row['affiliation_id'];
-
-            if ($rorId !== null) {
-                $updateStmt = $connection->prepare("UPDATE Affiliation SET rorId = ? WHERE affiliation_id = ?");
-                $updateStmt->bind_param("si", $rorId, $affiliation_id);
-                $updateStmt->execute();
-                $updateStmt->close();
-            }
-        } else {
-            // Create new affiliation
-            $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?)");
-            $stmt->bind_param("ss", $affiliationName, $rorId);
-            $stmt->execute();
-            $affiliation_id = $stmt->insert_id;
-        }
-        $stmt->close();
-
-        // Link contributor person with affiliation
-        $stmt = $connection->prepare("INSERT IGNORE INTO Contributor_Person_has_Affiliation 
-            (Contributor_Person_contributor_person_id, Affiliation_affiliation_id) VALUES (?, ?)");
-        $stmt->bind_param("ii", $contributor_person_id, $affiliation_id);
-        $stmt->execute();
-        $stmt->close();
-    }
-}
-
 
 /**
  * Saves roles of a Contributor Person.
@@ -211,19 +156,26 @@ function saveContributorPersonAffiliation($connection, $contributor_person_id, $
  */
 function saveContributorPersonRoles($connection, $contributor_person_id, $roles, $valid_roles)
 {
+    // Check whether $roles is a JSON string, and if so, decode it
+    if (is_string($roles)) {
+        $roles = json_decode($roles, true);
+    }
+
+    // Make sure that $roles is an array
     if (!is_array($roles)) {
         $roles = [$roles];
     }
 
-    // Delete extisting roles
+    // Delete existing roles
     $stmt = $connection->prepare("DELETE FROM Contributor_Person_has_Role WHERE Contributor_Person_contributor_person_id = ?");
     $stmt->bind_param("i", $contributor_person_id);
     $stmt->execute();
     $stmt->close();
 
-    foreach ($roles as $role_name) {
-        error_log("Processing role: $role_name");
-        if (isset($valid_roles[$role_name])) {
+    // Save new roles
+    foreach ($roles as $role) {
+        $role_name = is_array($role) ? $role['value'] ?? null : $role; // Extract the role name
+        if ($role_name && isset($valid_roles[$role_name])) {
             $role_id = $valid_roles[$role_name];
             error_log("Valid role found. Role ID: $role_id");
             $stmt = $connection->prepare("INSERT INTO Contributor_Person_has_Role (Contributor_Person_contributor_person_id, Role_role_id) VALUES (?, ?)");
@@ -236,6 +188,8 @@ function saveContributorPersonRoles($connection, $contributor_person_id, $roles,
     }
 }
 
+
+/////////////////////Institutions/////////////////////////////////////////////////////////////////////////
 /**
  * Saves the contributor institutions into the database.
  *
@@ -264,9 +218,18 @@ function saveContributorInstitutions($connection, $postData, $resource_id, $vali
             if (!empty(trim($cbOrganisationNames[$i])) && !empty($cbOrganisationRoles[$i])) {
                 $contributor_institution_id = saveOrUpdateContributorInstitution($connection, $cbOrganisationNames[$i]);
                 linkResourceToContributorInstitution($connection, $resource_id, $contributor_institution_id);
+
                 if (!empty($cbOrganisationAffiliations[$i])) {
-                    saveContributorInstitutionAffiliation($connection, $contributor_institution_id, $cbOrganisationAffiliations[$i], $cbOrganisationRorIds[$i] ?? null);
+                    saveAffiliations(
+                        $connection, 
+                        $contributor_institution_id, 
+                        $cbOrganisationAffiliations[$i], 
+                        $cbOrganisationRorIds[$i] ?? null, 
+                        'Contributor_Institution_has_Affiliation', 
+                        'Contributor_Institution_contributor_institution_id'
+                    );
                 }
+
                 saveContributorInstitutionRoles($connection, $contributor_institution_id, $cbOrganisationRoles[$i], $valid_roles);
             }
         }
@@ -320,66 +283,6 @@ function linkResourceToContributorInstitution($connection, $resource_id, $contri
 }
 
 /**
- * Saves the Affiliation of a Contributor Institution.
- *
- * @param mysqli      $connection                The database connection.
- * @param int         $contributor_institution_id The ID of the contributor institution.
- * @param string      $affiliation_data          The affiliation data.
- * @param string|null $rorId_data                The ROR ID data.
- *
- * @return void
- */
-function saveContributorInstitutionAffiliation($connection, $contributor_institution_id, $affiliation_data, $rorId_data)
-{
-    $affiliationNames = parseAffiliationData($affiliation_data);
-    $rorIds = parseRorIds($rorId_data);
-
-    $length = count($affiliationNames);
-
-    for ($i = 0; $i < $length; $i++) {
-        $affiliationName = $affiliationNames[$i];
-        if (empty($affiliationName)) {
-            continue; // Skip empty affiliations
-        }
-        
-        $rorId = isset($rorIds[$i]) ? str_replace("https://ror.org/", "", $rorIds[$i]) : null;
-
-        // Check if affiliation already exists
-        $stmt = $connection->prepare("SELECT affiliation_id FROM Affiliation WHERE name = ?");
-        $stmt->bind_param("s", $affiliationName);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            // Update existing affiliation
-            $row = $result->fetch_assoc();
-            $affiliation_id = $row['affiliation_id'];
-
-            if ($rorId !== null) {
-                $updateStmt = $connection->prepare("UPDATE Affiliation SET rorId = ? WHERE affiliation_id = ?");
-                $updateStmt->bind_param("si", $rorId, $affiliation_id);
-                $updateStmt->execute();
-                $updateStmt->close();
-            }
-        } else {
-            // Create new affiliation
-            $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?)");
-            $stmt->bind_param("ss", $affiliationName, $rorId);
-            $stmt->execute();
-            $affiliation_id = $stmt->insert_id;
-        }
-        $stmt->close();
-
-        // Link contributor institution with affiliation
-        $stmt = $connection->prepare("INSERT IGNORE INTO Contributor_Institution_has_Affiliation 
-            (Contributor_Institution_contributor_institution_id, Affiliation_affiliation_id) VALUES (?, ?)");
-        $stmt->bind_param("ii", $contributor_institution_id, $affiliation_id);
-        $stmt->execute();
-        $stmt->close();
-    }
-}
-
-/**
  * Saves roles of a Contributor Institution.
  *
  * @param mysqli $connection                The database connection.
@@ -391,17 +294,26 @@ function saveContributorInstitutionAffiliation($connection, $contributor_institu
  */
 function saveContributorInstitutionRoles($connection, $contributor_institution_id, $roles, $valid_roles)
 {
+    // Check whether $roles is a JSON string, and if so, decode it
+    if (is_string($roles)) {
+        $roles = json_decode($roles, true);
+    }
+
+    // Make sure that $roles is an array
     if (!is_array($roles)) {
         $roles = [$roles];
     }
 
+    // Delete existing roles
     $stmt = $connection->prepare("DELETE FROM Contributor_Institution_has_Role WHERE Contributor_Institution_contributor_institution_id = ?");
     $stmt->bind_param("i", $contributor_institution_id);
     $stmt->execute();
     $stmt->close();
 
-    foreach ($roles as $role_name) {
-        if (isset($valid_roles[$role_name])) {
+    // Save new roles
+    foreach ($roles as $role) {
+        $role_name = is_array($role) ? $role['value'] ?? null : $role; // Extract the role name
+        if ($role_name && isset($valid_roles[$role_name])) {
             $role_id = $valid_roles[$role_name];
             $stmt = $connection->prepare("INSERT INTO Contributor_Institution_has_Role (Contributor_Institution_contributor_institution_id, Role_role_id) VALUES (?, ?)");
             $stmt->bind_param("ii", $contributor_institution_id, $role_id);
