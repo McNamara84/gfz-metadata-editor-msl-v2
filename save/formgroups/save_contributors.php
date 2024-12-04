@@ -1,5 +1,5 @@
 <?php
-require_once 'parse_affiliations.php';
+require_once 'save_affiliations.php';
 /**
  * Saves the contributor information into the database.
  *

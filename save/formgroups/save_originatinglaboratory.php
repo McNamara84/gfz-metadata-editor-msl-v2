@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/parse_affiliations.php';
+require_once __DIR__ . '/save_affiliations.php';
 
 /**
  * Saves the originating laboratories in the database.

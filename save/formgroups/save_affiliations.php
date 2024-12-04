@@ -1,4 +1,22 @@
 <?php
+/**
+ * Saves affiliations to the database and links them to a specified entity.
+ *
+ * This function processes the provided affiliation and ROR ID data, saving them to the database
+ * if they do not already exist, and links them to the specified entity (e.g., Author, Contact Person).
+ *
+ * @param mysqli  $connection       The database connection.
+ * @param int     $entity_id        The ID of the entity to link the affiliations to (e.g., Author or Contact Person).
+ * @param string  $affiliation_data The raw affiliation data (e.g., a string of comma-separated names).
+ * @param string  $rorId_data       The raw ROR ID data (e.g., a string of comma-separated ROR IDs).
+ * @param string  $link_table       The name of the table linking the entity to the affiliations.
+ *                                  Expected format: `<Entity>_has_Affiliation`.
+ * @param string  $entity_column    The name of the column in the linking table that refers to the entity ID.
+ *                                  Expected format: `<Entity>_<entity_column>`.
+ *
+ * @return void
+ *
+ */
 function saveAffiliations($connection, $entity_id, $affiliation_data, $rorId_data, $link_table, $entity_column)
 {
     $affiliationNames = parseAffiliationData($affiliation_data);
