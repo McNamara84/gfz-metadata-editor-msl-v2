@@ -41,8 +41,8 @@ $translations = [
 
     // Form Group Contactpersons
     'contactpersons' => 'Kontaktperson(en)',
-    'CP_lastname_invalid' => 'Bitte geben Sie den Nachnamen der Kontaktperson ein.',
-    'CP_firstname_invalid' => 'Bitte geben Sie den Vornamen der Kontaktperson ein.',
+    'CP_lastname_invalid' => 'Bitte geben Sie den Nachnamen der Kontaktperson ein. Nur Buchstaben sind erlaubt.',
+    'CP_firstname_invalid' => 'Bitte geben Sie den Vornamen der Kontaktperson ein. Nur Buchstaben sind erlaubt.',
     'email' => 'E-Mail-Adresse',
     'email_invalid' => 'Bitte überprüfen Sie die E-Mail-Adresse.',
     'position' => 'Position',

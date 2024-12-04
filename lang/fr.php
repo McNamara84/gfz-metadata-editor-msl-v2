@@ -40,16 +40,16 @@ $translations = [
 
     // Groupe de formulaire Auteurs
     'authors' => 'Auteur(s)',
-    'lastname_invalid' => 'Veuillez fournir un nom de famille. Seules les lettres sont autorisées',
-    'firstname_invalid' => 'Veuillez fournir un prénom. Seules les lettres sont autorisées',
+    'lastname_invalid' => 'Veuillez fournir un nom de famille. Seules les lettres sont autorisées.',
+    'firstname_invalid' => 'Veuillez fournir un prénom. Seules les lettres sont autorisées.',
     'authorORCID' => 'ORCID',
     'ORCID_invalid' => 'Veuillez entrer un ORCID valide (XXXX-XXXX-XXXX-XXX(X))',
     'affiliation_invalid' => 'Veuillez fournir une affiliation.',
 
     // Groupe de formulaire Personnes de contact
     'contactpersons' => 'Personne(s) de contact',
-    'CP_lastname_invalid' => 'Veuillez fournir le nom de famille de la personne de contact.',
-    'CP_firstname_invalid' => 'Veuillez fournir le prénom de la personne de contact.',
+    'CP_lastname_invalid' => 'Veuillez fournir le nom de famille de la personne de contact. Seules les lettres sont autorisées.',
+    'CP_firstname_invalid' => 'Veuillez fournir le prénom de la personne de contact. Seules les lettres sont autorisées.',
     'email' => 'Adresse e-mail',
     'email_invalid' => 'L\'adresse e-mail n\'est pas valide.',
     'position' => 'Poste',

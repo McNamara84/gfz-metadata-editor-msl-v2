@@ -239,7 +239,7 @@ $(document).ready(function () {
 
     // Clear input fields and remove validation feedback
     newCPRow.find("input").val("").removeClass("is-invalid is-valid");
-    newCPRow.find(".invalid-feedback, .valid-feedback").hide();
+    newCPRow.find(".invalid-feedback, .valid-feedback").css("display", "");
 
     var uniqueSuffix = new Date().getTime();
     newCPRow.find("#inputCPAffiliation").attr("id", "inputCPAffiliation" + uniqueSuffix);
@@ -264,6 +264,9 @@ $(document).ready(function () {
       "hiddenCPRorId" + uniqueSuffix,
       affiliationsData
     );
+
+    // Bind validation listeners to the new row
+    bindValidationListeners(newAuthorRow);
 
     // Event handler for the remove button
     newCPRow.on("click", ".removeButton", function () {
