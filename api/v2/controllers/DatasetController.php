@@ -624,6 +624,10 @@ class DatasetController
                 foreach ($author['Affiliations'] as $affiliation) {
                     $affiliationXml = $affiliationsXml->addChild('Affiliation');
                     foreach ($affiliation as $key => $value) {
+                        // Skip adding <rorId> if it's empty or not set
+                        if ($key === 'rorId' && (empty($value) || $value === null)) {
+                            continue;
+                        }
                         $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
                     }
                 }
@@ -659,6 +663,10 @@ class DatasetController
                 foreach ($person['Affiliations'] as $affiliation) {
                     $affiliationXml = $affiliationsXml->addChild('Affiliation');
                     foreach ($affiliation as $key => $value) {
+                           // Skip adding <rorId> if it's empty or not set
+                           if ($key === 'rorId' && (empty($value) || $value === null)) {
+                            continue;
+                        }
                         $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
                     }
                 }
@@ -684,7 +692,12 @@ class DatasetController
                 foreach ($institution['Affiliations'] as $affiliation) {
                     $affiliationXml = $affiliationsXml->addChild('Affiliation');
                     foreach ($affiliation as $key => $value) {
+                          // Skip adding <rorId> if it's empty or not set
+                          if ($key === 'rorId' && (empty($value) || $value === null)) {
+                            continue;
+                        }
                         $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
+                   
                     }
                 }
             }
@@ -755,6 +768,10 @@ if ($validContactPersons) {
                 foreach ($contactPerson['Affiliations'] as $affiliation) {
                     $affiliationXml = $affiliationsXml->addChild('Affiliation');
                     foreach ($affiliation as $key => $value) {
+                           // Skip adding <rorId> if it's empty or not set
+                           if ($key === 'rorId' && (empty($value) || $value === null)) {
+                            continue;
+                        }
                         $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
                     }
                 }
@@ -851,8 +868,13 @@ if ($validContactPersons) {
                     $affiliationsXml = $laboratoryXml->addChild('Affiliations');
                     foreach ($laboratory['Affiliations'] as $affiliation) {
                         $affiliationXml = $affiliationsXml->addChild('Affiliation');
-                        foreach ($affiliation as $key => $value) {
+                        foreach ($affiliation as $key => $value) {   
+                            // Skip adding <rorId> if it's empty or not set
+                            if ($key === 'rorId' && (empty($value) || $value === null)) {
+                                continue;
+                            }
                             $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
+                       
                         }
                     }
                 }
