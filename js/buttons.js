@@ -664,8 +664,8 @@ $(document).ready(function () {
     $('#button-changelog-show').click(function (event) {
       event.preventDefault(); // Prevents the default behavior of the link.
 
-      // Loads the content from 'changelog.html' into the modal's content area.
-      $('#panel-changelog-content').load('changelog.html', function () {
+      // Loads the content from 'doc/changelog.html' into the modal's content area.
+      $('#panel-changelog-content').load('doc/changelog.html', function () {
         // Displays the modal after the content has been successfully loaded.
         $('#modal-changelog').modal('show');
       });
