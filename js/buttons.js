@@ -299,7 +299,7 @@ $(document).ready(function () {
     // Reset values and validation feedback in the cloned element
     newContributorRow.find("input").val("").removeClass("is-invalid is-valid");
     newContributorRow.find(".tagify").remove();
-    newContributorRow.find(".invalid-feedback, .valid-feedback").hide();
+    newContributorRow.find(".invalid-feedback, .valid-feedback").css("display", "");
 
     // Replace help buttons (if applicable)
     if (typeof replaceHelpButtonInClonedRows === 'function') {
@@ -361,6 +361,10 @@ $(document).ready(function () {
 
     // Initialize Tagify for the new Roles field
     setupRolesDropdown(["person", "both"], "#inputContributorsPerRole" + uniqueSuffix);
+
+    // Bind validation listeners to the new row
+    bindValidationListeners(newContributorRow);
+
 
     // Event handler for the remove button in the new row
     newContributorRow.on("click", ".removeButton", function () {
