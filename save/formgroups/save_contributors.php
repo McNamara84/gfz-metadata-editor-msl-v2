@@ -189,19 +189,26 @@ function saveContributorPersonAffiliation($connection, $contributor_person_id, $
  */
 function saveContributorPersonRoles($connection, $contributor_person_id, $roles, $valid_roles)
 {
+    // Check whether $roles is a JSON string, and if so, decode it
+    if (is_string($roles)) {
+        $roles = json_decode($roles, true);
+    }
+
+    // Make sure that $roles is an array
     if (!is_array($roles)) {
         $roles = [$roles];
     }
 
-    // Delete extisting roles
+    // Delete existing roles
     $stmt = $connection->prepare("DELETE FROM Contributor_Person_has_Role WHERE Contributor_Person_contributor_person_id = ?");
     $stmt->bind_param("i", $contributor_person_id);
     $stmt->execute();
     $stmt->close();
 
-    foreach ($roles as $role_name) {
-        error_log("Processing role: $role_name");
-        if (isset($valid_roles[$role_name])) {
+    // Save new roles
+    foreach ($roles as $role) {
+        $role_name = is_array($role) ? $role['value'] ?? null : $role; // Extract the role name
+        if ($role_name && isset($valid_roles[$role_name])) {
             $role_id = $valid_roles[$role_name];
             error_log("Valid role found. Role ID: $role_id");
             $stmt = $connection->prepare("INSERT INTO Contributor_Person_has_Role (Contributor_Person_contributor_person_id, Role_role_id) VALUES (?, ?)");
@@ -348,17 +355,26 @@ function saveContributorInstitutionAffiliation($connection, $contributor_institu
  */
 function saveContributorInstitutionRoles($connection, $contributor_institution_id, $roles, $valid_roles)
 {
+    // Check whether $roles is a JSON string, and if so, decode it
+    if (is_string($roles)) {
+        $roles = json_decode($roles, true);
+    }
+
+    // Make sure that $roles is an array
     if (!is_array($roles)) {
         $roles = [$roles];
     }
 
+    // Delete existing roles
     $stmt = $connection->prepare("DELETE FROM Contributor_Institution_has_Role WHERE Contributor_Institution_contributor_institution_id = ?");
     $stmt->bind_param("i", $contributor_institution_id);
     $stmt->execute();
     $stmt->close();
 
-    foreach ($roles as $role_name) {
-        if (isset($valid_roles[$role_name])) {
+    // Save new roles
+    foreach ($roles as $role) {
+        $role_name = is_array($role) ? $role['value'] ?? null : $role; // Extract the role name
+        if ($role_name && isset($valid_roles[$role_name])) {
             $role_id = $valid_roles[$role_name];
             $stmt = $connection->prepare("INSERT INTO Contributor_Institution_has_Role (Contributor_Institution_contributor_institution_id, Role_role_id) VALUES (?, ?)");
             $stmt->bind_param("ii", $contributor_institution_id, $role_id);
