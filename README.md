@@ -561,11 +561,6 @@ JSON-Array mit Identifier-Typ-Objekten
   - Vorkommen 1-n
   - Datentyp: Zeichenkette
   - Wird gespeichert als `<contributorName>` im [DataCite-Schema 4.5](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/) (TODO)
-- Affiliation of the originating laboratory
-  - Zugejhörigkeit des Labors, automatisch gewählt aus einer Liste je nach Laborname, oder Freitext, wenn Laborname auch Freitext.
-  - Vorkommen 1-n
-  - Datentyp: Zeichenkette
-  - Wird gespeichert als `<affiliation>` im [DataCite-Schema 4.5](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/) (TODO)
 
 ### Contributors
 
