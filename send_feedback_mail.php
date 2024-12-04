@@ -64,8 +64,6 @@ function sendFeedbackMail($feedbackQuestion1, $feedbackQuestion2, $feedbackQuest
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
-    // Debugging: Überprüfen Sie, ob Daten ankommen
-    error_log(print_r($_POST, true));
     $feedbackQuestion1 = $_POST['feedbackQuestion1'] ?? '';
     $feedbackQuestion2 = $_POST['feedbackQuestion2'] ?? '';
     $feedbackQuestion3 = $_POST['feedbackQuestion3'] ?? '';

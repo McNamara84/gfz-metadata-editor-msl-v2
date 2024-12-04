@@ -868,14 +868,9 @@ if ($validContactPersons) {
         $baseDir = realpath(dirname(dirname(dirname(__DIR__))));
         $outputDir = $baseDir . '/xml';
 
-        // Only for Debugging!
-        error_log("Base Directory: " . $baseDir);
-        error_log("Output Directory: " . $outputDir);
-
         // Generate folder if not exists
         if (!file_exists($outputDir)) {
             if (!mkdir($outputDir, 0777, true)) {
-                error_log("Fehler beim Erstellen des Verzeichnisses: " . error_get_last()['message']);
                 throw new Exception("Konnte XML-Verzeichnis nicht erstellen");
             }
         }
@@ -885,10 +880,8 @@ if ($validContactPersons) {
 
         // Save XML to file
         $outputFile = $outputDir . "/resource_$id.xml";
-        error_log("Versuche Datei zu speichern: " . $outputFile);
 
         if (!@$dom->save($outputFile)) {
-            error_log("Fehler beim Speichern: " . error_get_last()['message']);
             throw new Exception("Konnte XML-Datei nicht speichern: " . error_get_last()['message']);
         }
 
@@ -935,12 +928,6 @@ if ($validContactPersons) {
         $inputXmlPath = $baseDir . "/xml/resource_$id.xml";
         $xsltPath = $baseDir . "/schemas/XSLT/" . $formatInfo[$format]['xsltFile'];
         $outputXmlPath = $baseDir . "/xml/" . $formatInfo[$format]['outputPrefix'] . "_resource_$id.xml";
-
-        // Debug output
-        error_log("Base Directory: " . $baseDir);
-        error_log("Input XML Path: " . $inputXmlPath);
-        error_log("XSLT Path: " . $xsltPath);
-        error_log("Output XML Path: " . $outputXmlPath);
 
         // Temporarily create FreestyleXML
         $this->getResourceAsXml($GLOBALS['connection'], $id);
@@ -1011,9 +998,6 @@ if ($validContactPersons) {
     {
         $id = intval($vars['id']);
         $scheme = strtolower($vars['scheme']);
-
-        // Debug output
-        error_log("Download parameter: " . ($download ? 'true' : 'false'));
 
         // Check for valid schema formats
         $validSchemes = ['datacite', 'iso', 'dif'];
