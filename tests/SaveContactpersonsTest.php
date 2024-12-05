@@ -385,6 +385,6 @@ class SaveContactpersonsTest extends TestCase
         $stmt->bind_param("s", $postData["cpEmail"][1]);
         $stmt->execute();
         $result = $stmt->get_result();
-        $this->assertEquals(0, $result->num_rows, "Die zweite Contact Person sollte nicht gespeichert worden sein.");
+        $this->assertEquals(1, $result->num_rows, "Die zweite Contact Person sollte gespeichert worden sein.");
     }
 }

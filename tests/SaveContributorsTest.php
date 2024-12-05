@@ -292,7 +292,7 @@ class SaveContributorsTest extends TestCase
         $stmt = $this->connection->prepare("SELECT COUNT(*) as count FROM Contributor_Institution");
         $stmt->execute();
         $institutionCount = $stmt->get_result()->fetch_assoc()['count'];
-        $this->assertEquals(1, $institutionCount, "Es sollte keine Contributor Institution gespeichert worden sein.");
+        $this->assertEquals(0, $institutionCount, "Es sollte keine Contributor Institution gespeichert worden sein.");
     }
 
     /**
