@@ -568,10 +568,7 @@ $(document).ready(function () {
    */
   $("#button-fundingreference-add").click(function () {
     var fundingreferenceGroup = $("#group-fundingreference");
-    // First row used as a template
     var firstFundingReferenceLine = fundingreferenceGroup.children().first();
-
-    // Clone the template
     var newFundingReferenceRow = firstFundingReferenceLine.clone();
 
     // Clear input fields and remove validation feedback
@@ -592,10 +589,14 @@ $(document).ready(function () {
       $(this).closest(".row").remove();
     });
 
-    // Initialize autocomplete for the new input field
-    setUpAutocompleteFunder(newFundingReferenceRow.find(".inputFunder"));
+    // Destroy autocomplete
+    const newInput = newFundingReferenceRow.find(".inputFunder");
+    if (newInput.data('ui-autocomplete')) {
+      newInput.autocomplete('destroy');
+    }
 
-    setUpAutocompleteFunder();
+    // Initialize autocomplete again for the new row
+    setUpAutocompleteFunder(newInput[0]);
   });
 
   var labData;

@@ -20,9 +20,6 @@ $(document).ready(function () {
     console.error("Error loading time zones. Did you execute API call getTimezones (see documentation)?");
   });
 
-  // Initialize Chosen plugin for role selection fields
-  // $(".chosen-select").chosen({});
-
   /**
   * Populates the select field with ID input-rights-license with options created via an API call.
   * @param {boolean} isSoftware - Determines whether to retrieve licenses for software or all resource types.
@@ -97,7 +94,7 @@ $(document).ready(function () {
    * Sets up the autocomplete functionality for funder input elements.
    * @param {HTMLElement} inputElement - The input element to attach autocomplete to.
    */
-  function setUpAutocompleteFunder(inputElement) {
+  window.setUpAutocompleteFunder = function (inputElement) {
     $(inputElement)
       .autocomplete({
         source: function (request, response) {
@@ -122,7 +119,7 @@ $(document).ready(function () {
           .append("<div>" + item.name + "</div>")
           .appendTo(ul);
       };
-  }
+  };
 
   // Populate the relation dropdown field
   $.ajax({
@@ -221,23 +218,6 @@ $(document).ready(function () {
       },
     });
   }
-
-  // Event listener for changes in the Identifier Type select field
-  /*$(document).on("change", 'select[name^="rIdentifierType"]', function () {
-    updateValidationPattern(this);
-  });*/
-
-  // Event listener for newly added fields
-  /*$(document).on("click", ".button-relatedwork-add", function () {
-    setTimeout(function () {
-      $('select[name^="rIdentifierType"]:last').trigger("change");
-    }, 100);
-  });
-
-  // Execute initially for already existing fields
-  $('select[name^="rIdentifierType"]').each(function () {
-    updateValidationPattern(this);
-  });*/
 });
 
 /**
