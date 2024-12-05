@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
    * Main form element containing the dataset metadata
    * @type {HTMLFormElement}
    */
-  const form = document.getElementById('metaForm');
+  const form = document.getElementById('form-mde');
 
   /**
    * Modal for notifications
@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
    * @type {Object}
    */
   const buttons = {
-    save: document.getElementById('saveAs'),
-    submit: document.getElementById('submitButton')
+    save: document.getElementById('button-form-save'),
+    submit: document.getElementById('button-form-submit')
   };
 
   // Enable buttons

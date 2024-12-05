@@ -10,16 +10,16 @@
     <div class="input-group has-validation input-margin-top-bottom">
       <div class="form-floating">
         <div class="input-group has-validation">
-          <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputScienceKeywords"
+          <input type="text" class="form-control input-with-help input-right-no-round-corners" id="input-sciencekeyword"
             name="thesaurusKeywords" placeholder="<?php echo $translations['thesaurusLabel']; ?>"/>
           <span class="input-group-text"><i class="bi bi-question-circle-fill"
-              data-help-section-id="scienceKeywords"></i></span>
+              data-help-section-id="help-scienceKeywords-keyword"></i></span>
         </div>
       </div>
       <!--Button Thesaurus-->
       <div class="col-auto p-2">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scienceModal"
-          id="openScienceKeywordsThesaurus">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-sciencekeyword"
+          id="button-sciencekeyword-open">
           <i class="bi bi-diagram-3"></i>
         </button>
       </div>
@@ -31,19 +31,19 @@
 <div class="modal fade <?php if 
       (isset($_SESSION['scienceModal']) && $_SESSION['scienceModal'] == 'true') 
       {echo 'show'; } ?>
-      " id="scienceModal" tabindex="-1" aria-labelledby="scienceModalLabel" aria-hidden="true">
+      " id="modal-sciencekeyword" tabindex="-1" aria-labelledby="label-sciencekeyword-modal" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="scienceModalLabel">GCMD Science Keywords</h5>
+        <h5 class="modal-title" id="label-sciencekeyword-modal">GCMD Science Keywords</h5>
         <span class="input-group-text"><i class="bi bi-question-circle-fill"
-            data-help-section-id="modalHelp"></i></span>
+            data-help-section-id="help-scienceKeywords-keywordviewer"></i></span>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div id="thesaurus">
-          <input type="text" class="form-control mb-3" id="searchInputScience" placeholder="Search for Keyword">
-          <div id="jstreeScience"></div>
+        <div id="panel-sciencekeyword-thesaurus">
+          <input type="text" class="form-control mb-3" id="input-sciencekeyword-search" placeholder="Search for Keyword">
+          <div id="jstree-sciencekeyword"></div>
         </div>
       </div>
     </div>

@@ -3,15 +3,15 @@
       <?php echo $translations['relatedwork']; ?>
     </b></div>
   <div class="card-body">
-    <div id="relatedworkGroup">
+    <div id="group-relatedwork">
       <div class="row" related-work-row>
         <!-- Input field Relation -->
         <div class="col-sm-6 col-md-4 col-lg-3 p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
               <select class="form-select input-with-help input-right-no-round-corners"
-                aria-label="Default select example" id="inputRelation" name="relation[]"></select>
-              <label for="inputRelation">
+                aria-label="Default select example" id="input-relatedwork-relation" name="relation[]"></select>
+              <label for="input-relatedwork-relation">
                 <?php echo $translations['relation']; ?>
               </label>
               <div class="invalid-feedback">
@@ -20,7 +20,7 @@
             </div>
             <div class="input-group-append">
               <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                  data-help-section-id="relation"></i></span>
+                  data-help-section-id="help-relatedwork-relation"></i></span>
             </div>
           </div>
         </div>
@@ -28,9 +28,9 @@
         <div class="col p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
-              <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputRIdentifier"
+              <input type="text" class="form-control input-with-help input-right-no-round-corners" id="input-relatedwork-identifier"
                 name="rIdentifier[]" />
-              <label for="inputRIdentifier">
+              <label for="input-relatedwork-identifier">
                 <?php echo $translations['r_Identifier']; ?>
               </label>
               <div class="invalid-feedback">
@@ -39,7 +39,7 @@
             </div>
             <div class="input-group-append">
               <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                  data-help-section-id="identifier"></i></span>
+                  data-help-section-id="help-relatedwork-identifier"></i></span>
             </div>
           </div>
         </div>
@@ -48,18 +48,18 @@
           <div class="input-group has-validation">
             <div class="form-floating">
               <select class="form-select input-with-help input-right-no-round-corners"
-                aria-label="Default select example" id="inputRIdentifierType" name="rIdentifierType[]"> </select>
-              <label for="inputRIdentifierType">
+                aria-label="Default select example" id="input-relatedwork-identifiertype" name="rIdentifierType[]"> </select>
+              <label for="input-relatedwork-identifiertype">
                 <?php echo $translations['r_identifier_type']; ?>
               </label>
             </div>
             <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                data-help-section-id="identifier-type"></i></span>
+                data-help-section-id="help-relatedwork-identifiertype"></i></span>
           </div>
         </div>
         <!-- Clone Related Work row button-->
         <div class="col-2 col-sm-1 col-md-1 col-lg-1 p-1 d-flex justify-content-center align-items-center">
-          <button type="button" class="btn btn-primary addRelatedWork" id="addRelatedWork" style="width: 36px">
+          <button type="button" class="btn btn-primary addRelatedWork" id="button-relatedwork-add" style="width: 36px">
             <?php echo $translations['add']; ?>
           </button>
         </div>

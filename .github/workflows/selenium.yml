@@ -117,7 +117,7 @@ jobs:
         \$smtpUser = 'test_user';
         \$smtpPassword = 'test_password';
         \$smtpSender = 'test_sender@test.com';
-        \$feedbackAdress = 'feedback@test.com';
+        \$feedbackAddress = 'feedback@test.com';
         EOF
 
         # Führe install.php aus und erfasse die Ausgabe

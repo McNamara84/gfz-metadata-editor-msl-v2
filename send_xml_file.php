@@ -83,7 +83,7 @@ try {
 
     // Recipients
     $mail->setFrom($smtpSender);
-    $mail->addAddress($xmlSubmitAdress);
+    $mail->addAddress($xmlSubmitAddress);
 
     // Attachments
     $mail->addStringAttachment($xml_content, "dataset_" . $resource_id . ".xml");

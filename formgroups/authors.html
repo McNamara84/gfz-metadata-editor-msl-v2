@@ -5,15 +5,15 @@
     </b>
   </div>
   <div class="card-body">
-    <div id="authorGroup">
+    <div id="group-author">
       <div class="row" data-creator-row>
         <!-- Input field ORCID Author -->
         <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
-              <input type="text" class="form-control input-with-help input-right-no-round-corners" id="inputAuthorORCID"
+              <input type="text" class="form-control input-with-help input-right-no-round-corners" id="input-author-orcid"
                 name="orcids[]" pattern="^[0-9]{4}-[0-9]{4}-[0-9]{4}-([0-9]{4}|[0-9]{3}X)$" required />
-              <label for="inputAuthorORCID">
+              <label for="input-author-orcid">
                 <?php echo $translations['authorORCID']; ?><span class="text-danger">*</span>
               </label>
               <div class="invalid-feedback">
@@ -22,7 +22,7 @@
             </div>
             <div class="input-group-append">
               <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                  data-help-section-id="orcid"></i></span>
+                  data-help-section-id="help-author-orcid"></i></span>
             </div>
           </div>
         </div>
@@ -30,9 +30,9 @@
         <div class="col-6 col-sm-6 col-md-4 col-lg-2 p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
-              <input type="text" class="form-control" id="inputFamilyname" name="familynames[]"
+              <input type="text" class="form-control" id="input-author-lastname" name="familynames[]"
                 pattern="^[a-zA-ZäöüÄÖÜß \-]*$" required />
-              <label for="inputFamilyname">
+              <label for="input-author-lastname">
                 <?php echo $translations['lastname']; ?><span class="text-danger">*</span>
               </label>
               <div class="invalid-feedback">
@@ -45,9 +45,9 @@
         <div class="col-6 col-sm-6 col-md-4 col-lg-2 p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
-              <input type="text" class="form-control" id="inputGivenname" name="givennames[]"
+              <input type="text" class="form-control" id="input-author-firstname" name="givennames[]"
                 pattern="^[a-zA-ZäöüÄÖÜß \-.]*$" required />
-              <label for="inputGivenname">
+              <label for="input-author-firstname">
                 <?php echo $translations['firstname']; ?><span class="text-danger">*</span>
               </label>
               <div class="invalid-feedback">
@@ -60,17 +60,17 @@
         <div class="col-10 col-sm-11 col-md-11 col-lg-5 p-1">
           <div class="input-group has-validation">
             <input type="text" class="form-control input-with-help input-right-no-round-corners"
-              id="inputAuthorAffiliation" name="affiliation[]"
+              id="input-author-affiliation" name="affiliation[]"
               placeholder="<?php echo $translations['affiliation']; ?>" />
             <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                data-help-section-id="affiliation"></i></span>
-            <input type="hidden" id="hiddenAuthorRorId" name="authorRorIds[]" />
+                data-help-section-id="help-author-affiliation"></i></span>
+            <input type="hidden" id="input-author-rorid" name="authorRorIds[]" />
           </div>
         </div>
         <!-- Button "add Author" -->
         <div class="col-2 col-sm-1 col-md-1 col-lg-1 p-1 d-flex justify-content-center align-items-center">
           <div class="align-items-center">
-            <button type="button" class="btn btn-primary addAuthor" id="addAuthor" style="width: 36px">
+            <button type="button" class="btn btn-primary addAuthor" id="button-author-add" style="width: 36px">
               <?php echo $translations['add']; ?>
             </button>
           </div>
