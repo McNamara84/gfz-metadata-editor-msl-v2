@@ -218,6 +218,7 @@ $(document).ready(function () {
       },
     });
   }
+});
 
 /**
  * Function to populate the dropdown menu of identifier types.
