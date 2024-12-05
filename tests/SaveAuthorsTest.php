@@ -109,7 +109,7 @@ class SaveAuthorsTest extends TestCase
             "givennames" => ["John"],
             "orcids" => ["0000-0001-2345-6789"],
             "affiliation" => ['[{"value":"Test University"}]'],
-            "authorRorIds" => ['[{"value":"03yrm5c26"}]']
+            "authorRorIds" => ['https://ror.org/047w75g40']
         ];
 
         saveAuthors($this->connection, $authorData, $resource_id);
@@ -155,7 +155,7 @@ class SaveAuthorsTest extends TestCase
             "Der Name der Affiliation wurde nicht korrekt gespeichert."
         );
         $this->assertEquals(
-            "03yrm5c26",
+            "047w75g40",
             $affiliationResult["rorId"],
             "Die ROR-ID der Affiliation wurde nicht korrekt gespeichert."
         );
