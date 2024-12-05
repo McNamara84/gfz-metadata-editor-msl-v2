@@ -873,6 +873,18 @@ class DatasetController
         foreach ($fundingReferences as $reference) {
             $referenceXml = $fundingReferencesXml->addChild('FundingReference');
             foreach ($reference as $key => $value) {
+                if ($key === 'funderid' && (empty($value) || $value === null)) {
+                    continue;
+                }
+                if ($key === 'funderidtyp' && (empty($value) || $value === null)) {
+                    continue;
+                }
+                if ($key === 'grantnumber' && (empty($value) || $value === null)) {
+                    continue;
+                }
+                if ($key === 'grantname' && (empty($value) || $value === null)) {
+                    continue;
+                }
                 $referenceXml->addChild($key, htmlspecialchars($value ?? ''));
             }
         }
