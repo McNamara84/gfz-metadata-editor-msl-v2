@@ -187,7 +187,7 @@ class SaveContactpersonsTest extends TestCase
 
             $this->assertEquals(json_decode($postData["cpAffiliation"][$i], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation für Contact Person " . ($i + 1) . " wurde nicht korrekt gespeichert.");
             $this->assertEquals(
-                str_replace("https://ror.org/", "", $postData["hiddenCPRorId"][$i], true)[0]["value"],
+                str_replace("https://ror.org/", "", $postData["hiddenCPRorId"][$i], true[0]["value"]),
                 $affiliationResult["rorId"],
                 "Die ROR-ID der Affiliation für Contact Person " . ($i + 1) . " wurde nicht korrekt gespeichert."
             );
@@ -260,7 +260,7 @@ class SaveContactpersonsTest extends TestCase
                 $this->assertNotNull($affiliationResult, "Die Affiliation für Contact Person " . ($i + 1) . " wurde nicht gespeichert.");
                 $this->assertEquals(json_decode($postData["cpAffiliation"][$i], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation für Contact Person " . ($i + 1) . " wurde nicht korrekt gespeichert.");
                 $this->assertEquals(
-                    str_replace("https://ror.org/", "", $postData["hiddenCPRorId"][$i], true)[0]["value"],
+                    str_replace("https://ror.org/", "", $postData["hiddenCPRorId"][$i], true[0]["value"]),
                     $affiliationResult["rorId"],
                     "Die ROR-ID der Affiliation für Contact Person " . ($i + 1) . " wurde nicht korrekt gespeichert."
                 );

@@ -90,7 +90,7 @@ class SaveContributorsTest extends TestCase
             "cbPersonFirstname" => ["John"],
             "cbORCID" => ["0000-0001-2345-6789"],
             "cbAffiliation" => ['[{"value":"Test University"}]'],
-            "cbpRorIds" => ['[{"value":"https://ror.org/03yrm5c26"}]'],
+            "cbpRorIds" => ['https://ror.org/03yrm5c26'],
             "cbPersonRoles" => [["Data Collector", "Data Curator"]]
         ];
 
@@ -115,7 +115,10 @@ class SaveContributorsTest extends TestCase
         $affiliationResult = $stmt->get_result()->fetch_assoc();
 
         $this->assertEquals(json_decode($postData["cbAffiliation"][0], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation wurde nicht korrekt gespeichert.");
-        $this->assertEquals(str_replace("https://ror.org/", "", json_decode($postData["cbpRorIds"][0], true)[0]["value"]), $affiliationResult["rorId"], "Die ROR-ID der Affiliation wurde nicht korrekt gespeichert.");
+        $this->assertEquals(
+            str_replace("https://ror.org/", "", $postData["cbpRorIds"][0], true)[0]["value"], 
+            $affiliationResult["rorId"], 
+            "Die ROR-ID der Affiliation wurde nicht korrekt gespeichert.");
 
         // Überprüfen der Rollen
         $stmt = $this->connection->prepare("SELECT r.name FROM Role r 
@@ -150,7 +153,7 @@ class SaveContributorsTest extends TestCase
             "cbOrganisationName" => ["Test Organization"],
             "cbOrganisationRoles" => [["Hosting Institution", "Research Group"]],
             "OrganisationAffiliation" => ['[{"value":"Test Affiliation"}]'],
-            "hiddenOrganisationRorId" => ['[{"value":"https://ror.org/03yrm5c26"}]']
+            "hiddenOrganisationRorId" => ['https://ror.org/03yrm5c26']
         ];
 
         saveContributors($this->connection, $postData, $resource_id);
@@ -173,7 +176,10 @@ class SaveContributorsTest extends TestCase
         $affiliationResult = $stmt->get_result()->fetch_assoc();
 
         $this->assertEquals(json_decode($postData["OrganisationAffiliation"][0], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation wurde nicht korrekt gespeichert.");
-        $this->assertEquals(str_replace("https://ror.org/", "", json_decode($postData["hiddenOrganisationRorId"][0], true)[0]["value"]), $affiliationResult["rorId"], "Die ROR-ID der Affiliation wurde nicht korrekt gespeichert.");
+        $this->assertEquals(
+            str_replace("https://ror.org/", "", $postData["hiddenOrganisationRorId"][0], count: true[0]["value"]), 
+            $affiliationResult["rorId"], 
+            "Die ROR-ID der Affiliation wurde nicht korrekt gespeichert.");
 
         // Überprüfen der Rollen
         $stmt = $this->connection->prepare("SELECT r.name FROM Role r 
@@ -311,7 +317,7 @@ class SaveContributorsTest extends TestCase
             "cbPersonFirstname" => ["John", "Jane", "Bob"],
             "cbORCID" => ["0000-0001-2345-6789", "0000-0002-3456-7890", "0000-0003-4567-8901"],
             "cbAffiliation" => ['[{"value":"University A"}]', '[{"value":"University B"}]', '[{"value":"University C"}]'],
-            "cbpRorIds" => ['[{"value":"https://ror.org/03yrm5c26"}]', '[{"value":"https://ror.org/02nr0ka47"}]', '[{"value":"https://ror.org/0168r3w48"}]'],
+            "cbpRorIds" => ['https://ror.org/03yrm5c26', 'https://ror.org/02nr0ka47', 'https://ror.org/0168r3w48'],
             "cbPersonRoles" => [["Data Collector"], ["Data Curator"], ["Researcher"]]
         ];
 
@@ -337,7 +343,10 @@ class SaveContributorsTest extends TestCase
             $affiliationResult = $stmt->get_result()->fetch_assoc();
 
             $this->assertEquals(json_decode($postData["cbAffiliation"][$i], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation für Person " . ($i + 1) . " wurde nicht korrekt gespeichert.");
-            $this->assertEquals(str_replace("https://ror.org/", "", json_decode($postData["cbpRorIds"][$i], true)[0]["value"]), $affiliationResult["rorId"], "Die ROR-ID der Affiliation für Person " . ($i + 1) . " wurde nicht korrekt gespeichert.");
+            $this->assertEquals(
+                str_replace("https://ror.org/", "", $postData["cbpRorIds"][$i], true[0]["value"]), 
+                $affiliationResult["rorId"], 
+                "Die ROR-ID der Affiliation für Person " . ($i + 1) . " wurde nicht korrekt gespeichert.");
 
             // Überprüfen der Rollen
             $stmt = $this->connection->prepare("SELECT r.name FROM Role r 
@@ -373,7 +382,7 @@ class SaveContributorsTest extends TestCase
             "cbOrganisationName" => ["Organization A", "Organization B", "Organization C"],
             "cbOrganisationRoles" => [["Hosting Institution"], ["Research Group"], ["Sponsor"]],
             "OrganisationAffiliation" => ['[{"value":"Affiliation A"}]', '[{"value":"Affiliation B"}]', '[{"value":"Affiliation C"}]'],
-            "hiddenOrganisationRorId" => ['[{"value":"https://ror.org/03yrm5c26"}]', '[{"value":"https://ror.org/02nr0ka47"}]', '[{"value":"https://ror.org/0168r3w48"}]']
+            "hiddenOrganisationRorId" => ['https://ror.org/03yrm5c26', 'https://ror.org/02nr0ka47', 'https://ror.org/0168r3w48']
         ];
 
         saveContributors($this->connection, $postData, $resource_id);
@@ -397,7 +406,10 @@ class SaveContributorsTest extends TestCase
             $affiliationResult = $stmt->get_result()->fetch_assoc();
 
             $this->assertEquals(json_decode($postData["OrganisationAffiliation"][$i], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation für Institution " . ($i + 1) . " wurde nicht korrekt gespeichert.");
-            $this->assertEquals(str_replace("https://ror.org/", "", json_decode($postData["hiddenOrganisationRorId"][$i], true)[0]["value"]), $affiliationResult["rorId"], "Die ROR-ID der Affiliation für Institution " . ($i + 1) . " wurde nicht korrekt gespeichert.");
+            $this->assertEquals(
+                str_replace("https://ror.org/", "", $postData["hiddenOrganisationRorId"][$i], true[0]["value"]), 
+                $affiliationResult["rorId"], 
+                "Die ROR-ID der Affiliation für Institution " . ($i + 1) . " wurde nicht korrekt gespeichert.");
 
             // Überprüfen der Rollen
             $stmt = $this->connection->prepare("SELECT r.name FROM Role r 
@@ -439,7 +451,7 @@ class SaveContributorsTest extends TestCase
             "cbOrganisationName" => ["Organization A", "Organization B"],
             "cbOrganisationRoles" => [["Hosting Institution"], ["Research Group"]],
             "OrganisationAffiliation" => ['[{"value":"Affiliation A"}]', '[{"value":"Affiliation B"}]'],
-            "hiddenOrganisationRorId" => ['[{"value":"https://ror.org/0168r3w48"}]', '[{"value":"https://ror.org/04m7fg108"}]']
+            "hiddenOrganisationRorId" => ['https://ror.org/0168r3w48', 'https://ror.org/04m7fg108']
         ];
 
         saveContributors($this->connection, $postData, $resource_id);
