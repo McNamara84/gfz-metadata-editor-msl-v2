@@ -94,7 +94,7 @@ $(document).ready(function () {
    * Sets up the autocomplete functionality for funder input elements.
    * @param {HTMLElement} inputElement - The input element to attach autocomplete to.
    */
-  function setUpAutocompleteFunder(inputElement) {
+  window.setUpAutocompleteFunder = function (inputElement) {
     $(inputElement)
       .autocomplete({
         source: function (request, response) {
@@ -119,7 +119,7 @@ $(document).ready(function () {
           .append("<div>" + item.name + "</div>")
           .appendTo(ul);
       };
-  }
+  };
 
   // Populate the relation dropdown field
   $.ajax({
