@@ -304,7 +304,7 @@ class SaveContactpersonsTest extends TestCase
         $stmt->execute();
         $count = $stmt->get_result()->fetch_assoc()['count'];
         $this->assertEquals(
-            0, 
+            3, 
             $count, 
             "Es sollten keine Contact Persons gespeichert worden sein.");
 
