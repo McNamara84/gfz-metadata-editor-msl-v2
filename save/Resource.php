@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Resource;
 
+use Resource\Types\Creator;
+
 class Resource
 {
     private string $identifier;
