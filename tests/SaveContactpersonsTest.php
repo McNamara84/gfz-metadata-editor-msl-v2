@@ -92,7 +92,7 @@ class SaveContactpersonsTest extends TestCase
             "cpEmail" => ["john.doe@example.com"],
             "cpOnlineResource" => ["http://example.com"],
             "cpAffiliation" => ['[{"value":"Test University"}]'],
-            "hiddenCPRorId" => ['[{"value":"https://ror.org/03yrm5c26"}]']
+            "hiddenCPRorId" => ['https://ror.org/03yrm5c26']
         ];
 
         saveContactPerson($this->connection, $postData, $resource_id);
@@ -151,7 +151,7 @@ class SaveContactpersonsTest extends TestCase
             "cpEmail" => ["john.doe@example.com", "jane.smith@example.com", "bob.johnson@example.com"],
             "cpOnlineResource" => ["http://example1.com", "http://example2.com", "http://example3.com"],
             "cpAffiliation" => ['[{"value":"University A"}]', '[{"value":"University B"}]', '[{"value":"University C"}]'],
-            "hiddenCPRorId" => ['[{"value":"https://ror.org/03yrm5c26"}]', '[{"value":"https://ror.org/02nr0ka47"}]', '[{"value":"https://ror.org/0168r3w48"}]']
+            "hiddenCPRorId" => ['https://ror.org/03yrm5c26', 'https://ror.org/02nr0ka47', 'https://ror.org/0168r3w48']
         ];
 
         saveContactPerson($this->connection, $postData, $resource_id);
@@ -211,7 +211,7 @@ class SaveContactpersonsTest extends TestCase
             "cpEmail" => ["john.doe@example.com", "jane.smith@example.com", "bob.johnson@example.com"],
             "cpOnlineResource" => ["http://example1.com", "http://example2.com", "http://example3.com"],
             "cpAffiliation" => ['[{"value":"University A"}]', '[{"value":"University B"}]', '[]'],
-            "hiddenCPRorId" => ['[{"value":"https://ror.org/03yrm5c26"}]', '[{"value":"https://ror.org/02nr0ka47"}]', '[]']
+            "hiddenCPRorId" => ['https://ror.org/03yrm5c26', 'https://ror.org/02nr0ka47', '[]']
         ];
 
         saveContactPerson($this->connection, $postData, $resource_id);
@@ -284,7 +284,7 @@ class SaveContactpersonsTest extends TestCase
             "cpEmail" => ["john.doe@example.com", "", "bob.johnson@example.com"],
             "cpOnlineResource" => ["http://example1.com", "http://example2.com", ""],
             "cpAffiliation" => ['[{"value":"University A"}]', '[{"value":"University B"}]', '[{"value":"University C"}]'],
-            "hiddenCPRorId" => ['[{"value":"https://ror.org/03yrm5c26"}]', '[{"value":"https://ror.org/02nr0ka47"}]', '[{"value":"https://ror.org/0168r3w48"}]']
+            "hiddenCPRorId" => ['https://ror.org/03yrm5c26', 'https://ror.org/02nr0ka47', 'https://ror.org/0168r3w48']
         ];
 
         saveContactPerson($this->connection, $postData, $resource_id);
@@ -327,7 +327,7 @@ class SaveContactpersonsTest extends TestCase
             "cpEmail" => ["john.doe@example.com", "jane.smith@example.com"],
             "cpOnlineResource" => ["http://example1.com", "http://example2.com"],
             "cpAffiliation" => ['[{"value":"University A"}]', '[]'],
-            "hiddenCPRorId" => ['[]', '[{"value":"https://ror.org/02nr0ka47"}]']
+            "hiddenCPRorId" => ['[]', 'https://ror.org/02nr0ka47']
         ];
 
         saveContactPerson($this->connection, $postData, $resource_id);
