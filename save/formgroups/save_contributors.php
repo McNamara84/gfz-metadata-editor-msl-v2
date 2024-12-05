@@ -43,7 +43,6 @@ function getValidRoles($connection)
     return $valid_roles;
 }
 
-/////////////////Persons/////////////////////////////////////////////////////////////////////////////
 /**
  * Saves the contributor persons into the database.
  *
@@ -188,8 +187,6 @@ function saveContributorPersonRoles($connection, $contributor_person_id, $roles,
     }
 }
 
-
-/////////////////////Institutions/////////////////////////////////////////////////////////////////////////
 /**
  * Saves the contributor institutions into the database.
  *

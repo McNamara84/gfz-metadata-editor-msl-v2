@@ -71,7 +71,6 @@ function autocompleteAffiliations(inputFieldId, hiddenFieldId, data) {
         return item ? item.id : "";
       })
     hiddenField.val(allSelectedItems.join(','));
-    console.log(allSelectedItems);
   }
 
   // Event listener for when a tag is added
