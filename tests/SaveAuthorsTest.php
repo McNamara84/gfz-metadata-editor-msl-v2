@@ -225,7 +225,7 @@ class SaveAuthorsTest extends TestCase
                 "Der Name der Affiliation für Autor " . ($i + 1) . " wurde nicht korrekt gespeichert."
             );
             $this->assertEquals(
-                str_replace("https://ror.org/", "", json_decode($authorData["authorRorIds"][$i], true)[0]["value"]),
+                str_replace("https://ror.org/", "", $authorData["authorRorIds"][$i], true[0]["value"]),
                 $affiliationResult["rorId"],
                 "Die ROR-ID der Affiliation für Autor " . ($i + 1) . " wurde nicht korrekt gespeichert."
             );
