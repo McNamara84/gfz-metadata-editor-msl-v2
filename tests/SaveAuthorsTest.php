@@ -493,9 +493,9 @@ class SaveAuthorsTest extends TestCase
                 '[]'
             ],
             "authorRorIds" => [
-                '[]',
-                '[]',
-                '[https://ror.org/03yrm5c26]'
+                '',
+                '',
+                'https://ror.org/03yrm5c26'
             ]
         ];
 
