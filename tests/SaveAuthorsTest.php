@@ -183,7 +183,7 @@ class SaveAuthorsTest extends TestCase
             "givennames" => ["John", "Jane", "Bob"],
             "orcids" => ["0000-0001-2345-6789", "0000-0002-3456-7890", "0000-0003-4567-8901"],
             "affiliation" => ['[{"value":"University A"}]', '[{"value":"University B"}]', '[{"value":"University C"}]'],
-            "authorRorIds" => ['[{"value":"https://ror.org/03yrm5c26"}]', '[{"value":"https://ror.org/02nr0ka47"}]', '[{"value":"https://ror.org/0168r3w48"}]']
+            "authorRorIds" => ['https://ror.org/03yrm5c26', 'https://ror.org/02nr0ka47', 'https://ror.org/0168r3w48']
         ];
 
         saveAuthors($this->connection, $authorData, $resource_id);
@@ -356,7 +356,7 @@ class SaveAuthorsTest extends TestCase
             "givennames" => ["John", "Jane", "Bob"],
             "orcids" => ["0000-0001-2345-6789", "0000-0002-3456-7890", "0000-0003-4567-8901"],
             "affiliation" => ['[{"value":"University A"}]', '[{"value":"University B"}]', '[{"value":"University C"}]'],
-            "authorRorIds" => ['[{"value":"https://ror.org/03yrm5c26"}]', '[{"value":"https://ror.org/02nr0ka47"}]', '[{"value":"https://ror.org/0168r3w48"}]']
+            "authorRorIds" => ['https://ror.org/03yrm5c26', 'https://ror.org/02nr0ka47', 'https://ror.org/0168r3w48']
         ];
 
         saveAuthors($this->connection, $authorData, $resource_id);
@@ -413,9 +413,9 @@ class SaveAuthorsTest extends TestCase
                 '[{"value":"University E"},{"value":"Institute F"}]'
             ],
             "authorRorIds" => [
-                '[{"value":"https://ror.org/03yrm5c26"}]',
-                '[{"value":"https://ror.org/02nr0ka47"},{"value":"https://ror.org/0168r3w48"},{"value":"https://ror.org/04m7fg108"}]',
-                '[{"value":"https://ror.org/05dxps055"},{"value":"https://ror.org/00hx57361"}]'
+                'https://ror.org/03yrm5c26]',
+                ['https://ror.org/02nr0ka47','https://ror.org/0168r3w48', 'https://ror.org/04m7fg108'],
+                ['https://ror.org/05dxps055', 'https://ror.org/00hx57361']
             ]
         ];
 
@@ -495,7 +495,7 @@ class SaveAuthorsTest extends TestCase
             "authorRorIds" => [
                 '[]',
                 '[]',
-                '[{"value":"https://ror.org/03yrm5c26"}]'
+                '[https://ror.org/03yrm5c26]'
             ]
         ];
 
@@ -579,7 +579,7 @@ class SaveAuthorsTest extends TestCase
             "givennames" => ["Author"],
             "orcids" => ["0000-0001-2345-6789"],
             "affiliation" => ['[{"value":"Existing University"}]'],
-            "authorRorIds" => ['[{"value":"https://ror.org/03yrm5c26"}]']
+            "authorRorIds" => ['https://ror.org/03yrm5c26']
         ];
         saveAuthors($this->connection, $initialAuthorData, $initial_resource_id);
 
