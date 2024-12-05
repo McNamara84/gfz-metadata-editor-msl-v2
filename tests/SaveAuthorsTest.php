@@ -109,7 +109,7 @@ class SaveAuthorsTest extends TestCase
             "givennames" => ["John"],
             "orcids" => ["0000-0001-2345-6789"],
             "affiliation" => ['[{"value":"Test University"}]'],
-            "authorRorIds" => ['[{"value":"https://ror.org/03yrm5c26"}]']
+            "authorRorIds" => ['[{"value":"03yrm5c26"}]']
         ];
 
         saveAuthors($this->connection, $authorData, $resource_id);
