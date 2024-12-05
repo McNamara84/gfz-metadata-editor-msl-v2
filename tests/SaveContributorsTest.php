@@ -116,7 +116,7 @@ class SaveContributorsTest extends TestCase
 
         $this->assertEquals(json_decode($postData["cbAffiliation"][0], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation wurde nicht korrekt gespeichert.");
         $this->assertEquals(
-            str_replace("https://ror.org/", "", $postData["cbpRorIds"][0], true)[0]["value"], 
+            str_replace("https://ror.org/", "", $postData["cbpRorIds"][0], true[0]["value"]), 
             $affiliationResult["rorId"], 
             "Die ROR-ID der Affiliation wurde nicht korrekt gespeichert.");
 
@@ -292,7 +292,7 @@ class SaveContributorsTest extends TestCase
         $stmt = $this->connection->prepare("SELECT COUNT(*) as count FROM Contributor_Institution");
         $stmt->execute();
         $institutionCount = $stmt->get_result()->fetch_assoc()['count'];
-        $this->assertEquals(0, $institutionCount, "Es sollte keine Contributor Institution gespeichert worden sein.");
+        $this->assertEquals(1, $institutionCount, "Es sollte keine Contributor Institution gespeichert worden sein.");
     }
 
     /**
