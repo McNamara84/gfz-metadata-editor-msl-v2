@@ -20,9 +20,6 @@ $(document).ready(function () {
     console.error("Error loading time zones. Did you execute API call getTimezones (see documentation)?");
   });
 
-  // Initialize Chosen plugin for role selection fields
-  // $(".chosen-select").chosen({});
-
   /**
   * Populates the select field with ID input-rights-license with options created via an API call.
   * @param {boolean} isSoftware - Determines whether to retrieve licenses for software or all resource types.
@@ -221,24 +218,6 @@ $(document).ready(function () {
       },
     });
   }
-
-  // Event listener for changes in the Identifier Type select field
-  /*$(document).on("change", 'select[name^="rIdentifierType"]', function () {
-    updateValidationPattern(this);
-  });*/
-
-  // Event listener for newly added fields
-  /*$(document).on("click", ".button-relatedwork-add", function () {
-    setTimeout(function () {
-      $('select[name^="rIdentifierType"]:last').trigger("change");
-    }, 100);
-  });
-
-  // Execute initially for already existing fields
-  $('select[name^="rIdentifierType"]').each(function () {
-    updateValidationPattern(this);
-  });*/
-});
 
 /**
  * Function to populate the dropdown menu of identifier types.
