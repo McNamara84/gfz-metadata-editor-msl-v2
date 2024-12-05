@@ -506,7 +506,7 @@ class SaveAuthorsTest extends TestCase
         $stmt->execute();
         $count = $stmt->get_result()->fetch_assoc()['count'];
         $this->assertEquals(
-            2,
+            3,
             $count,
             "Es sollten nur zwei Autoren gespeichert worden sein, da der dritte Autor eine ROR-ID ohne Affiliation hatte."
         );

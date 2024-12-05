@@ -277,7 +277,7 @@ class SaveContributorsTest extends TestCase
             "cbOrganisationName" => ["Test Organization"],
             "cbOrganisationRoles" => [[]],
             "OrganisationAffiliation" => ['[{"value":"Test Affiliation"}]'],
-            "hiddenOrganisationRorId" => ['[{"value":"https://ror.org/03yrm5c26"}]']
+            "hiddenOrganisationRorId" => ['https://ror.org/03yrm5c26']
         ];
 
         saveContributors($this->connection, $postData, $resource_id);
