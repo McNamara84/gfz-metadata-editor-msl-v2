@@ -49,7 +49,7 @@ $translations = [
     // Groupe de formulaire Personnes de contact
     'contactpersons' => 'Personne(s) de contact',
     'email' => 'Adresse e-mail',
-    'email_invalid' => 'L\'adresse e-mail n\'est pas valide.',
+    'email_invalid' => 'Veuillez fournir une adresse e-mail valide au format xxx.xxx@xxx.xxx.',
     'position' => 'Poste',
     'position_invalid' => 'Veuillez fournir un poste.',
     'website' => 'Site web',

@@ -42,7 +42,7 @@ $translations = [
     // Form Group Contactpersons
     'contactpersons' => 'Contact Person(s)',
     'email' => 'Email address',
-    'email_invalid' => 'Email address is invalid.',
+    'email_invalid' => 'Please provide a valid email address in the format xxx.xxx@xxx.xxx.',
     'position' => 'Position',
     'position_invalid' => 'Please provide a position.',
     'website' => 'Website',
