@@ -158,11 +158,11 @@ function createDatabaseStructure($connection)
 
                 "Contact_Person" => "CREATE TABLE IF NOT EXISTS `Contact_Person` (
            `contact_person_id` INT NOT NULL AUTO_INCREMENT,
-           `familyname` TEXT(666) NOT NULL,
-           `givenname` TEXT(746) NOT NULL,
-           `position` TEXT(45) NOT NULL,
-           `email` VARCHAR(255) NOT NULL,
-           `website` VARCHAR(255) NOT NULL,
+           `familyname` TEXT(666)  NULL,
+           `givenname` TEXT(746) NULL,
+           `position` TEXT(45)  NULL,
+           `email` VARCHAR(255)  NULL,
+           `website` VARCHAR(255) NULL,
            PRIMARY KEY (`contact_person_id`));",
 
                 "Originating_Laboratory" => "CREATE TABLE IF NOT EXISTS `Originating_Laboratory` (
@@ -193,14 +193,14 @@ function createDatabaseStructure($connection)
 
                 "Contributor_Person" => "CREATE TABLE IF NOT EXISTS `Contributor_Person` (
            `contributor_person_id` INT NOT NULL AUTO_INCREMENT,
-           `familyname` TEXT(666) NOT NULL,
-           `givenname` TEXT(746) NOT NULL,
-           `orcid` VARCHAR(19) NOT NULL,
+           `familyname` TEXT(666) NULL,
+           `givenname` TEXT(746) NULL,
+           `orcid` VARCHAR(19) NULL,
             PRIMARY KEY (`contributor_person_id`));",
 
                 "Contributor_Institution" => "CREATE TABLE IF NOT EXISTS `Contributor_Institution` (
            `contributor_institution_id` INT NOT NULL AUTO_INCREMENT,
-           `name` VARCHAR(255) NOT NULL,
+           `name` VARCHAR(255) NULL,
             PRIMARY KEY (`contributor_institution_id`));",
 
                 "Description" => "CREATE TABLE IF NOT EXISTS `Description` (
