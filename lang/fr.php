@@ -48,8 +48,6 @@ $translations = [
 
     // Groupe de formulaire Personnes de contact
     'contactpersons' => 'Personne(s) de contact',
-    'CP_lastname_invalid' => 'Veuillez fournir le nom de famille de la personne de contact. Seules les lettres sont autorisées.',
-    'CP_firstname_invalid' => 'Veuillez fournir le prénom de la personne de contact. Seules les lettres sont autorisées.',
     'email' => 'Adresse e-mail',
     'email_invalid' => 'L\'adresse e-mail n\'est pas valide.',
     'position' => 'Poste',
@@ -63,8 +61,6 @@ $translations = [
     'originatingLaboratoryAffiliation' => 'Affiliation du laboratoire d\'origine',
 
     'contributors' => "Contributeurs",
-    'contributors_lastname_invalid' => 'Veuillez fournir le nom de famille du contributeur. Seules les lettres sont autorisées.',
-    'contributors_firstname_invalid' => 'Veuillez fournir le prénom du contributeur. Seules les lettres sont autorisées.',
     'Organisation' => 'Nom de l\'organisation',
     'Organisation_invalid' => 'Veuillez entrer un nom d\'organisation valide.',
     'contributors_ORCID' => 'ORCID', 

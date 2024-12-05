@@ -41,8 +41,6 @@ $translations = [
 
     // Form Group Contactpersons
     'contactpersons' => 'Contact Person(s)',
-    'CP_lastname_invalid' => 'Please provide The surname or last name of the contactperson. Only letters are allowed.',
-    'CP_firstname_invalid' => 'Please provide The personal or first name of the contactperson. Only letters are allowed.',
     'email' => 'Email address',
     'email_invalid' => 'Email address is invalid.',
     'position' => 'Position',
@@ -57,8 +55,6 @@ $translations = [
 
     // From Group Contributors
     'contributors' => "Contributors",
-    'contributors_lastname_invalid' => 'Please provide the last name of the contributor. Only letters are allowed.',
-    'contributors_firstname_invalid' => 'Please provide the first name of the contributor. Only letters are allowed.',
     'Organisation' => 'Organisation name',
     'Organisation_invalid' => 'Please enter a valid organization name.',
     'contributors_ORCID' => 'ORCID',
