@@ -225,7 +225,7 @@ class SaveAuthorsTest extends TestCase
                 "Der Name der Affiliation für Autor " . ($i + 1) . " wurde nicht korrekt gespeichert."
             );
             $this->assertEquals(
-                str_replace("https://ror.org/", "", $authorData["authorRorIds"][$i], true[0]["value"]),
+                str_replace("https://ror.org/", "", $authorData["authorRorIds"][$i]),
                 $affiliationResult["rorId"],
                 "Die ROR-ID der Affiliation für Autor " . ($i + 1) . " wurde nicht korrekt gespeichert."
             );
@@ -414,8 +414,8 @@ class SaveAuthorsTest extends TestCase
             ],
             "authorRorIds" => [
                 'https://ror.org/03yrm5c26]',
-                ['https://ror.org/02nr0ka47','https://ror.org/0168r3w48', 'https://ror.org/04m7fg108'],
-                ['https://ror.org/05dxps055', 'https://ror.org/00hx57361']
+                'https://ror.org/02nr0ka47,https://ror.org/0168r3w48,https://ror.org/04m7fg108',
+                'https://ror.org/05dxps055,https://ror.org/00hx57361'
             ]
         ];
 
@@ -443,7 +443,7 @@ class SaveAuthorsTest extends TestCase
             $affiliationResults = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
             $expectedAffiliations = json_decode($authorData["affiliation"][$i], true);
-            $expectedRorIds = json_decode($authorData["authorRorIds"][$i], true);
+            $expectedRorIds = explode(',', $authorData["authorRorIds"][$i]);
 
             $this->assertCount(
                 count($expectedAffiliations),
@@ -458,7 +458,7 @@ class SaveAuthorsTest extends TestCase
                     "Der Name der Affiliation " . ($index + 1) . " für Autor " . ($i + 1) . " wurde nicht korrekt gespeichert."
                 );
                 $this->assertEquals(
-                    str_replace("https://ror.org/", "", $expectedRorIds[$index]["value"]),
+                    str_replace("https://ror.org/", "", $expectedRorIds[$index]),
                     $affiliation["rorId"],
                     "Die ROR-ID der Affiliation " . ($index + 1) . " für Autor " . ($i + 1) . " wurde nicht korrekt gespeichert."
                 );

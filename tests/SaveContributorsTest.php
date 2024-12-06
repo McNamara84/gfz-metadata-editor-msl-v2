@@ -116,7 +116,7 @@ class SaveContributorsTest extends TestCase
 
         $this->assertEquals(json_decode($postData["cbAffiliation"][0], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation wurde nicht korrekt gespeichert.");
         $this->assertEquals(
-            str_replace("https://ror.org/", "", $postData["cbpRorIds"][0], true[0]["value"]), 
+            str_replace("https://ror.org/", "", $postData["cbpRorIds"][0]), 
             $affiliationResult["rorId"], 
             "Die ROR-ID der Affiliation wurde nicht korrekt gespeichert.");
 
@@ -177,7 +177,7 @@ class SaveContributorsTest extends TestCase
 
         $this->assertEquals(json_decode($postData["OrganisationAffiliation"][0], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation wurde nicht korrekt gespeichert.");
         $this->assertEquals(
-            str_replace("https://ror.org/", "", $postData["hiddenOrganisationRorId"][0], count: true[0]["value"]), 
+            str_replace("https://ror.org/", "", $postData["hiddenOrganisationRorId"][0]), 
             $affiliationResult["rorId"], 
             "Die ROR-ID der Affiliation wurde nicht korrekt gespeichert.");
 
@@ -344,7 +344,7 @@ class SaveContributorsTest extends TestCase
 
             $this->assertEquals(json_decode($postData["cbAffiliation"][$i], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation für Person " . ($i + 1) . " wurde nicht korrekt gespeichert.");
             $this->assertEquals(
-                str_replace("https://ror.org/", "", $postData["cbpRorIds"][$i], true[0]["value"]), 
+                str_replace("https://ror.org/", "", $postData["cbpRorIds"][$i]), 
                 $affiliationResult["rorId"], 
                 "Die ROR-ID der Affiliation für Person " . ($i + 1) . " wurde nicht korrekt gespeichert.");
 
@@ -407,7 +407,7 @@ class SaveContributorsTest extends TestCase
 
             $this->assertEquals(json_decode($postData["OrganisationAffiliation"][$i], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation für Institution " . ($i + 1) . " wurde nicht korrekt gespeichert.");
             $this->assertEquals(
-                str_replace("https://ror.org/", "", $postData["hiddenOrganisationRorId"][$i], true[0]["value"]), 
+                str_replace("https://ror.org/", "", $postData["hiddenOrganisationRorId"][$i]), 
                 $affiliationResult["rorId"], 
                 "Die ROR-ID der Affiliation für Institution " . ($i + 1) . " wurde nicht korrekt gespeichert.");
 
