@@ -626,11 +626,11 @@ class SaveAuthorsTest extends TestCase
                 '[{"value":"Existing University"},{"value":"New University"}]'  // Existing and new affiliation
             ],
             "authorRorIds" => [
-                '[{"value":"https://ror.org/04m7fg108"}]',
-                '[{"value":"https://ror.org/02nr0ka47"},{"value":"https://ror.org/0168r3w48"}]',
-                '[{"value":"invalid-ror-id"}]',  // Invalid ROR ID
-                '[]',
-                '[{"value":"https://ror.org/03yrm5c26"},{"value":"https://ror.org/05dxps055"}]'
+                'https://ror.org/04m7fg108',
+                'https://ror.org/02nr0ka47,https://ror.org/0168r3w48',
+                '',
+                '',
+                'https://ror.org/03yrm5c26,https://ror.org/05dxps055'
             ]
         ];
 
