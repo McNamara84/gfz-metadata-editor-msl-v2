@@ -799,4 +799,121 @@ class VocabController
             ]);
         }
     }
+
+    /**
+     * Get all free keywords from the database
+     * 
+     * @return void Outputs JSON response directly
+     */
+    public function getAllFreeKeywords(): void
+    {
+        try {
+            global $connection;
+
+            $sql = 'SELECT free_keyword FROM Free_Keywords ORDER BY free_keyword ASC';
+            $result = $connection->query($sql);
+
+            if ($result === false) {
+                throw new Exception("Database query failed: " . $connection->error);
+            }
+
+            $keywords = [];
+            while ($row = $result->fetch_assoc()) {
+                $keywords[] = ['free_keyword' => $row['free_keyword']];
+            }
+
+            if (empty($keywords)) {
+                http_response_code(404);
+                echo json_encode(['error' => 'No keywords found']);
+                return;
+            }
+
+            http_response_code(200);
+            header('Content-Type: application/json');
+            echo json_encode($keywords);
+
+        } catch (Exception $e) {
+            error_log("API Error in getAllFreeKeywords: " . $e->getMessage());
+            http_response_code(500);
+            echo json_encode(['error' => 'An error occurred while retrieving keywords']);
+        }
+    }
+
+    /**
+     * Get only curated free keywords from the database
+     * 
+     * @return void Outputs JSON response directly
+     */
+    public function getCuratedFreeKeywords(): void
+    {
+        try {
+            global $connection;
+
+            $sql = 'SELECT free_keyword FROM Free_Keywords WHERE isCurated = 1 ORDER BY free_keyword ASC';
+            $result = $connection->query($sql);
+
+            if ($result === false) {
+                throw new Exception("Database query failed: " . $connection->error);
+            }
+
+            $keywords = [];
+            while ($row = $result->fetch_assoc()) {
+                $keywords[] = ['free_keyword' => $row['free_keyword']];
+            }
+
+            if (empty($keywords)) {
+                http_response_code(404);
+                echo json_encode(['error' => 'No curated keywords found']);
+                return;
+            }
+
+            http_response_code(200);
+            header('Content-Type: application/json');
+            echo json_encode($keywords);
+
+        } catch (Exception $e) {
+            error_log("API Error in getCuratedFreeKeywords: " . $e->getMessage());
+            http_response_code(500);
+            echo json_encode(['error' => 'An error occurred while retrieving curated keywords']);
+        }
+    }
+
+    /**
+     * Get only uncurated free keywords from the database
+     * 
+     * @return void Outputs JSON response directly
+     */
+    public function getUncuratedFreeKeywords(): void
+    {
+        try {
+            global $connection;
+
+            $sql = 'SELECT free_keyword FROM Free_Keywords WHERE isCurated = 0 ORDER BY free_keyword ASC';
+            $result = $connection->query($sql);
+
+            if ($result === false) {
+                throw new Exception("Database query failed: " . $connection->error);
+            }
+
+            $keywords = [];
+            while ($row = $result->fetch_assoc()) {
+                $keywords[] = ['free_keyword' => $row['free_keyword']];
+            }
+
+            if (empty($keywords)) {
+                http_response_code(404);
+                echo json_encode(['error' => 'No uncurated keywords found']);
+                return;
+            }
+
+            http_response_code(200);
+            header('Content-Type: application/json');
+            echo json_encode($keywords);
+
+        } catch (Exception $e) {
+            error_log("API Error in getUncuratedFreeKeywords: " . $e->getMessage());
+            http_response_code(500);
+            echo json_encode(['error' => 'An error occurred while retrieving uncurated keywords']);
+        }
+    }
 }

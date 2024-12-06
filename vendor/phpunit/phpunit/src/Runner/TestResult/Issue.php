@@ -41,13 +41,18 @@ final class Issue
     private array $triggeringTests;
 
     /**
+     * @var ?non-empty-string
+     */
+    private ?string $stackTrace;
+
+    /**
      * @param non-empty-string $file
      * @param positive-int     $line
      * @param non-empty-string $description
      */
-    public static function from(string $file, int $line, string $description, Test $triggeringTest): self
+    public static function from(string $file, int $line, string $description, Test $triggeringTest, ?string $stackTrace = null): self
     {
-        return new self($file, $line, $description, $triggeringTest);
+        return new self($file, $line, $description, $triggeringTest, $stackTrace);
     }
 
     /**
@@ -55,11 +60,12 @@ final class Issue
      * @param positive-int     $line
      * @param non-empty-string $description
      */
-    private function __construct(string $file, int $line, string $description, Test $triggeringTest)
+    private function __construct(string $file, int $line, string $description, Test $triggeringTest, ?string $stackTrace)
     {
         $this->file        = $file;
         $this->line        = $line;
         $this->description = $description;
+        $this->stackTrace  = $stackTrace;
 
         $this->triggeringTests = [
             $triggeringTest->id() => [
@@ -113,6 +119,22 @@ final class Issue
     public function triggeringTests(): array
     {
         return $this->triggeringTests;
+    }
+
+    /**
+     * @phpstan-assert-if-true !null $this->stackTrace
+     */
+    public function hasStackTrace(): bool
+    {
+        return $this->stackTrace !== null;
+    }
+
+    /**
+     * @return ?non-empty-string
+     */
+    public function stackTrace(): ?string
+    {
+        return $this->stackTrace;
     }
 
     public function triggeredInTest(): bool
