@@ -28,6 +28,7 @@ use function tempnam;
 use function trim;
 use function unlink;
 use function xdebug_is_debugger_active;
+use PHPUnit\Event\Facade;
 use PHPUnit\Runner\CodeCoverage;
 use SebastianBergmann\Environment\Runtime;
 
@@ -115,6 +116,8 @@ final readonly class DefaultJobRunner implements JobRunner
             null,
             $environmentVariables,
         );
+
+        Facade::emitter()->testRunnerStartedChildProcess();
 
         if (!is_resource($process)) {
             // @codeCoverageIgnoreStart
