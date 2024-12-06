@@ -1,24 +1,4 @@
 $(document).ready(function () {
-  function setupAutocomplete(inputSelector, hiddenInputSelector) {
-    $(inputSelector).autocomplete({
-      source: function (request, response) {
-        $.ajax({
-          url: "api.php?action=getKeywords&curationType=isCurated",
-          dataType: "json",
-          success: function (data) {
-            var keywords = data.map(function (item) {
-              return item.free_keyword;
-            });
-            response(keywords);
-          },
-        });
-      },
-      select: function (event, ui) {
-        $(hiddenInputSelector).val(ui.item.value);
-      },
-    });
-  }
-
   // Alle Optionen klonen und als Variable zwischenspeichern
   var allOptions = $("#input-rights-license option").clone();
 
