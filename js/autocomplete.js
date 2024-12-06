@@ -23,8 +23,6 @@ $(document).ready(function () {
       $("#input-rights-license").empty().append(allOptions.clone());
     }
   });
-  setupAutocomplete("#input-author-affiliation", "#input-author-rorid");
-  setupAutocomplete("#input-contactperson-affiliation", "#input-contactperson-rorid");
 });
 
 /**
