@@ -548,9 +548,9 @@ function insertTestDataIntoMainTables($connection)
                         ["familyName" => "Wille", "givenname" => "Christian", "position" => "Abteilungsleiter", "email" => "Christian.Wille@fh-potsdam.de", "website" => "fh-potsdam.de"]
                 ],
                 "Originating_Laboratory" => [
-                        ["laboratoryname" => "FASTmodel- Laboratoire de modÃ©lisation analogique Fluides Automatique et SystÃ¨mes Thermiques (CNRS-Paris Sud Orsay University, France)", "labId" => "1b9abbf97c7caa2d763b647d476b2910"],
-                        ["laboratoryname" => "Fragmentation Lab (Ludwig-Maximilians-University Munich, Germany)", "labId" => "9cd562c216daa82792972a074a222c52"],
-                        ["laboratoryname" => "TecMOD - GRmodel (CNRS-Rennes 1 University, France", "labId" => "09e434194091574963c80f83d586875d"]
+                        ["laboratoryname" => "Lab 1", "labId" => "123456789c7caa2d763b647d476b2910"],
+                        ["laboratoryname" => "Lab 2", "labId" => "9cd562c216daa82792972a01234567"],
+                        ["laboratoryname" => "Lab 3", "labId" => "abc1234567890"]
                 ],
                 "Contributor_Person" => [
                         ["familyName" => "Müller", "givenname" => "Anna", "orcid" => "4100-4503-1076-415X"],
