@@ -1,7 +1,7 @@
 {
     "name": "mde2msl/mde2msl",
     "description": "Editor for research metadata of MSL data.",
-    "license": "MIT",
+    "license": "GPL-2.0-only",
     "require": {
         "php": "^8.2 || ^8.3 || ^8.4",
         "easyrdf/easyrdf": "^1.1",
