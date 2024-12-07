@@ -68,11 +68,8 @@ function autocompleteAffiliations(inputFieldId, hiddenFieldId, data) {
         var item = data.find(function (affiliationItem) {
           return affiliationItem.name === tag.value;
         });
-        return item ? item.id : null;
+        return item ? item.id : "";
       })
-      .filter(function (id) {
-        return id !== null;
-      });
     hiddenField.val(allSelectedItems.join(','));
   }
 

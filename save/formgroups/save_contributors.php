@@ -1,4 +1,5 @@
 <?php
+require_once 'save_affiliations.php';
 /**
  * Saves the contributor information into the database.
  *
@@ -68,18 +69,22 @@ function saveContributorPersons($connection, $postData, $resource_id, $valid_rol
 
         $len = count($cbPersonLastnames);
         for ($i = 0; $i < $len; $i++) {
-            // Check if the last name is provided
-            if (empty(trim($cbPersonLastnames[$i]))) {
-                continue; // Skip this record if the last name is missing
+            if (empty(trim($cbORCIDs[$i])) &&empty(trim($cbPersonLastnames[$i])) && empty(trim($cbPersonFirstnames[$i])) && empty(trim($cbPersonRoles[$i])) ) {
+                continue; // Skip missing Contact Person (only if all fields are empty)
             }
 
             $contributor_person_id = saveOrUpdateContributorPerson($connection, $cbPersonLastnames[$i], $cbPersonFirstnames[$i], $cbORCIDs[$i]);
             linkResourceToContributorPerson($connection, $resource_id, $contributor_person_id);
 
-            // Only process non-empty affiliations
-            $affiliations = parseAffiliationData($cbAffiliations[$i]);
-            if (!empty($affiliations)) {
-                saveContributorPersonAffiliation($connection, $contributor_person_id, $cbAffiliations[$i], $cbRorIds[$i] ?? null);
+            if (!empty($cbAffiliations[$i])) {
+                saveAffiliations(
+                    $connection, 
+                    $contributor_person_id, 
+                    $cbAffiliations[$i], 
+                    $cbRorIds[$i] ?? null, 
+                    'Contributor_Person_has_Affiliation', 
+                    'Contributor_Person_contributor_person_id'
+                );
             }
 
             saveContributorPersonRoles($connection, $contributor_person_id, $cbPersonRoles[$i], $valid_roles);
@@ -137,45 +142,6 @@ function linkResourceToContributorPerson($connection, $resource_id, $contributor
     $stmt->close();
 }
 
-/**
- * Saves the affiliation of a contributor person.
- *
- * @param mysqli      $connection            The database connection.
- * @param int         $contributor_person_id The ID of the contributor person.
- * @param string      $affiliation_name      The affiliation name.
- * @param string|null $rorId                 The ROR ID data.
- *
- * @return void
- */
-function saveContributorPersonAffiliation($connection, $contributor_person_id, $affiliation_data, $rorId_data)
-{
-    $affiliations = parseAffiliationData($affiliation_data);
-    $rorIds = parseAffiliationData($rorId_data);
-
-    foreach ($affiliations as $index => $affiliation_name) {
-        if (empty($affiliation_name)) {
-            continue; // Skip empty affiliations
-        }
-
-        $rorId = isset($rorIds[$index]) ? str_replace("https://ror.org/", "", $rorIds[$index]) : null;
-
-        $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?) 
-                                      ON DUPLICATE KEY UPDATE 
-                                      name = VALUES(name),
-                                      rorId = COALESCE(VALUES(rorId), rorId)");
-        $stmt->bind_param("ss", $affiliation_name, $rorId);
-        $stmt->execute();
-        $affiliation_id = $stmt->insert_id ?: $connection->insert_id;
-        $stmt->close();
-
-        $stmt = $connection->prepare("INSERT IGNORE INTO Contributor_Person_has_Affiliation 
-                                      (Contributor_Person_contributor_person_id, Affiliation_affiliation_id) 
-                                      VALUES (?, ?)");
-        $stmt->bind_param("ii", $contributor_person_id, $affiliation_id);
-        $stmt->execute();
-        $stmt->close();
-    }
-}
 
 /**
  * Saves roles of a Contributor Person.
@@ -249,9 +215,18 @@ function saveContributorInstitutions($connection, $postData, $resource_id, $vali
             if (!empty(trim($cbOrganisationNames[$i])) && !empty($cbOrganisationRoles[$i])) {
                 $contributor_institution_id = saveOrUpdateContributorInstitution($connection, $cbOrganisationNames[$i]);
                 linkResourceToContributorInstitution($connection, $resource_id, $contributor_institution_id);
+
                 if (!empty($cbOrganisationAffiliations[$i])) {
-                    saveContributorInstitutionAffiliation($connection, $contributor_institution_id, $cbOrganisationAffiliations[$i], $cbOrganisationRorIds[$i] ?? null);
+                    saveAffiliations(
+                        $connection, 
+                        $contributor_institution_id, 
+                        $cbOrganisationAffiliations[$i], 
+                        $cbOrganisationRorIds[$i] ?? null, 
+                        'Contributor_Institution_has_Affiliation', 
+                        'Contributor_Institution_contributor_institution_id'
+                    );
                 }
+
                 saveContributorInstitutionRoles($connection, $contributor_institution_id, $cbOrganisationRoles[$i], $valid_roles);
             }
         }
@@ -301,45 +276,6 @@ function linkResourceToContributorInstitution($connection, $resource_id, $contri
     $stmt = $connection->prepare("INSERT IGNORE INTO Resource_has_Contributor_Institution (Resource_resource_id, Contributor_Institution_contributor_institution_id) VALUES (?, ?)");
     $stmt->bind_param("ii", $resource_id, $contributor_institution_id);
     $stmt->execute();
-    $stmt->close();
-}
-
-/**
- * Saves the Affiliation of a Contributor Institution.
- *
- * @param mysqli $connection                The Database Connection.
- * @param int $contributor_institution_id   The ID of the Contributor Institution.
- * @param string $affiliation_data          The Affiliation Data.
- * @param string|null $rorId_data           The ROR ID Data.
- *
- * @return void
- */
-function saveContributorInstitutionAffiliation($connection, $contributor_institution_id, $affiliation_data, $rorId_data)
-{
-    $affiliation_name = parseAffiliationData($affiliation_data)[0];
-    $rorId = $rorId_data ? parseAffiliationData($rorId_data)[0] : null;
-    $rorId = $rorId ? str_replace("https://ror.org/", "", $rorId) : null;
-
-    $stmt = $connection->prepare("INSERT INTO Affiliation (name, rorId) VALUES (?, ?) 
-                                  ON DUPLICATE KEY UPDATE 
-                                  name = VALUES(name),
-                                  rorId = COALESCE(VALUES(rorId), rorId)");
-    $stmt->bind_param("ss", $affiliation_name, $rorId);
-    $stmt->execute();
-    $affiliation_id = $stmt->insert_id ?: $connection->insert_id;
-    $stmt->close();
-
-    $stmt = $connection->prepare("SELECT 1 FROM Contributor_Institution_has_Affiliation 
-                                  WHERE Contributor_Institution_contributor_institution_id = ? AND Affiliation_affiliation_id = ?");
-    $stmt->bind_param("ii", $contributor_institution_id, $affiliation_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows == 0) {
-        $stmt = $connection->prepare("INSERT INTO Contributor_Institution_has_Affiliation (Contributor_Institution_contributor_institution_id, Affiliation_affiliation_id) VALUES (?, ?)");
-        $stmt->bind_param("ii", $contributor_institution_id, $affiliation_id);
-        $stmt->execute();
-    }
     $stmt->close();
 }
 

@@ -100,10 +100,6 @@ function sendFeedbackMail(
  * Process POST request and handle form submission
  */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Log incoming POST data
-    error_log("Received POST data: " . print_r($_POST, true));
-
-    // Collect form data with null coalescing operator
     $feedbackQuestion1 = $_POST['feedbackQuestion1'] ?? '';
     $feedbackQuestion2 = $_POST['feedbackQuestion2'] ?? '';
     $feedbackQuestion3 = $_POST['feedbackQuestion3'] ?? '';

@@ -369,10 +369,10 @@ JSON-Array mit Identifier-Typ-Objekten
   - Datentyp: Year
   - Vorkommen: 1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: year in der Tabelle Resource.
-  - Restriktionen: Muss im Format YYYY sein.
+  - Restriktionen: A year in four-digit format. Values allowed in four-digit format: 1901 to 2155 (due to data type YEAR)
   - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/publicationyear/)
   - Schema Version: "DataCite" 4.5
-  - Beispielwerte: `1998` `2018` `1900`
+  - Beispielwerte: `1998` `2018` `1901`
 
 - Resource Type
 
@@ -493,7 +493,7 @@ JSON-Array mit Identifier-Typ-Objekten
   - Datentyp: Zeichenkette
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: familyname in der Tabelle Contact_Person
-  - Restriktionen: Optimal aber wenn es angegeben wurde, muss auch die E-Mail-Adresse eingegeben.
+  - Restriktionen: Optional
   - [gmd Schema-Dokumentation](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
   - Schema Version: "ISO" 2012-07-13
   - Beispielwerte: `Jemison` `Smith`
@@ -504,7 +504,7 @@ JSON-Array mit Identifier-Typ-Objekten
   - Datentyp: Zeichenkette
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: givenname in der Tabelle Contact_Person
-  - Restriktionen: Optimal aber wenn es angegeben wurde, muss auch der Nachname eigegeben.
+  - Restriktionen: Optional
   - [gmd Schema-Dokumentation](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
   - Schema Version: "ISO" 2012-07-13
   - Beispielwerte: `John` `Jane`
@@ -515,7 +515,7 @@ JSON-Array mit Identifier-Typ-Objekten
   - Datentyp: Zeichenkette
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: position in der Tabelle Contact_Person
-  - Restriktionen: Optimal.
+  - Restriktionen: Optional.
   - [gmd Schema-Dokumentation](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
   - Schema Version: "ISO" 2012-07-13
   - Beispielwerte: `Arbeitsgruppenleiter` `Projektleiter`
@@ -526,7 +526,7 @@ JSON-Array mit Identifier-Typ-Objekten
   - Datentyp: Zeichenkette
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: email in der Tabelle Contact_Person
-  - Restriktionen: Optimal.
+  - Restriktionen: Optional.
   - [gmd Schema-Dokumentation](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
   - Schema Version: "ISO" 2012-07-13
   - Beispielwerte: `ali.mohammed@gfz-potsdam.de` `holger.ehrmann@gfz-potsdam.de`
@@ -536,7 +536,7 @@ JSON-Array mit Identifier-Typ-Objekten
   - Datentyp: Zeichenkette
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: website in der Tabelle Contact_Person
-  - Restriktionen: Optimal.
+  - Restriktionen: Optional.
   - [gmd Schema-Dokumentation](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
   - Schema Version: "ISO" 2012-07-13
   - Beispielwerte: `gfz-potsdam.de` `fh-potsdam.de`
@@ -571,7 +571,7 @@ JSON-Array mit Identifier-Typ-Objekten
   - Datentyp: Text
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
-  - Restriktionen: Optimal.
+  - Restriktionen: Optional.
   - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#familyname)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Jemison` `Smith`
@@ -582,7 +582,7 @@ JSON-Array mit Identifier-Typ-Objekten
   - Datentyp: Text
   - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
-  - Restriktionen: Optimal.
+  - Restriktionen: Optional.
   - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#givenname)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `John` `Jane`
@@ -598,7 +598,7 @@ JSON-Array mit Identifier-Typ-Objekten
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Data Manager` `Project Manager`
 
-- Author ORCID
+- ORCID
 
   - In diesem Feld kommt die ORCID der/des Mitwirkenden (Open Researcher and Contributor ID).
   - Datentyp: Zeichenkette
@@ -641,96 +641,6 @@ JSON-Array mit Identifier-Typ-Objekten
   - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Data Collector` `Data Curator`
-
-* _Personal_
-* Lastname
-
-  - In diesem Feld kommt der Nachname der/des Mitwirkenden.
-  - Datentyp: Text
-  - Vorkommen: 0-1
-  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
-  - Restriktionen: Optimal.
-  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#familyname)
-  - Schema Version: "DataCite" 4.5
-  - Beispielwerte: `Jemison` `Smith`
-
-* Firstname
-
-  - In diesem Feld kommt der Vorname der/des Mitwirkenden.
-  - Datentyp: Text
-  - Vorkommen: 0-1
-  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
-  - Restriktionen: Optimal.
-  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#givenname)
-  - Schema Version: "DataCite" 4.5
-  - Beispielwerte: `John` `Jane`
-
-* Role
-
-  - In diesem Feld kommt die Rolle/ Rollen der/des Mitwirkenden.
-  - Datentyp: Text
-  - Vorkommen: 1 _Gemäß der DataCite Dokumentation kann ein Mitwirkender nur eine Rolle haben. Allerdings ermöglicht der aktuelle MDE die Eingabe mehrerer Rollen für einen Mitwirkenden._
-  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
-  - Restriktionen: muss mindestens eine Rolle ausgewählt werden./muss nur eine Rolle ausgewählt werden.
-  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype)
-  - Schema Version: "DataCite" 4.5
-  - Beispielwerte: `Data Manager` `Project Manager`
-
-* Author ORCID
-
-  - In diesem Feld kommt die ORCID der/des Mitwirkenden (Open Researcher and Contributor ID).
-  - Datentyp: Zeichenkette
-  - Vorkommen: 1
-  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
-  - Restriktionen: Muss im Format "xxxx-xxxx-xxxx-xxxx" sein.
-  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-nameidentifierscheme)
-  - Schema Version: "DataCite" 4.5
-  - Beispielwerte: `1452-9875-4521-7893` `0082-4781-1312-884x`
-
-* Affiliation
-
-  - In diesem Feld kommt die Zugehörigkeit der/des Mitwirkenden.
-  - Datentyp: Zeichenkette
-  - Vorkommen: 0-n
-  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
-  - Restriktionen: Es ist optional.
-  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-affiliationidentifier)
-  - Schema Version: "DataCite" 4.5
-  - Beispielwerte: `Technische Universität Berlin` `GFZ, Helmholtz-Zentrum Potsdam - Deutsches GeoForschungsZentrum GFZ`
-
-* _Organizational_
-
-* Organisation Name
-
-  - In diesem Feld kommt der Name der Institution.
-  - Datentyp: Zeichenkette
-  - Vorkommen: 0-1
-  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
-  - Restriktionen: Es ist optional.
-  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-nametype)
-  - Schema Version: "DataCite" 4.5
-  - Beispielwerte: `University of Applied Sciences Potsdam` `Helmholtz Centre Potsdam - GFZ German Research Centre for Geosciences`
-
-* Role
-
-  - In dieses Feld kommt die Rolle/ Rollen der Institution.
-  - Datentyp: Text
-  - Vorkommen: 1 _Gemäß der DataCite Dokumentation kann ein Mitwirkender nur eine Rolle haben. Allerdings ermöglicht der aktuelle MDE die Eingabe mehrerer Rollen für einen Mitwirkenden._
-  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
-  - Restriktionen: muss mindestens eine Rolle ausgewählt werden./muss nur eine Rolle ausgewählt werden.
-  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype)
-  - Schema Version: "DataCite" 4.5
-  - Beispielwerte: `Data Collector` `Data Curator`
-
-* Affiliation
-* In diesem Feld kommt die Zugehörigkeit der Mitwirkenden Institution.
-* Datentyp: Zeichenkette
-* Vorkommen: 0-n
-* Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
-* Restriktionen: Es ist optional.
-* [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#affiliation)
-* Schema Version: "DataCite" 4.5
-* Beispielwerte: `Technische Universität Berlin` `GFZ, Helmholtz-Zentrum Potsdam - Deutsches GeoForschungsZentrum GFZ`
 
 ### Description
 

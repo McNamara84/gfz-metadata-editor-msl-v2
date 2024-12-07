@@ -357,7 +357,7 @@ class DatasetController
                 'position' => $row['position'] ?? null,
                 'email' => $row['email'] ?? null,
                 'website' => $row['website'] ?? null,
-                'Affiliations' => $this->getContactPersonAffiliations($connection, $row['contact_person_id'])
+                'Affiliations' => $this->getContactPersonAffiliations($connection, $row['contact_person_id']) ?? null
             ];
             $contactPersons[] = $contactPerson;
         }
@@ -565,11 +565,17 @@ class DatasetController
         $xml->addChild('currentDate', date('Y-m-d'));
 
         // Resource Information
-        $xml->addChild('doi', htmlspecialchars($resource['doi'] ?? ''));
-        $xml->addChild('version', htmlspecialchars($resource['version'] ?? ''));
+        if ($resource['doi']) {
+            $xml->addChild('doi', htmlspecialchars($resource['doi']));
+        }
+        if ($resource['version']) {
+            $xml->addChild('version', htmlspecialchars($resource['version']));
+        }
         $xml->addChild('year', htmlspecialchars($resource['year']));
         $xml->addChild('dateCreated', htmlspecialchars($resource['dateCreated']));
-        $xml->addChild('dateEmbargoUntil', htmlspecialchars($resource['dateEmbargoUntil'] ?? ''));
+        if ($resource['dateEmbargoUntil']) {
+            $xml->addChild('dateEmbargoUntil', htmlspecialchars($resource['dateEmbargoUntil']));
+        }
 
         // Rights
         $rights = $this->getRelatedData($connection, 'Rights', 'rights_id', $resource['Rights_rights_id']);
@@ -618,7 +624,174 @@ class DatasetController
                 foreach ($author['Affiliations'] as $affiliation) {
                     $affiliationXml = $affiliationsXml->addChild('Affiliation');
                     foreach ($affiliation as $key => $value) {
+                        // Skip adding <rorId> if it's empty or not set
+                        if ($key === 'rorId' && (empty($value) || $value === null)) {
+                            continue;
+                        }
                         $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
+                    }
+                }
+            }
+        }
+        // Contact Persons
+        // Get contact persons
+        $contactPersons = $this->getContactPersons($connection, $id);
+
+        // Check if there is any valid contact person data
+        $validContactPersons = false;
+        foreach ($contactPersons as $contactPerson) {
+            if (
+                !empty($contactPerson['familyname']) ||
+                !empty($contactPerson['givenname']) ||
+                !empty($contactPerson['position']) ||
+                !empty($contactPerson['email']) ||
+                !empty($contactPerson['website']) ||
+                !empty($contactPerson['Affiliations'])
+            ) {
+                $validContactPersons = true;
+                break;  // Exit the loop once we find a valid contact person
+            }
+        }
+
+        if ($validContactPersons) {
+            $contactPersonsXml = $xml->addChild('ContactPersons');
+
+            // Iterate over contact persons and add them to XML
+            foreach ($contactPersons as $contactPerson) {
+                if (
+                    !empty($contactPerson['familyname']) ||
+                    !empty($contactPerson['givenname']) ||
+                    !empty($contactPerson['position']) ||
+                    !empty($contactPerson['email']) ||
+                    !empty($contactPerson['website']) ||
+                    !empty($contactPerson['Affiliations'])
+                ) {
+                    // Add ContactPerson element if there's data
+                    $contactPersonXml = $contactPersonsXml->addChild('ContactPerson');
+
+                    if ($contactPerson['familyname']) {
+                        $contactPersonXml->addChild('familyname', htmlspecialchars($contactPerson['familyname']));
+                    }
+                    if ($contactPerson['givenname']) {
+                        $contactPersonXml->addChild('givenname', htmlspecialchars($contactPerson['givenname']));
+                    }
+                    if ($contactPerson['position']) {
+                        $contactPersonXml->addChild('position', htmlspecialchars($contactPerson['position']));
+                    }
+                    if ($contactPerson['email']) {
+                        $contactPersonXml->addChild('email', htmlspecialchars($contactPerson['email']));
+                    }
+                    if ($contactPerson['website']) {
+                        $contactPersonXml->addChild('website', htmlspecialchars($contactPerson['website']));
+                    }
+
+                    if ($contactPerson['Affiliations']) {
+                        $affiliationsXml = $contactPersonXml->addChild('Affiliations');
+                        foreach ($contactPerson['Affiliations'] as $affiliation) {
+                            $affiliationXml = $affiliationsXml->addChild('Affiliation');
+                            foreach ($affiliation as $key => $value) {
+                                // Skip adding <rorId> if it's empty or not set
+                                if ($key === 'rorId' && (empty($value) || $value === null)) {
+                                    continue;
+                                }
+                                $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // Originating Laboratory
+        $originatingLaboratories = $this->getOriginatingLaboratories($connection, $id);
+        if ($originatingLaboratories) {
+            $originatingLaboratoriesXml = $xml->addChild('OriginatingLaboratories');
+            foreach ($originatingLaboratories as $laboratory) {
+                $laboratoryXml = $originatingLaboratoriesXml->addChild('OriginatingLaboratory');
+                $laboratoryXml->addChild('laboratoryname', htmlspecialchars($laboratory['laboratoryname']));
+                $laboratoryXml->addChild('labId', htmlspecialchars($laboratory['labId'] ?? ''));
+                if (isset($laboratory['Affiliations'])) {
+                    $affiliationsXml = $laboratoryXml->addChild('Affiliations');
+                    foreach ($laboratory['Affiliations'] as $affiliation) {
+                        $affiliationXml = $affiliationsXml->addChild('Affiliation');
+                        foreach ($affiliation as $key => $value) {
+                            // Skip adding <rorId> if it's empty or not set
+                            if ($key === 'rorId' && (empty($value) || $value === null)) {
+                                continue;
+                            }
+                            $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
+                        }
+                    }
+                }
+            }
+        }
+        // Contributors
+        $contributors = $this->getContributors($connection, $id);
+        if (!empty($contributors['persons']) || !empty($contributors['institutions'])) {
+            $contributorsXml = $xml->addChild('Contributors');
+        }
+        // Contributor Persons
+        if (!empty($contributors['persons'])) {
+            $personsXml = $contributorsXml->addChild('Persons');
+            foreach ($contributors['persons'] as $person) {
+
+                $personXml = $personsXml->addChild('Person');
+                if (!empty($person['familyname'])) {
+                    $personXml->addChild('familyname', htmlspecialchars($person['familyname']));
+                }
+                if (!empty($person['givenname'])) {
+                    $personXml->addChild('givenname', htmlspecialchars($person['givenname']));
+                }
+
+                if (!empty($person['orcid']) && $person['orcid'] !== '') {
+                    $personXml->addChild('orcid', htmlspecialchars($person['orcid']));
+                }
+                if (isset($person['Affiliations'])) {
+                    $affiliationsXml = $personXml->addChild('Affiliations');
+                    foreach ($person['Affiliations'] as $affiliation) {
+                        $affiliationXml = $affiliationsXml->addChild('Affiliation');
+                        foreach ($affiliation as $key => $value) {
+                            // Skip adding <rorId> if it's empty or not set
+                            if ($key === 'rorId' && (empty($value) || $value === null)) {
+                                continue;
+                            }
+                            $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
+                        }
+                    }
+                }
+                if (isset($person['Roles'])) {
+                    $rolesXml = $personXml->addChild('Roles');
+                    foreach ($person['Roles'] as $role) {
+                        $roleXml = $rolesXml->addChild('Role');
+                        $roleXml->addChild('name', htmlspecialchars($role['name'] ?? ''));
+                    }
+                }
+            }
+        }
+
+        // Contributor Institutions
+        if (!empty($contributors['institutions'])) {
+            $institutionsXml = $contributorsXml->addChild('Institutions');
+            foreach ($contributors['institutions'] as $institution) {
+                $institutionXml = $institutionsXml->addChild('Institution');
+                $institutionXml->addChild('name', htmlspecialchars($institution['name'] ?? ''));
+                if (isset($institution['Affiliations'])) {
+                    $affiliationsXml = $institutionXml->addChild('Affiliations');
+                    foreach ($institution['Affiliations'] as $affiliation) {
+                        $affiliationXml = $affiliationsXml->addChild('Affiliation');
+                        foreach ($affiliation as $key => $value) {
+                            // Skip adding <rorId> if it's empty or not set
+                            if ($key === 'rorId' && (empty($value) || $value === null)) {
+                                continue;
+                            }
+                            $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
+                        }
+                    }
+                }
+                if (isset($institution['Roles'])) {
+                    $rolesXml = $institutionXml->addChild('Roles');
+                    foreach ($institution['Roles'] as $role) {
+                        $roleXml = $rolesXml->addChild('Role');
+                        $roleXml->addChild('name', htmlspecialchars($role['name'] ?? ''));
                     }
                 }
             }
@@ -633,91 +806,28 @@ class DatasetController
             $descriptionXml->addChild('description', htmlspecialchars($description['description']));
         }
 
-        // Contributors
-        $contributors = $this->getContributors($connection, $id);
-        $contributorsXml = $xml->addChild('Contributors');
-
-        // Contributor Persons
-        $personsXml = $contributorsXml->addChild('Persons');
-        foreach ($contributors['persons'] as $person) {
-            $personXml = $personsXml->addChild('Person');
-            $personXml->addChild('familyname', htmlspecialchars($person['familyname'] ?? ''));
-            $personXml->addChild('givenname', htmlspecialchars($person['givenname'] ?? ''));
-            if (isset($person['orcid']) && $person['orcid'] !== '') {
-                $personXml->addChild('orcid', htmlspecialchars($person['orcid']));
-            }
-            if (isset($person['Affiliations'])) {
-                $affiliationsXml = $personXml->addChild('Affiliations');
-                foreach ($person['Affiliations'] as $affiliation) {
-                    $affiliationXml = $affiliationsXml->addChild('Affiliation');
-                    foreach ($affiliation as $key => $value) {
-                        $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
-                    }
-                }
-            }
-            if (isset($person['Roles'])) {
-                $rolesXml = $personXml->addChild('Roles');
-                foreach ($person['Roles'] as $role) {
-                    $roleXml = $rolesXml->addChild('Role');
-                    $roleXml->addChild('name', htmlspecialchars($role['name'] ?? ''));
+        // Thesaurus Keywords
+        $thesaurusKeywords = $this->getThesaurusKeywords($connection, $id);
+        if ($thesaurusKeywords) {
+            $keywordsXml = $xml->addChild('ThesaurusKeywords');
+            foreach ($thesaurusKeywords as $keyword) {
+                $keywordXml = $keywordsXml->addChild('Keyword');
+                foreach ($keyword as $key => $value) {
+                    $keywordXml->addChild($key, htmlspecialchars($value ?? ''));
                 }
             }
         }
 
-        // Contributor Institutions
-        $institutionsXml = $contributorsXml->addChild('Institutions');
-        foreach ($contributors['institutions'] as $institution) {
-            $institutionXml = $institutionsXml->addChild('Institution');
-            $institutionXml->addChild('name', htmlspecialchars($institution['name'] ?? ''));
-            if (isset($institution['Affiliations'])) {
-                $affiliationsXml = $institutionXml->addChild('Affiliations');
-                foreach ($institution['Affiliations'] as $affiliation) {
-                    $affiliationXml = $affiliationsXml->addChild('Affiliation');
-                    foreach ($affiliation as $key => $value) {
-                        $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
-                    }
-                }
+        // Free Keywords
+        $freeKeywords = $this->getFreeKeywords($connection, $id);
+        if ($freeKeywords) {
+            $freeKeywordsXml = $xml->addChild('FreeKeywords');
+            foreach ($freeKeywords as $keyword) {
+                $keywordXml = $freeKeywordsXml->addChild('Keyword');
+                $keywordXml->addChild('free_keywords_id', htmlspecialchars($keyword['free_keywords_id']));
+                $keywordXml->addChild('free_keyword', htmlspecialchars($keyword['free_keyword']));
+                $keywordXml->addChild('isCurated', htmlspecialchars($keyword['isCurated']));
             }
-            if (isset($institution['Roles'])) {
-                $rolesXml = $institutionXml->addChild('Roles');
-                foreach ($institution['Roles'] as $role) {
-                    $roleXml = $rolesXml->addChild('Role');
-                    $roleXml->addChild('name', htmlspecialchars($role['name'] ?? ''));
-                }
-            }
-        }
-
-        // Contact Persons
-        $contactPersons = $this->getContactPersons($connection, $id);
-        $contactPersonsXml = $xml->addChild('ContactPersons');
-        foreach ($contactPersons as $contactPerson) {
-            $contactPersonXml = $contactPersonsXml->addChild('ContactPerson');
-            $contactPersonXml->addChild('familyname', htmlspecialchars($contactPerson['familyname'] ?? ''));
-            $contactPersonXml->addChild('givenname', htmlspecialchars($contactPerson['givenname'] ?? ''));
-            $contactPersonXml->addChild('position', htmlspecialchars($contactPerson['position'] ?? ''));
-            $contactPersonXml->addChild('email', htmlspecialchars($contactPerson['email'] ?? ''));
-            $contactPersonXml->addChild('website', htmlspecialchars($contactPerson['website'] ?? ''));
-            if (isset($contactPerson['Affiliations'])) {
-                $affiliationsXml = $contactPersonXml->addChild('Affiliations');
-                foreach ($contactPerson['Affiliations'] as $affiliation) {
-                    $affiliationXml = $affiliationsXml->addChild('Affiliation');
-                    foreach ($affiliation as $key => $value) {
-                        $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
-                    }
-                }
-            }
-        }
-
-        // Related Works
-        $relatedWorks = $this->getRelatedWorks($connection, $id);
-        $relatedWorksXml = $xml->addChild('RelatedWorks');
-        foreach ($relatedWorks as $work) {
-            $workXml = $relatedWorksXml->addChild('RelatedWork');
-            $workXml->addChild('Identifier', htmlspecialchars($work['Identifier']));
-            $relationXml = $workXml->addChild('Relation');
-            $relationXml->addChild('name', htmlspecialchars($work['Relation']['name']));
-            $identifierTypeXml = $workXml->addChild('IdentifierType');
-            $identifierTypeXml->addChild('name', htmlspecialchars($work['IdentifierType']['name']));
         }
 
         // Spatial Temporal Coverages
@@ -743,24 +853,18 @@ class DatasetController
             }
         }
 
-        // Thesaurus Keywords
-        $thesaurusKeywords = $this->getThesaurusKeywords($connection, $id);
-        $keywordsXml = $xml->addChild('ThesaurusKeywords');
-        foreach ($thesaurusKeywords as $keyword) {
-            $keywordXml = $keywordsXml->addChild('Keyword');
-            foreach ($keyword as $key => $value) {
-                $keywordXml->addChild($key, htmlspecialchars($value ?? ''));
+        // Related Works
+        $relatedWorks = $this->getRelatedWorks($connection, $id);
+        if ($relatedWorks) {
+            $relatedWorksXml = $xml->addChild('RelatedWorks');
+            foreach ($relatedWorks as $work) {
+                $workXml = $relatedWorksXml->addChild('RelatedWork');
+                $workXml->addChild('Identifier', htmlspecialchars($work['Identifier']));
+                $relationXml = $workXml->addChild('Relation');
+                $relationXml->addChild('name', htmlspecialchars($work['Relation']['name']));
+                $identifierTypeXml = $workXml->addChild('IdentifierType');
+                $identifierTypeXml->addChild('name', htmlspecialchars($work['IdentifierType']['name']));
             }
-        }
-
-        // Free Keywords
-        $freeKeywords = $this->getFreeKeywords($connection, $id);
-        $freeKeywordsXml = $xml->addChild('FreeKeywords');
-        foreach ($freeKeywords as $keyword) {
-            $keywordXml = $freeKeywordsXml->addChild('Keyword');
-            $keywordXml->addChild('free_keywords_id', htmlspecialchars($keyword['free_keywords_id']));
-            $keywordXml->addChild('free_keyword', htmlspecialchars($keyword['free_keyword']));
-            $keywordXml->addChild('isCurated', htmlspecialchars($keyword['isCurated']));
         }
 
         // Funding References
@@ -769,27 +873,24 @@ class DatasetController
         foreach ($fundingReferences as $reference) {
             $referenceXml = $fundingReferencesXml->addChild('FundingReference');
             foreach ($reference as $key => $value) {
+                if ($key === 'funderid' && (empty($value) || $value === null)) {
+                    continue;
+                }
+                if ($key === 'funderidtyp' && (empty($value) || $value === null)) {
+                    continue;
+                }
+                if ($key === 'grantnumber' && (empty($value) || $value === null)) {
+                    continue;
+                }
+                if ($key === 'grantname' && (empty($value) || $value === null)) {
+                    continue;
+                }
                 $referenceXml->addChild($key, htmlspecialchars($value ?? ''));
             }
         }
 
-        // Originating Laboratory
-        $originatingLaboratories = $this->getOriginatingLaboratories($connection, $id);
-        $originatingLaboratoriesXml = $xml->addChild('OriginatingLaboratories');
-        foreach ($originatingLaboratories as $laboratory) {
-            $laboratoryXml = $originatingLaboratoriesXml->addChild('OriginatingLaboratory');
-            $laboratoryXml->addChild('laboratoryname', htmlspecialchars($laboratory['laboratoryname']));
-            $laboratoryXml->addChild('labId', htmlspecialchars($laboratory['labId'] ?? ''));
-            if (isset($laboratory['Affiliations'])) {
-                $affiliationsXml = $laboratoryXml->addChild('Affiliations');
-                foreach ($laboratory['Affiliations'] as $affiliation) {
-                    $affiliationXml = $affiliationsXml->addChild('Affiliation');
-                    foreach ($affiliation as $key => $value) {
-                        $affiliationXml->addChild($key, htmlspecialchars($value ?? ''));
-                    }
-                }
-            }
-        }
+
+
 
         // XML formating
         $dom = dom_import_simplexml($xml)->ownerDocument;
@@ -799,14 +900,9 @@ class DatasetController
         $baseDir = realpath(dirname(dirname(dirname(__DIR__))));
         $outputDir = $baseDir . '/xml';
 
-        // Only for Debugging!
-        error_log("Base Directory: " . $baseDir);
-        error_log("Output Directory: " . $outputDir);
-
         // Generate folder if not exists
         if (!file_exists($outputDir)) {
             if (!mkdir($outputDir, 0777, true)) {
-                error_log("Fehler beim Erstellen des Verzeichnisses: " . error_get_last()['message']);
                 throw new Exception("Konnte XML-Verzeichnis nicht erstellen");
             }
         }
@@ -816,10 +912,8 @@ class DatasetController
 
         // Save XML to file
         $outputFile = $outputDir . "/resource_$id.xml";
-        error_log("Versuche Datei zu speichern: " . $outputFile);
 
         if (!@$dom->save($outputFile)) {
-            error_log("Fehler beim Speichern: " . error_get_last()['message']);
             throw new Exception("Konnte XML-Datei nicht speichern: " . error_get_last()['message']);
         }
 
@@ -866,12 +960,6 @@ class DatasetController
         $inputXmlPath = $baseDir . "/xml/resource_$id.xml";
         $xsltPath = $baseDir . "/schemas/XSLT/" . $formatInfo[$format]['xsltFile'];
         $outputXmlPath = $baseDir . "/xml/" . $formatInfo[$format]['outputPrefix'] . "_resource_$id.xml";
-
-        // Debug output
-        error_log("Base Directory: " . $baseDir);
-        error_log("Input XML Path: " . $inputXmlPath);
-        error_log("XSLT Path: " . $xsltPath);
-        error_log("Output XML Path: " . $outputXmlPath);
 
         // Temporarily create FreestyleXML
         $this->getResourceAsXml($GLOBALS['connection'], $id);
@@ -942,9 +1030,6 @@ class DatasetController
     {
         $id = intval($vars['id']);
         $scheme = strtolower($vars['scheme']);
-
-        // Debug output
-        error_log("Download parameter: " . ($download ? 'true' : 'false'));
 
         // Check for valid schema formats
         $validSchemes = ['datacite', 'iso', 'dif'];

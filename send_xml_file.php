@@ -113,12 +113,6 @@ try {
     // Clear any output buffers
     ob_clean();
 
-    // Log error and debug output
-    error_log("Error in send_xml_file.php: " . $e->getMessage());
-    if (isset($debugging_output)) {
-        error_log("SMTP Debug Output: " . $debugging_output);
-    }
-
     // Return error response
     header('Content-Type: application/json');
     echo json_encode([

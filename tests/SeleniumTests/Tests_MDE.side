@@ -2180,7 +2180,7 @@
         ["xpath=//form[@id='form-mde']/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/input", "xpath:position"]
       ],
-      "value": "1234"
+      "value": "2111"
     }, {
       "id": "a97d7f79-9fc5-4953-b71a-e0c44fe97afc",
       "comment": "",
@@ -2539,7 +2539,7 @@
         ["xpath=//form[@id='form-mde']/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/input", "xpath:position"]
       ],
-      "value": "1234"
+      "value": "1999"
     }, {
       "id": "1a95d23d-f414-4c75-8c0f-737c4924e7e5",
       "comment": "",
@@ -4751,7 +4751,7 @@
         ["xpath=//form[@id='form-mde']/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/div/input", "xpath:position"]
       ],
-      "value": "1234"
+      "value": "2002"
     }, {
       "id": "ef7d3789-56b3-4bef-8790-44ba96fc58c8",
       "comment": "",
