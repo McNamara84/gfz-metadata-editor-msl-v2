@@ -27,6 +27,9 @@ return [
     ['GET', '/vocabs/relations', [new VocabController(), 'getRelations']],
     ['GET', '/vocabs/licenses/all', [new VocabController(), 'getAllLicenses']],
     ['GET', '/vocabs/licenses/software', [new VocabController(), 'getSoftwareLicenses']],
+    ['GET', '/vocabs/freekeywords/all', [new VocabController(), 'getAllFreeKeywords']],
+    ['GET', '/vocabs/freekeywords/curated', [new VocabController(), 'getCuratedFreeKeywords']],
+    ['GET', '/vocabs/freekeywords/uncurated', [new VocabController(), 'getUncuratedFreeKeywords']],
 
     // Validation endpoints
     ['GET', '/validation/patterns[/{type}]', [new ValidationController(), 'getPattern']],
