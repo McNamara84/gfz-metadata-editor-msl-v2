@@ -163,6 +163,86 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /vocabs/freekeywords/all:
+    get:
+      tags:
+        - vocabularies
+      summary: Get all free keywords
+      description: Returns all free keywords from the database, regardless of curation status
+      operationId: getAllFreeKeywords
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FreeKeywordsResponse"
+        "404":
+          description: No keywords found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /vocabs/freekeywords/curated:
+    get:
+      tags:
+        - vocabularies
+      summary: Get curated free keywords
+      description: Returns only curated free keywords from the database
+      operationId: getCuratedFreeKeywords
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FreeKeywordsResponse"
+        "404":
+          description: No curated keywords found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /vocabs/freekeywords/uncurated:
+    get:
+      tags:
+        - vocabularies
+      summary: Get uncurated free keywords
+      description: Returns only uncurated free keywords from the database
+      operationId: getUncuratedFreeKeywords
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FreeKeywordsResponse"
+        "404":
+          description: No uncurated keywords found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
   /vocabs/roles:
     get:
       tags:
@@ -778,6 +858,18 @@ components:
         - id
         - name
         - forInstitutions
+    FreeKeywordsResponse:
+      type: array
+      description: List of free keywords
+      items:
+        type: object
+        properties:
+          free_keyword:
+            type: string
+            description: The keyword text
+            example: "carbon dioxide emission"
+        required:
+          - free_keyword
     PatternResponse:
       type: object
       properties:
