@@ -115,6 +115,7 @@ include("formgroups/dates.html");
 include("formgroups/spatialtemporalcoverage.html");
 include("formgroups/relatedwork.html");
 include("formgroups/fundingreference.html");
+include("modals.html");
 include("footer.html");
 
 // Process form submission
