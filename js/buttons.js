@@ -185,7 +185,7 @@ $(document).ready(function () {
 
     // Clear input fields and remove validation feedback
     newAuthorRow.find("input").val("").removeClass("is-invalid is-valid");
-    newAuthorRow.find(".invalid-feedback, .valid-feedback").hide();
+    newAuthorRow.find(".invalid-feedback, .valid-feedback").css("display", "");
 
     // Generate unique IDs for cloned input elements
     var uniqueSuffix = new Date().getTime();
@@ -200,8 +200,10 @@ $(document).ready(function () {
     // Replace the add button with the remove button
     newAuthorRow.find(".addAuthor").replaceWith(removeButton);
 
-    // Remove help buttons
-    deleteHelpButtonFromClonedRows(newAuthorRow);
+    // Replace help buttons (if applicable)
+    if (typeof replaceHelpButtonInClonedRows === 'function') {
+      replaceHelpButtonInClonedRows(newAuthorRow);
+    }
 
     // Append the new author row to the DOM
     authorGroup.append(newAuthorRow);
@@ -212,6 +214,9 @@ $(document).ready(function () {
       "input-author-rorid" + uniqueSuffix,
       affiliationsData
     );
+
+    // Bind validation listeners to the new row
+    bindValidationListeners(newAuthorRow);
 
     // Event handler for the remove button
     newAuthorRow.on("click", ".removeButton", function () {
@@ -234,7 +239,7 @@ $(document).ready(function () {
 
     // Clear input fields and remove validation feedback
     newCPRow.find("input").val("").removeClass("is-invalid is-valid");
-    newCPRow.find(".invalid-feedback, .valid-feedback").hide();
+    newCPRow.find(".invalid-feedback, .valid-feedback").css("display", "");
 
     var uniqueSuffix = new Date().getTime();
     newCPRow.find("#input-contactperson-affiliation").attr("id", "input-contactperson-affiliation" + uniqueSuffix);
@@ -246,8 +251,10 @@ $(document).ready(function () {
     // Replace the add button with the remove button
     newCPRow.find(".addCP").replaceWith(removeButton);
 
-    // Remove help buttons
-    deleteHelpButtonFromClonedRows(newCPRow);
+    // Replace help buttons (if applicable)
+    if (typeof replaceHelpButtonInClonedRows === 'function') {
+      replaceHelpButtonInClonedRows(newCPRow);
+    }
 
     CPGroup.append(newCPRow);
 
@@ -257,6 +264,9 @@ $(document).ready(function () {
       "input-contactperson-rorid" + uniqueSuffix,
       affiliationsData
     );
+
+    // Bind validation listeners to the new row
+    bindValidationListeners(newAuthorRow);
 
     // Event handler for the remove button
     newCPRow.on("click", ".removeButton", function () {
@@ -289,10 +299,12 @@ $(document).ready(function () {
     // Reset values and validation feedback in the cloned element
     newContributorRow.find("input").val("").removeClass("is-invalid is-valid");
     newContributorRow.find(".tagify").remove();
-    newContributorRow.find(".invalid-feedback, .valid-feedback").hide();
+    newContributorRow.find(".invalid-feedback, .valid-feedback").css("display", "");
 
-    // Remove help buttons from the cloned row
-    deleteHelpButtonFromClonedRows(newContributorRow);
+    // Replace help buttons (if applicable)
+    if (typeof replaceHelpButtonInClonedRows === 'function') {
+      replaceHelpButtonInClonedRows(newContributorRow);
+    }
 
     // Hide the row label in cloned rows
     newContributorRow.find(".row-label").hide();
@@ -350,6 +362,10 @@ $(document).ready(function () {
     // Initialize Tagify for the new Roles field
     setupRolesDropdown(["person", "both"], "#input-contributor-personrole" + uniqueSuffix);
 
+    // Bind validation listeners to the new row
+    bindValidationListeners(newContributorRow);
+
+
     // Event handler for the remove button in the new row
     newContributorRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
@@ -384,8 +400,10 @@ $(document).ready(function () {
     newContributorRow.find(".tagify").remove();
     newContributorRow.find(".invalid-feedback, .valid-feedback").hide();
 
-    // Remove help buttons from the cloned row
-    deleteHelpButtonFromClonedRows(newContributorRow);
+    // Replace help buttons (if applicable)
+    if (typeof replaceHelpButtonInClonedRows === 'function') {
+      replaceHelpButtonInClonedRows(newContributorRow);
+    }
 
     // Hide the row label in cloned rows
     newContributorRow.find(".row-label").hide();
@@ -482,9 +500,9 @@ $(document).ready(function () {
     newTscLine.find("input, select, textarea").val("").removeClass("is-invalid is-valid");
     newTscLine.find(".invalid-feedback, .valid-feedback").hide();
 
-    // Remove help buttons (if applicable)
-    if (typeof deleteHelpButtonFromClonedRows === 'function') {
-      deleteHelpButtonFromClonedRows(newTscLine);
+    // Replace help buttons (if applicable)
+    if (typeof replaceHelpButtonInClonedRows === 'function') {
+      replaceHelpButtonInClonedRows(newTscLine);
     }
 
     // Replace the Add button with a Remove button
@@ -547,8 +565,10 @@ $(document).ready(function () {
     newRelatedWorkRow.find("input").val("").removeClass("is-invalid");
     newRelatedWorkRow.find(".invalid-feedback").hide();
 
-    // Remove help buttons in cloned row
-    deleteHelpButtonFromClonedRows(newRelatedWorkRow);
+    // Replace help buttons (if applicable)
+    if (typeof replaceHelpButtonInClonedRows === 'function') {
+      replaceHelpButtonInClonedRows(newRelatedWorkRow);
+    }
 
     // Replace the add button with the remove button
     newRelatedWorkRow.find("#button-relatedwork-add").replaceWith(removeButton);
@@ -581,8 +601,10 @@ $(document).ready(function () {
     // Append the new funding reference row to the DOM
     fundingreferenceGroup.append(newFundingReferenceRow);
 
-    // Remove help buttons in cloned row
-    deleteHelpButtonFromClonedRows(newFundingReferenceRow);
+    // Replace help buttons (if applicable)
+    if (typeof replaceHelpButtonInClonedRows === 'function') {
+      replaceHelpButtonInClonedRows(newFundingReferenceRow);
+    }
 
     // Event handler for the remove button
     newFundingReferenceRow.on("click", ".removeButton", function () {
@@ -641,8 +663,10 @@ $(document).ready(function () {
     // Append the new laboratory row to the DOM
     laboratoryGroup.append(newOriginatingLaboratoryRow);
 
-    // Remove help buttons in cloned row
-    deleteHelpButtonFromClonedRows(newOriginatingLaboratoryRow);
+    // Replace help buttons (if applicable)
+    if (typeof replaceHelpButtonInClonedRows === 'function') {
+      replaceHelpButtonInClonedRows(newOriginatingLaboratoryRow);
+    }
 
     // Initialize Tagify for the new row
     initializeTagify(newOriginatingLaboratoryRow, labData);
@@ -771,11 +795,36 @@ $(document).ready(function () {
   /////////////////////////////// HELP BUTTONS /////////////////////////////////////////////////////////////////
 
   /**
-   * Removes help buttons from cloned rows and adjusts CSS classes for input elements.
+   * Replaces help buttons in cloned rows with invisible placeholders.
+   * This helps maintain the structure and prevents changes in field sizes.
    *
-   * @param {jQuery} row - The cloned row from which to remove help buttons.
-   * @param {string} [roundCornersClass="input-right-with-round-corners"] - The CSS class to add to input elements.
+   * @param {jQuery} row - The cloned row from which to replace help buttons.
+   * @param {string} [roundCornersClass="input-right-with-round-corners"] - The CSS class for rounded corners.
    */
+  function replaceHelpButtonInClonedRows(
+    row,
+    roundCornersClass = "input-right-with-round-corners"
+  ) {
+    // Check whether the help buttons are visible
+    if ($(".input-group-text").is(":visible")) {
+      // Find all span elements with the help icon
+      row.find("span.input-group-text:has(i.bi-question-circle-fill)").each(function () {
+        // Replace the span with an empty div that has fixed dimensions
+        $(this).replaceWith('<div class="input-group-text" style="visibility: hidden; width: 42px; height: 38px;"></div>');
+      });
+
+      // Remove non-rounded corners class to keep structure intact
+      row.find(".input-with-help").removeClass("input-right-no-round-corners");
+    }
+  }
+
+
+  /**
+  * Removes help buttons from cloned rows and adjusts CSS classes for input elements.
+  *
+  * @param {jQuery} row - The cloned row from which to remove help buttons.
+  * @param {string} [roundCornersClass="input-right-with-round-corners"] - The CSS class to add to input elements.
+  */
   function deleteHelpButtonFromClonedRows(
     row,
     roundCornersClass = "input-right-with-round-corners"
@@ -840,6 +889,16 @@ $(document).ready(function () {
     $(".input-group-text").hide();
     localStorage.setItem("inputGroupTextVisible", "false");
   });
+
+  /**
+ * Binds validation listeners to input fields in a given row.
+ * @param {jQuery} row - The row element to bind listeners to.
+ */
+  function bindValidationListeners(row) {
+    row.find('input').on('input', function () {
+      validateField($(this));
+    });
+  }
 
   //////////////////////////////// LANGUAGE BUTTONS ///////////////////////////////////////////////////////////
 
