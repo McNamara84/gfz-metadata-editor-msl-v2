@@ -21,6 +21,11 @@ document.addEventListener('DOMContentLoaded', function () {
    */
   const saveAsModal = new bootstrap.Modal(document.getElementById('modal-saveas'));
 
+  // Add event listener for modal cancel
+  document.getElementById('modal-saveas').addEventListener('hidden.bs.modal', function () {
+    notificationModal.hide();
+  });
+
   /**
    * Collection of form button elements
    * @type {Object.<string, HTMLButtonElement>}
@@ -87,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
    */
   function handleValidForm(action) {
     if (action === 'save') {
-      showNotification('info', 'Processing...', 'Please choose a filename.');
       saveAsModal.show();
     } else if (action === 'submit') {
       showNotification('info', 'Processing...', 'Dataset is being submitted.');
