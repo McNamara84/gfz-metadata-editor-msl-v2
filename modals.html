@@ -64,23 +64,23 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="label-saveas-modal">Dateiname wählen</h1>
+                <h1 class="modal-title fs-5" id="label-saveas-modal"><?php echo $translations['chooseFilename']; ?></h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
             </div>
             <div class="modal-body">
                 <form id="form-saveas-filename">
                     <div class="mb-3">
-                        <label for="input-saveas-filename" class="form-label">Gewählter Dateiname</label>
+                        <label for="input-saveas-filename" class="form-label"><?php echo $translations['filenameLabel']; ?></label>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="input-saveas-filename" placeholder="filename">
+                            <input type="text" class="form-control" id="input-saveas-filename" placeholder="<?php echo $translations['filename']; ?>">
                             <span class="input-group-text">.xml</span>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
-                <button type="button" class="btn btn-primary" id="button-saveas-save">Speichern</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?php echo $translations['tsc_cancel']; ?></button>
+                <button type="button" class="btn btn-primary" id="button-saveas-save"><?php echo $translations['saveAs']; ?></button>
             </div>
         </div>
     </div>

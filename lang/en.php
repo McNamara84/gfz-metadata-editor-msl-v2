@@ -152,4 +152,9 @@ $translations = [
     'feedbackQuestion7' => 'Is there a specific improvement you would like to see?',
     'feedbackSendButton' => 'Send Feedback',
     'thankYouMessage' => 'Thanks for your feedback!',
+
+    // Misc
+    'chooseFilename' => 'Please choose a filename',
+    'filenameLabel' => 'Preferred Filename',
+    'filename' => 'filename',
 ];

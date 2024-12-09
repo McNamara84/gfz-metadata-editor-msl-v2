@@ -15,7 +15,7 @@ $translations = [
     // Form Group Resource Information
     'resourceInformation' => 'Informationen zur Ressource',
     'doi' => 'DOI',
-    'doi_valid'=>'Eine neue DOI wird registriert',
+    'doi_valid' => 'Eine neue DOI wird registriert',
     'doi_invalid' => 'Format 10.ORGANISATION/ID nutzen (z.B.: 10.57757/IUGG23-3081) oder leer lassen',
     'publicationYear' => 'Veröffentlichungsjahr',
     'publicationYear_invalid' => 'Bitte geben Sie eine gültige Jahreszahl (4-stellig) an.',
@@ -115,14 +115,14 @@ $translations = [
     'tsc_cancel' => 'Abbrechen',
     'tsc_accept' => 'Übernehmen',
 
-    //Formgroup related Work
+    // Formgroup related Work
     'relatedwork' => 'Verbundene Arbeit',
     'relation' => 'Relation',
     'r_identifier_type' => 'Identifikatortyp',
     'r_Identifier' => 'Identifikator',
     'r_Identifier_invalid' => 'Bitte geben Sie einen gültigen Identifikator ein.',
 
-    //Formgroup Funding Reference
+    // Formgroup Funding Reference
     'funding_reference' => 'Förderungsreferenz',
     'funder' => 'Förderer',
     'grant_Number' => 'Fördernummer',
@@ -152,4 +152,9 @@ $translations = [
     'feedbackQuestion7' => 'Gibt es eine spezifische Verbesserung, die Sie sich wünschen würden?',
     'feedbackSendButton' => 'Feedback übermitteln',
     'thankYouMessage' => 'Vielen Dank für Ihr Feedback!',
+
+    // Sonstiges
+    'chooseFilename' => 'Bitte Dateinamen auswählen',
+    'filenameLabel' => 'Gewählter Dateiname',
+    'filename' => 'filename',
 ];
