@@ -38,7 +38,7 @@ The following third-party dependencies are included in header.html and footer.ht
   For the event handlers in JavaScript and to simplify the JavaScript code.
 - jQuery UI 1.14.1<br>
   Extends jQuery with the autocomplete function that we currently use for the affiliation fields.
-- Tagify 4.32.1<br>
+- Tagify 4.32.2<br>
   Is used for the Thesaurus Keywords field, the entry of multiple affiliations and free keywords.
 - jsTree 3.3.17<br>
   Is used to display the thesauri as a hierarchical tree structure.
