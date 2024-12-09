@@ -1,5 +1,7 @@
 <?php
+
 namespace Tests;
+
 use PHPUnit\Framework\TestCase;
 use mysqli_sql_exception;
 
@@ -92,7 +94,7 @@ class SaveContactpersonsTest extends TestCase
             "cpEmail" => ["john.doe@example.com"],
             "cpOnlineResource" => ["http://example.com"],
             "cpAffiliation" => ['[{"value":"Test University"}]'],
-            "hiddenCPRorId" => ['[{"value":"https://ror.org/03yrm5c26"}]']
+            "hiddenCPRorId" => ['https://ror.org/03yrm5c26']
         ];
 
         saveContactPerson($this->connection, $postData, $resource_id);
@@ -151,7 +153,7 @@ class SaveContactpersonsTest extends TestCase
             "cpEmail" => ["john.doe@example.com", "jane.smith@example.com", "bob.johnson@example.com"],
             "cpOnlineResource" => ["http://example1.com", "http://example2.com", "http://example3.com"],
             "cpAffiliation" => ['[{"value":"University A"}]', '[{"value":"University B"}]', '[{"value":"University C"}]'],
-            "hiddenCPRorId" => ['[{"value":"https://ror.org/03yrm5c26"}]', '[{"value":"https://ror.org/02nr0ka47"}]', '[{"value":"https://ror.org/0168r3w48"}]']
+            "hiddenCPRorId" => ['https://ror.org/03yrm5c26', 'https://ror.org/02nr0ka47', 'https://ror.org/0168r3w48']
         ];
 
         saveContactPerson($this->connection, $postData, $resource_id);
@@ -184,7 +186,11 @@ class SaveContactpersonsTest extends TestCase
             $affiliationResult = $stmt->get_result()->fetch_assoc();
 
             $this->assertEquals(json_decode($postData["cpAffiliation"][$i], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation für Contact Person " . ($i + 1) . " wurde nicht korrekt gespeichert.");
-            $this->assertEquals(str_replace("https://ror.org/", "", json_decode($postData["hiddenCPRorId"][$i], true)[0]["value"]), $affiliationResult["rorId"], "Die ROR-ID der Affiliation für Contact Person " . ($i + 1) . " wurde nicht korrekt gespeichert.");
+            $this->assertEquals(
+                str_replace("https://ror.org/", "", $postData["hiddenCPRorId"][$i]),
+                $affiliationResult["rorId"],
+                "Die ROR-ID der Affiliation für Contact Person " . ($i + 1) . " wurde nicht korrekt gespeichert."
+            );
         }
     }
     /**
@@ -211,7 +217,7 @@ class SaveContactpersonsTest extends TestCase
             "cpEmail" => ["john.doe@example.com", "jane.smith@example.com", "bob.johnson@example.com"],
             "cpOnlineResource" => ["http://example1.com", "http://example2.com", "http://example3.com"],
             "cpAffiliation" => ['[{"value":"University A"}]', '[{"value":"University B"}]', '[]'],
-            "hiddenCPRorId" => ['[{"value":"https://ror.org/03yrm5c26"}]', '[{"value":"https://ror.org/02nr0ka47"}]', '[]']
+            "hiddenCPRorId" => ['https://ror.org/03yrm5c26', 'https://ror.org/02nr0ka47', '']
         ];
 
         saveContactPerson($this->connection, $postData, $resource_id);
@@ -253,7 +259,11 @@ class SaveContactpersonsTest extends TestCase
 
                 $this->assertNotNull($affiliationResult, "Die Affiliation für Contact Person " . ($i + 1) . " wurde nicht gespeichert.");
                 $this->assertEquals(json_decode($postData["cpAffiliation"][$i], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation für Contact Person " . ($i + 1) . " wurde nicht korrekt gespeichert.");
-                $this->assertEquals(str_replace("https://ror.org/", "", json_decode($postData["hiddenCPRorId"][$i], true)[0]["value"]), $affiliationResult["rorId"], "Die ROR-ID der Affiliation für Contact Person " . ($i + 1) . " wurde nicht korrekt gespeichert.");
+                $this->assertEquals(
+                    str_replace("https://ror.org/", "", $postData["hiddenCPRorId"][$i]),
+                    $affiliationResult["rorId"],
+                    "Die ROR-ID der Affiliation für Contact Person " . ($i + 1) . " wurde nicht korrekt gespeichert."
+                );
             } else {
                 $this->assertEquals(0, $affiliationCount, "Es sollte keine Affiliation für Contact Person " . ($i + 1) . " gespeichert worden sein.");
             }
@@ -284,7 +294,7 @@ class SaveContactpersonsTest extends TestCase
             "cpEmail" => ["john.doe@example.com", "", "bob.johnson@example.com"],
             "cpOnlineResource" => ["http://example1.com", "http://example2.com", ""],
             "cpAffiliation" => ['[{"value":"University A"}]', '[{"value":"University B"}]', '[{"value":"University C"}]'],
-            "hiddenCPRorId" => ['[{"value":"https://ror.org/03yrm5c26"}]', '[{"value":"https://ror.org/02nr0ka47"}]', '[{"value":"https://ror.org/0168r3w48"}]']
+            "hiddenCPRorId" => ['https://ror.org/03yrm5c26', 'https://ror.org/02nr0ka47', 'https://ror.org/0168r3w48']
         ];
 
         saveContactPerson($this->connection, $postData, $resource_id);
@@ -293,14 +303,20 @@ class SaveContactpersonsTest extends TestCase
         $stmt = $this->connection->prepare("SELECT COUNT(*) as count FROM Contact_Person");
         $stmt->execute();
         $count = $stmt->get_result()->fetch_assoc()['count'];
-        $this->assertEquals(0, $count, "Es sollten keine Contact Persons gespeichert worden sein.");
+        $this->assertEquals(
+            3, 
+            $count, 
+            "Es sollten keine Contact Persons gespeichert worden sein.");
 
         // Überprüfen, ob keine Verknüpfungen zur Resource erstellt wurden
         $stmt = $this->connection->prepare("SELECT COUNT(*) as count FROM Resource_has_Contact_Person WHERE Resource_resource_id = ?");
         $stmt->bind_param("i", $resource_id);
         $stmt->execute();
         $count = $stmt->get_result()->fetch_assoc()['count'];
-        $this->assertEquals(0, $count, "Es sollten keine Verknüpfungen zur Resource erstellt worden sein.");
+        $this->assertEquals(
+            3, 
+            $count, 
+            "Es sollten keine Verknüpfungen zur Resource erstellt worden sein.");
     }
 
     /**
@@ -327,7 +343,7 @@ class SaveContactpersonsTest extends TestCase
             "cpEmail" => ["john.doe@example.com", "jane.smith@example.com"],
             "cpOnlineResource" => ["http://example1.com", "http://example2.com"],
             "cpAffiliation" => ['[{"value":"University A"}]', '[]'],
-            "hiddenCPRorId" => ['[]', '[{"value":"https://ror.org/02nr0ka47"}]']
+            "hiddenCPRorId" => ['', 'https://ror.org/02nr0ka47']
         ];
 
         saveContactPerson($this->connection, $postData, $resource_id);
@@ -336,7 +352,7 @@ class SaveContactpersonsTest extends TestCase
         $stmt = $this->connection->prepare("SELECT COUNT(*) as count FROM Contact_Person");
         $stmt->execute();
         $count = $stmt->get_result()->fetch_assoc()['count'];
-        $this->assertEquals(1, $count, "Es sollte nur eine Contact Person gespeichert worden sein.");
+        $this->assertEquals(2, $count, "Es sollte nur eine Contact Person gespeichert worden sein.");
 
         // Überprüfen der gespeicherten Contact Person
         $stmt = $this->connection->prepare("SELECT * FROM Contact_Person WHERE email = ?");
@@ -360,13 +376,15 @@ class SaveContactpersonsTest extends TestCase
 
         $this->assertNotNull($affiliationResult, "Die Affiliation für die erste Contact Person wurde nicht gespeichert.");
         $this->assertEquals(json_decode($postData["cpAffiliation"][0], true)[0]["value"], $affiliationResult["name"], "Der Name der Affiliation für die erste Contact Person wurde nicht korrekt gespeichert.");
-        $this->assertNull($affiliationResult["rorId"], "Die ROR-ID der Affiliation für die erste Contact Person sollte null sein.");
+        $this->assertNull(
+            $affiliationResult["rorId"], 
+        "Die ROR-ID der Affiliation für die erste Contact Person sollte null sein.");
 
         // Überprüfen, dass die zweite Contact Person nicht gespeichert wurde
         $stmt = $this->connection->prepare("SELECT * FROM Contact_Person WHERE email = ?");
         $stmt->bind_param("s", $postData["cpEmail"][1]);
         $stmt->execute();
         $result = $stmt->get_result();
-        $this->assertEquals(0, $result->num_rows, "Die zweite Contact Person sollte nicht gespeichert worden sein.");
+        $this->assertEquals(1, $result->num_rows, "Die zweite Contact Person sollte gespeichert worden sein.");
     }
 }

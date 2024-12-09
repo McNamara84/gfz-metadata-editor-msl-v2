@@ -589,7 +589,6 @@ if ($_GET['action'] === 'getKeywords') {
 
         echo json_encode($keywords);
     } catch (Exception $e) {
-        error_log("API Error: " . $e->getMessage());
         echo json_encode(['error' => 'Ein Fehler ist aufgetreten beim Abrufen der Keywords']);
     }
     exit;
@@ -651,8 +650,6 @@ if ($_GET['action'] == 'getRelations') {
 if ($_GET['action'] == 'getIdentifierType') {
     $identifier = $_GET['identifier'];
 
-    error_log("Received identifier: " . $identifier);
-
     $stmt = $connection->prepare('SELECT name, pattern FROM Identifier_Type');
     $stmt->execute();
     $result = $stmt->get_result();
@@ -661,7 +658,6 @@ if ($_GET['action'] == 'getIdentifierType') {
     $debugInfo = [];
     while ($row = $result->fetch_assoc()) {
         $pattern = $row['pattern'];
-        error_log("Checking pattern for " . $row['name'] . ": " . $pattern);
 
         // Entferne Anführungszeichen am Anfang und Ende
         $pattern = trim($pattern, '"');
@@ -683,7 +679,6 @@ if ($_GET['action'] == 'getIdentifierType') {
                 break;
             }
         } catch (Exception $e) {
-            error_log("Error in preg_match for " . $row['name'] . ": " . $e->getMessage());
             $debugInfo[count($debugInfo) - 1]['error'] = $e->getMessage();
         }
     }

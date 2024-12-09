@@ -3,7 +3,7 @@
         'name' => 'mde2msl/mde2msl',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'fc9b67e532da02bb38b3e31f1ae7847c8643ff4b',
+        'reference' => '37602d25d6cd64a2cb24f3f69d4e0a2e868aa0cb',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -49,7 +49,7 @@
         'mde2msl/mde2msl' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'fc9b67e532da02bb38b3e31f1ae7847c8643ff4b',
+            'reference' => '37602d25d6cd64a2cb24f3f69d4e0a2e868aa0cb',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -33,7 +33,7 @@ $(document).ready(function () {
 
       $.each(data, function (key, val) {
         var option = $("<option>", {
-          value: val.rightsIdentifier,
+          value: val.rights_id,
           text: val.text + " (" + val.rightsIdentifier + ")",
         });
 
