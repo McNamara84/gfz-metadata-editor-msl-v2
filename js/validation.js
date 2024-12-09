@@ -87,12 +87,46 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
+   * Generates a filename suggestion based on resource ID and current timestamp
+   * @param {string} resourceId - The ID of the saved resource
+   * @returns {string} Suggested filename without extension
+   */
+  function generateFilenameSuggestion(resourceId) {
+    const now = new Date();
+    const date = now.toISOString().split('T')[0].replace(/-/g, ''); // YYYYMMDD
+    const time = now.toTimeString().split(' ')[0].replace(/:/g, ''); // HHMMSS
+    return `dataset${resourceId}_${date}${time}`;
+  }
+
+  /**
    * Handles successful form validation
    * @param {string} action - Type of submission ('save' or 'submit')
    */
   function handleValidForm(action) {
     if (action === 'save') {
-      saveAsModal.show();
+      // First save the data to get the resource_id
+      const formData = new FormData(form);
+      formData.append('action', 'save');
+      formData.append('get_resource_id', '1'); // Flag to indicate we want the resource_id
+
+      fetch('save/save_data.php', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.resource_id) {
+            const suggestedFilename = generateFilenameSuggestion(data.resource_id);
+            document.getElementById('input-saveas-filename').value = suggestedFilename;
+            saveAsModal.show();
+          } else {
+            showNotification('danger', 'Error', 'Failed to generate filename suggestion');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          showNotification('danger', 'Error', 'Failed to prepare file saving');
+        });
     } else if (action === 'submit') {
       showNotification('info', 'Processing...', 'Dataset is being submitted.');
       submitViaAjax();
