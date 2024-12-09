@@ -37,15 +37,21 @@ saveSpatialTemporalCoverage($connection, $_POST, $resource_id);
 saveRelatedWork($connection, $_POST, $resource_id);
 saveFundingReferences($connection, $_POST, $resource_id);
 
-/**
- * Build and execute redirect to API endpoint
- * Constructs the correct URL for the API endpoint and triggers the XML download
- */
+// Get custom filename or use default
+$filename = isset($_POST['filename']) ? $_POST['filename'] : 'dataset';
+$filename = preg_replace('/[^a-zA-Z0-9_-]/', '_', $filename); // Chekc filename to alphanumeric characters
+$filename .= '.xml';
+
+// Set headers for file download
+header('Content-Type: application/xml');
+header('Content-Disposition: attachment; filename="' . $filename . '"');
+
+// Build API URL and fetch XML content
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
 $base_url = $protocol . $_SERVER['HTTP_HOST'];
 $project_path = dirname(dirname($_SERVER['PHP_SELF']));
-$url = $base_url . $project_path . "/api/v2/dataset/export/" . $resource_id . "/all/download";
+$url = $base_url . $project_path . "/api/v2/dataset/export/" . $resource_id . "/all";
 
-header("Location: " . $url);
-ob_end_flush();
+// Get and output XML content
+readfile($url);
 exit();

@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const action = clickedButton.dataset.action;
 
     if (!form.checkValidity()) {
-      handleValidForm(action); // DEBUGGING: Change to handleInvalidForm() to see validation errors
+      handleInvalidForm(action);
     } else {
       handleValidForm(action);
     }
