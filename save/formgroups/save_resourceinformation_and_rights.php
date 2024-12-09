@@ -38,8 +38,6 @@ function saveResourceInformationAndRights($connection, $postData)
     $version = isset($postData["version"]) && trim($postData["version"]) !== '' ? (float) $postData["version"] : null;
     $language = (int) $postData["language"];
     $rights = (int) $postData["Rights"];
-    error_log("The LANGUAGE is: " .$language);
-    error_log("The RIGHT is: " .$rights);
 
     // Check if a record with the same DOI already exists
     if ($doi !== null && $doi !== '') {
