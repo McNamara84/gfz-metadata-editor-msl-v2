@@ -654,6 +654,18 @@ $(document).ready(function () {
   });
 
   /**
+  * Event listener for the load button that opens the XML upload modal
+  * @requires jQuery
+  * @requires Bootstrap
+  * 
+  */
+  $(document).ready(function () {
+    $('#button-form-load').on('click', function () {
+      $('#modal-uploadxml').modal('show');
+    });
+  });
+
+  /**
   * Initializes the event handler once the document is fully loaded.
   */
   $(document).ready(function () {
