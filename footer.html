@@ -11,11 +11,11 @@
           <button class="btn btn-primary m-1" type="button" disabled>
             <?php echo $translations['load']; ?>
           </button>
-          <button type="submit" class="btn btn-warning m-1" form="form-mde" id="button-form-save" data-action="save">
+          <button type="submit" class="btn btn-warning m-1" form="form-mde" id="button-form-save" data-action="save" aria-label="<?php echo $translations['saveAs_tooltip']; ?>">
             <?php echo $translations['saveAs']; ?>
           </button>
           <button type="submit" class="btn btn-success m-1" form="form-mde" id="button-form-submit" data-action="submit"
-            disabled>
+            disabled aria-label="<?php echo $translations['submit_tooltip']; ?>">
             <?php echo $translations['submit']; ?>
           </button>
           <?php if ($showFeedbackLink): ?>
