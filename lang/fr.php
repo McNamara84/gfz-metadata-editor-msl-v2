@@ -160,7 +160,6 @@ $translations = [
     'thankYouMessage' => 'Merci pour vos commentaires!',
 
     // Divers
-    'chooseFilename' => 'Choisissez un nom de fichier',
-    'filenameLabel' => 'Nom de fichier préféré',
-    'filename' => 'Nom du fichier',
+    'saveModalTitle' => 'Sauvegarder en tant que fichier XML',
+    'filenameLabel' => 'Nom de fichier',
 ];

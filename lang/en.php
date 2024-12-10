@@ -154,7 +154,6 @@ $translations = [
     'thankYouMessage' => 'Thanks for your feedback!',
 
     // Misc
-    'chooseFilename' => 'Please choose a filename',
-    'filenameLabel' => 'Preferred Filename',
-    'filename' => 'filename',
+    'saveModalTitle' => 'Save as XML file',
+    'filenameLabel' => 'Filename',
 ];
