@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Resource>
-  <currentDate>2024-12-09</currentDate>
+  <currentDate>2024-12-11</currentDate>
   <year>2023</year>
   <dateCreated>2100-01-01</dateCreated>
   <Rights>
@@ -41,32 +41,7 @@
           <name>TEST_A_AFFILIATION</name>
         </Affiliation>
         <Affiliation>
-          <affiliation_id>4</affiliation_id>
-          <name>TEST_A_AFFILIATION</name>
-        </Affiliation>
-        <Affiliation>
-          <affiliation_id>4</affiliation_id>
-          <name>TEST_A_AFFILIATION</name>
-        </Affiliation>
-        <Affiliation>
-          <affiliation_id>4</affiliation_id>
-          <name>TEST_A_AFFILIATION</name>
-        </Affiliation>
-        <Affiliation>
-          <affiliation_id>4</affiliation_id>
-          <name>TEST_A_AFFILIATION</name>
-        </Affiliation>
-        <Affiliation>
-          <affiliation_id>10</affiliation_id>
-          <name>Potsdam Institute for Climate Impact Research</name>
-          <rorId>03e8s1d88</rorId>
-        </Affiliation>
-        <Affiliation>
-          <affiliation_id>4</affiliation_id>
-          <name>TEST_A_AFFILIATION</name>
-        </Affiliation>
-        <Affiliation>
-          <affiliation_id>10</affiliation_id>
+          <affiliation_id>5</affiliation_id>
           <name>Potsdam Institute for Climate Impact Research</name>
           <rorId>03e8s1d88</rorId>
         </Affiliation>
@@ -88,27 +63,7 @@
       <website>www.cp.de</website>
       <Affiliations>
         <Affiliation>
-          <affiliation_id>5</affiliation_id>
-          <name>TEST_CP_AFFILIATION</name>
-        </Affiliation>
-        <Affiliation>
-          <affiliation_id>5</affiliation_id>
-          <name>TEST_CP_AFFILIATION</name>
-        </Affiliation>
-        <Affiliation>
-          <affiliation_id>5</affiliation_id>
-          <name>TEST_CP_AFFILIATION</name>
-        </Affiliation>
-        <Affiliation>
-          <affiliation_id>5</affiliation_id>
-          <name>TEST_CP_AFFILIATION</name>
-        </Affiliation>
-        <Affiliation>
-          <affiliation_id>5</affiliation_id>
-          <name>TEST_CP_AFFILIATION</name>
-        </Affiliation>
-        <Affiliation>
-          <affiliation_id>5</affiliation_id>
+          <affiliation_id>6</affiliation_id>
           <name>TEST_CP_AFFILIATION</name>
         </Affiliation>
       </Affiliations>
@@ -125,7 +80,7 @@
       <labId>66dea222f20d276d6db8d51f29c6525f</labId>
       <Affiliations>
         <Affiliation>
-          <affiliation_id>9</affiliation_id>
+          <affiliation_id>7</affiliation_id>
           <name>CSIC-IACT,  Spain</name>
         </Affiliation>
       </Affiliations>
@@ -138,26 +93,6 @@
         <givenname>CONTRIBUTORFIRSTNAME</givenname>
         <orcid>9876-9876-9876-9876</orcid>
         <Affiliations>
-          <Affiliation>
-            <affiliation_id>8</affiliation_id>
-            <name>CONTRIBUTOR_AFFILIATION</name>
-          </Affiliation>
-          <Affiliation>
-            <affiliation_id>8</affiliation_id>
-            <name>CONTRIBUTOR_AFFILIATION</name>
-          </Affiliation>
-          <Affiliation>
-            <affiliation_id>8</affiliation_id>
-            <name>CONTRIBUTOR_AFFILIATION</name>
-          </Affiliation>
-          <Affiliation>
-            <affiliation_id>8</affiliation_id>
-            <name>CONTRIBUTOR_AFFILIATION</name>
-          </Affiliation>
-          <Affiliation>
-            <affiliation_id>8</affiliation_id>
-            <name>CONTRIBUTOR_AFFILIATION</name>
-          </Affiliation>
           <Affiliation>
             <affiliation_id>8</affiliation_id>
             <name>CONTRIBUTOR_AFFILIATION</name>
@@ -200,7 +135,7 @@
   </Descriptions>
   <SpatialTemporalCoverages>
     <SpatialTemporalCoverage>
-      <spatial_temporal_coverage_id>14</spatial_temporal_coverage_id>
+      <spatial_temporal_coverage_id>4</spatial_temporal_coverage_id>
       <latitudeMin>12.3456</latitudeMin>
       <latitudeMax>23.4567</latitudeMax>
       <longitudeMin>34.5678</longitudeMin>
@@ -211,9 +146,9 @@
       <timezone>0</timezone>
     </SpatialTemporalCoverage>
     <SpatialTemporalCoverage>
-      <spatial_temporal_coverage_id>15</spatial_temporal_coverage_id>
-      <latitudeMin>52.4865</latitudeMin>
-      <longitudeMin>13.066</longitudeMin>
+      <spatial_temporal_coverage_id>5</spatial_temporal_coverage_id>
+      <latitudeMin>52.3793</latitudeMin>
+      <longitudeMin>12.8902</longitudeMin>
       <description>Point-description</description>
       <dateStart>2024-12-02</dateStart>
       <dateEnd>2024-12-02</dateEnd>
@@ -242,19 +177,21 @@
   </RelatedWorks>
   <FundingReferences>
     <FundingReference>
-      <Resource_has_Funding_Reference_id>14</Resource_has_Funding_Reference_id>
-      <Resource_resource_id>9</Resource_resource_id>
-      <Funding_Reference_funding_reference_id>14</Funding_Reference_funding_reference_id>
-      <funding_reference_id>14</funding_reference_id>
+      <Resource_has_Funding_Reference_id>4</Resource_has_Funding_Reference_id>
+      <Resource_resource_id>4</Resource_resource_id>
+      <Funding_Reference_funding_reference_id>4</Funding_Reference_funding_reference_id>
+      <funding_reference_id>4</funding_reference_id>
       <funder>Boeing</funder>
+      <funderid>100000003</funderid>
+      <funderidtyp>Crossref Funder ID</funderidtyp>
       <grantnumber>TEST_GRANT_NO</grantnumber>
       <grantname>TEST_GRANT_NAME</grantname>
     </FundingReference>
     <FundingReference>
-      <Resource_has_Funding_Reference_id>15</Resource_has_Funding_Reference_id>
-      <Resource_resource_id>9</Resource_resource_id>
-      <Funding_Reference_funding_reference_id>15</Funding_Reference_funding_reference_id>
-      <funding_reference_id>15</funding_reference_id>
+      <Resource_has_Funding_Reference_id>5</Resource_has_Funding_Reference_id>
+      <Resource_resource_id>4</Resource_resource_id>
+      <Funding_Reference_funding_reference_id>5</Funding_Reference_funding_reference_id>
+      <funding_reference_id>5</funding_reference_id>
       <funder>grantgiver</funder>
       <grantnumber>1</grantnumber>
       <grantname>Big grant</grantname>
