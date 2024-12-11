@@ -794,6 +794,7 @@ $(document).ready(function () {
 
       // Remove non-rounded corners class to keep structure intact
       row.find(".input-with-help").removeClass("input-right-no-round-corners");
+      row.find(".input-with-help").addClass(roundCornersClass);
     }
   }
 
