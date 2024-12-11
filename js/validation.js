@@ -1,9 +1,7 @@
 /**
- * Form handling module for dataset submission
- * Handles both local saving and email submission of datasets
- *
+ * Form validation and submission handling
+ * Manages form validation, file saving with custom filename, and dataset submission
  */
-
 document.addEventListener('DOMContentLoaded', function () {
   /**
    * Main form element containing the dataset metadata
@@ -18,12 +16,24 @@ document.addEventListener('DOMContentLoaded', function () {
   const notificationModal = new bootstrap.Modal(document.getElementById('notificationModal'));
 
   /**
-   * Submit buttons for different actions
-   * @type {Object}
+   * Modal for filename selection
+   * @type {bootstrap.Modal}
+   */
+  const saveAsModal = new bootstrap.Modal(document.getElementById('modal-saveas'));
+
+  // Add event listener for modal cancel
+  document.getElementById('modal-saveas').addEventListener('hidden.bs.modal', function () {
+    notificationModal.hide();
+  });
+
+  /**
+   * Collection of form button elements
+   * @type {Object.<string, HTMLButtonElement>}
    */
   const buttons = {
     save: document.getElementById('button-form-save'),
-    submit: document.getElementById('button-form-submit')
+    submit: document.getElementById('button-form-submit'),
+    saveAsConfirm: document.getElementById('button-saveas-save')
   };
 
   // Enable buttons
@@ -43,10 +53,23 @@ document.addEventListener('DOMContentLoaded', function () {
     const action = clickedButton.dataset.action;
 
     if (!form.checkValidity()) {
-      handleInvalidForm();
+      handleInvalidForm(action);
     } else {
       handleValidForm(action);
     }
+  });
+
+  /**
+   * Save confirmation button click handler
+   */
+  buttons.saveAsConfirm.addEventListener('click', function () {
+    const filename = document.getElementById('input-saveas-filename').value.trim();
+    if (!filename) {
+      showNotification('danger', 'Error', 'Please enter a filename');
+      return;
+    }
+    saveAsModal.hide();
+    proceedWithSave(filename);
   });
 
   /**
@@ -64,37 +87,86 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
+   * Generates a filename suggestion based on resource ID and current timestamp
+   * @param {string} resourceId - The ID of the saved resource
+   * @returns {string} Suggested filename without extension
+   */
+  function generateFilenameSuggestion(resourceId) {
+    const now = new Date();
+    const date = now.toISOString().split('T')[0].replace(/-/g, ''); // YYYYMMDD
+    const time = now.toTimeString().split(' ')[0].replace(/:/g, ''); // HHMMSS
+    return `dataset${resourceId}_${date}${time}`;
+  }
+
+  /**
    * Handles successful form validation
    * @param {string} action - Type of submission ('save' or 'submit')
    */
   function handleValidForm(action) {
     if (action === 'save') {
-      showNotification('info', 'Processing...', 'Dataset is being saved.');
-      setTimeout(() => {
-        const formData = new FormData(form);
-        formData.append('action', 'save');
+      // First save the data to get the resource_id
+      const formData = new FormData(form);
+      formData.append('action', 'save');
+      formData.append('get_resource_id', '1'); // Flag to indicate we want the resource_id
 
-        // Create a hidden form and submit it
-        const hiddenForm = document.createElement('form');
-        hiddenForm.method = 'POST';
-        hiddenForm.action = 'save/save_data.php';
-
-        for (const [key, value] of formData.entries()) {
-          const input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = key;
-          input.value = value;
-          hiddenForm.appendChild(input);
-        }
-
-        document.body.appendChild(hiddenForm);
-        hiddenForm.submit();
-      }, 1000);
-      showNotification('success', 'Success!', 'Dataset saved successfully. The XML file download will start automatically.');
+      fetch('save/save_data.php', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.resource_id) {
+            const suggestedFilename = generateFilenameSuggestion(data.resource_id);
+            document.getElementById('input-saveas-filename').value = suggestedFilename;
+            saveAsModal.show();
+          } else {
+            showNotification('danger', 'Error', 'Failed to generate filename suggestion');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          showNotification('danger', 'Error', 'Failed to prepare file saving');
+        });
     } else if (action === 'submit') {
       showNotification('info', 'Processing...', 'Dataset is being submitted.');
       submitViaAjax();
     }
+  }
+
+  /**
+   * Proceeds with saving the form data and downloading XML
+   * @param {string} filename - User-selected filename without extension
+   */
+  function proceedWithSave(filename) {
+    showNotification('info', 'Processing...', 'Dataset is being saved.');
+
+    // Create a hidden form for submission
+    const hiddenForm = document.createElement('form');
+    hiddenForm.method = 'POST';
+    hiddenForm.action = 'save/save_data.php';
+
+    // Add filename to form data
+    const filenameInput = document.createElement('input');
+    filenameInput.type = 'hidden';
+    filenameInput.name = 'filename';
+    filenameInput.value = filename;
+    hiddenForm.appendChild(filenameInput);
+
+    // Add all form data
+    const formData = new FormData(form);
+    for (const [key, value] of formData.entries()) {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = value;
+      hiddenForm.appendChild(input);
+    }
+
+    document.body.appendChild(hiddenForm);
+    hiddenForm.submit();
+    document.body.removeChild(hiddenForm);
+
+    showNotification('success', 'Success!', 'Dataset saved successfully. The XML file download will start automatically.');
   }
 
   /**
