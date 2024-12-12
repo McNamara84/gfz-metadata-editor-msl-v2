@@ -4,28 +4,28 @@
       <?php echo $translations['descriptions']; ?>
     </b>
   </div>
-  <div id="DescriptionsGroup">
-    <div class="accordion p-2" id="accordionDescriptions">
+  <div id="group-description">
+    <div class="accordion p-2" id="accordion-description">
       <div class="accordion-item">
         <h2 class="accordion-header">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAbstract"
-            aria-expanded="true" aria-controls="collapseAbstract">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-abstract"
+            aria-expanded="true" aria-controls="collapse-abstract">
             <?php echo $translations['d_abstract']; ?>
           </button>
         </h2>
-        <!--Eingabefeld Abstract-->
-        <div id="collapseAbstract" class="accordion-collapse collapse show" data-bs-parent="#accordionDescriptions">
+        <!-- Input field Abstract -->
+        <div id="collapse-abstract" class="accordion-collapse collapse show" data-bs-parent="#accordion-description">
           <div class="accordion-body">
             <div class="input-group has-validation">
               <div class="form-floating">
-                <textarea class="form-control" placeholder="Please enter an abstract..." id="inputAbstract"
+                <textarea class="form-control" placeholder="Please enter an abstract..." id="input-abstract"
                   name="descriptionAbstract" style="height: 100px" required></textarea>
-                <label for="inputAbstract">
+                <label for="input-abstract">
                   <?php echo $translations['d_abstract']; ?><span class="text-danger">*</span>
                 </label>
               </div>
               <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                  data-help-section-id="abstract"></i></span>
+                  data-help-section-id="help-description-abstract"></i></span>
             </div>
           </div>
         </div>
@@ -33,23 +33,23 @@
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseMethods" aria-expanded="false" aria-controls="collapseMethods">
+            data-bs-target="#collapse-methods" aria-expanded="false" aria-controls="collapse-methods">
             <?php echo $translations['d_methods']; ?>
           </button>
         </h2>
-        <!--Eingabefeld Methods-->
-        <div id="collapseMethods" class="accordion-collapse collapse" data-bs-parent="#accordionDescriptions">
+        <!-- Input field Methods -->
+        <div id="collapse-methods" class="accordion-collapse collapse" data-bs-parent="#accordion-description">
           <div class="accordion-body">
             <div class="input-group has-validation">
               <div class="form-floating">
-                <textarea class="form-control" placeholder="Please describe the methods..." id="inputMethods"
+                <textarea class="form-control" placeholder="Please describe the methods..." id="input-methods"
                   name="descriptionMethods" style="height: 100px"></textarea>
-                <label for="inputMethods">
+                <label for="input-methods">
                   <?php echo $translations['d_methods_tooltip']; ?>
                 </label>
               </div>
               <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                  data-help-section-id="methods"></i></span>
+                  data-help-section-id="help-description-methods"></i></span>
             </div>
           </div>
         </div>
@@ -57,23 +57,23 @@
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseTechnicalInfo" aria-expanded="false" aria-controls="collapseTechnicalInfo">
+            data-bs-target="#collapse-technicalinfo" aria-expanded="false" aria-controls="collapse-technicalinfo">
             <?php echo $translations['d_technical_infos']; ?>
           </button>
         </h2>
-        <!--Eingabefeld Technical Information-->
-        <div id="collapseTechnicalInfo" class="accordion-collapse collapse" data-bs-parent="#accordionDescriptions">
+        <!-- Input field Technical Information -->
+        <div id="collapse-technicalinfo" class="accordion-collapse collapse" data-bs-parent="#accordion-description">
           <div class="accordion-body">
             <div class="input-group has-validation">
               <div class="form-floating">
                 <textarea class="form-control" placeholder="Please enter technical information..."
-                  id="inputTechnicalInfo" name="descriptionTechnical" style="height: 100px"></textarea>
-                <label for="inputTechnicalInfo">
+                  id="input-technicalinfo" name="descriptionTechnical" style="height: 100px"></textarea>
+                <label for="input-technicalinfo">
                   <?php echo $translations['d_technical_infos_tooltip']; ?>
                 </label>
               </div>
               <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                  data-help-section-id="technical_info"></i></span>
+                  data-help-section-id="help-description-technicalinfo"></i></span>
             </div>
           </div>
         </div>
@@ -81,23 +81,23 @@
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseOther" aria-expanded="false" aria-controls="collapseOther">
+            data-bs-target="#collapse-other" aria-expanded="false" aria-controls="collapse-other">
             <?php echo $translations['d_other']; ?>
           </button>
         </h2>
-        <!--Eingabefeld Other-->
-        <div id="collapseOther" class="accordion-collapse collapse" data-bs-parent="#accordionDescriptions">
+        <!-- Input field Other -->
+        <div id="collapse-other" class="accordion-collapse collapse" data-bs-parent="#accordion-description">
           <div class="accordion-body">
             <div class="input-group has-validation">
               <div class="form-floating">
-                <textarea class="form-control" placeholder="Please enter other information..." id="inputOther"
+                <textarea class="form-control" placeholder="Please enter other information..." id="input-other"
                   name="descriptionOther" style="height: 100px"></textarea>
-                <label for="inputOther">
+                <label for="input-other">
                   <?php echo $translations['d_other_tooltip']; ?>
                 </label>
               </div>
               <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                  data-help-section-id="other"></i></span>
+                  data-help-section-id="help-description-other"></i></span>
             </div>
           </div>
         </div>

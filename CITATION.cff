@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "Wenn Sie diese Software verwenden, zitieren Sie sie bitte wie folgt."
+authors:
+  - family-names: "Ehrmann"
+    given-names: "Holger"
+    orcid: "https://orcid.org/0009-0000-1235-6950"
+  - family-names: "Franz"
+    given-names: "Jana"
+    orcid: "https://orcid.org/0009-0003-7219-9514"
+  - family-names: "Mohammed"
+    given-names: "Ali"
+    orcid: "https://orcid.org/0009-0007-2910-0469"
+title: "ELMO - LONGTITLE"
+version: 1.9.0
+doi: 10.5880/GFZ.XXXXXX
+date-released: 2025-03-13
+url: "https://github.com/McNamara84/gfz-metadata-editor-msl-v2"

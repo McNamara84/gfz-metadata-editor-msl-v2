@@ -3,14 +3,14 @@ $(document).ready(function () {
    * Event handler for the "Send Feedback" button click.
    * Collects feedback data and sends it via AJAX to the server.
    */
-  $("#sendFeedback").click(function (event) {
+  $("#button-feedback-send").click(function (event) {
     event.preventDefault();
-    var feedbackForm = $("#feedbackForm");
+    var feedbackForm = $("#form-feedback");
     var feedbackData = feedbackForm.serialize();
 
 
     // Disable the button and show a loading spinner
-    $("#sendFeedback")
+    $("#button-feedback-send")
       .prop("disabled", true)
       .html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...');
 
@@ -25,32 +25,32 @@ $(document).ready(function () {
         feedbackForm.hide();
 
         // Erfolgsmeldung und Danke-Nachricht anzeigen
-        $("#thankYouMessage").show();
-        $("#feedbackStatus").html('<div class="alert alert-success">Feedback sent successfully!</div>');
+        $("#panel-feedback-message").show();
+        $("#panel-feedback-status").html('<div class="alert alert-success">Feedback sent successfully!</div>');
 
         // Modal schließen nach 3 Sekunden
         setTimeout(function () {
-          $("#feedbackModal").modal("hide");
+          $("#modal-feedback").modal("hide");
         }, 3000);
 
 
       },
       error: function (xhr, status, error) {
         // Display error message
-        $("#feedbackStatus").html(
+        $("#panel-feedback-status").html(
           '<div class="alert alert-danger">Error when sending feedback: ' + error + "</div>"
         );
         // Enable the send button
-        $("#sendFeedback").prop("disabled", false).html("Send");
+        $("#button-feedback-send").prop("disabled", false).html("Send");
       },
       complete: function () {
         // Modal zurücksetzen, wenn es geschlossen wird
-        $("#feedbackModal").on("hidden.bs.modal", function () {
+        $("#modal-feedback").on("hidden.bs.modal", function () {
           feedbackForm[0].reset();
           feedbackForm.show();
-          $("#thankYouMessage").hide();
-          $("#feedbackStatus").html("");
-          $("#sendFeedback").prop("disabled", false).html("Senden");
+          $("#panel-feedback-message").hide();
+          $("#panel-feedback-status").html("");
+          $("#button-feedback-send").prop("disabled", false).html("Senden");
         });
       }
     });
@@ -58,12 +58,12 @@ $(document).ready(function () {
 
 
   // Optional: Formular zurücksetzen, wenn das Modal geöffnet wird
-  $('#feedbackModal').on('show.bs.modal', function () {
-    $("#feedbackForm")[0].reset();
-    $("#feedbackForm").show();
-    $("#thankYouMessage").hide();
-    $("#feedbackStatus").html("");
-    $("#sendFeedback").prop("disabled", false).html("Senden");
+  $('#modal-feedback').on('show.bs.modal', function () {
+    $("#form-feedback")[0].reset();
+    $("#form-feedback").show();
+    $("#panel-feedback-message").hide();
+    $("#panel-feedback-status").html("");
+    $("#button-feedback-send").prop("disabled", false).html("Senden");
   });
   // Tooltip initialisieren
   $('[data-bs-toggle="tooltip"]').tooltip();
@@ -94,7 +94,7 @@ $(document).ready(function () {
    * Click event handler for the "Add Title" button.
    * Adds a new title row if the maximum number of titles has not been reached.
    */
-  $("#addTitle").click(function () {
+  $("#button-resourceinformation-addtitle").click(function () {
     /**
      * Reference to the "Add Title" button.
      * @type {jQuery}
@@ -118,10 +118,10 @@ $(document).ready(function () {
       // Control the visibility of the title type dropdown.
       if (titlesNumber === 0) {
         // Show the dropdown for the first title.
-        $("#titleTypeContainer").show();
+        $("#container-resourceinformation-titletype").show();
       } else {
         // Ensure the dropdown is visible for subsequent titles.
-        $(newTitleRow).find("#titleTypeContainer").show();
+        $(newTitleRow).find("#container-resourceinformation-titletype").show();
       }
 
       // Capture the main title type for the first row.
@@ -175,8 +175,8 @@ $(document).ready(function () {
    * Event handler for the "Add Author" button click.
    * Clones the first author row, resets input fields, and appends it to the author group.
    */
-  $("#addAuthor").click(function () {
-    var authorGroup = $("#authorGroup");
+  $("#button-author-add").click(function () {
+    var authorGroup = $("#group-author");
     // First row to be used as a template
     var firstAuthorLine = authorGroup.children().first();
 
@@ -190,9 +190,9 @@ $(document).ready(function () {
     // Generate unique IDs for cloned input elements
     var uniqueSuffix = new Date().getTime();
     newAuthorRow
-      .find("#inputAuthorAffiliation")
-      .attr("id", "inputAuthorAffiliation" + uniqueSuffix);
-    newAuthorRow.find("#hiddenAuthorRorId").attr("id", "hiddenAuthorRorId" + uniqueSuffix);
+      .find("#input-author-affiliation")
+      .attr("id", "input-author-affiliation" + uniqueSuffix);
+    newAuthorRow.find("#input-author-rorid").attr("id", "input-author-rorid" + uniqueSuffix);
 
     // Remove old Tagify elements (will be re-initialized in autocompleteAffiliation)
     newAuthorRow.find(".tagify").remove();
@@ -210,8 +210,8 @@ $(document).ready(function () {
 
     // Apply Tagify to the new Author Affiliations field
     autocompleteAffiliations(
-      "inputAuthorAffiliation" + uniqueSuffix,
-      "hiddenAuthorRorId" + uniqueSuffix,
+      "input-author-affiliation" + uniqueSuffix,
+      "input-author-rorid" + uniqueSuffix,
       affiliationsData
     );
 
@@ -228,8 +228,8 @@ $(document).ready(function () {
    * Event handler for the "Add Contact Person" button click.
    * Clones the first contact person row, resets input fields, and appends it to the contact persons group.
    */
-  $("#addCP").click(function () {
-    var CPGroup = $("#contactpersonsGroup");
+  $("#button-contactperson-add").click(function () {
+    var CPGroup = $("#group-contactperson");
 
     // First row to be used as a template
     var firstCPLine = CPGroup.children().first();
@@ -242,8 +242,8 @@ $(document).ready(function () {
     newCPRow.find(".invalid-feedback, .valid-feedback").css("display", "");
 
     var uniqueSuffix = new Date().getTime();
-    newCPRow.find("#inputCPAffiliation").attr("id", "inputCPAffiliation" + uniqueSuffix);
-    newCPRow.find("#hiddenCPRorId").attr("id", "hiddenCPRorId" + uniqueSuffix);
+    newCPRow.find("#input-contactperson-affiliation").attr("id", "input-contactperson-affiliation" + uniqueSuffix);
+    newCPRow.find("#input-contactperson-rorid").attr("id", "input-contactperson-rorid" + uniqueSuffix);
 
     // Remove old Tagify elements (will be re-initialized in autocompleteAffiliation)
     newCPRow.find(".tagify").remove();
@@ -260,8 +260,8 @@ $(document).ready(function () {
 
     // Apply autocomplete to the Affiliation field
     autocompleteAffiliations(
-      "inputCPAffiliation" + uniqueSuffix,
-      "hiddenCPRorId" + uniqueSuffix,
+      "input-contactperson-affiliation" + uniqueSuffix,
+      "input-contactperson-rorid" + uniqueSuffix,
       affiliationsData
     );
 
@@ -280,12 +280,12 @@ $(document).ready(function () {
  * updates IDs and labels to ensure uniqueness,
  * and appends it to the contributors group.
  */
-  $("#addContributorPerson").click(function () {
+  $("#button-contributor-addperson").click(function () {
     /**
      * The contributors group where new contributor person rows are appended.
      * @type {jQuery}
      */
-    var contributorGroup = $("#contributorsGroup");
+    var contributorGroup = $("#group-contributorperson");
 
     /**
      * The first contributor person row used as a template for cloning.
@@ -317,34 +317,34 @@ $(document).ready(function () {
 
     // Update the IDs of input fields to ensure uniqueness
     newContributorRow
-      .find("#inputContributorAffiliation")
-      .attr("id", "inputContributorAffiliation" + uniqueSuffix);
+      .find("#input-contributor-personaffiliation")
+      .attr("id", "input-contributor-personaffiliation" + uniqueSuffix);
     newContributorRow
-      .find("#hiddenContributorRorId")
-      .attr("id", "hiddenContributorRorId" + uniqueSuffix);
+      .find("#input-contributor-personrorid")
+      .attr("id", "input-contributor-personrorid" + uniqueSuffix);
     newContributorRow
-      .find("#inputContributorsPerRole")
-      .attr("id", "inputContributorsPerRole" + uniqueSuffix);
+      .find("#input-contributor-personrole")
+      .attr("id", "input-contributor-personrole" + uniqueSuffix);
     newContributorRow
-      .find("#inputContributorORCID")
-      .attr("id", "inputContributorORCID" + uniqueSuffix);
+      .find("#input-contributor-orcid")
+      .attr("id", "input-contributor-orcid" + uniqueSuffix);
     newContributorRow
-      .find("#inputContributorLastname")
-      .attr("id", "inputContributorLastname" + uniqueSuffix);
+      .find("#input-contributor-lastname")
+      .attr("id", "input-contributor-lastname" + uniqueSuffix);
     newContributorRow
-      .find("#inputContributorFirstname")
-      .attr("id", "inputContributorFirstname" + uniqueSuffix);
+      .find("#input-contributor-firstname")
+      .attr("id", "input-contributor-firstname" + uniqueSuffix);
 
     // Update the corresponding 'for' attributes in labels
     newContributorRow
-      .find("label[for='inputContributorORCID']")
-      .attr("for", "inputContributorORCID" + uniqueSuffix);
+      .find("label[for='input-contributor-orcid']")
+      .attr("for", "input-contributor-orcid" + uniqueSuffix);
     newContributorRow
-      .find("label[for='inputContributorLastname']")
-      .attr("for", "inputContributorLastname" + uniqueSuffix);
+      .find("label[for='input-contributor-lastname']")
+      .attr("for", "input-contributor-lastname" + uniqueSuffix);
     newContributorRow
-      .find("label[for='inputContributorFirstname']")
-      .attr("for", "inputContributorFirstname" + uniqueSuffix);
+      .find("label[for='input-contributor-firstname']")
+      .attr("for", "input-contributor-firstname" + uniqueSuffix);
 
     // Replace the add button with the remove button
     newContributorRow.find(".addContributorPerson").replaceWith(removeButton);
@@ -354,13 +354,13 @@ $(document).ready(function () {
 
     // Apply Tagify to the new Contributor Affiliations field
     autocompleteAffiliations(
-      "inputContributorAffiliation" + uniqueSuffix,
-      "hiddenContributorRorId" + uniqueSuffix,
+      "input-contributor-personaffiliation" + uniqueSuffix,
+      "input-contributor-personrorid" + uniqueSuffix,
       affiliationsData
     );
 
     // Initialize Tagify for the new Roles field
-    setupRolesDropdown(["person", "both"], "#inputContributorsPerRole" + uniqueSuffix);
+    setupRolesDropdown(["person", "both"], "#input-contributor-personrole" + uniqueSuffix);
 
     // Bind validation listeners to the new row
     bindValidationListeners(newContributorRow);
@@ -379,12 +379,12 @@ $(document).ready(function () {
  * updates IDs and labels to ensure uniqueness,
  * and appends it to the contributor organization group.
  */
-  $("#addContributor").click(function () {
+  $("#button-contributor-addorganisation").click(function () {
     /**
      * The contributor organization group where new contributor organization rows are appended.
      * @type {jQuery}
      */
-    var contributorGroup = $("#contributorOrganisationGroup");
+    var contributorGroup = $("#group-contributororganisation");
 
     /**
      * The first contributor organization row used as a template for cloning.
@@ -416,22 +416,22 @@ $(document).ready(function () {
 
     // Update the IDs of input fields to ensure uniqueness
     newContributorRow
-      .find("#inputOrganisationAffiliation")
-      .attr("id", "inputOrganisationAffiliation" + uniqueSuffix);
+      .find("#input-contributor-organisationaffiliation")
+      .attr("id", "input-contributor-organisationaffiliation" + uniqueSuffix);
     newContributorRow
-      .find("#hiddenOrganisationRorId")
-      .attr("id", "hiddenOrganisationRorId" + uniqueSuffix);
+      .find("#input-contributor-organisationrorid")
+      .attr("id", "input-contributor-organisationrorid" + uniqueSuffix);
     newContributorRow
-      .find("#inputContributorOrgaRole")
-      .attr("id", "inputContributorOrgaRole" + uniqueSuffix);
+      .find("#input-contributor-organisationrole")
+      .attr("id", "input-contributor-organisationrole" + uniqueSuffix);
     newContributorRow
-      .find("#inputOrganisationName")
-      .attr("id", "inputOrganisationName" + uniqueSuffix);
+      .find("#input-contributor-name")
+      .attr("id", "input-contributor-name" + uniqueSuffix);
 
     // Update the corresponding 'for' attributes in labels
     newContributorRow
-      .find("label[for='inputOrganisationName']")
-      .attr("for", "inputOrganisationName" + uniqueSuffix);
+      .find("label[for='input-contributor-name']")
+      .attr("for", "input-contributor-name" + uniqueSuffix);
 
     // Replace the add button with the remove button
     newContributorRow.find(".addContributor").replaceWith(removeButton);
@@ -441,13 +441,13 @@ $(document).ready(function () {
 
     // Apply Tagify to the new Organization Affiliations field
     autocompleteAffiliations(
-      "inputOrganisationAffiliation" + uniqueSuffix,
+      "input-contributor-organisationaffiliation" + uniqueSuffix,
       "hiddenOrganisationRorId" + uniqueSuffix,
       affiliationsData
     );
 
     // Initialize Tagify for the new Roles field
-    setupRolesDropdown(["institution", "both"], "#inputContributorOrgaRole" + uniqueSuffix);
+    setupRolesDropdown(["institution", "both"], "#input-contributor-organisationrole" + uniqueSuffix);
 
     // Event handler for the remove button in the new row
     newContributorRow.on("click", ".removeButton", function () {
@@ -474,8 +474,8 @@ $(document).ready(function () {
    * Event handler for the "Add TSC" button click.
    * Clones the last TSC row, resets input fields, updates IDs, and appends it to the TSC group.
    */
-  $("#tscAddButton").click(function () {
-    var tscGroup = $("#tscGroup");
+  $("#button-stc-add").click(function () {
+    var tscGroup = $("#group-stc");
     var lastTscLine = tscGroup.children().last();
 
     // Increment the unique row counter
@@ -506,7 +506,7 @@ $(document).ready(function () {
     }
 
     // Replace the Add button with a Remove button
-    newTscLine.find("#tscAddButton").replaceWith(createRemoveButton());
+    newTscLine.find("#button-stc-add").replaceWith(createRemoveButton());
 
     // Append the new TSC line
     tscGroup.append(newTscLine);
@@ -553,8 +553,8 @@ $(document).ready(function () {
    * Event handler for the "Add Related Work" button click.
    * Clones the first related work row, resets input fields, and appends it to the related work group.
    */
-  $("#addRelatedWork").click(function () {
-    var relatedworkGroup = $("#relatedworkGroup");
+  $("#button-relatedwork-add").click(function () {
+    var relatedworkGroup = $("#group-relatedwork");
     // First row used as a template
     var firstRelatedWorkLine = relatedworkGroup.children().first();
 
@@ -571,7 +571,7 @@ $(document).ready(function () {
     }
 
     // Replace the add button with the remove button
-    newRelatedWorkRow.find("#addRelatedWork").replaceWith(removeButton);
+    newRelatedWorkRow.find("#button-relatedwork-add").replaceWith(removeButton);
 
     // Append the new related work row to the DOM
     relatedworkGroup.append(newRelatedWorkRow);
@@ -586,12 +586,9 @@ $(document).ready(function () {
    * Event handler for the "Add Funding Reference" button click.
    * Clones the first funding reference row, resets input fields, and appends it to the funding reference group.
    */
-  $("#addFundingReference").click(function () {
-    var fundingreferenceGroup = $("#fundingreferenceGroup");
-    // First row used as a template
+  $("#button-fundingreference-add").click(function () {
+    var fundingreferenceGroup = $("#group-fundingreference");
     var firstFundingReferenceLine = fundingreferenceGroup.children().first();
-
-    // Clone the template
     var newFundingReferenceRow = firstFundingReferenceLine.clone();
 
     // Clear input fields and remove validation feedback
@@ -614,10 +611,14 @@ $(document).ready(function () {
       $(this).closest(".row").remove();
     });
 
-    // Initialize autocomplete for the new input field
-    setUpAutocompleteFunder(newFundingReferenceRow.find(".inputFunder"));
+    // Destroy autocomplete
+    const newInput = newFundingReferenceRow.find(".inputFunder");
+    if (newInput.data('ui-autocomplete')) {
+      newInput.autocomplete('destroy');
+    }
 
-    setUpAutocompleteFunder();
+    // Initialize autocomplete again for the new row
+    setUpAutocompleteFunder(newInput[0]);
   });
 
   var labData;
@@ -625,7 +626,7 @@ $(document).ready(function () {
   // Load lab data from JSON and initialize Tagify on the first laboratory row
   $.getJSON("json/msl-labs.json", function (data) {
     labData = data;
-    var firstRow = $("#laboratoryGroup .row").first();
+    var firstRow = $("#group-originatinglaboratory .row").first();
     initializeTagify(firstRow, data);
   });
 
@@ -635,8 +636,8 @@ $(document).ready(function () {
    * Event handler for the "Add Laboratory" button click.
    * Clones the first laboratory row, resets input fields, updates IDs, and appends it to the laboratory group.
    */
-  $("#addLaboratory").click(function () {
-    var laboratoryGroup = $("#laboratoryGroup");
+  $("#button-originatinglaboratory-add").click(function () {
+    var laboratoryGroup = $("#group-originatinglaboratory");
     var firstOriginatingLaboratoryLine = laboratoryGroup.children().first();
 
     var newOriginatingLaboratoryRow = firstOriginatingLaboratoryLine.clone();
@@ -673,6 +674,26 @@ $(document).ready(function () {
     // Event handler for the remove button
     newOriginatingLaboratoryRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
+    });
+  });
+
+  /**
+  * Initializes the event handler once the document is fully loaded.
+  */
+  $(document).ready(function () {
+    /**
+     * Click event handler for showing the changelog modal.
+     *
+     * @param {Event} event - The event object associated with the click action.
+     */
+    $('#button-changelog-show').click(function (event) {
+      event.preventDefault(); // Prevents the default behavior of the link.
+
+      // Loads the content from 'doc/changelog.html' into the modal's content area.
+      $('#panel-changelog-content').load('doc/changelog.html', function () {
+        // Displays the modal after the content has been successfully loaded.
+        $('#modal-changelog').modal('show');
+      });
     });
   });
 

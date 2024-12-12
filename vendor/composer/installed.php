@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'mde2msl/mde2msl',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '0bee92e587fc09c6acc0d0aefde23bb65b8999f9',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => NULL,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -47,9 +47,9 @@
             'dev_requirement' => true,
         ),
         'mde2msl/mde2msl' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '0bee92e587fc09c6acc0d0aefde23bb65b8999f9',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => NULL,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

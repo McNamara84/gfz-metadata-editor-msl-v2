@@ -53,28 +53,11 @@ $optionlanguage = generateOptions(
     "language_id",
     "name"
 );
-$optionrole = generateOptions(
-    $connection,
-    "SELECT role_id, name FROM Role",
-    "role_id",
-    "name"
-);
+
 $optiontitle_type = generateOptions(
     $connection,
     "SELECT title_type_id, name FROM Title_Type",
     "title_type_id",
-    "name"
-);
-$optionrelation = generateOptions(
-    $connection,
-    "SELECT relation_id, name FROM Relation",
-    "relation_id",
-    "name"
-);
-$optionidentifier_type = generateOptions(
-    $connection,
-    "SELECT identifier_type_id, name FROM Identifier_Type",
-    "identifier_type_id",
     "name"
 );
 
@@ -115,6 +98,7 @@ include("formgroups/dates.html");
 include("formgroups/spatialtemporalcoverage.html");
 include("formgroups/relatedwork.html");
 include("formgroups/fundingreference.html");
+include("modals.html");
 include("footer.html");
 
 // Process form submission

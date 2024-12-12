@@ -137,11 +137,9 @@ class VocabController
     {
         // Direkt Version 1.3 prüfen, da wir wissen dass diese existiert
         $url = "{$baseUrl}1.3/editor_1-3.json";
-        error_log("Checking URL directly: " . $url);
 
         $headers = @get_headers($url);
         if ($headers && strpos($headers[0], '200') !== false) {
-            error_log("Found version 1.3");
             return "1.3";
         }
 
@@ -149,17 +147,14 @@ class VocabController
         $versions = [];
         for ($i = 1; $i <= 10; $i++) {
             $url = "{$baseUrl}1.{$i}/editor_1-{$i}.json";
-            error_log("Checking URL: " . $url);
 
             $headers = @get_headers($url);
             if ($headers && strpos($headers[0], '200') !== false) {
                 $versions[] = "1.{$i}";
-                error_log("Found version 1.{$i}");
             }
         }
 
         $latestVersion = end($versions);
-        error_log("Latest version found: " . ($latestVersion ?: "none"));
 
         return $latestVersion;
     }
@@ -172,7 +167,6 @@ class VocabController
      */
     private function processItem($item)
     {
-        error_log("Processing item: " . json_encode($item));
 
         // Synonyms as description
         $description = '';
@@ -196,7 +190,6 @@ class VocabController
             }
         }
 
-        error_log("Processed item: " . json_encode($newItem));
         return $newItem;
     }
 
@@ -209,19 +202,14 @@ class VocabController
     public function getMslVocab($vars = [])
     {
         try {
-            error_log("Starting getMslVocab");
-            error_log("Base URL: " . $this->mslVocabsUrl);
-
             $jsonDir = __DIR__ . '/../../../json/';
             $outputFile = $jsonDir . 'msl-vocabularies.json';
 
             if (!file_exists($jsonDir)) {
-                error_log("Creating JSON directory: " . $jsonDir);
                 mkdir($jsonDir, 0755, true);
             }
 
             // Get latest version
-            error_log("Getting latest version...");
             $latestVersion = $this->getLatestVersion($this->mslVocabsUrl);
             if (!$latestVersion) {
                 throw new Exception("No vocabulary version found");
@@ -229,7 +217,6 @@ class VocabController
 
             // Construct URL for the latest version
             $url = "{$this->mslVocabsUrl}{$latestVersion}/editor_" . str_replace('.', '-', $latestVersion) . ".json";
-            error_log("Constructed URL: " . $url);
 
             // Download content
             $jsonContent = $this->downloadContent($url);
@@ -237,15 +224,11 @@ class VocabController
                 throw new Exception("Failed to download vocabulary data from URL: " . $url);
             }
 
-            error_log("Downloaded content length: " . strlen($jsonContent));
-
             // Decode JSON
             $data = json_decode($jsonContent, true);
             if (json_last_error() !== JSON_ERROR_NONE) {
                 throw new Exception("Failed to parse vocabulary data: " . json_last_error_msg());
             }
-
-            error_log("Decoded JSON data count: " . count($data));
 
             // Process each root item
             $processedData = [];
@@ -253,14 +236,10 @@ class VocabController
                 $processedData[] = $this->processItem($item);
             }
 
-            error_log("Processed items count: " . count($processedData));
-
             // Save processed data
             if (file_put_contents($outputFile, json_encode($processedData, JSON_PRETTY_PRINT)) === false) {
                 throw new Exception("Failed to save processed vocabulary data");
             }
-
-            error_log("Successfully saved vocabulary data to: " . $outputFile);
 
             // Return success response
             header('Content-Type: application/json');
@@ -271,7 +250,6 @@ class VocabController
             ]);
 
         } catch (Exception $e) {
-            error_log("Error in getMslVocab: " . $e->getMessage());
             http_response_code(500);
             echo json_encode([
                 'error' => $e->getMessage()
@@ -288,8 +266,6 @@ class VocabController
      */
     private function downloadContent($url)
     {
-        error_log("Downloading content from: " . $url);
-
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -297,11 +273,6 @@ class VocabController
 
         $content = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-        error_log("HTTP Code: " . $httpCode);
-        if ($content === false) {
-            error_log("Curl error: " . curl_error($ch));
-        }
 
         curl_close($ch);
 
@@ -516,11 +487,9 @@ class VocabController
      */
     public function getAllLicenses()
     {
-        error_log("getAllLicenses called");
         try {
             $this->getLicensesByType(false);
         } catch (Exception $e) {
-            error_log("Error in getAllLicenses: " . $e->getMessage());
             http_response_code(500);
             echo json_encode(['error' => $e->getMessage()]);
         }
@@ -533,12 +502,10 @@ class VocabController
      */
     public function getSoftwareLicenses()
     {
-        error_log("getSoftwareLicenses called");
         try {
 
             $this->getLicensesByType(true);
         } catch (Exception $e) {
-            error_log("Error in getSoftwareLicenses: " . $e->getMessage());
             http_response_code(500);
             echo json_encode(['error' => $e->getMessage()]);
         }
@@ -797,6 +764,123 @@ class VocabController
             echo json_encode([
                 'error' => $e->getMessage()
             ]);
+        }
+    }
+
+    /**
+     * Get all free keywords from the database
+     * 
+     * @return void Outputs JSON response directly
+     */
+    public function getAllFreeKeywords(): void
+    {
+        try {
+            global $connection;
+
+            $sql = 'SELECT free_keyword FROM Free_Keywords ORDER BY free_keyword ASC';
+            $result = $connection->query($sql);
+
+            if ($result === false) {
+                throw new Exception("Database query failed: " . $connection->error);
+            }
+
+            $keywords = [];
+            while ($row = $result->fetch_assoc()) {
+                $keywords[] = ['free_keyword' => $row['free_keyword']];
+            }
+
+            if (empty($keywords)) {
+                http_response_code(404);
+                echo json_encode(['error' => 'No keywords found']);
+                return;
+            }
+
+            http_response_code(200);
+            header('Content-Type: application/json');
+            echo json_encode($keywords);
+
+        } catch (Exception $e) {
+            error_log("API Error in getAllFreeKeywords: " . $e->getMessage());
+            http_response_code(500);
+            echo json_encode(['error' => 'An error occurred while retrieving keywords']);
+        }
+    }
+
+    /**
+     * Get only curated free keywords from the database
+     * 
+     * @return void Outputs JSON response directly
+     */
+    public function getCuratedFreeKeywords(): void
+    {
+        try {
+            global $connection;
+
+            $sql = 'SELECT free_keyword FROM Free_Keywords WHERE isCurated = 1 ORDER BY free_keyword ASC';
+            $result = $connection->query($sql);
+
+            if ($result === false) {
+                throw new Exception("Database query failed: " . $connection->error);
+            }
+
+            $keywords = [];
+            while ($row = $result->fetch_assoc()) {
+                $keywords[] = ['free_keyword' => $row['free_keyword']];
+            }
+
+            if (empty($keywords)) {
+                http_response_code(404);
+                echo json_encode(['error' => 'No curated keywords found']);
+                return;
+            }
+
+            http_response_code(200);
+            header('Content-Type: application/json');
+            echo json_encode($keywords);
+
+        } catch (Exception $e) {
+            error_log("API Error in getCuratedFreeKeywords: " . $e->getMessage());
+            http_response_code(500);
+            echo json_encode(['error' => 'An error occurred while retrieving curated keywords']);
+        }
+    }
+
+    /**
+     * Get only uncurated free keywords from the database
+     * 
+     * @return void Outputs JSON response directly
+     */
+    public function getUncuratedFreeKeywords(): void
+    {
+        try {
+            global $connection;
+
+            $sql = 'SELECT free_keyword FROM Free_Keywords WHERE isCurated = 0 ORDER BY free_keyword ASC';
+            $result = $connection->query($sql);
+
+            if ($result === false) {
+                throw new Exception("Database query failed: " . $connection->error);
+            }
+
+            $keywords = [];
+            while ($row = $result->fetch_assoc()) {
+                $keywords[] = ['free_keyword' => $row['free_keyword']];
+            }
+
+            if (empty($keywords)) {
+                http_response_code(404);
+                echo json_encode(['error' => 'No uncurated keywords found']);
+                return;
+            }
+
+            http_response_code(200);
+            header('Content-Type: application/json');
+            echo json_encode($keywords);
+
+        } catch (Exception $e) {
+            error_log("API Error in getUncuratedFreeKeywords: " . $e->getMessage());
+            http_response_code(500);
+            echo json_encode(['error' => 'An error occurred while retrieving uncurated keywords']);
         }
     }
 }

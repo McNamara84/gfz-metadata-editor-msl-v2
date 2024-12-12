@@ -1,50 +1,28 @@
 $(document).ready(function () {
-  function setupAutocomplete(inputSelector, hiddenInputSelector) {
-    $(inputSelector).autocomplete({
-      source: function (request, response) {
-        $.ajax({
-          url: "api.php?action=getKeywords&curationType=isCurated",
-          dataType: "json",
-          success: function (data) {
-            var keywords = data.map(function (item) {
-              return item.free_keyword;
-            });
-            response(keywords);
-          },
-        });
-      },
-      select: function (event, ui) {
-        $(hiddenInputSelector).val(ui.item.value);
-      },
-    });
-  }
-
   // Alle Optionen klonen und als Variable zwischenspeichern
-  var allOptions = $("#inputRights option").clone();
+  var allOptions = $("#input-rights-license option").clone();
 
   // Event Handler für Änderungen am Resource Type Select Element
-  $("#inputResourceType").change(function () {
-    var selectedResourceType = $("#inputResourceType option:selected").text().trim();
+  $("#input-resourceinformation-resourcetype").change(function () {
+    var selectedResourceType = $("#input-resourceinformation-resourcetype option:selected").text().trim();
 
     // Prüfung ob "Software" ausgewählt wurde
     if (selectedResourceType === "Software") {
-      $("#inputRights").empty();
+      $("#input-rights-license").empty();
 
       // Filtern der Optionen nach "MIT License" und "Apache License 2.0"
       allOptions.each(function () {
         var optionText = $(this).text().trim();
 
         if (optionText === "MIT License" || optionText === "Apache License 2.0") {
-          $("#inputRights").append($(this).clone());
+          $("#input-rights-license").append($(this).clone());
         }
       });
     } else {
       // Optionen zurücksetzen auf Klon der ursprünglichen Optionen
-      $("#inputRights").empty().append(allOptions.clone());
+      $("#input-rights-license").empty().append(allOptions.clone());
     }
   });
-  setupAutocomplete("#inputAuthorAffiliation", "#hiddenAuthorRorId");
-  setupAutocomplete("#inputCPAffiliation", "#hiddenCPRorId");
 });
 
 /**
@@ -77,11 +55,11 @@ function isCurrentAffiliation(affiliation) {
  * //   <input name="orcids[]" pattern="^[0-9]{4}-[0-9]{4}-[0-9]{4}-([0-9]{4}|[0-9]{3}X)$" />
  * //   <input name="familynames[]" />
  * //   <input name="givennames[]" />
- * //   <input id="inputAuthorAffiliation" /> // Tagify field
- * //   <input id="hiddenAuthorRorId" />
+ * //   <input id="input-author-affiliation" /> // Tagify field
+ * //   <input id="input-author-rorid" />
  * // </div>
  */
-$('#authorGroup').on('blur', 'input[name="orcids[]"]', function () {
+$('#group-author').on('blur', 'input[name="orcids[]"]', function () {
   const orcidInput = $(this);
   const row = orcidInput.closest('[data-creator-row]');
   const orcid = orcidInput.val();
@@ -141,7 +119,7 @@ $('#authorGroup').on('blur', 'input[name="orcids[]"]', function () {
         console.log('Collected ROR IDs:', Array.from(rorIds));
 
         // Set Tagify tags
-        const affiliationInput = row.find('input[id^="inputAuthorAffiliation"]')[0];
+        const affiliationInput = row.find('input[id^="input-author-affiliation"]')[0];
         if (affiliationInput.tagify) {
           affiliationInput.tagify.removeAllTags();
           if (affiliationObjects.length > 0) {
@@ -152,7 +130,7 @@ $('#authorGroup').on('blur', 'input[name="orcids[]"]', function () {
         // Fill hidden ROR ID field
         const rorIdsArray = Array.from(rorIds);
         if (rorIdsArray.length > 0) {
-          row.find('input[id^="hiddenAuthorRorId"]').val(rorIdsArray.join(','));
+          row.find('input[id^="input-author-rorid"]').val(rorIdsArray.join(','));
         }
       })
       .catch(error => {
@@ -180,10 +158,10 @@ $('#authorGroup').on('blur', 'input[name="orcids[]"]', function () {
  * // <input name="cbORCID[]" pattern="^[0-9]{4}-[0-9]{4}-[0-9]{4}-([0-9]{4}|[0-9]{3}X)$" />
  * // <input name="cbPersonLastname[]" />
  * // <input name="cbPersonFirstname[]" />
- * // <input id="inputContributorAffiliation" /> // Tagify field
- * // <input id="hiddenContributorRorId" />
+ * // <input id="input-contributor-personaffiliation" /> // Tagify field
+ * // <input id="input-contributor-personrorid" />
  */
-$('#contributorsGroup').on('blur', 'input[name="cbORCID[]"]', function () {
+$('#group-contributorperson').on('blur', 'input[name="cbORCID[]"]', function () {
   const orcidInput = $(this);
   const row = orcidInput.closest('[contributor-person-row]');
   const orcid = orcidInput.val();
@@ -241,7 +219,7 @@ $('#contributorsGroup').on('blur', 'input[name="cbORCID[]"]', function () {
         const affiliationObjects = Array.from(affiliationSet).map(name => ({ value: name }));
 
         // Set Tagify tags
-        const affiliationInput = row.find('input[id^="inputContributorAffiliation"]')[0];
+        const affiliationInput = row.find('input[id^="input-contributor-personaffiliation"]')[0];
         if (affiliationInput.tagify) {
           affiliationInput.tagify.removeAllTags();
           if (affiliationObjects.length > 0) {
@@ -252,7 +230,7 @@ $('#contributorsGroup').on('blur', 'input[name="cbORCID[]"]', function () {
         // Fill hidden ROR ID field
         const rorIdsArray = Array.from(rorIds);
         if (rorIdsArray.length > 0) {
-          row.find('input[id^="hiddenContributorRorId"]').val(rorIdsArray.join(','));
+          row.find('input[id^="input-contributor-personrorid"]').val(rorIdsArray.join(','));
         }
       })
       .catch(error => {

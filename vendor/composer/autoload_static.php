@@ -2973,6 +2973,10 @@ class ComposerStaticInitefe149a1afac895f65c61fc673b16ea7
         'staabm\\SideEffectsDetector\\SideEffect' => __DIR__ . '/..' . '/staabm/side-effects-detector/lib/SideEffect.php',
         'staabm\\SideEffectsDetector\\SideEffectsDetector' => __DIR__ . '/..' . '/staabm/side-effects-detector/lib/SideEffectsDetector.php',
         'staabm\\SideEffectsDetector\\Tests\\SideEffectsDetectorTest' => __DIR__ . '/..' . '/staabm/side-effects-detector/tests/SideEffectsDetectorTest.php',
+        'bar\\baz\\source_with_namespace' => __DIR__ . '/..' . '/phpunit/php-code-coverage/tests/_files/source_with_namespace.php',
+        'file' => __DIR__ . '/..' . '/sebastian/code-unit/tests/_fixture/function.php',
+        'staabm\\SideEffectsDetector\\SideEffect' => __DIR__ . '/..' . '/staabm/side-effects-detector/lib/SideEffect.php',
+        'staabm\\SideEffectsDetector\\SideEffectsDetector' => __DIR__ . '/..' . '/staabm/side-effects-detector/lib/SideEffectsDetector.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
