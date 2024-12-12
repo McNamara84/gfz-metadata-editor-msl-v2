@@ -593,7 +593,7 @@ $(document).ready(function () {
 
     // Clear input fields and remove validation feedback
     newFundingReferenceRow.find("input").val("").removeClass("is-invalid");
-    newFundingReferenceRow.find(".invalid-feedback").hide();
+    newFundingReferenceRow.find(".invalid-feedback, .valid-feedback").css("display", "");
 
     // Replace the add button with the remove button
     newFundingReferenceRow.find(".addFundingReference").replaceWith(removeButton);
@@ -605,6 +605,9 @@ $(document).ready(function () {
     if (typeof replaceHelpButtonInClonedRows === 'function') {
       replaceHelpButtonInClonedRows(newFundingReferenceRow);
     }
+
+    // Bind validation listeners to the new row
+    bindValidationListeners(newFundingReferenceRow);
 
     // Event handler for the remove button
     newFundingReferenceRow.on("click", ".removeButton", function () {
