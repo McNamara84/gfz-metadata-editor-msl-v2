@@ -42,14 +42,20 @@ http://www.altova.com/mapforce
 							<xsl:for-each select="*[local-name()='Affiliations' and namespace-uri()='']/*[local-name()='Affiliation' and namespace-uri()='']">
 								<xsl:variable name="var4_cur" select="."/>
 								<affiliation>
-									<xsl:attribute name="affiliationIdentifierScheme" namespace="">ROR</xsl:attribute>
-									<xsl:attribute name="schemeURI" namespace="">https://ror.org</xsl:attribute>
-									<xsl:for-each select="*[local-name()='rorId' and namespace-uri()='']">
-										<xsl:variable name="var5_cur" select="."/>
-										<xsl:attribute name="affiliationIdentifier" namespace="">
-											<xsl:value-of select="concat('https://ror.org/', .)"/>
-										</xsl:attribute>
-									</xsl:for-each>
+									<xsl:if test="*[local-name()='rorId' and namespace-uri()='']">
+										<xsl:attribute name="affiliationIdentifierScheme" namespace="">ROR</xsl:attribute>
+									</xsl:if>
+									<xsl:if test="*[local-name()='rorId' and namespace-uri()='']">
+										<xsl:attribute name="schemeURI" namespace="">https://ror.org</xsl:attribute>
+									</xsl:if>
+									<xsl:if test="*[local-name()='rorId' and namespace-uri()='']">
+										<xsl:for-each select="*[local-name()='rorId' and namespace-uri()='']">
+											<xsl:variable name="var5_cur" select="."/>
+											<xsl:attribute name="affiliationIdentifier" namespace="">
+												<xsl:value-of select="concat('https://ror.org/', .)"/>
+											</xsl:attribute>
+										</xsl:for-each>
+									</xsl:if>
 									<xsl:value-of select="*[local-name()='name' and namespace-uri()='']"/>
 								</affiliation>
 							</xsl:for-each>
@@ -139,14 +145,20 @@ http://www.altova.com/mapforce
 								<xsl:for-each select="*[local-name()='Affiliations' and namespace-uri()='']/*[local-name()='Affiliation' and namespace-uri()='']">
 									<xsl:variable name="var11_cur" select="."/>
 									<affiliation>
-										<xsl:attribute name="affiliationIdentifierScheme" namespace="">ROR</xsl:attribute>
-										<xsl:attribute name="schemeURI" namespace="">https://ror.org</xsl:attribute>
-										<xsl:for-each select="*[local-name()='rorId' and namespace-uri()='']">
-											<xsl:variable name="var12_cur" select="."/>
-											<xsl:attribute name="affiliationIdentifier" namespace="">
-												<xsl:value-of select="concat('https://ror.org/', .)"/>
-											</xsl:attribute>
-										</xsl:for-each>
+										<xsl:if test="*[local-name()='rorId' and namespace-uri()='']">
+											<xsl:attribute name="affiliationIdentifierScheme" namespace="">ROR</xsl:attribute>
+										</xsl:if>
+										<xsl:if test="*[local-name()='rorId' and namespace-uri()='']">
+											<xsl:attribute name="schemeURI" namespace="">https://ror.org</xsl:attribute>
+										</xsl:if>
+										<xsl:if test="*[local-name()='rorId' and namespace-uri()='']">
+											<xsl:for-each select="*[local-name()='rorId' and namespace-uri()='']">
+												<xsl:variable name="var12_cur" select="."/>
+												<xsl:attribute name="affiliationIdentifier" namespace="">
+													<xsl:value-of select="concat('https://ror.org/', .)"/>
+												</xsl:attribute>
+											</xsl:for-each>
+										</xsl:if>
 										<xsl:value-of select="*[local-name()='name' and namespace-uri()='']"/>
 									</affiliation>
 								</xsl:for-each>
@@ -186,8 +198,12 @@ http://www.altova.com/mapforce
 								<xsl:for-each select="*[local-name()='Affiliations' and namespace-uri()='']/*[local-name()='Affiliation' and namespace-uri()='']">
 									<xsl:variable name="var15_cur" select="."/>
 									<affiliation>
-										<xsl:attribute name="affiliationIdentifierScheme" namespace="">ROR</xsl:attribute>
-										<xsl:attribute name="schemeURI" namespace="">https://ror.org</xsl:attribute>
+										<xsl:if test="*[local-name()='rorId' and namespace-uri()='']">
+											<xsl:attribute name="affiliationIdentifierScheme" namespace="">ROR</xsl:attribute>
+										</xsl:if>
+										<xsl:if test="*[local-name()='rorId' and namespace-uri()='']">
+											<xsl:attribute name="schemeURI" namespace="">https://ror.org</xsl:attribute>
+										</xsl:if>
 										<xsl:for-each select="*[local-name()='rorId' and namespace-uri()='']">
 											<xsl:variable name="var16_cur" select="."/>
 											<xsl:attribute name="affiliationIdentifier" namespace="">
@@ -222,8 +238,12 @@ http://www.altova.com/mapforce
 								<xsl:for-each select="*[local-name()='Affiliations' and namespace-uri()='']/*[local-name()='Affiliation' and namespace-uri()='']">
 									<xsl:variable name="var19_cur" select="."/>
 									<affiliation>
-										<xsl:attribute name="affiliationIdentifierScheme" namespace="">ROR</xsl:attribute>
-										<xsl:attribute name="schemeURI" namespace="">https://ror.org</xsl:attribute>
+										<xsl:if test="*[local-name()='rorId' and namespace-uri()='']">
+											<xsl:attribute name="affiliationIdentifierScheme" namespace="">ROR</xsl:attribute>
+										</xsl:if>
+										<xsl:if test="*[local-name()='rorId' and namespace-uri()='']">
+											<xsl:attribute name="schemeURI" namespace="">https://ror.org</xsl:attribute>
+										</xsl:if>
 										<xsl:for-each select="*[local-name()='rorId' and namespace-uri()='']">
 											<xsl:variable name="var20_cur" select="."/>
 											<xsl:attribute name="affiliationIdentifier" namespace="">
@@ -249,8 +269,12 @@ http://www.altova.com/mapforce
 								<xsl:for-each select="*[local-name()='Affiliations' and namespace-uri()='']/*[local-name()='Affiliation' and namespace-uri()='']">
 									<xsl:variable name="var22_cur" select="."/>
 									<affiliation>
-										<xsl:attribute name="affiliationIdentifierScheme" namespace="">ROR</xsl:attribute>
-										<xsl:attribute name="schemeURI" namespace="">https://ror.org</xsl:attribute>
+										<xsl:if test="*[local-name()='rorId' and namespace-uri()='']">
+											<xsl:attribute name="affiliationIdentifierScheme" namespace="">ROR</xsl:attribute>
+										</xsl:if>
+										<xsl:if test="*[local-name()='rorId' and namespace-uri()='']">
+											<xsl:attribute name="schemeURI" namespace="">https://ror.org</xsl:attribute>
+										</xsl:if>
 										<xsl:for-each select="*[local-name()='rorId' and namespace-uri()='']">
 											<xsl:variable name="var23_cur" select="."/>
 											<xsl:attribute name="affiliationIdentifier" namespace="">
@@ -461,13 +485,15 @@ http://www.altova.com/mapforce
 							<funderName>
 								<xsl:value-of select="*[local-name()='funder' and namespace-uri()='']"/>
 							</funderName>
-							<funderIdentifier>
-								<xsl:attribute name="funderIdentifierType" namespace="">
-									<xsl:value-of select="*[local-name()='funderidtyp' and namespace-uri()='']"/>
-								</xsl:attribute>
-								<xsl:attribute name="schemeURI" namespace="">https://www.crossref.org/services/funder-registry/</xsl:attribute>
-								<xsl:value-of select="concat('http://dx.doi.org/10.13039/', number(*[local-name()='funderid' and namespace-uri()='']))"/>
-							</funderIdentifier>
+							<xsl:if test="(true() and (string-length(string(number(*[local-name()='funderid' and namespace-uri()='']))) &gt; 3))">
+								<funderIdentifier>
+									<xsl:attribute name="funderIdentifierType" namespace="">
+										<xsl:value-of select="*[local-name()='funderidtyp' and namespace-uri()='']"/>
+									</xsl:attribute>
+									<xsl:attribute name="schemeURI" namespace="">https://www.crossref.org/services/funder-registry/</xsl:attribute>
+									<xsl:value-of select="concat('http://dx.doi.org/10.13039/', *[local-name()='funderid' and namespace-uri()=''])"/>
+								</funderIdentifier>
+							</xsl:if>
 							<awardNumber>
 								<xsl:value-of select="*[local-name()='grantnumber' and namespace-uri()='']"/>
 							</awardNumber>
