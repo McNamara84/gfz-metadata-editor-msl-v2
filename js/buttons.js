@@ -266,7 +266,7 @@ $(document).ready(function () {
     );
 
     // Bind validation listeners to the new row
-    bindValidationListeners(newAuthorRow);
+    bindValidationListeners(newCPRow);
 
     // Event handler for the remove button
     newCPRow.on("click", ".removeButton", function () {
