@@ -27,6 +27,8 @@ use function is_file;
 use function is_readable;
 use function is_string;
 use function ltrim;
+use function ob_get_clean;
+use function ob_start;
 use function preg_match;
 use function preg_replace;
 use function preg_split;
@@ -43,6 +45,7 @@ use function unserialize;
 use function var_export;
 use PHPUnit\Event\Code\Phpt;
 use PHPUnit\Event\Code\ThrowableBuilder;
+use PHPUnit\Event\Facade;
 use PHPUnit\Event\Facade as EventFacade;
 use PHPUnit\Event\NoPreviousThrowableException;
 use PHPUnit\Framework\Assert;
@@ -60,12 +63,13 @@ use PHPUnit\Util\PHP\JobRunnerRegistry;
 use SebastianBergmann\CodeCoverage\Data\RawCodeCoverageData;
 use SebastianBergmann\CodeCoverage\InvalidArgumentException;
 use SebastianBergmann\CodeCoverage\ReflectionException;
-use SebastianBergmann\CodeCoverage\StaticAnalysisCacheNotConfiguredException;
 use SebastianBergmann\CodeCoverage\Test\TestSize\TestSize;
 use SebastianBergmann\CodeCoverage\Test\TestStatus\TestStatus;
 use SebastianBergmann\CodeCoverage\TestIdMissingException;
 use SebastianBergmann\CodeCoverage\UnintentionallyCoveredCodeException;
 use SebastianBergmann\Template\Template;
+use staabm\SideEffectsDetector\SideEffect;
+use staabm\SideEffectsDetector\SideEffectsDetector;
 use Throwable;
 
 /**
@@ -85,15 +89,9 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
      * Constructs a test case with the given filename.
      *
      * @param non-empty-string $filename
-     *
-     * @throws Exception
      */
     public function __construct(string $filename)
     {
-        if (!is_file($filename)) {
-            throw new FileDoesNotExistException($filename);
-        }
-
         $this->filename = $filename;
     }
 
@@ -114,7 +112,6 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
      * @throws InvalidArgumentException
      * @throws NoPreviousThrowableException
      * @throws ReflectionException
-     * @throws StaticAnalysisCacheNotConfiguredException
      * @throws TestIdMissingException
      * @throws UnintentionallyCoveredCodeException
      *
@@ -195,6 +192,8 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
                 true,
             ),
         );
+
+        Facade::emitter()->testRunnerFinishedChildProcess($jobResult->stdout(), $jobResult->stderr());
 
         $this->output = $jobResult->stdout();
 
@@ -423,17 +422,26 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
             return false;
         }
 
-        $jobResult = JobRunnerRegistry::run(
-            new Job(
-                $this->render($sections['SKIPIF']),
-                $this->stringifyIni($settings),
-            ),
-        );
+        $skipIfCode = $this->render($sections['SKIPIF']);
 
-        if (!strncasecmp('skip', ltrim($jobResult->stdout()), 4)) {
+        if ($this->shouldRunInSubprocess($sections, $skipIfCode)) {
+            $jobResult = JobRunnerRegistry::run(
+                new Job(
+                    $skipIfCode,
+                    $this->stringifyIni($settings),
+                ),
+            );
+            $output = $jobResult->stdout();
+
+            Facade::emitter()->testRunnerFinishedChildProcess($output, $jobResult->stderr());
+        } else {
+            $output = $this->runCodeInLocalSandbox($skipIfCode);
+        }
+
+        if (!strncasecmp('skip', ltrim($output), 4)) {
             $message = '';
 
-            if (preg_match('/^\s*skip\s*(.+)\s*/i', $jobResult->stdout(), $skipMatch)) {
+            if (preg_match('/^\s*skip\s*(.+)\s*/i', $output, $skipMatch)) {
                 $message = substr($skipMatch[1], 2);
             }
 
@@ -453,18 +461,70 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
     /**
      * @param array<non-empty-string, non-empty-string> $sections
      */
+    private function shouldRunInSubprocess(array $sections, string $cleanCode): bool
+    {
+        if (isset($sections['INI'])) {
+            // to get per-test INI settings, we need a dedicated subprocess
+            return true;
+        }
+
+        $detector    = new SideEffectsDetector;
+        $sideEffects = $detector->getSideEffects($cleanCode);
+
+        if ($sideEffects === []) {
+            return false; // no side-effects
+        }
+
+        foreach ($sideEffects as $sideEffect) {
+            if (
+                $sideEffect === SideEffect::STANDARD_OUTPUT || // stdout is fine, we will catch it using output-buffering
+                $sideEffect === SideEffect::INPUT_OUTPUT // IO is fine, as it doesn't pollute the main process
+            ) {
+                continue;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private function runCodeInLocalSandbox(string $code): string
+    {
+        $code = preg_replace('/^<\?(?:php)?|\?>\s*+$/', '', $code);
+        $code = preg_replace('/declare\S?\([^)]+\)\S?;/', '', $code);
+
+        // wrap in immediately invoked function to isolate local-side-effects of $code from our own process
+        $code = '(function() {' . $code . '})();';
+        ob_start();
+        @eval($code);
+
+        return ob_get_clean();
+    }
+
+    /**
+     * @param array<non-empty-string, non-empty-string> $sections
+     */
     private function runClean(array $sections, bool $collectCoverage): void
     {
         if (!isset($sections['CLEAN'])) {
             return;
         }
 
-        JobRunnerRegistry::run(
-            new Job(
-                $this->render($sections['CLEAN']),
-                $this->settings($collectCoverage),
-            ),
-        );
+        $cleanCode = $this->render($sections['CLEAN']);
+
+        if ($this->shouldRunInSubprocess($sections, $cleanCode)) {
+            $result = JobRunnerRegistry::run(
+                new Job(
+                    $cleanCode,
+                    $this->settings($collectCoverage),
+                ),
+            );
+
+            Facade::emitter()->testRunnerFinishedChildProcess($result->stdout(), $result->stderr());
+        } else {
+            $this->runCodeInLocalSandbox($cleanCode);
+        }
     }
 
     /**
