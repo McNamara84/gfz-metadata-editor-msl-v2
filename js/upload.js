@@ -58,6 +58,8 @@ function handleXmlFile(file) {
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(event.target.result, 'text/xml');
 
+            console.log('Parsed XML:', xmlDoc); // Debug-Ausgabe
+
             // Check if parsing was successful
             if (xmlDoc.getElementsByTagName('parsererror').length > 0) {
                 throw new Error('Invalid XML file');
@@ -71,11 +73,13 @@ function handleXmlFile(file) {
             showUploadStatus('XML file successfully loaded', 'success');
 
         } catch (error) {
+            console.error('Error:', error); // Debug-Ausgabe
             showUploadStatus('Error processing XML file: ' + error.message, 'danger');
         }
     };
 
     reader.onerror = function () {
+        console.error('File reading error'); // Debug-Ausgabe
         showUploadStatus('Error reading file', 'danger');
     };
 
