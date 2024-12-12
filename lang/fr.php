@@ -127,6 +127,7 @@ $translations = [
     // Groupe de formulaire Référence de financement
     'funding_reference' => 'Référence de financement',
     'funder' => 'Bailleur de fonds',
+    'funder_invalid' => 'Veuillez entrer le nom du financeur.',
     'grant_Number' => 'Numéro de subvention',
     'grant_Name' => 'Nom de la subvention',
 

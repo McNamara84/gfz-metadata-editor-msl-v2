@@ -121,6 +121,7 @@ $translations = [
     // Formgroup Funding Reference
     'funding_reference' => 'Funding Reference',
     'funder' => 'Funder',
+    'funder_invalid' => 'Please enter the name of the funder.',
     'grant_Number' => 'Grant Number',
     'grant_Name' => 'Grant Name',
 
