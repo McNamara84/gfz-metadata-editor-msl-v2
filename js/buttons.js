@@ -542,17 +542,13 @@ $(document).ready(function () {
     // First row used as a template
     var firstRelatedWorkLine = relatedworkGroup.children().first();
 
-    // Clone the template
-    var newRelatedWorkRow = firstRelatedWorkLine.clone();
+    // Clone the template using cloneRowWithHelpState
+    var newRelatedWorkRow = cloneRowWithHelpState(firstRelatedWorkLine);
 
     // Clear input fields and remove validation feedback
     newRelatedWorkRow.find("input").val("").removeClass("is-invalid");
     newRelatedWorkRow.find(".invalid-feedback").hide();
 
-    // Replace help buttons (if applicable)
-    if (typeof replaceHelpButtonInClonedRows === 'function') {
-      replaceHelpButtonInClonedRows(newRelatedWorkRow);
-    }
 
     // Replace the add button with the remove button
     newRelatedWorkRow.find("#button-relatedwork-add").replaceWith(removeButton);
@@ -573,7 +569,8 @@ $(document).ready(function () {
   $("#button-fundingreference-add").click(function () {
     var fundingreferenceGroup = $("#group-fundingreference");
     var firstFundingReferenceLine = fundingreferenceGroup.children().first();
-    var newFundingReferenceRow = firstFundingReferenceLine.clone();
+    // Clone the template using cloneRowWithHelpState
+    var newFundingReferenceRow = cloneRowWithHelpState(firstFundingReferenceLine);
 
     // Clear input fields and remove validation feedback
     newFundingReferenceRow.find("input").val("").removeClass("is-invalid");
@@ -584,11 +581,6 @@ $(document).ready(function () {
 
     // Append the new funding reference row to the DOM
     fundingreferenceGroup.append(newFundingReferenceRow);
-
-    // Replace help buttons (if applicable)
-    if (typeof replaceHelpButtonInClonedRows === 'function') {
-      replaceHelpButtonInClonedRows(newFundingReferenceRow);
-    }
 
     // Bind validation listeners to the new row
     bindValidationListeners(newFundingReferenceRow);
@@ -627,7 +619,8 @@ $(document).ready(function () {
     var laboratoryGroup = $("#group-originatinglaboratory");
     var firstOriginatingLaboratoryLine = laboratoryGroup.children().first();
 
-    var newOriginatingLaboratoryRow = firstOriginatingLaboratoryLine.clone();
+    // Clone the template using cloneRowWithHelpState
+    var newOriginatingLaboratoryRow = cloneRowWithHelpState(firstOriginatingLaboratoryLine);
 
     // Clear input fields and remove validation feedback
     newOriginatingLaboratoryRow.find("input").val("").removeClass("is-invalid is-valid");
@@ -650,10 +643,6 @@ $(document).ready(function () {
     // Append the new laboratory row to the DOM
     laboratoryGroup.append(newOriginatingLaboratoryRow);
 
-    // Replace help buttons (if applicable)
-    if (typeof replaceHelpButtonInClonedRows === 'function') {
-      replaceHelpButtonInClonedRows(newOriginatingLaboratoryRow);
-    }
 
     // Initialize Tagify for the new row
     initializeTagify(newOriginatingLaboratoryRow, labData);
