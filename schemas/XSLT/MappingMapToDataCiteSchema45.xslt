@@ -494,12 +494,16 @@ http://www.altova.com/mapforce
 									<xsl:value-of select="concat('http://dx.doi.org/10.13039/', *[local-name()='funderid' and namespace-uri()=''])"/>
 								</funderIdentifier>
 							</xsl:if>
-							<awardNumber>
-								<xsl:value-of select="*[local-name()='grantnumber' and namespace-uri()='']"/>
-							</awardNumber>
-							<awardTitle>
-								<xsl:value-of select="*[local-name()='grantname' and namespace-uri()='']"/>
-							</awardTitle>
+							<xsl:if test="((string-length(string(*[local-name()='grantnumber' and namespace-uri()=''])) &gt; 3) and true())">
+								<awardNumber>
+									<xsl:value-of select="*[local-name()='grantnumber' and namespace-uri()='']"/>
+								</awardNumber>
+							</xsl:if>
+							<xsl:if test="((string-length(string(*[local-name()='grantname' and namespace-uri()=''])) &gt; 3) and true())">
+								<awardTitle>
+									<xsl:value-of select="*[local-name()='grantname' and namespace-uri()='']"/>
+								</awardTitle>
+							</xsl:if>
 						</fundingReference>
 					</xsl:for-each>
 				</fundingReferences>
