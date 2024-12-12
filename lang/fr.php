@@ -25,7 +25,7 @@ $translations = [
     'doi_valid'=> 'Un nouveau DOI sera enregistré',
     'doi_invalid' => 'Utilisez le format 10.ORGANISATION/ID (ex.: 10.57757/IUGG23-3081) ou laissez vide',
     'publicationYear' => 'Année de publication',
-    'publicationYear_invalid' => 'Veuillez fournir une année valide (4 chiffres).',
+    'publicationYear_invalid' => 'Veuillez fournir une année valide 1901-2155(4 chiffres).',
     'resourceType' => 'Type de ressource',
     'version' => 'Version',
     'version_invalid' => 'Si incertain, laissez vide',
@@ -158,4 +158,8 @@ $translations = [
     'feedbackQuestion7' => 'Y a-t-il une amélioration spécifique que vous souhaiteriez ?',
     'feedbackSendButton' => 'Envoyer les commentaires',
     'thankYouMessage' => 'Merci pour vos commentaires!',
+
+    // Divers
+    'saveModalTitle' => 'Sauvegarder en tant que fichier XML',
+    'filenameLabel' => 'Nom de fichier',
 ];
