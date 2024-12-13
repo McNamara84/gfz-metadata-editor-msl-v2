@@ -200,10 +200,8 @@ $(document).ready(function () {
     // Replace the add button with the remove button
     newAuthorRow.find(".addAuthor").replaceWith(removeButton);
 
-    // Replace help buttons (if applicable)
-    if (typeof replaceHelpButtonInClonedRows === 'function') {
-      replaceHelpButtonInClonedRows(newAuthorRow);
-    }
+    // Remove help buttons
+    replaceHelpButtonInClonedRows(newAuthorRow);
 
     // Append the new author row to the DOM
     authorGroup.append(newAuthorRow);
@@ -251,10 +249,8 @@ $(document).ready(function () {
     // Replace the add button with the remove button
     newCPRow.find(".addCP").replaceWith(removeButton);
 
-    // Replace help buttons (if applicable)
-    if (typeof replaceHelpButtonInClonedRows === 'function') {
-      replaceHelpButtonInClonedRows(newCPRow);
-    }
+    // Remove help buttons
+    replaceHelpButtonInClonedRows(newCPRow);
 
     CPGroup.append(newCPRow);
 
@@ -301,10 +297,8 @@ $(document).ready(function () {
     newContributorRow.find(".tagify").remove();
     newContributorRow.find(".invalid-feedback, .valid-feedback").css("display", "");
 
-    // Replace help buttons (if applicable)
-    if (typeof replaceHelpButtonInClonedRows === 'function') {
-      replaceHelpButtonInClonedRows(newContributorRow);
-    }
+    // Remove help buttons
+    replaceHelpButtonInClonedRows(newContributorRow);
 
     // Hide the row label in cloned rows
     newContributorRow.find(".row-label").hide();
@@ -400,10 +394,8 @@ $(document).ready(function () {
     newContributorRow.find(".tagify").remove();
     newContributorRow.find(".invalid-feedback, .valid-feedback").hide();
 
-    // Replace help buttons (if applicable)
-    if (typeof replaceHelpButtonInClonedRows === 'function') {
-      replaceHelpButtonInClonedRows(newContributorRow);
-    }
+    // Remove help buttons
+    replaceHelpButtonInClonedRows(newContributorRow);
 
     // Hide the row label in cloned rows
     newContributorRow.find(".row-label").hide();
@@ -500,10 +492,8 @@ $(document).ready(function () {
     newTscLine.find("input, select, textarea").val("").removeClass("is-invalid is-valid");
     newTscLine.find(".invalid-feedback, .valid-feedback").hide();
 
-    // Replace help buttons (if applicable)
-    if (typeof replaceHelpButtonInClonedRows === 'function') {
-      replaceHelpButtonInClonedRows(newTscLine);
-    }
+    // Remove help buttons
+    replaceHelpButtonInClonedRows(newTscLine);
 
     // Replace the Add button with a Remove button
     newTscLine.find("#button-stc-add").replaceWith(createRemoveButton());
@@ -565,10 +555,9 @@ $(document).ready(function () {
     newRelatedWorkRow.find("input").val("").removeClass("is-invalid");
     newRelatedWorkRow.find(".invalid-feedback").hide();
 
-    // Replace help buttons (if applicable)
-    if (typeof replaceHelpButtonInClonedRows === 'function') {
-      replaceHelpButtonInClonedRows(newRelatedWorkRow);
-    }
+    // Remove help buttons
+    replaceHelpButtonInClonedRows(newRelatedWorkRow);
+
 
     // Replace the add button with the remove button
     newRelatedWorkRow.find("#button-relatedwork-add").replaceWith(removeButton);
@@ -601,10 +590,8 @@ $(document).ready(function () {
     // Append the new funding reference row to the DOM
     fundingreferenceGroup.append(newFundingReferenceRow);
 
-    // Replace help buttons (if applicable)
-    if (typeof replaceHelpButtonInClonedRows === 'function') {
-      replaceHelpButtonInClonedRows(newFundingReferenceRow);
-    }
+    // Remove help buttons
+    replaceHelpButtonInClonedRows(newFundingReferenceRow);
 
     // Bind validation listeners to the new row
     bindValidationListeners(newFundingReferenceRow);
@@ -666,10 +653,8 @@ $(document).ready(function () {
     // Append the new laboratory row to the DOM
     laboratoryGroup.append(newOriginatingLaboratoryRow);
 
-    // Replace help buttons (if applicable)
-    if (typeof replaceHelpButtonInClonedRows === 'function') {
-      replaceHelpButtonInClonedRows(newOriginatingLaboratoryRow);
-    }
+    // Remove help buttons
+    replaceHelpButtonInClonedRows(newOriginatingLaboratoryRow);
 
     // Initialize Tagify for the new row
     initializeTagify(newOriginatingLaboratoryRow, labData);
