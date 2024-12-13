@@ -15,6 +15,46 @@ const XML_MAPPING = {
   'version': {
     selector: '#input-resourceinformation-version',
     attribute: 'textContent'
+  },
+  'resourceType': {
+    selector: '#input-resourceinformation-resourcetype',
+    attribute: 'resourceTypeGeneral',
+    transform: (value) => {
+      // Map ResourceTypeGeneral to select option values TODO: Write API Endpoint
+      const typeMap = {
+        'Audiovisual': '1',
+        'Book': '2',
+        'BookChapter': '3',
+        'Collection': '4',
+        'ComputationalNotebook': '5',
+        'ConferencePaper': '6',
+        'ConferenceProceeding': '7',
+        'DataPaper': '8',
+        'Dataset': '9',
+        'Dissertation': '10',
+        'Event': '11',
+        'Image': '12',
+        'Instrument': '13',
+        'InteractiveResource': '14',
+        'Journal': '15',
+        'JournalArticle': '16',
+        'Model': '17',
+        'OutputManagementPlan': '18',
+        'PeerReview': '19',
+        'PhysicalObject': '20',
+        'Preprint': '21',
+        'Report': '22',
+        'Service': '23',
+        'Software': '24',
+        'Sound': '25',
+        'Standard': '26',
+        'StudyRegistration': '27',
+        'Text': '28',
+        'Workflow': '29',
+        'Other': '30'
+      };
+      return typeMap[value] || '30'; // Default to 'Other' if type not found
+    }
   }
 };
 
@@ -34,9 +74,9 @@ function mapTitleType(titleType) {
 }
 
 /**
-* Loads XML data into form fields according to mapping configuration
-* @param {Document} xmlDoc - The parsed XML document
-*/
+ * Loads XML data into form fields according to mapping configuration
+ * @param {Document} xmlDoc - The parsed XML document
+ */
 function loadXmlToForm(xmlDoc) {
   // Define namespace resolver
   const nsResolver = xmlDoc.createNSResolver(xmlDoc.documentElement);
@@ -62,8 +102,16 @@ function loadXmlToForm(xmlDoc) {
 
     const xmlNode = xmlElements.singleNodeValue;
     if (xmlNode) {
-      const value = xmlNode.textContent;
+      // Get either the attribute value or text content based on the mapping configuration
+      const value = config.attribute === 'textContent'
+        ? xmlNode.textContent
+        : xmlNode.getAttribute(config.attribute);
+
+      console.log(`Found value for ${xmlPath}:`, value); // Debug output
+
       const transformedValue = config.transform ? config.transform(value) : value;
+      console.log(`Transformed value:`, transformedValue); // Debug output
+
       $(config.selector).val(transformedValue);
     }
   }
