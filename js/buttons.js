@@ -162,7 +162,7 @@ $(document).ready(function () {
       titlesNumber++;
 
       // Disable the "Add Title" button if the maximum number of titles is reached.
-      if (titlesNumber === maxTitles) {
+      if (titlesNumber == maxTitles) {
         $addTitleBtn.prop("disabled", true);
       }
     } else {
