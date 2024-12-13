@@ -293,13 +293,18 @@ $(document).ready(function () {
      */
     var firstContributorRow = contributorGroup.children().first();
 
-    // Clone the template using cloneRowWithHelpState
-    var newContributorRow = cloneRowWithHelpState(firstContributorRow);
+    // Clone the template
+    var newContributorRow = firstContributorRow.clone();
 
     // Reset values and validation feedback in the cloned element
     newContributorRow.find("input").val("").removeClass("is-invalid is-valid");
     newContributorRow.find(".tagify").remove();
     newContributorRow.find(".invalid-feedback, .valid-feedback").css("display", "");
+
+    // Replace help buttons (if applicable)
+    if (typeof replaceHelpButtonInClonedRows === 'function') {
+      replaceHelpButtonInClonedRows(newContributorRow);
+    }
 
     // Hide the row label in cloned rows
     newContributorRow.find(".row-label").hide();
@@ -387,14 +392,18 @@ $(document).ready(function () {
      */
     var firstContributorRow = contributorGroup.children().first();
 
-    // Clone the template using cloneRowWithHelpState
-    var newContributorRow = cloneRowWithHelpState(firstContributorRow);
+    // Clone the template
+    var newContributorRow = firstContributorRow.clone();
 
     // Reset values and validation feedback in the cloned element
     newContributorRow.find("input").val("").removeClass("is-invalid is-valid");
     newContributorRow.find(".tagify").remove();
     newContributorRow.find(".invalid-feedback, .valid-feedback").hide();
 
+    // Replace help buttons (if applicable)
+    if (typeof replaceHelpButtonInClonedRows === 'function') {
+      replaceHelpButtonInClonedRows(newContributorRow);
+    }
 
     // Hide the row label in cloned rows
     newContributorRow.find(".row-label").hide();
@@ -439,9 +448,6 @@ $(document).ready(function () {
 
     // Initialize Tagify for the new Roles field
     setupRolesDropdown(["institution", "both"], "#input-contributor-organisationrole" + uniqueSuffix);
-
-    // Bind validation listeners to the new row
-    bindValidationListeners(newContributorRow);
 
     // Event handler for the remove button in the new row
     newContributorRow.on("click", ".removeButton", function () {
