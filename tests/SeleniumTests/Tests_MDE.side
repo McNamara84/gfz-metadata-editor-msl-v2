@@ -5976,7 +5976,7 @@
       "id": "c6197dc4-e574-47b7-ad31-73b0e5406914",
       "comment": "",
       "command": "executeScript",
-      "target": "document.querySelector('#input-contributor-personrole').value ='Workpackage Leader';",
+      "target": "document.querySelector('#input-contributor-personrole').value ='WorkPackage Leader';",
       "targets": [],
       "value": "30000"
     }, {
@@ -6938,7 +6938,7 @@
       "id": "bafbdb4d-c5d4-45c4-8c2d-9e6f6a8812bf",
       "comment": "",
       "command": "executeScript",
-      "target": "document.querySelector('#input-contributor-personrole').value ='Workpackage Leader, Data Curator';",
+      "target": "document.querySelector('#input-contributor-personrole').value ='WorkPackage Leader, Data Curator';",
       "targets": [],
       "value": "30000"
     }, {
