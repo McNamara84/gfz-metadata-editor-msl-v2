@@ -40,18 +40,16 @@ $translations = [
 
     // Groupe de formulaire Auteurs
     'authors' => 'Auteur(s)',
-    'lastname_invalid' => 'Veuillez fournir un nom de famille.',
-    'firstname_invalid' => 'Veuillez fournir un prénom.',
+    'lastname_invalid' => 'Veuillez fournir un nom de famille. Seules les lettres sont autorisées.',
+    'firstname_invalid' => 'Veuillez fournir un prénom. Seules les lettres sont autorisées.',
     'authorORCID' => 'ORCID',
     'ORCID_invalid' => 'Veuillez entrer un ORCID valide (XXXX-XXXX-XXXX-XXX(X))',
     'affiliation_invalid' => 'Veuillez fournir une affiliation.',
 
     // Groupe de formulaire Personnes de contact
     'contactpersons' => 'Personne(s) de contact',
-    'CP_lastname_invalid' => 'Veuillez fournir le nom de famille de la personne de contact.',
-    'CP_firstname_invalid' => 'Veuillez fournir le prénom de la personne de contact.',
     'email' => 'Adresse e-mail',
-    'email_invalid' => 'L\'adresse e-mail n\'est pas valide.',
+    'email_invalid' => 'Veuillez fournir une adresse e-mail valide au format xxx.xxx@xxx.xxx.',
     'position' => 'Poste',
     'position_invalid' => 'Veuillez fournir un poste.',
     'website' => 'Site web',
@@ -63,8 +61,6 @@ $translations = [
     'originatingLaboratoryAffiliation' => 'Affiliation du laboratoire d\'origine',
 
     'contributors' => "Contributeurs",
-    'contributors_lastname_invalid' => 'Veuillez fournir le nom de famille du contributeur. Seules les lettres sont autorisées.',
-    'contributors_firstname_invalid' => 'Veuillez fournir le prénom du contributeur. Seules les lettres sont autorisées.',
     'Organisation' => 'Nom de l\'organisation',
     'Organisation_invalid' => 'Veuillez entrer un nom d\'organisation valide.',
     'contributors_ORCID' => 'ORCID', 
@@ -131,6 +127,7 @@ $translations = [
     // Groupe de formulaire Référence de financement
     'funding_reference' => 'Référence de financement',
     'funder' => 'Bailleur de fonds',
+    'funder_invalid' => 'Veuillez entrer le nom du financeur.',
     'grant_Number' => 'Numéro de subvention',
     'grant_Name' => 'Nom de la subvention',
 
