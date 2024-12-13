@@ -5,7 +5,6 @@ function checkMandatoryFields() {
 
     // Role and ORCID fields (Contributing Person(s))
     var roleField = document.getElementById('input-contributor-personrole');
-    var orcidField = document.getElementById('input-contributor-orcid');
 
     // Organization name and role fields (Contributing Institution(s))
     var OrganisationName = document.getElementById('input-contributor-name').value.trim();
@@ -15,11 +14,9 @@ function checkMandatoryFields() {
     if (firstname !== '' || lastname !== '') {
         // Set 'required' for role and ORCID fields
         roleField.setAttribute('required', 'required');
-        orcidField.setAttribute('required', 'required');
     } else {
         // Remove 'required' from role and ORCID fields
         roleField.removeAttribute('required');
-        orcidField.removeAttribute('required');
     }
 
     // Check if organization name(Contributing Institution(s)) is filled
