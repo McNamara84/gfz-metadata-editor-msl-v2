@@ -33,18 +33,16 @@ $translations = [
 
     // Form Group Authors
     'authors' => 'Author(s)',
-    'lastname_invalid' => 'Please provide a lastname.',
-    'firstname_invalid' => 'Please provide a firstname.',
+    'lastname_invalid' => 'Please provide a lastname. Only letters are allowed.',
+    'firstname_invalid' => 'Please provide a firstname. Only letters are allowed.',
     'authorORCID' => 'ORCID',
     'ORCID_invalid' => 'Please enter a valid ORCID (XXXX-XXXX-XXXX-XXX(X))',
     'affiliation_invalid' => 'Please provide an affiliation.',
 
     // Form Group Contactpersons
     'contactpersons' => 'Contact Person(s)',
-    'CP_lastname_invalid' => 'Please provide The surname or last name of the contactperson.',
-    'CP_firstname_invalid' => 'Please provide The personal or first name of the contactperson.',
     'email' => 'Email address',
-    'email_invalid' => 'Email address is invalid.',
+    'email_invalid' => 'Please provide a valid email address in the format xxx.xxx@xxx.xxx.',
     'position' => 'Position',
     'position_invalid' => 'Please provide a position.',
     'website' => 'Website',
@@ -57,8 +55,6 @@ $translations = [
 
     // From Group Contributors
     'contributors' => "Contributors",
-    'contributors_lastname_invalid' => 'Please provide the last name of the contributor. Only letters are allowed.',
-    'contributors_firstname_invalid' => 'Please provide the first name of the contributor. Only letters are allowed.',
     'Organisation' => 'Organisation name',
     'Organisation_invalid' => 'Please enter a valid organization name.',
     'contributors_ORCID' => 'ORCID',
@@ -125,6 +121,7 @@ $translations = [
     // Formgroup Funding Reference
     'funding_reference' => 'Funding Reference',
     'funder' => 'Funder',
+    'funder_invalid' => 'Please enter the name of the funder.',
     'grant_Number' => 'Grant Number',
     'grant_Name' => 'Grant Name',
 
