@@ -180,8 +180,8 @@ $(document).ready(function () {
     // First row to be used as a template
     var firstAuthorLine = authorGroup.children().first();
 
-    // Clone the template using cloneRowWithHelpState
-    var newAuthorRow = cloneRowWithHelpState(firstAuthorLine);
+    // Clone the template
+    var newAuthorRow = firstAuthorLine.clone();
 
     // Clear input fields and remove validation feedback
     newAuthorRow.find("input").val("").removeClass("is-invalid is-valid");
@@ -199,6 +199,11 @@ $(document).ready(function () {
 
     // Replace the add button with the remove button
     newAuthorRow.find(".addAuthor").replaceWith(removeButton);
+
+    // Replace help buttons (if applicable)
+    if (typeof replaceHelpButtonInClonedRows === 'function') {
+      replaceHelpButtonInClonedRows(newAuthorRow);
+    }
 
     // Append the new author row to the DOM
     authorGroup.append(newAuthorRow);
@@ -229,8 +234,8 @@ $(document).ready(function () {
     // First row to be used as a template
     var firstCPLine = CPGroup.children().first();
 
-    // Clone the template using cloneRowWithHelpState
-    var newCPRow = cloneRowWithHelpState(firstCPLine);
+    // Clone the template
+    var newCPRow = firstCPLine.clone();
 
     // Clear input fields and remove validation feedback
     newCPRow.find("input").val("").removeClass("is-invalid is-valid");
@@ -245,6 +250,11 @@ $(document).ready(function () {
 
     // Replace the add button with the remove button
     newCPRow.find(".addCP").replaceWith(removeButton);
+
+    // Replace help buttons (if applicable)
+    if (typeof replaceHelpButtonInClonedRows === 'function') {
+      replaceHelpButtonInClonedRows(newCPRow);
+    }
 
     CPGroup.append(newCPRow);
 
@@ -852,78 +862,19 @@ $(document).ready(function () {
   }
 
   /**
-   * Clones a row and applies the current help button state.
-   * This function creates a deep clone of the given row and then applies
-   * the appropriate help button state based on the current visibility setting.
-   * 
-   * @param {jQuery} row - The row to clone.
-   * @returns {jQuery} The cloned row with the correct help button state applied.
-   */
-  function cloneRowWithHelpState(row) {
-    // Create a deep clone of the row, including event handlers
-    var clone = row.clone(true);
-
-    // Check the current visibility state of help buttons
-    var isHelpVisible = localStorage.getItem("inputGroupTextVisible") === "true";
-
-    if (isHelpVisible) {
-      // If help is visible, replace help buttons with placeholders
-      replaceHelpButtonInClonedRows(clone);
-    } else {
-      // If help is not visible, remove help buttons completely
-      deleteHelpButtonFromClonedRows(clone);
-    }
-
-    return clone;
-  }
-
-  /**
-   * Updates the help button state for a given row or all rows.
-   * This function shows or hides help buttons and adjusts the CSS classes
-   * of input fields based on the current visibility setting.
-   * 
-   * @param {jQuery} [row] - The specific row to update. If not provided, updates all rows in the document.
-   */
-  function updateHelpButtonState(row) {
-    // Check the current visibility state of help buttons
-    var isHelpVisible = localStorage.getItem("inputGroupTextVisible") === "true";
-
-    // If no specific row is provided, target the entire document body
-    var target = row || $('body');
-
-    if (isHelpVisible) {
-      // Show help buttons
-      target.find(".input-group-text").show();
-      // Adjust CSS classes for input fields when help is visible
-      target.find(".input-with-help")
-        .removeClass("input-right-with-round-corners")
-        .addClass("input-right-no-round-corners");
-    } else {
-      // Hide help buttons
-      target.find(".input-group-text").hide();
-      // Adjust CSS classes for input fields when help is hidden
-      target.find(".input-with-help")
-        .removeClass("input-right-no-round-corners")
-        .addClass("input-right-with-round-corners");
-    }
-  }
-
-  /**
-   * Event handler for the "Help On" button.
-   * Sets the help visibility state to true and updates all help buttons.
+   * Event handler to show help elements when the "Help On" button is clicked.
    */
   $("#buttonHelpOn").click(function () {
+    $(".input-group-text").show();
     localStorage.setItem("inputGroupTextVisible", "true");
-    updateHelpButtonState();
   });
 
   /**
-   * Event handler for the "Help Off" button.
-   * Sets the help visibility state to false and updates all help buttons.
+   * Event handler to hide help elements when the "Help Off" button is clicked.
    */
   $("#buttonHelpOff").click(function () {
+    $(".input-group-text").hide();
     localStorage.setItem("inputGroupTextVisible", "false");
-    updateHelpButtonState();
   });
 
   /**
