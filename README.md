@@ -30,19 +30,19 @@ If you encounter problems with the installation, feel free to leave an entry in 
 
 The following third-party dependencies are included in header.html and footer.html:
 
-- Bootstrap 5.3.3<br>
+- [Bootstrap 5.3.3](https://github.com/twbs/bootstrap/releases)<br>
   For the design, responsiveness and dark mode.
-- Bootstrap Icons 1.11.3<br>
+- [Bootstrap Icons 1.11.3](https://github.com/twbs/icons/releases)<br>
   For the icons used.
-- jQuery 3.7.1<br>
+- [jQuery 3.7.1](https://github.com/jquery/jquery/releases)<br>
   For the event handlers in JavaScript and to simplify the JavaScript code.
-- jQuery UI 1.14.1<br>
+- [jQuery UI 1.14.1](https://github.com/jquery/jquery-ui/releases)<br>
   Extends jQuery with the autocomplete function that we currently use for the affiliation fields.
-- Tagify 4.32.1<br>
+- [Tagify 4.32.2](https://github.com/yairEO/tagify/releases)<br>
   Is used for the Thesaurus Keywords field, the entry of multiple affiliations and free keywords.
-- jsTree 3.3.17<br>
+- [jsTree 3.3.17](https://github.com/vakata/jstree/releases)<br>
   Is used to display the thesauri as a hierarchical tree structure.
-- Swagger UI 5.18.2<br>
+- [Swagger UI 5.18.2](https://github.com/swagger-api/swagger-ui/releases)<br>
   For displaying the dynamic and interactive API documentation in accordance with OpenAPI standard 3.1.
 
 ## Settings
