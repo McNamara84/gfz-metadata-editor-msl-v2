@@ -15,38 +15,33 @@ const XML_MAPPING = {
   'version': {
     selector: '#input-resourceinformation-version',
     attribute: 'textContent'
-  },
-  /*'language': {
-    selector: '#input-resourceinformation-language',
-    attribute: 'textContent',
-    transform: (value) => {
-      // Transform language code to select option value
-      const langMap = {
-        'en': '1',
-        'de': '2',
-        'fr': '3'
-      };
-      return langMap[value] || '1';
-    }
-  },
-  'titles/title': {
-    selector: '#input-resourceinformation-title',
-    attribute: 'textContent'
-  }*/
+  }
 };
 
 /**
- * Loads XML data into form fields according to mapping configuration
- * @param {Document} xmlDoc - The parsed XML document
- */
+* Maps title type to select option value
+* @param {string} titleType - The type of the title from XML
+* @returns {string} The corresponding select option value
+*/
+function mapTitleType(titleType) {
+  const typeMap = {
+    undefined: '1', // Main Title
+    'AlternativeTitle': '2',
+    'Subtitle': '3',
+    'TranslatedTitle': '4'
+  };
+  return typeMap[titleType] || '1';
+}
+
+/**
+* Loads XML data into form fields according to mapping configuration
+* @param {Document} xmlDoc - The parsed XML document
+*/
 function loadXmlToForm(xmlDoc) {
   // Define namespace resolver
   const nsResolver = xmlDoc.createNSResolver(xmlDoc.documentElement);
-
-  // Get default namespace
   const defaultNS = xmlDoc.documentElement.getAttribute('xmlns');
 
-  // Custom namespace resolver that handles default namespace
   function resolver(prefix) {
     if (prefix === 'ns') {
       return defaultNS;
@@ -54,10 +49,9 @@ function loadXmlToForm(xmlDoc) {
     return nsResolver.lookupNamespaceURI(prefix);
   }
 
+  // Handle standard mappings
   for (const [xmlPath, config] of Object.entries(XML_MAPPING)) {
-    // Add namespace prefix to path
     const nsPath = `/ns:resource/ns:${xmlPath}`;
-
     const xmlElements = xmlDoc.evaluate(
       nsPath,
       xmlDoc,
@@ -68,11 +62,41 @@ function loadXmlToForm(xmlDoc) {
 
     const xmlNode = xmlElements.singleNodeValue;
     if (xmlNode) {
-      const value = xmlNode.textContent; // Verwende textContent statt getAttribute
+      const value = xmlNode.textContent;
       const transformedValue = config.transform ? config.transform(value) : value;
-
-      console.log(`Setting ${config.selector} to ${transformedValue}`); // Debug-Ausgabe
       $(config.selector).val(transformedValue);
+    }
+  }
+
+  // Handle titles separately
+  const titleNodes = xmlDoc.evaluate(
+    '/ns:resource/ns:titles/ns:title',
+    xmlDoc,
+    resolver,
+    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+    null
+  );
+
+  // Process each title
+  for (let i = 0; i < titleNodes.snapshotLength; i++) {
+    const titleNode = titleNodes.snapshotItem(i);
+    const titleText = titleNode.textContent;
+    const titleType = titleNode.getAttribute('titleType');
+
+    if (i === 0) {
+      // First title goes into the main title field
+      $('#input-resourceinformation-title').val(titleText);
+    } else {
+      // For additional titles, we need to add new rows
+      $('#button-resourceinformation-addtitle').click(); // Click the + button to add new row
+
+      // Get the newly created row
+      const titleInputs = $('input[name="title[]"]');
+      const titleTypeSelects = $('select[name="titleType[]"]');
+
+      // Set values in the last row
+      $(titleInputs[titleInputs.length - 1]).val(titleText);
+      $(titleTypeSelects[titleTypeSelects.length - 1]).val(mapTitleType(titleType));
     }
   }
 }
