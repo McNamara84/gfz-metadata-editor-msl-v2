@@ -227,9 +227,9 @@
             'dev_requirement' => true,
         ),
         'sebastian/code-unit' => array(
-            'pretty_version' => '3.0.1',
-            'version' => '3.0.1.0',
-            'reference' => '6bb7d09d6623567178cf54126afa9c2310114268',
+            'pretty_version' => '3.0.2',
+            'version' => '3.0.2.0',
+            'reference' => 'ee88b0cdbe74cf8dd3b54940ff17643c0d6543ca',
             'type' => 'library',
             'install_path' => __DIR__ . '/../sebastian/code-unit',
             'aliases' => array(),

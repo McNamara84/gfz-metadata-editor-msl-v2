@@ -158,4 +158,8 @@ $translations = [
     'feedbackQuestion7' => 'Y a-t-il une amélioration spécifique que vous souhaiteriez ?',
     'feedbackSendButton' => 'Envoyer les commentaires',
     'thankYouMessage' => 'Merci pour vos commentaires!',
+
+    // Divers
+    'saveModalTitle' => 'Sauvegarder en tant que fichier XML',
+    'filenameLabel' => 'Nom de fichier',
 ];
