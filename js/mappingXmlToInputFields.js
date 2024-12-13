@@ -55,6 +55,23 @@ const XML_MAPPING = {
       };
       return typeMap[value] || '30'; // Default to 'Other' if type not found
     }
+  },
+  // Rights
+  'rightsList/rights': {
+    selector: '#input-rights-license',
+    attribute: 'rightsIdentifier',
+    transform: (value) => {
+      // Map SPDX license identifiers to select option values TODO: API Call
+      const licenseMap = {
+        'CC-BY-4.0': '1',
+        'CC0-1.0': '2',
+        'GPL-3.0-or-later': '3',
+        'MIT': '4',
+        'Apache-2.0': '5',
+        'EUPL-1.2': '6'
+      };
+      return licenseMap[value] || '1'; // Default to CC-BY-4.0 if not found
+    }
   }
 };
 
