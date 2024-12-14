@@ -57,23 +57,74 @@ const XML_MAPPING = {
     }
   },
   // Rights
-  'rightsList/rights': {
+  'rightsList/ns:rights': {  // Beachte das ns: vor rights
     selector: '#input-rights-license',
     attribute: 'rightsIdentifier',
     transform: (value) => {
-      // Map SPDX license identifiers to select option values TODO: API Call
-      const licenseMap = {
-        'CC-BY-4.0': '1',
-        'CC0-1.0': '2',
-        'GPL-3.0-or-later': '3',
-        'MIT': '4',
-        'Apache-2.0': '5',
-        'EUPL-1.2': '6'
-      };
-      return licenseMap[value] || '1'; // Default to CC-BY-4.0 if not found
+      console.log('Found rightsIdentifier value:', value); // Debug
+      return licenseMapping[value] || '1';
     }
   }
 };
+
+/**
+ * Extracts license identifier from various formats
+ * @param {Element} rightsNode - The XML rights element
+ * @returns {string} The normalized license identifier
+ */
+function extractLicenseIdentifier(rightsNode) {
+  // Try to get identifier from rightsIdentifier attribute first
+  let identifier = rightsNode.getAttribute('rightsIdentifier');
+
+  if (!identifier) {
+    // Try to extract from rightsURI
+    const uri = rightsNode.getAttribute('rightsURI');
+    if (uri) {
+      // Extract identifier from SPDX URL (e.g. "https://spdx.org/licenses/CC0-1.0.html" -> "CC0-1.0")
+      const match = uri.match(/licenses\/([^/.]+)/);
+      if (match) {
+        identifier = match[1];
+      }
+    }
+  }
+
+  if (!identifier) {
+    // Use text content as last resort
+    identifier = rightsNode.textContent.trim();
+  }
+
+  return identifier;
+}
+
+/**
+ * Creates a license mapping from API data
+ * @returns {Promise<Object>} A promise that resolves to the license mapping
+ */
+async function createLicenseMapping() {
+  try {
+    const response = await $.getJSON('./api/v2/vocabs/licenses/all');
+    const mapping = {};
+
+    console.log('API Response:', response);
+
+    response.forEach(license => {
+      mapping[license.rightsIdentifier] = license.rights_id.toString();
+    });
+
+    console.log('Created License Mapping:', mapping);
+    return mapping;
+  } catch (error) {
+    console.error('Error creating license mapping:', error);
+    return {
+      'CC-BY-4.0': '1',
+      'CC0-1.0': '2',
+      'GPL-3.0-or-later': '3',
+      'MIT': '4',
+      'Apache-2.0': '5',
+      'EUPL-1.2': '6'
+    };
+  }
+}
 
 /**
 * Maps title type to select option value
@@ -94,8 +145,75 @@ function mapTitleType(titleType) {
  * Loads XML data into form fields according to mapping configuration
  * @param {Document} xmlDoc - The parsed XML document
  */
-function loadXmlToForm(xmlDoc) {
-  // Define namespace resolver
+async function loadXmlToForm(xmlDoc) {
+  // Erstelle das License-Mapping zuerst
+  const licenseMapping = await createLicenseMapping();
+
+  // Definiere das komplette XML_MAPPING mit dem erstellten licenseMapping
+  const XML_MAPPING = {
+    // Resource Information
+    'identifier': {
+      selector: '#input-resourceinformation-doi',
+      attribute: 'textContent'
+    },
+    'publicationYear': {
+      selector: '#input-resourceinformation-publicationyear',
+      attribute: 'textContent'
+    },
+    'version': {
+      selector: '#input-resourceinformation-version',
+      attribute: 'textContent'
+    },
+    'resourceType': {
+      selector: '#input-resourceinformation-resourcetype',
+      attribute: 'resourceTypeGeneral',
+      transform: (value) => {
+        const typeMap = {
+          'Audiovisual': '1',
+          'Book': '2',
+          'BookChapter': '3',
+          'Collection': '4',
+          'ComputationalNotebook': '5',
+          'ConferencePaper': '6',
+          'ConferenceProceeding': '7',
+          'DataPaper': '8',
+          'Dataset': '9',
+          'Dissertation': '10',
+          'Event': '11',
+          'Image': '12',
+          'Instrument': '13',
+          'InteractiveResource': '14',
+          'Journal': '15',
+          'JournalArticle': '16',
+          'Model': '17',
+          'OutputManagementPlan': '18',
+          'PeerReview': '19',
+          'PhysicalObject': '20',
+          'Preprint': '21',
+          'Report': '22',
+          'Service': '23',
+          'Software': '24',
+          'Sound': '25',
+          'Standard': '26',
+          'StudyRegistration': '27',
+          'Text': '28',
+          'Workflow': '29',
+          'Other': '30'
+        };
+        return typeMap[value] || '30';
+      }
+    },
+    // Rights
+    'rightsList/ns:rights': {
+      selector: '#input-rights-license',
+      attribute: 'rightsIdentifier',
+      transform: (value) => {
+        console.log('Found rightsIdentifier value:', value);
+        return licenseMapping[value] || '1';
+      }
+    }
+  };
+
   const nsResolver = xmlDoc.createNSResolver(xmlDoc.documentElement);
   const defaultNS = xmlDoc.documentElement.getAttribute('xmlns');
 
@@ -106,9 +224,11 @@ function loadXmlToForm(xmlDoc) {
     return nsResolver.lookupNamespaceURI(prefix);
   }
 
-  // Handle standard mappings
+  // Verarbeite zuerst die Standard-Mappings
   for (const [xmlPath, config] of Object.entries(XML_MAPPING)) {
     const nsPath = `/ns:resource/ns:${xmlPath}`;
+    console.log('Evaluating XPath:', nsPath);
+
     const xmlElements = xmlDoc.evaluate(
       nsPath,
       xmlDoc,
@@ -119,21 +239,25 @@ function loadXmlToForm(xmlDoc) {
 
     const xmlNode = xmlElements.singleNodeValue;
     if (xmlNode) {
-      // Get either the attribute value or text content based on the mapping configuration
+      console.log('Found XML node:', xmlNode);
+
       const value = config.attribute === 'textContent'
         ? xmlNode.textContent
         : xmlNode.getAttribute(config.attribute);
 
-      console.log(`Found value for ${xmlPath}:`, value); // Debug output
+      console.log('Extracted value:', value);
 
       const transformedValue = config.transform ? config.transform(value) : value;
-      console.log(`Transformed value:`, transformedValue); // Debug output
+      console.log('Transformed value:', transformedValue);
 
       $(config.selector).val(transformedValue);
+      console.log('Set value for selector:', config.selector, transformedValue);
+    } else {
+      console.log('No node found for path:', nsPath);
     }
   }
 
-  // Handle titles separately
+  // Verarbeite die Titel separat
   const titleNodes = xmlDoc.evaluate(
     '/ns:resource/ns:titles/ns:title',
     xmlDoc,
@@ -142,26 +266,36 @@ function loadXmlToForm(xmlDoc) {
     null
   );
 
-  // Process each title
+  // Reset titles
+  $('input[name="title[]"]').closest('.row').not(':first').remove();
+  $('input[name="title[]"]:first').val('');
+  $('#input-resourceinformation-titletype').val('1');
+
   for (let i = 0; i < titleNodes.snapshotLength; i++) {
     const titleNode = titleNodes.snapshotItem(i);
-    const titleText = titleNode.textContent;
     const titleType = titleNode.getAttribute('titleType');
+    const titleText = titleNode.textContent;
+    const titleLang = titleNode.getAttribute('xml:lang') || 'en';
+
+    console.log('Processing title:', { titleType, titleText, titleLang });
 
     if (i === 0) {
-      // First title goes into the main title field
-      $('#input-resourceinformation-title').val(titleText);
+      // Erster Titel
+      $('input[name="title[]"]:first').val(titleText);
+      $('#input-resourceinformation-titletype').val(mapTitleType(titleType));
+      if (titleType) {
+        $('#container-resourceinformation-titletype').show();
+      }
     } else {
-      // For additional titles, we need to add new rows
-      $('#button-resourceinformation-addtitle').click(); // Click the + button to add new row
+      // Weitere Titel - Button-Click simulieren
+      $('#button-resourceinformation-addtitle').click();
 
-      // Get the newly created row
-      const titleInputs = $('input[name="title[]"]');
-      const titleTypeSelects = $('select[name="titleType[]"]');
+      // Letzte hinzugefügte Zeile finden
+      const $lastRow = $('input[name="title[]"]').last().closest('.row');
 
-      // Set values in the last row
-      $(titleInputs[titleInputs.length - 1]).val(titleText);
-      $(titleTypeSelects[titleTypeSelects.length - 1]).val(mapTitleType(titleType));
+      // Werte setzen
+      $lastRow.find('input[name="title[]"]').val(titleText);
+      $lastRow.find('select[name="titleType[]"]').val(mapTitleType(titleType));
     }
   }
 }
