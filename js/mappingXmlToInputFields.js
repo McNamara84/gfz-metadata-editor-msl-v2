@@ -142,6 +142,26 @@ function mapTitleType(titleType) {
 }
 
 /**
+ * Helper function to get text content of a node using XPath
+ * @param {Node} contextNode - The context node to search from
+ * @param {string} xpath - The XPath expression
+ * @param {Document} xmlDoc - The XML document
+ * @param {Function} resolver - The namespace resolver function
+ * @returns {string} The text content of the matched node
+ */
+function getNodeText(contextNode, xpath, xmlDoc, resolver) {
+  const node = xmlDoc.evaluate(
+    xpath,
+    contextNode,
+    resolver,
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null
+  ).singleNodeValue;
+
+  return node ? node.textContent.trim() : '';
+}
+
+/**
  * Loads XML data into form fields according to mapping configuration
  * @param {Document} xmlDoc - The parsed XML document
  */
@@ -280,22 +300,109 @@ async function loadXmlToForm(xmlDoc) {
     console.log('Processing title:', { titleType, titleText, titleLang });
 
     if (i === 0) {
-      // Erster Titel
+      // First Title
       $('input[name="title[]"]:first').val(titleText);
       $('#input-resourceinformation-titletype').val(mapTitleType(titleType));
       if (titleType) {
         $('#container-resourceinformation-titletype').show();
       }
     } else {
-      // Weitere Titel - Button-Click simulieren
+      // Add Title - Clone new row
       $('#button-resourceinformation-addtitle').click();
 
-      // Letzte hinzugefügte Zeile finden
+      // Find last row
       const $lastRow = $('input[name="title[]"]').last().closest('.row');
 
-      // Werte setzen
+      // Set values
       $lastRow.find('input[name="title[]"]').val(titleText);
       $lastRow.find('select[name="titleType[]"]').val(mapTitleType(titleType));
+    }
+  }
+  // Processing Creators
+  const creatorNodes = xmlDoc.evaluate(
+    '/ns:resource/ns:creators/ns:creator',
+    xmlDoc,
+    resolver,
+    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+    null
+  );
+
+  // Reset existing authors
+  $('#group-author .row[data-creator-row]').not(':first').remove();
+  $('#group-author .row[data-creator-row]:first input').val('');
+
+  for (let i = 0; i < creatorNodes.snapshotLength; i++) {
+    const creatorNode = creatorNodes.snapshotItem(i);
+
+    // Extract Creators
+    const givenName = getNodeText(creatorNode, 'ns:givenName', xmlDoc, resolver);
+    const familyName = getNodeText(creatorNode, 'ns:familyName', xmlDoc, resolver);
+    const orcid = getNodeText(
+      creatorNode,
+      'ns:nameIdentifier[@nameIdentifierScheme="ORCID"]',
+      xmlDoc,
+      resolver
+    ).replace('https://orcid.org/', '');
+
+    // Extract Affiliations
+    const affiliationNodes = xmlDoc.evaluate(
+      'ns:affiliation',
+      creatorNode,
+      resolver,
+      XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+      null
+    );
+
+    const affiliations = [];
+    const rorIds = [];
+
+    for (let j = 0; j < affiliationNodes.snapshotLength; j++) {
+      const affNode = affiliationNodes.snapshotItem(j);
+      const affiliationName = affNode.textContent;
+      const rorId = affNode.getAttribute('affiliationIdentifier');
+
+      if (affiliationName) {
+        affiliations.push(affiliationName);
+        if (rorId) {
+          rorIds.push(rorId);
+        }
+      }
+    }
+
+    if (i === 0) {
+      // Erster Author - existierende Zeile verwenden
+      const firstRow = $('#group-author .row[data-creator-row]:first');
+      firstRow.find('input[name="orcids[]"]').val(orcid);
+      firstRow.find('input[name="familynames[]"]').val(familyName);
+      firstRow.find('input[name="givennames[]"]').val(givenName);
+
+      // Initialisiere Tagify für die erste Zeile
+      const tagifyInput = firstRow.find('input[name="affiliation[]"]')[0];
+      if (tagifyInput) {
+        const tagify = new Tagify(tagifyInput);
+        tagify.addTags(affiliations);
+        firstRow.find('input[name="authorRorIds[]"]').val(rorIds.join(','));
+      }
+    } else {
+      // Weitere Autoren - Button-Click simulieren
+      $('#button-author-add').click();
+
+      // Finde die neu hinzugefügte Zeile
+      const newRow = $('#group-author .row[data-creator-row]').last();
+
+      // Setze die Werte
+      newRow.find('input[name="orcids[]"]').val(orcid);
+      newRow.find('input[name="familynames[]"]').val(familyName);
+      newRow.find('input[name="givennames[]"]').val(givenName);
+
+      // Warte kurz, bis Tagify initialisiert ist
+      setTimeout(() => {
+        const tagifyInput = newRow.find('input[name="affiliation[]"]')[0];
+        if (tagifyInput && tagifyInput.tagify) {
+          tagifyInput.tagify.addTags(affiliations);
+          newRow.find('input[name="authorRorIds[]"]').val(rorIds.join(','));
+        }
+      }, 100);
     }
   }
 }
