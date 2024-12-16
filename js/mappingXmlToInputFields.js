@@ -165,7 +165,6 @@ let labData = [];
  * @param {Document} xmlDoc - The parsed XML document
  */
 async function loadXmlToForm(xmlDoc) {
-  console.log('Checking if laboratory field is Tagified:', $('input[name="laboratoryName[]"]')[0].tagify ? 'yes' : 'no');
   // Warte auf das Laden der Labordaten, falls noch nicht geschehen
   if (!labData || labData.length === 0) {
     try {
@@ -469,8 +468,6 @@ async function loadXmlToForm(xmlDoc) {
     validContactPersonCount++;
   }
   // Process Originating Laboratories
-  console.log('Starting laboratory processing');
-
   const laboratoryNodes = xmlDoc.evaluate(
     '/ns:resource/ns:contributors/ns:contributor[@contributorType="HostingInstitution"]',
     xmlDoc,
@@ -478,8 +475,6 @@ async function loadXmlToForm(xmlDoc) {
     XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
     null
   );
-
-  console.log(`Found ${laboratoryNodes.snapshotLength} laboratory nodes`);
 
   // Reset existing laboratories
   $('#group-originatinglaboratory .row[data-laboratory-row]').not(':first').remove();
@@ -496,8 +491,6 @@ async function loadXmlToForm(xmlDoc) {
 
   // Funktion zum Setzen des Labornamens mit Tagify
   function setLabNameWithTagify(row, labId) {
-    console.log('Setting lab name with Tagify for ID:', labId);
-
     // Prüfe ob labData verfügbar ist
     if (typeof labData === 'undefined') {
       console.error('labData is not available');
@@ -505,7 +498,6 @@ async function loadXmlToForm(xmlDoc) {
     }
 
     const inputName = row.find('input[name="laboratoryName[]"]')[0];
-    console.log('Found name input element:', inputName);
 
     if (!inputName) {
       console.error('Input element not found');
@@ -513,7 +505,6 @@ async function loadXmlToForm(xmlDoc) {
     }
 
     const lab = findLabNameById(labId);
-    console.log('Found lab:', lab);
 
     if (!lab) {
       console.error('Lab not found');
@@ -523,12 +514,9 @@ async function loadXmlToForm(xmlDoc) {
     try {
       // Prüfe ob eine Tagify-Instanz existiert
       if (inputName.tagify) {
-        console.log('Using existing Tagify instance');
         inputName.tagify.removeAllTags();
         inputName.tagify.addTags([lab.name]);
       } else {
-        console.log('Creating new Tagify instance');
-
         // Erstelle neue Tagify direkt hier
         const tagify = new Tagify(inputName, {
           whitelist: labData.map(item => item.name),
@@ -545,7 +533,6 @@ async function loadXmlToForm(xmlDoc) {
 
         // Setze den Wert nach kurzer Verzögerung
         setTimeout(() => {
-          console.log('Setting initial value after delay');
           tagify.removeAllTags();
           tagify.addTags([lab.name]);
         }, 100);
@@ -554,7 +541,6 @@ async function loadXmlToForm(xmlDoc) {
       // Finde auch das Affiliation-Feld und setze es
       const inputAffiliation = row.find('input[name="laboratoryAffiliation[]"]')[0];
       if (inputAffiliation && inputAffiliation.tagify) {
-        console.log('Setting affiliation');
         inputAffiliation.tagify.removeAllTags();
         inputAffiliation.tagify.addTags([lab.affiliation]);
       }
@@ -566,8 +552,6 @@ async function loadXmlToForm(xmlDoc) {
       if (hiddenRorId.length) hiddenRorId.val(lab.ror_id || '');
       if (hiddenLabId.length) hiddenLabId.val(lab.id);
 
-      console.log('Successfully set all lab fields');
-
     } catch (error) {
       console.error('Error in setLabNameWithTagify:', error);
       console.error('Error stack:', error.stack);
@@ -576,46 +560,35 @@ async function loadXmlToForm(xmlDoc) {
 
 
   for (let i = 0; i < laboratoryNodes.snapshotLength; i++) {
-    console.log(`Processing laboratory ${i + 1} of ${laboratoryNodes.snapshotLength}`);
-
     const labNode = laboratoryNodes.snapshotItem(i);
-    console.log('Laboratory node:', labNode);
 
     // Extract laboratory ID
     const labId = getNodeText(labNode, 'ns:nameIdentifier[@nameIdentifierScheme="labid"]', xmlDoc, resolver);
-    console.log('Extracted lab ID:', labId);
 
     // Skip if no lab ID
     if (!labId) {
-      console.log('Skipping laboratory with missing ID');
       continue;
     }
 
     if (i === 0) {
-      console.log('Processing first laboratory');
       // First laboratory - use existing row
       const firstRow = $('#group-originatinglaboratory .row[data-laboratory-row]:first');
-      console.log('First row element:', firstRow[0]);
 
       // Set lab ID in hidden field
       firstRow.find('input[name="LabId[]"]').val(labId);
-      console.log('Set lab ID in hidden field:', labId);
 
       // Set lab name using Tagify
       setLabNameWithTagify(firstRow, labId);
 
     } else {
-      console.log(`Processing additional laboratory ${i + 1}`);
       // Additional laboratories - clone new row
       $('#button-originatinglaboratory-add').click();
 
       // Find the newly added row
       const newRow = $('#group-originatinglaboratory .row[data-laboratory-row]').last();
-      console.log('New row element:', newRow[0]);
 
       // Set lab ID
       newRow.find('input[name="LabId[]"]').val(labId);
-      console.log('Set lab ID in hidden field:', labId);
 
       // Set lab name using Tagify
       setLabNameWithTagify(newRow, labId);
@@ -658,8 +631,6 @@ async function loadXmlToForm(xmlDoc) {
   ).singleNodeValue;
 
   if (contributorsNode) {
-    console.log('Found contributors node');
-
     // Get all contributors except ContactPerson and HostingInstitution
     const contributorNodes = xmlDoc.evaluate(
       'ns:contributor[not(@contributorType="ContactPerson") and not(@contributorType="HostingInstitution")]',
@@ -668,8 +639,6 @@ async function loadXmlToForm(xmlDoc) {
       XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
       null
     );
-
-    console.log(`Found ${contributorNodes.snapshotLength} additional contributors`);
 
     for (let i = 0; i < contributorNodes.snapshotLength; i++) {
       const contributor = contributorNodes.snapshotItem(i);
