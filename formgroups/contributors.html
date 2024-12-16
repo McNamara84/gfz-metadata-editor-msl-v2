@@ -17,7 +17,7 @@
           <div class="input-group has-validation">
             <div class="form-floating">
               <input type="text" class="form-control input-with-help input-right-no-round-corners"
-                id="input-contributor-orcid" name="cbORCID[]"
+                id="input-contributor-orcid" name="cbORCID[]" oninput="checkMandatoryFields()"
                 pattern="^[0-9]{4}-[0-9]{4}-[0-9]{4}-([0-9]{4}|[0-9]{3}X)$" />
               <label for="input-contributor-orcid">
                 <?php echo $translations['contributors_ORCID']; ?>
@@ -66,7 +66,7 @@
         <!-- Input field for Contributor Person Role(s) -->
         <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
           <div class="input-group has-validation">
-            <input name="cbPersonRoles[]" id="input-contributor-personrole"
+            <input name="cbPersonRoles[]" oninput="checkMandatoryFields()" id="input-contributor-personrole"
               class="form-control tagify--custom-dropdown input-with-help input-right-no-round-corners"
               placeholder="<?php echo $translations['role_label']; ?>" />
             <span class="input-group-text"><i class="bi bi-question-circle-fill"
@@ -80,7 +80,7 @@
         <div class="col-10 col-sm-10 col-md-7 col-lg-3 p-1">
           <div class="input-group has-validation">
             <input type="text" class="form-control input-with-help input-right-no-round-corners"
-              id="input-contributor-personaffiliation" name="cbAffiliation[]"
+              id="input-contributor-personaffiliation" name="cbAffiliation[]" oninput="checkMandatoryFields()"
               placeholder="<?php echo $translations['affiliation']; ?>" />
             <span class="input-group-text"><i class="bi bi-question-circle-fill"
                 data-help-section-id="help-contributor-affiliation"></i></span>
@@ -124,7 +124,7 @@
         <!-- Input field for Organisation Role(s)-->
         <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
           <div class="input-group has-validation">
-            <input name="cbOrganisationRoles[]" id="input-contributor-organisationrole"
+            <input name="cbOrganisationRoles[]" oninput="checkMandatoryFields()" id="input-contributor-organisationrole"
               class="form-control tagify--custom-dropdown input-with-help input-right-no-round-corners"
               placeholder="<?php echo $translations['role_label']; ?>" />
             <span class="input-group-text"><i class="bi bi-question-circle-fill"
@@ -138,7 +138,7 @@
         <div class="col-10 col-sm-10 col-md-7 col-lg-5 p-1">
           <div class="input-group has-validation">
             <input type="text" class="form-control input-with-help input-right-no-round-corners"
-              id="input-contributor-organisationaffiliation" name="OrganisationAffiliation[]"
+              id="input-contributor-organisationaffiliation" name="OrganisationAffiliation[]" oninput="checkMandatoryFields()"
               placeholder="<?php echo $translations['affiliation']; ?>" />
             <span class="input-group-text"><i class="bi bi-question-circle-fill"
                 data-help-section-id="help-contributor-organisationaffiliation"></i></span>

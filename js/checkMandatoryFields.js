@@ -1,29 +1,41 @@
 function checkMandatoryFields() {
     // "FG" Contributer(s)
     //Person
-    var firstname = document.getElementById('input-contributor-firstname').value.trim();
-    var lastname = document.getElementById('input-contributor-lastname').value.trim();
-    var roleField = document.getElementById('input-contributor-personrole');
-    //Institution
-    var OrganisationName = document.getElementById('input-contributor-name').value.trim();
-    var institutionRoleField = document.getElementById('input-contributor-organisationrole');
+    var contributorOrcid = document.getElementById('input-contributor-orcid');
+    var contributorlastname = document.getElementById('input-contributor-lastname');
+    var contributorfirstname = document.getElementById('input-contributor-firstname');
+    var contributorrole = document.getElementById('input-contributor-personrole');
+    var contributorAffiliation = document.getElementById('input-contributor-personaffiliation');
 
-    // Check if first name or last name is filled
-    if (firstname !== '' || lastname !== '') {
-        // Set 'required' for role field
-        roleField.setAttribute('required', 'required');
+    // Check if any Contributors (Person) fields are filled
+    if (contributorOrcid.value.trim() !== '' || contributorlastname.value.trim() !== '' || contributorfirstname.value.trim() !== '' || contributorrole.value.trim() !== '' || contributorAffiliation.value.trim() !== '') {
+        // Set 'required' for Contributor Lastname, Contributor Firstname and ContributorPerson Role fields
+        contributorlastname.setAttribute('required', 'required');
+        contributorfirstname.setAttribute('required', 'required');
+        contributorrole.setAttribute('required', 'required');
     } else {
-        // Remove 'required' from role field
-        roleField.removeAttribute('required');
+        // Remove 'required' from Contributor Lastname, Contributor Firstname and ContributorPerson Role fields
+        contributorlastname.removeAttribute('required');
+        contributorfirstname.removeAttribute('required');
+        contributorrole.removeAttribute('required');
     }
 
-    // Check if organization name is filled
-    if (OrganisationName !== '') {
-        // Set 'required' for institution role field
-        institutionRoleField.setAttribute('required', 'required');
+    //Institution
+    var contributorOrganisationName = document.getElementById('input-contributor-name');
+    var contributorOrganisationrole = document.getElementById('input-contributor-organisationrole');
+    var contributorOrganisationAffiliation = document.getElementById('input-contributor-organisationaffiliation');
+
+    // Check if any Contributors (Institution) fields are filled
+    if (contributorOrganisationName.value.trim() !== '' || contributorOrganisationrole.value.trim() !== '' || contributorOrganisationAffiliation.value.trim() !== '') {
+        // Set 'required' for Contributor Organisation name and ContributorInstitution Role fields
+        contributorOrganisationName.setAttribute('required', 'required');
+        contributorOrganisationrole.setAttribute('required', 'required');
+
     } else {
-        // Remove 'required' from institution role field
-        institutionRoleField.removeAttribute('required');
+        // Remove 'required' from Contributor Organisation name and ContributorInstitution Role fields
+        contributorOrganisationName.removeAttribute('required');
+        contributorOrganisationrole.removeAttribute('required');
+
     }
 
     // "FG" Contact person(s)
@@ -36,7 +48,7 @@ function checkMandatoryFields() {
 
     // Check if any contact person fields are filled
     if (contactpersonLastname.value.trim() !== '' || contactpersonFirstname.value.trim() !== '' || contactpersonPosition.value.trim() !== '' || contactpersonEmail.value.trim() !== '' || contactpersonWebsite.value.trim() !== '' || contactpersonAffiliation.value.trim() !== '') {
-        // Set 'required' for Contributors Lastname, Contact Person Firstname and Contact Email Address fields
+        // Set 'required' for Contact Person Lastname, Contact Person Firstname and Contact Person Email Address fields
         contactpersonLastname.setAttribute('required', 'required');
         contactpersonFirstname.setAttribute('required', 'required');
         contactpersonEmail.setAttribute('required', 'required');
