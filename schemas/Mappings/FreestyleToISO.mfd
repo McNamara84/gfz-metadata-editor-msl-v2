@@ -60,18 +60,6 @@
 						</comment>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="23" kind="2">
-					<targets>
-						<datapoint pos="0" key="40"/>
-					</targets>
-					<view ltx="1585" lty="-169" rbx="1722" rby="-152"/>
-					<data>
-						<constant value="http://www.loc.gov/standards/iso639-1/" datatype="string"/>
-						<comment>
-							<text>Default language CodeList</text>
-						</comment>
-					</data>
-				</component>
 				<component name="constant" library="core" uid="25" kind="2">
 					<targets>
 						<datapoint pos="0" key="41"/>
@@ -153,18 +141,6 @@
 						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ProgressCode" datatype="string"/>
 						<comment>
 							<text>Default codeList for MD_ProgressCode</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="37" kind="2">
-					<targets>
-						<datapoint pos="0" key="77"/>
-					</targets>
-					<view ltx="1586" lty="268" rbx="1667" rby="285"/>
-					<data>
-						<constant value="Complete" datatype="string"/>
-						<comment>
-							<text>Default MD_ProgressCode and codeListValue for MD_ProgressCode</text>
 						</comment>
 					</data>
 				</component>
@@ -313,16 +289,6 @@
 						<datapoint pos="0" key="112"/>
 					</targets>
 					<view ltx="601" lty="475" rbx="681" rby="546"/>
-				</component>
-				<component name="concat" library="core" uid="49" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="105"/>
-						<datapoint pos="1" key="106"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="107"/>
-					</targets>
-					<view ltx="777" lty="475" rbx="848" rby="529"/>
 				</component>
 				<component name="constant" library="core" uid="62" kind="2">
 					<targets>
@@ -900,17 +866,6 @@ Only 2 coord fields filled -&gt; Point</text>
 					</targets>
 					<view ltx="1564" lty="706" rbx="1653" rby="777"/>
 				</component>
-				<component name="if-else" library="core" uid="180" kind="4">
-					<sources>
-						<datapoint pos="0" key="462"/>
-						<datapoint pos="1" key="463"/>
-						<datapoint pos="2" key="487"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="464"/>
-					</targets>
-					<view ltx="1564" lty="636" rbx="1653" rby="707"/>
-				</component>
 				<component name="if-else" library="core" uid="183" kind="4">
 					<sources>
 						<datapoint pos="0" key="472"/>
@@ -963,18 +918,6 @@ Only 2 coord fields filled -&gt; Point</text>
 						<constant value="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" datatype="string"/>
 						<comment>
 							<text>Default codeList for CI_DateTypeCode</text>
-						</comment>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="34" kind="2">
-					<targets>
-						<datapoint pos="0" key="74"/>
-					</targets>
-					<view ltx="1586" lty="170" rbx="1660" rby="187"/>
-					<data>
-						<constant value="creation" datatype="string"/>
-						<comment>
-							<text>Default CI_DateTypeCode and codeListValue</text>
 						</comment>
 					</data>
 				</component>
@@ -1199,414 +1142,6 @@ Only 2 coord fields filled -&gt; Point</text>
 						</comment>
 					</data>
 				</component>
-				<component name="gmd" library="xml" uid="3" kind="14">
-					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
-					<view ltx="1881" lty="-108" rbx="2214" rby="900"/>
-					<data>
-						<root scrollposition="6197">
-							<header>
-								<namespaces>
-									<namespace uid="http://www.isotc211.org/2005/gco"/>
-									<namespace uid="http://www.isotc211.org/2005/gmd"/>
-									<namespace/>
-									<namespace uid="http://www.w3.org/1999/xlink"/>
-									<namespace uid="http://www.opengis.net/gml"/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="5" expanded="1">
-								<entry name="document" ns="5" expanded="1" casttotargettypemode="cast-in-subtree">
-									<entry name="MD_Metadata" ns="1" inpkey="1" expanded="1">
-										<entry name="fileIdentifier" ns="1" expanded="1">
-											<entry name="CharacterString" inpkey="46"/>
-										</entry>
-										<entry name="language" ns="1" expanded="1">
-											<entry name="CharacterString" inpkey="47"/>
-											<entry name="LanguageCode" ns="1">
-												<entry name="codeList" ns="2" type="attribute" inpkey="48"/>
-												<entry name="codeListValue" ns="2" type="attribute" inpkey="49"/>
-											</entry>
-										</entry>
-										<entry name="characterSet" ns="1">
-											<entry name="MD_CharacterSetCode" ns="1">
-												<entry name="codeList" ns="2" type="attribute" inpkey="50"/>
-												<entry name="codeListValue" ns="2" type="attribute" inpkey="51"/>
-											</entry>
-										</entry>
-										<entry name="hierarchyLevel" ns="1">
-											<entry name="MD_ScopeCode" ns="1">
-												<entry name="codeList" ns="2" type="attribute" inpkey="52"/>
-												<entry name="codeListValue" ns="2" type="attribute" inpkey="53"/>
-											</entry>
-										</entry>
-										<entry name="contact" ns="1">
-											<entry name="CI_ResponsibleParty" ns="1" expanded="1">
-												<entry name="organisationName" ns="1">
-													<entry name="CharacterString" inpkey="54"/>
-												</entry>
-												<entry name="contactInfo" ns="1">
-													<entry name="CI_Contact" ns="1">
-														<entry name="onlineResource" ns="1">
-															<entry name="CI_OnlineResource" ns="1">
-																<entry name="linkage" ns="1">
-																	<entry name="URL" ns="1" inpkey="55"/>
-																</entry>
-																<entry name="function" ns="1">
-																	<entry name="CI_OnLineFunctionCode" ns="1" inpkey="60">
-																		<entry name="codeList" ns="2" type="attribute" inpkey="61"/>
-																		<entry name="codeListValue" ns="2" type="attribute" inpkey="62"/>
-																	</entry>
-																</entry>
-															</entry>
-														</entry>
-													</entry>
-												</entry>
-												<entry name="role" ns="1" expanded="1">
-													<entry name="CI_RoleCode" ns="1" inpkey="63" expanded="1">
-														<entry name="codeList" ns="2" type="attribute" inpkey="64"/>
-														<entry name="codeListValue" ns="2" type="attribute" inpkey="65"/>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="dateStamp" ns="1">
-											<entry name="Date" inpkey="69"/>
-										</entry>
-										<entry name="referenceSystemInfo" ns="1">
-											<entry name="MD_ReferenceSystem" ns="1" expanded="1">
-												<entry name="referenceSystemIdentifier" ns="1" expanded="1">
-													<entry name="RS_Identifier" ns="1" expanded="1">
-														<entry name="code" ns="1" expanded="1">
-															<entry name="CharacterString" inpkey="497"/>
-															<entry name="MD_SpatialRepresentationTypeCode" ns="1" expanded="1"/>
-														</entry>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="identificationInfo" ns="1" expanded="1">
-											<entry name="MD_DataIdentification" ns="1" expanded="1">
-												<entry name="citation" ns="1" expanded="1">
-													<entry name="CI_Citation" ns="1" expanded="1">
-														<entry name="title" ns="1" inpkey="509" expanded="1">
-															<entry name="CharacterString" inpkey="10"/>
-														</entry>
-														<entry name="alternateTitle" ns="1" expanded="1">
-															<entry name="CharacterString" inpkey="56"/>
-														</entry>
-														<entry name="date" ns="1" expanded="1">
-															<entry name="CI_Date" ns="1" expanded="1">
-																<entry name="date" ns="1" expanded="1">
-																	<entry name="Date" inpkey="70"/>
-																</entry>
-																<entry name="dateType" ns="1" expanded="1">
-																	<entry name="CI_DateTypeCode" ns="1" inpkey="71" expanded="1">
-																		<entry name="codeList" ns="2" type="attribute" inpkey="72"/>
-																		<entry name="codeListValue" ns="2" type="attribute" inpkey="73"/>
-																	</entry>
-																</entry>
-															</entry>
-														</entry>
-														<entry name="citedResponsibleParty" ns="1" inpkey="115">
-															<entry name="href" ns="3" type="attribute" inpkey="116"/>
-															<entry name="CI_ResponsibleParty" ns="1">
-																<entry name="individualName" ns="1">
-																	<entry name="CharacterString" inpkey="117"/>
-																</entry>
-																<entry name="organisationName" ns="1">
-																	<entry name="CharacterString" inpkey="118"/>
-																</entry>
-																<entry name="role" ns="1">
-																	<entry name="CI_RoleCode" ns="1" inpkey="119">
-																		<entry name="codeList" ns="2" type="attribute" inpkey="120"/>
-																		<entry name="codeListValue" ns="2" type="attribute" inpkey="121"/>
-																	</entry>
-																</entry>
-															</entry>
-														</entry>
-													</entry>
-												</entry>
-												<entry name="abstract" ns="1" inpkey="144" expanded="1">
-													<entry name="CharacterString" inpkey="145"/>
-												</entry>
-												<entry name="status" ns="1">
-													<entry name="MD_ProgressCode" ns="1" inpkey="87" expanded="1">
-														<entry name="codeList" ns="2" type="attribute" inpkey="88"/>
-														<entry name="codeListValue" ns="2" type="attribute" inpkey="89"/>
-													</entry>
-												</entry>
-												<entry name="pointOfContact" ns="1" expanded="1">
-													<entry name="CI_ResponsibleParty" ns="1" expanded="1">
-														<entry name="individualName" ns="1" inpkey="173">
-															<entry name="CharacterString" inpkey="174"/>
-														</entry>
-														<entry name="organisationName" ns="1">
-															<entry name="CharacterString" inpkey="175"/>
-														</entry>
-														<entry name="positionName" ns="1">
-															<entry name="CharacterString" inpkey="176"/>
-														</entry>
-														<entry name="contactInfo" ns="1">
-															<entry name="CI_Contact" ns="1">
-																<entry name="address" ns="1">
-																	<entry name="CI_Address" ns="1">
-																		<entry name="electronicMailAddress" ns="1">
-																			<entry name="CharacterString" inpkey="177"/>
-																		</entry>
-																	</entry>
-																</entry>
-																<entry name="onlineResource" ns="1">
-																	<entry name="CI_OnlineResource" ns="1">
-																		<entry name="linkage" ns="1">
-																			<entry name="URL" ns="1" inpkey="178"/>
-																		</entry>
-																		<entry name="function" ns="1">
-																			<entry name="CI_OnLineFunctionCode" ns="1" inpkey="179">
-																				<entry name="codeList" ns="2" type="attribute" inpkey="180"/>
-																				<entry name="codeListValue" ns="2" type="attribute" inpkey="181"/>
-																			</entry>
-																		</entry>
-																	</entry>
-																</entry>
-															</entry>
-														</entry>
-														<entry name="role" ns="1">
-															<entry name="CI_RoleCode" ns="1" inpkey="182">
-																<entry name="codeList" ns="2" type="attribute" inpkey="183"/>
-																<entry name="codeListValue" ns="2" type="attribute" inpkey="184"/>
-															</entry>
-														</entry>
-													</entry>
-												</entry>
-												<entry name="descriptiveKeywords" ns="1" expanded="1">
-													<entry name="MD_Keywords" ns="1" inpkey="191">
-														<entry name="keyword" ns="1" inpkey="189">
-															<entry name="CharacterString" inpkey="192"/>
-														</entry>
-														<entry name="thesaurusName" ns="1">
-															<entry name="CI_Citation" ns="1">
-																<entry name="title" ns="1">
-																	<entry name="CharacterString" inpkey="201"/>
-																</entry>
-																<entry name="date" ns="1" inpkey="228"/>
-															</entry>
-														</entry>
-													</entry>
-													<entry name="MD_Keywords" ns="1" inpkey="213" clone="1">
-														<entry name="keyword" ns="1" inpkey="216">
-															<entry name="CharacterString" inpkey="215"/>
-														</entry>
-														<entry name="thesaurusName" ns="1" expanded="1">
-															<entry name="CI_Citation" ns="1">
-																<entry name="title" ns="1" inpkey="214"/>
-																<entry name="date" ns="1" inpkey="229"/>
-															</entry>
-														</entry>
-													</entry>
-													<entry name="MD_Keywords" ns="1" inpkey="230" clone="1">
-														<entry name="keyword" ns="1" inpkey="231">
-															<entry name="CharacterString" inpkey="232"/>
-														</entry>
-														<entry name="thesaurusName" ns="1">
-															<entry name="CI_Citation" ns="1">
-																<entry name="title" ns="1">
-																	<entry name="CharacterString" inpkey="233"/>
-																</entry>
-																<entry name="date" ns="1" inpkey="329"/>
-															</entry>
-														</entry>
-													</entry>
-													<entry name="MD_Keywords" ns="1" inpkey="247" clone="1">
-														<entry name="keyword" ns="1" inpkey="248">
-															<entry name="CharacterString" inpkey="246"/>
-														</entry>
-														<entry name="thesaurusName" ns="1">
-															<entry name="CI_Citation" ns="1">
-																<entry name="title" ns="1">
-																	<entry name="CharacterString" inpkey="245"/>
-																</entry>
-																<entry name="date" ns="1" inpkey="330"/>
-															</entry>
-														</entry>
-													</entry>
-													<entry name="MD_Keywords" ns="1" inpkey="260" expanded="1" clone="1">
-														<entry name="keyword" ns="1" inpkey="259">
-															<entry name="CharacterString" inpkey="261"/>
-														</entry>
-														<entry name="thesaurusName" ns="1" expanded="1">
-															<entry name="CI_Citation" ns="1" expanded="1">
-																<entry name="title" ns="1">
-																	<entry name="CharacterString" inpkey="262"/>
-																</entry>
-																<entry name="date" ns="1" inpkey="331" expanded="1"/>
-															</entry>
-														</entry>
-													</entry>
-													<entry name="MD_Keywords" ns="1" inpkey="276" expanded="1" clone="1">
-														<entry name="keyword" ns="1" inpkey="273">
-															<entry name="CharacterString" inpkey="274"/>
-														</entry>
-														<entry name="thesaurusName" ns="1" expanded="1">
-															<entry name="CI_Citation" ns="1" expanded="1">
-																<entry name="title" ns="1" expanded="1">
-																	<entry name="CharacterString" inpkey="275"/>
-																</entry>
-																<entry name="date" ns="1" inpkey="332"/>
-															</entry>
-														</entry>
-													</entry>
-													<entry name="MD_Keywords" ns="1" inpkey="289" clone="1">
-														<entry name="keyword" ns="1" inpkey="288">
-															<entry name="CharacterString" inpkey="290"/>
-														</entry>
-														<entry name="thesaurusName" ns="1">
-															<entry name="CI_Citation" ns="1">
-																<entry name="title" ns="1">
-																	<entry name="CharacterString" inpkey="287"/>
-																</entry>
-																<entry name="date" ns="1" inpkey="333"/>
-															</entry>
-														</entry>
-													</entry>
-													<entry name="MD_Keywords" ns="1" inpkey="303" clone="1">
-														<entry name="keyword" ns="1" inpkey="302">
-															<entry name="CharacterString" inpkey="301"/>
-														</entry>
-														<entry name="thesaurusName" ns="1">
-															<entry name="CI_Citation" ns="1">
-																<entry name="title" ns="1">
-																	<entry name="CharacterString" inpkey="304"/>
-																</entry>
-																<entry name="date" ns="1" inpkey="334"/>
-															</entry>
-														</entry>
-													</entry>
-													<entry name="MD_Keywords" ns="1" inpkey="317" clone="1">
-														<entry name="keyword" ns="1" inpkey="318">
-															<entry name="CharacterString" inpkey="315"/>
-														</entry>
-														<entry name="thesaurusName" ns="1">
-															<entry name="CI_Citation" ns="1">
-																<entry name="title" ns="1">
-																	<entry name="CharacterString" inpkey="316"/>
-																</entry>
-																<entry name="date" ns="1" inpkey="335"/>
-															</entry>
-														</entry>
-													</entry>
-													<entry name="MD_Keywords" ns="1" inpkey="336" clone="1">
-														<entry name="keyword" ns="1" inpkey="337">
-															<entry name="CharacterString" inpkey="338"/>
-														</entry>
-														<entry name="thesaurusName" ns="1">
-															<entry name="CI_Citation" ns="1">
-																<entry name="title" ns="1">
-																	<entry name="CharacterString" inpkey="339"/>
-																</entry>
-																<entry name="date" ns="1" inpkey="340"/>
-															</entry>
-														</entry>
-													</entry>
-													<entry name="MD_Keywords" ns="1" inpkey="341" clone="1">
-														<entry name="keyword" ns="1" inpkey="342">
-															<entry name="CharacterString" inpkey="343"/>
-														</entry>
-													</entry>
-												</entry>
-												<entry name="resourceConstraints" ns="1">
-													<entry name="MD_Constraints" ns="1">
-														<entry name="useLimitation" ns="1">
-															<entry name="CharacterString" inpkey="100"/>
-														</entry>
-													</entry>
-													<entry name="MD_LegalConstraints" ns="1">
-														<entry name="accessConstraints" ns="1">
-															<entry name="MD_RestrictionCode" ns="1">
-																<entry name="codeList" ns="2" type="attribute" inpkey="101"/>
-																<entry name="codeListValue" ns="2" type="attribute" inpkey="102"/>
-															</entry>
-														</entry>
-														<entry name="otherConstraints" ns="1">
-															<entry name="CharacterString" inpkey="103"/>
-														</entry>
-													</entry>
-												</entry>
-												<entry name="language" ns="1" inpkey="234"/>
-												<entry name="extent" ns="1" inpkey="395" expanded="1">
-													<entry name="EX_Extent" ns="1" expanded="1">
-														<entry name="description" ns="1" expanded="1">
-															<entry name="CharacterString" inpkey="396"/>
-														</entry>
-														<entry name="geographicElement" ns="1" expanded="1">
-															<entry name="EX_GeographicBoundingBox" ns="1" expanded="1">
-																<entry name="westBoundLongitude" ns="1" expanded="1">
-																	<entry name="Decimal" inpkey="398"/>
-																</entry>
-																<entry name="eastBoundLongitude" ns="1" expanded="1">
-																	<entry name="Decimal" inpkey="399"/>
-																</entry>
-																<entry name="southBoundLatitude" ns="1" expanded="1">
-																	<entry name="Decimal" inpkey="400"/>
-																</entry>
-																<entry name="northBoundLatitude" ns="1" expanded="1">
-																	<entry name="Decimal" inpkey="401"/>
-																</entry>
-															</entry>
-														</entry>
-														<entry name="temporalElement" ns="1" expanded="1">
-															<entry name="EX_TemporalExtent" ns="1" expanded="1">
-																<entry name="extent" ns="1" expanded="1">
-																	<entry name="TimePeriod" ns="4" expanded="1">
-																		<entry name="beginPosition" ns="4" inpkey="418" expanded="1"/>
-																		<entry name="endPosition" ns="4" inpkey="419" expanded="1"/>
-																	</entry>
-																</entry>
-															</entry>
-															<entry name="EX_SpatialTemporalExtent" ns="1">
-																<entry name="extent" ns="1" expanded="1"/>
-															</entry>
-														</entry>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-										<entry name="distributionInfo" ns="1">
-											<entry name="MD_Distribution" ns="1" expanded="1">
-												<entry name="transferOptions" ns="1" expanded="1">
-													<entry name="MD_DigitalTransferOptions" ns="1" expanded="1">
-														<entry name="onLine" ns="1" expanded="1">
-															<entry name="CI_OnlineResource" ns="1" expanded="1">
-																<entry name="linkage" ns="1" expanded="1">
-																	<entry name="URL" ns="1" inpkey="90"/>
-																</entry>
-																<entry name="protocol" ns="1">
-																	<entry name="CharacterString" inpkey="91"/>
-																</entry>
-																<entry name="name" ns="1">
-																	<entry name="CharacterString" inpkey="92"/>
-																</entry>
-																<entry name="description" ns="1">
-																	<entry name="CharacterString" inpkey="93"/>
-																</entry>
-																<entry name="function" ns="1">
-																	<entry name="CI_OnLineFunctionCode" ns="1" inpkey="94">
-																		<entry name="codeList" ns="2" type="attribute" inpkey="95"/>
-																		<entry name="codeListValue" ns="2" type="attribute" inpkey="96"/>
-																	</entry>
-																</entry>
-															</entry>
-														</entry>
-													</entry>
-												</entry>
-											</entry>
-										</entry>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<document schema="..\ISO\gmd.xsd" instanceroot="{http://www.isotc211.org/2005/gmd}MD_Metadata" outputinstance="..\ISO\gmd.xml"/>
-					</data>
-				</component>
 				<component name="concat" library="core" uid="138" kind="5" growable="1" growablebasename="value">
 					<sources>
 						<datapoint pos="0" key="423"/>
@@ -1766,6 +1301,495 @@ Only 2 coord fields filled -&gt; Point</text>
 						</comment>
 					</data>
 				</component>
+				<component name="if-else" library="core" uid="182" kind="4">
+					<sources>
+						<datapoint pos="0" key="469"/>
+						<datapoint pos="1" key="468"/>
+						<datapoint pos="2" key="489"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="470"/>
+					</targets>
+					<view ltx="1564" lty="778" rbx="1653" rby="849"/>
+				</component>
+				<component name="if-else" library="core" uid="180" kind="4">
+					<sources>
+						<datapoint pos="0" key="462"/>
+						<datapoint pos="1" key="463"/>
+						<datapoint pos="2" key="487"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="464"/>
+					</targets>
+					<view ltx="1564" lty="636" rbx="1653" rby="707"/>
+				</component>
+				<component name="concat" library="core" uid="49" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="105"/>
+						<datapoint pos="1" key="106"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="107"/>
+					</targets>
+					<view ltx="777" lty="475" rbx="848" rby="529"/>
+				</component>
+				<component name="constant" library="core" uid="34" kind="2">
+					<targets>
+						<datapoint pos="0" key="74"/>
+					</targets>
+					<view ltx="1586" lty="170" rbx="1660" rby="187"/>
+					<data>
+						<constant value="creation" datatype="string"/>
+						<comment>
+							<text>Default CI_DateTypeCode and codeListValue</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="37" kind="2">
+					<targets>
+						<datapoint pos="0" key="77"/>
+					</targets>
+					<view ltx="1586" lty="268" rbx="1667" rby="285"/>
+					<data>
+						<constant value="Complete" datatype="string"/>
+						<comment>
+							<text>Default MD_ProgressCode and codeListValue for MD_ProgressCode</text>
+						</comment>
+					</data>
+				</component>
+				<component name="gmd" library="xml" uid="3" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="1881" lty="-108" rbx="2214" rby="900"/>
+					<data>
+						<root scrollposition="1100">
+							<header>
+								<namespaces>
+									<namespace uid="http://www.isotc211.org/2005/gco"/>
+									<namespace uid="http://www.isotc211.org/2005/gmd"/>
+									<namespace/>
+									<namespace uid="http://www.w3.org/1999/xlink"/>
+									<namespace uid="http://www.opengis.net/gml"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="5" expanded="1">
+								<entry name="document" ns="5" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="MD_Metadata" ns="1" inpkey="1" expanded="1">
+										<entry name="fileIdentifier" ns="1" expanded="1">
+											<entry name="CharacterString" inpkey="46"/>
+										</entry>
+										<entry name="language" ns="1" expanded="1">
+											<entry name="CharacterString" inpkey="47"/>
+											<entry name="LanguageCode" ns="1" expanded="1">
+												<entry name="codeList" ns="2" type="attribute" inpkey="48"/>
+												<entry name="codeListValue" ns="2" type="attribute" inpkey="49"/>
+											</entry>
+										</entry>
+										<entry name="characterSet" ns="1">
+											<entry name="MD_CharacterSetCode" ns="1">
+												<entry name="codeList" ns="2" type="attribute" inpkey="50"/>
+												<entry name="codeListValue" ns="2" type="attribute" inpkey="51"/>
+											</entry>
+										</entry>
+										<entry name="hierarchyLevel" ns="1">
+											<entry name="MD_ScopeCode" ns="1">
+												<entry name="codeList" ns="2" type="attribute" inpkey="52"/>
+												<entry name="codeListValue" ns="2" type="attribute" inpkey="53"/>
+											</entry>
+										</entry>
+										<entry name="contact" ns="1">
+											<entry name="CI_ResponsibleParty" ns="1" expanded="1">
+												<entry name="organisationName" ns="1">
+													<entry name="CharacterString" inpkey="54"/>
+												</entry>
+												<entry name="contactInfo" ns="1">
+													<entry name="CI_Contact" ns="1">
+														<entry name="onlineResource" ns="1">
+															<entry name="CI_OnlineResource" ns="1">
+																<entry name="linkage" ns="1">
+																	<entry name="URL" ns="1" inpkey="55"/>
+																</entry>
+																<entry name="function" ns="1">
+																	<entry name="CI_OnLineFunctionCode" ns="1" inpkey="60">
+																		<entry name="codeList" ns="2" type="attribute" inpkey="61"/>
+																		<entry name="codeListValue" ns="2" type="attribute" inpkey="62"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+													</entry>
+												</entry>
+												<entry name="role" ns="1" expanded="1">
+													<entry name="CI_RoleCode" ns="1" inpkey="63" expanded="1">
+														<entry name="codeList" ns="2" type="attribute" inpkey="64"/>
+														<entry name="codeListValue" ns="2" type="attribute" inpkey="65"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="dateStamp" ns="1">
+											<entry name="Date" inpkey="69"/>
+										</entry>
+										<entry name="referenceSystemInfo" ns="1">
+											<entry name="MD_ReferenceSystem" ns="1" expanded="1">
+												<entry name="referenceSystemIdentifier" ns="1" expanded="1">
+													<entry name="RS_Identifier" ns="1" expanded="1">
+														<entry name="code" ns="1" expanded="1">
+															<entry name="CharacterString" inpkey="497"/>
+															<entry name="MD_SpatialRepresentationTypeCode" ns="1" expanded="1"/>
+														</entry>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="identificationInfo" ns="1" expanded="1">
+											<entry name="MD_DataIdentification" ns="1" expanded="1">
+												<entry name="citation" ns="1">
+													<entry name="CI_Citation" ns="1" expanded="1">
+														<entry name="title" ns="1" inpkey="509">
+															<entry name="CharacterString" inpkey="10"/>
+														</entry>
+														<entry name="alternateTitle" ns="1">
+															<entry name="CharacterString" inpkey="56"/>
+														</entry>
+														<entry name="date" ns="1">
+															<entry name="CI_Date" ns="1" expanded="1">
+																<entry name="date" ns="1" expanded="1">
+																	<entry name="Date" inpkey="70"/>
+																</entry>
+																<entry name="dateType" ns="1" expanded="1">
+																	<entry name="CI_DateTypeCode" ns="1" inpkey="71" expanded="1">
+																		<entry name="codeList" ns="2" type="attribute" inpkey="72"/>
+																		<entry name="codeListValue" ns="2" type="attribute" inpkey="73"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="citedResponsibleParty" ns="1" inpkey="115">
+															<entry name="href" ns="3" type="attribute" inpkey="116"/>
+															<entry name="CI_ResponsibleParty" ns="1">
+																<entry name="individualName" ns="1">
+																	<entry name="CharacterString" inpkey="117"/>
+																</entry>
+																<entry name="organisationName" ns="1">
+																	<entry name="CharacterString" inpkey="118"/>
+																</entry>
+																<entry name="role" ns="1">
+																	<entry name="CI_RoleCode" ns="1" inpkey="119">
+																		<entry name="codeList" ns="2" type="attribute" inpkey="120"/>
+																		<entry name="codeListValue" ns="2" type="attribute" inpkey="121"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+													</entry>
+												</entry>
+												<entry name="abstract" ns="1" inpkey="144">
+													<entry name="CharacterString" inpkey="145"/>
+												</entry>
+												<entry name="status" ns="1">
+													<entry name="MD_ProgressCode" ns="1" inpkey="87" expanded="1">
+														<entry name="codeList" ns="2" type="attribute" inpkey="88"/>
+														<entry name="codeListValue" ns="2" type="attribute" inpkey="89"/>
+													</entry>
+												</entry>
+												<entry name="pointOfContact" ns="1">
+													<entry name="CI_ResponsibleParty" ns="1" expanded="1">
+														<entry name="individualName" ns="1" inpkey="173">
+															<entry name="CharacterString" inpkey="174"/>
+														</entry>
+														<entry name="organisationName" ns="1">
+															<entry name="CharacterString" inpkey="175"/>
+														</entry>
+														<entry name="positionName" ns="1">
+															<entry name="CharacterString" inpkey="176"/>
+														</entry>
+														<entry name="contactInfo" ns="1">
+															<entry name="CI_Contact" ns="1">
+																<entry name="address" ns="1">
+																	<entry name="CI_Address" ns="1">
+																		<entry name="electronicMailAddress" ns="1">
+																			<entry name="CharacterString" inpkey="177"/>
+																		</entry>
+																	</entry>
+																</entry>
+																<entry name="onlineResource" ns="1">
+																	<entry name="CI_OnlineResource" ns="1">
+																		<entry name="linkage" ns="1">
+																			<entry name="URL" ns="1" inpkey="178"/>
+																		</entry>
+																		<entry name="function" ns="1">
+																			<entry name="CI_OnLineFunctionCode" ns="1" inpkey="179">
+																				<entry name="codeList" ns="2" type="attribute" inpkey="180"/>
+																				<entry name="codeListValue" ns="2" type="attribute" inpkey="181"/>
+																			</entry>
+																		</entry>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="role" ns="1">
+															<entry name="CI_RoleCode" ns="1" inpkey="182">
+																<entry name="codeList" ns="2" type="attribute" inpkey="183"/>
+																<entry name="codeListValue" ns="2" type="attribute" inpkey="184"/>
+															</entry>
+														</entry>
+													</entry>
+												</entry>
+												<entry name="descriptiveKeywords" ns="1">
+													<entry name="MD_Keywords" ns="1" inpkey="191" expanded="1">
+														<entry name="keyword" ns="1" inpkey="189">
+															<entry name="CharacterString" inpkey="192"/>
+														</entry>
+														<entry name="thesaurusName" ns="1" expanded="1">
+															<entry name="CI_Citation" ns="1" expanded="1">
+																<entry name="title" ns="1">
+																	<entry name="CharacterString" inpkey="201"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="228" expanded="1"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="213" expanded="1" clone="1">
+														<entry name="keyword" ns="1" inpkey="216">
+															<entry name="CharacterString" inpkey="215"/>
+														</entry>
+														<entry name="thesaurusName" ns="1" expanded="1">
+															<entry name="CI_Citation" ns="1" expanded="1">
+																<entry name="title" ns="1" inpkey="214"/>
+																<entry name="date" ns="1" inpkey="229" expanded="1"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="230" expanded="1" clone="1">
+														<entry name="keyword" ns="1" inpkey="231">
+															<entry name="CharacterString" inpkey="232"/>
+														</entry>
+														<entry name="thesaurusName" ns="1" expanded="1">
+															<entry name="CI_Citation" ns="1" expanded="1">
+																<entry name="title" ns="1">
+																	<entry name="CharacterString" inpkey="233"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="329"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="247" expanded="1" clone="1">
+														<entry name="keyword" ns="1" inpkey="248">
+															<entry name="CharacterString" inpkey="246"/>
+														</entry>
+														<entry name="thesaurusName" ns="1" expanded="1">
+															<entry name="CI_Citation" ns="1" expanded="1">
+																<entry name="title" ns="1">
+																	<entry name="CharacterString" inpkey="245"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="330"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="260" expanded="1" clone="1">
+														<entry name="keyword" ns="1" inpkey="259">
+															<entry name="CharacterString" inpkey="261"/>
+														</entry>
+														<entry name="thesaurusName" ns="1" expanded="1">
+															<entry name="CI_Citation" ns="1" expanded="1">
+																<entry name="title" ns="1">
+																	<entry name="CharacterString" inpkey="262"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="331" expanded="1">
+																	<entry name="CI_Date" ns="1" expanded="1">
+																		<entry name="date" ns="1" expanded="1">
+																			<entry name="Date" inpkey="567"/>
+																		</entry>
+																		<entry name="dateType" ns="1" expanded="1">
+																			<entry name="CI_DateTypeCode" ns="1" expanded="1">
+																				<entry name="codeListValue" ns="2" type="attribute" inpkey="568"/>
+																			</entry>
+																		</entry>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="276" expanded="1" clone="1">
+														<entry name="keyword" ns="1" inpkey="273">
+															<entry name="CharacterString" inpkey="274"/>
+														</entry>
+														<entry name="thesaurusName" ns="1" expanded="1">
+															<entry name="CI_Citation" ns="1" expanded="1">
+																<entry name="title" ns="1" expanded="1">
+																	<entry name="CharacterString" inpkey="275"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="332"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="289" clone="1">
+														<entry name="keyword" ns="1" inpkey="288">
+															<entry name="CharacterString" inpkey="290"/>
+														</entry>
+														<entry name="thesaurusName" ns="1">
+															<entry name="CI_Citation" ns="1">
+																<entry name="title" ns="1">
+																	<entry name="CharacterString" inpkey="287"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="333"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="303" clone="1">
+														<entry name="keyword" ns="1" inpkey="302">
+															<entry name="CharacterString" inpkey="301"/>
+														</entry>
+														<entry name="thesaurusName" ns="1">
+															<entry name="CI_Citation" ns="1">
+																<entry name="title" ns="1">
+																	<entry name="CharacterString" inpkey="304"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="334"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="317" clone="1">
+														<entry name="keyword" ns="1" inpkey="318">
+															<entry name="CharacterString" inpkey="315"/>
+														</entry>
+														<entry name="thesaurusName" ns="1">
+															<entry name="CI_Citation" ns="1">
+																<entry name="title" ns="1">
+																	<entry name="CharacterString" inpkey="316"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="335"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="336" expanded="1" clone="1">
+														<entry name="keyword" ns="1" inpkey="337">
+															<entry name="CharacterString" inpkey="338"/>
+														</entry>
+														<entry name="thesaurusName" ns="1" expanded="1">
+															<entry name="CI_Citation" ns="1" expanded="1">
+																<entry name="title" ns="1">
+																	<entry name="CharacterString" inpkey="339"/>
+																</entry>
+																<entry name="date" ns="1" inpkey="340" expanded="1"/>
+															</entry>
+														</entry>
+													</entry>
+													<entry name="MD_Keywords" ns="1" inpkey="341" clone="1">
+														<entry name="keyword" ns="1" inpkey="342">
+															<entry name="CharacterString" inpkey="343"/>
+														</entry>
+													</entry>
+												</entry>
+												<entry name="resourceConstraints" ns="1">
+													<entry name="MD_Constraints" ns="1">
+														<entry name="useLimitation" ns="1">
+															<entry name="CharacterString" inpkey="100"/>
+														</entry>
+													</entry>
+													<entry name="MD_LegalConstraints" ns="1">
+														<entry name="accessConstraints" ns="1">
+															<entry name="MD_RestrictionCode" ns="1">
+																<entry name="codeList" ns="2" type="attribute" inpkey="101"/>
+																<entry name="codeListValue" ns="2" type="attribute" inpkey="102"/>
+															</entry>
+														</entry>
+														<entry name="otherConstraints" ns="1">
+															<entry name="CharacterString" inpkey="103"/>
+														</entry>
+													</entry>
+												</entry>
+												<entry name="language" ns="1" inpkey="234" expanded="1">
+													<entry name="CharacterString" inpkey="569"/>
+												</entry>
+												<entry name="extent" ns="1" inpkey="395">
+													<entry name="EX_Extent" ns="1">
+														<entry name="description" ns="1" expanded="1">
+															<entry name="CharacterString" inpkey="396"/>
+														</entry>
+														<entry name="geographicElement" ns="1" expanded="1">
+															<entry name="EX_GeographicBoundingBox" ns="1" expanded="1">
+																<entry name="westBoundLongitude" ns="1" expanded="1">
+																	<entry name="Decimal" inpkey="398"/>
+																</entry>
+																<entry name="eastBoundLongitude" ns="1" expanded="1">
+																	<entry name="Decimal" inpkey="399"/>
+																</entry>
+																<entry name="southBoundLatitude" ns="1" expanded="1">
+																	<entry name="Decimal" inpkey="400"/>
+																</entry>
+																<entry name="northBoundLatitude" ns="1" expanded="1">
+																	<entry name="Decimal" inpkey="401"/>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="temporalElement" ns="1">
+															<entry name="EX_TemporalExtent" ns="1" expanded="1">
+																<entry name="extent" ns="1" expanded="1">
+																	<entry name="TimePeriod" ns="4" expanded="1">
+																		<entry name="beginPosition" ns="4" inpkey="418" expanded="1"/>
+																		<entry name="endPosition" ns="4" inpkey="419" expanded="1"/>
+																	</entry>
+																</entry>
+															</entry>
+															<entry name="EX_SpatialTemporalExtent" ns="1">
+																<entry name="extent" ns="1" expanded="1"/>
+															</entry>
+														</entry>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="distributionInfo" ns="1">
+											<entry name="MD_Distribution" ns="1" expanded="1">
+												<entry name="transferOptions" ns="1" expanded="1">
+													<entry name="MD_DigitalTransferOptions" ns="1" expanded="1">
+														<entry name="onLine" ns="1" expanded="1">
+															<entry name="CI_OnlineResource" ns="1" expanded="1">
+																<entry name="linkage" ns="1" expanded="1">
+																	<entry name="URL" ns="1" inpkey="90"/>
+																</entry>
+																<entry name="protocol" ns="1">
+																	<entry name="CharacterString" inpkey="91"/>
+																</entry>
+																<entry name="name" ns="1">
+																	<entry name="CharacterString" inpkey="92"/>
+																</entry>
+																<entry name="description" ns="1">
+																	<entry name="CharacterString" inpkey="93"/>
+																</entry>
+																<entry name="function" ns="1">
+																	<entry name="CI_OnLineFunctionCode" ns="1" inpkey="94">
+																		<entry name="codeList" ns="2" type="attribute" inpkey="95"/>
+																		<entry name="codeListValue" ns="2" type="attribute" inpkey="96"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\ISO\gmd.xsd" instanceroot="{http://www.isotc211.org/2005/gmd}MD_Metadata" outputinstance="..\ISO\gmd.xml"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="23" kind="2">
+					<targets>
+						<datapoint pos="0" key="40"/>
+					</targets>
+					<view ltx="1585" lty="-169" rbx="1722" rby="-152"/>
+					<data>
+						<constant value="http://www.loc.gov/standards/iso639-1/" datatype="string"/>
+						<comment>
+							<text>Default language CodeList</text>
+						</comment>
+					</data>
+				</component>
 				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
 					<properties XSLTTargetEncoding="UTF-8"/>
 					<view rbx="234" rby="1083"/>
@@ -1786,7 +1810,7 @@ Only 2 coord fields filled -&gt; Point</text>
 										<entry name="Rights">
 											<entry name="rightsIdentifier" outkey="97"/>
 										</entry>
-										<entry name="Language">
+										<entry name="Language" expanded="1">
 											<entry name="code" outkey="39"/>
 										</entry>
 										<entry name="Titles" expanded="1">
@@ -1841,11 +1865,10 @@ Only 2 coord fields filled -&gt; Point</text>
 												<entry name="timezone" outkey="422"/>
 											</entry>
 										</entry>
-										<entry name="ThesaurusKeywords">
-											<entry name="Keyword">
+										<entry name="ThesaurusKeywords" expanded="1">
+											<entry name="Keyword" expanded="1">
 												<entry name="keyword" outkey="188"/>
 												<entry name="scheme" outkey="200"/>
-												<entry name="language" outkey="227"/>
 											</entry>
 										</entry>
 										<entry name="FreeKeywords" outkey="344">
@@ -1859,17 +1882,6 @@ Only 2 coord fields filled -&gt; Point</text>
 						</root>
 						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\dataset3.xml" outputinstance="..\..\xml\dataset3.xml"/>
 					</data>
-				</component>
-				<component name="if-else" library="core" uid="182" kind="4">
-					<sources>
-						<datapoint pos="0" key="469"/>
-						<datapoint pos="1" key="468"/>
-						<datapoint pos="2" key="489"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="470"/>
-					</targets>
-					<view ltx="1564" lty="778" rbx="1653" rby="849"/>
 				</component>
 			</children>
 			<graph directed="1">
@@ -1960,6 +1972,8 @@ Only 2 coord fields filled -&gt; Point</text>
 						<edges>
 							<edge vertexkey="47"/>
 							<edge vertexkey="49"/>
+							<edge vertexkey="234"/>
+							<edge vertexkey="569"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="40">
@@ -2042,6 +2056,7 @@ Only 2 coord fields filled -&gt; Point</text>
 							<edge vertexkey="334"/>
 							<edge vertexkey="335"/>
 							<edge vertexkey="340"/>
+							<edge vertexkey="567"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="355">
@@ -2053,6 +2068,7 @@ Only 2 coord fields filled -&gt; Point</text>
 						<edges>
 							<edge vertexkey="71"/>
 							<edge vertexkey="73"/>
+							<edge vertexkey="568"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="75">
@@ -2372,11 +2388,6 @@ Only 2 coord fields filled -&gt; Point</text>
 					<vertex vertexkey="219">
 						<edges>
 							<edge vertexkey="233"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="227">
-						<edges>
-							<edge vertexkey="234"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="236">
