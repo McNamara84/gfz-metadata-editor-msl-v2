@@ -678,7 +678,7 @@ async function loadXmlToForm(xmlDoc) {
           personRow.find('input[name="cbORCID[]"]').val(orcid);
         }
 
-        // Set names
+        // Set names  
         personRow.find('input[name="cbPersonLastname[]"]').val(familyName);
         personRow.find('input[name="cbPersonFirstname[]"]').val(givenName);
 
@@ -688,10 +688,10 @@ async function loadXmlToForm(xmlDoc) {
           roleInput.tagify.addTags([{ value: contributorType }]);
         }
 
-        // Set affiliation using Tagify
+        // Affiliation mit Tagify
         const affiliationInput = personRow.find('input[name="cbAffiliation[]"]')[0];
         if (affiliationInput && affiliationInput.tagify) {
-          affiliationInput.tagify.addTags(affiliation);
+          affiliationInput.tagify.addTags([{ value: affiliation }]);
         }
       } else {
         // Handle organization contributor
@@ -706,10 +706,10 @@ async function loadXmlToForm(xmlDoc) {
           roleInput.tagify.addTags([{ value: contributorType }]);
         }
 
-        // Set affiliation using Tagify
+        // Affiliation mit Tagify
         const affiliationInput = orgRow.find('input[name="OrganisationAffiliation[]"]')[0];
         if (affiliationInput && affiliationInput.tagify) {
-          affiliationInput.tagify.addTags([affiliation]);
+          affiliationInput.tagify.addTags([{ value: affiliation }]);
         }
       }
     }
