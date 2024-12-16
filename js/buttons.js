@@ -271,11 +271,11 @@ $(document).ready(function () {
   });
 
   /**
- * Event handler for the "Add Contributor Person" button click.
- * Clones the first contributor person row, resets input fields,
- * updates IDs and labels to ensure uniqueness,
- * and appends it to the contributors group.
- */
+  * Event handler for the "Add Contributor Person" button click.
+  * Clones the first contributor person row, resets input fields,
+  * updates IDs and labels to ensure uniqueness,
+  * and appends it to the contributors group.
+  */
   $("#button-contributor-addperson").click(function () {
     /**
      * The contributors group where new contributor person rows are appended.

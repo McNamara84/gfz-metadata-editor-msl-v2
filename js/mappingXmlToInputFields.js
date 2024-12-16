@@ -614,4 +614,112 @@ async function loadXmlToForm(xmlDoc) {
       setLabNameWithTagify(newRow, labId);
     }
   }
+  // Helper function to get or create a new person row
+  function getOrCreatePersonRow(index) {
+    const container = $('#group-contributorperson');
+    if (index === 0) {
+      return container.find('[contributor-person-row]').first();
+    }
+
+    // Simulate click on add button to create new row
+    $('#button-contributor-addperson').click();
+
+    // Return the newly created row
+    return container.find('.row').last();
+  }
+
+  // Helper function to get or create a new organization row
+  function getOrCreateOrgRow(index) {
+    const container = $('#group-contributororganisation');
+    if (index === 0) {
+      return container.find('[contributors-row]').first();
+    }
+
+    // Simulate click on add button to create new row
+    $('#button-contributor-addorganisation').click();
+
+    // Return the newly created row
+    return container.find('.row').last();
+  }
+  // Process contributors
+  const contributorsNode = xmlDoc.evaluate(
+    '/ns:resource/ns:contributors',
+    xmlDoc,
+    resolver,
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null
+  ).singleNodeValue;
+
+  if (contributorsNode) {
+    console.log('Found contributors node');
+
+    // Get all contributors except ContactPerson and HostingInstitution
+    const contributorNodes = xmlDoc.evaluate(
+      'ns:contributor[not(@contributorType="ContactPerson") and not(@contributorType="HostingInstitution")]',
+      contributorsNode,
+      resolver,
+      XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+      null
+    );
+
+    console.log(`Found ${contributorNodes.snapshotLength} additional contributors`);
+
+    for (let i = 0; i < contributorNodes.snapshotLength; i++) {
+      const contributor = contributorNodes.snapshotItem(i);
+      const contributorType = contributor.getAttribute('contributorType');
+      const nameType = getNodeText(contributor, 'ns:contributorName/@nameType', xmlDoc, resolver);
+      const contributorName = getNodeText(contributor, 'ns:contributorName', xmlDoc, resolver);
+      const givenName = getNodeText(contributor, 'ns:givenName', xmlDoc, resolver);
+      const familyName = getNodeText(contributor, 'ns:familyName', xmlDoc, resolver);
+      const orcid = getNodeText(contributor, 'ns:nameIdentifier[@nameIdentifierScheme="ORCID"]', xmlDoc, resolver);
+      const affiliation = getNodeText(contributor, 'ns:affiliation', xmlDoc, resolver);
+
+      // Determine if this is a person or institution
+      const isPerson = nameType === 'Personal' || (givenName && familyName);
+
+      if (isPerson) {
+        // Handle person contributor
+        const personRow = getOrCreatePersonRow(i);
+
+        // Set ORCID if available
+        if (orcid) {
+          personRow.find('input[name="cbORCID[]"]').val(orcid);
+        }
+
+        // Set names
+        personRow.find('input[name="cbPersonLastname[]"]').val(familyName);
+        personRow.find('input[name="cbPersonFirstname[]"]').val(givenName);
+
+        // Set role using Tagify
+        const roleInput = personRow.find('input[name="cbPersonRoles[]"]')[0];
+        if (roleInput && roleInput.tagify) {
+          roleInput.tagify.addTags([contributorType]);
+        }
+
+        // Set affiliation using Tagify
+        const affiliationInput = personRow.find('input[name="cbAffiliation[]"]')[0];
+        if (affiliationInput && affiliationInput.tagify) {
+          affiliationInput.tagify.addTags("[affiliation]");
+        }
+      } else {
+        // Handle organization contributor
+        const orgRow = getOrCreateOrgRow(i);
+
+        // Set organization name
+        orgRow.find('input[name="cbOrganisationName[]"]').val(contributorName);
+
+        // Set role using Tagify
+        const roleInput = orgRow.find('input[name="cbOrganisationRoles[]"]')[0];
+        if (roleInput && roleInput.tagify) {
+          roleInput.tagify.addTags([contributorType]);
+        }
+
+        // Set affiliation using Tagify
+        const affiliationInput = orgRow.find('input[name="OrganisationAffiliation[]"]')[0];
+        if (affiliationInput && affiliationInput.tagify) {
+          affiliationInput.tagify.addTags([affiliation]);
+        }
+      }
+    }
+  }
 }
