@@ -427,6 +427,7 @@ async function loadXmlToForm(xmlDoc) {
   let validContactPersonCount = 0;
 
   for (let i = 0; i < contactPersonNodes.snapshotLength; i++) {
+
     const contactPersonNode = contactPersonNodes.snapshotItem(i);
 
     // Extract relevant data
@@ -445,6 +446,7 @@ async function loadXmlToForm(xmlDoc) {
     const affiliation = getNodeText(contactPersonNode, 'ns:affiliation', xmlDoc, resolver);
 
     if (validContactPersonCount === 0) {
+
       // First valid Contact Person - use the existing row
       const firstRow = $('#group-contactperson .row[contact-person-row]:first');
       firstRow.find('input[name="cpFirstname[]"]').val(givenName);
@@ -452,8 +454,15 @@ async function loadXmlToForm(xmlDoc) {
       firstRow.find('input[name="cpPosition[]"]').val(position);
       firstRow.find('input[name="cpEmail[]"]').val(email);
       firstRow.find('input[name="cpOnlineResource[]"]').val(website);
-      firstRow.find('input[name="cpAffiliation[]"]').val(affiliation);
+
+      // Affiliation mit Tagify
+      const affiliationInput = firstRow.find('input[name="cpAffiliation[]"]')[0];
+      if (affiliationInput && affiliationInput.tagify) {
+        affiliationInput.tagify.addTags([{ value: affiliation }]);
+      }
+
     } else {
+
       // Additional valid Contact Persons - clone a new row
       $('#button-contactperson-add').click();
       const newRow = $('#group-contactperson .row[contact-person-row]').last();
@@ -462,10 +471,17 @@ async function loadXmlToForm(xmlDoc) {
       newRow.find('input[name="cpPosition[]"]').val(position);
       newRow.find('input[name="cpEmail[]"]').val(email);
       newRow.find('input[name="cpOnlineResource[]"]').val(website);
-      newRow.find('input[name="cpAffiliation[]"]').val(affiliation);
+
+      // Affiliation mit Tagify
+      const affiliationInput = newRow.find('input[name="cpAffiliation[]"]')[0];
+      if (affiliationInput && affiliationInput.tagify) {
+        affiliationInput.tagify.addTags([{ value: affiliation }]);
+      }
+
     }
 
     validContactPersonCount++;
+
   }
   // Process Originating Laboratories
   const laboratoryNodes = xmlDoc.evaluate(
@@ -675,7 +691,7 @@ async function loadXmlToForm(xmlDoc) {
         // Set affiliation using Tagify
         const affiliationInput = personRow.find('input[name="cbAffiliation[]"]')[0];
         if (affiliationInput && affiliationInput.tagify) {
-          affiliationInput.tagify.addTags("[affiliation]");
+          affiliationInput.tagify.addTags(affiliation);
         }
       } else {
         // Handle organization contributor
