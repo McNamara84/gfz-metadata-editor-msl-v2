@@ -9,20 +9,9 @@
                 <div class="col-sm-6 col-md-4 col-lg-3 p-1">
                     <div class="input-group has-validation">
                         <div class="form-floating ">
-                            <input type="text" class="form-control input-with-help input-right-with-round-corners inputFunder" onchange="checkMandatoryFields()" name="funder[]" autocomplete="off" id="input-funder">
-                        <div class="form-floating">
                             <input type="text"
-                                class="form-control input-with-help input-right-with-round-corners inputFunder" required
-                                name="funder[]" autocomplete="off" id="input-funder">
-                            <label for="input-funder">
-                                <?php echo $translations['funder']; ?><span class="text-danger">*</span>
-                            </label>
-                            <div class="invalid-feedback">
-                                <?php echo $translations['funder_invalid']; ?>
-                            </div>
-                            <!-- Hidden input fields Funder ID and Funder ID Typ -->
-                            <input type="hidden" class="inputFunderId" name="funderId[]">
-                            <input type="hidden" class="inputFunderIdTyp" name="funderidtyp[]">
+                                class="form-control input-with-help input-right-with-round-corners inputFunder"
+                                onchange="checkMandatoryFields()" name="funder[]" autocomplete="off" id="input-funder">
                             <label for="input-funder">
                                 <?php echo $translations['funder']; ?><span class="text-danger">*</span>
                             </label>
@@ -43,9 +32,8 @@
                 <div class="col p-1">
                     <div class="input-group has-validation">
                         <div class="form-floating">
-                            <input type="text" class="form-control input-with-help input-right-no-round-corners" id="input-grantnumber" name="grantNummer[]" onchange="checkMandatoryFields()"/>
                             <input type="text" class="form-control input-with-help input-right-no-round-corners"
-                                id="input-grantnumber" name="grantNummer[]" />
+                                id="input-grantnumber" name="grantNummer[]" onchange="checkMandatoryFields()" />
                             <label for="input-grantnumber">
                                 <?php echo $translations['grant_Number']; ?>
                             </label>
@@ -58,9 +46,8 @@
                 <div class="col p-1">
                     <div class="input-group has-validation">
                         <div class="form-floating">
-                            <input type="text" class="form-control input-with-help input-right-no-round-corners" id="input-grantname" name="grantName[]"  onchange="checkMandatoryFields()" />
                             <input type="text" class="form-control input-with-help input-right-no-round-corners"
-                                id="input-grantname" name="grantName[]" />
+                                id="input-grantname" name="grantName[]" onchange="checkMandatoryFields()" />
                             <label for="input-grantname">
                                 <?php echo $translations['grant_Name']; ?>
                             </label>
