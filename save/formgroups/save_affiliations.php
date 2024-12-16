@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Saves affiliations to the database and links them to a specified entity.
  *
@@ -58,14 +59,21 @@ function saveAffiliations($connection, $entity_id, $affiliation_data, $rorId_dat
         }
         $stmt->close();
 
-        // Link entity (author/contact person/contributor) with affiliation
-        $stmt = $connection->prepare("INSERT IGNORE INTO $link_table ($entity_column, Affiliation_affiliation_id) VALUES (?, ?)");
-        $stmt->bind_param("ii", $entity_id, $affiliation_id);
-        $stmt->execute();
-        $stmt->close();
+        // Check if link already exists in the link table
+        $checkLinkStmt = $connection->prepare("SELECT 1 FROM $link_table WHERE $entity_column = ? AND Affiliation_affiliation_id = ?");
+        $checkLinkStmt->bind_param("ii", $entity_id, $affiliation_id);
+        $checkLinkStmt->execute();
+        $linkResult = $checkLinkStmt->get_result();
+
+        if ($linkResult->num_rows === 0) {
+            // Insert link only if it doesn't already exist
+            $stmt = $connection->prepare("INSERT INTO $link_table ($entity_column, Affiliation_affiliation_id) VALUES (?, ?)");
+            $stmt->bind_param("ii", $entity_id, $affiliation_id);
+            $stmt->execute();
+            $stmt->close();
+        }
     }
 }
-
 
 /**
  * Parses affiliation data from JSON string into an array of affiliation names

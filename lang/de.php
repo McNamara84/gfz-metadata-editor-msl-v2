@@ -33,18 +33,16 @@ $translations = [
 
     // Form Group Authors
     'authors' => 'Autoren',
-    'lastname_invalid' => 'Bitte geben Sie einen Nachnamen an.',
-    'firstname_invalid' => 'Bitte geben Sie einen Vornamen an.',
+    'lastname_invalid' => 'Bitte geben Sie einen Nachnamen an. Nur Buchstaben sind erlaubt.',
+    'firstname_invalid' => 'Bitte geben Sie einen Vornamen an. Nur Buchstaben sind erlaubt.',
     'authorORCID' => 'ORCID',
     'ORCID_invalid' => 'Geben Sie eine gültige ORCID ein (XXXX-XXXX-XXXX-XXX(X))',
     'affiliation_invalid' => 'Bitte geben Sie eine Zugehörigkeit an.',
 
     // Form Group Contactpersons
     'contactpersons' => 'Kontaktperson(en)',
-    'CP_lastname_invalid' => 'Bitte geben Sie den Nachnamen der Kontaktperson ein.',
-    'CP_firstname_invalid' => 'Bitte geben Sie den Vornamen der Kontaktperson ein.',
     'email' => 'E-Mail-Adresse',
-    'email_invalid' => 'Bitte überprüfen Sie die E-Mail-Adresse.',
+    'email_invalid' => 'Bitte geben Sie eine gültige E-Mail-Adresse im Format xxx.xxx@xxx.xxx ein.',
     'position' => 'Position',
     'position_invalid' => 'Bitte geben Sie eine Position an.',
     'website' => 'Website',
@@ -57,8 +55,6 @@ $translations = [
 
     // From Group Contributors
     'contributors' => "Mitwirkende",
-    'contributors_lastname_invalid' => 'Bitte geben Sie den Nachnamen der/des Mitwirkenden ein. Es sind nur Buchstaben erlaubt.',
-    'contributors_firstname_invalid' => 'Bitte geben Sie den Vornamen der/des Mitwirkenden ein. Es sind nur Buchstaben erlaubt.',
     'Organisation' => 'Organisationsname',
     'Organisation_invalid' => 'Bitte geben Sie einen gültigen Organisationsname an.',
     'contributors_ORCID' => 'ORCID',
@@ -125,6 +121,7 @@ $translations = [
     // Formgroup Funding Reference
     'funding_reference' => 'Förderungsreferenz',
     'funder' => 'Förderer',
+    'funder_invalid' => 'Bitte geben Sie den Namen des Förderers ein.',
     'grant_Number' => 'Fördernummer',
     'grant_Name' => 'Fördername',
 

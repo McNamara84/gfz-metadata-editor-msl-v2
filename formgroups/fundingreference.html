@@ -10,17 +10,32 @@
                     <div class="input-group has-validation">
                         <div class="form-floating ">
                             <input type="text" class="form-control input-with-help input-right-with-round-corners inputFunder" onchange="checkMandatoryFields()" name="funder[]" autocomplete="off" id="input-funder">
+                        <div class="form-floating">
+                            <input type="text"
+                                class="form-control input-with-help input-right-with-round-corners inputFunder" required
+                                name="funder[]" autocomplete="off" id="input-funder">
+                            <label for="input-funder">
+                                <?php echo $translations['funder']; ?><span class="text-danger">*</span>
+                            </label>
+                            <div class="invalid-feedback">
+                                <?php echo $translations['funder_invalid']; ?>
+                            </div>
                             <!-- Hidden input fields Funder ID and Funder ID Typ -->
                             <input type="hidden" class="inputFunderId" name="funderId[]">
                             <input type="hidden" class="inputFunderIdTyp" name="funderidtyp[]">
                             <label for="input-funder">
                                 <?php echo $translations['funder']; ?><span class="text-danger">*</span>
                             </label>
+                            <div class="invalid-feedback">
+                                <?php echo $translations['funder_invalid']; ?>
+                            </div>
+                            <!-- Hidden input fields Funder ID and Funder ID Typ -->
+                            <input type="hidden" class="inputFunderId" name="funderId[]">
+                            <input type="hidden" class="inputFunderIdTyp" name="funderidtyp[]">
                         </div>
-                        <span class="input-group-text"><i class="bi bi-question-circle-fill"
-                                data-help-section-id="help-fundingreference-funder"></i></span>
-                        <div class="invalid-feedback">
-                            <?php echo $translations['PleaseChoose_invalid']; ?>
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                                    data-help-section-id="help-fundingreference-funder"></i></span>
                         </div>
                     </div>
                 </div>
@@ -29,6 +44,8 @@
                     <div class="input-group has-validation">
                         <div class="form-floating">
                             <input type="text" class="form-control input-with-help input-right-no-round-corners" id="input-grantnumber" name="grantNummer[]" onchange="checkMandatoryFields()"/>
+                            <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                id="input-grantnumber" name="grantNummer[]" />
                             <label for="input-grantnumber">
                                 <?php echo $translations['grant_Number']; ?>
                             </label>
@@ -42,6 +59,8 @@
                     <div class="input-group has-validation">
                         <div class="form-floating">
                             <input type="text" class="form-control input-with-help input-right-no-round-corners" id="input-grantname" name="grantName[]"  onchange="checkMandatoryFields()" />
+                            <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                                id="input-grantname" name="grantName[]" />
                             <label for="input-grantname">
                                 <?php echo $translations['grant_Name']; ?>
                             </label>
