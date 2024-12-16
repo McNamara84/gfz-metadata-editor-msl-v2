@@ -379,8 +379,12 @@ async function loadXmlToForm(xmlDoc) {
       // Initialisiere Tagify für die erste Zeile
       const tagifyInput = firstRow.find('input[name="affiliation[]"]')[0];
       if (tagifyInput) {
+
         const tagify = new Tagify(tagifyInput);
-        tagify.addTags(affiliations);
+
+        // Affiliations als Array von Objekten übergeben
+        tagify.addTags(affiliations.map(a => ({ value: a })));
+
         firstRow.find('input[name="authorRorIds[]"]').val(rorIds.join(','));
       }
     } else {
@@ -399,7 +403,10 @@ async function loadXmlToForm(xmlDoc) {
       setTimeout(() => {
         const tagifyInput = newRow.find('input[name="affiliation[]"]')[0];
         if (tagifyInput && tagifyInput.tagify) {
-          tagifyInput.tagify.addTags(affiliations);
+
+          // Affiliations als Array von Objekten übergeben
+          tagifyInput.tagify.addTags(affiliations.map(a => ({ value: a })));
+
           newRow.find('input[name="authorRorIds[]"]').val(rorIds.join(','));
         }
       }, 100);
@@ -693,7 +700,7 @@ async function loadXmlToForm(xmlDoc) {
         // Set role using Tagify
         const roleInput = personRow.find('input[name="cbPersonRoles[]"]')[0];
         if (roleInput && roleInput.tagify) {
-          roleInput.tagify.addTags([contributorType]);
+          roleInput.tagify.addTags([{ value: contributorType }]);
         }
 
         // Set affiliation using Tagify
@@ -711,7 +718,7 @@ async function loadXmlToForm(xmlDoc) {
         // Set role using Tagify
         const roleInput = orgRow.find('input[name="cbOrganisationRoles[]"]')[0];
         if (roleInput && roleInput.tagify) {
-          roleInput.tagify.addTags([contributorType]);
+          roleInput.tagify.addTags([{ value: contributorType }]);
         }
 
         // Set affiliation using Tagify
