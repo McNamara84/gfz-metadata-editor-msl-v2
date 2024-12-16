@@ -143,7 +143,7 @@
       <description>box-description</description>
       <dateStart>2100-01-01</dateStart>
       <dateEnd>2100-02-02</dateEnd>
-      <timezone>0</timezone>
+      <timezone>+00:00</timezone>
     </SpatialTemporalCoverage>
     <SpatialTemporalCoverage>
       <spatial_temporal_coverage_id>5</spatial_temporal_coverage_id>
@@ -152,7 +152,7 @@
       <description>Point-description</description>
       <dateStart>2024-12-02</dateStart>
       <dateEnd>2024-12-02</dateEnd>
-      <timezone>1</timezone>
+      <timezone>+01:00</timezone>
     </SpatialTemporalCoverage>
   </SpatialTemporalCoverages>
   <RelatedWorks>

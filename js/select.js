@@ -11,9 +11,8 @@ $(document).ready(function () {
     $.each(data, function (index, timezone) {
       var label = timezone.label;
       var utcOffset = label.substring(3, 9); // Extracts "+01:00" or "-04:00"
-      var offsetValue = parseFloat(utcOffset.replace(":", ".")); // Converts to decimal
 
-      var option = $("<option></option>").attr("value", offsetValue).text(label);
+      var option = $("<option></option>").attr("value", utcOffset).text(label);
       timezoneSelect.append(option);
     });
   }).fail(function () {

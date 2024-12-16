@@ -17,9 +17,11 @@ http://www.altova.com/mapforce
 			<xsl:for-each select="*[local-name()='Resource' and namespace-uri()='']">
 				<xsl:variable name="var2_cur" select="."/>
 				<fileIdentifier>
-					<gco:CharacterString>
-						<xsl:value-of select="concat('doi:', *[local-name()='doi' and namespace-uri()=''])"/>
-					</gco:CharacterString>
+					<xsl:if test="((string-length(string(*[local-name()='doi' and namespace-uri()=''])) &gt; '1') and true())">
+						<gco:CharacterString>
+							<xsl:value-of select="concat('doi:', *[local-name()='doi' and namespace-uri()=''])"/>
+						</gco:CharacterString>
+					</xsl:if>
 				</fileIdentifier>
 				<language>
 					<gco:CharacterString>
@@ -559,12 +561,116 @@ http://www.altova.com/mapforce
 										<EX_TemporalExtent>
 											<extent>
 												<gml:TimePeriod>
-													<gml:beginPosition>
-														<xsl:value-of select="concat(*[local-name()='dateStart' and namespace-uri()=''], *[local-name()='timezone' and namespace-uri()=''])"/>
-													</gml:beginPosition>
-													<gml:endPosition>
-														<xsl:value-of select="concat(*[local-name()='dateEnd' and namespace-uri()=''], *[local-name()='timezone' and namespace-uri()=''])"/>
-													</gml:endPosition>
+													<xsl:choose>
+														<xsl:when test="*[local-name()='timeStart' and namespace-uri()='']">
+															<xsl:for-each select="*[local-name()='timeStart' and namespace-uri()='']">
+																<xsl:variable name="var31_cur" select="."/>
+																<gml:beginPosition>
+																	<xsl:variable name="var32_nested">
+																		<xsl:choose>
+																			<xsl:when test="$var28_cur/*[local-name()='timeStart' and namespace-uri()='']">
+																				<xsl:value-of select="'T'"/>
+																			</xsl:when>
+																			<xsl:otherwise>
+																				<xsl:value-of select="''"/>
+																			</xsl:otherwise>
+																		</xsl:choose>
+																	</xsl:variable>
+																	<xsl:variable name="var33_nested">
+																		<xsl:choose>
+																			<xsl:when test="$var28_cur/*[local-name()='timeStart' and namespace-uri()='']">
+																				<xsl:value-of select="$var28_cur/*[local-name()='timezone' and namespace-uri()='']"/>
+																			</xsl:when>
+																			<xsl:otherwise>
+																				<xsl:value-of select="''"/>
+																			</xsl:otherwise>
+																		</xsl:choose>
+																	</xsl:variable>
+																	<xsl:value-of select="concat($var28_cur/*[local-name()='dateStart' and namespace-uri()=''], $var32_nested, ., $var33_nested)"/>
+																</gml:beginPosition>
+															</xsl:for-each>
+														</xsl:when>
+														<xsl:otherwise>
+															<gml:beginPosition>
+																<xsl:variable name="var34_nested">
+																	<xsl:choose>
+																		<xsl:when test="*[local-name()='timeStart' and namespace-uri()='']">
+																			<xsl:value-of select="'T'"/>
+																		</xsl:when>
+																		<xsl:otherwise>
+																			<xsl:value-of select="''"/>
+																		</xsl:otherwise>
+																	</xsl:choose>
+																</xsl:variable>
+																<xsl:variable name="var35_nested">
+																	<xsl:choose>
+																		<xsl:when test="*[local-name()='timeStart' and namespace-uri()='']">
+																			<xsl:value-of select="*[local-name()='timezone' and namespace-uri()='']"/>
+																		</xsl:when>
+																		<xsl:otherwise>
+																			<xsl:value-of select="''"/>
+																		</xsl:otherwise>
+																	</xsl:choose>
+																</xsl:variable>
+																<xsl:value-of select="concat(*[local-name()='dateStart' and namespace-uri()=''], $var34_nested, '', $var35_nested)"/>
+															</gml:beginPosition>
+														</xsl:otherwise>
+													</xsl:choose>
+													<xsl:choose>
+														<xsl:when test="*[local-name()='timeEnd' and namespace-uri()='']">
+															<xsl:for-each select="*[local-name()='timeEnd' and namespace-uri()='']">
+																<xsl:variable name="var36_cur" select="."/>
+																<gml:endPosition>
+																	<xsl:variable name="var37_nested">
+																		<xsl:choose>
+																			<xsl:when test="$var28_cur/*[local-name()='timeEnd' and namespace-uri()='']">
+																				<xsl:value-of select="'T'"/>
+																			</xsl:when>
+																			<xsl:otherwise>
+																				<xsl:value-of select="''"/>
+																			</xsl:otherwise>
+																		</xsl:choose>
+																	</xsl:variable>
+																	<xsl:variable name="var38_nested">
+																		<xsl:choose>
+																			<xsl:when test="$var28_cur/*[local-name()='timeEnd' and namespace-uri()='']">
+																				<xsl:value-of select="$var28_cur/*[local-name()='timezone' and namespace-uri()='']"/>
+																			</xsl:when>
+																			<xsl:otherwise>
+																				<xsl:value-of select="''"/>
+																			</xsl:otherwise>
+																		</xsl:choose>
+																	</xsl:variable>
+																	<xsl:value-of select="concat($var28_cur/*[local-name()='dateEnd' and namespace-uri()=''], $var37_nested, ., $var38_nested)"/>
+																</gml:endPosition>
+															</xsl:for-each>
+														</xsl:when>
+														<xsl:otherwise>
+															<gml:endPosition>
+																<xsl:variable name="var39_nested">
+																	<xsl:choose>
+																		<xsl:when test="*[local-name()='timeEnd' and namespace-uri()='']">
+																			<xsl:value-of select="'T'"/>
+																		</xsl:when>
+																		<xsl:otherwise>
+																			<xsl:value-of select="''"/>
+																		</xsl:otherwise>
+																	</xsl:choose>
+																</xsl:variable>
+																<xsl:variable name="var40_nested">
+																	<xsl:choose>
+																		<xsl:when test="*[local-name()='timeEnd' and namespace-uri()='']">
+																			<xsl:value-of select="*[local-name()='timezone' and namespace-uri()='']"/>
+																		</xsl:when>
+																		<xsl:otherwise>
+																			<xsl:value-of select="''"/>
+																		</xsl:otherwise>
+																	</xsl:choose>
+																</xsl:variable>
+																<xsl:value-of select="concat(*[local-name()='dateEnd' and namespace-uri()=''], $var39_nested, '', $var40_nested)"/>
+															</gml:endPosition>
+														</xsl:otherwise>
+													</xsl:choose>
 												</gml:TimePeriod>
 											</extent>
 										</EX_TemporalExtent>
@@ -581,9 +687,11 @@ http://www.altova.com/mapforce
 								<onLine>
 									<CI_OnlineResource>
 										<linkage>
-											<URL>
-												<xsl:value-of select="concat('http://dx.doi.org/doi:', *[local-name()='doi' and namespace-uri()=''])"/>
-											</URL>
+											<xsl:if test="((string-length(string(*[local-name()='doi' and namespace-uri()=''])) &gt; '1') and true())">
+												<URL>
+													<xsl:value-of select="concat('http://dx.doi.org/doi:', *[local-name()='doi' and namespace-uri()=''])"/>
+												</URL>
+											</xsl:if>
 										</linkage>
 										<protocol>
 											<gco:CharacterString>
