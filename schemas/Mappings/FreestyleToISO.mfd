@@ -6,60 +6,6 @@
 		<properties SelectedLanguage="xslt"/>
 		<structure>
 			<children>
-				<component name="constant" library="core" uid="15" kind="2">
-					<targets>
-						<datapoint pos="0" key="3"/>
-					</targets>
-					<view ltx="272" lty="396" rbx="354" rby="413"/>
-					<data>
-						<constant value="Main Title" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="17" kind="2">
-					<targets>
-						<datapoint pos="0" key="15"/>
-					</targets>
-					<view ltx="243" lty="468" rbx="351" rby="485"/>
-					<data>
-						<constant value="Alternative Title" datatype="string"/>
-					</data>
-				</component>
-				<component name="exists" library="core" uid="21" kind="5">
-					<sources>
-						<datapoint pos="0" key="33"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="34"/>
-					</targets>
-					<view ltx="651" lty="375" rbx="715" rby="411"/>
-				</component>
-				<component name="if-else" library="core" uid="22" kind="4">
-					<sources>
-						<datapoint pos="0" key="35"/>
-						<datapoint pos="1" key="36"/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="37"/>
-					</targets>
-					<view ltx="755" lty="378" rbx="844" rby="449"/>
-				</component>
-				<component name="if-else" library="core" uid="18" kind="4">
-					<sources>
-						<datapoint pos="0" key="18"/>
-						<datapoint pos="1" key="14"/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="13"/>
-					</targets>
-					<view ltx="520" lty="378" rbx="609" rby="449"/>
-					<data>
-						<comment>
-							<text>Alternative Title?</text>
-						</comment>
-					</data>
-				</component>
 				<component name="constant" library="core" uid="25" kind="2">
 					<targets>
 						<datapoint pos="0" key="41"/>
@@ -279,17 +225,6 @@
 						</comment>
 					</data>
 				</component>
-				<component name="concat" library="core" uid="52" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="109"/>
-						<datapoint pos="1" key="110"/>
-						<datapoint pos="2" key="111"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="112"/>
-					</targets>
-					<view ltx="601" lty="475" rbx="681" rby="546"/>
-				</component>
 				<component name="constant" library="core" uid="62" kind="2">
 					<targets>
 						<datapoint pos="0" key="151"/>
@@ -312,22 +247,6 @@
 					<data>
 						<comment>
 							<text>Contact Person Lastname, Firstname</text>
-						</comment>
-					</data>
-				</component>
-				<component name="if-else" library="core" uid="66" kind="4">
-					<sources>
-						<datapoint pos="0" key="162"/>
-						<datapoint pos="1" key="163"/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="164"/>
-					</targets>
-					<view ltx="636" lty="563" rbx="725" rby="634"/>
-					<data>
-						<comment>
-							<text>Contact Person Position?</text>
 						</comment>
 					</data>
 				</component>
@@ -390,16 +309,6 @@
 							<text>Default CI_RoleCode an codeListValue for Contact Organisations</text>
 						</comment>
 					</data>
-				</component>
-				<component name="contains" library="core" uid="19" kind="5">
-					<sources>
-						<datapoint pos="0" key="19"/>
-						<datapoint pos="1" key="16"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="17"/>
-					</targets>
-					<view ltx="397" lty="431" rbx="480" rby="483"/>
 				</component>
 				<component name="if-else" library="core" uid="74" kind="4">
 					<sources>
@@ -898,17 +807,6 @@ Only 2 coord fields filled -&gt; Point</text>
 					</targets>
 					<view ltx="504" lty="172" rbx="568" rby="208"/>
 				</component>
-				<component name="if-else" library="core" uid="118" kind="4">
-					<sources>
-						<datapoint pos="0" key="352"/>
-						<datapoint pos="1" key="353"/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="355"/>
-					</targets>
-					<view ltx="984" lty="202" rbx="1073" rby="273"/>
-				</component>
 				<component name="constant" library="core" uid="35" kind="2">
 					<targets>
 						<datapoint pos="0" key="75"/>
@@ -920,16 +818,6 @@ Only 2 coord fields filled -&gt; Point</text>
 							<text>Default codeList for CI_DateTypeCode</text>
 						</comment>
 					</data>
-				</component>
-				<component name="contains" library="core" uid="191" kind="5">
-					<sources>
-						<datapoint pos="0" key="498"/>
-						<datapoint pos="1" key="492"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="499"/>
-					</targets>
-					<view ltx="318" lty="186" rbx="401" rby="238"/>
 				</component>
 				<component name="constant" library="core" uid="192" kind="2">
 					<targets>
@@ -976,32 +864,6 @@ Only 2 coord fields filled -&gt; Point</text>
         &lt;/xsl:for-each&gt;
     &lt;/CharacterString&gt;
 &lt;/abstract&gt;</text>
-						</comment>
-					</data>
-				</component>
-				<component name="contains" library="core" uid="14" kind="5">
-					<sources>
-						<datapoint pos="0" key="7"/>
-						<datapoint pos="1" key="8"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="9"/>
-					</targets>
-					<view ltx="397" lty="359" rbx="480" rby="411"/>
-				</component>
-				<component name="if-else" library="core" uid="16" kind="4">
-					<sources>
-						<datapoint pos="0" key="4"/>
-						<datapoint pos="1" key="5"/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="6"/>
-					</targets>
-					<view ltx="520" lty="289" rbx="609" rby="360"/>
-					<data>
-						<comment>
-							<text>Main Title?</text>
 						</comment>
 					</data>
 				</component>
@@ -1096,34 +958,6 @@ Only 2 coord fields filled -&gt; Point</text>
 						<datapoint pos="0" key="21"/>
 					</targets>
 					<view ltx="374" lty="-51" rbx="438" rby="-15"/>
-				</component>
-				<component name="string-length" library="core" uid="64" kind="5">
-					<sources>
-						<datapoint pos="0" key="156"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="157"/>
-					</targets>
-					<view ltx="321" lty="516" rbx="404" rby="552"/>
-				</component>
-				<component name="greater" library="core" uid="68" kind="5">
-					<sources>
-						<datapoint pos="0" key="159"/>
-						<datapoint pos="1" key="160"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="161"/>
-					</targets>
-					<view ltx="454" lty="541" rbx="511" rby="593"/>
-				</component>
-				<component name="constant" library="core" uid="65" kind="2">
-					<targets>
-						<datapoint pos="0" key="158"/>
-					</targets>
-					<view ltx="374" lty="564" rbx="410" rby="581"/>
-					<data>
-						<constant value="0" datatype="decimal"/>
-					</data>
 				</component>
 				<component name="concat" library="core" uid="140" kind="5" growable="1" growablebasename="value">
 					<sources>
@@ -1323,16 +1157,6 @@ Only 2 coord fields filled -&gt; Point</text>
 					</targets>
 					<view ltx="1564" lty="636" rbx="1653" rby="707"/>
 				</component>
-				<component name="concat" library="core" uid="49" kind="5" growable="1" growablebasename="value">
-					<sources>
-						<datapoint pos="0" key="105"/>
-						<datapoint pos="1" key="106"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="107"/>
-					</targets>
-					<view ltx="777" lty="475" rbx="848" rby="529"/>
-				</component>
 				<component name="constant" library="core" uid="34" kind="2">
 					<targets>
 						<datapoint pos="0" key="74"/>
@@ -1357,11 +1181,221 @@ Only 2 coord fields filled -&gt; Point</text>
 						</comment>
 					</data>
 				</component>
+				<component name="constant" library="core" uid="23" kind="2">
+					<targets>
+						<datapoint pos="0" key="40"/>
+					</targets>
+					<view ltx="1585" lty="-169" rbx="1722" rby="-152"/>
+					<data>
+						<constant value="http://www.loc.gov/standards/iso639-1/" datatype="string"/>
+						<comment>
+							<text>Default language CodeList</text>
+						</comment>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="118" kind="4">
+					<sources>
+						<datapoint pos="0" key="352"/>
+						<datapoint pos="1" key="353"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="355"/>
+					</targets>
+					<view ltx="767" lty="108" rbx="856" rby="179"/>
+				</component>
+				<component name="string-length" library="core" uid="64" kind="5">
+					<sources>
+						<datapoint pos="0" key="156"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="157"/>
+					</targets>
+					<view ltx="297" lty="544" rbx="380" rby="580"/>
+				</component>
+				<component name="constant" library="core" uid="65" kind="2">
+					<targets>
+						<datapoint pos="0" key="158"/>
+					</targets>
+					<view ltx="378" lty="595" rbx="414" rby="612"/>
+					<data>
+						<constant value="0" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="66" kind="4">
+					<sources>
+						<datapoint pos="0" key="162"/>
+						<datapoint pos="1" key="163"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="164"/>
+					</targets>
+					<view ltx="636" lty="563" rbx="725" rby="634"/>
+					<data>
+						<comment>
+							<text>Contact Person Position?</text>
+						</comment>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="234" kind="2">
+					<targets>
+						<datapoint pos="0" key="575"/>
+					</targets>
+					<view ltx="276" lty="506" rbx="347" rby="523"/>
+					<data>
+						<constant value="Subtitle" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="228" kind="2">
+					<targets>
+						<datapoint pos="0" key="571"/>
+					</targets>
+					<view ltx="249" lty="448" rbx="354" rby="465"/>
+					<data>
+						<constant value="Translated Title" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="233" kind="2">
+					<targets>
+						<datapoint pos="0" key="573"/>
+					</targets>
+					<view ltx="246" lty="476" rbx="354" rby="493"/>
+					<data>
+						<constant value="Alternative Title" datatype="string"/>
+					</data>
+				</component>
+				<component name="greater" library="core" uid="68" kind="5">
+					<sources>
+						<datapoint pos="0" key="159"/>
+						<datapoint pos="1" key="160"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="161"/>
+					</targets>
+					<view ltx="454" lty="581" rbx="511" rby="633"/>
+				</component>
+				<component name="contains" library="core" uid="191" kind="5">
+					<sources>
+						<datapoint pos="0" key="498"/>
+						<datapoint pos="1" key="492"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="499"/>
+					</targets>
+					<view ltx="346" lty="172" rbx="429" rby="224"/>
+				</component>
+				<component name="concat" library="core" uid="52" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="109"/>
+						<datapoint pos="1" key="110"/>
+						<datapoint pos="2" key="111"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="112"/>
+					</targets>
+					<view ltx="666" lty="492" rbx="746" rby="563"/>
+				</component>
+				<component name="concat" library="core" uid="49" kind="5" growable="1" growablebasename="value">
+					<sources>
+						<datapoint pos="0" key="105"/>
+						<datapoint pos="1" key="106"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="107"/>
+					</targets>
+					<view ltx="897" lty="478" rbx="968" rby="532"/>
+				</component>
+				<component name="contains" library="core" uid="14" kind="5">
+					<sources>
+						<datapoint pos="0" key="7"/>
+						<datapoint pos="1" key="8"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="9"/>
+					</targets>
+					<view ltx="392" lty="268" rbx="475" rby="320"/>
+				</component>
+				<component name="if-else" library="core" uid="16" kind="4">
+					<sources>
+						<datapoint pos="0" key="4"/>
+						<datapoint pos="1" key="5"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="528" lty="223" rbx="617" rby="294"/>
+					<data>
+						<comment>
+							<text>Main Title?</text>
+						</comment>
+					</data>
+				</component>
+				<component name="contains" library="core" uid="19" kind="5">
+					<sources>
+						<datapoint pos="0" key="19"/>
+						<datapoint pos="1" key="16"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="17"/>
+					</targets>
+					<view ltx="406" lty="411" rbx="489" rby="463"/>
+				</component>
+				<component name="contains" library="core" uid="235" kind="5">
+					<sources>
+						<datapoint pos="0" key="577"/>
+						<datapoint pos="1" key="576"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="580"/>
+					</targets>
+					<view ltx="406" lty="462" rbx="489" rby="514"/>
+				</component>
+				<component name="contains" library="core" uid="236" kind="5">
+					<sources>
+						<datapoint pos="0" key="579"/>
+						<datapoint pos="1" key="578"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="581"/>
+					</targets>
+					<view ltx="407" lty="515" rbx="490" rby="567"/>
+				</component>
+				<component name="constant" library="core" uid="15" kind="2">
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="266" lty="304" rbx="348" rby="321"/>
+					<data>
+						<constant value="Main Title" datatype="string"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="18" kind="4">
+					<sources>
+						<datapoint pos="0" key="18"/>
+						<datapoint pos="1" key="14"/>
+						<datapoint pos="2" key="582"/>
+						<datapoint pos="3" key="583"/>
+						<datapoint pos="4" key="584"/>
+						<datapoint pos="5" key="585"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="13"/>
+					</targets>
+					<view ltx="565" lty="331" rbx="659" rby="470"/>
+					<data>
+						<comment>
+							<text>Alternative Title?</text>
+						</comment>
+					</data>
+				</component>
 				<component name="gmd" library="xml" uid="3" kind="14">
 					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
 					<view ltx="1881" lty="-108" rbx="2214" rby="900"/>
 					<data>
-						<root scrollposition="1100">
+						<root scrollposition="1705">
 							<header>
 								<namespaces>
 									<namespace uid="http://www.isotc211.org/2005/gco"/>
@@ -1444,15 +1478,15 @@ Only 2 coord fields filled -&gt; Point</text>
 										</entry>
 										<entry name="identificationInfo" ns="1" expanded="1">
 											<entry name="MD_DataIdentification" ns="1" expanded="1">
-												<entry name="citation" ns="1">
+												<entry name="citation" ns="1" expanded="1">
 													<entry name="CI_Citation" ns="1" expanded="1">
-														<entry name="title" ns="1" inpkey="509">
+														<entry name="title" ns="1">
 															<entry name="CharacterString" inpkey="10"/>
 														</entry>
-														<entry name="alternateTitle" ns="1">
+														<entry name="alternateTitle" ns="1" inpkey="586" expanded="1">
 															<entry name="CharacterString" inpkey="56"/>
 														</entry>
-														<entry name="date" ns="1">
+														<entry name="date" ns="1" expanded="1">
 															<entry name="CI_Date" ns="1" expanded="1">
 																<entry name="date" ns="1" expanded="1">
 																	<entry name="Date" inpkey="70"/>
@@ -1493,7 +1527,7 @@ Only 2 coord fields filled -&gt; Point</text>
 														<entry name="codeListValue" ns="2" type="attribute" inpkey="89"/>
 													</entry>
 												</entry>
-												<entry name="pointOfContact" ns="1">
+												<entry name="pointOfContact" ns="1" expanded="1">
 													<entry name="CI_ResponsibleParty" ns="1" expanded="1">
 														<entry name="individualName" ns="1" inpkey="173">
 															<entry name="CharacterString" inpkey="174"/>
@@ -1778,18 +1812,6 @@ Only 2 coord fields filled -&gt; Point</text>
 						<document schema="..\ISO\gmd.xsd" instanceroot="{http://www.isotc211.org/2005/gmd}MD_Metadata" outputinstance="..\ISO\gmd.xml"/>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="23" kind="2">
-					<targets>
-						<datapoint pos="0" key="40"/>
-					</targets>
-					<view ltx="1585" lty="-169" rbx="1722" rby="-152"/>
-					<data>
-						<constant value="http://www.loc.gov/standards/iso639-1/" datatype="string"/>
-						<comment>
-							<text>Default language CodeList</text>
-						</comment>
-					</data>
-				</component>
 				<component name="FreestyleSchemaDB" library="xml" uid="2" kind="14">
 					<properties XSLTTargetEncoding="UTF-8"/>
 					<view rbx="234" rby="1083"/>
@@ -1814,13 +1836,13 @@ Only 2 coord fields filled -&gt; Point</text>
 											<entry name="code" outkey="39"/>
 										</entry>
 										<entry name="Titles" expanded="1">
-											<entry name="Title" outkey="510" expanded="1">
+											<entry name="Title" expanded="1">
 												<entry name="text" outkey="11"/>
 												<entry name="type" outkey="12"/>
 											</entry>
 										</entry>
-										<entry name="Authors">
-											<entry name="Author" outkey="122">
+										<entry name="Authors" expanded="1">
+											<entry name="Author" outkey="122" expanded="1">
 												<entry name="familyname" outkey="123"/>
 												<entry name="givenname" outkey="124"/>
 												<entry name="orcid" outkey="125"/>
@@ -1880,7 +1902,7 @@ Only 2 coord fields filled -&gt; Point</text>
 								</entry>
 							</entry>
 						</root>
-						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\dataset3.xml" outputinstance="..\..\xml\dataset3.xml"/>
+						<document schema="..\Freestyle\FreestyleSchemaDB.xsd" instanceroot="{}Resource" inputinstance="..\..\xml\dataset4.xml" outputinstance="..\..\xml\dataset4.xml"/>
 					</data>
 				</component>
 			</children>
@@ -1901,12 +1923,16 @@ Only 2 coord fields filled -&gt; Point</text>
 						<edges>
 							<edge vertexkey="5"/>
 							<edge vertexkey="14"/>
+							<edge vertexkey="583"/>
+							<edge vertexkey="585"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="12">
 						<edges>
 							<edge vertexkey="7"/>
 							<edge vertexkey="19"/>
+							<edge vertexkey="577"/>
+							<edge vertexkey="579"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="3">
@@ -1919,7 +1945,7 @@ Only 2 coord fields filled -&gt; Point</text>
 							<edge vertexkey="10"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="15">
+					<vertex vertexkey="571">
 						<edges>
 							<edge vertexkey="16"/>
 						</edges>
@@ -1950,17 +1976,6 @@ Only 2 coord fields filled -&gt; Point</text>
 					<vertex vertexkey="531">
 						<edges>
 							<edge vertexkey="30"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="13">
-						<edges>
-							<edge vertexkey="33"/>
-							<edge vertexkey="36"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="34">
-						<edges>
-							<edge vertexkey="35"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="25">
@@ -2011,9 +2026,10 @@ Only 2 coord fields filled -&gt; Point</text>
 							<edge vertexkey="55"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="37">
+					<vertex vertexkey="13">
 						<edges>
 							<edge vertexkey="56"/>
+							<edge vertexkey="586"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="59">
@@ -2716,11 +2732,6 @@ Only 2 coord fields filled -&gt; Point</text>
 							<edge vertexkey="500"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="510">
-						<edges>
-							<edge vertexkey="509"/>
-						</edges>
-					</vertex>
 					<vertex vertexkey="513">
 						<edges>
 							<edge vertexkey="511"/>
@@ -2807,6 +2818,26 @@ Only 2 coord fields filled -&gt; Point</text>
 							<edge vertexkey="555"/>
 							<edge vertexkey="561"/>
 							<edge vertexkey="564"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="573">
+						<edges>
+							<edge vertexkey="576"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="575">
+						<edges>
+							<edge vertexkey="578"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="580">
+						<edges>
+							<edge vertexkey="582"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="581">
+						<edges>
+							<edge vertexkey="584"/>
 						</edges>
 					</vertex>
 				</vertices>
