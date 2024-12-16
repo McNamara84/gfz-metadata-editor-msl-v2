@@ -100,20 +100,22 @@ http://www.altova.com/mapforce
 						</referenceSystemIdentifier>
 					</MD_ReferenceSystem>
 				</referenceSystemInfo>
-				<identificationInfo>
-					<MD_DataIdentification>
-						<citation>
-							<CI_Citation>
-								<title>
-									<xsl:for-each select="(./*[local-name()='Titles' and namespace-uri()='']/*[local-name()='Title' and namespace-uri()=''])[contains(*[local-name()='type' and namespace-uri()=''], 'Main Title')]">
-										<xsl:variable name="var3_filter" select="."/>
-										<gco:CharacterString>
-											<xsl:value-of select="*[local-name()='text' and namespace-uri()='']"/>
-										</gco:CharacterString>
-									</xsl:for-each>
-								</title>
-								<xsl:for-each select="*[local-name()='Titles' and namespace-uri()='']/*[local-name()='Title' and namespace-uri()='']">
-									<xsl:variable name="var4_cur" select="."/>
+				<xsl:for-each select="*[local-name()='Titles' and namespace-uri()='']/*[local-name()='Title' and namespace-uri()='']">
+					<xsl:variable name="var3_cur" select="."/>
+					<identificationInfo>
+						<xsl:attribute name="xlink:type">
+							<xsl:value-of select="*[local-name()='type' and namespace-uri()='']"/>
+						</xsl:attribute>
+						<MD_DataIdentification>
+							<citation>
+								<CI_Citation>
+									<title>
+										<xsl:if test="contains(*[local-name()='type' and namespace-uri()=''], 'Main Title')">
+											<gco:CharacterString>
+												<xsl:value-of select="*[local-name()='text' and namespace-uri()='']"/>
+											</gco:CharacterString>
+										</xsl:if>
+									</title>
 									<xsl:choose>
 										<xsl:when test="contains(*[local-name()='type' and namespace-uri()=''], 'Translated Title')">
 											<alternateTitle>
@@ -137,472 +139,483 @@ http://www.altova.com/mapforce
 											</alternateTitle>
 										</xsl:when>
 									</xsl:choose>
-								</xsl:for-each>
-								<date>
-									<CI_Date>
-										<date>
-											<gco:Date>
-												<xsl:value-of select="*[local-name()='dateCreated' and namespace-uri()='']"/>
-											</gco:Date>
-										</date>
-										<dateType>
-											<CI_DateTypeCode>
-												<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode</xsl:attribute>
-												<xsl:attribute name="codeListValue" namespace="">creation</xsl:attribute>
-												<xsl:value-of select="'creation'"/>
-											</CI_DateTypeCode>
-										</dateType>
-									</CI_Date>
-								</date>
-								<xsl:for-each select="*[local-name()='Authors' and namespace-uri()='']/*[local-name()='Author' and namespace-uri()='']">
-									<xsl:variable name="var5_cur" select="."/>
-									<citedResponsibleParty>
-										<xsl:attribute name="xlink:href">
-											<xsl:value-of select="concat('http://orcid.org/', *[local-name()='orcid' and namespace-uri()=''])"/>
-										</xsl:attribute>
-										<CI_ResponsibleParty>
-											<individualName>
-												<gco:CharacterString>
-													<xsl:value-of select="concat(*[local-name()='familyname' and namespace-uri()=''], ', ', *[local-name()='givenname' and namespace-uri()=''])"/>
-												</gco:CharacterString>
-											</individualName>
-											<organisationName>
-												<xsl:for-each select="*[local-name()='Affiliations' and namespace-uri()='']/*[local-name()='Affiliation' and namespace-uri()='']">
-													<xsl:variable name="var6_cur" select="."/>
+									<date>
+										<CI_Date>
+											<date>
+												<gco:Date>
+													<xsl:value-of select="$var2_cur/*[local-name()='dateCreated' and namespace-uri()='']"/>
+												</gco:Date>
+											</date>
+											<dateType>
+												<CI_DateTypeCode>
+													<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode</xsl:attribute>
+													<xsl:attribute name="codeListValue" namespace="">creation</xsl:attribute>
+													<xsl:value-of select="'creation'"/>
+												</CI_DateTypeCode>
+											</dateType>
+										</CI_Date>
+									</date>
+									<xsl:for-each select="$var2_cur/*[local-name()='Authors' and namespace-uri()='']/*[local-name()='Author' and namespace-uri()='']">
+										<xsl:variable name="var4_cur" select="."/>
+										<citedResponsibleParty>
+											<xsl:attribute name="xlink:href">
+												<xsl:value-of select="concat('http://orcid.org/', *[local-name()='orcid' and namespace-uri()=''])"/>
+											</xsl:attribute>
+											<CI_ResponsibleParty>
+												<individualName>
 													<gco:CharacterString>
-														<xsl:value-of select="*[local-name()='name' and namespace-uri()='']"/>
+														<xsl:value-of select="concat(*[local-name()='familyname' and namespace-uri()=''], ', ', *[local-name()='givenname' and namespace-uri()=''])"/>
 													</gco:CharacterString>
-												</xsl:for-each>
-											</organisationName>
-											<role>
-												<CI_RoleCode>
-													<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode</xsl:attribute>
-													<xsl:attribute name="codeListValue" namespace="">author</xsl:attribute>
-													<xsl:value-of select="'author'"/>
-												</CI_RoleCode>
-											</role>
-										</CI_ResponsibleParty>
-									</citedResponsibleParty>
-								</xsl:for-each>
-							</CI_Citation>
-						</citation>
-						<abstract>
-							<xsl:for-each select="(./*[local-name()='Descriptions' and namespace-uri()='']/*[local-name()='Description' and namespace-uri()=''])[contains(*[local-name()='type' and namespace-uri()=''], 'Abstract')]">
-								<xsl:variable name="var7_filter" select="."/>
-								<gco:CharacterString>
-									<xsl:value-of select="concat(*[local-name()='description' and namespace-uri()=''], *[local-name()='description' and namespace-uri()=''], *[local-name()='description' and namespace-uri()=''], *[local-name()='description' and namespace-uri()=''])"/>
-								</gco:CharacterString>
-							</xsl:for-each>
-						</abstract>
-						<status>
-							<MD_ProgressCode>
-								<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ProgressCode</xsl:attribute>
-								<xsl:attribute name="codeListValue" namespace="">Complete</xsl:attribute>
-								<xsl:value-of select="'Complete'"/>
-							</MD_ProgressCode>
-						</status>
-						<pointOfContact>
-							<CI_ResponsibleParty>
-								<xsl:for-each select="*[local-name()='ContactPersons' and namespace-uri()='']/*[local-name()='ContactPerson' and namespace-uri()='']">
-									<xsl:variable name="var8_cur" select="."/>
-									<individualName>
-										<gco:CharacterString>
-											<xsl:value-of select="concat(*[local-name()='familyname' and namespace-uri()=''], ', ', *[local-name()='givenname' and namespace-uri()=''])"/>
-										</gco:CharacterString>
-									</individualName>
-								</xsl:for-each>
-								<organisationName>
-									<xsl:for-each select="*[local-name()='ContactPersons' and namespace-uri()='']/*[local-name()='ContactPerson' and namespace-uri()='']/*[local-name()='Affiliations' and namespace-uri()='']/*[local-name()='Affiliation' and namespace-uri()='']">
-										<xsl:variable name="var9_cur" select="."/>
-										<gco:CharacterString>
-											<xsl:value-of select="*[local-name()='name' and namespace-uri()='']"/>
-										</gco:CharacterString>
-									</xsl:for-each>
-								</organisationName>
-								<positionName>
-									<xsl:for-each select="(./*[local-name()='ContactPersons' and namespace-uri()='']/*[local-name()='ContactPerson' and namespace-uri()=''])[(string-length(string(*[local-name()='position' and namespace-uri()=''])) &gt; 0)]">
-										<xsl:variable name="var10_cur" select="."/>
-										<gco:CharacterString>
-											<xsl:value-of select="*[local-name()='position' and namespace-uri()='']"/>
-										</gco:CharacterString>
-									</xsl:for-each>
-								</positionName>
-								<contactInfo>
-									<CI_Contact>
-										<address>
-											<CI_Address>
-												<electronicMailAddress>
-													<xsl:for-each select="*[local-name()='ContactPersons' and namespace-uri()='']/*[local-name()='ContactPerson' and namespace-uri()='']">
-														<xsl:variable name="var11_cur" select="."/>
+												</individualName>
+												<organisationName>
+													<xsl:for-each select="*[local-name()='Affiliations' and namespace-uri()='']/*[local-name()='Affiliation' and namespace-uri()='']">
+														<xsl:variable name="var5_cur" select="."/>
 														<gco:CharacterString>
-															<xsl:value-of select="*[local-name()='email' and namespace-uri()='']"/>
+															<xsl:value-of select="*[local-name()='name' and namespace-uri()='']"/>
 														</gco:CharacterString>
 													</xsl:for-each>
-												</electronicMailAddress>
-											</CI_Address>
-										</address>
-										<onlineResource>
-											<CI_OnlineResource>
-												<linkage>
-													<xsl:for-each select="*[local-name()='ContactPersons' and namespace-uri()='']/*[local-name()='ContactPerson' and namespace-uri()='']">
-														<xsl:variable name="var12_cur" select="."/>
-														<URL>
-															<xsl:value-of select="*[local-name()='website' and namespace-uri()='']"/>
-														</URL>
-													</xsl:for-each>
-												</linkage>
-												<function>
-													<CI_OnLineFunctionCode>
-														<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode</xsl:attribute>
-														<xsl:attribute name="codeListValue" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode_information</xsl:attribute>
-														<xsl:value-of select="'information'"/>
-													</CI_OnLineFunctionCode>
-												</function>
-											</CI_OnlineResource>
-										</onlineResource>
-									</CI_Contact>
-								</contactInfo>
-								<role>
-									<CI_RoleCode>
-										<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode</xsl:attribute>
-										<xsl:attribute name="codeListValue" namespace="">pointOfContact</xsl:attribute>
-										<xsl:value-of select="'pointOfContact'"/>
-									</CI_RoleCode>
-								</role>
-							</CI_ResponsibleParty>
-						</pointOfContact>
-						<descriptiveKeywords>
-							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Analogue')]">
-								<xsl:variable name="var13_filter" select="."/>
-								<MD_Keywords>
-									<keyword>
-										<gco:CharacterString>
-											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
-										</gco:CharacterString>
-									</keyword>
-									<thesaurusName>
-										<CI_Citation>
-											<title>
-												<gco:CharacterString>
-													<xsl:value-of select="'EPOS WP16 Analogue'"/>
-												</gco:CharacterString>
-											</title>
-											<date/>
-										</CI_Citation>
-									</thesaurusName>
-								</MD_Keywords>
-							</xsl:for-each>
-							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Geochemistry')]">
-								<xsl:variable name="var14_filter" select="."/>
-								<MD_Keywords>
-									<keyword>
-										<gco:CharacterString>
-											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
-										</gco:CharacterString>
-									</keyword>
-									<thesaurusName>
-										<CI_Citation>
-											<title/>
-											<date/>
-										</CI_Citation>
-									</thesaurusName>
-								</MD_Keywords>
-							</xsl:for-each>
-							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Geologicalage')]">
-								<xsl:variable name="var15_filter" select="."/>
-								<MD_Keywords>
-									<keyword>
-										<gco:CharacterString>
-											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
-										</gco:CharacterString>
-									</keyword>
-									<thesaurusName>
-										<CI_Citation>
-											<title>
-												<gco:CharacterString>
-													<xsl:value-of select="'EPOS WP16 Geologicalage'"/>
-												</gco:CharacterString>
-											</title>
-											<date/>
-										</CI_Citation>
-									</thesaurusName>
-								</MD_Keywords>
-							</xsl:for-each>
-							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Geologicalsetting')]">
-								<xsl:variable name="var16_filter" select="."/>
-								<MD_Keywords>
-									<keyword>
-										<gco:CharacterString>
-											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
-										</gco:CharacterString>
-									</keyword>
-									<thesaurusName>
-										<CI_Citation>
-											<title>
-												<gco:CharacterString>
-													<xsl:value-of select="'EPOS WP16 Geologicalsetting'"/>
-												</gco:CharacterString>
-											</title>
-											<date/>
-										</CI_Citation>
-									</thesaurusName>
-								</MD_Keywords>
-							</xsl:for-each>
-							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Materials')]">
-								<xsl:variable name="var17_filter" select="."/>
-								<MD_Keywords>
-									<keyword>
-										<gco:CharacterString>
-											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
-										</gco:CharacterString>
-									</keyword>
-									<thesaurusName>
-										<CI_Citation>
-											<title>
-												<gco:CharacterString>
-													<xsl:value-of select="'EPOS WP16 Materials'"/>
-												</gco:CharacterString>
-											</title>
-											<date>
-												<CI_Date>
-													<date>
-														<gco:Date>
-															<xsl:value-of select="$var2_cur/*[local-name()='currentDate' and namespace-uri()='']"/>
-														</gco:Date>
-													</date>
-													<dateType>
-														<CI_DateTypeCode>
-															<xsl:attribute name="codeListValue" namespace="">creation</xsl:attribute>
-														</CI_DateTypeCode>
-													</dateType>
-												</CI_Date>
-											</date>
-										</CI_Citation>
-									</thesaurusName>
-								</MD_Keywords>
-							</xsl:for-each>
-							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Microscopy')]">
-								<xsl:variable name="var18_filter" select="."/>
-								<MD_Keywords>
-									<keyword>
-										<gco:CharacterString>
-											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
-										</gco:CharacterString>
-									</keyword>
-									<thesaurusName>
-										<CI_Citation>
-											<title>
-												<gco:CharacterString>
-													<xsl:value-of select="'EPOS WP16 Microscopy'"/>
-												</gco:CharacterString>
-											</title>
-											<date/>
-										</CI_Citation>
-									</thesaurusName>
-								</MD_Keywords>
-							</xsl:for-each>
-							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Paleomagnetism')]">
-								<xsl:variable name="var19_filter" select="."/>
-								<MD_Keywords>
-									<keyword>
-										<gco:CharacterString>
-											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
-										</gco:CharacterString>
-									</keyword>
-									<thesaurusName>
-										<CI_Citation>
-											<title>
-												<gco:CharacterString>
-													<xsl:value-of select="'EPOS WP16 Paleomagnetism'"/>
-												</gco:CharacterString>
-											</title>
-											<date/>
-										</CI_Citation>
-									</thesaurusName>
-								</MD_Keywords>
-							</xsl:for-each>
-							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Porefluids')]">
-								<xsl:variable name="var20_filter" select="."/>
-								<MD_Keywords>
-									<keyword>
-										<gco:CharacterString>
-											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
-										</gco:CharacterString>
-									</keyword>
-									<thesaurusName>
-										<CI_Citation>
-											<title>
-												<gco:CharacterString>
-													<xsl:value-of select="'EPOS WP16 Porefluids'"/>
-												</gco:CharacterString>
-											</title>
-											<date/>
-										</CI_Citation>
-									</thesaurusName>
-								</MD_Keywords>
-							</xsl:for-each>
-							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Rockphysics')]">
-								<xsl:variable name="var21_filter" select="."/>
-								<MD_Keywords>
-									<keyword>
-										<gco:CharacterString>
-											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
-										</gco:CharacterString>
-									</keyword>
-									<thesaurusName>
-										<CI_Citation>
-											<title>
-												<gco:CharacterString>
-													<xsl:value-of select="'EPOS WP16 Rockphysics'"/>
-												</gco:CharacterString>
-											</title>
-											<date/>
-										</CI_Citation>
-									</thesaurusName>
-								</MD_Keywords>
-							</xsl:for-each>
-							<xsl:for-each select="(./*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()=''])[contains(*[local-name()='scheme' and namespace-uri()=''], 'NASA/GCMD Earth Science Keywords')]">
-								<xsl:variable name="var22_filter" select="."/>
-								<MD_Keywords>
-									<keyword>
-										<gco:CharacterString>
-											<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
-										</gco:CharacterString>
-									</keyword>
-									<thesaurusName>
-										<CI_Citation>
-											<title>
-												<gco:CharacterString>
-													<xsl:value-of select="'NASA/GCMD Earth Science Keywords'"/>
-												</gco:CharacterString>
-											</title>
-											<date/>
-										</CI_Citation>
-									</thesaurusName>
-								</MD_Keywords>
-							</xsl:for-each>
-							<xsl:for-each select="*[local-name()='FreeKeywords' and namespace-uri()='']">
-								<xsl:variable name="var23_cur" select="."/>
-								<MD_Keywords>
-									<xsl:for-each select="*[local-name()='Keyword' and namespace-uri()='']">
-										<xsl:variable name="var24_cur" select="."/>
-										<keyword>
-											<gco:CharacterString>
-												<xsl:value-of select="*[local-name()='free_keyword' and namespace-uri()='']"/>
-											</gco:CharacterString>
-										</keyword>
+												</organisationName>
+												<role>
+													<CI_RoleCode>
+														<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode</xsl:attribute>
+														<xsl:attribute name="codeListValue" namespace="">author</xsl:attribute>
+														<xsl:value-of select="'author'"/>
+													</CI_RoleCode>
+												</role>
+											</CI_ResponsibleParty>
+										</citedResponsibleParty>
 									</xsl:for-each>
-								</MD_Keywords>
+								</CI_Citation>
+							</citation>
+							<abstract>
+								<xsl:for-each select="($var2_cur/*[local-name()='Descriptions' and namespace-uri()='']/*[local-name()='Description' and namespace-uri()=''])[contains(*[local-name()='type' and namespace-uri()=''], 'Abstract')]">
+									<xsl:variable name="var6_filter" select="."/>
+									<gco:CharacterString>
+										<xsl:value-of select="concat(*[local-name()='description' and namespace-uri()=''], *[local-name()='description' and namespace-uri()=''], *[local-name()='description' and namespace-uri()=''], *[local-name()='description' and namespace-uri()=''])"/>
+									</gco:CharacterString>
+								</xsl:for-each>
+							</abstract>
+							<status>
+								<MD_ProgressCode>
+									<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ProgressCode</xsl:attribute>
+									<xsl:attribute name="codeListValue" namespace="">Complete</xsl:attribute>
+									<xsl:value-of select="'Complete'"/>
+								</MD_ProgressCode>
+							</status>
+							<xsl:for-each select="$var2_cur/*[local-name()='ContactPersons' and namespace-uri()='']/*[local-name()='ContactPerson' and namespace-uri()='']">
+								<xsl:variable name="var7_cur" select="."/>
+								<pointOfContact>
+									<CI_ResponsibleParty>
+										<individualName>
+											<gco:CharacterString>
+												<xsl:value-of select="concat(*[local-name()='familyname' and namespace-uri()=''], ', ', *[local-name()='givenname' and namespace-uri()=''])"/>
+											</gco:CharacterString>
+										</individualName>
+										<xsl:for-each select="*[local-name()='Affiliations' and namespace-uri()='']/*[local-name()='Affiliation' and namespace-uri()='']">
+											<xsl:variable name="var8_cur" select="."/>
+											<organisationName>
+												<gco:CharacterString>
+													<xsl:value-of select="*[local-name()='name' and namespace-uri()='']"/>
+												</gco:CharacterString>
+											</organisationName>
+										</xsl:for-each>
+										<positionName>
+											<gco:CharacterString>
+												<xsl:value-of select="*[local-name()='position' and namespace-uri()='']"/>
+											</gco:CharacterString>
+										</positionName>
+										<contactInfo>
+											<CI_Contact>
+												<address>
+													<CI_Address>
+														<electronicMailAddress>
+															<gco:CharacterString>
+																<xsl:value-of select="*[local-name()='email' and namespace-uri()='']"/>
+															</gco:CharacterString>
+														</electronicMailAddress>
+													</CI_Address>
+												</address>
+												<xsl:if test="((string-length(string(*[local-name()='website' and namespace-uri()=''])) &gt; 1) and true())">
+													<onlineResource>
+														<CI_OnlineResource>
+															<linkage>
+																<URL>
+																	<xsl:value-of select="*[local-name()='website' and namespace-uri()='']"/>
+																</URL>
+															</linkage>
+															<function>
+																<CI_OnLineFunctionCode>
+																	<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode</xsl:attribute>
+																	<xsl:attribute name="codeListValue" namespace="">information</xsl:attribute>
+																	<xsl:value-of select="'information'"/>
+																</CI_OnLineFunctionCode>
+															</function>
+														</CI_OnlineResource>
+													</onlineResource>
+												</xsl:if>
+											</CI_Contact>
+										</contactInfo>
+										<role>
+											<CI_RoleCode>
+												<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode</xsl:attribute>
+												<xsl:attribute name="codeListValue" namespace="">pointOfContact</xsl:attribute>
+												<xsl:value-of select="'pointOfContact'"/>
+											</CI_RoleCode>
+										</role>
+									</CI_ResponsibleParty>
+								</pointOfContact>
 							</xsl:for-each>
-						</descriptiveKeywords>
-						<resourceConstraints>
-							<MD_Constraints>
-								<useLimitation>
-									<gco:CharacterString>
-										<xsl:value-of select="*[local-name()='Rights' and namespace-uri()='']/*[local-name()='text' and namespace-uri()='']"/>
-									</gco:CharacterString>
-								</useLimitation>
-							</MD_Constraints>
-						</resourceConstraints>
-						<resourceConstraints>
-							<MD_LegalConstraints>
-								<accessConstraints>
-									<MD_RestrictionCode>
-										<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/codeList.xml#MD_RestrictionCode</xsl:attribute>
-										<xsl:attribute name="codeListValue" namespace="">otherRestrictions</xsl:attribute>
-									</MD_RestrictionCode>
-								</accessConstraints>
-								<otherConstraints>
-									<gco:CharacterString>
-										<xsl:value-of select="*[local-name()='Rights' and namespace-uri()='']/*[local-name()='text' and namespace-uri()='']"/>
-									</gco:CharacterString>
-								</otherConstraints>
-							</MD_LegalConstraints>
-						</resourceConstraints>
-						<resourceConstraints>
-							<MD_SecurityConstraints>
-								<classification>
-									<MD_ClassificationCode>
-										<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/codeList.xml#MD_ClassificationCode</xsl:attribute>
-										<xsl:attribute name="codeListValue" namespace="">unclassified</xsl:attribute>
-									</MD_ClassificationCode>
-								</classification>
-							</MD_SecurityConstraints>
-						</resourceConstraints>
-						<language>
-							<gco:CharacterString>
-								<xsl:value-of select="*[local-name()='Language' and namespace-uri()='']/*[local-name()='code' and namespace-uri()='']"/>
-							</gco:CharacterString>
-						</language>
-						<xsl:for-each select="*[local-name()='SpatialTemporalCoverages' and namespace-uri()='']/*[local-name()='SpatialTemporalCoverage' and namespace-uri()='']">
-							<xsl:variable name="var25_cur" select="."/>
-							<extent>
-								<EX_Extent>
-									<description>
+							<xsl:for-each select="$var2_cur/*[local-name()='ThesaurusKeywords' and namespace-uri()='']/*[local-name()='Keyword' and namespace-uri()='']">
+								<xsl:variable name="var9_cur" select="."/>
+								<descriptiveKeywords>
+									<xsl:if test="contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Analogue')">
+										<MD_Keywords>
+											<keyword>
+												<gco:CharacterString>
+													<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+												</gco:CharacterString>
+											</keyword>
+											<thesaurusName>
+												<CI_Citation>
+													<title>
+														<gco:CharacterString>
+															<xsl:value-of select="'EPOS WP16 Analogue'"/>
+														</gco:CharacterString>
+													</title>
+													<date/>
+												</CI_Citation>
+											</thesaurusName>
+										</MD_Keywords>
+									</xsl:if>
+									<xsl:if test="contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Geochemistry')">
+										<MD_Keywords>
+											<keyword>
+												<gco:CharacterString>
+													<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+												</gco:CharacterString>
+											</keyword>
+											<thesaurusName>
+												<CI_Citation>
+													<title/>
+													<date/>
+												</CI_Citation>
+											</thesaurusName>
+										</MD_Keywords>
+									</xsl:if>
+									<xsl:if test="contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Geologicalage')">
+										<MD_Keywords>
+											<keyword>
+												<gco:CharacterString>
+													<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+												</gco:CharacterString>
+											</keyword>
+											<thesaurusName>
+												<CI_Citation>
+													<title>
+														<gco:CharacterString>
+															<xsl:value-of select="'EPOS WP16 Geologicalage'"/>
+														</gco:CharacterString>
+													</title>
+													<date/>
+												</CI_Citation>
+											</thesaurusName>
+										</MD_Keywords>
+									</xsl:if>
+									<xsl:if test="contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Geologicalsetting')">
+										<MD_Keywords>
+											<keyword>
+												<gco:CharacterString>
+													<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+												</gco:CharacterString>
+											</keyword>
+											<thesaurusName>
+												<CI_Citation>
+													<title>
+														<gco:CharacterString>
+															<xsl:value-of select="'EPOS WP16 Geologicalsetting'"/>
+														</gco:CharacterString>
+													</title>
+													<date/>
+												</CI_Citation>
+											</thesaurusName>
+										</MD_Keywords>
+									</xsl:if>
+									<xsl:if test="contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Materials')">
+										<MD_Keywords>
+											<keyword>
+												<gco:CharacterString>
+													<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+												</gco:CharacterString>
+											</keyword>
+											<thesaurusName>
+												<CI_Citation>
+													<title>
+														<gco:CharacterString>
+															<xsl:value-of select="'EPOS WP16 Materials'"/>
+														</gco:CharacterString>
+													</title>
+													<date>
+														<CI_Date>
+															<date>
+																<gco:Date>
+																	<xsl:value-of select="$var2_cur/*[local-name()='currentDate' and namespace-uri()='']"/>
+																</gco:Date>
+															</date>
+															<dateType>
+																<CI_DateTypeCode>
+																	<xsl:attribute name="codeListValue" namespace="">creation</xsl:attribute>
+																</CI_DateTypeCode>
+															</dateType>
+														</CI_Date>
+													</date>
+												</CI_Citation>
+											</thesaurusName>
+										</MD_Keywords>
+									</xsl:if>
+									<xsl:if test="contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Microscopy')">
+										<MD_Keywords>
+											<keyword>
+												<gco:CharacterString>
+													<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+												</gco:CharacterString>
+											</keyword>
+											<thesaurusName>
+												<CI_Citation>
+													<title>
+														<gco:CharacterString>
+															<xsl:value-of select="'EPOS WP16 Microscopy'"/>
+														</gco:CharacterString>
+													</title>
+													<date/>
+												</CI_Citation>
+											</thesaurusName>
+										</MD_Keywords>
+									</xsl:if>
+									<xsl:if test="contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Paleomagnetism')">
+										<MD_Keywords>
+											<keyword>
+												<gco:CharacterString>
+													<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+												</gco:CharacterString>
+											</keyword>
+											<thesaurusName>
+												<CI_Citation>
+													<title>
+														<gco:CharacterString>
+															<xsl:value-of select="'EPOS WP16 Paleomagnetism'"/>
+														</gco:CharacterString>
+													</title>
+													<date/>
+												</CI_Citation>
+											</thesaurusName>
+										</MD_Keywords>
+									</xsl:if>
+									<xsl:if test="contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Porefluids')">
+										<MD_Keywords>
+											<keyword>
+												<gco:CharacterString>
+													<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+												</gco:CharacterString>
+											</keyword>
+											<thesaurusName>
+												<CI_Citation>
+													<title>
+														<gco:CharacterString>
+															<xsl:value-of select="'EPOS WP16 Porefluids'"/>
+														</gco:CharacterString>
+													</title>
+													<date/>
+												</CI_Citation>
+											</thesaurusName>
+										</MD_Keywords>
+									</xsl:if>
+									<xsl:if test="contains(*[local-name()='scheme' and namespace-uri()=''], 'EPOS WP16 Rockphysics')">
+										<MD_Keywords>
+											<keyword>
+												<gco:CharacterString>
+													<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+												</gco:CharacterString>
+											</keyword>
+											<thesaurusName>
+												<CI_Citation>
+													<title>
+														<gco:CharacterString>
+															<xsl:value-of select="'EPOS WP16 Rockphysics'"/>
+														</gco:CharacterString>
+													</title>
+													<date/>
+												</CI_Citation>
+											</thesaurusName>
+										</MD_Keywords>
+									</xsl:if>
+									<xsl:if test="contains(*[local-name()='scheme' and namespace-uri()=''], 'NASA/GCMD Earth Science Keywords')">
+										<MD_Keywords>
+											<keyword>
+												<gco:CharacterString>
+													<xsl:value-of select="*[local-name()='keyword' and namespace-uri()='']"/>
+												</gco:CharacterString>
+											</keyword>
+											<thesaurusName>
+												<CI_Citation>
+													<title>
+														<gco:CharacterString>
+															<xsl:value-of select="'NASA/GCMD Earth Science Keywords'"/>
+														</gco:CharacterString>
+													</title>
+													<date/>
+												</CI_Citation>
+											</thesaurusName>
+										</MD_Keywords>
+									</xsl:if>
+									<xsl:for-each select="$var2_cur/*[local-name()='FreeKeywords' and namespace-uri()='']">
+										<xsl:variable name="var10_cur" select="."/>
+										<MD_Keywords>
+											<xsl:for-each select="*[local-name()='Keyword' and namespace-uri()='']">
+												<xsl:variable name="var11_cur" select="."/>
+												<keyword>
+													<gco:CharacterString>
+														<xsl:value-of select="*[local-name()='free_keyword' and namespace-uri()='']"/>
+													</gco:CharacterString>
+												</keyword>
+											</xsl:for-each>
+										</MD_Keywords>
+									</xsl:for-each>
+								</descriptiveKeywords>
+							</xsl:for-each>
+							<resourceConstraints>
+								<MD_Constraints>
+									<useLimitation>
 										<gco:CharacterString>
-											<xsl:value-of select="*[local-name()='description' and namespace-uri()='']"/>
+											<xsl:value-of select="$var2_cur/*[local-name()='Rights' and namespace-uri()='']/*[local-name()='text' and namespace-uri()='']"/>
 										</gco:CharacterString>
-									</description>
-									<geographicElement>
-										<EX_GeographicBoundingBox>
-											<westBoundLongitude>
-												<gco:Decimal>
-													<xsl:value-of select="number(*[local-name()='longitudeMin' and namespace-uri()=''])"/>
-												</gco:Decimal>
-											</westBoundLongitude>
-											<eastBoundLongitude>
-												<xsl:choose>
-													<xsl:when test="(((true() and boolean(*[local-name()='latitudeMax' and namespace-uri()=''])) and true()) and boolean(*[local-name()='longitudeMax' and namespace-uri()='']))">
-														<xsl:for-each select="*[local-name()='longitudeMax' and namespace-uri()='']">
-															<xsl:variable name="var26_cur" select="."/>
-															<gco:Decimal>
-																<xsl:value-of select="number(.)"/>
-															</gco:Decimal>
-														</xsl:for-each>
-													</xsl:when>
-													<xsl:otherwise>
-														<gco:Decimal>
-															<xsl:value-of select="number(*[local-name()='longitudeMin' and namespace-uri()=''])"/>
-														</gco:Decimal>
-													</xsl:otherwise>
-												</xsl:choose>
-											</eastBoundLongitude>
-											<southBoundLatitude>
-												<gco:Decimal>
-													<xsl:value-of select="number(*[local-name()='latitudeMin' and namespace-uri()=''])"/>
-												</gco:Decimal>
-											</southBoundLatitude>
-											<northBoundLatitude>
-												<xsl:choose>
-													<xsl:when test="(((true() and boolean(*[local-name()='latitudeMax' and namespace-uri()=''])) and true()) and boolean(*[local-name()='longitudeMax' and namespace-uri()='']))">
-														<xsl:for-each select="*[local-name()='latitudeMax' and namespace-uri()='']">
-															<xsl:variable name="var27_cur" select="."/>
-															<gco:Decimal>
-																<xsl:value-of select="number(.)"/>
-															</gco:Decimal>
-														</xsl:for-each>
-													</xsl:when>
-													<xsl:otherwise>
-														<gco:Decimal>
-															<xsl:value-of select="number(*[local-name()='latitudeMin' and namespace-uri()=''])"/>
-														</gco:Decimal>
-													</xsl:otherwise>
-												</xsl:choose>
-											</northBoundLatitude>
-										</EX_GeographicBoundingBox>
-									</geographicElement>
-									<temporalElement>
-										<EX_TemporalExtent>
-											<extent>
-												<gml:TimePeriod>
+									</useLimitation>
+								</MD_Constraints>
+							</resourceConstraints>
+							<resourceConstraints>
+								<MD_LegalConstraints>
+									<accessConstraints>
+										<MD_RestrictionCode>
+											<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/codeList.xml#MD_RestrictionCode</xsl:attribute>
+											<xsl:attribute name="codeListValue" namespace="">otherRestrictions</xsl:attribute>
+										</MD_RestrictionCode>
+									</accessConstraints>
+									<otherConstraints>
+										<gco:CharacterString>
+											<xsl:value-of select="$var2_cur/*[local-name()='Rights' and namespace-uri()='']/*[local-name()='text' and namespace-uri()='']"/>
+										</gco:CharacterString>
+									</otherConstraints>
+								</MD_LegalConstraints>
+							</resourceConstraints>
+							<resourceConstraints>
+								<MD_SecurityConstraints>
+									<classification>
+										<MD_ClassificationCode>
+											<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/codeList.xml#MD_ClassificationCode</xsl:attribute>
+											<xsl:attribute name="codeListValue" namespace="">unclassified</xsl:attribute>
+										</MD_ClassificationCode>
+									</classification>
+								</MD_SecurityConstraints>
+							</resourceConstraints>
+							<language>
+								<gco:CharacterString>
+									<xsl:value-of select="$var2_cur/*[local-name()='Language' and namespace-uri()='']/*[local-name()='code' and namespace-uri()='']"/>
+								</gco:CharacterString>
+							</language>
+							<xsl:for-each select="$var2_cur/*[local-name()='SpatialTemporalCoverages' and namespace-uri()='']/*[local-name()='SpatialTemporalCoverage' and namespace-uri()='']">
+								<xsl:variable name="var12_cur" select="."/>
+								<extent>
+									<EX_Extent>
+										<description>
+											<gco:CharacterString>
+												<xsl:value-of select="*[local-name()='description' and namespace-uri()='']"/>
+											</gco:CharacterString>
+										</description>
+										<geographicElement>
+											<EX_GeographicBoundingBox>
+												<westBoundLongitude>
+													<gco:Decimal>
+														<xsl:value-of select="number(*[local-name()='longitudeMin' and namespace-uri()=''])"/>
+													</gco:Decimal>
+												</westBoundLongitude>
+												<eastBoundLongitude>
 													<xsl:choose>
-														<xsl:when test="*[local-name()='timeStart' and namespace-uri()='']">
-															<xsl:for-each select="*[local-name()='timeStart' and namespace-uri()='']">
-																<xsl:variable name="var28_cur" select="."/>
+														<xsl:when test="(((true() and boolean(*[local-name()='latitudeMax' and namespace-uri()=''])) and true()) and boolean(*[local-name()='longitudeMax' and namespace-uri()='']))">
+															<xsl:for-each select="*[local-name()='longitudeMax' and namespace-uri()='']">
+																<xsl:variable name="var13_cur" select="."/>
+																<gco:Decimal>
+																	<xsl:value-of select="number(.)"/>
+																</gco:Decimal>
+															</xsl:for-each>
+														</xsl:when>
+														<xsl:otherwise>
+															<gco:Decimal>
+																<xsl:value-of select="number(*[local-name()='longitudeMin' and namespace-uri()=''])"/>
+															</gco:Decimal>
+														</xsl:otherwise>
+													</xsl:choose>
+												</eastBoundLongitude>
+												<southBoundLatitude>
+													<gco:Decimal>
+														<xsl:value-of select="number(*[local-name()='latitudeMin' and namespace-uri()=''])"/>
+													</gco:Decimal>
+												</southBoundLatitude>
+												<northBoundLatitude>
+													<xsl:choose>
+														<xsl:when test="(((true() and boolean(*[local-name()='latitudeMax' and namespace-uri()=''])) and true()) and boolean(*[local-name()='longitudeMax' and namespace-uri()='']))">
+															<xsl:for-each select="*[local-name()='latitudeMax' and namespace-uri()='']">
+																<xsl:variable name="var14_cur" select="."/>
+																<gco:Decimal>
+																	<xsl:value-of select="number(.)"/>
+																</gco:Decimal>
+															</xsl:for-each>
+														</xsl:when>
+														<xsl:otherwise>
+															<gco:Decimal>
+																<xsl:value-of select="number(*[local-name()='latitudeMin' and namespace-uri()=''])"/>
+															</gco:Decimal>
+														</xsl:otherwise>
+													</xsl:choose>
+												</northBoundLatitude>
+											</EX_GeographicBoundingBox>
+										</geographicElement>
+										<temporalElement>
+											<EX_TemporalExtent>
+												<extent>
+													<gml:TimePeriod>
+														<xsl:choose>
+															<xsl:when test="*[local-name()='timeStart' and namespace-uri()='']">
+																<xsl:for-each select="*[local-name()='timeStart' and namespace-uri()='']">
+																	<xsl:variable name="var15_cur" select="."/>
+																	<gml:beginPosition>
+																		<xsl:variable name="var16_nested">
+																			<xsl:choose>
+																				<xsl:when test="$var12_cur/*[local-name()='timeStart' and namespace-uri()='']">
+																					<xsl:value-of select="'T'"/>
+																				</xsl:when>
+																				<xsl:otherwise>
+																					<xsl:value-of select="''"/>
+																				</xsl:otherwise>
+																			</xsl:choose>
+																		</xsl:variable>
+																		<xsl:variable name="var17_nested">
+																			<xsl:choose>
+																				<xsl:when test="$var12_cur/*[local-name()='timeStart' and namespace-uri()='']">
+																					<xsl:value-of select="$var12_cur/*[local-name()='timezone' and namespace-uri()='']"/>
+																				</xsl:when>
+																				<xsl:otherwise>
+																					<xsl:value-of select="''"/>
+																				</xsl:otherwise>
+																			</xsl:choose>
+																		</xsl:variable>
+																		<xsl:value-of select="concat($var12_cur/*[local-name()='dateStart' and namespace-uri()=''], $var16_nested, ., $var17_nested)"/>
+																	</gml:beginPosition>
+																</xsl:for-each>
+															</xsl:when>
+															<xsl:otherwise>
 																<gml:beginPosition>
-																	<xsl:variable name="var29_nested">
+																	<xsl:variable name="var18_nested">
 																		<xsl:choose>
-																			<xsl:when test="$var25_cur/*[local-name()='timeStart' and namespace-uri()='']">
+																			<xsl:when test="*[local-name()='timeStart' and namespace-uri()='']">
 																				<xsl:value-of select="'T'"/>
 																			</xsl:when>
 																			<xsl:otherwise>
@@ -610,54 +623,54 @@ http://www.altova.com/mapforce
 																			</xsl:otherwise>
 																		</xsl:choose>
 																	</xsl:variable>
-																	<xsl:variable name="var30_nested">
+																	<xsl:variable name="var19_nested">
 																		<xsl:choose>
-																			<xsl:when test="$var25_cur/*[local-name()='timeStart' and namespace-uri()='']">
-																				<xsl:value-of select="$var25_cur/*[local-name()='timezone' and namespace-uri()='']"/>
+																			<xsl:when test="*[local-name()='timeStart' and namespace-uri()='']">
+																				<xsl:value-of select="*[local-name()='timezone' and namespace-uri()='']"/>
 																			</xsl:when>
 																			<xsl:otherwise>
 																				<xsl:value-of select="''"/>
 																			</xsl:otherwise>
 																		</xsl:choose>
 																	</xsl:variable>
-																	<xsl:value-of select="concat($var25_cur/*[local-name()='dateStart' and namespace-uri()=''], $var29_nested, ., $var30_nested)"/>
+																	<xsl:value-of select="concat(*[local-name()='dateStart' and namespace-uri()=''], $var18_nested, '', $var19_nested)"/>
 																</gml:beginPosition>
-															</xsl:for-each>
-														</xsl:when>
-														<xsl:otherwise>
-															<gml:beginPosition>
-																<xsl:variable name="var31_nested">
-																	<xsl:choose>
-																		<xsl:when test="*[local-name()='timeStart' and namespace-uri()='']">
-																			<xsl:value-of select="'T'"/>
-																		</xsl:when>
-																		<xsl:otherwise>
-																			<xsl:value-of select="''"/>
-																		</xsl:otherwise>
-																	</xsl:choose>
-																</xsl:variable>
-																<xsl:variable name="var32_nested">
-																	<xsl:choose>
-																		<xsl:when test="*[local-name()='timeStart' and namespace-uri()='']">
-																			<xsl:value-of select="*[local-name()='timezone' and namespace-uri()='']"/>
-																		</xsl:when>
-																		<xsl:otherwise>
-																			<xsl:value-of select="''"/>
-																		</xsl:otherwise>
-																	</xsl:choose>
-																</xsl:variable>
-																<xsl:value-of select="concat(*[local-name()='dateStart' and namespace-uri()=''], $var31_nested, '', $var32_nested)"/>
-															</gml:beginPosition>
-														</xsl:otherwise>
-													</xsl:choose>
-													<xsl:choose>
-														<xsl:when test="*[local-name()='timeEnd' and namespace-uri()='']">
-															<xsl:for-each select="*[local-name()='timeEnd' and namespace-uri()='']">
-																<xsl:variable name="var33_cur" select="."/>
+															</xsl:otherwise>
+														</xsl:choose>
+														<xsl:choose>
+															<xsl:when test="*[local-name()='timeEnd' and namespace-uri()='']">
+																<xsl:for-each select="*[local-name()='timeEnd' and namespace-uri()='']">
+																	<xsl:variable name="var20_cur" select="."/>
+																	<gml:endPosition>
+																		<xsl:variable name="var21_nested">
+																			<xsl:choose>
+																				<xsl:when test="$var12_cur/*[local-name()='timeEnd' and namespace-uri()='']">
+																					<xsl:value-of select="'T'"/>
+																				</xsl:when>
+																				<xsl:otherwise>
+																					<xsl:value-of select="''"/>
+																				</xsl:otherwise>
+																			</xsl:choose>
+																		</xsl:variable>
+																		<xsl:variable name="var22_nested">
+																			<xsl:choose>
+																				<xsl:when test="$var12_cur/*[local-name()='timeEnd' and namespace-uri()='']">
+																					<xsl:value-of select="$var12_cur/*[local-name()='timezone' and namespace-uri()='']"/>
+																				</xsl:when>
+																				<xsl:otherwise>
+																					<xsl:value-of select="''"/>
+																				</xsl:otherwise>
+																			</xsl:choose>
+																		</xsl:variable>
+																		<xsl:value-of select="concat($var12_cur/*[local-name()='dateEnd' and namespace-uri()=''], $var21_nested, ., $var22_nested)"/>
+																	</gml:endPosition>
+																</xsl:for-each>
+															</xsl:when>
+															<xsl:otherwise>
 																<gml:endPosition>
-																	<xsl:variable name="var34_nested">
+																	<xsl:variable name="var23_nested">
 																		<xsl:choose>
-																			<xsl:when test="$var25_cur/*[local-name()='timeEnd' and namespace-uri()='']">
+																			<xsl:when test="*[local-name()='timeEnd' and namespace-uri()='']">
 																				<xsl:value-of select="'T'"/>
 																			</xsl:when>
 																			<xsl:otherwise>
@@ -665,55 +678,30 @@ http://www.altova.com/mapforce
 																			</xsl:otherwise>
 																		</xsl:choose>
 																	</xsl:variable>
-																	<xsl:variable name="var35_nested">
+																	<xsl:variable name="var24_nested">
 																		<xsl:choose>
-																			<xsl:when test="$var25_cur/*[local-name()='timeEnd' and namespace-uri()='']">
-																				<xsl:value-of select="$var25_cur/*[local-name()='timezone' and namespace-uri()='']"/>
+																			<xsl:when test="*[local-name()='timeEnd' and namespace-uri()='']">
+																				<xsl:value-of select="*[local-name()='timezone' and namespace-uri()='']"/>
 																			</xsl:when>
 																			<xsl:otherwise>
 																				<xsl:value-of select="''"/>
 																			</xsl:otherwise>
 																		</xsl:choose>
 																	</xsl:variable>
-																	<xsl:value-of select="concat($var25_cur/*[local-name()='dateEnd' and namespace-uri()=''], $var34_nested, ., $var35_nested)"/>
+																	<xsl:value-of select="concat(*[local-name()='dateEnd' and namespace-uri()=''], $var23_nested, '', $var24_nested)"/>
 																</gml:endPosition>
-															</xsl:for-each>
-														</xsl:when>
-														<xsl:otherwise>
-															<gml:endPosition>
-																<xsl:variable name="var36_nested">
-																	<xsl:choose>
-																		<xsl:when test="*[local-name()='timeEnd' and namespace-uri()='']">
-																			<xsl:value-of select="'T'"/>
-																		</xsl:when>
-																		<xsl:otherwise>
-																			<xsl:value-of select="''"/>
-																		</xsl:otherwise>
-																	</xsl:choose>
-																</xsl:variable>
-																<xsl:variable name="var37_nested">
-																	<xsl:choose>
-																		<xsl:when test="*[local-name()='timeEnd' and namespace-uri()='']">
-																			<xsl:value-of select="*[local-name()='timezone' and namespace-uri()='']"/>
-																		</xsl:when>
-																		<xsl:otherwise>
-																			<xsl:value-of select="''"/>
-																		</xsl:otherwise>
-																	</xsl:choose>
-																</xsl:variable>
-																<xsl:value-of select="concat(*[local-name()='dateEnd' and namespace-uri()=''], $var36_nested, '', $var37_nested)"/>
-															</gml:endPosition>
-														</xsl:otherwise>
-													</xsl:choose>
-												</gml:TimePeriod>
-											</extent>
-										</EX_TemporalExtent>
-									</temporalElement>
-								</EX_Extent>
-							</extent>
-						</xsl:for-each>
-					</MD_DataIdentification>
-				</identificationInfo>
+															</xsl:otherwise>
+														</xsl:choose>
+													</gml:TimePeriod>
+												</extent>
+											</EX_TemporalExtent>
+										</temporalElement>
+									</EX_Extent>
+								</extent>
+							</xsl:for-each>
+						</MD_DataIdentification>
+					</identificationInfo>
+				</xsl:for-each>
 				<distributionInfo>
 					<MD_Distribution>
 						<transferOptions>
@@ -745,7 +733,7 @@ http://www.altova.com/mapforce
 										<function>
 											<CI_OnLineFunctionCode>
 												<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode</xsl:attribute>
-												<xsl:attribute name="codeListValue" namespace="">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode_download</xsl:attribute>
+												<xsl:attribute name="codeListValue" namespace="">information</xsl:attribute>
 												<xsl:value-of select="'download'"/>
 											</CI_OnLineFunctionCode>
 										</function>
