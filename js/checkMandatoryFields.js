@@ -46,4 +46,18 @@ function checkMandatoryFields() {
         contactpersonFirstname.removeAttribute('required');
         contactpersonEmail.removeAttribute('required');
     }
+
+    // "FG" Funding Reference
+    var funder = document.getElementById('input-funder');
+    var grantNumber = document.getElementById('input-grantnumber');
+    var grantName = document.getElementById('input-grantname');
+
+    //Check if gramt number or grant name is filled
+    if (grantNumber.value.trim() !== '' || grantName.value.trim() !== '') {
+        // Set 'required' for funder field
+        funder.setAttribute('required', 'required');
+    } else {
+        // Remove 'required' from funder field
+        funder.removeAttribute('required');
+    }
 }
