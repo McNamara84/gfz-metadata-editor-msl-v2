@@ -1,75 +1,105 @@
+/**
+ * Checks and sets mandatory fields for various form sections.
+ * This function is called to dynamically adjust input field validation.
+ */
 function checkMandatoryFields() {
-    // "FG" Contributer(s)
-    //Person
-    var contributorOrcid = document.getElementById('input-contributor-orcid');
-    var contributorlastname = document.getElementById('input-contributor-lastname');
-    var contributorfirstname = document.getElementById('input-contributor-firstname');
-    var contributorrole = document.getElementById('input-contributor-personrole');
-    var contributorAffiliation = document.getElementById('input-contributor-personaffiliation');
+    // "FG" Contributor Person
+    $('#group-contributorperson').children('.row').each(function () {
+        var row = $(this);
+        // Defines the relevant fields for the Contributor Person section
+        var fields = {
+            orcid: row.find('[id^="input-contributor-orcid"]'),
+            lastname: row.find('[id^="input-contributor-lastname"]'),
+            firstname: row.find('[id^="input-contributor-firstname"]'),
+            role: row.find('[id^="input-contributor-personrole"]'),
+            affiliation: row.find('[id^="input-contributor-personaffiliation"]')
+        };
 
-    // Check if any Contributors (Person) fields are filled
-    if (contributorOrcid.value.trim() !== '' || contributorlastname.value.trim() !== '' || contributorfirstname.value.trim() !== '' || contributorrole.value.trim() !== '' || contributorAffiliation.value.trim() !== '') {
-        // Set 'required' for Contributor Lastname, Contributor Firstname and ContributorPerson Role fields
-        contributorlastname.setAttribute('required', 'required');
-        contributorfirstname.setAttribute('required', 'required');
-        contributorrole.setAttribute('required', 'required');
-    } else {
-        // Remove 'required' from Contributor Lastname, Contributor Firstname and ContributorPerson Role fields
-        contributorlastname.removeAttribute('required');
-        contributorfirstname.removeAttribute('required');
-        contributorrole.removeAttribute('required');
-    }
+        // Checks if any field in the row is filled
+        var isAnyFieldFilled = Object.values(fields).some(field => field.val() && field.val().trim() !== '');
 
-    //Institution
-    var contributorOrganisationName = document.getElementById('input-contributor-name');
-    var contributorOrganisationrole = document.getElementById('input-contributor-organisationrole');
-    var contributorOrganisationAffiliation = document.getElementById('input-contributor-organisationaffiliation');
+        // Sets or removes the 'required' attribute based on the fill status
+        if (isAnyFieldFilled) {
+            fields.lastname.attr('required', 'required');
+            fields.firstname.attr('required', 'required');
+            fields.role.attr('required', 'required');
+        } else {
+            fields.lastname.removeAttr('required');
+            fields.firstname.removeAttr('required');
+            fields.role.removeAttr('required');
+        }
+    });
 
-    // Check if any Contributors (Institution) fields are filled
-    if (contributorOrganisationName.value.trim() !== '' || contributorOrganisationrole.value.trim() !== '' || contributorOrganisationAffiliation.value.trim() !== '') {
-        // Set 'required' for Contributor Organisation name and ContributorInstitution Role fields
-        contributorOrganisationName.setAttribute('required', 'required');
-        contributorOrganisationrole.setAttribute('required', 'required');
+    // "FG" Contributor Organization
+    $('#group-contributororganisation').children('.row').each(function () {
+        var row = $(this);
+        // Defines the relevant fields for the Contributor Organization section
+        var fields = {
+            name: row.find('[id^="input-contributor-name"]'),
+            role: row.find('[id^="input-contributor-organisationrole"]'),
+            affiliation: row.find('[id^="input-contributor-organisationaffiliation"]')
+        };
 
-    } else {
-        // Remove 'required' from Contributor Organisation name and ContributorInstitution Role fields
-        contributorOrganisationName.removeAttribute('required');
-        contributorOrganisationrole.removeAttribute('required');
+        // Checks if any field in the row is filled
+        var isAnyFieldFilled = Object.values(fields).some(field => field.val() && field.val().trim() !== '');
 
-    }
+        // Sets or removes the 'required' attribute based on the fill status
+        if (isAnyFieldFilled) {
+            fields.name.attr('required', 'required');
+            fields.role.attr('required', 'required');
+        } else {
+            fields.name.removeAttr('required');
+            fields.role.removeAttr('required');
+        }
+    });
 
     // "FG" Contact person(s)
-    var contactpersonLastname = document.getElementById('input-contactperson-lastname');
-    var contactpersonFirstname = document.getElementById('input-contactperson-firstname');
-    var contactpersonPosition = document.getElementById('input-contactperson-position');
-    var contactpersonEmail = document.getElementById('input-contactperson-email');
-    var contactpersonWebsite = document.getElementById('input-contactperson-website');
-    var contactpersonAffiliation = document.getElementById('input-contactperson-affiliation');
+    $('#group-contactperson').children('.row').each(function () {
+        var row = $(this);
+        // Defines the relevant fields for the Contact Person section
+        var fields = {
+            lastname: row.find('[id^="input-contactperson-lastname"]'),
+            firstname: row.find('[id^="input-contactperson-firstname"]'),
+            position: row.find('[id^="input-contactperson-position"]'),
+            email: row.find('[id^="input-contactperson-email"]'),
+            website: row.find('[id^="input-contactperson-website"]'),
+            affiliation: row.find('[id^="input-contactperson-affiliation"]')
+        };
 
-    // Check if any contact person fields are filled
-    if (contactpersonLastname.value.trim() !== '' || contactpersonFirstname.value.trim() !== '' || contactpersonPosition.value.trim() !== '' || contactpersonEmail.value.trim() !== '' || contactpersonWebsite.value.trim() !== '' || contactpersonAffiliation.value.trim() !== '') {
-        // Set 'required' for Contact Person Lastname, Contact Person Firstname and Contact Person Email Address fields
-        contactpersonLastname.setAttribute('required', 'required');
-        contactpersonFirstname.setAttribute('required', 'required');
-        contactpersonEmail.setAttribute('required', 'required');
-    } else {
-        // Remove 'required' from Contributors Lastname, Contact Person Firstname and Contact Email Address fields
-        contactpersonLastname.removeAttribute('required');
-        contactpersonFirstname.removeAttribute('required');
-        contactpersonEmail.removeAttribute('required');
-    }
+        // Checks if any field in the row is filled
+        var isAnyFieldFilled = Object.values(fields).some(field => field.val() && field.val().trim() !== '');
+
+        // Sets or removes the 'required' attribute based on the fill status
+        if (isAnyFieldFilled) {
+            fields.lastname.attr('required', 'required');
+            fields.firstname.attr('required', 'required');
+            fields.email.attr('required', 'required');
+        } else {
+            fields.lastname.removeAttr('required');
+            fields.firstname.removeAttr('required');
+            fields.email.removeAttr('required');
+        }
+    });
 
     // "FG" Funding Reference
-    var funder = document.getElementById('input-funder');
-    var grantNumber = document.getElementById('input-grantnumber');
-    var grantName = document.getElementById('input-grantname');
+    $('#group-fundingreference').children('.row').each(function () {
+        var row = $(this);
+        // Defines the relevant fields for the Funding Reference section
+        var fields = {
+            funder: row.find('[id^="input-funder"]'),
+            grantNumber: row.find('[id^="input-grantnumber"]'),
+            grantName: row.find('[id^="input-grantname"]')
+        };
 
-    //Check if gramt number or grant name is filled
-    if (grantNumber.value.trim() !== '' || grantName.value.trim() !== '') {
-        // Set 'required' for funder field
-        funder.setAttribute('required', 'required');
-    } else {
-        // Remove 'required' from funder field
-        funder.removeAttribute('required');
-    }
+        // Checks if either the Grant Number or Grant Name field is filled
+        var isAnyGrantFieldFilled = (fields.grantNumber.val() && fields.grantNumber.val().trim() !== '') ||
+            (fields.grantName.val() && fields.grantName.val().trim() !== '');
+
+        // Sets or removes the 'required' attribute for the Funder field based on the Grant fields' fill status
+        if (isAnyGrantFieldFilled) {
+            fields.funder.attr('required', 'required');
+        } else {
+            fields.funder.removeAttr('required');
+        }
+    });
 }
