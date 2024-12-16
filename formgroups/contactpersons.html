@@ -10,7 +10,7 @@
           <div class="input-group has-validation">
             <div class="form-floating">
               <input type="text" class="form-control" id="input-contactperson-lastname" pattern="^[a-zA-ZäöüÄÖÜß \-]*$"
-                name="cpLastname[]" />
+                name="cpLastname[]"  onchange="checkMandatoryFields()"/>
               <label for="input-contactperson-lastname">
                 <?php echo $translations['lastname']; ?>
               </label>
@@ -25,7 +25,7 @@
           <div class="input-group has-validation">
             <div class="form-floating">
               <input type="text" class="form-control" id="input-contactperson-firstname" pattern="^[a-zA-ZäöüÄÖÜß \-]*$"
-                name="cpFirstname[]" />
+                name="cpFirstname[]"  onchange="checkMandatoryFields()"/>
               <label for="input-contactperson-firstname">
                 <?php echo $translations['firstname']; ?>
               </label>
@@ -39,8 +39,8 @@
         <div class="col-12 col-sm-12 col-md-4 col-lg-2 p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
-              <input type="text" class="form-control input-with-help input-right-no-round-corners" id="input-contactperson-position"
-                name="cpPosition[]" pattern="^[A-Za-z\/,\-\s&()ÄäÖöÜüß]{1,99}$" />
+              <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                id="input-contactperson-position" name="cpPosition[]"  onchange="checkMandatoryFields()" pattern="^[A-Za-z\/,\-\s&()ÄäÖöÜüß]{1,99}$" />
               <label for="input-contactperson-position">
                 <?php echo $translations['position']; ?>
               </label>
@@ -49,7 +49,8 @@
               </div>
             </div>
             <div class="input-group-append">
-              <span class="input-group-text"><i class="bi bi-question-circle-fill" data-help-section-id="help-contactperson-position"></i>
+              <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                  data-help-section-id="help-contactperson-position"></i>
               </span>
             </div>
           </div>
@@ -58,7 +59,7 @@
         <div class="col-12 col-sm-12 col-md-6 col-lg-3 p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
-              <input type="email" class="form-control" name="cpEmail[]"
+              <input type="email" class="form-control" name="cpEmail[]"  onchange="checkMandatoryFields()"
                 pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
                 id="input-contactperson-email" />
               <label for="input-contactperson-email">
@@ -74,8 +75,8 @@
         <div class="col-12 col-sm-12 col-md-6 col-lg-3 p-1">
           <div class="input-group has-validation">
             <div class="form-floating">
-              <input type="text" class="form-control input-with-help input-right-no-round-corners" id="input-contactperson-website"
-                name="cpOnlineResource[]"
+              <input type="text" class="form-control input-with-help input-right-no-round-corners"
+                id="input-contactperson-website" name="cpOnlineResource[]"  onchange="checkMandatoryFields()"
                 pattern="^(http(s)?:\/\/)?(www\.)?[a-zA-Z0-9\-\.]+(\.[a-zA-Z]{2,})+(\/[^\s]*)?$" />
               <label for="input-contactperson-website">
                 <?php echo $translations['website']; ?>
@@ -85,7 +86,8 @@
               </div>
             </div>
             <div class="input-group-append">
-              <span class="input-group-text"><i class="bi bi-question-circle-fill" data-help-section-id="help-contactperson-website"></i>
+              <span class="input-group-text"><i class="bi bi-question-circle-fill"
+                  data-help-section-id="help-contactperson-website"></i>
               </span>
             </div>
           </div>
@@ -93,8 +95,9 @@
         <!-- Input field Affiliation -->
         <div class="col-10 col-sm-10 col-md-11 p-1">
           <div class="input-group has-validation">
-            <input type="text" class="form-control input-with-help input-right-no-round-corners" id="input-contactperson-affiliation"
-              name="cpAffiliation[]" placeholder="<?php echo $translations['affiliation']; ?>" />
+            <input type="text" class="form-control input-with-help input-right-no-round-corners"
+              id="input-contactperson-affiliation" name="cpAffiliation[]"  onchange="checkMandatoryFields()"
+              placeholder="<?php echo $translations['affiliation']; ?>" />
             <span class="input-group-text"><i class="bi bi-question-circle-fill"
                 data-help-section-id="help-contactperson-affiliation"></i></span>
             <input type="hidden" id="input-contactperson-rorid" name="hiddenCPRorId[]" />
