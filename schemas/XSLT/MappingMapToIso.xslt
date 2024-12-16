@@ -499,10 +499,12 @@ http://www.altova.com/mapforce
 							<MD_Constraints>
 								<useLimitation>
 									<gco:CharacterString>
-										<xsl:value-of select="*[local-name()='Rights' and namespace-uri()='']/*[local-name()='rightsIdentifier' and namespace-uri()='']"/>
+										<xsl:value-of select="*[local-name()='Rights' and namespace-uri()='']/*[local-name()='text' and namespace-uri()='']"/>
 									</gco:CharacterString>
 								</useLimitation>
 							</MD_Constraints>
+						</resourceConstraints>
+						<resourceConstraints>
 							<MD_LegalConstraints>
 								<accessConstraints>
 									<MD_RestrictionCode>
@@ -512,10 +514,20 @@ http://www.altova.com/mapforce
 								</accessConstraints>
 								<otherConstraints>
 									<gco:CharacterString>
-										<xsl:value-of select="*[local-name()='Rights' and namespace-uri()='']/*[local-name()='rightsIdentifier' and namespace-uri()='']"/>
+										<xsl:value-of select="*[local-name()='Rights' and namespace-uri()='']/*[local-name()='text' and namespace-uri()='']"/>
 									</gco:CharacterString>
 								</otherConstraints>
 							</MD_LegalConstraints>
+						</resourceConstraints>
+						<resourceConstraints>
+							<MD_SecurityConstraints>
+								<classification>
+									<MD_ClassificationCode>
+										<xsl:attribute name="codeList" namespace="">http://www.isotc211.org/2005/resources/codeList.xml#MD_ClassificationCode</xsl:attribute>
+										<xsl:attribute name="codeListValue" namespace="">unclassified</xsl:attribute>
+									</MD_ClassificationCode>
+								</classification>
+							</MD_SecurityConstraints>
 						</resourceConstraints>
 						<language>
 							<gco:CharacterString>
