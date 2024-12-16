@@ -61,7 +61,6 @@ const XML_MAPPING = {
     selector: '#input-rights-license',
     attribute: 'rightsIdentifier',
     transform: (value) => {
-      console.log('Found rightsIdentifier value:', value); // Debug
       return licenseMapping[value] || '1';
     }
   }
@@ -105,13 +104,10 @@ async function createLicenseMapping() {
     const response = await $.getJSON('./api/v2/vocabs/licenses/all');
     const mapping = {};
 
-    console.log('API Response:', response);
-
     response.forEach(license => {
       mapping[license.rightsIdentifier] = license.rights_id.toString();
     });
 
-    console.log('Created License Mapping:', mapping);
     return mapping;
   } catch (error) {
     console.error('Error creating license mapping:', error);
@@ -161,11 +157,24 @@ function getNodeText(contextNode, xpath, xmlDoc, resolver) {
   return node ? node.textContent.trim() : '';
 }
 
+// Globale Variable für die Labor-Daten
+let labData = [];
+
 /**
  * Loads XML data into form fields according to mapping configuration
  * @param {Document} xmlDoc - The parsed XML document
  */
 async function loadXmlToForm(xmlDoc) {
+  console.log('Checking if laboratory field is Tagified:', $('input[name="laboratoryName[]"]')[0].tagify ? 'yes' : 'no');
+  // Warte auf das Laden der Labordaten, falls noch nicht geschehen
+  if (!labData || labData.length === 0) {
+    try {
+      labData = await $.getJSON("json/msl-labs.json");
+    } catch (error) {
+      console.error('Error loading laboratory data:', error);
+      labData = [];
+    }
+  }
   // Erstelle das License-Mapping zuerst
   const licenseMapping = await createLicenseMapping();
 
@@ -228,7 +237,6 @@ async function loadXmlToForm(xmlDoc) {
       selector: '#input-rights-license',
       attribute: 'rightsIdentifier',
       transform: (value) => {
-        console.log('Found rightsIdentifier value:', value);
         return licenseMapping[value] || '1';
       }
     }
@@ -247,7 +255,6 @@ async function loadXmlToForm(xmlDoc) {
   // Verarbeite zuerst die Standard-Mappings
   for (const [xmlPath, config] of Object.entries(XML_MAPPING)) {
     const nsPath = `/ns:resource/ns:${xmlPath}`;
-    console.log('Evaluating XPath:', nsPath);
 
     const xmlElements = xmlDoc.evaluate(
       nsPath,
@@ -259,19 +266,14 @@ async function loadXmlToForm(xmlDoc) {
 
     const xmlNode = xmlElements.singleNodeValue;
     if (xmlNode) {
-      console.log('Found XML node:', xmlNode);
 
       const value = config.attribute === 'textContent'
         ? xmlNode.textContent
         : xmlNode.getAttribute(config.attribute);
 
-      console.log('Extracted value:', value);
-
       const transformedValue = config.transform ? config.transform(value) : value;
-      console.log('Transformed value:', transformedValue);
 
       $(config.selector).val(transformedValue);
-      console.log('Set value for selector:', config.selector, transformedValue);
     } else {
       console.log('No node found for path:', nsPath);
     }
@@ -296,8 +298,6 @@ async function loadXmlToForm(xmlDoc) {
     const titleType = titleNode.getAttribute('titleType');
     const titleText = titleNode.textContent;
     const titleLang = titleNode.getAttribute('xml:lang') || 'en';
-
-    console.log('Processing title:', { titleType, titleText, titleLang });
 
     if (i === 0) {
       // First Title
@@ -429,8 +429,6 @@ async function loadXmlToForm(xmlDoc) {
 
     // Skip this contact person if either given name or family name is missing
     if (!givenName || !familyName) {
-      console.log('Skipping incomplete contact person:',
-        contactPersonNode.getElementsByTagName('contributorName')[0]?.textContent);
       continue;
     }
 
@@ -462,5 +460,158 @@ async function loadXmlToForm(xmlDoc) {
     }
 
     validContactPersonCount++;
+  }
+  // Process Originating Laboratories
+  console.log('Starting laboratory processing');
+
+  const laboratoryNodes = xmlDoc.evaluate(
+    '/ns:resource/ns:contributors/ns:contributor[@contributorType="HostingInstitution"]',
+    xmlDoc,
+    resolver,
+    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+    null
+  );
+
+  console.log(`Found ${laboratoryNodes.snapshotLength} laboratory nodes`);
+
+  // Reset existing laboratories
+  $('#group-originatinglaboratory .row[data-laboratory-row]').not(':first').remove();
+  $('#group-originatinglaboratory .row[data-laboratory-row]:first input').val('');
+
+  // Hilfsfunktion zum Finden des Labornamens anhand der ID
+  function findLabNameById(labId) {
+    if (!labData) {
+      console.error('labData is not available');
+      return null;
+    }
+    return labData.find(lab => lab.id === labId) || null;
+  }
+
+  // Funktion zum Setzen des Labornamens mit Tagify
+  function setLabNameWithTagify(row, labId) {
+    console.log('Setting lab name with Tagify for ID:', labId);
+
+    // Prüfe ob labData verfügbar ist
+    if (typeof labData === 'undefined') {
+      console.error('labData is not available');
+      return;
+    }
+
+    const inputName = row.find('input[name="laboratoryName[]"]')[0];
+    console.log('Found name input element:', inputName);
+
+    if (!inputName) {
+      console.error('Input element not found');
+      return;
+    }
+
+    const lab = findLabNameById(labId);
+    console.log('Found lab:', lab);
+
+    if (!lab) {
+      console.error('Lab not found');
+      return;
+    }
+
+    try {
+      // Prüfe ob eine Tagify-Instanz existiert
+      if (inputName.tagify) {
+        console.log('Using existing Tagify instance');
+        inputName.tagify.removeAllTags();
+        inputName.tagify.addTags([lab.name]);
+      } else {
+        console.log('Creating new Tagify instance');
+
+        // Erstelle neue Tagify direkt hier
+        const tagify = new Tagify(inputName, {
+          whitelist: labData.map(item => item.name),
+          enforceWhitelist: true,
+          maxTags: 1,
+          dropdown: {
+            maxItems: 20,
+            closeOnSelect: true,
+            highlightFirst: true
+          },
+          delimiters: null,
+          mode: "select"
+        });
+
+        // Setze den Wert nach kurzer Verzögerung
+        setTimeout(() => {
+          console.log('Setting initial value after delay');
+          tagify.removeAllTags();
+          tagify.addTags([lab.name]);
+        }, 100);
+      }
+
+      // Finde auch das Affiliation-Feld und setze es
+      const inputAffiliation = row.find('input[name="laboratoryAffiliation[]"]')[0];
+      if (inputAffiliation && inputAffiliation.tagify) {
+        console.log('Setting affiliation');
+        inputAffiliation.tagify.removeAllTags();
+        inputAffiliation.tagify.addTags([lab.affiliation]);
+      }
+
+      // Setze hidden fields
+      const hiddenRorId = row.find('input[name="laboratoryRorIds[]"]');
+      const hiddenLabId = row.find('input[name="LabId[]"]');
+
+      if (hiddenRorId.length) hiddenRorId.val(lab.ror_id || '');
+      if (hiddenLabId.length) hiddenLabId.val(lab.id);
+
+      console.log('Successfully set all lab fields');
+
+    } catch (error) {
+      console.error('Error in setLabNameWithTagify:', error);
+      console.error('Error stack:', error.stack);
+    }
+  }
+
+
+  for (let i = 0; i < laboratoryNodes.snapshotLength; i++) {
+    console.log(`Processing laboratory ${i + 1} of ${laboratoryNodes.snapshotLength}`);
+
+    const labNode = laboratoryNodes.snapshotItem(i);
+    console.log('Laboratory node:', labNode);
+
+    // Extract laboratory ID
+    const labId = getNodeText(labNode, 'ns:nameIdentifier[@nameIdentifierScheme="labid"]', xmlDoc, resolver);
+    console.log('Extracted lab ID:', labId);
+
+    // Skip if no lab ID
+    if (!labId) {
+      console.log('Skipping laboratory with missing ID');
+      continue;
+    }
+
+    if (i === 0) {
+      console.log('Processing first laboratory');
+      // First laboratory - use existing row
+      const firstRow = $('#group-originatinglaboratory .row[data-laboratory-row]:first');
+      console.log('First row element:', firstRow[0]);
+
+      // Set lab ID in hidden field
+      firstRow.find('input[name="LabId[]"]').val(labId);
+      console.log('Set lab ID in hidden field:', labId);
+
+      // Set lab name using Tagify
+      setLabNameWithTagify(firstRow, labId);
+
+    } else {
+      console.log(`Processing additional laboratory ${i + 1}`);
+      // Additional laboratories - clone new row
+      $('#button-originatinglaboratory-add').click();
+
+      // Find the newly added row
+      const newRow = $('#group-originatinglaboratory .row[data-laboratory-row]').last();
+      console.log('New row element:', newRow[0]);
+
+      // Set lab ID
+      newRow.find('input[name="LabId[]"]').val(labId);
+      console.log('Set lab ID in hidden field:', labId);
+
+      // Set lab name using Tagify
+      setLabNameWithTagify(newRow, labId);
+    }
   }
 }
