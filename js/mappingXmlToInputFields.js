@@ -146,6 +146,10 @@ function mapTitleType(titleType) {
  * @returns {string} The text content of the matched node
  */
 function getNodeText(contextNode, xpath, xmlDoc, resolver) {
+  if (!xpath.startsWith('.') && !xpath.startsWith('/')) {
+    xpath = './' + xpath;
+  }
+
   const node = xmlDoc.evaluate(
     xpath,
     contextNode,
@@ -165,6 +169,23 @@ let labData = [];
  * @param {Document} xmlDoc - The parsed XML document
  */
 async function loadXmlToForm(xmlDoc) {
+  const resourceNode = xmlDoc.evaluate(
+    '//ns:resource | /resource | //resource',
+    xmlDoc,
+    function (prefix) {
+      if (prefix === 'ns') {
+        return 'http://datacite.org/schema/kernel-4';
+      }
+      return null;
+    },
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null
+  ).singleNodeValue;
+
+  if (!resourceNode) {
+    console.error('No DataCite resource element found');
+    return;
+  }
   // Warte auf das Laden der Labordaten, falls noch nicht geschehen
   if (!labData || labData.length === 0) {
     try {
@@ -242,18 +263,18 @@ async function loadXmlToForm(xmlDoc) {
   };
 
   const nsResolver = xmlDoc.createNSResolver(xmlDoc.documentElement);
-  const defaultNS = xmlDoc.documentElement.getAttribute('xmlns');
+  const defaultNS = resourceNode.namespaceURI || 'http://datacite.org/schema/kernel-4';
 
   function resolver(prefix) {
     if (prefix === 'ns') {
       return defaultNS;
     }
-    return nsResolver.lookupNamespaceURI(prefix);
+    return null;
   }
 
   // Verarbeite zuerst die Standard-Mappings
   for (const [xmlPath, config] of Object.entries(XML_MAPPING)) {
-    const nsPath = `/ns:resource/ns:${xmlPath}`;
+    const nsPath = `.//ns:${xmlPath}`;
 
     const xmlElements = xmlDoc.evaluate(
       nsPath,
@@ -280,7 +301,7 @@ async function loadXmlToForm(xmlDoc) {
 
   // Verarbeite die Titel separat
   const titleNodes = xmlDoc.evaluate(
-    '/ns:resource/ns:titles/ns:title',
+    './/ns:titles/ns:title',
     xmlDoc,
     resolver,
     XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
@@ -319,7 +340,7 @@ async function loadXmlToForm(xmlDoc) {
   }
   // Processing Creators
   const creatorNodes = xmlDoc.evaluate(
-    '/ns:resource/ns:creators/ns:creator',
+    './/ns:creators/ns:creator',
     xmlDoc,
     resolver,
     XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
@@ -413,7 +434,7 @@ async function loadXmlToForm(xmlDoc) {
   }
   // Process Contact Persons
   const contactPersonNodes = xmlDoc.evaluate(
-    '/ns:resource/ns:contributors/ns:contributor[@contributorType="ContactPerson"]',
+    './/ns:contributors/ns:contributor[@contributorType="ContactPerson"]',
     xmlDoc,
     resolver,
     XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
@@ -485,7 +506,7 @@ async function loadXmlToForm(xmlDoc) {
   }
   // Process Originating Laboratories
   const laboratoryNodes = xmlDoc.evaluate(
-    '/ns:resource/ns:contributors/ns:contributor[@contributorType="HostingInstitution"]',
+    './/ns:contributors/ns:contributor[@contributorType="HostingInstitution"]',
     xmlDoc,
     resolver,
     XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
@@ -639,7 +660,7 @@ async function loadXmlToForm(xmlDoc) {
   }
   // Process contributors
   const contributorsNode = xmlDoc.evaluate(
-    '/ns:resource/ns:contributors',
+    './/ns:contributors',
     xmlDoc,
     resolver,
     XPathResult.FIRST_ORDERED_NODE_TYPE,
