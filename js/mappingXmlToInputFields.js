@@ -1,72 +1,4 @@
 /**
- * Mapping configuration for XML elements to form input fields
- * @constant {Object}
- */
-const XML_MAPPING = {
-  // Resource Information
-  'identifier': {
-    selector: '#input-resourceinformation-doi',
-    attribute: 'textContent'
-  },
-  'publicationYear': {
-    selector: '#input-resourceinformation-publicationyear',
-    attribute: 'textContent'
-  },
-  'version': {
-    selector: '#input-resourceinformation-version',
-    attribute: 'textContent'
-  },
-  'resourceType': {
-    selector: '#input-resourceinformation-resourcetype',
-    attribute: 'resourceTypeGeneral',
-    transform: (value) => {
-      // Map ResourceTypeGeneral to select option values TODO: Write API Endpoint
-      const typeMap = {
-        'Audiovisual': '1',
-        'Book': '2',
-        'BookChapter': '3',
-        'Collection': '4',
-        'ComputationalNotebook': '5',
-        'ConferencePaper': '6',
-        'ConferenceProceeding': '7',
-        'DataPaper': '8',
-        'Dataset': '9',
-        'Dissertation': '10',
-        'Event': '11',
-        'Image': '12',
-        'Instrument': '13',
-        'InteractiveResource': '14',
-        'Journal': '15',
-        'JournalArticle': '16',
-        'Model': '17',
-        'OutputManagementPlan': '18',
-        'PeerReview': '19',
-        'PhysicalObject': '20',
-        'Preprint': '21',
-        'Report': '22',
-        'Service': '23',
-        'Software': '24',
-        'Sound': '25',
-        'Standard': '26',
-        'StudyRegistration': '27',
-        'Text': '28',
-        'Workflow': '29',
-        'Other': '30'
-      };
-      return typeMap[value] || '30'; // Default to 'Other' if type not found
-    }
-  },
-  // Rights
-  'rightsList/ns:rights': {  // Beachte das ns: vor rights
-    selector: '#input-rights-license',
-    attribute: 'rightsIdentifier',
-    transform: (value) => {
-      return licenseMapping[value] || '1';
-    }
-  }
-};
-
-/**
  * Extracts license identifier from various formats
  * @param {Element} rightsNode - The XML rights element
  * @returns {string} The normalized license identifier
@@ -716,6 +648,20 @@ async function loadXmlToForm(xmlDoc) {
           'Other': '30'
         };
         return typeMap[value] || '30';
+      }
+    },
+    // Language mapping
+    'language': {
+      selector: '#input-resourceinformation-language',
+      attribute: 'textContent',
+      transform: (value) => {
+        // Map language codes to database IDs
+        const languageMap = {
+          'en': '1', // Assuming English has ID 1
+          'de': '2', // Assuming German has ID 2
+          'fr': '3'  // Assuming French has ID 3
+        };
+        return languageMap[value.toLowerCase()] || '1'; // Default to English if not found
       }
     },
     // Rights
