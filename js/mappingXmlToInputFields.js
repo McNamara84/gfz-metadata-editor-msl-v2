@@ -165,6 +165,100 @@ function getNodeText(contextNode, xpath, xmlDoc, resolver) {
 let labData = [];
 
 /**
+ * Process creators from XML and populate the form
+ * @param {Document} xmlDoc - The parsed XML document
+ * @param {Function} resolver - The namespace resolver function
+ */
+function processCreators(xmlDoc, resolver) {
+  const creatorNodes = xmlDoc.evaluate(
+    './/ns:creators/ns:creator',
+    xmlDoc,
+    resolver,
+    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+    null
+  );
+
+  // Reset existing authors
+  $('#group-author .row[data-creator-row]').not(':first').remove();
+  $('#group-author .row[data-creator-row]:first input').val('');
+
+  for (let i = 0; i < creatorNodes.snapshotLength; i++) {
+    const creatorNode = creatorNodes.snapshotItem(i);
+
+    // Extract Creators
+    const givenName = getNodeText(creatorNode, 'ns:givenName', xmlDoc, resolver);
+    const familyName = getNodeText(creatorNode, 'ns:familyName', xmlDoc, resolver);
+    const orcid = getNodeText(
+      creatorNode,
+      'ns:nameIdentifier[@nameIdentifierScheme="ORCID"]',
+      xmlDoc,
+      resolver
+    ).replace('https://orcid.org/', '');
+
+    // Extract Affiliations
+    const affiliationNodes = xmlDoc.evaluate(
+      'ns:affiliation',
+      creatorNode,
+      resolver,
+      XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+      null
+    );
+
+    const affiliations = [];
+    const rorIds = [];
+
+    for (let j = 0; j < affiliationNodes.snapshotLength; j++) {
+      const affNode = affiliationNodes.snapshotItem(j);
+      const affiliationName = affNode.textContent;
+      const rorId = affNode.getAttribute('affiliationIdentifier');
+
+      if (affiliationName) {
+        affiliations.push(affiliationName);
+        if (rorId) {
+          rorIds.push(rorId);
+        }
+      }
+    }
+
+    if (i === 0) {
+      // First Author - use existing row
+      const firstRow = $('#group-author .row[data-creator-row]:first');
+      firstRow.find('input[name="orcids[]"]').val(orcid);
+      firstRow.find('input[name="familynames[]"]').val(familyName);
+      firstRow.find('input[name="givennames[]"]').val(givenName);
+
+      // Initialize Tagify for first row
+      const tagifyInput = firstRow.find('input[name="affiliation[]"]')[0];
+      if (tagifyInput) {
+        const tagify = new Tagify(tagifyInput);
+        tagify.addTags(affiliations.map(a => ({ value: a })));
+        firstRow.find('input[name="authorRorIds[]"]').val(rorIds.join(','));
+      }
+    } else {
+      // Additional authors - simulate button click
+      $('#button-author-add').click();
+
+      // Find newly added row
+      const newRow = $('#group-author .row[data-creator-row]').last();
+
+      // Set values
+      newRow.find('input[name="orcids[]"]').val(orcid);
+      newRow.find('input[name="familynames[]"]').val(familyName);
+      newRow.find('input[name="givennames[]"]').val(givenName);
+
+      // Wait briefly for Tagify initialization
+      setTimeout(() => {
+        const tagifyInput = newRow.find('input[name="affiliation[]"]')[0];
+        if (tagifyInput && tagifyInput.tagify) {
+          tagifyInput.tagify.addTags(affiliations.map(a => ({ value: a })));
+          newRow.find('input[name="authorRorIds[]"]').val(rorIds.join(','));
+        }
+      }, 100);
+    }
+  }
+}
+
+/**
  * Loads XML data into form fields according to mapping configuration
  * @param {Document} xmlDoc - The parsed XML document
  */
@@ -339,99 +433,8 @@ async function loadXmlToForm(xmlDoc) {
     }
   }
   // Processing Creators
-  const creatorNodes = xmlDoc.evaluate(
-    './/ns:creators/ns:creator',
-    xmlDoc,
-    resolver,
-    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
-    null
-  );
+  processCreators(xmlDoc, resolver);
 
-  // Reset existing authors
-  $('#group-author .row[data-creator-row]').not(':first').remove();
-  $('#group-author .row[data-creator-row]:first input').val('');
-
-  for (let i = 0; i < creatorNodes.snapshotLength; i++) {
-    const creatorNode = creatorNodes.snapshotItem(i);
-
-    // Extract Creators
-    const givenName = getNodeText(creatorNode, 'ns:givenName', xmlDoc, resolver);
-    const familyName = getNodeText(creatorNode, 'ns:familyName', xmlDoc, resolver);
-    const orcid = getNodeText(
-      creatorNode,
-      'ns:nameIdentifier[@nameIdentifierScheme="ORCID"]',
-      xmlDoc,
-      resolver
-    ).replace('https://orcid.org/', '');
-
-    // Extract Affiliations
-    const affiliationNodes = xmlDoc.evaluate(
-      'ns:affiliation',
-      creatorNode,
-      resolver,
-      XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
-      null
-    );
-
-    const affiliations = [];
-    const rorIds = [];
-
-    for (let j = 0; j < affiliationNodes.snapshotLength; j++) {
-      const affNode = affiliationNodes.snapshotItem(j);
-      const affiliationName = affNode.textContent;
-      const rorId = affNode.getAttribute('affiliationIdentifier');
-
-      if (affiliationName) {
-        affiliations.push(affiliationName);
-        if (rorId) {
-          rorIds.push(rorId);
-        }
-      }
-    }
-
-    if (i === 0) {
-      // Erster Author - existierende Zeile verwenden
-      const firstRow = $('#group-author .row[data-creator-row]:first');
-      firstRow.find('input[name="orcids[]"]').val(orcid);
-      firstRow.find('input[name="familynames[]"]').val(familyName);
-      firstRow.find('input[name="givennames[]"]').val(givenName);
-
-      // Initialisiere Tagify für die erste Zeile
-      const tagifyInput = firstRow.find('input[name="affiliation[]"]')[0];
-      if (tagifyInput) {
-
-        const tagify = new Tagify(tagifyInput);
-
-        // Affiliations als Array von Objekten übergeben
-        tagify.addTags(affiliations.map(a => ({ value: a })));
-
-        firstRow.find('input[name="authorRorIds[]"]').val(rorIds.join(','));
-      }
-    } else {
-      // Weitere Autoren - Button-Click simulieren
-      $('#button-author-add').click();
-
-      // Finde die neu hinzugefügte Zeile
-      const newRow = $('#group-author .row[data-creator-row]').last();
-
-      // Setze die Werte
-      newRow.find('input[name="orcids[]"]').val(orcid);
-      newRow.find('input[name="familynames[]"]').val(familyName);
-      newRow.find('input[name="givennames[]"]').val(givenName);
-
-      // Warte kurz, bis Tagify initialisiert ist
-      setTimeout(() => {
-        const tagifyInput = newRow.find('input[name="affiliation[]"]')[0];
-        if (tagifyInput && tagifyInput.tagify) {
-
-          // Affiliations als Array von Objekten übergeben
-          tagifyInput.tagify.addTags(affiliations.map(a => ({ value: a })));
-
-          newRow.find('input[name="authorRorIds[]"]').val(rorIds.join(','));
-        }
-      }, 100);
-    }
-  }
   // Process Contact Persons
   const contactPersonNodes = xmlDoc.evaluate(
     './/ns:contributors/ns:contributor[@contributorType="ContactPerson"]',
