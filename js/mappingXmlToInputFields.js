@@ -138,6 +138,52 @@ function mapTitleType(titleType) {
 }
 
 /**
+ * Process titles from XML and populate the form
+ * @param {Document} xmlDoc - The parsed XML document
+ * @param {Function} resolver - The namespace resolver function
+ */
+function processTitles(xmlDoc, resolver) {
+  const titleNodes = xmlDoc.evaluate(
+    './/ns:titles/ns:title',
+    xmlDoc,
+    resolver,
+    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+    null
+  );
+
+  // Reset titles
+  $('input[name="title[]"]').closest('.row').not(':first').remove();
+  $('input[name="title[]"]:first').val('');
+  $('#input-resourceinformation-titletype').val('1');
+
+  for (let i = 0; i < titleNodes.snapshotLength; i++) {
+    const titleNode = titleNodes.snapshotItem(i);
+    const titleType = titleNode.getAttribute('titleType');
+    const titleText = titleNode.textContent;
+    const titleLang = titleNode.getAttribute('xml:lang') || 'en';
+
+    if (i === 0) {
+      // First Title
+      $('input[name="title[]"]:first').val(titleText);
+      $('#input-resourceinformation-titletype').val(mapTitleType(titleType));
+      if (titleType) {
+        $('#container-resourceinformation-titletype').show();
+      }
+    } else {
+      // Add Title - Clone new row
+      $('#button-resourceinformation-addtitle').click();
+
+      // Find last row
+      const $lastRow = $('input[name="title[]"]').last().closest('.row');
+
+      // Set values
+      $lastRow.find('input[name="title[]"]').val(titleText);
+      $lastRow.find('select[name="titleType[]"]').val(mapTitleType(titleType));
+    }
+  }
+}
+
+/**
  * Helper function to get text content of a node using XPath
  * @param {Node} contextNode - The context node to search from
  * @param {string} xpath - The XPath expression
@@ -719,45 +765,8 @@ async function loadXmlToForm(xmlDoc) {
     }
   }
 
-  // Verarbeite die Titel separat
-  const titleNodes = xmlDoc.evaluate(
-    './/ns:titles/ns:title',
-    xmlDoc,
-    resolver,
-    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
-    null
-  );
-
-  // Reset titles
-  $('input[name="title[]"]').closest('.row').not(':first').remove();
-  $('input[name="title[]"]:first').val('');
-  $('#input-resourceinformation-titletype').val('1');
-
-  for (let i = 0; i < titleNodes.snapshotLength; i++) {
-    const titleNode = titleNodes.snapshotItem(i);
-    const titleType = titleNode.getAttribute('titleType');
-    const titleText = titleNode.textContent;
-    const titleLang = titleNode.getAttribute('xml:lang') || 'en';
-
-    if (i === 0) {
-      // First Title
-      $('input[name="title[]"]:first').val(titleText);
-      $('#input-resourceinformation-titletype').val(mapTitleType(titleType));
-      if (titleType) {
-        $('#container-resourceinformation-titletype').show();
-      }
-    } else {
-      // Add Title - Clone new row
-      $('#button-resourceinformation-addtitle').click();
-
-      // Find last row
-      const $lastRow = $('input[name="title[]"]').last().closest('.row');
-
-      // Set values
-      $lastRow.find('input[name="title[]"]').val(titleText);
-      $lastRow.find('select[name="titleType[]"]').val(mapTitleType(titleType));
-    }
-  }
+  // Process titles
+  processTitles(xmlDoc, resolver);
   // Processing Creators
   processCreators(xmlDoc, resolver);
   // Process Contact Persons
