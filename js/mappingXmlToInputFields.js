@@ -258,6 +258,79 @@ function processCreators(xmlDoc, resolver) {
   }
 }
 
+/**
+ * Process contact persons from XML and populate the form
+ * @param {Document} xmlDoc - The parsed XML document
+ * @param {Function} resolver - The namespace resolver function
+ */
+function processContactPersons(xmlDoc, resolver) {
+  const contactPersonNodes = xmlDoc.evaluate(
+    './/ns:contributors/ns:contributor[@contributorType="ContactPerson"]',
+    xmlDoc,
+    resolver,
+    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+    null
+  );
+
+  // Reset existing Contact Persons
+  $('#group-contactperson .row[contact-person-row]').not(':first').remove();
+  $('#group-contactperson .row[contact-person-row]:first input').val('');
+
+  let validContactPersonCount = 0;
+
+  for (let i = 0; i < contactPersonNodes.snapshotLength; i++) {
+    const contactPersonNode = contactPersonNodes.snapshotItem(i);
+
+    // Extract relevant data
+    const givenName = getNodeText(contactPersonNode, 'ns:givenName', xmlDoc, resolver);
+    const familyName = getNodeText(contactPersonNode, 'ns:familyName', xmlDoc, resolver);
+
+    // Skip this contact person if either given name or family name is missing
+    if (!givenName || !familyName) {
+      continue;
+    }
+
+    // Extract additional data only if we have both names
+    const position = getNodeText(contactPersonNode, 'ns:position', xmlDoc, resolver);
+    const email = getNodeText(contactPersonNode, 'ns:email', xmlDoc, resolver);
+    const website = getNodeText(contactPersonNode, 'ns:onlineResource', xmlDoc, resolver);
+    const affiliation = getNodeText(contactPersonNode, 'ns:affiliation', xmlDoc, resolver);
+
+    if (validContactPersonCount === 0) {
+      // First valid Contact Person - use the existing row
+      const firstRow = $('#group-contactperson .row[contact-person-row]:first');
+      firstRow.find('input[name="cpFirstname[]"]').val(givenName);
+      firstRow.find('input[name="cpLastname[]"]').val(familyName);
+      firstRow.find('input[name="cpPosition[]"]').val(position);
+      firstRow.find('input[name="cpEmail[]"]').val(email);
+      firstRow.find('input[name="cpOnlineResource[]"]').val(website);
+
+      // Affiliation mit Tagify
+      const affiliationInput = firstRow.find('input[name="cpAffiliation[]"]')[0];
+      if (affiliationInput && affiliationInput.tagify) {
+        affiliationInput.tagify.addTags([{ value: affiliation }]);
+      }
+    } else {
+      // Additional valid Contact Persons - clone a new row
+      $('#button-contactperson-add').click();
+      const newRow = $('#group-contactperson .row[contact-person-row]').last();
+      newRow.find('input[name="cpFirstname[]"]').val(givenName);
+      newRow.find('input[name="cpLastname[]"]').val(familyName);
+      newRow.find('input[name="cpPosition[]"]').val(position);
+      newRow.find('input[name="cpEmail[]"]').val(email);
+      newRow.find('input[name="cpOnlineResource[]"]').val(website);
+
+      // Affiliation mit Tagify
+      const affiliationInput = newRow.find('input[name="cpAffiliation[]"]')[0];
+      if (affiliationInput && affiliationInput.tagify) {
+        affiliationInput.tagify.addTags([{ value: affiliation }]);
+      }
+    }
+
+    validContactPersonCount++;
+  }
+}
+
 // Helper function to get or create a new organization row
 function getOrCreateOrgRow(index) {
   const container = $('#group-contributororganisation');
@@ -548,77 +621,7 @@ async function loadXmlToForm(xmlDoc) {
   processCreators(xmlDoc, resolver);
 
   // Process Contact Persons
-  const contactPersonNodes = xmlDoc.evaluate(
-    './/ns:contributors/ns:contributor[@contributorType="ContactPerson"]',
-    xmlDoc,
-    resolver,
-    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
-    null
-  );
-
-  // Reset existing Contact Persons
-  $('#group-contactperson .row[contact-person-row]').not(':first').remove();
-  $('#group-contactperson .row[contact-person-row]:first input').val('');
-
-  let validContactPersonCount = 0;
-
-  for (let i = 0; i < contactPersonNodes.snapshotLength; i++) {
-
-    const contactPersonNode = contactPersonNodes.snapshotItem(i);
-
-    // Extract relevant data
-    const givenName = getNodeText(contactPersonNode, 'ns:givenName', xmlDoc, resolver);
-    const familyName = getNodeText(contactPersonNode, 'ns:familyName', xmlDoc, resolver);
-
-    // Skip this contact person if either given name or family name is missing
-    if (!givenName || !familyName) {
-      continue;
-    }
-
-    // Extract additional data only if we have both names
-    const position = getNodeText(contactPersonNode, 'ns:position', xmlDoc, resolver);
-    const email = getNodeText(contactPersonNode, 'ns:email', xmlDoc, resolver);
-    const website = getNodeText(contactPersonNode, 'ns:onlineResource', xmlDoc, resolver);
-    const affiliation = getNodeText(contactPersonNode, 'ns:affiliation', xmlDoc, resolver);
-
-    if (validContactPersonCount === 0) {
-
-      // First valid Contact Person - use the existing row
-      const firstRow = $('#group-contactperson .row[contact-person-row]:first');
-      firstRow.find('input[name="cpFirstname[]"]').val(givenName);
-      firstRow.find('input[name="cpLastname[]"]').val(familyName);
-      firstRow.find('input[name="cpPosition[]"]').val(position);
-      firstRow.find('input[name="cpEmail[]"]').val(email);
-      firstRow.find('input[name="cpOnlineResource[]"]').val(website);
-
-      // Affiliation mit Tagify
-      const affiliationInput = firstRow.find('input[name="cpAffiliation[]"]')[0];
-      if (affiliationInput && affiliationInput.tagify) {
-        affiliationInput.tagify.addTags([{ value: affiliation }]);
-      }
-
-    } else {
-
-      // Additional valid Contact Persons - clone a new row
-      $('#button-contactperson-add').click();
-      const newRow = $('#group-contactperson .row[contact-person-row]').last();
-      newRow.find('input[name="cpFirstname[]"]').val(givenName);
-      newRow.find('input[name="cpLastname[]"]').val(familyName);
-      newRow.find('input[name="cpPosition[]"]').val(position);
-      newRow.find('input[name="cpEmail[]"]').val(email);
-      newRow.find('input[name="cpOnlineResource[]"]').val(website);
-
-      // Affiliation mit Tagify
-      const affiliationInput = newRow.find('input[name="cpAffiliation[]"]')[0];
-      if (affiliationInput && affiliationInput.tagify) {
-        affiliationInput.tagify.addTags([{ value: affiliation }]);
-      }
-
-    }
-
-    validContactPersonCount++;
-
-  }
+  processContactPersons(xmlDoc, resolver);
   // Process Originating Laboratories
   const laboratoryNodes = xmlDoc.evaluate(
     './/ns:contributors/ns:contributor[@contributorType="HostingInstitution"]',
