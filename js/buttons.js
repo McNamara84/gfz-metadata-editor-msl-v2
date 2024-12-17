@@ -239,6 +239,9 @@ $(document).ready(function () {
     newCPRow.find("input").val("").removeClass("is-invalid is-valid");
     newCPRow.find(".invalid-feedback, .valid-feedback").css("display", "");
 
+    // Reset required attributes
+    newCPRow.find("input").removeAttr("required");
+
     var uniqueSuffix = new Date().getTime();
     newCPRow.find("#input-contactperson-affiliation").attr("id", "input-contactperson-affiliation" + uniqueSuffix);
     newCPRow.find("#input-contactperson-rorid").attr("id", "input-contactperson-rorid" + uniqueSuffix);
@@ -302,6 +305,9 @@ $(document).ready(function () {
 
     // Hide the row label in cloned rows
     newContributorRow.find(".row-label").hide();
+
+    // Reset required attributes
+    newContributorRow.find("input").removeAttr("required");
 
     /**
      * Unique suffix to avoid duplicate IDs.
@@ -399,6 +405,9 @@ $(document).ready(function () {
 
     // Hide the row label in cloned rows
     newContributorRow.find(".row-label").hide();
+
+    // Reset required attributes
+    newContributorRow.find("input").removeAttr("required");
 
     /**
      * Unique suffix to avoid duplicate IDs.
@@ -592,6 +601,9 @@ $(document).ready(function () {
 
     // Remove help buttons
     replaceHelpButtonInClonedRows(newFundingReferenceRow);
+
+    // Reset required attributes
+    newFundingReferenceRow.find("input").removeAttr("required");
 
     // Bind validation listeners to the new row
     bindValidationListeners(newFundingReferenceRow);
