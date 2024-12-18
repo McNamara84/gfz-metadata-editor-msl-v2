@@ -37,7 +37,7 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.4'
-        extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, zip
+        extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, pdo_mysql, mysqli, zip
         coverage: xdebug
 
     - name: Update Composer dependencies
