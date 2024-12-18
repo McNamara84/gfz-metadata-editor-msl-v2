@@ -543,112 +543,115 @@ function processContributors(xmlDoc, resolver) {
   const personMap = new Map(); // Key: ORCID or name, Value: contributor data
   const orgMap = new Map();    // Key: name, Value: contributor data
 
-  // First pass: Collect and merge contributors
+  // Process all contributors
   for (let i = 0; i < contributorNodes.snapshotLength; i++) {
     const contributor = contributorNodes.snapshotItem(i);
-    const contributorType = contributor.getAttribute('contributorType');
-    const nameType = getNodeText(contributor, 'ns:contributorName/@nameType', xmlDoc, resolver);
-    const contributorName = getNodeText(contributor, 'ns:contributorName', xmlDoc, resolver);
-    const givenName = getNodeText(contributor, 'ns:givenName', xmlDoc, resolver);
-    const familyName = getNodeText(contributor, 'ns:familyName', xmlDoc, resolver);
-    const orcid = getNodeText(contributor, 'ns:nameIdentifier[@nameIdentifierScheme="ORCID"]', xmlDoc, resolver);
+    processIndividualContributor(contributor, xmlDoc, resolver, personMap, orgMap);
+  }
 
-    // Get affiliations
-    const affiliationNodes = xmlDoc.evaluate(
-      'ns:affiliation',
-      contributor,
-      resolver,
-      XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
-      null
-    );
+  // Populate form with processed data
+  populateFormWithContributors(personMap, orgMap);
+}
 
-    const affiliations = [];
-    const rorIds = [];
+/**
+ * Process an individual contributor node and update the corresponding maps
+ * @param {Node} contributor - The contributor XML node
+ * @param {Document} xmlDoc - The parsed XML document
+ * @param {Function} resolver - The namespace resolver function
+ * @param {Map} personMap - Map to store person contributors
+ * @param {Map} orgMap - Map to store organization contributors
+ */
+function processIndividualContributor(contributor, xmlDoc, resolver, personMap, orgMap) {
+  const contributorType = contributor.getAttribute('contributorType');
+  const nameType = getNodeText(contributor, 'ns:contributorName/@nameType', xmlDoc, resolver);
+  const contributorName = getNodeText(contributor, 'ns:contributorName', xmlDoc, resolver);
+  const givenName = getNodeText(contributor, 'ns:givenName', xmlDoc, resolver);
+  const familyName = getNodeText(contributor, 'ns:familyName', xmlDoc, resolver);
+  const orcid = getNodeText(contributor, 'ns:nameIdentifier[@nameIdentifierScheme="ORCID"]', xmlDoc, resolver);
 
-    for (let j = 0; j < affiliationNodes.snapshotLength; j++) {
-      const affNode = affiliationNodes.snapshotItem(j);
-      const affiliationName = affNode.textContent;
-      const rorId = affNode.getAttribute('affiliationIdentifier');
+  // Get affiliations
+  const affiliationNodes = xmlDoc.evaluate(
+    'ns:affiliation',
+    contributor,
+    resolver,
+    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+    null
+  );
 
-      if (affiliationName && !affiliations.includes(affiliationName)) {
-        affiliations.push(affiliationName);
-        if (rorId) {
-          const cleanRorId = rorId.replace('https://ror.org/', '');
-          if (!rorIds.includes(cleanRorId)) {
-            rorIds.push(cleanRorId);
-          }
+  const affiliations = [];
+  const rorIds = [];
+
+  for (let j = 0; j < affiliationNodes.snapshotLength; j++) {
+    const affNode = affiliationNodes.snapshotItem(j);
+    const affiliationName = affNode.textContent;
+    const rorId = affNode.getAttribute('affiliationIdentifier');
+
+    if (affiliationName && !affiliations.includes(affiliationName)) {
+      affiliations.push(affiliationName);
+      if (rorId) {
+        const cleanRorId = rorId.replace('https://ror.org/', '');
+        if (!rorIds.includes(cleanRorId)) {
+          rorIds.push(cleanRorId);
         }
-      }
-    }
-
-    const isPerson = nameType === 'Personal' || (givenName && familyName);
-
-    if (isPerson) {
-      // Use ORCID as key if available, otherwise use name combination
-      const key = orcid || `${givenName}_${familyName}`;
-
-      if (personMap.has(key)) {
-        // Merge with existing person
-        const existing = personMap.get(key);
-        if (!existing.roles.includes(contributorType)) {
-          existing.roles.push(contributorType);
-        }
-        // Merge affiliations
-        affiliations.forEach(aff => {
-          if (!existing.affiliations.includes(aff)) {
-            existing.affiliations.push(aff);
-          }
-        });
-        // Merge ROR IDs
-        rorIds.forEach(rid => {
-          if (!existing.rorIds.includes(rid)) {
-            existing.rorIds.push(rid);
-          }
-        });
-      } else {
-        // Create new person entry
-        personMap.set(key, {
-          givenName,
-          familyName,
-          orcid,
-          roles: [contributorType],
-          affiliations,
-          rorIds
-        });
-      }
-    } else {
-      // For organizations, use name as key
-      if (orgMap.has(contributorName)) {
-        // Merge with existing organization
-        const existing = orgMap.get(contributorName);
-        if (!existing.roles.includes(contributorType)) {
-          existing.roles.push(contributorType);
-        }
-        // Merge affiliations
-        affiliations.forEach(aff => {
-          if (!existing.affiliations.includes(aff)) {
-            existing.affiliations.push(aff);
-          }
-        });
-        // Merge ROR IDs
-        rorIds.forEach(rid => {
-          if (!existing.rorIds.includes(rid)) {
-            existing.rorIds.push(rid);
-          }
-        });
-      } else {
-        // Create new organization entry
-        orgMap.set(contributorName, {
-          name: contributorName,
-          roles: [contributorType],
-          affiliations,
-          rorIds
-        });
       }
     }
   }
 
-  // Second pass: Create form entries for unique contributors
+  const isPerson = nameType === 'Personal' || (givenName && familyName);
+
+  if (isPerson) {
+    const key = orcid || `${givenName}_${familyName}`;
+    updateContributorMap(personMap, key, {
+      givenName,
+      familyName,
+      orcid,
+      roles: [contributorType],
+      affiliations,
+      rorIds
+    });
+  } else {
+    updateContributorMap(orgMap, contributorName, {
+      name: contributorName,
+      roles: [contributorType],
+      affiliations,
+      rorIds
+    });
+  }
+}
+
+/**
+ * Update the contributor map with new data, merging if the key already exists
+ * @param {Map} map - The map to update
+ * @param {string} key - The key for the contributor
+ * @param {Object} newData - The new contributor data
+ */
+function updateContributorMap(map, key, newData) {
+  if (map.has(key)) {
+    const existing = map.get(key);
+    if (!existing.roles.includes(newData.roles[0])) {
+      existing.roles.push(newData.roles[0]);
+    }
+    newData.affiliations.forEach(aff => {
+      if (!existing.affiliations.includes(aff)) {
+        existing.affiliations.push(aff);
+      }
+    });
+    newData.rorIds.forEach(rid => {
+      if (!existing.rorIds.includes(rid)) {
+        existing.rorIds.push(rid);
+      }
+    });
+  } else {
+    map.set(key, newData);
+  }
+}
+
+/**
+ * Populate the form with processed contributor data
+ * @param {Map} personMap - Map containing person contributors
+ * @param {Map} orgMap - Map containing organization contributors
+ */
+function populateFormWithContributors(personMap, orgMap) {
   let personIndex = 0;
   let orgIndex = 0;
 
