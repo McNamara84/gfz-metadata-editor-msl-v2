@@ -57,3 +57,14 @@
 .feedback-button.blink {
     animation: blink 2s infinite;
 }
+
+/* Upload Modal */
+.drop-zone {
+    border: 2px dashed #dee2e6;
+    transition: border-color 0.3s ease;
+}
+
+.drop-zone.border-primary {
+    border-color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.1);
+}

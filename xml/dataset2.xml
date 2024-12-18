@@ -48,7 +48,7 @@
       <description>Auch in fg STC werden nur die Pflichtfelder ausgef&#xFC;llt</description>
       <dateStart>1956-01-01</dateStart>
       <dateEnd>1956-12-31</dateEnd>
-      <timezone>0</timezone>
+      <timezone>+00:00</timezone>
     </SpatialTemporalCoverage>
   </SpatialTemporalCoverages>
   <FundingReferences>
