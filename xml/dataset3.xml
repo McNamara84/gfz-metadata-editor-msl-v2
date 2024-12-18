@@ -145,7 +145,7 @@
       <dateEnd>2100-02-02</dateEnd>
       <timeStart>12:00:00</timeStart>
       <timeEnd>14:00:00</timeEnd>
-      <timezone>0</timezone>
+      <timezone>+12:00</timezone>
     </SpatialTemporalCoverage>
   </SpatialTemporalCoverages>
   <RelatedWorks>
