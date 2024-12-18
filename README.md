@@ -468,7 +468,7 @@ JSON-Array mit Identifier-Typ-Objekten
 
   - In diesem Feld kommt die ORCID des Autors (Open Researcher and Contributor ID).
   - Datentyp: Zeichenkette
-  - Vorkommen: 1
+  - Vorkommen: 0-1
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: orcid in der Tabelle Author.
   - Restriktionen: Muss im Format "xxxx-xxxx-xxxx-xxxx" sein.
   - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/creator/#nameidentifier)
@@ -532,6 +532,7 @@ JSON-Array mit Identifier-Typ-Objekten
   - Beispielwerte: `ali.mohammed@gfz-potsdam.de` `holger.ehrmann@gfz-potsdam.de`
 
 - Website
+
   - In diesem Feld kommt die Website der Organisation.
   - Datentyp: Zeichenkette
   - Vorkommen: 0-1
@@ -540,7 +541,9 @@ JSON-Array mit Identifier-Typ-Objekten
   - [gmd Schema-Dokumentation](https://schemas.isotc211.org/19139/-/gmd/1.0/gmd/#element_CI_ResponsibleParty)
   - Schema Version: "ISO" 2012-07-13
   - Beispielwerte: `gfz-potsdam.de` `fh-potsdam.de`
+
 - Affiliation
+
   - In diesem Feld kommt die Zugehörigkeit der Person.
   - Datentyp: Zeichenkette
   - Vorkommen: 0-n
@@ -570,7 +573,7 @@ JSON-Array mit Identifier-Typ-Objekten
   - In diesem Feld kommt der Nachname der/des Mitwirkenden.
   - Datentyp: Text
   - Vorkommen: 0-1
-  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
+  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: familyname in der Tabelle Contributor_Person
   - Restriktionen: Optional.
   - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#familyname)
   - Schema Version: "DataCite" 4.5
@@ -581,7 +584,7 @@ JSON-Array mit Identifier-Typ-Objekten
   - In diesem Feld kommt der Vorname der/des Mitwirkenden.
   - Datentyp: Text
   - Vorkommen: 0-1
-  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
+  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: givenname in der Tabelle Contributor_Person
   - Restriktionen: Optional.
   - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#givenname)
   - Schema Version: "DataCite" 4.5
@@ -591,8 +594,8 @@ JSON-Array mit Identifier-Typ-Objekten
 
   - In diesem Feld kommt die Rolle/ Rollen der/des Mitwirkenden.
   - Datentyp: Text
-  - Vorkommen: 1 _Gemäß der DataCite Dokumentation kann ein Mitwirkender nur eine Rolle haben. Allerdings ermöglicht der aktuelle MDE die Eingabe mehrerer Rollen für einen Mitwirkenden._
-  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
+  - Vorkommen: 0-10
+  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: Role_role_id in der Tabelle Contributor_Person_has_Role
   - Restriktionen: muss mindestens eine Rolle ausgewählt werden./muss nur eine Rolle ausgewählt werden.
   - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype)
   - Schema Version: "DataCite" 4.5
@@ -602,8 +605,8 @@ JSON-Array mit Identifier-Typ-Objekten
 
   - In diesem Feld kommt die ORCID der/des Mitwirkenden (Open Researcher and Contributor ID).
   - Datentyp: Zeichenkette
-  - Vorkommen: 1
-  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
+  - Vorkommen: 0-1
+  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: orcid in der Tabelle Contributor_Person
   - Restriktionen: Muss im Format "xxxx-xxxx-xxxx-xxxx" sein.
   - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-nameidentifierscheme)
   - Schema Version: "DataCite" 4.5
@@ -611,10 +614,11 @@ JSON-Array mit Identifier-Typ-Objekten
 
 - Affiliation
 
-  - In diesem Feld kommt die Zugehörigkeit der/des Mitwirkenden.
+  - In diesem Feld kommt die Zugehörigkeit der/des Mitwirkenden(Personal).
   - Datentyp: Zeichenkette
   - Vorkommen: 0-n
-  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
+  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: Affiliation_affiliation_id in der Tabelle Contributor_Person_has_Affiliation
+
   - Restriktionen: Es ist optional.
   - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-affiliationidentifier)
   - Schema Version: "DataCite" 4.5
@@ -635,12 +639,25 @@ JSON-Array mit Identifier-Typ-Objekten
 - Role
   - In diesem Feld kommt die Rolle/ Rollen der Institution.
   - Datentyp: Text
-  - Vorkommen: 1 _Gemäß der DataCite Dokumentation kann ein Mitwirkender nur eine Rolle haben. Allerdings ermöglicht der aktuelle MDE die Eingabe mehrerer Rollen für einen Mitwirkenden._
+  - Vorkommen: 0-10
   - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: **Noch nicht bekannt!**
   - Restriktionen: muss mindestens eine Rolle ausgewählt werden./muss nur eine Rolle ausgewählt werden.
   - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-contributortype)
   - Schema Version: "DataCite" 4.5
   - Beispielwerte: `Data Collector` `Data Curator`
+  
+- Affiliation
+
+  - In diesem Feld kommt die Zugehörigkeit der/des Mitwirkenden(Organisation).
+  - Datentyp: Zeichenkette
+  - Vorkommen: 0-n
+  - Das zugehörige Feld in der Datenbank, wo der Wert gespeichert wird, heißt: Affiliation_affiliation_id in der Tabelle Contributor_Institution_has_Affiliation
+
+  - Restriktionen: Es ist optional.
+  - [DataCite-Dokumentation](https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/contributor/#a-affiliationidentifier)
+  - Schema Version: "DataCite" 4.5
+  - Beispielwerte: `Education and Science Workers' Union` `Institute of Science and Ethics`
+
 
 ### Description
 
@@ -908,7 +925,7 @@ Räumliche und zeitliche Einordnung des Datensatzes. Zur einfacheren Erfassung d
 * Funder
   In diesem Feld kommt der Name des Finanzierungsanbieters.
   - Datentyp: Zeichenkette
-  - Vorkommen: 1
+  - Vorkommen: 0-1
   - Restriktionen: Um Vorschläge über der Api zu erhalten, ist es erforderlich, mindestens die ersten zwei Buchstaben der Funder einzugeben. Zudem besteht die Möglichkeit, die Funder manuell einzutragen.
   - Schemata: DataCite
   - Beispielwerte: `Gordon and Betty Moore Foundation` `Ford Foundation`
@@ -929,8 +946,8 @@ Räumliche und zeitliche Einordnung des Datensatzes. Zur einfacheren Erfassung d
 
 ## Datenvalidierung
 
-- Folgende Felder müssen zwingend ausgefüllt werden: **Publication Year**, **Title**, **Author Lastname**, **Author Firstname**, **Author Role**, **Author ORCID**, **Contributor ORCID**, **Contributor Role**, **Description Abstract** **Relation** und **Identifier**.❗
-- Die restlichen Felder **DOI**, **Resource Type**, **Version**, **Language of Dataset**, **Title Type**, **Rights**, **Contact Person Position**, **Contact Person Email**, **Contact Person Website**, **Author Affiliation**, **Contact Person Affiliation**, **Contributor Lastname**, **Contributor Firstname**, **Contributor Affiliation**, **Contributor Organisation Name**, **Description Methods**, **Description TechnicalInfo**, **Description Other**, **Thesaurus Keywords**, **MSL Keywords** und **Identifier Typ** können optional leer bleiben.✅
+- Folgende Felder müssen zwingend ausgefüllt werden: **Publication Year**, **Resource Type**, **Title**, **Title Type**(_Nur bei der Angabe des zweiten Titels!_), **Author Lastname**, **Author Firstname**, **Description Abstract**, **Date created**, **Min Latitude**, **Min Longitude**, **STC Description**, **STC Date Start**, **STC Date End** und **STC Timezone**.❗
+- Die restlichen Felder **DOI**, **Version**, **Language of Dataset**, **Rights**, **Author ORCID**, **Author Affiliation**, **Contact Person Lastname**, **Contact Person Firstname**, **Contact Person Position**, **Contact Person Email**, **Contact Person Website**, **Contact Person Affiliation**, **Contributor ORCID**, **Contributor Role**, **Contributor Lastname**, **Contributor Firstname**, **Contributor Affiliation**, **Contributor Organisation Name**, **Contributor Organisation Role**, **Contributor Organisation Affiliation**, **Description Methods**, **Description TechnicalInfo**, **Description Other**, **Thesaurus Keywords**, **MSL Keywords**, **Free Keywords**, **STC Max Latitude**, **STC Max Longitude**, **STC Time Start**, **STC Time End**, **Related work alle Felder** und **Funding Reference alle Felder** können optional leer bleiben.✅
 
 ## Database structure
 

@@ -239,6 +239,9 @@ $(document).ready(function () {
     newCPRow.find("input").val("").removeClass("is-invalid is-valid");
     newCPRow.find(".invalid-feedback, .valid-feedback").css("display", "");
 
+    // Reset required attributes
+    newCPRow.find("input").removeAttr("required");
+
     var uniqueSuffix = new Date().getTime();
     newCPRow.find("#input-contactperson-affiliation").attr("id", "input-contactperson-affiliation" + uniqueSuffix);
     newCPRow.find("#input-contactperson-rorid").attr("id", "input-contactperson-rorid" + uniqueSuffix);
@@ -267,6 +270,7 @@ $(document).ready(function () {
     // Event handler for the remove button
     newCPRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
+      checkMandatoryFields();
     });
   });
 
@@ -302,6 +306,9 @@ $(document).ready(function () {
 
     // Hide the row label in cloned rows
     newContributorRow.find(".row-label").hide();
+
+    // Reset required attributes
+    newContributorRow.find("input").removeAttr("required");
 
     /**
      * Unique suffix to avoid duplicate IDs.
@@ -363,6 +370,7 @@ $(document).ready(function () {
     // Event handler for the remove button in the new row
     newContributorRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
+      checkMandatoryFields();
     });
   });
 
@@ -392,13 +400,16 @@ $(document).ready(function () {
     // Reset values and validation feedback in the cloned element
     newContributorRow.find("input").val("").removeClass("is-invalid is-valid");
     newContributorRow.find(".tagify").remove();
-    newContributorRow.find(".invalid-feedback, .valid-feedback").hide();
+    newContributorRow.find(".invalid-feedback, .valid-feedback").css("display", "");
 
     // Remove help buttons
     replaceHelpButtonInClonedRows(newContributorRow);
 
     // Hide the row label in cloned rows
     newContributorRow.find(".row-label").hide();
+
+    // Reset required attributes
+    newContributorRow.find("input").removeAttr("required");
 
     /**
      * Unique suffix to avoid duplicate IDs.
@@ -441,9 +452,13 @@ $(document).ready(function () {
     // Initialize Tagify for the new Roles field
     setupRolesDropdown(["institution", "both"], "#input-contributor-organisationrole" + uniqueSuffix);
 
+    // Bind validation listeners to the new row
+    bindValidationListeners(newContributorRow);
+
     // Event handler for the remove button in the new row
     newContributorRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
+      checkMandatoryFields();
     });
   });
 
@@ -593,12 +608,16 @@ $(document).ready(function () {
     // Remove help buttons
     replaceHelpButtonInClonedRows(newFundingReferenceRow);
 
+    // Reset required attributes
+    newFundingReferenceRow.find("input").removeAttr("required");
+
     // Bind validation listeners to the new row
     bindValidationListeners(newFundingReferenceRow);
 
     // Event handler for the remove button
     newFundingReferenceRow.on("click", ".removeButton", function () {
       $(this).closest(".row").remove();
+      checkMandatoryFields();
     });
 
     // Destroy autocomplete
