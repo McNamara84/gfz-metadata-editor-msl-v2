@@ -957,6 +957,10 @@ The following ER diagram shows the relationships and structures of the tables in
 
 [![ER-Diagramm](doc/ER-Modell.jpg)](https://raw.githubusercontent.com/McNamara84/gfz-metadata-editor-msl-v2/feature/msl-frontend/doc/ER-Modell.jpg)
 
+## Contributing
+
+We appreciate every contribution to this project! If you have an idea, improvement, or bug fix, please create a new branch and open a Pull Request (PR). We have prepared a Pull Request template, so we kindly ask you to use it when submitting your changes. This helps ensure we have all the necessary information to review and merge your contribution smoothly.
+
 ## Testing
 The flollowing unit tests are available:
 - `vendor/bin/phpunit tests/ApiTest.php`
