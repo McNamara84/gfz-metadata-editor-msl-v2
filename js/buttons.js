@@ -172,6 +172,17 @@ $(document).ready(function () {
   });
 
   /**
+   * Event handler for drag & drop sorting of author rows.
+   */
+  $("#group-author").sortable({
+    items: "[data-creator-row]",
+    handle: ".drag-handle",
+    axis: "y",
+    tolerance: "pointer",
+    containment: "parent"
+  });
+
+  /**
    * Event handler for the "Add Author" button click.
    * Clones the first author row, resets input fields, and appends it to the author group.
    */
